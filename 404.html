@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mohaktools.com — Under Construction</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+                    },
+                    colors: {
+                        neutral: {
+                            850: '#18181b',
+                            900: '#121215',
+                            950: '#09090b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern subtle grid & dot background pattern - authentic human-designed developer aesthetic */
+        .bg-grid-pattern {
+            background-size: 32px 32px;
+            background-image: 
+                radial-gradient(circle, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+        }
+        .dark .bg-grid-pattern {
+            background-size: 32px 32px;
+            background-image: 
+                radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+        }
+
+        /* Subtle radial vignette for depth */
+        .bg-vignette {
+            background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0) 0%, rgba(244, 244, 245, 0.8) 100%);
+        }
+        .dark .bg-vignette {
+            background: radial-gradient(circle at 50% 30%, rgba(9, 9, 11, 0) 0%, rgba(9, 9, 11, 0.9) 100%);
+        }
+
+        /* Smooth crisp transitions */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 min-h-full flex flex-col justify-between transition-colors duration-200 bg-grid-pattern relative selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-zinc-900">
+
+    <!-- Subtle vignette overlay -->
+    <div class="fixed inset-0 pointer-events-none bg-vignette z-0"></div>
+
+    <!-- Header Navigation -->
+    <header class="relative z-10 w-full max-w-4xl mx-auto px-6 pt-8 pb-4 flex justify-between items-center">
+        <!-- Minimal Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-200/60 dark:bg-zinc-800/60 border border-zinc-300/50 dark:border-zinc-700/50 text-xs font-medium text-zinc-600 dark:text-zinc-400">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+            Maintenance & Update
+        </div>
+
+        <!-- Dark/Light Theme Switcher -->
+        <button 
+            id="themeToggle" 
+            onclick="toggleTheme()" 
+            class="p-2 rounded-lg text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 border border-transparent hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-150 focus:outline-none"
+            aria-label="Toggle Theme"
+        >
+            <i id="themeIcon" class="fas fa-moon text-sm"></i>
+        </button>
+    </header>
+
+    <!-- Main Content Card -->
+    <main class="relative z-10 my-auto px-4 py-8 flex flex-col items-center justify-center text-center max-w-xl mx-auto w-full">
+        <div class="w-full bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 rounded-2xl p-8 sm:p-10 shadow-xl shadow-zinc-200/50 dark:shadow-none text-left relative overflow-hidden">
+            
+            <!-- Top Subtle Bar accent -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-zinc-800 via-zinc-400 to-zinc-800 dark:from-zinc-200 dark:via-zinc-600 dark:to-zinc-200 opacity-80"></div>
+
+            <!-- Logo & Brand Header -->
+            <div class="flex items-center gap-4 mb-8 pb-6 border-b border-zinc-100 dark:border-zinc-800/80">
+                <div class="w-12 h-12 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700/80 flex items-center justify-center overflow-hidden shrink-0">
+                    <img 
+                        src="logo.webp" 
+                        alt="mohaktools logo" 
+                        id="siteLogo"
+                        class="w-full h-full object-contain p-1.5"
+                        onerror="handleLogoError(this)"
+                    />
+                    <div id="logoFallback" class="hidden text-zinc-700 dark:text-zinc-300 font-mono font-bold text-lg">
+                        M
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-100 font-mono">
+                        mohaktools.com
+                    </h2>
+                    <p class="text-xs text-zinc-500 dark:text-zinc-400">Web Utilities & Developer Tools</p>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="space-y-4">
+                <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+                    Thanks for visiting us.
+                </h1>
+
+                <p class="text-zinc-600 dark:text-zinc-300 text-base leading-relaxed">
+                    New tools will be added soon, replacing all old tools. We're rebuilding the platform from scratch to offer faster, more reliable, and cleaner utility tools.
+                </p>
+            </div>
+
+            <!-- Support / Contact Section -->
+            <div class="mt-8 pt-6 border-t border-zinc-100 dark:border-zinc-800/80">
+                <p class="text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-3">
+                    Questions & Support
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+                    <!-- Direct Email Link Button -->
+                    <a 
+                        href="mailto:mohakchoubey@gmail.com" 
+                        class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-100 dark:hover:bg-white text-white dark:text-zinc-900 font-medium text-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-zinc-400"
+                    >
+                        <i class="fas fa-envelope text-xs opacity-80"></i>
+                        <span>Email Us</span>
+                    </a>
+
+                    <!-- Copy Email Quick Action Button -->
+                    <button 
+                        onclick="copyEmail()" 
+                        id="copyBtn"
+                        class="inline-flex items-center justify-between sm:justify-start gap-2 px-4 py-2.5 rounded-lg bg-zinc-100 hover:bg-zinc-200/80 dark:bg-zinc-800 dark:hover:bg-zinc-700/80 text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-700/60 font-mono text-xs transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-zinc-400 group"
+                        title="Click to copy email address"
+                    >
+                        <span id="copyEmailLabel" class="truncate">mohakchoubey@gmail.com</span>
+                        <i class="far fa-copy text-zinc-400 group-hover:text-zinc-700 dark:group-hover:text-zinc-200 transition-colors" id="copyIcon"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 py-6 text-center text-xs text-zinc-400 dark:text-zinc-600">
+        <p>&copy; <span id="year"></span> mohaktools.com &middot; All rights reserved.</p>
+    </footer>
+
+    <!-- Minimalist Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-12 opacity-0 transition-all duration-200 ease-out bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 px-4 py-2.5 rounded-lg shadow-lg border border-zinc-800 dark:border-zinc-200 text-xs font-medium flex items-center gap-2 pointer-events-none">
+        <i class="fas fa-check text-emerald-400 dark:text-emerald-600"></i>
+        <span id="toastMessage">Email copied to clipboard</span>
+    </div>
+
+    <script>
+        // Set dynamic current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Theme Toggle Logic
+        function initTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateThemeIcon();
+        }
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            updateThemeIcon();
+        }
+
+        function updateThemeIcon() {
+            const icon = document.getElementById('themeIcon');
+            if (document.documentElement.classList.contains('dark')) {
+                icon.className = 'fas fa-sun text-sm text-amber-400';
+            } else {
+                icon.className = 'fas fa-moon text-sm text-zinc-600';
+            }
+        }
+
+        // Image Fallback Handler for logo.webp
+        function handleLogoError(imgElement) {
+            imgElement.style.display = 'none';
+            document.getElementById('logoFallback').classList.remove('hidden');
+        }
+
+        // Reliable Copy Email Action with execCommand fallback for iFrame compatibility
+        function copyEmail() {
+            const email = "mohakchoubey@gmail.com";
+            
+            const tempInput = document.createElement("input");
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            
+            try {
+                document.execCommand("copy");
+                showToast("Email address copied to clipboard!");
+            } catch (err) {
+                showToast("mohakchoubey@gmail.com");
+            } finally {
+                document.body.removeChild(tempInput);
+            }
+        }
+
+        // Toast Notification Handler
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            
+            toastMsg.textContent = message;
+            toast.classList.remove('translate-y-12', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-12', 'opacity-0');
+            }, 2500);
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            initTheme();
+        };
+    </script>
+</body>
+</html>
