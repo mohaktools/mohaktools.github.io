@@ -1,4 +1,4 @@
-<escape><?xml version="2.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://mohaktools.com/tools/</loc></url>
 
@@ -62,4 +62,4 @@
   <url><loc>https://mohaktools.com/contact/</loc></url>
   <url><loc>https://mohaktools.com/terms/</loc></url>
   <url><loc>https://mohaktools.com/privacy/</loc></url>
-</urlset></escape>
+</urlset>
