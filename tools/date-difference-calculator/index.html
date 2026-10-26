@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Date Difference Calculator – Days Between Dates | MohakTools</title>
+  <meta name="description" content="Calculate the difference between two dates in years, months, weeks and days. Find total days between dates with the free MohakTools Date Difference Calculator.">
+  <meta name="keywords" content="date difference calculator, days between dates, date duration calculator, calculate days between two dates, date calculator, time between dates, calendar days calculator">
+  <meta name="author" content="MohakTools">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="application-name" content="MohakTools">
+
+  <link rel="canonical" href="https://mohaktools.com/tools/date-difference-calculator/">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="Date Difference Calculator – MohakTools">
+  <meta property="og:description" content="Find the number of days, weeks, months and years between any two dates with this free online date calculator.">
+  <meta property="og:url" content="https://mohaktools.com/tools/date-difference-calculator/">
+  <meta property="og:image" content="https://mohaktools.com/assets/images/date-difference-calculator-og.png">
+  <meta property="og:image:alt" content="MohakTools Date Difference Calculator">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Date Difference Calculator – MohakTools">
+  <meta name="twitter:description" content="Calculate the duration between two dates in days, weeks, months and years.">
+  <meta name="twitter:image" content="https://mohaktools.com/assets/images/date-difference-calculator-og.png">
+
+  <!-- Shared Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Date Difference Calculator",
+    "url": "https://mohaktools.com/tools/date-difference-calculator/",
+    "description": "A free online date difference calculator to find the calendar duration and total days between two dates.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "MohakTools",
+      "url": "https://mohaktools.com/"
+    }
+  }
+  </script>
+
+  <style>
+    /* =========================================
+       MohakTools — Date Difference Calculator
+       Page-specific styles
+    ========================================= */
+
+    .date-diff-page {
+      width: min(100% - 32px, 1080px);
+      margin: 0 auto;
+      padding: 32px 0 64px;
+      color: var(--color-text);
+    }
+
+    .date-diff-breadcrumbs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      color: var(--color-text-secondary);
+      font-size: 14px;
+    }
+
+    .date-diff-breadcrumbs a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .date-diff-breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+
+    .date-diff-hero {
+      margin-bottom: 28px;
+    }
+
+    .date-diff-hero h1 {
+      margin: 0 0 12px;
+      color: var(--color-text);
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+    }
+
+    .date-diff-hero p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--color-text-secondary);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .date-diff-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .date-diff-panel {
+      min-width: 0;
+      padding: 24px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 20px);
+      background: var(--color-surface);
+      box-shadow: var(--color-card-shadow, 0 4px 18px rgba(0, 0, 0, 0.04));
+    }
+
+    .date-diff-panel h2 {
+      margin: 0 0 22px;
+      color: var(--color-text);
+      font-size: 21px;
+      line-height: 1.4;
+    }
+
+    .date-diff-field {
+      margin-bottom: 20px;
+    }
+
+    .date-diff-field label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--color-text);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .date-diff-field input[type="date"] {
+      display: block;
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      border: 1px solid var(--color-input-border, var(--color-border));
+      border-radius: var(--radius-md, 10px);
+      background: var(--color-input-bg, var(--color-surface));
+      color: var(--color-text);
+      font: inherit;
+      font-size: 16px;
+      outline: none;
+      color-scheme: light;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    html[data-theme="dark"] .date-diff-field input[type="date"] {
+      color-scheme: dark;
+    }
+
+    .date-diff-field input[type="date"]:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-focus, rgba(37, 99, 235, 0.14));
+    }
+
+    .date-diff-field input[aria-invalid="true"] {
+      border-color: var(--color-danger);
+    }
+
+    .date-diff-field-help {
+      margin: 7px 0 0;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .date-diff-options {
+      margin: 4px 0 20px;
+      padding: 0;
+      border: 0;
+    }
+
+    .date-diff-options legend {
+      margin-bottom: 10px;
+      color: var(--color-text);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .date-diff-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .date-diff-checkbox input {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 17px;
+      margin-top: 2px;
+      accent-color: var(--color-primary);
+    }
+
+    .date-diff-button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .date-diff-button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-md, 10px);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .date-diff-button:hover {
+      opacity: 0.9;
+    }
+
+    .date-diff-button:active {
+      transform: translateY(1px);
+    }
+
+    .date-diff-button:focus-visible {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 3px;
+    }
+
+    .date-diff-button-primary {
+      flex: 1;
+      background: var(--color-primary);
+      color: var(--color-primary-text, #ffffff);
+    }
+
+    .date-diff-button-secondary {
+      border-color: var(--color-border);
+      background: var(--color-surface-secondary);
+      color: var(--color-text);
+    }
+
+    .date-diff-primary-result {
+      margin-bottom: 20px;
+      padding: 22px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg, 14px);
+      background: var(--color-surface-secondary);
+    }
+
+    .date-diff-primary-result span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--color-text-secondary);
+      font-size: 14px;
+    }
+
+    .date-diff-primary-result strong {
+      display: block;
+      color: var(--color-primary);
+      font-size: clamp(28px, 4vw, 36px);
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .date-diff-primary-result p {
+      margin: 8px 0 0;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .date-diff-result-list {
+      display: grid;
+      margin: 0;
+    }
+
+    .date-diff-result-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .date-diff-result-row:last-child {
+      border-bottom: 0;
+    }
+
+    .date-diff-result-row dt {
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .date-diff-result-row dd {
+      margin: 0;
+      color: var(--color-text);
+      font-size: 14px;
+      font-weight: 700;
+      text-align: right;
+      overflow-wrap: anywhere;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .date-diff-status {
+      min-height: 20px;
+      margin: 16px 0 0;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .date-diff-status.error {
+      color: var(--color-danger);
+    }
+
+    .date-diff-status.success {
+      color: var(--color-success);
+    }
+
+    .date-diff-content {
+      margin-top: 36px;
+    }
+
+    .date-diff-content-section {
+      margin-top: 24px;
+      padding: 24px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 20px);
+      background: var(--color-surface);
+    }
+
+    .date-diff-content-section h2 {
+      margin: 0 0 14px;
+      color: var(--color-text);
+      font-size: 23px;
+      line-height: 1.4;
+    }
+
+    .date-diff-content-section h3 {
+      margin: 22px 0 8px;
+      color: var(--color-text);
+      font-size: 17px;
+      line-height: 1.45;
+    }
+
+    .date-diff-content-section p,
+    .date-diff-content-section li {
+      color: var(--color-text-secondary);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .date-diff-content-section p {
+      margin: 0 0 14px;
+    }
+
+    .date-diff-content-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .date-diff-content-section ul,
+    .date-diff-content-section ol {
+      padding-left: 22px;
+      margin: 10px 0 0;
+    }
+
+    .date-diff-formula {
+      margin: 14px 0;
+      padding: 16px;
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius-md, 10px) var(--radius-md, 10px) 0;
+      background: var(--color-surface-secondary);
+      color: var(--color-text);
+      font-size: 14px;
+      line-height: 1.9;
+      overflow-wrap: anywhere;
+    }
+
+    .date-diff-related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .date-diff-related-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 12px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px);
+      color: var(--color-primary);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .date-diff-related-links a:hover {
+      border-color: var(--color-primary);
+    }
+
+    .date-diff-faq-item {
+      padding: 17px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .date-diff-faq-item:first-of-type {
+      padding-top: 0;
+    }
+
+    .date-diff-faq-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .date-diff-faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .date-diff-faq-item p {
+      margin: 0;
+    }
+
+    .date-diff-disclaimer {
+      margin-top: 18px;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 760px) {
+      .date-diff-page {
+        width: min(100% - 24px, 600px);
+        padding-top: 24px;
+      }
+
+      .date-diff-layout {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .date-diff-panel,
+      .date-diff-content-section {
+        padding: 20px;
+      }
+
+      .date-diff-hero h1 {
+        letter-spacing: -0.025em;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .date-diff-page {
+        width: min(100% - 20px, 600px);
+      }
+
+      .date-diff-panel,
+      .date-diff-content-section {
+        padding: 16px;
+        border-radius: var(--radius-lg, 14px);
+      }
+
+      .date-diff-button-row {
+        flex-direction: column;
+      }
+
+      .date-diff-button {
+        width: 100%;
+      }
+
+      .date-diff-result-row {
+        gap: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .date-diff-button,
+      .date-diff-field input {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Shared Header -->
+   <script src="/assets/js/tools-registry.js" defer></script>
+  <div id="site-header"></div>
+
+  <main class="date-diff-page">
+    <nav class="date-diff-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Date Difference Calculator</span>
+    </nav>
+
+    <header class="date-diff-hero">
+      <h1>Date Difference Calculator</h1>
+      <p>
+        Calculate the time between two dates in years, months, weeks and days.
+        Find the total number of calendar days between dates for planning,
+        tracking deadlines, events and other date-related tasks.
+      </p>
+    </header>
+
+    <section class="date-diff-layout" aria-label="Date difference calculator">
+      <div class="date-diff-panel">
+        <h2>Enter Two Dates</h2>
+
+        <form id="date-diff-form" novalidate>
+          <div class="date-diff-field">
+            <label for="date-diff-start">Start Date</label>
+            <input
+              id="date-diff-start"
+              name="startDate"
+              type="date"
+              required
+              aria-describedby="date-diff-start-help"
+            >
+            <p class="date-diff-field-help" id="date-diff-start-help">
+              Select the date from which you want to calculate.
+            </p>
+          </div>
+
+          <div class="date-diff-field">
+            <label for="date-diff-end">End Date</label>
+            <input
+              id="date-diff-end"
+              name="endDate"
+              type="date"
+              required
+              aria-describedby="date-diff-end-help"
+            >
+            <p class="date-diff-field-help" id="date-diff-end-help">
+              Select the date up to which you want to calculate.
+            </p>
+          </div>
+
+          <fieldset class="date-diff-options">
+            <legend>Counting Option</legend>
+            <label class="date-diff-checkbox">
+              <input id="date-diff-inclusive" type="checkbox">
+              <span>Include both the start date and end date in the total day count.</span>
+            </label>
+          </fieldset>
+
+          <div class="date-diff-button-row">
+            <button class="date-diff-button date-diff-button-primary" type="submit">
+              Calculate Difference
+            </button>
+
+            <button
+              class="date-diff-button date-diff-button-secondary"
+              id="date-diff-reset"
+              type="reset"
+            >
+              Reset
+            </button>
+          </div>
+
+          <p
+            class="date-diff-status"
+            id="date-diff-error"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </form>
+      </div>
+
+      <section class="date-diff-panel" aria-labelledby="date-diff-results-heading">
+        <h2 id="date-diff-results-heading">Date Difference Result</h2>
+
+        <div class="date-diff-primary-result">
+          <span>Calendar Difference</span>
+          <strong id="date-diff-calendar">—</strong>
+          <p id="date-diff-summary">Choose two dates to calculate the difference.</p>
+        </div>
+
+        <dl class="date-diff-result-list" aria-live="polite" aria-atomic="true">
+          <div class="date-diff-result-row">
+            <dt>Start Date</dt>
+            <dd id="date-diff-result-start">—</dd>
+          </div>
+
+          <div class="date-diff-result-row">
+            <dt>End Date</dt>
+            <dd id="date-diff-result-end">—</dd>
+          </div>
+
+          <div class="date-diff-result-row">
+            <dt>Total Days</dt>
+            <dd id="date-diff-total-days">—</dd>
+          </div>
+
+          <div class="date-diff-result-row">
+            <dt>Total Weeks</dt>
+            <dd id="date-diff-total-weeks">—</dd>
+          </div>
+
+          <div class="date-diff-result-row">
+            <dt>Remaining Days After Full Weeks</dt>
+            <dd id="date-diff-week-remainder">—</dd>
+          </div>
+
+          <div class="date-diff-result-row">
+            <dt>Direction</dt>
+            <dd id="date-diff-direction">—</dd>
+          </div>
+        </dl>
+
+        <p class="date-diff-status" id="date-diff-result-status" aria-live="polite">
+          Results will appear here after calculation.
+        </p>
+      </section>
+    </section>
+
+    <div class="date-diff-content">
+      <section class="date-diff-content-section">
+        <h2>How to Use the Date Difference Calculator</h2>
+        <ol>
+          <li>Select the start date.</li>
+          <li>Select the end date.</li>
+          <li>Choose whether to include both dates in the total day count.</li>
+          <li>Click <strong>Calculate Difference</strong>.</li>
+          <li>Review the calendar difference, total days and total weeks.</li>
+        </ol>
+        <p>
+          The calculator accepts dates in either chronological order. If the
+          end date is earlier than the start date, the duration is calculated
+          using the earlier and later dates, and the direction is identified
+          in the results.
+        </p>
+      </section>
+
+      <section class="date-diff-content-section">
+        <h2>How Is the Date Difference Calculated?</h2>
+        <p>
+          The calendar difference is calculated using calendar years, months
+          and days, rather than assuming that every month has the same length.
+          The total day difference is calculated from the two calendar dates.
+        </p>
+
+        <div class="date-diff-formula">
+          Total Days = Later Date − Earlier Date
+          <br>
+          Total Weeks = Whole Number of Total Days ÷ 7
+          <br>
+          Remaining Days = Total Days modulo 7
+        </div>
+
+        <p>
+          When the inclusive counting option is selected, one day is added
+          to the total day count so that both the start date and end date
+          are included. The calendar duration remains the elapsed calendar
+          difference between the dates.
+        </p>
+      </section>
+
+      <section class="date-diff-content-section">
+        <h2>Example of Date Difference</h2>
+        <p>
+          Suppose the start date is 1 January 2025 and the end date is
+          1 January 2026.
+        </p>
+
+        <div class="date-diff-formula">
+          Calendar Difference = 1 year
+          <br>
+          Elapsed Calendar Days = 365 days
+          <br>
+          Total Weeks = 52 weeks and 1 day
+          <br>
+          Inclusive Day Count = 366 days
+        </div>
+
+        <p>
+          The inclusive count is one day greater because it counts both
+          1 January 2025 and 1 January 2026.
+        </p>
+      </section>
+
+      <section class="date-diff-content-section">
+        <h2>Common Uses for a Date Difference Calculator</h2>
+        <ul>
+          <li>Calculating the number of days until a deadline or event.</li>
+          <li>Checking the duration between project start and end dates.</li>
+          <li>Estimating elapsed calendar time between two milestones.</li>
+          <li>Planning trips, appointments and schedules.</li>
+          <li>Counting calendar days for general personal or work planning.</li>
+        </ul>
+        <p>
+          For legal deadlines, financial agreements or official applications,
+          check whether the applicable rules count calendar days, working days,
+          or include or exclude particular dates.
+        </p>
+      </section>
+
+      <section class="date-diff-content-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="date-diff-faq-item">
+          <h3>Can I calculate the difference between dates in different years?</h3>
+          <p>
+            Yes. Enter any two valid dates supported by your browser's date
+            input, and the calculator will calculate the duration across
+            months, years and leap years.
+          </p>
+        </div>
+
+        <div class="date-diff-faq-item">
+          <h3>Does the calculator account for leap years?</h3>
+          <p>
+            Yes. The total day calculation uses calendar dates, so leap days
+            are accounted for when they fall within the selected date range.
+          </p>
+        </div>
+
+        <div class="date-diff-faq-item">
+          <h3>What does inclusive counting mean?</h3>
+          <p>
+            Inclusive counting adds one day to the elapsed day difference so
+            both the start date and end date are counted. Leave the option
+            unchecked to calculate the ordinary elapsed calendar days.
+          </p>
+        </div>
+
+        <div class="date-diff-faq-item">
+          <h3>Does the calculator count business days?</h3>
+          <p>
+            No. This calculator counts calendar days, including weekends and
+            public holidays. Business-day calculations require separate
+            rules for weekends and applicable holidays.
+          </p>
+        </div>
+
+        <div class="date-diff-faq-item">
+          <h3>Is the Date Difference Calculator free?</h3>
+          <p>
+            Yes. It runs in your browser and does not require an account.
+          </p>
+        </div>
+      </section>
+
+      <section class="date-diff-content-section">
+        <h2>Explore More Calculators</h2>
+        <p>Explore other free calculators on MohakTools:</p>
+
+        <div class="date-diff-related-links">
+          <a href="/tools/calculator/">Basic Calculator</a>
+          <a href="/tools/percentage-calculator/">Percentage Calculator</a>
+          <a href="/tools/age-calculator/">Age Calculator</a>
+          <a href="/tools/time-duration-calculator/">Time Duration Calculator</a>
+          <a href="/tools/discount-calculator/">Discount Calculator</a>
+          <a href="/tools/gst-calculator/">GST Calculator</a>
+          <a href="/tools/loan-emi-calculator/">Loan EMI Calculator</a>
+        </div>
+      </section>
+
+      <p class="date-diff-disclaimer">
+        Disclaimer: This calculator provides calendar-date calculations for
+        general informational purposes. It does not determine official
+        eligibility, legal deadlines, working days or contractual date-counting
+        rules. Verify the applicable rules when precision is required.
+      </p>
+    </div>
+  </main>
+
+  <!-- Shared Footer -->
+  <div id="site-footer"></div>
+
+  <!-- Shared Scripts -->
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+
+  <!-- Date Difference Calculator Logic -->
+  <script>
+    (() => {
+      "use strict";
+
+      const form = document.getElementById("date-diff-form");
+
+      if (!form || form.dataset.initialized === "true") {
+        return;
+      }
+
+      form.dataset.initialized = "true";
+
+      const startInput = document.getElementById("date-diff-start");
+      const endInput = document.getElementById("date-diff-end");
+      const inclusiveInput = document.getElementById("date-diff-inclusive");
+      const resetButton = document.getElementById("date-diff-reset");
+
+      const errorElement = document.getElementById("date-diff-error");
+      const resultStatus = document.getElementById("date-diff-result-status");
+
+      const calendarOutput = document.getElementById("date-diff-calendar");
+      const summaryOutput = document.getElementById("date-diff-summary");
+      const startOutput = document.getElementById("date-diff-result-start");
+      const endOutput = document.getElementById("date-diff-result-end");
+      const totalDaysOutput = document.getElementById("date-diff-total-days");
+      const totalWeeksOutput = document.getElementById("date-diff-total-weeks");
+      const weekRemainderOutput = document.getElementById("date-diff-week-remainder");
+      const directionOutput = document.getElementById("date-diff-direction");
+
+      const DAY_MS = 24 * 60 * 60 * 1000;
+
+      function setMessage(element, message, type) {
+        element.textContent = message;
+        element.classList.remove("error", "success");
+
+        if (type) {
+          element.classList.add(type);
+        }
+      }
+
+      /*
+       * Parse YYYY-MM-DD directly into UTC components.
+       * This avoids local-time and daylight-saving errors.
+       */
+      function parseDate(value) {
+        if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+          return null;
+        }
+
+        const parts = value.split("-").map(Number);
+        const year = parts[0];
+        const month = parts[1];
+        const day = parts[2];
+
+        const timestamp = Date.UTC(year, month - 1, day);
+        const date = new Date(timestamp);
+
+        if (
+          date.getUTCFullYear() !== year ||
+          date.getUTCMonth() !== month - 1 ||
+          date.getUTCDate() !== day
+        ) {
+          return null;
+        }
+
+        return {
+          year,
+          month,
+          day,
+          timestamp,
+          iso: value
+        };
+      }
+
+      function formatDate(date) {
+        return new Intl.DateTimeFormat("en-IN", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+          timeZone: "UTC"
+        }).format(new Date(date.timestamp));
+      }
+
+      function formatNumber(value) {
+        return new Intl.NumberFormat("en-IN", {
+          maximumFractionDigits: 0
+        }).format(value);
+      }
+
+      function makeUTCDate(year, monthIndex, day) {
+        /*
+         * Start from day 1 and set the target day separately.
+         * This avoids Date.UTC's special handling of years 0–99.
+         */
+        const date = new Date(0);
+        date.setUTCHours(0, 0, 0, 0);
+        date.setUTCFullYear(year, monthIndex, day);
+        return date;
+      }
+
+      function addCalendarMonthsClamped(date, monthsToAdd) {
+        const targetMonthIndex = date.month - 1 + monthsToAdd;
+        const targetYear = date.year + Math.floor(targetMonthIndex / 12);
+        const normalizedMonth = ((targetMonthIndex % 12) + 12) % 12;
+        const targetMonth = normalizedMonth + 1;
+
+        const lastDayOfTargetMonth = new Date(
+          makeUTCDate(targetYear, normalizedMonth + 1, 0).getTime()
+        ).getUTCDate();
+
+        const targetDay = Math.min(date.day, lastDayOfTargetMonth);
+        const result = makeUTCDate(targetYear, normalizedMonth, targetDay);
+
+        return {
+          year: result.getUTCFullYear(),
+          month: result.getUTCMonth() + 1,
+          day: result.getUTCDate(),
+          timestamp: result.getTime()
+        };
+      }
+
+      function getCalendarDifference(earlier, later) {
+        /*
+         * Calculate complete years and months, clamping month-end dates.
+         * For example, adding one month to 31 January clamps to the last
+         * day of February rather than overflowing into March.
+         */
+        let years = later.year - earlier.year;
+
+        let cursor = addCalendarMonthsClamped(earlier, years * 12);
+
+        if (cursor.timestamp > later.timestamp) {
+          years -= 1;
+          cursor = addCalendarMonthsClamped(earlier, years * 12);
+        }
+
+        let months =
+          (later.year - cursor.year) * 12 +
+          (later.month - cursor.month);
+
+        let monthCursor = addCalendarMonthsClamped(
+          earlier,
+          years * 12 + months
+        );
+
+        while (monthCursor.timestamp > later.timestamp && months > 0) {
+          months -= 1;
+          monthCursor = addCalendarMonthsClamped(
+            earlier,
+            years * 12 + months
+          );
+        }
+
+        while (true) {
+          const nextMonth = addCalendarMonthsClamped(
+            earlier,
+            years * 12 + months + 1
+          );
+
+          if (nextMonth.timestamp > later.timestamp) {
+            break;
+          }
+
+          months += 1;
+          monthCursor = nextMonth;
+        }
+
+        const remainingDays = Math.round(
+          (later.timestamp - monthCursor.timestamp) / DAY_MS
+        );
+
+        return {
+          years,
+          months,
+          days: remainingDays
+        };
+      }
+
+      function formatCalendarDifference(difference) {
+        const parts = [];
+
+        if (difference.years > 0) {
+          parts.push(
+            difference.years + " " +
+            (difference.years === 1 ? "year" : "years")
+          );
+        }
+
+        if (difference.months > 0) {
+          parts.push(
+            difference.months + " " +
+            (difference.months === 1 ? "month" : "months")
+          );
+        }
+
+        if (difference.days > 0 || parts.length === 0) {
+          parts.push(
+            difference.days + " " +
+            (difference.days === 1 ? "day" : "days")
+          );
+        }
+
+        return parts.join(", ");
+      }
+
+      function clearResults() {
+        calendarOutput.textContent = "—";
+        summaryOutput.textContent = "Choose two dates to calculate the difference.";
+        startOutput.textContent = "—";
+        endOutput.textContent = "—";
+        totalDaysOutput.textContent = "—";
+        totalWeeksOutput.textContent = "—";
+        weekRemainderOutput.textContent = "—";
+        directionOutput.textContent = "—";
+      }
+
+      function calculateDifference(event) {
+        if (event) {
+          event.preventDefault();
+        }
+
+        startInput.removeAttribute("aria-invalid");
+        endInput.removeAttribute("aria-invalid");
+
+        setMessage(errorElement, "");
+        setMessage(resultStatus, "");
+
+        const startDate = parseDate(startInput.value);
+        const endDate = parseDate(endInput.value);
+
+        if (!startInput.value) {
+          startInput.setAttribute("aria-invalid", "true");
+          setMessage(errorElement, "Select a start date.", "error");
+          setMessage(resultStatus, "A start date is required.", "error");
+          return;
+        }
+
+        if (!startDate) {
+          startInput.setAttribute("aria-invalid", "true");
+          setMessage(errorElement, "Enter a valid start date.", "error");
+          return;
+        }
+
+        if (!endInput.value) {
+          endInput.setAttribute("aria-invalid", "true");
+          setMessage(errorElement, "Select an end date.", "error");
+          setMessage(resultStatus, "An end date is required.", "error");
+          return;
+        }
+
+        if (!endDate) {
+          endInput.setAttribute("aria-invalid", "true");
+          setMessage(errorElement, "Enter a valid end date.", "error");
+          return;
+        }
+
+        const earlier = startDate.timestamp <= endDate.timestamp
+          ? startDate
+          : endDate;
+
+        const later = startDate.timestamp <= endDate.timestamp
+          ? endDate
+          : startDate;
+
+        const direction = startDate.timestamp === endDate.timestamp
+          ? "Same date"
+          : startDate.timestamp < endDate.timestamp
+            ? "End date is after start date"
+            : "End date is before start date";
+
+        const elapsedDays = Math.round(
+          (later.timestamp - earlier.timestamp) / DAY_MS
+        );
+
+        const inclusive = inclusiveInput.checked;
+        const totalDays = elapsedDays + (inclusive ? 1 : 0);
+        const totalWeeks = Math.floor(totalDays / 7);
+        const remainingDays = totalDays % 7;
+
+        const calendarDifference = getCalendarDifference(earlier, later);
+        const calendarText = formatCalendarDifference(calendarDifference);
+
+        calendarOutput.textContent = calendarText;
+        summaryOutput.textContent = inclusive
+          ? "Calendar duration; inclusive day count adds both endpoint dates."
+          : "Elapsed calendar duration between the selected dates.";
+
+        startOutput.textContent = formatDate(startDate);
+        endOutput.textContent = formatDate(endDate);
+        totalDaysOutput.textContent = formatNumber(totalDays);
+        totalWeeksOutput.textContent = formatNumber(totalWeeks);
+        weekRemainderOutput.textContent = formatNumber(remainingDays);
+        directionOutput.textContent = direction;
+
+        setMessage(
+          resultStatus,
+          formatNumber(totalDays) +
+          (totalDays === 1 ? " calendar day" : " calendar days") +
+          (inclusive ? ", including both selected dates." : "."),
+          "success"
+        );
+      }
+
+      function resetCalculator() {
+        window.requestAnimationFrame(() => {
+          startInput.removeAttribute("aria-invalid");
+          endInput.removeAttribute("aria-invalid");
+
+          setMessage(errorElement, "");
+          clearResults();
+
+          setMessage(
+            resultStatus,
+            "Results will appear here after calculation."
+          );
+        });
+      }
+
+      form.addEventListener("submit", calculateDifference);
+      form.addEventListener("reset", resetCalculator);
+
+      startInput.addEventListener("change", () => {
+        startInput.removeAttribute("aria-invalid");
+        setMessage(errorElement, "");
+      });
+
+      endInput.addEventListener("change", () => {
+        endInput.removeAttribute("aria-invalid");
+        setMessage(errorElement, "");
+      });
+
+      inclusiveInput.addEventListener("change", () => {
+        if (startInput.value && endInput.value) {
+          calculateDifference();
+        }
+      });
+
+      resetButton.addEventListener("click", () => {
+        setMessage(errorElement, "");
+      });
+
+      clearResults();
+    })();
+  </script>
+</body>
+</html>

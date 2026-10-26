@@ -1,0 +1,851 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>UUID Generator Online | MohakTools</title>
+  <meta name="description" content="Generate random UUID v4 identifiers in bulk. Customize letter case and output format, then copy or download your UUIDs instantly.">
+  <meta name="keywords" content="UUID generator, UUID v4 generator, random GUID generator, bulk UUID generator, generate UUID online">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="MohakTools">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="application-name" content="MohakTools">
+
+  <link rel="canonical" href="https://mohaktools.com/tools/uuid-generator/">
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/webp" href="/favicon.webp">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="UUID Generator Online | MohakTools">
+  <meta property="og:description" content="Generate UUID v4 identifiers in bulk with customizable formats, copying and downloading.">
+  <meta property="og:url" content="https://mohaktools.com/tools/uuid-generator/">
+  <meta property="og:image" content="https://mohaktools.com/assets/images/uuid-generator-og.png">
+  <meta property="og:image:alt" content="MohakTools UUID Generator">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UUID Generator Online | MohakTools">
+  <meta name="twitter:description" content="Generate UUID v4 identifiers in bulk with customizable formats.">
+  <meta name="twitter:image" content="https://mohaktools.com/assets/images/uuid-generator-og.png">
+
+  <!-- Centralized styles -->
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "UUID Generator",
+    "url": "https://mohaktools.com/tools/uuid-generator/",
+    "description": "Generate random UUID version 4 identifiers in bulk.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "MohakTools",
+      "url": "https://mohaktools.com/"
+    }
+  }
+  </script>
+
+  <style>
+    .mt-page {
+      width: min(100% - 32px, 1080px);
+      margin: 0 auto;
+      padding: 24px 0 56px;
+      color: var(--color-text);
+    }
+
+    .mt-breadcrumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+    }
+
+    .mt-breadcrumbs a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .mt-breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+
+    .mt-hero {
+      margin-bottom: 22px;
+    }
+
+    .mt-hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -.03em;
+      color: var(--color-text);
+    }
+
+    .mt-hero p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--color-text-secondary);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .mt-tool-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .mt-panel {
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 20px);
+      background: var(--color-surface);
+      box-shadow: var(--color-card-shadow, 0 4px 18px rgba(0,0,0,.04));
+    }
+
+    .mt-panel h2 {
+      margin: 0 0 16px;
+      font-size: 19px;
+      color: var(--color-text);
+    }
+
+    .mt-field {
+      margin-bottom: 15px;
+    }
+
+    .mt-field label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--color-text);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .mt-field input,
+    .mt-field select,
+    .mt-field textarea {
+      display: block;
+      width: 100%;
+      min-height: 43px;
+      padding: 10px 12px;
+      border: 1px solid var(--color-input-border, var(--color-border));
+      border-radius: var(--radius-md, 10px);
+      background: var(--color-input-bg, var(--color-surface));
+      color: var(--color-text);
+      font: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .mt-field textarea {
+      min-height: 200px;
+      resize: vertical;
+      line-height: 1.65;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .mt-field textarea:focus,
+    .mt-field input:focus,
+    .mt-field select:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-focus, rgba(37,99,235,.14));
+    }
+
+    .mt-help {
+      margin: 6px 0 0;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .mt-button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .mt-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-md, 10px);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .2s, transform .2s;
+    }
+
+    .mt-button:hover {
+      opacity: .88;
+    }
+
+    .mt-button:active {
+      transform: translateY(1px);
+    }
+
+    .mt-button:focus-visible {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .mt-primary {
+      flex: 1;
+      background: var(--color-primary);
+      color: var(--color-primary-text, #fff);
+    }
+
+    .mt-secondary {
+      border-color: var(--color-border);
+      background: var(--color-surface-secondary);
+      color: var(--color-text);
+    }
+
+    .mt-status {
+      min-height: 20px;
+      margin: 12px 0 0;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .mt-status.success {
+      color: var(--color-success, #15803d);
+    }
+
+    .mt-status.error {
+      color: var(--color-danger, #dc2626);
+    }
+
+    .mt-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .mt-stat {
+      min-width: 0;
+      padding: 13px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px);
+      background: var(--color-surface-secondary);
+    }
+
+    .mt-stat span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+    }
+
+    .mt-stat strong {
+      display: block;
+      color: var(--color-primary);
+      font-size: 25px;
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mt-content {
+      margin-top: 28px;
+    }
+
+    .mt-content-section {
+      margin-top: 16px;
+      padding: 22px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 20px);
+      background: var(--color-surface);
+    }
+
+    .mt-content-section h2 {
+      margin: 0 0 12px;
+      font-size: 21px;
+      color: var(--color-text);
+    }
+
+    .mt-content-section h3 {
+      margin: 0 0 7px;
+      font-size: 15px;
+      color: var(--color-text);
+    }
+
+    .mt-content-section p,
+    .mt-content-section li {
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .mt-content-section p {
+      margin: 0 0 10px;
+    }
+
+    .mt-content-section ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    .mt-faq {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .mt-faq:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .mt-faq p {
+      margin: 0;
+    }
+
+    .mt-related {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .mt-related a {
+      display: inline-flex;
+      padding: 8px 11px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px);
+      color: var(--color-primary);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .mt-related a:hover {
+      border-color: var(--color-primary);
+    }
+
+    @media (max-width: 760px) {
+      .mt-page {
+        width: min(100% - 24px, 620px);
+        padding-top: 18px;
+      }
+
+      .mt-tool-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .mt-panel {
+        padding: 16px;
+      }
+
+      .mt-content-section {
+        padding: 17px;
+      }
+
+      .mt-field textarea {
+        min-height: 165px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .mt-page {
+        width: min(100% - 20px, 620px);
+      }
+
+      .mt-button-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .mt-button {
+        width: 100%;
+        padding: 9px 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mt-button,
+      .mt-field input,
+      .mt-field select,
+      .mt-field textarea {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <div id="site-header"></div>
+
+  <main class="mt-page">
+    <nav class="mt-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">UUID Generator</span>
+    </nav>
+
+    <header class="mt-hero">
+      <h1>UUID Generator</h1>
+      <p>
+        Generate random UUID v4 identifiers in seconds. Create up to
+        500 UUIDs per batch, choose uppercase or lowercase output, and
+        copy or download your results. Everything runs in your browser.
+      </p>
+    </header>
+
+    <section class="mt-tool-grid" aria-label="UUID generator">
+      <section class="mt-panel" aria-labelledby="options-heading">
+        <h2 id="options-heading">Generation options</h2>
+
+        <div class="mt-field">
+          <label for="uuid-count">Number of UUIDs</label>
+          <input
+            id="uuid-count"
+            type="number"
+            min="1"
+            max="500"
+            step="1"
+            value="10"
+            inputmode="numeric"
+          >
+          <p class="mt-help">Generate between 1 and 500 UUIDs at a time.</p>
+        </div>
+
+        <div class="mt-field">
+          <label for="uuid-case">Letter case</label>
+          <select id="uuid-case">
+            <option value="lower">Lowercase</option>
+            <option value="upper">Uppercase</option>
+          </select>
+        </div>
+
+        <div class="mt-field">
+          <label for="uuid-format">Output format</label>
+          <select id="uuid-format">
+            <option value="lines">One UUID per line</option>
+            <option value="comma">Comma-separated</option>
+            <option value="json">JSON array</option>
+          </select>
+        </div>
+
+        <div class="mt-field">
+          <label for="uuid-prefix">Optional prefix</label>
+          <input
+            id="uuid-prefix"
+            type="text"
+            maxlength="40"
+            placeholder="e.g. user_"
+            autocomplete="off"
+          >
+          <p class="mt-help">
+            Adds a prefix to each output line. Prefixes are not part of the UUID itself.
+          </p>
+        </div>
+
+        <div class="mt-button-row">
+          <button class="mt-button mt-primary" type="button" id="generate">
+            Generate UUIDs
+          </button>
+          <button class="mt-button mt-secondary" type="button" id="clear">
+            Clear
+          </button>
+        </div>
+
+        <p class="mt-status" id="mt-status" role="status" aria-live="polite">
+          Ready. Choose your options and generate UUIDs.
+        </p>
+      </section>
+
+      <section class="mt-panel" aria-labelledby="result-heading">
+        <h2 id="result-heading">Generated results</h2>
+
+        <div class="mt-field">
+          <label for="mt-output">Your UUIDs</label>
+          <textarea
+            id="mt-output"
+            readonly
+            spellcheck="false"
+            placeholder="Your generated UUIDs will appear here..."
+          ></textarea>
+        </div>
+
+        <div class="mt-stat-grid">
+          <div class="mt-stat">
+            <span>UUIDs generated</span>
+            <strong id="uuid-total">0</strong>
+          </div>
+          <div class="mt-stat">
+            <span>Output characters</span>
+            <strong id="output-total">0</strong>
+          </div>
+        </div>
+
+        <div class="mt-button-row">
+          <button class="mt-button mt-secondary" type="button" id="copy">
+            Copy results
+          </button>
+          <button class="mt-button mt-secondary" type="button" id="download">
+            Download .txt
+          </button>
+        </div>
+
+        <p class="mt-help">
+          Tip: Select JSON array format when you need a list to paste into a
+          development project.
+        </p>
+      </section>
+    </section>
+
+    <div class="mt-content">
+      <section class="mt-content-section">
+        <h2>How to Use the UUID Generator</h2>
+        <ul>
+          <li>Choose how many UUIDs to generate, from 1 to 500.</li>
+          <li>Select uppercase or lowercase letters.</li>
+          <li>Choose line-separated, comma-separated, or JSON array output.</li>
+          <li>Optionally add a prefix for your application or test data.</li>
+          <li>Select Generate UUIDs, then copy or download the results.</li>
+        </ul>
+      </section>
+
+      <section class="mt-content-section">
+        <h2>About UUID v4</h2>
+        <p>
+          A UUID (Universally Unique Identifier) is a 128-bit identifier.
+          Version 4 UUIDs are generated using random or pseudorandom values,
+          with specific bits reserved to identify the version and variant.
+        </p>
+        <p>
+          UUIDs are useful for test data, database records, application
+          objects, and development workflows. This tool uses the browser's
+          Web Crypto API for random generation and does not upload generated
+          values to a server.
+        </p>
+      </section>
+
+      <section class="mt-content-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="mt-faq">
+          <h3>What is a UUID v4?</h3>
+          <p>
+            UUID v4 is a randomly generated 128-bit identifier with version
+            and variant bits reserved by the UUID format.
+          </p>
+        </div>
+
+        <div class="mt-faq">
+          <h3>Can I generate multiple UUIDs at once?</h3>
+          <p>
+            Yes. Generate up to 500 UUIDs per batch. Run the tool again
+            whenever you need another batch.
+          </p>
+        </div>
+
+        <div class="mt-faq">
+          <h3>Are generated UUIDs uploaded?</h3>
+          <p>
+            No. UUID generation and formatting happen locally in your browser.
+          </p>
+        </div>
+
+        <div class="mt-faq">
+          <h3>Does adding a prefix change the UUID?</h3>
+          <p>
+            No. The prefix is added to the displayed output only. Remove it
+            if another system requires a UUID without additional characters.
+          </p>
+        </div>
+
+        <div class="mt-faq">
+          <h3>Can I use UUIDs as passwords or secrets?</h3>
+          <p>
+            UUIDs are identifiers, not a replacement for a dedicated
+            credential-generation or secret-management system.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-content-section">
+        <h2>Explore Related Tools</h2>
+        <div class="mt-related">
+          <a href="/tools/json-formatter/">JSON Formatter</a>
+          <a href="/tools/json-validator/">JSON Validator</a>
+          <a href="/tools/base64-encoder-decoder/">Base64 Encoder / Decoder</a>
+          <a href="/tools/url-encoder-decoder/">URL Encoder / Decoder</a>
+          <a href="/tools/html-entity-encoder/">HTML Entity Encoder</a>
+          <a href="/tools/unix-timestamp-converter/">Unix Timestamp Converter</a>
+          <a href="/tools/color-code-converter/">Color Code Converter</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <!-- Shared site scripts -->
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+
+  <!-- UUID generator -->
+  <script>
+  (() => {
+    "use strict";
+
+    const countInput = document.getElementById("uuid-count");
+    const caseInput = document.getElementById("uuid-case");
+    const formatInput = document.getElementById("uuid-format");
+    const prefixInput = document.getElementById("uuid-prefix");
+    const output = document.getElementById("mt-output");
+    const status = document.getElementById("mt-status");
+    const uuidTotal = document.getElementById("uuid-total");
+    const outputTotal = document.getElementById("output-total");
+
+    let generatedValues = [];
+
+    function setStatus(message, type = "") {
+      status.textContent = message;
+      status.className = "mt-status" + (type ? " " + type : "");
+    }
+
+    function updateStats() {
+      uuidTotal.textContent = generatedValues.length.toLocaleString();
+      outputTotal.textContent = output.value.length.toLocaleString();
+    }
+
+    function createUuidV4() {
+      if (typeof crypto === "undefined" ||
+          typeof crypto.getRandomValues !== "function") {
+        throw new Error(
+          "Secure random generation is unavailable. Open this page on HTTPS or localhost in a supported browser."
+        );
+      }
+
+      const bytes = crypto.getRandomValues(new Uint8Array(16));
+
+      // RFC 9562: UUID version 4 and variant bits.
+      bytes[6] = (bytes[6] & 0x0f) | 0x40;
+      bytes[8] = (bytes[8] & 0x3f) | 0x80;
+
+      const hex = Array.from(bytes, byte =>
+        byte.toString(16).padStart(2, "0")
+      ).join("");
+
+      return [
+        hex.slice(0, 8),
+        hex.slice(8, 12),
+        hex.slice(12, 16),
+        hex.slice(16, 20),
+        hex.slice(20, 32)
+      ].join("-");
+    }
+
+    function formatResults() {
+      const prefix = prefixInput.value;
+      const values = generatedValues.map(uuid => prefix + uuid);
+      const format = formatInput.value;
+
+      if (format === "json") {
+        // Keep JSON array output valid even when a prefix is supplied.
+        return JSON.stringify(values, null, 2);
+      }
+
+      if (format === "comma") {
+        return values.join(", ");
+      }
+
+      return values.join("\n");
+    }
+
+    function renderResults() {
+      output.value = formatResults();
+      updateStats();
+    }
+
+    function generate() {
+      const count = Number(countInput.value);
+
+      if (
+        !Number.isInteger(count) ||
+        count < 1 ||
+        count > 500
+      ) {
+        setStatus("Enter a whole number between 1 and 500.", "error");
+        countInput.focus();
+        return;
+      }
+
+      try {
+        const values = [];
+
+        for (let i = 0; i < count; i++) {
+          let uuid = createUuidV4();
+
+          if (caseInput.value === "upper") {
+            uuid = uuid.toUpperCase();
+          }
+
+          values.push(uuid);
+        }
+
+        generatedValues = values;
+        renderResults();
+
+        setStatus(
+          "Successfully generated " + count +
+          " UUID" + (count === 1 ? "" : "s") + ".",
+          "success"
+        );
+      } catch (error) {
+        setStatus(
+          error instanceof Error
+            ? error.message
+            : "Unable to generate UUIDs in this browser.",
+          "error"
+        );
+      }
+    }
+
+    function clearResults() {
+      generatedValues = [];
+      output.value = "";
+      updateStats();
+      setStatus("Results cleared. Choose your options to generate new UUIDs.");
+    }
+
+    async function copyResults() {
+      const text = output.value;
+
+      if (!text) {
+        setStatus("Generate UUIDs before copying.", "error");
+        return;
+      }
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const temporary = document.createElement("textarea");
+          temporary.value = text;
+          temporary.setAttribute("readonly", "");
+          temporary.style.position = "fixed";
+          temporary.style.left = "-9999px";
+
+          document.body.appendChild(temporary);
+          temporary.select();
+
+          const successful = document.execCommand("copy");
+          temporary.remove();
+
+          if (!successful) {
+            throw new Error("Clipboard access was denied.");
+          }
+        }
+
+        setStatus("Results copied to the clipboard.", "success");
+      } catch (error) {
+        output.focus();
+        output.select();
+        setStatus(
+          "Automatic copying failed. The output is selected; copy it manually.",
+          "error"
+        );
+      }
+    }
+
+    function downloadResults() {
+      if (!output.value) {
+        setStatus("Generate UUIDs before downloading.", "error");
+        return;
+      }
+
+      const blob = new Blob(
+        [output.value + "\n"],
+        { type: "text/plain;charset=utf-8" }
+      );
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = "mohaktools-uuids.txt";
+      link.style.display = "none";
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      // Delay revocation so the browser can begin the download.
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+      setStatus("Your UUID text file is ready to download.", "success");
+    }
+
+    document.getElementById("generate").addEventListener("click", generate);
+    document.getElementById("clear").addEventListener("click", clearResults);
+    document.getElementById("copy").addEventListener("click", copyResults);
+    document.getElementById("download").addEventListener("click", downloadResults);
+
+    // Reformat existing UUIDs without regenerating them.
+    caseInput.addEventListener("change", () => {
+      generatedValues = generatedValues.map(uuid =>
+        caseInput.value === "upper"
+          ? uuid.toUpperCase()
+          : uuid.toLowerCase()
+      );
+
+      renderResults();
+    });
+
+    formatInput.addEventListener("change", renderResults);
+    prefixInput.addEventListener("input", renderResults);
+
+    // Keyboard shortcut: Ctrl/Cmd + Enter generates a new batch.
+    countInput.addEventListener("keydown", event => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        generate();
+      }
+    });
+
+    updateStats();
+  })();
+  </script>
+</body>
+</html>

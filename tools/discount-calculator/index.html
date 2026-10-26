@@ -1,0 +1,1297 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- =========================================
+         MohakTools — Discount Calculator
+         File: tools/discount-calculator/index.html
+    ========================================== -->
+
+    <!-- Primary SEO -->
+    <title> Discount Calculator – Sale Price & Savings | MohakTools </title>
+    <meta name="description" content="Calculate discount amounts, sale prices, and savings instantly with the free MohakTools Discount Calculator.">
+    <meta name="keywords" content="discount calculator, percentage discount calculator, sale price calculator, discount percentage, calculate savings, original price calculator">
+    <meta name="author" content="MohakTools">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="application-name" content="MohakTools">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+     <link rel="icon" href="/favicon.webp" type="image/webp">
+
+
+    <link rel="canonical" href="https://mohaktools.com/tools/discount-calculator/">
+
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MohakTools">
+    <meta property="og:title" content="Discount Calculator - MohakTools">
+    <meta property="og:description" content="Calculate sale prices, discount amounts, and savings instantly with the free Discount Calculator.">
+    <meta property="og:url" content="https://mohaktools.com/tools/discount-calculator/">
+    <meta property="og:image" content="https://mohaktools.com/assets/images/discount-calculator-og.png">
+    <meta property="og:image:alt" content="MohakTools Discount Calculator">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Discount Calculator - MohakTools">
+    <meta name="twitter:description" content="Calculate discounts, final prices, and savings for your purchases.">
+    <meta name="twitter:image" content="https://mohaktools.com/assets/images/discount-calculator-og.png">
+
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/themes.css">
+
+    <!-- Page Styles -->
+    <style>
+        /* =========================================
+           MohakTools — Discount Calculator Styles
+        ========================================== */
+
+        .discount-page {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 36px 20px 64px;
+            color: var(--color-text);
+        }
+
+        .discount-hero {
+            max-width: 760px;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+
+        .discount-hero h1 {
+            margin: 0 0 14px;
+            color: var(--color-text);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.035em;
+        }
+
+        .discount-hero p {
+            max-width: 680px;
+            margin: 0 auto;
+            color: var(--color-text-secondary);
+            font-size: 1.04rem;
+            line-height: 1.75;
+        }
+
+        .discount-calculator {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl, 20px);
+            box-shadow: var(--color-card-shadow);
+        }
+
+        .discount-calculator-header {
+            padding: 24px 28px;
+            background: var(--color-surface-secondary);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .discount-calculator-header h2 {
+            margin: 0 0 7px;
+            color: var(--color-text);
+            font-size: 1.35rem;
+            font-weight: 750;
+        }
+
+        .discount-calculator-header p {
+            margin: 0;
+            color: var(--color-text-secondary);
+            font-size: 0.93rem;
+            line-height: 1.65;
+        }
+
+        .discount-form {
+            padding: 28px;
+        }
+
+        .discount-fields {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .discount-field {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            min-width: 0;
+        }
+
+        .discount-field label {
+            color: var(--color-text);
+            font-size: 0.94rem;
+            font-weight: 650;
+        }
+
+        .discount-input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-width: 0;
+        }
+
+        .discount-input-wrap input {
+            display: block;
+            width: 100%;
+            min-height: 48px;
+            padding: 12px 44px 12px 14px;
+            color: var(--color-text);
+            background: var(--color-input-bg);
+            border: 1px solid var(--color-input-border);
+            border-radius: var(--radius-md, 10px);
+            font: inherit;
+            font-size: 1rem;
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .discount-input-wrap input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px
+                color-mix(in srgb, var(--color-primary) 16%, transparent);
+        }
+
+        .discount-input-wrap input[aria-invalid="true"] {
+            border-color: var(--color-danger);
+        }
+
+        .discount-input-suffix {
+            position: absolute;
+            right: 14px;
+            color: var(--color-text-secondary);
+            font-size: 0.94rem;
+            font-weight: 650;
+            pointer-events: none;
+        }
+
+        .discount-field-hint {
+            color: var(--color-text-secondary);
+            font-size: 0.82rem;
+            line-height: 1.55;
+        }
+
+        .discount-currency-field {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            margin-bottom: 22px;
+        }
+
+        .discount-currency-field label {
+            color: var(--color-text);
+            font-size: 0.94rem;
+            font-weight: 650;
+        }
+
+        .discount-currency-field select {
+            width: 100%;
+            min-height: 48px;
+            padding: 12px 14px;
+            color: var(--color-text);
+            background: var(--color-input-bg);
+            border: 1px solid var(--color-input-border);
+            border-radius: var(--radius-md, 10px);
+            font: inherit;
+            font-size: 1rem;
+        }
+
+        .discount-currency-field select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px
+                color-mix(in srgb, var(--color-primary) 16%, transparent);
+        }
+
+        .discount-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        .discount-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 46px;
+            padding: 12px 20px;
+            border: 1px solid transparent;
+            border-radius: var(--radius-md, 10px);
+            font: inherit;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition:
+                background-color 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.15s ease;
+        }
+
+        .discount-button:active {
+            transform: translateY(1px);
+        }
+
+        .discount-button:focus-visible {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 3px;
+        }
+
+        .discount-button-primary {
+            color: var(--color-primary-text);
+            background: var(--color-primary);
+        }
+
+        .discount-button-primary:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .discount-button-secondary {
+            color: var(--color-text);
+            background: var(--color-surface);
+            border-color: var(--color-border);
+        }
+
+        .discount-button-secondary:hover {
+            background: var(--color-surface-secondary);
+        }
+
+        .discount-error {
+            margin-top: 20px;
+            padding: 13px 15px;
+            color: var(--color-danger);
+            background: var(--color-surface-secondary);
+            border: 1px solid var(--color-danger);
+            border-radius: var(--radius-md, 10px);
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        .discount-error[hidden] {
+            display: none;
+        }
+
+        .discount-results {
+            margin-top: 28px;
+            padding: 26px;
+            background: var(--color-surface-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg, 16px);
+        }
+
+        .discount-results[hidden] {
+            display: none;
+        }
+
+        .discount-results h2 {
+            margin: 0 0 8px;
+            color: var(--color-text);
+            font-size: 1.3rem;
+            font-weight: 750;
+        }
+
+        .discount-results-intro {
+            margin: 0 0 22px;
+            color: var(--color-text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        .discount-final-card {
+            padding: 24px 18px;
+            margin-bottom: 18px;
+            text-align: center;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md, 12px);
+        }
+
+        .discount-final-label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .discount-final-price {
+            display: block;
+            color: var(--color-primary);
+            font-size: clamp(2rem, 7vw, 3.3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            overflow-wrap: anywhere;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .discount-final-caption {
+            display: block;
+            margin-top: 9px;
+            color: var(--color-text-secondary);
+            font-size: 0.87rem;
+            line-height: 1.6;
+        }
+
+        .discount-result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .discount-result-item {
+            min-width: 0;
+            padding: 17px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md, 10px);
+        }
+
+        .discount-result-label {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .discount-result-value {
+            display: block;
+            color: var(--color-text);
+            font-size: 1.15rem;
+            font-weight: 750;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .discount-savings-value {
+            color: var(--color-success);
+        }
+
+        .discount-breakdown {
+            margin-top: 20px;
+            padding: 17px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md, 10px);
+        }
+
+        .discount-breakdown h3 {
+            margin: 0 0 13px;
+            color: var(--color-text);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .discount-breakdown-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 0.91rem;
+            line-height: 1.6;
+        }
+
+        .discount-breakdown-row:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .discount-breakdown-row span:first-child {
+            color: var(--color-text-secondary);
+        }
+
+        .discount-breakdown-row span:last-child {
+            color: var(--color-text);
+            font-weight: 650;
+            text-align: right;
+            overflow-wrap: anywhere;
+        }
+
+        .discount-content {
+            max-width: 800px;
+            margin: 42px auto 0;
+        }
+
+        .discount-content section {
+            margin-bottom: 30px;
+        }
+
+        .discount-content h2 {
+            margin: 0 0 12px;
+            color: var(--color-text);
+            font-size: 1.4rem;
+            font-weight: 750;
+            line-height: 1.4;
+        }
+
+        .discount-content h3 {
+            margin: 22px 0 8px;
+            color: var(--color-text);
+            font-size: 1.08rem;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        .discount-content p,
+        .discount-content li {
+            color: var(--color-text-secondary);
+            font-size: 0.97rem;
+            line-height: 1.8;
+        }
+
+        .discount-content p {
+            margin: 0 0 12px;
+        }
+
+        .discount-content ul,
+        .discount-content ol {
+            padding-left: 24px;
+        }
+
+        .discount-content li {
+            margin-bottom: 8px;
+        }
+
+        .discount-faq {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .discount-faq:first-of-type {
+            padding-top: 4px;
+        }
+
+        .discount-faq:last-child {
+            border-bottom: 0;
+        }
+
+        .discount-faq h3 {
+            margin: 0 0 8px;
+        }
+
+        .discount-faq p {
+            margin: 0;
+        }
+
+        .discount-disclaimer {
+            margin-top: 22px;
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.75;
+        }
+
+        @media (max-width: 600px) {
+            .discount-page {
+                padding: 26px 14px 44px;
+            }
+
+            .discount-hero {
+                margin-bottom: 24px;
+            }
+
+            .discount-hero p {
+                font-size: 0.96rem;
+            }
+
+            .discount-calculator-header {
+                padding: 21px 19px;
+            }
+
+            .discount-form {
+                padding: 20px;
+            }
+
+            .discount-fields {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 18px;
+            }
+
+            .discount-actions {
+                flex-direction: column;
+            }
+
+            .discount-button {
+                width: 100%;
+            }
+
+            .discount-results {
+                padding: 18px;
+            }
+
+            .discount-result-grid {
+                gap: 9px;
+            }
+
+            .discount-result-item {
+                padding: 13px;
+            }
+
+            .discount-result-value {
+                font-size: 1rem;
+            }
+
+            .discount-content {
+                margin-top: 32px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .discount-page {
+                padding-right: 10px;
+                padding-left: 10px;
+            }
+
+            .discount-form {
+                padding: 15px;
+            }
+
+            .discount-results {
+                padding: 13px;
+            }
+
+            .discount-result-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .discount-breakdown {
+                padding: 13px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .discount-button,
+            .discount-input-wrap input,
+            .discount-currency-field select {
+                transition: none;
+            }
+        }
+    </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "MohakTools Discount Calculator",
+        "url": "https://mohaktools.com/tools/discount-calculator/",
+        "description": "A free online discount calculator to calculate discount amounts, final sale prices, and savings.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "isAccessibleForFree": true
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Shared Header -->
+     <script src="/assets/js/tools-registry.js" defer></script>
+    <div id="site-header"></div>
+
+    <main class="discount-page">
+        <header class="discount-hero">
+            <h1>Discount Calculator</h1>
+            <p>
+                Calculate sale prices, discount amounts, and total savings
+                in seconds. Enter the original price and discount percentage
+                to find out how much you save.
+            </p>
+        </header>
+
+        <section
+            class="discount-calculator"
+            aria-labelledby="discount-calculator-title"
+        >
+            <div class="discount-calculator-header">
+                <h2 id="discount-calculator-title">
+                    Calculate Your Discount
+                </h2>
+                <p>
+                    Enter the original price and discount percentage.
+                    The calculator will show the final price and savings.
+                </p>
+            </div>
+
+            <form
+                class="discount-form"
+                id="discount-calculator-form"
+                novalidate
+            >
+                <div class="discount-currency-field">
+                    <label for="discount-currency">Currency</label>
+
+                    <select id="discount-currency" name="currency">
+                        <option value="INR">Indian Rupee (INR ₹)</option>
+                        <option value="USD">US Dollar (USD $)</option>
+                        <option value="EUR">Euro (EUR €)</option>
+                        <option value="GBP">British Pound (GBP £)</option>
+                        <option value="CAD">Canadian Dollar (CAD $)</option>
+                        <option value="AUD">Australian Dollar (AUD $)</option>
+                        <option value="JPY">Japanese Yen (JPY ¥)</option>
+                        <option value="AED">UAE Dirham (AED)</option>
+                        <option value="SGD">Singapore Dollar (SGD $)</option>
+                    </select>
+                </div>
+
+                <div class="discount-fields">
+                    <div class="discount-field">
+                        <label for="discount-original-price">
+                            Original Price
+                        </label>
+
+                        <div class="discount-input-wrap">
+                            <input
+                                type="number"
+                                id="discount-original-price"
+                                name="originalPrice"
+                                min="0.01"
+                                max="1000000000000"
+                                step="any"
+                                inputmode="decimal"
+                                placeholder="e.g. 2000"
+                                autocomplete="off"
+                                required
+                                aria-describedby="discount-price-hint"
+                            >
+                        </div>
+
+                        <span
+                            class="discount-field-hint"
+                            id="discount-price-hint"
+                        >
+                            Enter the price before applying the discount.
+                        </span>
+                    </div>
+
+                    <div class="discount-field">
+                        <label for="discount-percentage">
+                            Discount Percentage
+                        </label>
+
+                        <div class="discount-input-wrap">
+                            <input
+                                type="number"
+                                id="discount-percentage"
+                                name="discountPercentage"
+                                min="0"
+                                max="100"
+                                step="any"
+                                inputmode="decimal"
+                                placeholder="e.g. 25"
+                                autocomplete="off"
+                                required
+                                aria-describedby="discount-percent-hint"
+                            >
+
+                            <span
+                                class="discount-input-suffix"
+                                aria-hidden="true"
+                            >%</span>
+                        </div>
+
+                        <span
+                            class="discount-field-hint"
+                            id="discount-percent-hint"
+                        >
+                            Enter a discount from 0% to 100%.
+                        </span>
+                    </div>
+                </div>
+
+                <div class="discount-actions">
+                    <button
+                        type="submit"
+                        class="discount-button discount-button-primary"
+                        id="discount-calculate-button"
+                    >
+                        Calculate Discount
+                    </button>
+
+                    <button
+                        type="button"
+                        class="discount-button discount-button-secondary"
+                        id="discount-reset-button"
+                    >
+                        Reset
+                    </button>
+                </div>
+
+                <div
+                    class="discount-error"
+                    id="discount-error"
+                    role="alert"
+                    aria-live="polite"
+                    hidden
+                ></div>
+
+                <section
+                    class="discount-results"
+                    id="discount-results"
+                    aria-labelledby="discount-results-title"
+                    aria-live="polite"
+                    hidden
+                >
+                    <h2 id="discount-results-title">Your Discount Results</h2>
+
+                    <p
+                        class="discount-results-intro"
+                        id="discount-results-intro"
+                    >
+                        Here is your price breakdown.
+                    </p>
+
+                    <div class="discount-final-card">
+                        <span class="discount-final-label">
+                            Final Price After Discount
+                        </span>
+
+                        <output
+                            class="discount-final-price"
+                            id="discount-final-price"
+                            aria-label="Final price"
+                        >—</output>
+
+                        <span
+                            class="discount-final-caption"
+                            id="discount-final-caption"
+                        >
+                            Price after applying the discount.
+                        </span>
+                    </div>
+
+                    <div class="discount-result-grid">
+                        <div class="discount-result-item">
+                            <span class="discount-result-label">
+                                Original Price
+                            </span>
+
+                            <output
+                                class="discount-result-value"
+                                id="discount-result-original"
+                            >—</output>
+                        </div>
+
+                        <div class="discount-result-item">
+                            <span class="discount-result-label">
+                                Discount Amount
+                            </span>
+
+                            <output
+                                class="discount-result-value discount-savings-value"
+                                id="discount-result-savings"
+                            >—</output>
+                        </div>
+
+                        <div class="discount-result-item">
+                            <span class="discount-result-label">
+                                Discount Applied
+                            </span>
+
+                            <output
+                                class="discount-result-value"
+                                id="discount-result-percentage"
+                            >—</output>
+                        </div>
+
+                        <div class="discount-result-item">
+                            <span class="discount-result-label">
+                                Percentage of Original Price Remaining
+                            </span>
+
+                            <output
+                                class="discount-result-value"
+                                id="discount-result-remaining"
+                            >—</output>
+                        </div>
+                    </div>
+
+                    <div class="discount-breakdown">
+                        <h3>Price Breakdown</h3>
+
+                        <div class="discount-breakdown-row">
+                            <span>Original price</span>
+                            <span id="discount-breakdown-original">—</span>
+                        </div>
+
+                        <div class="discount-breakdown-row">
+                            <span>Discount deducted</span>
+                            <span id="discount-breakdown-deduction">—</span>
+                        </div>
+
+                        <div class="discount-breakdown-row">
+                            <span>Final price</span>
+                            <span id="discount-breakdown-final">—</span>
+                        </div>
+                    </div>
+                </section>
+            </form>
+        </section>
+
+        <article class="discount-content">
+            <section>
+                <h2>What Is a Discount Calculator?</h2>
+
+                <p>
+                    A discount calculator determines how much money is
+                    deducted from an original price when a percentage
+                    discount is applied. It also calculates the final
+                    price payable after the discount.
+                </p>
+
+                <p>
+                    It is useful when comparing sale prices, checking
+                    promotional offers, estimating shopping savings,
+                    or calculating reduced prices for products and services.
+                </p>
+            </section>
+
+            <section>
+                <h2>How to Use the Discount Calculator</h2>
+
+                <ol>
+                    <li>Select the currency you want to display.</li>
+                    <li>Enter the original price of the product.</li>
+                    <li>Enter the discount percentage.</li>
+                    <li>Select <strong>Calculate Discount</strong>.</li>
+                    <li>
+                        Review the final price, discount amount,
+                        and price breakdown.
+                    </li>
+                    <li>
+                        Select <strong>Reset</strong> to clear the inputs
+                        and start another calculation.
+                    </li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Discount Calculator Formula</h2>
+
+                <p>
+                    The calculator uses two main formulas to determine
+                    the discount and the final sale price.
+                </p>
+
+                <h3>Discount amount</h3>
+
+                <p>
+                    Discount Amount = Original Price × (Discount Percentage ÷ 100)
+                </p>
+
+                <h3>Final price</h3>
+
+                <p>
+                    Final Price = Original Price − Discount Amount
+                </p>
+
+                <h3>Example calculation</h3>
+
+                <p>
+                    Suppose a product costs ₹2,000 and has a 25% discount.
+                </p>
+
+                <ul>
+                    <li>Original price: ₹2,000</li>
+                    <li>Discount percentage: 25%</li>
+                    <li>Discount amount: ₹500</li>
+                    <li>Final price: ₹1,500</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>How to Calculate a Discount Manually</h2>
+
+                <p>
+                    To calculate a discount manually, divide the discount
+                    percentage by 100 and multiply the result by the
+                    original price. Subtract that amount from the original
+                    price to find the reduced price.
+                </p>
+
+                <p>
+                    For example, a 10% discount on ₹800 is ₹80.
+                    The final price is ₹720 before any additional taxes,
+                    fees, or charges.
+                </p>
+            </section>
+
+            <section>
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="discount-faq">
+                    <h3>Is this Discount Calculator free?</h3>
+                    <p>
+                        Yes. The calculator is free to use and does not
+                        require an account.
+                    </p>
+                </div>
+
+                <div class="discount-faq">
+                    <h3>Can I calculate a 100% discount?</h3>
+                    <p>
+                        Yes. A 100% discount makes the calculated final
+                        price zero, before any additional charges.
+                    </p>
+                </div>
+
+                <div class="discount-faq">
+                    <h3>Can I use different currencies?</h3>
+                    <p>
+                        Yes. Select a supported currency to display the
+                        results in that currency. Changing the currency
+                        changes the display format only; it does not
+                        convert exchange rates or change the entered amount.
+                    </p>
+                </div>
+
+                <div class="discount-faq">
+                    <h3>Does the final price include tax?</h3>
+                    <p>
+                        No. This calculator applies the discount to the
+                        entered original price. Taxes, shipping, and
+                        other charges are not included.
+                    </p>
+                </div>
+
+                <div class="discount-faq">
+                    <h3>Can I calculate discounts on my phone?</h3>
+                    <p>
+                        Yes. The page is responsive and works on mobile
+                        phones, tablets, and desktop screens.
+                    </p>
+                </div>
+
+                <div class="discount-faq">
+                    <h3>Are my calculations sent to a server?</h3>
+                    <p>
+                        The discount calculation runs in your browser.
+                        This page's calculator script does not send your
+                        entered prices to a server. Separately installed
+                        analytics or other website features may have
+                        their own data practices.
+                    </p>
+                </div>
+            </section>
+
+            <p class="discount-disclaimer">
+                Results are mathematical estimates based on the values
+                entered. The actual checkout price may differ if taxes,
+                shipping fees, exclusions, or other offer conditions apply.
+            </p>
+        </article>
+    </main>
+
+    <!-- Shared Footer -->
+    <div id="site-footer"></div>
+
+    <!-- Shared Scripts -->
+    <script src="/assets/js/theme.js" defer></script>
+    <script src="/assets/js/header.js" defer></script>
+    <script src="/assets/js/footer.js" defer></script>
+
+    <!-- Discount Calculator Logic -->
+    <script>
+        /* =========================================
+           MohakTools — Discount Calculator Logic
+        ========================================== */
+
+        (() => {
+            "use strict";
+
+            const form = document.getElementById("discount-calculator-form");
+            const currencyInput = document.getElementById("discount-currency");
+            const originalPriceInput = document.getElementById(
+                "discount-original-price"
+            );
+            const percentageInput = document.getElementById(
+                "discount-percentage"
+            );
+            const resetButton = document.getElementById("discount-reset-button");
+
+            const errorElement = document.getElementById("discount-error");
+            const resultsElement = document.getElementById("discount-results");
+
+            const finalPriceOutput = document.getElementById(
+                "discount-final-price"
+            );
+            const finalCaption = document.getElementById(
+                "discount-final-caption"
+            );
+            const resultsIntro = document.getElementById(
+                "discount-results-intro"
+            );
+
+            const originalResult = document.getElementById(
+                "discount-result-original"
+            );
+            const savingsResult = document.getElementById(
+                "discount-result-savings"
+            );
+            const percentageResult = document.getElementById(
+                "discount-result-percentage"
+            );
+            const remainingResult = document.getElementById(
+                "discount-result-remaining"
+            );
+
+            const breakdownOriginal = document.getElementById(
+                "discount-breakdown-original"
+            );
+            const breakdownDeduction = document.getElementById(
+                "discount-breakdown-deduction"
+            );
+            const breakdownFinal = document.getElementById(
+                "discount-breakdown-final"
+            );
+
+            if (
+                !form ||
+                !currencyInput ||
+                !originalPriceInput ||
+                !percentageInput ||
+                !resetButton ||
+                !errorElement ||
+                !resultsElement
+            ) {
+                return;
+            }
+
+            const supportedCurrencies = new Set([
+                "INR",
+                "USD",
+                "EUR",
+                "GBP",
+                "CAD",
+                "AUD",
+                "JPY",
+                "AED",
+                "SGD"
+            ]);
+
+            function formatCurrency(amount, currency) {
+                return new Intl.NumberFormat("en-IN", {
+                    style: "currency",
+                    currency: currency,
+                    maximumFractionDigits: 2,
+                    minimumFractionDigits: 2
+                }).format(amount);
+            }
+
+            function formatPercentage(value) {
+                return new Intl.NumberFormat("en-IN", {
+                    maximumFractionDigits: 4
+                }).format(value) + "%";
+            }
+
+            function clearError() {
+                errorElement.textContent = "";
+                errorElement.hidden = true;
+            }
+
+            function clearInvalidStates() {
+                originalPriceInput.removeAttribute("aria-invalid");
+                percentageInput.removeAttribute("aria-invalid");
+            }
+
+            function showError(message, input) {
+                errorElement.textContent = message;
+                errorElement.hidden = false;
+                resultsElement.hidden = true;
+
+                if (input) {
+                    input.setAttribute("aria-invalid", "true");
+                    input.focus();
+                }
+            }
+
+            function resetResults() {
+                resultsElement.hidden = true;
+
+                finalPriceOutput.textContent = "—";
+                finalCaption.textContent = "Price after applying the discount.";
+                resultsIntro.textContent = "Here is your price breakdown.";
+
+                originalResult.textContent = "—";
+                savingsResult.textContent = "—";
+                percentageResult.textContent = "—";
+                remainingResult.textContent = "—";
+
+                breakdownOriginal.textContent = "—";
+                breakdownDeduction.textContent = "—";
+                breakdownFinal.textContent = "—";
+            }
+
+            function calculateDiscount() {
+                clearError();
+                clearInvalidStates();
+
+                const originalPriceText = originalPriceInput.value.trim();
+                const percentageText = percentageInput.value.trim();
+
+                if (originalPriceText === "") {
+                    showError(
+                        "Please enter the original price.",
+                        originalPriceInput
+                    );
+                    return;
+                }
+
+                if (percentageText === "") {
+                    showError(
+                        "Please enter the discount percentage.",
+                        percentageInput
+                    );
+                    return;
+                }
+
+                const originalPrice = Number(originalPriceText);
+                const discountPercentage = Number(percentageText);
+                const currency = currencyInput.value;
+
+                if (
+                    !Number.isFinite(originalPrice) ||
+                    originalPrice <= 0 ||
+                    originalPrice > 1000000000000
+                ) {
+                    showError(
+                        "Enter a valid original price greater than zero and no higher than 1,000,000,000,000.",
+                        originalPriceInput
+                    );
+                    return;
+                }
+
+                if (
+                    !Number.isFinite(discountPercentage) ||
+                    discountPercentage < 0 ||
+                    discountPercentage > 100
+                ) {
+                    showError(
+                        "Discount percentage must be between 0 and 100.",
+                        percentageInput
+                    );
+                    return;
+                }
+
+                if (!supportedCurrencies.has(currency)) {
+                    showError("Please select a supported currency.");
+                    return;
+                }
+
+                const discountAmount =
+                    originalPrice * (discountPercentage / 100);
+
+                const finalPrice = originalPrice - discountAmount;
+                const remainingPercentage = 100 - discountPercentage;
+
+                if (
+                    !Number.isFinite(discountAmount) ||
+                    !Number.isFinite(finalPrice)
+                ) {
+                    showError(
+                        "The result is outside the supported calculation range."
+                    );
+                    return;
+                }
+
+                const formattedOriginal = formatCurrency(
+                    originalPrice,
+                    currency
+                );
+
+                const formattedDiscount = formatCurrency(
+                    discountAmount,
+                    currency
+                );
+
+                const formattedFinal = formatCurrency(
+                    finalPrice,
+                    currency
+                );
+
+                finalPriceOutput.textContent = formattedFinal;
+                finalCaption.textContent =
+                    "You pay " + formattedFinal +
+                    " before any additional taxes or charges.";
+
+                resultsIntro.textContent =
+                    "A " + formatPercentage(discountPercentage) +
+                    " discount is applied to the original price.";
+
+                originalResult.textContent = formattedOriginal;
+                savingsResult.textContent = formattedDiscount;
+                percentageResult.textContent =
+                    formatPercentage(discountPercentage);
+                remainingResult.textContent =
+                    formatPercentage(remainingPercentage);
+
+                breakdownOriginal.textContent = formattedOriginal;
+                breakdownDeduction.textContent = "− " + formattedDiscount;
+                breakdownFinal.textContent = formattedFinal;
+
+                resultsElement.hidden = false;
+            }
+
+            function resetCalculator() {
+                form.reset();
+
+                currencyInput.value = "INR";
+                originalPriceInput.value = "";
+                percentageInput.value = "";
+
+                clearError();
+                clearInvalidStates();
+                resetResults();
+
+                originalPriceInput.focus();
+            }
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+                calculateDiscount();
+            });
+
+            resetButton.addEventListener("click", resetCalculator);
+
+            originalPriceInput.addEventListener("input", function () {
+                originalPriceInput.removeAttribute("aria-invalid");
+            });
+
+            percentageInput.addEventListener("input", function () {
+                percentageInput.removeAttribute("aria-invalid");
+            });
+
+            currencyInput.addEventListener("change", function () {
+                if (!resultsElement.hidden) {
+                    calculateDiscount();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

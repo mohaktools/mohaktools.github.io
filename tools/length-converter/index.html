@@ -1,0 +1,920 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO Metadata -->
+  <title>Length Converter - Mohaktools</title>
+  <meta
+    name="description"
+    content="Convert length and distance units instantly with the free MohakTools Length Converter. Convert millimeters, centimeters, meters, kilometers, inches, feet, yards and miles."
+  >
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="MohakTools">
+  <meta name="theme-color" content="#4f46e5">
+
+  <!-- Canonical URL -->
+  <link
+    rel="canonical"
+    href="https://mohaktools.com/tools/length-converter/"
+  >
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="/favicon.webp">
+  <link rel="apple-touch-icon" href="/favicon.webp">
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:type" content="website">
+  <meta
+    property="og:title"
+    content="Length Converter - Mohaktools"
+  >
+  <meta
+    property="og:description"
+    content="Convert length and distance units quickly and accurately with the free online MohakTools Length Converter."
+  >
+  <meta
+    property="og:url"
+    content="https://mohaktools.com/tools/length-converter/"
+  >
+  <meta property="og:site_name" content="MohakTools">
+
+  <!-- Twitter Metadata -->
+  <meta name="twitter:card" content="summary">
+  <meta
+    name="twitter:title"
+    content="Length Converter | MohakTools"
+  >
+  <meta
+    name="twitter:description"
+    content="Convert meters, kilometers, miles, feet, inches and more for free."
+  >
+
+  <!-- Shared Theme -->
+  <link rel="stylesheet" href="/assets/css/themes.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "MohakTools Length Converter",
+    "url": "https://mohaktools.com/tools/length-converter/",
+    "description": "A free online length and distance conversion calculator.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    /* =========================================
+       MohakTools — Length Converter
+       ========================================= */
+
+    .lc-page {
+      width: min(100% - 32px, 960px);
+      margin: 0 auto;
+      padding: 36px 0 64px;
+      color: var(--text-color, inherit);
+    }
+
+    .lc-hero {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .lc-badge {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .lc-hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1.2;
+      letter-spacing: -.03em;
+    }
+
+    .lc-hero p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--muted-text-color, #666);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .lc-card {
+      padding: clamp(20px, 4vw, 32px);
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 18px;
+      background: var(--card-background, var(--surface-color, transparent));
+      box-shadow: 0 8px 28px rgb(0 0 0 / 4%);
+    }
+
+    .lc-field {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      min-width: 0;
+    }
+
+    .lc-field label,
+    .lc-category label {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .lc-category {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 25px;
+    }
+
+    .lc-input,
+    .lc-select {
+      width: 100%;
+      min-width: 0;
+      min-height: 48px;
+      padding: 12px 14px;
+      box-sizing: border-box;
+      border: 1px solid var(--border-color, #ccc);
+      border-radius: 10px;
+      background: var(--input-background, var(--background-color, transparent));
+      color: inherit;
+      font: inherit;
+      outline: none;
+    }
+
+    .lc-input {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .lc-input:focus,
+    .lc-select:focus {
+      border-color: var(--primary-color, #4f46e5);
+      box-shadow: 0 0 0 3px rgb(79 70 229 / 12%);
+    }
+
+    .lc-converter-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: end;
+      gap: 16px;
+    }
+
+    .lc-unit-description {
+      min-height: 18px;
+      color: var(--muted-text-color, #777);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .lc-swap-wrap {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 28px;
+    }
+
+    .lc-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 11px 17px;
+      border: 1px solid var(--border-color, #ccc);
+      border-radius: 10px;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .lc-button:hover {
+      opacity: .82;
+    }
+
+    .lc-button:active {
+      transform: scale(.98);
+    }
+
+    .lc-button:focus-visible {
+      outline: 2px solid var(--primary-color, #4f46e5);
+      outline-offset: 3px;
+    }
+
+    .lc-button-primary {
+      border-color: var(--primary-color, #4f46e5);
+      background: var(--primary-color, #4f46e5);
+      color: #fff;
+    }
+
+    .lc-swap {
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      border-radius: 50%;
+      font-size: 21px;
+    }
+
+    .lc-result {
+      margin-top: 24px;
+      padding: 20px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 14px;
+      background: var(--result-background, rgb(127 127 127 / 6%));
+    }
+
+    .lc-result-label {
+      margin-bottom: 8px;
+      color: var(--muted-text-color, #777);
+      font-size: 13px;
+    }
+
+    .lc-result-value {
+      overflow-wrap: anywhere;
+      font-size: clamp(24px, 5vw, 34px);
+      font-weight: 750;
+      line-height: 1.4;
+    }
+
+    .lc-result-note {
+      margin-top: 8px;
+      color: var(--muted-text-color, #777);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .lc-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .lc-status {
+      min-height: 20px;
+      margin-top: 12px;
+      color: var(--muted-text-color, #777);
+      font-size: 13px;
+    }
+
+    .lc-section {
+      margin-top: 38px;
+    }
+
+    .lc-section h2 {
+      margin: 0 0 14px;
+      font-size: clamp(22px, 3vw, 28px);
+      letter-spacing: -.02em;
+    }
+
+    .lc-section p {
+      color: var(--muted-text-color, #666);
+      line-height: 1.8;
+    }
+
+    .lc-unit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .lc-unit-card {
+      padding: 16px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 12px;
+    }
+
+    .lc-unit-card strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 15px;
+    }
+
+    .lc-unit-card span {
+      color: var(--muted-text-color, #777);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .lc-faq {
+      display: grid;
+      gap: 12px;
+    }
+
+    .lc-faq details {
+      padding: 17px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 12px;
+    }
+
+    .lc-faq summary {
+      font-weight: 700;
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .lc-faq details p {
+      margin: 12px 0 0;
+    }
+
+    @media (max-width: 650px) {
+      .lc-page {
+        width: min(100% - 24px, 960px);
+        padding-top: 26px;
+      }
+
+      .lc-converter-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+      }
+
+      .lc-swap-wrap {
+        padding: 0;
+      }
+
+      .lc-swap {
+        transform: rotate(90deg);
+      }
+
+      .lc-swap:active {
+        transform: rotate(90deg) scale(.98);
+      }
+
+      .lc-unit-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 360px) {
+      .lc-unit-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .lc-actions .lc-button {
+        flex: 1 1 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .lc-button {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <div id="site-header"></div>
+
+  <main class="lc-page">
+    <header class="lc-hero">
+      <span class="lc-badge">Free Online Calculator</span>
+      <h1>Length Converter</h1>
+      <p>
+        Convert length and distance measurements in seconds.
+        Easily switch between millimetres, centimetres, metres,
+        kilometres, inches, feet, yards, miles and nautical miles.
+      </p>
+    </header>
+
+    <section class="lc-card" aria-label="Length conversion calculator">
+      <div class="lc-category">
+        <label for="lc-category">Conversion type</label>
+        <select class="lc-select" id="lc-category">
+          <option value="metric">Metric and Imperial Length</option>
+          <option value="small">Small Measurements</option>
+          <option value="large">Long Distances</option>
+        </select>
+      </div>
+
+      <div class="lc-converter-grid">
+        <div class="lc-field">
+          <label for="lc-from-value">From</label>
+          <input
+            class="lc-input"
+            id="lc-from-value"
+            type="number"
+            value="1"
+            step="any"
+            inputmode="decimal"
+            autocomplete="off"
+            aria-label="Length value to convert"
+          >
+          <select
+            class="lc-select"
+            id="lc-from-unit"
+            aria-label="Starting length unit"
+          ></select>
+          <div class="lc-unit-description" id="lc-from-description"></div>
+        </div>
+
+        <div class="lc-swap-wrap">
+          <button
+            class="lc-button lc-swap"
+            id="lc-swap"
+            type="button"
+            aria-label="Swap units"
+            title="Swap units"
+          >⇄</button>
+        </div>
+
+        <div class="lc-field">
+          <label for="lc-to-value">To</label>
+          <input
+            class="lc-input"
+            id="lc-to-value"
+            type="text"
+            value="100"
+            readonly
+            aria-label="Converted length result"
+          >
+          <select
+            class="lc-select"
+            id="lc-to-unit"
+            aria-label="Target length unit"
+          ></select>
+          <div class="lc-unit-description" id="lc-to-description"></div>
+        </div>
+      </div>
+
+      <div class="lc-result" aria-live="polite" aria-atomic="true">
+        <div class="lc-result-label">Conversion result</div>
+        <div class="lc-result-value" id="lc-result-value">
+          1 metre = 100 centimetres
+        </div>
+        <div class="lc-result-note" id="lc-result-note">
+          Change the value or units to calculate instantly.
+        </div>
+      </div>
+
+      <div class="lc-actions">
+        <button
+          class="lc-button lc-button-primary"
+          id="lc-copy"
+          type="button"
+        >Copy result</button>
+
+        <button
+          class="lc-button"
+          id="lc-reset"
+          type="button"
+        >Reset</button>
+      </div>
+
+      <div class="lc-status" id="lc-status" role="status"></div>
+    </section>
+
+    <section class="lc-section">
+      <h2>Supported Length Units</h2>
+      <p>
+        Use the converter for everyday measurements, construction,
+        education, travel and general distance calculations.
+      </p>
+
+      <div class="lc-unit-grid">
+        <div class="lc-unit-card">
+          <strong>Millimetre (mm)</strong>
+          <span>Useful for small dimensions and precise measurements.</span>
+        </div>
+
+        <div class="lc-unit-card">
+          <strong>Centimetre (cm)</strong>
+          <span>Commonly used for everyday object measurements.</span>
+        </div>
+
+        <div class="lc-unit-card">
+          <strong>Metre (m)</strong>
+          <span>The standard SI unit for measuring length.</span>
+        </div>
+
+        <div class="lc-unit-card">
+          <strong>Kilometre (km)</strong>
+          <span>Used for roads and longer distances.</span>
+        </div>
+
+        <div class="lc-unit-card">
+          <strong>Inch (in)</strong>
+          <span>An Imperial and US customary length unit.</span>
+        </div>
+
+        <div class="lc-unit-card">
+          <strong>Foot (ft)</strong>
+          <span>Commonly used for height and room dimensions.</span>
+        </div>
+
+        <div class="lc-unit-card">
+          <strong>Yard (yd)</strong>
+          <span>Used for fabric, sports fields and distances.</span>
+        </div>
+
+        <div class="lc-unit-card">
+          <strong>Mile (mi)</strong>
+          <span>Used for road distances in several countries.</span>
+        </div>
+
+        <div class="lc-unit-card">
+          <strong>Nautical Mile (nmi)</strong>
+          <span>Used in marine navigation and aviation.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="lc-section">
+      <h2>Common Length Conversions</h2>
+      <p>These are useful reference values for everyday calculations.</p>
+
+      <div class="lc-faq">
+        <details>
+          <summary>How many centimetres are in one metre?</summary>
+          <p>One metre equals 100 centimetres.</p>
+        </details>
+
+        <details>
+          <summary>How many metres are in one kilometre?</summary>
+          <p>One kilometre equals 1,000 metres.</p>
+        </details>
+
+        <details>
+          <summary>How many centimetres are in one inch?</summary>
+          <p>One inch equals exactly 2.54 centimetres.</p>
+        </details>
+
+        <details>
+          <summary>How many feet are in one metre?</summary>
+          <p>One metre is approximately 3.28084 feet.</p>
+        </details>
+
+        <details>
+          <summary>How many kilometres are in one mile?</summary>
+          <p>One international mile equals exactly 1.609344 kilometres.</p>
+        </details>
+
+        <details>
+          <summary>Is this length converter free?</summary>
+          <p>
+            Yes. The MohakTools Length Converter is free to use
+            in your browser and does not require an account.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section class="lc-section">
+      <h2>How to Use the Length Converter</h2>
+      <p>
+        Enter a number in the From field, select its unit, and choose
+        the target unit. The converted measurement appears automatically.
+        Use the swap button to reverse the conversion, or copy the result
+        for use in another application.
+      </p>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    /* =========================================
+       MohakTools — Length Converter Logic
+       ========================================= */
+
+    (() => {
+      "use strict";
+
+      const categorySelect = document.getElementById("lc-category");
+      const fromValue = document.getElementById("lc-from-value");
+      const toValue = document.getElementById("lc-to-value");
+      const fromUnit = document.getElementById("lc-from-unit");
+      const toUnit = document.getElementById("lc-to-unit");
+      const fromDescription = document.getElementById("lc-from-description");
+      const toDescription = document.getElementById("lc-to-description");
+      const resultValue = document.getElementById("lc-result-value");
+      const resultNote = document.getElementById("lc-result-note");
+      const status = document.getElementById("lc-status");
+      const swapButton = document.getElementById("lc-swap");
+      const copyButton = document.getElementById("lc-copy");
+      const resetButton = document.getElementById("lc-reset");
+
+      if (
+        !categorySelect ||
+        !fromValue ||
+        !toValue ||
+        !fromUnit ||
+        !toUnit
+      ) {
+        return;
+      }
+
+      /*
+       * Each factor represents the number of metres
+       * in one unit. Conversion is performed through
+       * the metre base unit.
+       */
+
+      const lengthUnits = [
+        {
+          id: "mm",
+          name: "Millimetre",
+          symbol: "mm",
+          factor: 0.001,
+          groups: ["metric", "small"]
+        },
+        {
+          id: "cm",
+          name: "Centimetre",
+          symbol: "cm",
+          factor: 0.01,
+          groups: ["metric", "small"]
+        },
+        {
+          id: "m",
+          name: "Metre",
+          symbol: "m",
+          factor: 1,
+          groups: ["metric", "small", "large"]
+        },
+        {
+          id: "km",
+          name: "Kilometre",
+          symbol: "km",
+          factor: 1000,
+          groups: ["metric", "large"]
+        },
+        {
+          id: "in",
+          name: "Inch",
+          symbol: "in",
+          factor: 0.0254,
+          groups: ["metric", "small"]
+        },
+        {
+          id: "ft",
+          name: "Foot",
+          symbol: "ft",
+          factor: 0.3048,
+          groups: ["metric", "small", "large"]
+        },
+        {
+          id: "yd",
+          name: "Yard",
+          symbol: "yd",
+          factor: 0.9144,
+          groups: ["metric", "large"]
+        },
+        {
+          id: "mi",
+          name: "Mile",
+          symbol: "mi",
+          factor: 1609.344,
+          groups: ["metric", "large"]
+        },
+        {
+          id: "nmi",
+          name: "Nautical Mile",
+          symbol: "nmi",
+          factor: 1852,
+          groups: ["large"]
+        }
+      ];
+
+      const defaultUnits = {
+        metric: ["m", "cm"],
+        small: ["cm", "mm"],
+        large: ["km", "mi"]
+      };
+
+      const getUnit = id =>
+        lengthUnits.find(unit => unit.id === id);
+
+      const formatNumber = value => {
+        if (!Number.isFinite(value)) {
+          return "Result out of range";
+        }
+
+        if (value === 0 || Object.is(value, -0)) {
+          return "0";
+        }
+
+        const abs = Math.abs(value);
+
+        if (abs >= 1e15 || abs < 1e-8) {
+          return value.toExponential(8).replace(/\.?0+e/, "e");
+        }
+
+        return Number(value.toPrecision(12)).toLocaleString("en-US", {
+          useGrouping: false,
+          maximumFractionDigits: 12
+        });
+      };
+
+      const getAvailableUnits = () => {
+        const group = categorySelect.value;
+
+        return lengthUnits.filter(unit =>
+          unit.groups.includes(group)
+        );
+      };
+
+      const populateUnits = (preserveSelection = false) => {
+        const available = getAvailableUnits();
+        const defaults = defaultUnits[categorySelect.value];
+
+        const previousFrom = preserveSelection ? fromUnit.value : "";
+        const previousTo = preserveSelection ? toUnit.value : "";
+
+        const fillSelect = (select, previous, fallback) => {
+          select.replaceChildren();
+
+          available.forEach(unit => {
+            const option = document.createElement("option");
+            option.value = unit.id;
+            option.textContent = `${unit.name} (${unit.symbol})`;
+            select.appendChild(option);
+          });
+
+          const isAvailable = available.some(
+            unit => unit.id === previous
+          );
+
+          select.value = isAvailable ? previous : fallback;
+        };
+
+        fillSelect(fromUnit, previousFrom, defaults[0]);
+        fillSelect(toUnit, previousTo, defaults[1]);
+
+        updateDescriptions();
+        calculate();
+      };
+
+      const updateDescriptions = () => {
+        const source = getUnit(fromUnit.value);
+        const target = getUnit(toUnit.value);
+
+        fromDescription.textContent = source
+          ? source.name
+          : "";
+
+        toDescription.textContent = target
+          ? target.name
+          : "";
+      };
+
+      const calculate = () => {
+        status.textContent = "";
+
+        const rawValue = fromValue.value.trim();
+
+        if (rawValue === "" || !Number.isFinite(Number(rawValue))) {
+          toValue.value = "";
+          resultValue.textContent = "Enter a valid number";
+          resultNote.textContent =
+            "Enter a numeric value to calculate the conversion.";
+          return;
+        }
+
+        const value = Number(rawValue);
+        const source = getUnit(fromUnit.value);
+        const target = getUnit(toUnit.value);
+
+        if (!source || !target) {
+          toValue.value = "";
+          resultValue.textContent = "Select valid units";
+          resultNote.textContent =
+            "Choose a starting unit and a target unit.";
+          return;
+        }
+
+        const metres = value * source.factor;
+        const converted = metres / target.factor;
+
+        if (!Number.isFinite(converted)) {
+          toValue.value = "";
+          resultValue.textContent = "Result out of range";
+          resultNote.textContent =
+            "Try a smaller input value.";
+          return;
+        }
+
+        const formattedInput = formatNumber(value);
+        const formattedOutput = formatNumber(converted);
+
+        toValue.value = formattedOutput;
+
+        resultValue.textContent =
+          `${formattedInput} ${source.symbol} = ${formattedOutput} ${target.symbol}`;
+
+        resultNote.textContent =
+          `${source.name} to ${target.name}. ` +
+          `1 ${source.symbol} = ${formatNumber(source.factor / target.factor)} ${target.symbol}.`;
+      };
+
+      categorySelect.addEventListener("change", () => {
+        populateUnits(false);
+      });
+
+      fromValue.addEventListener("input", calculate);
+
+      fromUnit.addEventListener("change", () => {
+        updateDescriptions();
+        calculate();
+      });
+
+      toUnit.addEventListener("change", () => {
+        updateDescriptions();
+        calculate();
+      });
+
+      swapButton.addEventListener("click", () => {
+        const previousFrom = fromUnit.value;
+
+        fromUnit.value = toUnit.value;
+        toUnit.value = previousFrom;
+
+        updateDescriptions();
+        calculate();
+      });
+
+      resetButton.addEventListener("click", () => {
+        categorySelect.value = "metric";
+        fromValue.value = "1";
+
+        populateUnits(false);
+
+        status.textContent = "Converter reset.";
+      });
+
+      copyButton.addEventListener("click", async () => {
+        const text = resultValue.textContent;
+
+        if (
+          !text ||
+          text === "Enter a valid number" ||
+          text === "Select valid units" ||
+          text === "Result out of range"
+        ) {
+          status.textContent =
+            "Enter a valid value before copying.";
+          return;
+        }
+
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            const temporary = document.createElement("textarea");
+
+            temporary.value = text;
+            temporary.setAttribute("readonly", "");
+            temporary.style.position = "fixed";
+            temporary.style.opacity = "0";
+
+            document.body.appendChild(temporary);
+            temporary.select();
+
+            const copied = document.execCommand("copy");
+            temporary.remove();
+
+            if (!copied) {
+              throw new Error("Copy failed");
+            }
+          }
+
+          status.textContent = "Result copied to clipboard.";
+        } catch (error) {
+          status.textContent =
+            "Unable to copy automatically. Select and copy the result manually.";
+        }
+      });
+
+      populateUnits(false);
+    })();
+  </script>
+
+  <!-- MohakTools Shared Scripts -->
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/header.js"></script>
+  <script src="/assets/js/footer.js"></script>
+</body>
+</html>

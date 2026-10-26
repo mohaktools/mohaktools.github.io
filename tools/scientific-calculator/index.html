@@ -1,0 +1,1822 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Scientific Calculator Online | MohakTools </title>
+    <meta name="description" content="Calculate trigonometry, logarithms, powers, square roots, and factorials with the free MohakTools Scientific Calculator.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="MohakTools">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="canonical" href="https://mohaktools.com/tools/scientific-calculator/">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.webp" type="image/webp">
+    <link rel="shortcut icon" href="/favicon.webp" type="image/webp">
+
+    <!-- Shared stylesheets -->
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/themes.css">
+
+    <!-- Scientific Calculator Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Scientific Calculator",
+        "url": "https://mohaktools.com/tools/scientific-calculator/",
+        "description": "A free online scientific calculator for arithmetic, trigonometry, logarithms, powers, roots, and other mathematical calculations.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "isAccessibleForFree": true,
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "MohakTools",
+            "url": "https://mohaktools.com/"
+        }
+    }
+    </script>
+
+
+
+<style>
+    /* ========================================
+       MohakTools — Scientific Calculator
+       File: /tools/scientific-calculator/
+       Responsive layout and global theme support
+    ======================================== */
+
+    .scientific-page {
+        width: min(1000px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 24px 0 56px;
+        color: var(--color-text);
+        box-sizing: border-box;
+    }
+
+    .scientific-page *,
+    .scientific-page *::before,
+    .scientific-page *::after {
+        box-sizing: border-box;
+    }
+
+    .scientific-breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 20px;
+        color: var(--color-text-secondary);
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .scientific-breadcrumb a {
+        color: var(--color-primary);
+        text-decoration: none;
+    }
+
+    .scientific-breadcrumb a:hover {
+        color: var(--color-primary-hover);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .scientific-intro {
+        margin-bottom: 22px;
+    }
+
+    .scientific-intro h1 {
+        margin: 0 0 9px;
+        color: var(--color-text);
+        font-size: clamp(26px, 4vw, 36px);
+        line-height: 1.25;
+        letter-spacing: -0.7px;
+        overflow-wrap: anywhere;
+    }
+
+    .scientific-intro p {
+        max-width: 720px;
+        margin: 0;
+        color: var(--color-text-secondary);
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    .scientific-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(220px, 0.75fr);
+        gap: 18px;
+        align-items: start;
+    }
+
+    .scientific-card,
+    .scientific-info-card {
+        min-width: 0;
+        color: var(--color-text);
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg, 16px);
+        box-shadow: 0 6px 22px var(--color-card-shadow);
+    }
+
+    .scientific-card {
+        padding: 18px;
+    }
+
+    .scientific-mode-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+
+    .scientific-mode-label {
+        color: var(--color-text-secondary);
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .scientific-mode-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .scientific-mode-button {
+        min-width: 54px;
+        min-height: 34px;
+        padding: 7px 11px;
+        color: var(--color-text);
+        background-color: var(--color-surface-secondary);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm, 6px);
+        font: inherit;
+        font-size: 12px;
+        font-weight: 650;
+        cursor: pointer;
+        touch-action: manipulation;
+        transition:
+            color 160ms ease,
+            background-color 160ms ease,
+            border-color 160ms ease;
+    }
+
+    .scientific-mode-button[aria-pressed="true"] {
+        color: var(--color-primary-text);
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+
+    .scientific-mode-button:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+    }
+
+    .scientific-display {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-width: 0;
+        min-height: 112px;
+        padding: 14px;
+        margin-bottom: 14px;
+        overflow: hidden;
+        color: var(--color-text);
+        background-color: var(--color-input-bg);
+        border: 1px solid var(--color-input-border);
+        border-radius: var(--radius-md, 10px);
+        text-align: right;
+    }
+
+    .scientific-expression {
+        display: block;
+        width: 100%;
+        min-height: 21px;
+        overflow-x: auto;
+        color: var(--color-text-secondary);
+        font-size: 13px;
+        line-height: 1.6;
+        white-space: nowrap;
+        scrollbar-width: thin;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .scientific-result {
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+        overflow-x: auto;
+        color: var(--color-text);
+        font-size: clamp(25px, 4vw, 34px);
+        font-weight: 650;
+        line-height: 1.35;
+        white-space: nowrap;
+        scrollbar-width: thin;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .scientific-keypad {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 7px;
+        width: 100%;
+    }
+
+    .scientific-key {
+        display: flex;
+        min-width: 0;
+        min-height: 45px;
+        align-items: center;
+        justify-content: center;
+        padding: 7px 3px;
+        color: var(--color-text);
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md, 9px);
+        font: inherit;
+        font-size: 14px;
+        font-weight: 550;
+        line-height: 1.25;
+        text-align: center;
+        overflow-wrap: anywhere;
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        transition:
+            background-color 150ms ease,
+            color 150ms ease,
+            border-color 150ms ease,
+            transform 120ms ease;
+    }
+
+    .scientific-key:hover {
+        background-color: var(--color-surface-secondary);
+        border-color: var(--color-primary);
+    }
+
+    .scientific-key:active {
+        transform: scale(0.97);
+    }
+
+    .scientific-key:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+    }
+
+    .scientific-key.function {
+        color: var(--color-text);
+        background-color: var(--color-surface-secondary);
+    }
+
+    .scientific-key.operator {
+        color: var(--color-primary);
+        background-color: var(--color-surface-secondary);
+        font-size: 16px;
+    }
+
+    .scientific-key.danger {
+        color: var(--color-danger);
+        background-color: var(--color-surface-secondary);
+    }
+
+    .scientific-key.equals {
+        color: var(--color-primary-text);
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+
+    .scientific-key.equals:hover {
+        color: var(--color-primary-text);
+        background-color: var(--color-primary-hover);
+        border-color: var(--color-primary-hover);
+    }
+
+    .scientific-key.wide {
+        grid-column: span 2;
+    }
+
+    .scientific-keypad-note {
+        margin: 12px 0 0;
+        color: var(--color-text-secondary);
+        font-size: 12px;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+    }
+
+    .scientific-status {
+        min-height: 20px;
+        margin: 10px 0 0;
+        color: var(--color-text-secondary);
+        font-size: 12px;
+        line-height: 1.6;
+        text-align: center;
+        overflow-wrap: anywhere;
+    }
+
+    .scientific-status.error {
+        color: var(--color-danger);
+    }
+
+    .scientific-info-card {
+        padding: 18px;
+    }
+
+    .scientific-info-card h2 {
+        margin: 0 0 12px;
+        color: var(--color-text);
+        font-size: 19px;
+        line-height: 1.4;
+    }
+
+    .scientific-info-card h3 {
+        margin: 20px 0 8px;
+        color: var(--color-text);
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .scientific-info-card p,
+    .scientific-info-card li {
+        color: var(--color-text-secondary);
+        font-size: 13px;
+        line-height: 1.75;
+        overflow-wrap: anywhere;
+    }
+
+    .scientific-info-card ul {
+        padding-left: 19px;
+        margin: 8px 0 0;
+    }
+
+    .scientific-info-card li + li {
+        margin-top: 6px;
+    }
+
+    .scientific-info-card code {
+        padding: 2px 4px;
+        color: var(--color-text);
+        background-color: var(--color-surface-secondary);
+        border-radius: 4px;
+        font-size: 0.92em;
+        overflow-wrap: anywhere;
+    }
+
+    .scientific-seo {
+        margin-top: 36px;
+        padding-top: 24px;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .scientific-seo h2 {
+        margin: 0 0 12px;
+        color: var(--color-text);
+        font-size: 22px;
+        line-height: 1.4;
+    }
+
+    .scientific-seo h3 {
+        margin: 22px 0 8px;
+        color: var(--color-text);
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+    .scientific-seo p {
+        max-width: 850px;
+        margin: 0 0 12px;
+        color: var(--color-text-secondary);
+        font-size: 14px;
+        line-height: 1.85;
+        overflow-wrap: anywhere;
+    }
+
+    /* Tablet */
+    @media (max-width: 800px) {
+        .scientific-page {
+            width: min(620px, calc(100% - 28px));
+            padding-top: 22px;
+            padding-bottom: 44px;
+        }
+
+        .scientific-layout {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 16px;
+        }
+
+        .scientific-card {
+            padding: 17px;
+        }
+
+        .scientific-info-card {
+            padding: 18px;
+        }
+
+        .scientific-intro {
+            margin-bottom: 20px;
+        }
+
+        .scientific-intro h1 {
+            font-size: clamp(27px, 5vw, 34px);
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 520px) {
+        .scientific-page {
+            width: calc(100% - 22px);
+            padding-top: 18px;
+            padding-bottom: 36px;
+        }
+
+        .scientific-breadcrumb {
+            gap: 6px;
+            margin-bottom: 16px;
+            font-size: 12px;
+        }
+
+        .scientific-intro {
+            margin-bottom: 17px;
+        }
+
+        .scientific-intro h1 {
+            margin-bottom: 8px;
+            font-size: clamp(25px, 7vw, 31px);
+            letter-spacing: -0.5px;
+        }
+
+        .scientific-intro p {
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .scientific-layout {
+            gap: 14px;
+        }
+
+        .scientific-card,
+        .scientific-info-card {
+            padding: 13px;
+            border-radius: 12px;
+        }
+
+        .scientific-mode-row {
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .scientific-mode-label {
+            font-size: 11px;
+        }
+
+        .scientific-mode-controls {
+            gap: 5px;
+        }
+
+        .scientific-mode-button {
+            min-width: 48px;
+            min-height: 32px;
+            padding: 6px 9px;
+            font-size: 12px;
+        }
+
+        .scientific-display {
+            min-height: 100px;
+            padding: 11px;
+            margin-bottom: 11px;
+        }
+
+        .scientific-expression {
+            font-size: 12px;
+        }
+
+        .scientific-result {
+            font-size: clamp(24px, 7vw, 30px);
+        }
+
+        .scientific-keypad {
+            gap: 5px;
+        }
+
+        .scientific-key {
+            min-height: 42px;
+            padding: 6px 2px;
+            border-radius: 7px;
+            font-size: 13px;
+        }
+
+        .scientific-key.operator {
+            font-size: 15px;
+        }
+
+        .scientific-keypad-note {
+            margin-top: 10px;
+            font-size: 11px;
+        }
+
+        .scientific-status {
+            margin-top: 8px;
+            font-size: 11px;
+        }
+
+        .scientific-info-card h2 {
+            font-size: 18px;
+        }
+
+        .scientific-info-card h3 {
+            margin-top: 17px;
+            font-size: 15px;
+        }
+
+        .scientific-info-card p,
+        .scientific-info-card li {
+            font-size: 13px;
+        }
+
+        .scientific-seo {
+            margin-top: 28px;
+            padding-top: 20px;
+        }
+
+        .scientific-seo h2 {
+            font-size: 20px;
+        }
+
+        .scientific-seo h3 {
+            font-size: 16px;
+        }
+
+        .scientific-seo p {
+            font-size: 13px;
+        }
+    }
+
+    /* Very small phones */
+    @media (max-width: 360px) {
+        .scientific-page {
+            width: calc(100% - 16px);
+        }
+
+        .scientific-card,
+        .scientific-info-card {
+            padding: 10px;
+        }
+
+        .scientific-mode-row {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .scientific-keypad {
+            gap: 4px;
+        }
+
+        .scientific-key {
+            min-height: 38px;
+            padding: 5px 1px;
+            font-size: 12px;
+        }
+
+        .scientific-key.operator {
+            font-size: 14px;
+        }
+
+        .scientific-display {
+            min-height: 90px;
+            padding: 9px;
+        }
+
+        .scientific-result {
+            font-size: 23px;
+        }
+    }
+
+    /* Accessibility: reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        .scientific-key,
+        .scientific-mode-button {
+            transition: none;
+        }
+
+        .scientific-key:active {
+            transform: none;
+        }
+    }
+</style>
+
+    </style>
+</head>
+
+<body>
+    <!-- Shared Header -->
+     <script src="/assets/js/tools-registry.js" defer></script>
+    <div id="site-header"></div>
+
+    <main class="scientific-page">
+        <nav class="scientific-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <a href="/#tools">Tools</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Scientific Calculator</span>
+        </nav>
+
+        <header class="scientific-intro">
+            <h1>Scientific Calculator</h1>
+            <p>
+                Solve advanced mathematical calculations online for free.
+                Calculate trigonometric functions, logarithms, powers, roots,
+                factorials, and everyday arithmetic with one scientific calculator.
+            </p>
+        </header>
+
+        <div class="scientific-layout">
+            <section class="scientific-card" aria-label="Scientific calculator">
+                <div class="scientific-mode-row">
+                    <span class="scientific-mode-label">ANGLE MODE</span>
+
+                    <div class="scientific-mode-controls">
+                        <button
+                            type="button"
+                            class="scientific-mode-button"
+                            id="scientific-deg"
+                            data-mode="DEG"
+                            aria-pressed="true">
+                            DEG
+                        </button>
+
+                        <button
+                            type="button"
+                            class="scientific-mode-button"
+                            id="scientific-rad"
+                            data-mode="RAD"
+                            aria-pressed="false">
+                            RAD
+                        </button>
+                    </div>
+                </div>
+
+                <div
+                    class="scientific-display"
+                    role="group"
+                    aria-label="Calculator display">
+
+                    <div
+                        class="scientific-expression"
+                        id="calculator-expression"
+                        aria-label="Expression"
+                        aria-live="polite">Ready</div>
+
+                    <output
+                        class="scientific-result"
+                        id="calculator-result"
+                        aria-label="Result"
+                        aria-live="polite"
+                        aria-atomic="true">0</output>
+                </div>
+
+                <div class="scientific-keypad" id="calculator-keypad">
+                    <!-- Row 1 -->
+                    <button type="button" class="scientific-key function" data-value="sin(">sin</button>
+                    <button type="button" class="scientific-key function" data-value="cos(">cos</button>
+                    <button type="button" class="scientific-key function" data-value="tan(">tan</button>
+                    <button type="button" class="scientific-key function" data-value="(">(</button>
+                    <button type="button" class="scientific-key function" data-value=")">)</button>
+
+                    <!-- Row 2 -->
+                    <button type="button" class="scientific-key function" data-value="asin(">sin⁻¹</button>
+                    <button type="button" class="scientific-key function" data-value="acos(">cos⁻¹</button>
+                    <button type="button" class="scientific-key function" data-value="atan(">tan⁻¹</button>
+                    <button type="button" class="scientific-key function" data-value="pi">π</button>
+                    <button type="button" class="scientific-key function" data-value="e">e</button>
+
+                    <!-- Row 3 -->
+                    <button type="button" class="scientific-key function" data-value="log(">log</button>
+                    <button type="button" class="scientific-key function" data-value="ln(">ln</button>
+                    <button type="button" class="scientific-key function" data-value="sqrt(">√</button>
+                    <button type="button" class="scientific-key function" data-value="^2">x²</button>
+                    <button type="button" class="scientific-key operator" data-value="^">xʸ</button>
+
+                    <!-- Row 4 -->
+                    <button type="button" class="scientific-key function" data-value="abs(">abs</button>
+                    <button type="button" class="scientific-key function" data-value="!">x!</button>
+                    <button type="button" class="scientific-key function" data-value="exp(">exp</button>
+                    <button type="button" class="scientific-key operator" data-value="%">mod</button>
+                    <button type="button" class="scientific-key danger" data-action="backspace" aria-label="Delete last character">DEL</button>
+
+                    <!-- Row 5 -->
+                    <button type="button" class="scientific-key danger" data-action="clear">AC</button>
+                    <button type="button" class="scientific-key function" data-action="toggle-sign">±</button>
+                    <button type="button" class="scientific-key function" data-value="/">÷</button>
+                    <button type="button" class="scientific-key operator" data-value="*">×</button>
+                    <button type="button" class="scientific-key operator" data-value="-">−</button>
+
+                    <!-- Row 6 -->
+                    <button type="button" class="scientific-key" data-value="7">7</button>
+                    <button type="button" class="scientific-key" data-value="8">8</button>
+                    <button type="button" class="scientific-key" data-value="9">9</button>
+                    <button type="button" class="scientific-key operator" data-value="+">+</button>
+                    <button type="button" class="scientific-key function" data-action="reciprocal">1/x</button>
+
+                    <!-- Row 7 -->
+                    <button type="button" class="scientific-key" data-value="4">4</button>
+                    <button type="button" class="scientific-key" data-value="5">5</button>
+                    <button type="button" class="scientific-key" data-value="6">6</button>
+                    <button type="button" class="scientific-key function" data-value="ans">Ans</button>
+                    <button type="button" class="scientific-key function" data-value=".">.</button>
+
+                    <!-- Row 8 -->
+                    <button type="button" class="scientific-key" data-value="1">1</button>
+                    <button type="button" class="scientific-key" data-value="2">2</button>
+                    <button type="button" class="scientific-key" data-value="3">3</button>
+                    <button type="button" class="scientific-key wide" data-value="0">0</button>
+
+                    <!-- Row 9 -->
+                    <button type="button" class="scientific-key function" data-action="negate-result">± result</button>
+                    <button type="button" class="scientific-key function" data-action="percentage">%</button>
+                    <button type="button" class="scientific-key equals wide" data-action="equals">=</button>
+                </div>
+
+                <p class="scientific-keypad-note">
+                    Keyboard supported: numbers, +, −, *, /, ^, parentheses,
+                    Enter to calculate, Backspace to delete, and Escape to clear.
+                    Trigonometric functions use the selected angle mode.
+                </p>
+
+                <p
+                    class="scientific-status"
+                    id="calculator-status"
+                    role="status"
+                    aria-live="polite"></p>
+            </section>
+
+            <aside class="scientific-info-card">
+                <h2>Scientific Calculator Guide</h2>
+
+                <p>
+                    Use the scientific keypad to enter expressions and evaluate
+                    mathematical functions. You can also type supported expressions
+                    directly using your keyboard.
+                </p>
+
+                <h3>Available functions</h3>
+                <ul>
+                    <li><strong>Trigonometry:</strong> sin, cos, tan</li>
+                    <li><strong>Inverse trigonometry:</strong> asin, acos, atan</li>
+                    <li><strong>Logarithms:</strong> log (base 10) and ln (natural log)</li>
+                    <li><strong>Powers and roots:</strong> x², xʸ, square root</li>
+                    <li><strong>Other functions:</strong> absolute value, factorial, exponential</li>
+                    <li><strong>Constants:</strong> π, e, and Ans (previous answer)</li>
+                    <li><strong>Operators:</strong> addition, subtraction, multiplication, division, and modulo</li>
+                </ul>
+
+                <h3>How to use it</h3>
+                <ul>
+                    <li>Enter a number or select a mathematical function.</li>
+                    <li>Use parentheses to group parts of an expression.</li>
+                    <li>Choose DEG for degrees or RAD for radians.</li>
+                    <li>Press <strong>=</strong> or Enter to calculate the result.</li>
+                    <li>Use AC to clear the expression or DEL to remove the last entry.</li>
+                </ul>
+
+                <h3>Example calculations</h3>
+                <ul>
+                    <li><code>sqrt(144)</code> = 12</li>
+                    <li><code>log(1000)</code> = 3</li>
+                    <li><code>5^3</code> = 125</li>
+                    <li><code>sin(30)</code> = 0.5 in DEG mode</li>
+                    <li><code>5!</code> = 120</li>
+                </ul>
+            </aside>
+        </div>
+
+        <section class="scientific-seo">
+            <h2>Free Online Scientific Calculator</h2>
+
+            <p>
+                The MohakTools scientific calculator is designed for students,
+                teachers, and anyone who needs to solve mathematical expressions
+                online. It supports common arithmetic as well as advanced functions
+                such as trigonometry, logarithms, factorials, powers, and roots.
+                No software installation is required.
+            </p>
+
+            <h3>Degrees and radians</h3>
+
+            <p>
+                Trigonometric calculations depend on the angle unit. Select DEG
+                when working with degrees, such as sin(30°), or RAD when working
+                with radians, such as sin(π/6). The selected mode also applies to
+                inverse trigonometric functions.
+            </p>
+
+            <h3>Logarithms, powers, and factorials</h3>
+
+            <p>
+                Use log for base-10 logarithms and ln for natural logarithms.
+                The power key calculates exponents, while the square-root and
+                factorial keys handle other common scientific operations. Invalid
+                operations, such as division by zero or the logarithm of a
+                non-positive number, are reported rather than displayed as valid
+                numerical answers.
+            </p>
+
+            <h3>Frequently asked questions</h3>
+
+            <h3>Is this scientific calculator free?</h3>
+            <p>
+                Yes. You can use the calculator in your browser without creating
+                an account or installing an application.
+            </p>
+
+            <h3>Does it support trigonometric calculations?</h3>
+            <p>
+                Yes. It supports sine, cosine, tangent, and their inverse functions,
+                with selectable degree and radian modes.
+            </p>
+
+            <h3>Can I use my keyboard?</h3>
+            <p>
+                Yes. Enter numbers and supported operators using your keyboard.
+                Press Enter to calculate, Backspace to delete, and Escape to clear.
+            </p>
+        </section>
+    </main>
+
+    <!-- Shared Footer -->
+    <div id="site-footer"></div>
+
+    <!-- Shared scripts: preserve existing filenames and order -->
+    <script src="/assets/js/theme.js" defer></script>
+    <script src="/assets/js/header.js" defer></script>
+    <script src="/assets/js/footer.js" defer></script>
+
+    <script>
+        /* ========================================
+           MohakTools — Scientific Calculator Logic
+           Self-contained expression parser
+        ======================================== */
+
+        (() => {
+            "use strict";
+
+            const expressionDisplay = document.getElementById("calculator-expression");
+            const resultDisplay = document.getElementById("calculator-result");
+            const keypad = document.getElementById("calculator-keypad");
+            const statusDisplay = document.getElementById("calculator-status");
+            const degreeButton = document.getElementById("scientific-deg");
+            const radianButton = document.getElementById("scientific-rad");
+
+            if (
+                !expressionDisplay ||
+                !resultDisplay ||
+                !keypad ||
+                !statusDisplay ||
+                !degreeButton ||
+                !radianButton
+            ) {
+                return;
+            }
+
+            let expression = "";
+            let lastAnswer = 0;
+            let angleMode = "DEG";
+            let justCalculated = false;
+            let errorState = false;
+
+            const MAX_EXPRESSION_LENGTH = 240;
+            const MAX_FACTORIAL = 170;
+            const MAX_ABS_EXPONENT = 10000;
+
+            function formatNumber(value) {
+                if (!Number.isFinite(value)) {
+                    throw new Error("Result is outside the supported numerical range.");
+                }
+
+                if (Object.is(value, -0) || Math.abs(value) < 1e-14) {
+                    value = 0;
+                }
+
+                return Number(value.toPrecision(12)).toString();
+            }
+
+            function updateDisplay() {
+                expressionDisplay.textContent = expression || "Ready";
+
+                if (errorState) {
+                    return;
+                }
+
+                resultDisplay.textContent = expression ? "…" : "0";
+            }
+
+            function setStatus(message, isError = false) {
+                statusDisplay.textContent = message;
+                statusDisplay.classList.toggle("error", isError);
+            }
+
+            function showError(message) {
+                errorState = true;
+                resultDisplay.textContent = "Error";
+                setStatus(message, true);
+            }
+
+            function clearAll() {
+                expression = "";
+                justCalculated = false;
+                errorState = false;
+                expressionDisplay.textContent = "Ready";
+                resultDisplay.textContent = "0";
+                setStatus("");
+            }
+
+            function inputDigit(digit) {
+                if (!/^\d$/.test(digit)) {
+                    return;
+                }
+
+                if (errorState || justCalculated) {
+                    expression = "";
+                    errorState = false;
+                    justCalculated = false;
+                }
+
+                if (expression.length >= MAX_EXPRESSION_LENGTH) {
+                    setStatus("Expression limit reached.", true);
+                    return;
+                }
+
+                expression += digit;
+                updateDisplay();
+                setStatus("");
+            }
+
+            function inputDecimal() {
+                if (errorState || justCalculated) {
+                    expression = "";
+                    errorState = false;
+                    justCalculated = false;
+                }
+
+                if (expression.length >= MAX_EXPRESSION_LENGTH) {
+                    setStatus("Expression limit reached.", true);
+                    return;
+                }
+
+                const currentNumber = expression.match(/(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i);
+
+                if (currentNumber && currentNumber[0].includes(".")) {
+                    return;
+                }
+
+                if (!expression || /[+\-*/^(,]$/.test(expression)) {
+                    expression += "0.";
+                } else if (/[a-z)]$/i.test(expression) || expression.endsWith("!")) {
+                    expression += "*0.";
+                } else {
+                    expression += ".";
+                }
+
+                updateDisplay();
+                setStatus("");
+            }
+
+            function chooseOperator(operator) {
+                if (!["+", "-", "*", "/", "%", "^"].includes(operator)) {
+                    return;
+                }
+
+                if (errorState) {
+                    expression = "";
+                    errorState = false;
+                }
+
+                if (justCalculated) {
+                    justCalculated = false;
+                }
+
+                if (!expression) {
+                    if (operator === "-") {
+                        expression = "-";
+                        updateDisplay();
+                    }
+                    return;
+                }
+
+                if (/[+\-*/%^]$/.test(expression)) {
+                    if (operator === "-" && !expression.endsWith("-")) {
+                        expression += "-";
+                    } else {
+                        expression = expression.replace(/[+\-*/%^]+$/, operator);
+                    }
+                } else {
+                    expression += operator;
+                }
+
+                if (expression.length > MAX_EXPRESSION_LENGTH) {
+                    expression = expression.slice(0, MAX_EXPRESSION_LENGTH);
+                    setStatus("Expression limit reached.", true);
+                }
+
+                updateDisplay();
+                setStatus("");
+            }
+
+            function backspace() {
+                if (errorState || justCalculated) {
+                    clearAll();
+                    return;
+                }
+
+                if (!expression) {
+                    return;
+                }
+
+                const functionNames = [
+                    "asin(", "acos(", "atan(",
+                    "sqrt(", "sin(", "cos(", "tan(",
+                    "log(", "abs(", "exp(", "ln("
+                ];
+
+                const matchedFunction = functionNames.find(name =>
+                    expression.endsWith(name)
+                );
+
+                if (matchedFunction) {
+                    expression = expression.slice(0, -matchedFunction.length);
+                } else if (expression.endsWith("pi")) {
+                    expression = expression.slice(0, -2);
+                } else if (expression.endsWith("ans")) {
+                    expression = expression.slice(0, -3);
+                } else {
+                    expression = expression.slice(0, -1);
+                }
+
+                updateDisplay();
+                setStatus("");
+            }
+
+            function toggleSign() {
+                if (!expression || errorState) {
+                    expression = "-";
+                    errorState = false;
+                    justCalculated = false;
+                    updateDisplay();
+                    return;
+                }
+
+                if (justCalculated) {
+                    expression = "-(" + expression + ")";
+                    justCalculated = false;
+                    updateDisplay();
+                    return;
+                }
+
+                expression = "-(" + expression + ")";
+                updateDisplay();
+                setStatus("");
+            }
+
+            function negateResult() {
+                if (errorState || !expression) {
+                    return;
+                }
+
+                expression = "-(" + expression + ")";
+                justCalculated = false;
+                updateDisplay();
+                setStatus("");
+            }
+
+            function percentage() {
+    const current = expression.trim();
+
+    if (!current) {
+        showError("Enter a number before calculating a percentage.");
+        return;
+    }
+
+    const numberPattern = /(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?/gi;
+    const matches = [...current.matchAll(numberPattern)];
+    const lastNumber = matches[matches.length - 1];
+
+    if (!lastNumber) {
+        showError("No number found to convert to a percentage.");
+        return;
+    }
+
+    const start = lastNumber.index;
+    const end = start + lastNumber[0].length;
+
+    expression =
+        current.slice(0, start) +
+        "(" + lastNumber[0] + "/100)" +
+        current.slice(end);
+
+    justCalculated = false;
+    updateDisplay();
+}
+
+            function reciprocal() {
+                if (!expression || errorState) {
+                    expression = "1/(";
+                } else {
+                    expression = "1/(" + expression + ")";
+                }
+
+                errorState = false;
+                justCalculated = false;
+                updateDisplay();
+                setStatus("");
+            }
+
+            function setAngleMode(mode) {
+                if (mode !== "DEG" && mode !== "RAD") {
+                    return;
+                }
+
+                angleMode = mode;
+                degreeButton.setAttribute("aria-pressed", String(mode === "DEG"));
+                radianButton.setAttribute("aria-pressed", String(mode === "RAD"));
+
+                setStatus("Angle mode: " + mode + ".");
+            }
+
+            function factorial(value) {
+                if (value < 0 || !Number.isInteger(value)) {
+                    throw new Error("Factorial requires a non-negative integer.");
+                }
+
+                if (value > MAX_FACTORIAL) {
+                    throw new Error("Factorial result exceeds the supported range.");
+                }
+
+                let result = 1;
+
+                for (let i = 2; i <= value; i++) {
+                    result *= i;
+                }
+
+                return result;
+            }
+
+            function tokenize(source) {
+                const tokens = [];
+                let index = 0;
+
+                while (index < source.length) {
+                    const remaining = source.slice(index);
+
+                    if (/^\s/.test(remaining)) {
+                        index++;
+                        continue;
+                    }
+
+                    const numberMatch = remaining.match(
+                        /^(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?/i
+                    );
+
+                    if (numberMatch) {
+                        const value = Number(numberMatch[0]);
+
+                        if (!Number.isFinite(value)) {
+                            throw new Error("Invalid number.");
+                        }
+
+                        tokens.push({ type: "number", value });
+                        index += numberMatch[0].length;
+                        continue;
+                    }
+
+                    const identifierMatch = remaining.match(/^[a-z]+/i);
+
+                    if (identifierMatch) {
+                        const name = identifierMatch[0].toLowerCase();
+                        const supportedNames = [
+                            "sin", "cos", "tan",
+                            "asin", "acos", "atan",
+                            "sqrt", "log", "ln", "abs", "exp",
+                            "pi", "e", "ans"
+                        ];
+
+                        if (!supportedNames.includes(name)) {
+                            throw new Error("Unknown function or constant: " + name);
+                        }
+
+                        tokens.push({
+                            type: name === "pi" || name === "e" || name === "ans"
+                                ? "constant"
+                                : "function",
+                            value: name
+                        });
+
+                        index += identifierMatch[0].length;
+                        continue;
+                    }
+
+                    const character = source[index];
+
+                    if ("+-*/%^!".includes(character)) {
+                        tokens.push({ type: "operator", value: character });
+                        index++;
+                        continue;
+                    }
+
+                    if (character === "(" || character === ")") {
+                        tokens.push({ type: "paren", value: character });
+                        index++;
+                        continue;
+                    }
+
+                    throw new Error("Unsupported character: " + character);
+                }
+
+                /*
+                 * Support implicit multiplication:
+                 * 2pi, 2(3+4), (2+3)(4+5), and 2sin(30).
+                 */
+                const expandedTokens = [];
+
+                function endsPrimary(token) {
+                    return token && (
+                        token.type === "number" ||
+                        token.type === "constant" ||
+                        token.value === ")" ||
+                        token.value === "!"
+                    );
+                }
+
+                function startsPrimary(token) {
+                    return token && (
+                        token.type === "number" ||
+                        token.type === "constant" ||
+                        token.type === "function" ||
+                        token.value === "("
+                    );
+                }
+
+                for (let i = 0; i < tokens.length; i++) {
+                    const current = tokens[i];
+                    const previous = expandedTokens[expandedTokens.length - 1];
+
+                    if (
+                        endsPrimary(previous) &&
+                        startsPrimary(current)
+                    ) {
+                        expandedTokens.push({
+                            type: "operator",
+                            value: "*"
+                        });
+                    }
+
+                    expandedTokens.push(current);
+                }
+
+                if (expandedTokens.length > 500) {
+                    throw new Error("Too many expression elements.");
+                }
+
+                return expandedTokens;
+            }
+
+            function evaluateExpression(source) {
+                if (!source.trim()) {
+                    throw new Error("Enter an expression first.");
+                }
+
+                const tokens = tokenize(source);
+                let position = 0;
+
+                function peek() {
+                    return tokens[position] || null;
+                }
+
+                function consume() {
+                    return tokens[position++] || null;
+                }
+
+                function match(value) {
+                    if (peek() && peek().value === value) {
+                        consume();
+                        return true;
+                    }
+
+                    return false;
+                }
+
+                function requireFinite(value) {
+                    if (!Number.isFinite(value)) {
+                        throw new Error("Invalid calculation or result out of range.");
+                    }
+
+                    return value;
+                }
+
+                function parseAdditive() {
+                    let value = parseMultiplicative();
+
+                    while (peek() && ["+", "-"].includes(peek().value)) {
+                        const operator = consume().value;
+                        const right = parseMultiplicative();
+
+                        value = operator === "+"
+                            ? value + right
+                            : value - right;
+
+                        requireFinite(value);
+                    }
+
+                    return value;
+                }
+
+                function parseMultiplicative() {
+                    let value = parseUnary();
+
+                    while (
+                        peek() &&
+                        ["*", "/", "%"].includes(peek().value)
+                    ) {
+                        const operator = consume().value;
+                        const right = parseUnary();
+
+                        if ((operator === "/" || operator === "%") && right === 0) {
+                            throw new Error("Division by zero is not allowed.");
+                        }
+
+                        if (operator === "*") {
+                            value *= right;
+                        } else if (operator === "/") {
+                            value /= right;
+                        } else {
+                            value %= right;
+                        }
+
+                        requireFinite(value);
+                    }
+
+                    return value;
+                }
+
+                function parseUnary() {
+                    if (match("+")) {
+                        return parseUnary();
+                    }
+
+                    if (match("-")) {
+                        return -parseUnary();
+                    }
+
+                    return parsePower();
+                }
+
+                function parsePower() {
+                    let value = parsePostfix();
+
+                    if (match("^")) {
+                        const exponent = parseUnary();
+
+                        if (Math.abs(exponent) > MAX_ABS_EXPONENT) {
+                            throw new Error("Exponent is too large.");
+                        }
+
+                        if (value === 0 && exponent < 0) {
+                            throw new Error("Zero cannot have a negative exponent.");
+                        }
+
+                        value = Math.pow(value, exponent);
+                        requireFinite(value);
+                    }
+
+                    return value;
+                }
+
+                function parsePostfix() {
+                    let value = parsePrimary();
+
+                    while (peek() && peek().value === "!") {
+                        const operator = consume().value;
+
+                        if (operator === "!") {
+                            value = factorial(value);
+                        } else {
+                            value /= 100;
+                        }
+
+                        requireFinite(value);
+                    }
+
+                    return value;
+                }
+
+                function parsePrimary() {
+                    const token = consume();
+
+                    if (!token) {
+                        throw new Error("Incomplete expression.");
+                    }
+
+                    if (token.type === "number") {
+                        return token.value;
+                    }
+
+                    if (token.type === "constant") {
+                        if (token.value === "pi") {
+                            return Math.PI;
+                        }
+
+                        if (token.value === "e") {
+                            return Math.E;
+                        }
+
+                        return lastAnswer;
+                    }
+
+                    if (token.type === "paren" && token.value === "(") {
+                        const value = parseAdditive();
+
+                        if (!match(")")) {
+                            throw new Error("Missing closing parenthesis.");
+                        }
+
+                        return value;
+                    }
+
+                    if (token.type === "function") {
+                        if (!match("(")) {
+                            throw new Error("Add an opening parenthesis after " + token.value + ".");
+                        }
+
+                        const argument = parseAdditive();
+
+                        if (!match(")")) {
+                            throw new Error("Missing closing parenthesis.");
+                        }
+
+                        let value;
+                        const angle = angleMode === "DEG"
+                            ? Math.PI / 180
+                            : 1;
+
+                        switch (token.value) {
+                            case "sin":
+                                value = Math.sin(argument * angle);
+                                break;
+
+                            case "cos":
+                                value = Math.cos(argument * angle);
+                                break;
+
+                            case "tan": {
+                                const radians = argument * angle;
+
+                                if (Math.abs(Math.cos(radians)) < 1e-14) {
+                                    throw new Error("Tangent is undefined at this angle.");
+                                }
+
+                                value = Math.tan(radians);
+                                break;
+                            }
+
+                            case "asin":
+                                if (argument < -1 || argument > 1) {
+                                    throw new Error("asin input must be between -1 and 1.");
+                                }
+
+                                value = Math.asin(argument);
+
+                                if (angleMode === "DEG") {
+                                    value *= 180 / Math.PI;
+                                }
+
+                                break;
+
+                            case "acos":
+                                if (argument < -1 || argument > 1) {
+                                    throw new Error("acos input must be between -1 and 1.");
+                                }
+
+                                value = Math.acos(argument);
+
+                                if (angleMode === "DEG") {
+                                    value *= 180 / Math.PI;
+                                }
+
+                                break;
+
+                            case "atan":
+                                value = Math.atan(argument);
+
+                                if (angleMode === "DEG") {
+                                    value *= 180 / Math.PI;
+                                }
+
+                                break;
+
+                            case "sqrt":
+                                if (argument < 0) {
+                                    throw new Error("Square root requires a non-negative number.");
+                                }
+
+                                value = Math.sqrt(argument);
+                                break;
+
+                            case "log":
+                                if (argument <= 0) {
+                                    throw new Error("log requires a positive number.");
+                                }
+
+                                value = Math.log10(argument);
+                                break;
+
+                            case "ln":
+                                if (argument <= 0) {
+                                    throw new Error("ln requires a positive number.");
+                                }
+
+                                value = Math.log(argument);
+                                break;
+
+                            case "abs":
+                                value = Math.abs(argument);
+                                break;
+
+                            case "exp":
+                                value = Math.exp(argument);
+                                break;
+
+                            default:
+                                throw new Error("Unsupported function.");
+                        }
+
+                        return requireFinite(value);
+                    }
+
+                    throw new Error("Unexpected token in expression.");
+                }
+
+                const result = parseAdditive();
+
+                if (position < tokens.length) {
+                    const remaining = peek();
+
+                    if (remaining && remaining.value === ")") {
+                        throw new Error("Unexpected closing parenthesis.");
+                    }
+
+                    throw new Error("Check the expression and operators.");
+                }
+
+                return requireFinite(result);
+            }
+
+            function calculate() {
+                if (!expression.trim()) {
+                    setStatus("Enter an expression first.");
+                    return;
+                }
+
+                try {
+                    const originalExpression = expression;
+                    const result = evaluateExpression(originalExpression);
+                    const formattedResult = formatNumber(result);
+
+                    lastAnswer = result;
+                    expressionDisplay.textContent = originalExpression + " =";
+                    resultDisplay.textContent = formattedResult;
+                    expression = formattedResult;
+                    justCalculated = true;
+                    errorState = false;
+
+                    setStatus("Calculation complete.");
+                } catch (error) {
+                    showError(
+                        error instanceof Error
+                            ? error.message
+                            : "Unable to calculate this expression."
+                    );
+                }
+            }
+
+            function equals() {
+                calculate();
+            }
+
+            function insertValue(value) {
+                if (typeof value !== "string" || !value) {
+                    return;
+                }
+
+                if (errorState || justCalculated) {
+                    if (
+                        /^[0-9.]$/.test(value) ||
+                        value === "(" ||
+                        /^[a-z]+\(?$/.test(value) ||
+                        value === "pi" ||
+                        value === "e" ||
+                        value === "ans"
+                    ) {
+                        expression = "";
+                    }
+
+                    errorState = false;
+                    justCalculated = false;
+                }
+
+                if (expression.length + value.length > MAX_EXPRESSION_LENGTH) {
+                    setStatus("Expression limit reached.", true);
+                    return;
+                }
+
+                if (value === "^2") {
+                    if (!expression) {
+                        setStatus("Enter a value before squaring it.");
+                        return;
+                    }
+
+                    expression += "^2";
+                } else if (value === "!") {
+                    if (!expression) {
+                        setStatus("Enter a value before using factorial.");
+                        return;
+                    }
+
+                    expression += "!";
+                } else if (value === ".") {
+                    inputDecimal();
+                    return;
+                } else if (/^\d$/.test(value)) {
+                    inputDigit(value);
+                    return;
+                } else if (["+", "-", "*", "/", "%", "^"].includes(value)) {
+                    chooseOperator(value);
+                    return;
+                } else {
+                    expression += value;
+                }
+
+                updateDisplay();
+                setStatus("");
+            }
+
+            keypad.addEventListener("click", event => {
+                const button = event.target.closest("button");
+
+                if (!button || !keypad.contains(button)) {
+                    return;
+                }
+
+                if (button.dataset.mode) {
+                    setAngleMode(button.dataset.mode);
+                    return;
+                }
+
+                const action = button.dataset.action;
+                const value = button.dataset.value;
+
+                if (action) {
+                    switch (action) {
+                        case "clear":
+                            clearAll();
+                            break;
+
+                        case "backspace":
+                            backspace();
+                            break;
+
+                        case "toggle-sign":
+    toggleSign();
+    break;
+
+case "negate-result":
+    negateResult();
+    break;
+
+                        case "percentage":
+                            percentage();
+                            break;
+
+                        case "reciprocal":
+                            reciprocal();
+                            break;
+
+                        case "equals":
+                            equals();
+                            break;
+                    }
+
+                    return;
+                }
+
+                if (value !== undefined) {
+                    insertValue(value);
+                }
+            });
+
+            degreeButton.addEventListener("click", () => setAngleMode("DEG"));
+            radianButton.addEventListener("click", () => setAngleMode("RAD"));
+
+            document.addEventListener("keydown", event => {
+                if (
+                    event.ctrlKey ||
+                    event.metaKey ||
+                    event.altKey
+                ) {
+                    return;
+                }
+
+                const target = event.target;
+
+                if (
+                    target instanceof HTMLElement &&
+                    (
+                        target.isContentEditable ||
+                        ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName)
+                    )
+                ) {
+                    return;
+                }
+
+                const key = event.key;
+
+                if (/^\d$/.test(key)) {
+                    event.preventDefault();
+                    inputDigit(key);
+                    return;
+                }
+
+                if (["+", "-", "*", "/", "%", "^"].includes(key)) {
+                    event.preventDefault();
+                    chooseOperator(key);
+                    return;
+                }
+
+                if (key === ".") {
+                    event.preventDefault();
+                    inputDecimal();
+                    return;
+                }
+
+                if (key === "(" || key === ")") {
+                    event.preventDefault();
+                    insertValue(key);
+                    return;
+                }
+
+                if (key === "!") {
+                    event.preventDefault();
+                    insertValue("!");
+                    return;
+                }
+
+                if (key === "Enter" || key === "=") {
+                    event.preventDefault();
+                    equals();
+                    return;
+                }
+
+                if (key === "Backspace") {
+                    event.preventDefault();
+                    backspace();
+                    return;
+                }
+
+                if (key === "Escape") {
+                    event.preventDefault();
+                    clearAll();
+                }
+            });
+
+            /*
+             * Keep these function names available within this calculator
+             * module for clear, explicit action handling.
+             */
+            void clearAll;
+            void inputDigit;
+            void inputDecimal;
+            void chooseOperator;
+            void calculate;
+            void equals;
+            void showError;
+            void backspace;
+            void toggleSign;
+            void percentage;
+            void reciprocal;
+
+            clearAll();
+        })();
+    </script>
+</body>
+</html>

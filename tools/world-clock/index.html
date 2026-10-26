@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>World Clock – Current Time Around the World | MohakTools</title>
+    <meta name="description" content="Check the current local time in cities around the world, including date, time zone, and UTC offset.">
+    <meta name="keywords" content="world clock, current time around the world, city time zones, international time">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="MohakTools">
+    <meta name="theme-color" content="#2563eb">
+
+    <link rel="canonical" href="https://mohaktools.com/tools/world-clock/">
+    <link rel="icon" href="/favicon.webp" type="image/webp">
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/themes.css">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MohakTools">
+    <meta property="og:title" content="World Clock - MohakTools">
+    <meta property="og:description" content="Check the current local time in cities around the world, including date, time zone, and UTC offset.">
+    <meta property="og:url" content="https://mohaktools.com/tools/world-clock/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="World Clock - MohakTools">
+    <meta name="twitter:description" content="Check the current local time in cities around the world, including date, time zone, and UTC offset.">
+
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "World Clock",
+    "url": "https://mohaktools.com/tools/world-clock/",
+    "description": "Check the current local time in cities around the world, including date, time zone, and UTC offset.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "isAccessibleForFree": true,
+    "publisher": {
+        "@type": "Organization",
+        "name": "MohakTools",
+        "url": "https://mohaktools.com/"
+    }
+}
+    </script>
+
+    <style>
+
+:root { color-scheme: light dark; }
+.time-tool-page { width:min(1000px,calc(100% - 32px)); margin:0 auto; padding:24px 0 56px; color:var(--color-text); box-sizing:border-box; }
+.time-tool-page *, .time-tool-page *::before, .time-tool-page *::after { box-sizing:border-box; }
+.time-breadcrumb { display:flex; flex-wrap:wrap; align-items:center; gap:7px; margin:0 0 20px; color:var(--color-text-secondary); font-size:13px; line-height:1.6; }
+.time-breadcrumb a { color:var(--color-primary); text-decoration:none; }
+.time-breadcrumb a:hover { color:var(--color-primary-hover); text-decoration:underline; text-underline-offset:3px; }
+.time-intro { margin-bottom:24px; }
+.time-intro h1 { margin:0 0 10px; color:var(--color-text); font-size:clamp(27px,4vw,36px); line-height:1.25; letter-spacing:-.6px; overflow-wrap:anywhere; }
+.time-intro p { max-width:760px; margin:0; color:var(--color-text-secondary); font-size:15px; line-height:1.8; }
+.time-tool-layout { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(220px,.75fr); align-items:start; gap:18px; }
+.time-tool-main, .time-card, .time-info { min-width:0; color:var(--color-text); background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius-lg,16px); box-shadow:0 6px 22px var(--color-card-shadow); }
+.time-tool-main { padding:18px; }
+.time-tool-main > h2 { margin:0 0 7px; font-size:20px; }
+.time-tool-main > p { color:var(--color-text-secondary); font-size:13px; line-height:1.7; }
+.time-tool-stack { display:grid; gap:16px; }
+.time-card { padding:20px; box-shadow:none; }
+.time-card h2, .time-info h2 { margin:0 0 14px; color:var(--color-text); font-size:19px; line-height:1.4; }
+.time-info { padding:18px; }
+.time-info h3 { margin:20px 0 8px; color:var(--color-text); font-size:15px; }
+.time-info p, .time-info li { color:var(--color-text-secondary); font-size:13px; line-height:1.8; }
+.time-info p { margin:0 0 12px; }
+.time-info ul { padding-left:19px; }
+.tool-form { display:grid; gap:14px; }
+.field { display:flex; min-width:0; flex-direction:column; gap:7px; }
+.field label { color:var(--color-text); font-size:13px; font-weight:600; }
+.field input, .field select { width:100%; min-height:43px; padding:10px 12px; color:var(--color-text); background:var(--color-input-bg); border:1px solid var(--color-input-border); border-radius:var(--radius-sm,7px); font:inherit; font-size:14px; }
+.field input:focus-visible, .field select:focus-visible { outline:2px solid var(--color-primary); outline-offset:2px; }
+.tool-button { display:inline-flex; min-height:42px; align-items:center; justify-content:center; padding:10px 16px; color:var(--color-primary-text); background:var(--color-primary); border:1px solid var(--color-primary); border-radius:var(--radius-sm,7px); font:inherit; font-size:13px; font-weight:650; text-align:center; cursor:pointer; touch-action:manipulation; transition:background-color 160ms ease,border-color 160ms ease,transform 120ms ease; }
+.tool-button:hover { background:var(--color-primary-hover); border-color:var(--color-primary-hover); }
+.tool-button:active { transform:scale(.98); }
+.tool-button:focus-visible { outline:2px solid var(--color-primary); outline-offset:3px; }
+.tool-button:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+.tool-button.secondary { color:var(--color-text); background:var(--color-surface-secondary); border-color:var(--color-border); }
+.tool-button.secondary:hover { border-color:var(--color-primary); }
+.tool-button.small-button { min-height:34px; padding:7px 11px; }
+.button-row { display:flex; flex-wrap:wrap; gap:9px; margin-top:14px; }
+.large-time { margin:12px 0 18px; color:var(--color-primary); font-size:clamp(32px,7vw,54px); font-weight:750; letter-spacing:-1.5px; line-height:1.2; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+.status-box { margin:16px 0 0; padding:12px 14px; color:var(--color-text-secondary); background:var(--color-surface-secondary); border:1px solid var(--color-border); border-radius:var(--radius-sm,8px); font-size:13px; line-height:1.7; overflow-wrap:anywhere; }
+.status-box.alert { border-color:var(--color-danger); color:var(--color-text); }
+.muted { color:var(--color-text-secondary); font-size:13px; line-height:1.7; }
+.duration-fields { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.section-row { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px; }
+.section-row h2 { margin-bottom:0; }
+.lap-list { display:grid; gap:8px; padding-left:28px; }
+.lap-list li { padding:10px 12px; border-bottom:1px solid var(--color-border); color:var(--color-text); }
+.lap-list li:not(.empty-laps) { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px; }
+.lap-list strong { font-variant-numeric:tabular-nums; }
+.world-clock-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.world-clock-card { min-width:0; padding:18px; color:var(--color-text); background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius-lg,16px); box-shadow:0 6px 22px var(--color-card-shadow); }
+.world-clock-card h2 { margin:0 0 4px; font-size:18px; }
+.world-clock-card .large-time { margin:14px 0 8px; font-size:clamp(28px,5vw,40px); }
+.world-date { color:var(--color-text); font-size:13px; line-height:1.6; }
+.world-clock-card .tool-button { margin-top:8px; }
+.digital-clock-card { text-align:center; padding:clamp(22px,5vw,48px); }
+.digital-display { margin:18px 0 4px; color:var(--color-primary); font-size:clamp(42px,10vw,90px); font-weight:800; letter-spacing:-2px; line-height:1.1; font-variant-numeric:tabular-nums; }
+.digital-period { min-height:20px; margin:8px 0; color:var(--color-text-secondary); font-size:14px; font-weight:650; letter-spacing:2px; }
+.digital-date { margin:12px 0 28px; color:var(--color-text); font-size:clamp(15px,3vw,20px); }
+.clock-format { max-width:260px; margin:0 auto 20px; text-align:left; }
+.mode-tabs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; margin-bottom:22px; }
+.mode-button { min-height:40px; padding:8px 10px; color:var(--color-text); background:var(--color-surface-secondary); border:1px solid var(--color-border); border-radius:var(--radius-sm,7px); font:inherit; font-size:12px; font-weight:650; cursor:pointer; }
+.mode-button.active { color:var(--color-primary-text); background:var(--color-primary); border-color:var(--color-primary); }
+.pomodoro-card { text-align:center; }
+.pomodoro-card .large-time { font-size:clamp(50px,9vw,76px); }
+.session-count { margin:18px 0 0; color:var(--color-text-secondary); font-size:14px; }
+.session-count strong { color:var(--color-text); }
+.calendar-toolbar { display:grid; grid-template-columns:44px minmax(0,1fr) 44px; align-items:center; gap:12px; }
+.calendar-toolbar h2 { margin:0; text-align:center; }
+.calendar-toolbar .tool-button { min-width:44px; padding:8px; font-size:23px; }
+.calendar-actions { display:flex; flex-wrap:wrap; align-items:end; gap:12px; margin:18px 0; }
+.calendar-jump { width:min(230px,100%); }
+.calendar-grid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:5px; }
+.calendar-weekday { padding:9px 0; color:var(--color-text-secondary); text-align:center; font-size:12px; font-weight:700; }
+.calendar-day { min-width:0; min-height:44px; padding:6px 2px; color:var(--color-text); background:var(--color-surface-secondary); border:1px solid transparent; border-radius:7px; font:inherit; font-size:13px; cursor:pointer; }
+.calendar-day:hover { border-color:var(--color-primary); }
+.calendar-day.outside-month { opacity:.42; }
+.calendar-day.is-today { border-color:var(--color-primary); font-weight:800; }
+.calendar-day.is-selected { color:var(--color-primary-text); background:var(--color-primary); border-color:var(--color-primary); }
+.time-seo { margin-top:36px; padding-top:24px; border-top:1px solid var(--color-border); }
+.time-seo h2 { margin:0 0 12px; color:var(--color-text); font-size:22px; }
+.time-seo h3 { margin:22px 0 8px; color:var(--color-text); font-size:17px; }
+.time-seo p { max-width:850px; color:var(--color-text-secondary); font-size:14px; line-height:1.85; }
+@media(max-width:800px) { .time-tool-page { width:min(640px,calc(100% - 28px)); padding-top:22px; padding-bottom:44px; } .time-tool-layout { grid-template-columns:minmax(0,1fr); gap:16px; } .time-tool-main,.time-info { padding:16px; } .time-intro { margin-bottom:20px; } }
+@media(max-width:520px) { .time-tool-page { width:calc(100% - 22px); padding-top:18px; padding-bottom:36px; } .time-breadcrumb { margin-bottom:16px; font-size:12px; } .time-intro h1 { font-size:clamp(25px,7vw,31px); letter-spacing:-.4px; } .time-intro p { font-size:14px; line-height:1.7; } .time-tool-main,.time-info,.time-card { padding:13px; border-radius:12px; } .time-tool-layout { gap:14px; } .duration-fields { gap:8px; } .field input,.field select { padding:9px 8px; } .world-clock-grid { grid-template-columns:minmax(0,1fr); } .world-clock-card { padding:15px; } .calendar-grid { gap:3px; } .calendar-day { min-height:38px; font-size:12px; } .calendar-weekday { font-size:11px; } .mode-tabs { gap:4px; } .mode-button { padding:8px 4px; font-size:11px; } }
+@media(max-width:360px) { .time-tool-page { width:calc(100% - 16px); } .duration-fields { grid-template-columns:minmax(0,1fr); } .large-time { font-size:30px; } .calendar-toolbar { grid-template-columns:38px minmax(0,1fr) 38px; gap:5px; } .calendar-day { min-height:34px; } }
+@media(prefers-reduced-motion:reduce) { .tool-button { transition:none; } .tool-button:active { transform:none; } }
+
+    </style>
+</head>
+<body>
+    <script src="/assets/js/tools-registry.js" defer></script>
+    <div id="site-header"></div>
+
+    <main class="time-tool-page">
+        <nav class="time-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a><span aria-hidden="true">/</span>
+            <a href="/tools/">Tools</a><span aria-hidden="true">/</span>
+            <span aria-current="page">World Clock</span>
+        </nav>
+
+        <header class="time-intro">
+            <h1>World Clock</h1>
+            <p>Compare local times across selected cities. The clocks update automatically using your browser’s time-zone database.</p>
+        </header>
+
+        <div class="time-tool-layout">
+            <section class="time-tool-main" aria-labelledby="time-tool-heading">
+                <h2 id="time-tool-heading">World Clock Tool</h2>
+                <p>Use the controls below. This tool runs directly in your browser.</p>
+                <div class="time-tool-stack">
+                    <section class="time-card">
+                      <h2>Add a City</h2>
+                      <form id="world-clock-form" class="tool-form">
+                        <div class="field"><label for="world-city">City or time zone</label><select id="world-city">
+                          <option value="UTC">UTC</option><option value="Asia/Kolkata" selected>New Delhi (India)</option><option value="Asia/Tokyo">Tokyo (Japan)</option><option value="Asia/Singapore">Singapore</option><option value="Asia/Dubai">Dubai (UAE)</option><option value="Europe/London">London (United Kingdom)</option><option value="Europe/Paris">Paris (France)</option><option value="Europe/Berlin">Berlin (Germany)</option><option value="America/New_York">New York (USA)</option><option value="America/Los_Angeles">Los Angeles (USA)</option><option value="America/Chicago">Chicago (USA)</option><option value="Australia/Sydney">Sydney (Australia)</option><option value="Pacific/Auckland">Auckland (New Zealand)</option><option value="Africa/Johannesburg">Johannesburg (South Africa)</option><option value="America/Sao_Paulo">São Paulo (Brazil)</option>
+                        </select></div><button class="tool-button" type="submit">Add Clock</button>
+                      </form>
+                    </section>
+                    <section id="world-clock-list" class="world-clock-grid" aria-live="polite"></section>
+                </div>
+            </section>
+
+            <aside class="time-info" aria-labelledby="time-info-heading">
+                <h2 id="time-info-heading">About World Time Zones</h2>
+                <p>Each city clock uses an IANA time-zone identifier supported by your browser. Local time and daylight-saving changes are calculated by the browser.</p>
+                <h3>Helpful tips</h3>
+                <ul>
+            <li>Add clocks from the city selector.</li>
+            <li>Remove clocks you no longer need.</li>
+            <li>Time-zone offsets may change during daylight-saving transitions.</li>
+                </ul>
+                <h3>Frequently Asked Question</h3>
+                <h3>Why can two cities have different dates?</h3><p>Cities in different time zones can be on different calendar dates at the same moment.</p>
+            </aside>
+        </div>
+
+        <section class="time-seo" aria-labelledby="time-seo-heading">
+            <h2 id="time-seo-heading">World Clock Online</h2>
+            <p>Check the current local time in cities around the world, including date, time zone, and UTC offset. MohakTools provides a simple, responsive interface that works on desktop and mobile browsers. The page uses your browser's built-in time and date features; no account is required.</p>
+            <h3>How to use this tool</h3>
+            <p>Open the tool, choose the available settings, and use the on-screen controls to start or update it. Results and time displays update in the page. For time-sensitive tasks, keep the page open and check your device's clock and browser settings.</p>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="/assets/js/theme.js" defer></script>
+    <script src="/assets/js/header.js" defer></script>
+    <script src="/assets/js/footer.js" defer></script>
+    <script>
+    /* ========================================
+       MohakTools — World Clock Logic
+       File: /tools/world-clock/index.html
+       Page-specific functionality only
+    ======================================== */
+    (() => {
+        "use strict";
+        const worldSelect=document.getElementById("world-city"), worldList=document.getElementById("world-clock-list");
+        const worldNames={"UTC":"Coordinated Universal Time","Asia/Kolkata":"New Delhi","Asia/Tokyo":"Tokyo","Asia/Singapore":"Singapore","Asia/Dubai":"Dubai","Europe/London":"London","Europe/Paris":"Paris","Europe/Berlin":"Berlin","America/New_York":"New York","America/Los_Angeles":"Los Angeles","America/Chicago":"Chicago","Australia/Sydney":"Sydney","Pacific/Auckland":"Auckland","Africa/Johannesburg":"Johannesburg","America/Sao_Paulo":"São Paulo"};
+        let worldZones=["Asia/Kolkata","Europe/London","America/New_York","Asia/Tokyo"];
+        function renderWorldClocks(){const now=new Date();worldList.replaceChildren();worldZones.forEach(zone=>{const card=document.createElement("article");card.className="world-clock-card";const city=document.createElement("h2");city.textContent=worldNames[zone]||zone;const zoneName=document.createElement("p");zoneName.className="muted";zoneName.textContent=zone;const time=document.createElement("p");time.className="large-time";time.textContent=new Intl.DateTimeFormat(undefined,{timeZone:zone,hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(now);const date=document.createElement("p");date.className="world-date";date.textContent=new Intl.DateTimeFormat(undefined,{timeZone:zone,weekday:"long",year:"numeric",month:"long",day:"numeric"}).format(now);const offset=document.createElement("p");offset.className="muted";const parts=new Intl.DateTimeFormat("en-US",{timeZone:zone,timeZoneName:"shortOffset"}).formatToParts(now);offset.textContent=(parts.find(p=>p.type==="timeZoneName")||{}).value||"Time zone offset unavailable";const remove=document.createElement("button");remove.type="button";remove.className="tool-button secondary small-button";remove.textContent="Remove";remove.setAttribute("aria-label",`Remove ${city.textContent} clock`);remove.addEventListener("click",()=>{worldZones=worldZones.filter(z=>z!==zone);renderWorldClocks();});card.append(city,zoneName,time,date,offset,remove);worldList.append(card);});}
+        document.getElementById("world-clock-form").addEventListener("submit",event=>{event.preventDefault();const zone=worldSelect.value;try{new Intl.DateTimeFormat("en",{timeZone:zone});if(!worldZones.includes(zone))worldZones.push(zone);renderWorldClocks();}catch(error){alert("That time zone is not supported by this browser.");}});
+        renderWorldClocks();setInterval(renderWorldClocks,1000);
+    })();
+    </script>
+</body>
+</html>

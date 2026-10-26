@@ -1,0 +1,916 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO Metadata -->
+  <title>Weight Converter - Grams, Kilograms, Pounds & More | MohakTools</title>
+  <meta
+    name="description"
+    content="Convert weight and mass units instantly with the free MohakTools Weight Converter. Convert milligrams, grams, kilograms, metric tonnes, ounces, pounds and stones online."
+  >
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="MohakTools">
+  <meta name="theme-color" content="#4f46e5">
+
+  <!-- Canonical URL -->
+  <link
+    rel="canonical"
+    href="https://mohaktools.com/tools/weight-converter/"
+  >
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="/favicon.webp">
+  <link rel="apple-touch-icon" href="/favicon.webp">
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:type" content="website">
+  <meta
+    property="og:title"
+    content="Weight Converter - Grams, Kilograms, Pounds & More | MohakTools"
+  >
+  <meta
+    property="og:description"
+    content="Convert grams, kilograms, pounds, ounces and other weight units with the free MohakTools Weight Converter."
+  >
+  <meta
+    property="og:url"
+    content="https://mohaktools.com/tools/weight-converter/"
+  >
+  <meta property="og:site_name" content="MohakTools">
+
+  <!-- Twitter Metadata -->
+  <meta name="twitter:card" content="summary">
+  <meta
+    name="twitter:title"
+    content="Weight Converter | MohakTools"
+  >
+  <meta
+    name="twitter:description"
+    content="Convert weight and mass measurements online for free."
+  >
+
+  <!-- Shared Theme -->
+  <link rel="stylesheet" href="/assets/css/themes.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "MohakTools Weight Converter",
+    "url": "https://mohaktools.com/tools/weight-converter/",
+    "description": "A free online weight and mass conversion calculator.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    /* =========================================
+       MohakTools — Weight Converter
+       ========================================= */
+
+    .wc-page {
+      width: min(100% - 32px, 960px);
+      margin: 0 auto;
+      padding: 36px 0 64px;
+      color: var(--text-color, inherit);
+    }
+
+    .wc-hero {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .wc-badge {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 12px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .wc-hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1.2;
+      letter-spacing: -.03em;
+    }
+
+    .wc-hero p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--muted-text-color, #666);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .wc-card {
+      padding: clamp(20px, 4vw, 32px);
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 18px;
+      background: var(--card-background, var(--surface-color, transparent));
+      box-shadow: 0 8px 28px rgb(0 0 0 / 4%);
+    }
+
+    .wc-category {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 25px;
+    }
+
+    .wc-category label,
+    .wc-field label {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .wc-input,
+    .wc-select {
+      width: 100%;
+      min-width: 0;
+      min-height: 48px;
+      padding: 12px 14px;
+      box-sizing: border-box;
+      border: 1px solid var(--border-color, #ccc);
+      border-radius: 10px;
+      background: var(--input-background, var(--background-color, transparent));
+      color: inherit;
+      font: inherit;
+      outline: none;
+    }
+
+    .wc-input {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .wc-input:focus,
+    .wc-select:focus {
+      border-color: var(--primary-color, #4f46e5);
+      box-shadow: 0 0 0 3px rgb(79 70 229 / 12%);
+    }
+
+    .wc-field {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      min-width: 0;
+    }
+
+    .wc-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: end;
+      gap: 16px;
+    }
+
+    .wc-unit-description {
+      min-height: 18px;
+      color: var(--muted-text-color, #777);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .wc-swap-wrap {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 28px;
+    }
+
+    .wc-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 11px 17px;
+      border: 1px solid var(--border-color, #ccc);
+      border-radius: 10px;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .wc-button:hover {
+      opacity: .82;
+    }
+
+    .wc-button:active {
+      transform: scale(.98);
+    }
+
+    .wc-button:focus-visible {
+      outline: 2px solid var(--primary-color, #4f46e5);
+      outline-offset: 3px;
+    }
+
+    .wc-button-primary {
+      border-color: var(--primary-color, #4f46e5);
+      background: var(--primary-color, #4f46e5);
+      color: #fff;
+    }
+
+    .wc-swap {
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      border-radius: 50%;
+      font-size: 21px;
+    }
+
+    .wc-result {
+      margin-top: 24px;
+      padding: 20px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 14px;
+      background: var(--result-background, rgb(127 127 127 / 6%));
+    }
+
+    .wc-result-label {
+      margin-bottom: 8px;
+      color: var(--muted-text-color, #777);
+      font-size: 13px;
+    }
+
+    .wc-result-value {
+      overflow-wrap: anywhere;
+      font-size: clamp(24px, 5vw, 34px);
+      font-weight: 750;
+      line-height: 1.4;
+    }
+
+    .wc-result-note {
+      margin-top: 8px;
+      color: var(--muted-text-color, #777);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .wc-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .wc-status {
+      min-height: 20px;
+      margin-top: 12px;
+      color: var(--muted-text-color, #777);
+      font-size: 13px;
+    }
+
+    .wc-section {
+      margin-top: 38px;
+    }
+
+    .wc-section h2 {
+      margin: 0 0 14px;
+      font-size: clamp(22px, 3vw, 28px);
+      letter-spacing: -.02em;
+    }
+
+    .wc-section > p {
+      color: var(--muted-text-color, #666);
+      line-height: 1.8;
+    }
+
+    .wc-unit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .wc-unit-card {
+      padding: 16px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 12px;
+    }
+
+    .wc-unit-card strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 15px;
+    }
+
+    .wc-unit-card span {
+      color: var(--muted-text-color, #777);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .wc-faq {
+      display: grid;
+      gap: 12px;
+    }
+
+    .wc-faq details {
+      padding: 17px;
+      border: 1px solid var(--border-color, #ddd);
+      border-radius: 12px;
+    }
+
+    .wc-faq summary {
+      font-weight: 700;
+      line-height: 1.6;
+      cursor: pointer;
+    }
+
+    .wc-faq details p {
+      margin: 12px 0 0;
+      color: var(--muted-text-color, #666);
+      line-height: 1.8;
+    }
+
+    .wc-note {
+      margin-top: 25px;
+      color: var(--muted-text-color, #777);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 650px) {
+      .wc-page {
+        width: min(100% - 24px, 960px);
+        padding-top: 26px;
+      }
+
+      .wc-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+      }
+
+      .wc-swap-wrap {
+        padding: 0;
+      }
+
+      .wc-swap {
+        transform: rotate(90deg);
+      }
+
+      .wc-swap:active {
+        transform: rotate(90deg) scale(.98);
+      }
+
+      .wc-unit-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 360px) {
+      .wc-unit-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .wc-actions .wc-button {
+        flex: 1 1 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .wc-button {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <div id="site-header"></div>
+
+  <main class="wc-page">
+    <header class="wc-hero">
+      <span class="wc-badge">Free Online Calculator</span>
+      <h1>Weight Converter</h1>
+      <p>
+        Convert weight and mass measurements instantly. Switch between
+        milligrams, grams, kilograms, metric tonnes, ounces, pounds
+        and stones with accurate conversion factors.
+      </p>
+    </header>
+
+    <section class="wc-card" aria-label="Weight conversion calculator">
+      <div class="wc-category">
+        <label for="wc-category">Conversion category</label>
+        <select class="wc-select" id="wc-category">
+          <option value="all">All Weight Units</option>
+          <option value="metric">Metric Units</option>
+          <option value="imperial">Imperial Units</option>
+          <option value="small">Small Weights</option>
+        </select>
+      </div>
+
+      <div class="wc-grid">
+        <div class="wc-field">
+          <label for="wc-from-value">From</label>
+          <input
+            class="wc-input"
+            id="wc-from-value"
+            type="number"
+            value="1"
+            step="any"
+            inputmode="decimal"
+            autocomplete="off"
+            aria-label="Weight value to convert"
+          >
+          <select
+            class="wc-select"
+            id="wc-from-unit"
+            aria-label="Starting weight unit"
+          ></select>
+          <div class="wc-unit-description" id="wc-from-description"></div>
+        </div>
+
+        <div class="wc-swap-wrap">
+          <button
+            class="wc-button wc-swap"
+            id="wc-swap"
+            type="button"
+            aria-label="Swap units"
+            title="Swap units"
+          >⇄</button>
+        </div>
+
+        <div class="wc-field">
+          <label for="wc-to-value">To</label>
+          <input
+            class="wc-input"
+            id="wc-to-value"
+            type="text"
+            value="2.20462262185"
+            readonly
+            aria-label="Converted weight result"
+          >
+          <select
+            class="wc-select"
+            id="wc-to-unit"
+            aria-label="Target weight unit"
+          ></select>
+          <div class="wc-unit-description" id="wc-to-description"></div>
+        </div>
+      </div>
+
+      <div class="wc-result" aria-live="polite" aria-atomic="true">
+        <div class="wc-result-label">Conversion result</div>
+        <div class="wc-result-value" id="wc-result-value">
+          1 kilogram = 2.20462262185 pounds
+        </div>
+        <div class="wc-result-note" id="wc-result-note">
+          Change the input value or units to calculate instantly.
+        </div>
+      </div>
+
+      <div class="wc-actions">
+        <button
+          class="wc-button wc-button-primary"
+          id="wc-copy"
+          type="button"
+        >Copy result</button>
+
+        <button
+          class="wc-button"
+          id="wc-reset"
+          type="button"
+        >Reset</button>
+      </div>
+
+      <div class="wc-status" id="wc-status" role="status"></div>
+    </section>
+
+    <section class="wc-section">
+      <h2>Supported Weight Units</h2>
+      <p>
+        Convert between metric and imperial units for everyday
+        calculations, cooking, shipping, education and general use.
+      </p>
+
+      <div class="wc-unit-grid">
+        <div class="wc-unit-card">
+          <strong>Milligram (mg)</strong>
+          <span>Useful for very small masses and precise measurements.</span>
+        </div>
+
+        <div class="wc-unit-card">
+          <strong>Gram (g)</strong>
+          <span>Commonly used for food portions and everyday objects.</span>
+        </div>
+
+        <div class="wc-unit-card">
+          <strong>Kilogram (kg)</strong>
+          <span>The standard SI base unit for mass.</span>
+        </div>
+
+        <div class="wc-unit-card">
+          <strong>Metric Tonne (t)</strong>
+          <span>Equal to 1,000 kilograms; used for heavy loads.</span>
+        </div>
+
+        <div class="wc-unit-card">
+          <strong>Ounce (oz)</strong>
+          <span>A customary unit used for smaller weights.</span>
+        </div>
+
+        <div class="wc-unit-card">
+          <strong>Pound (lb)</strong>
+          <span>Commonly used in the US and other customary systems.</span>
+        </div>
+
+        <div class="wc-unit-card">
+          <strong>Stone (st)</strong>
+          <span>A unit of mass traditionally used in the UK.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="wc-section">
+      <h2>Common Weight Conversions</h2>
+      <div class="wc-faq">
+        <details>
+          <summary>How many grams are in one kilogram?</summary>
+          <p>One kilogram equals exactly 1,000 grams.</p>
+        </details>
+
+        <details>
+          <summary>How many milligrams are in one gram?</summary>
+          <p>One gram equals exactly 1,000 milligrams.</p>
+        </details>
+
+        <details>
+          <summary>How many pounds are in one kilogram?</summary>
+          <p>One kilogram is approximately 2.20462 pounds.</p>
+        </details>
+
+        <details>
+          <summary>How many grams are in one pound?</summary>
+          <p>One international avoirdupois pound equals exactly 453.59237 grams.</p>
+        </details>
+
+        <details>
+          <summary>How many kilograms are in one metric tonne?</summary>
+          <p>One metric tonne equals exactly 1,000 kilograms.</p>
+        </details>
+
+        <details>
+          <summary>How many pounds are in one stone?</summary>
+          <p>One stone equals exactly 14 pounds.</p>
+        </details>
+
+        <details>
+          <summary>Is the Weight Converter free?</summary>
+          <p>
+            Yes. The MohakTools Weight Converter is free to use in
+            your browser and does not require an account.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section class="wc-section">
+      <h2>How to Use the Weight Converter</h2>
+      <p>
+        Enter a value, choose the starting unit, and select the unit
+        you want to convert to. The result updates automatically.
+        Use the swap button to reverse the conversion, or copy the
+        displayed result for use elsewhere.
+      </p>
+    </section>
+
+    <p class="wc-note">
+      Note: This tool converts mass units using standard conversion
+      factors. Results are rounded for display where necessary.
+      Mass and weight are technically different physical quantities,
+      although everyday usage often treats the terms interchangeably.
+    </p>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    /* =========================================
+       MohakTools — Weight Converter Logic
+       ========================================= */
+
+    (() => {
+      "use strict";
+
+      const categorySelect = document.getElementById("wc-category");
+      const fromValue = document.getElementById("wc-from-value");
+      const toValue = document.getElementById("wc-to-value");
+      const fromUnit = document.getElementById("wc-from-unit");
+      const toUnit = document.getElementById("wc-to-unit");
+      const fromDescription = document.getElementById("wc-from-description");
+      const toDescription = document.getElementById("wc-to-description");
+      const resultValue = document.getElementById("wc-result-value");
+      const resultNote = document.getElementById("wc-result-note");
+      const status = document.getElementById("wc-status");
+      const swapButton = document.getElementById("wc-swap");
+      const copyButton = document.getElementById("wc-copy");
+      const resetButton = document.getElementById("wc-reset");
+
+      if (
+        !categorySelect ||
+        !fromValue ||
+        !toValue ||
+        !fromUnit ||
+        !toUnit
+      ) {
+        return;
+      }
+
+      /*
+       * Each factor is expressed in kilograms.
+       * Values are converted through the kilogram base unit.
+       */
+
+      const weightUnits = [
+        {
+          id: "mg",
+          name: "Milligram",
+          symbol: "mg",
+          factor: 0.000001,
+          groups: ["metric", "small"]
+        },
+        {
+          id: "g",
+          name: "Gram",
+          symbol: "g",
+          factor: 0.001,
+          groups: ["metric", "small"]
+        },
+        {
+          id: "kg",
+          name: "Kilogram",
+          symbol: "kg",
+          factor: 1,
+          groups: ["metric"]
+        },
+        {
+          id: "t",
+          name: "Metric Tonne",
+          symbol: "t",
+          factor: 1000,
+          groups: ["metric"]
+        },
+        {
+          id: "oz",
+          name: "Ounce",
+          symbol: "oz",
+          factor: 0.028349523125,
+          groups: ["imperial", "small"]
+        },
+        {
+          id: "lb",
+          name: "Pound",
+          symbol: "lb",
+          factor: 0.45359237,
+          groups: ["imperial"]
+        },
+        {
+          id: "st",
+          name: "Stone",
+          symbol: "st",
+          factor: 6.35029318,
+          groups: ["imperial"]
+        }
+      ];
+
+      const defaults = {
+        all: ["kg", "lb"],
+        metric: ["kg", "g"],
+        imperial: ["lb", "st"],
+        small: ["g", "oz"]
+      };
+
+      const getUnit = id =>
+        weightUnits.find(unit => unit.id === id);
+
+      const formatNumber = value => {
+        if (!Number.isFinite(value)) {
+          return "Result out of range";
+        }
+
+        if (value === 0 || Object.is(value, -0)) {
+          return "0";
+        }
+
+        const abs = Math.abs(value);
+
+        if (abs >= 1e15 || abs < 1e-8) {
+          return value.toExponential(8).replace(/\.?0+e/, "e");
+        }
+
+        return Number(value.toPrecision(12)).toLocaleString("en-US", {
+          useGrouping: false,
+          maximumFractionDigits: 12
+        });
+      };
+
+      const getAvailableUnits = () => {
+        const category = categorySelect.value;
+
+        if (category === "all") {
+          return weightUnits;
+        }
+
+        return weightUnits.filter(unit =>
+          unit.groups.includes(category)
+        );
+      };
+
+      const populateUnits = (preserveSelection = false) => {
+        const available = getAvailableUnits();
+        const fallback = defaults[categorySelect.value];
+
+        const previousFrom = preserveSelection ? fromUnit.value : "";
+        const previousTo = preserveSelection ? toUnit.value : "";
+
+        const fillSelect = (select, previous, defaultId) => {
+          select.replaceChildren();
+
+          available.forEach(unit => {
+            const option = document.createElement("option");
+            option.value = unit.id;
+            option.textContent = `${unit.name} (${unit.symbol})`;
+            select.appendChild(option);
+          });
+
+          const isAvailable = available.some(
+            unit => unit.id === previous
+          );
+
+          select.value = isAvailable ? previous : defaultId;
+        };
+
+        fillSelect(fromUnit, previousFrom, fallback[0]);
+        fillSelect(toUnit, previousTo, fallback[1]);
+
+        updateDescriptions();
+        calculate();
+      };
+
+      const updateDescriptions = () => {
+        const source = getUnit(fromUnit.value);
+        const target = getUnit(toUnit.value);
+
+        fromDescription.textContent = source ? source.name : "";
+        toDescription.textContent = target ? target.name : "";
+      };
+
+      const calculate = () => {
+        status.textContent = "";
+
+        const rawValue = fromValue.value.trim();
+
+        if (rawValue === "" || !Number.isFinite(Number(rawValue))) {
+          toValue.value = "";
+          resultValue.textContent = "Enter a valid number";
+          resultNote.textContent =
+            "Enter a numeric value to calculate the conversion.";
+          return;
+        }
+
+        const value = Number(rawValue);
+        const source = getUnit(fromUnit.value);
+        const target = getUnit(toUnit.value);
+
+        if (!source || !target) {
+          toValue.value = "";
+          resultValue.textContent = "Select valid units";
+          resultNote.textContent =
+            "Choose both a starting unit and a target unit.";
+          return;
+        }
+
+        const kilograms = value * source.factor;
+        const converted = kilograms / target.factor;
+
+        if (!Number.isFinite(converted)) {
+          toValue.value = "";
+          resultValue.textContent = "Result out of range";
+          resultNote.textContent =
+            "Try a smaller input value.";
+          return;
+        }
+
+        const formattedInput = formatNumber(value);
+        const formattedOutput = formatNumber(converted);
+        const unitRatio = formatNumber(source.factor / target.factor);
+
+        toValue.value = formattedOutput;
+
+        resultValue.textContent =
+          `${formattedInput} ${source.symbol} = ${formattedOutput} ${target.symbol}`;
+
+        resultNote.textContent =
+          `${source.name} to ${target.name}. ` +
+          `1 ${source.symbol} = ${unitRatio} ${target.symbol}.`;
+      };
+
+      categorySelect.addEventListener("change", () => {
+        populateUnits(false);
+      });
+
+      fromValue.addEventListener("input", calculate);
+
+      fromUnit.addEventListener("change", () => {
+        updateDescriptions();
+        calculate();
+      });
+
+      toUnit.addEventListener("change", () => {
+        updateDescriptions();
+        calculate();
+      });
+
+      swapButton.addEventListener("click", () => {
+        const previousFrom = fromUnit.value;
+
+        fromUnit.value = toUnit.value;
+        toUnit.value = previousFrom;
+
+        updateDescriptions();
+        calculate();
+      });
+
+      resetButton.addEventListener("click", () => {
+        categorySelect.value = "all";
+        fromValue.value = "1";
+
+        populateUnits(false);
+
+        status.textContent = "Converter reset.";
+      });
+
+      copyButton.addEventListener("click", async () => {
+        const text = resultValue.textContent;
+
+        if (
+          !text ||
+          text === "Enter a valid number" ||
+          text === "Select valid units" ||
+          text === "Result out of range"
+        ) {
+          status.textContent =
+            "Enter a valid value before copying.";
+          return;
+        }
+
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            const temporary = document.createElement("textarea");
+
+            temporary.value = text;
+            temporary.setAttribute("readonly", "");
+            temporary.style.position = "fixed";
+            temporary.style.opacity = "0";
+
+            document.body.appendChild(temporary);
+            temporary.select();
+
+            const copied = document.execCommand("copy");
+            temporary.remove();
+
+            if (!copied) {
+              throw new Error("Copy failed");
+            }
+          }
+
+          status.textContent = "Result copied to clipboard.";
+        } catch (error) {
+          status.textContent =
+            "Unable to copy automatically. Select and copy the result manually.";
+        }
+      });
+
+      populateUnits(false);
+    })();
+  </script>
+
+  <!-- MohakTools Shared Scripts -->
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/header.js"></script>
+  <script src="/assets/js/footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,1200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO Metadata -->
+  <title>Speed Converter – km/h, mph, m/s & Knots | MohakTools</title>
+  <meta name="description" content="Convert speed and velocity between kilometres per hour, miles per hour, metres per second, feet per second, and knots with the free MohakTools Speed Converter.">
+  <meta name="keywords" content="speed converter, speed calculator, km/h to mph, mph to km/h, km/h to m/s, metres per second to km/h, knots converter, feet per second converter, velocity converter">
+  <meta name="author" content="MohakTools">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="application-name" content="MohakTools">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://mohaktools.com/tools/speed-converter/">
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="/favicon.webp">
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="Speed Converter – km/h, mph, m/s & Knots | MohakTools">
+  <meta property="og:description" content="Convert speed units instantly with the free MohakTools Speed Converter. Supports km/h, mph, m/s, ft/s, and knots.">
+  <meta property="og:url" content="https://mohaktools.com/tools/speed-converter/">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Speed Converter | MohakTools">
+  <meta name="twitter:description" content="Convert km/h, mph, m/s, ft/s, and knots with the free online MohakTools Speed Converter.">
+
+  <!-- Web Application Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "MohakTools Speed Converter",
+    "url": "https://mohaktools.com/tools/speed-converter/",
+    "description": "A free online tool for converting speed units including kilometres per hour, miles per hour, metres per second, feet per second, and knots.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "isAccessibleForFree": true,
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Shared MohakTools Styles and Scripts -->
+  <link rel="stylesheet" href="/assets/css/themes.css">
+
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+
+<style>
+  /* =========================================
+     MohakTools — Speed Converter
+     File: tools/speed-converter/index.html
+  ========================================= */
+
+  .speed-tool {
+    --sc-primary: var(--primary-color, #2563eb);
+    --sc-border: var(--border-color, #e5e7eb);
+    --sc-card: var(--card-bg, #ffffff);
+    --sc-text: var(--text-color, #111827);
+    --sc-muted: var(--muted-text, #6b7280);
+
+    box-sizing: border-box;
+    width: min(100% - 32px, 960px);
+    margin-inline: auto;
+    padding-top: clamp(28px, 5vw, 48px);
+    padding-bottom: 48px;
+    color: var(--sc-text);
+    color-scheme: light dark;
+  }
+
+  html.dark .speed-tool,
+  body.dark .speed-tool,
+  [data-theme="dark"] .speed-tool {
+    --sc-card: var(--card-bg, #1e1e1e);
+    --sc-border: var(--border-color, #3a3a3a);
+    --sc-text: var(--text-color, #f3f4f6);
+    --sc-muted: var(--muted-text, #b0b0b0);
+  }
+
+  .speed-tool *,
+  .speed-tool *::before,
+  .speed-tool *::after {
+    box-sizing: border-box;
+  }
+
+  /* Page heading */
+
+  .sc-hero {
+    margin-bottom: clamp(24px, 4vw, 34px);
+    text-align: center;
+  }
+
+  .sc-hero h1 {
+    margin: 0 0 14px;
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+  }
+
+  .sc-hero p {
+    max-width: 680px;
+    margin: 0 auto;
+    color: var(--sc-muted);
+    font-size: clamp(0.96rem, 1.6vw, 1.05rem);
+    line-height: 1.75;
+  }
+
+  /* Main calculator panel */
+
+  .sc-panel {
+    width: 100%;
+    padding: clamp(20px, 3.5vw, 34px);
+    background: var(--sc-card);
+    border: 1px solid var(--sc-border);
+    border-radius: 20px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.055);
+  }
+
+  .sc-field-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.94rem;
+    font-weight: 700;
+  }
+
+  .sc-input-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    gap: 14px;
+    align-items: stretch;
+  }
+
+  .sc-control {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 54px;
+    padding: 13px 15px;
+    color: var(--sc-text);
+    background: var(--sc-card);
+    border: 1px solid var(--sc-border);
+    border-radius: 11px;
+    font: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .sc-control:focus {
+    border-color: var(--sc-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.13);
+  }
+
+  .sc-control option {
+    color: var(--sc-text);
+    background: var(--sc-card);
+  }
+
+  .sc-convert-button {
+    display: inline-flex;
+    width: 100%;
+    min-height: 54px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 14px 20px;
+    color: #ffffff;
+    background: var(--sc-primary);
+    border: 0;
+    border-radius: 11px;
+    font: inherit;
+    font-weight: 750;
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.2s ease;
+  }
+
+  .sc-convert-button:hover {
+    filter: brightness(0.94);
+  }
+
+  .sc-convert-button:active {
+    transform: translateY(1px);
+  }
+
+  .sc-convert-button:focus-visible,
+  .sc-copy-button:focus-visible,
+  .sc-swap-button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.35);
+    outline-offset: 3px;
+  }
+
+  /* Result cards: equal width and consistent sizing */
+
+  .sc-results {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 18px;
+    width: 100%;
+    margin-top: 26px;
+  }
+
+  .sc-result-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    min-height: 174px;
+    padding: clamp(18px, 2.5vw, 24px);
+    background: var(--sc-card);
+    border: 1px solid var(--sc-border);
+    border-radius: 15px;
+  }
+
+  .sc-result-label {
+    margin-bottom: 10px;
+    color: var(--sc-muted);
+    font-size: 0.9rem;
+    font-weight: 650;
+    line-height: 1.5;
+  }
+
+  .sc-result-value {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px;
+    overflow-wrap: anywhere;
+    font-size: clamp(1.45rem, 2.6vw, 2rem);
+    line-height: 1.35;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sc-result-unit {
+    margin-left: 2px;
+    color: var(--sc-muted);
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .sc-result-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 18px;
+  }
+
+  .sc-result-actions .sc-result-label {
+    margin: 0;
+    font-size: 0.84rem;
+  }
+
+  .sc-copy-button,
+  .sc-swap-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 9px 14px;
+    color: var(--sc-text);
+    background: transparent;
+    border: 1px solid var(--sc-border);
+    border-radius: 9px;
+    font: inherit;
+    font-size: 0.86rem;
+    font-weight: 650;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .sc-copy-button:hover,
+  .sc-swap-button:hover {
+    background: rgba(127, 127, 127, 0.08);
+    border-color: var(--sc-primary);
+  }
+
+  .sc-copy-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .sc-swap-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .sc-status {
+    min-height: 22px;
+    margin: 16px 0 0;
+    color: var(--sc-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  /* Informational content sections */
+
+  .sc-section {
+    width: 100%;
+    margin-top: clamp(24px, 3.5vw, 34px);
+    padding: clamp(20px, 3.5vw, 30px);
+    background: var(--sc-card);
+    border: 1px solid var(--sc-border);
+    border-radius: 18px;
+  }
+
+  .sc-section h2 {
+    margin: 0 0 16px;
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    line-height: 1.4;
+  }
+
+  .sc-section h3 {
+    margin: 24px 0 9px;
+    font-size: 1.08rem;
+    line-height: 1.5;
+  }
+
+  .sc-section p,
+  .sc-section li {
+    color: var(--sc-muted);
+    font-size: 0.97rem;
+    line-height: 1.8;
+  }
+
+  .sc-section p {
+    margin-top: 0;
+  }
+
+  .sc-section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .sc-section ul {
+    padding-left: 22px;
+  }
+
+  .sc-section li + li {
+    margin-top: 5px;
+  }
+
+  /* Formula cards */
+
+  .sc-formula-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .sc-formula {
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid var(--sc-border);
+    border-radius: 12px;
+  }
+
+  .sc-formula strong {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 0.94rem;
+    line-height: 1.5;
+  }
+
+  .sc-formula code {
+    display: block;
+    overflow-wrap: anywhere;
+    color: var(--sc-text);
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  /* Reference table */
+
+  .sc-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 18px;
+    border: 1px solid var(--sc-border);
+    border-radius: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sc-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  .sc-table th,
+  .sc-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--sc-border);
+    white-space: nowrap;
+  }
+
+  .sc-table th {
+    font-size: 0.9rem;
+    font-weight: 750;
+  }
+
+  .sc-table td {
+    color: var(--sc-muted);
+    font-size: 0.94rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sc-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  /* FAQ */
+
+  .sc-faq-item {
+    padding: 19px 0;
+    border-bottom: 1px solid var(--sc-border);
+  }
+
+  .sc-faq-item:first-of-type {
+    padding-top: 4px;
+  }
+
+  .sc-faq-item:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .sc-faq-item h3 {
+    margin: 0 0 9px;
+    font-size: 1.02rem;
+    line-height: 1.55;
+  }
+
+  .sc-faq-item p {
+    margin: 0;
+  }
+
+  /* Tablet and narrow desktop */
+
+  @media (max-width: 700px) {
+    .speed-tool {
+      width: min(100% - 28px, 960px);
+      padding-top: 28px;
+    }
+
+    .sc-input-row {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    .sc-results {
+      gap: 14px;
+    }
+
+    .sc-result-card {
+      min-height: 165px;
+    }
+
+    .sc-result-value {
+      font-size: clamp(1.35rem, 4vw, 1.75rem);
+    }
+  }
+
+  /* Mobile */
+
+  @media (max-width: 480px) {
+    .speed-tool {
+      width: calc(100% - 24px);
+      padding-top: 24px;
+      padding-bottom: 32px;
+    }
+
+    .sc-hero {
+      margin-bottom: 22px;
+    }
+
+    .sc-hero h1 {
+      font-size: clamp(1.8rem, 8vw, 2.2rem);
+    }
+
+    .sc-panel {
+      padding: 18px;
+      border-radius: 15px;
+    }
+
+    .sc-results {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .sc-result-card {
+      min-height: 150px;
+      padding: 19px;
+    }
+
+    .sc-result-value {
+      font-size: clamp(1.5rem, 7vw, 1.9rem);
+    }
+
+    .sc-section {
+      margin-top: 20px;
+      padding: 19px;
+      border-radius: 15px;
+    }
+
+    .sc-formula-list {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .sc-formula {
+      padding: 16px;
+    }
+
+    .sc-table th,
+    .sc-table td {
+      padding: 12px;
+    }
+
+    .sc-status {
+      font-size: 0.86rem;
+    }
+  }
+
+  /* Respect reduced-motion preferences */
+
+  @media (prefers-reduced-motion: reduce) {
+    .sc-control,
+    .sc-convert-button,
+    .sc-copy-button,
+    .sc-swap-button {
+      transition: none;
+    }
+  }
+</style>
+
+</head>
+
+<body>
+  <!-- Shared Site Header -->
+   <script src="/assets/js/tools-registry.js" defer></script>
+  <div id="site-header"></div>
+
+  <main class="speed-tool">
+    <header class="sc-hero">
+      <h1>Speed Converter</h1>
+      <p>
+        Convert speed measurements between kilometres per hour, miles per
+        hour, metres per second, feet per second, and knots. Get accurate
+        results instantly with this free online speed conversion tool.
+      </p>
+    </header>
+
+    <!-- Speed Converter Calculator -->
+    <section class="sc-panel" aria-label="Speed conversion calculator">
+      <div>
+        <label class="sc-field-label" for="sc-input">
+          Enter speed
+        </label>
+
+        <div class="sc-input-row">
+          <input
+            class="sc-control"
+            type="number"
+            id="sc-input"
+            placeholder="Enter a speed"
+            step="any"
+            min="0"
+            inputmode="decimal"
+            value="100"
+            autocomplete="off"
+          >
+
+          <select
+            class="sc-control"
+            id="sc-from"
+            aria-label="Convert speed from"
+          >
+            <option value="kmh">Kilometres per hour (km/h)</option>
+            <option value="mph">Miles per hour (mph)</option>
+            <option value="ms">Metres per second (m/s)</option>
+            <option value="fts">Feet per second (ft/s)</option>
+            <option value="knots">Knots (kn)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="sc-swap-wrap">
+        <button
+          class="sc-swap-button"
+          type="button"
+          id="sc-swap"
+        >
+          Swap km/h and mph
+        </button>
+      </div>
+
+      <button
+        class="sc-convert-button"
+        type="button"
+        id="sc-convert"
+      >
+        Convert Speed
+      </button>
+
+      <div class="sc-results" aria-live="polite" aria-atomic="false">
+        <article class="sc-result-card">
+          <div class="sc-result-label" id="sc-result-one-label">
+            Miles per hour
+          </div>
+
+          <div class="sc-result-value">
+            <span id="sc-result-one">62.137119</span>
+            <span class="sc-result-unit" id="sc-result-one-unit">mph</span>
+          </div>
+
+          <div class="sc-result-actions">
+            <span class="sc-result-label">Converted value</span>
+
+            <button
+              class="sc-copy-button"
+              type="button"
+              data-copy="one"
+              aria-label="Copy first speed conversion result"
+            >
+              Copy
+            </button>
+          </div>
+        </article>
+
+        <article class="sc-result-card">
+          <div class="sc-result-label" id="sc-result-two-label">
+            Metres per second
+          </div>
+
+          <div class="sc-result-value">
+            <span id="sc-result-two">27.777778</span>
+            <span class="sc-result-unit" id="sc-result-two-unit">m/s</span>
+          </div>
+
+          <div class="sc-result-actions">
+            <span class="sc-result-label">Converted value</span>
+
+            <button
+              class="sc-copy-button"
+              type="button"
+              data-copy="two"
+              aria-label="Copy second speed conversion result"
+            >
+              Copy
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <p class="sc-status" id="sc-status" role="status">
+        Results update automatically when you change the speed or unit.
+      </p>
+    </section>
+
+    <!-- Instructions -->
+    <section class="sc-section">
+      <h2>How to Use the Speed Converter</h2>
+
+      <ul>
+        <li>Enter the speed value you want to convert.</li>
+        <li>Select the original unit from the dropdown menu.</li>
+        <li>View the equivalent values in the two result cards.</li>
+        <li>Use the Copy buttons to copy the converted values.</li>
+        <li>Use the swap button to switch between km/h and mph.</li>
+      </ul>
+
+      <p>
+        The calculator updates automatically as you change the input or
+        selected unit. Speed values must be zero or greater.
+      </p>
+    </section>
+
+    <!-- Conversion Formulas -->
+    <section class="sc-section">
+      <h2>Speed Conversion Formulas</h2>
+
+      <p>
+        Speed conversion uses fixed relationships between measurement units.
+        The following formulas explain how to convert between common speed
+        units.
+      </p>
+
+      <div class="sc-formula-list">
+        <div class="sc-formula">
+          <strong>km/h to mph</strong>
+          <code>mph = km/h ÷ 1.609344</code>
+        </div>
+
+        <div class="sc-formula">
+          <strong>mph to km/h</strong>
+          <code>km/h = mph × 1.609344</code>
+        </div>
+
+        <div class="sc-formula">
+          <strong>km/h to m/s</strong>
+          <code>m/s = km/h ÷ 3.6</code>
+        </div>
+
+        <div class="sc-formula">
+          <strong>m/s to km/h</strong>
+          <code>km/h = m/s × 3.6</code>
+        </div>
+
+        <div class="sc-formula">
+          <strong>m/s to ft/s</strong>
+          <code>ft/s = m/s × 3.280839895</code>
+        </div>
+
+        <div class="sc-formula">
+          <strong>Knots to km/h</strong>
+          <code>km/h = knots × 1.852</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conversion Reference Table -->
+    <section class="sc-section">
+      <h2>Common Speed Conversions</h2>
+
+      <p>
+        Use this reference table to compare familiar speeds across different
+        units.
+      </p>
+
+      <div class="sc-table-wrap">
+        <table class="sc-table">
+          <thead>
+            <tr>
+              <th scope="col">km/h</th>
+              <th scope="col">mph</th>
+              <th scope="col">m/s</th>
+              <th scope="col">ft/s</th>
+              <th scope="col">Knots</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>0.621371</td>
+              <td>0.277778</td>
+              <td>0.911344</td>
+              <td>0.539957</td>
+            </tr>
+
+            <tr>
+              <td>5</td>
+              <td>3.106856</td>
+              <td>1.388889</td>
+              <td>4.556722</td>
+              <td>2.699784</td>
+            </tr>
+
+            <tr>
+              <td>20</td>
+              <td>12.427424</td>
+              <td>5.555556</td>
+              <td>18.226889</td>
+              <td>10.799136</td>
+            </tr>
+
+            <tr>
+              <td>50</td>
+              <td>31.068559</td>
+              <td>13.888889</td>
+              <td>45.567223</td>
+              <td>26.997840</td>
+            </tr>
+
+            <tr>
+              <td>80</td>
+              <td>49.709695</td>
+              <td>22.222222</td>
+              <td>72.907557</td>
+              <td>43.196544</td>
+            </tr>
+
+            <tr>
+              <td>100</td>
+              <td>62.137119</td>
+              <td>27.777778</td>
+              <td>91.134028</td>
+              <td>53.995680</td>
+            </tr>
+
+            <tr>
+              <td>120</td>
+              <td>74.564544</td>
+              <td>33.333333</td>
+              <td>109.360895</td>
+              <td>64.794816</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Speed Units Guide -->
+    <section class="sc-section">
+      <h2>Understanding Different Speed Units</h2>
+
+      <h3>Kilometres per hour (km/h)</h3>
+      <p>
+        Kilometres per hour measures the number of kilometres travelled in
+        one hour. It is widely used for road speeds in India and many other
+        countries.
+      </p>
+
+      <h3>Miles per hour (mph)</h3>
+      <p>
+        Miles per hour measures the number of miles travelled in one hour.
+        It is commonly used for road speeds in the United States and the
+        United Kingdom.
+      </p>
+
+      <h3>Metres per second (m/s)</h3>
+      <p>
+        Metres per second measures the distance travelled in metres during
+        one second. It is widely used in science, physics, engineering, and
+        technical calculations.
+      </p>
+
+      <h3>Feet per second (ft/s)</h3>
+      <p>
+        Feet per second expresses the distance travelled in feet each
+        second. It is used in certain engineering, sports, and technical
+        applications.
+      </p>
+
+      <h3>Knots (kn)</h3>
+      <p>
+        A knot represents one nautical mile per hour. Knots are commonly
+        used in marine navigation and aviation. One knot equals exactly
+        1.852 kilometres per hour.
+      </p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="sc-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="sc-faq-item">
+        <h3>How do I convert km/h to mph?</h3>
+        <p>
+          Divide the speed in kilometres per hour by 1.609344. For example,
+          100 km/h is approximately 62.137119 mph.
+        </p>
+      </div>
+
+      <div class="sc-faq-item">
+        <h3>How do I convert mph to km/h?</h3>
+        <p>
+          Multiply the speed in miles per hour by 1.609344. For example,
+          60 mph equals 96.56064 km/h.
+        </p>
+      </div>
+
+      <div class="sc-faq-item">
+        <h3>How many metres per second are in 1 km/h?</h3>
+        <p>
+          One kilometre per hour equals 1 divided by 3.6 metres per second,
+          or approximately 0.277778 m/s.
+        </p>
+      </div>
+
+      <div class="sc-faq-item">
+        <h3>How many km/h are in one knot?</h3>
+        <p>
+          One knot equals exactly 1.852 km/h because one international
+          nautical mile is defined as 1,852 metres.
+        </p>
+      </div>
+
+      <div class="sc-faq-item">
+        <h3>What is the difference between speed and velocity?</h3>
+        <p>
+          Speed describes how quickly an object moves. Velocity describes
+          both how quickly an object moves and its direction. This tool
+          converts speed magnitudes and does not calculate direction.
+        </p>
+      </div>
+
+      <div class="sc-faq-item">
+        <h3>Is the MohakTools Speed Converter free?</h3>
+        <p>
+          Yes. You can use this online converter for free in a modern web
+          browser without installing additional software.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Site Footer -->
+  <div id="site-footer"></div>
+
+  <script>
+    /* =========================================
+       MohakTools — Speed Converter Logic
+    ========================================= */
+
+    (() => {
+      "use strict";
+
+      const input = document.getElementById("sc-input");
+      const fromSelect = document.getElementById("sc-from");
+      const convertButton = document.getElementById("sc-convert");
+      const swapButton = document.getElementById("sc-swap");
+
+      const resultOne = document.getElementById("sc-result-one");
+      const resultTwo = document.getElementById("sc-result-two");
+
+      const resultOneLabel = document.getElementById("sc-result-one-label");
+      const resultTwoLabel = document.getElementById("sc-result-two-label");
+
+      const resultOneUnit = document.getElementById("sc-result-one-unit");
+      const resultTwoUnit = document.getElementById("sc-result-two-unit");
+
+      const status = document.getElementById("sc-status");
+      const copyButtons = document.querySelectorAll(
+        ".speed-tool [data-copy]"
+      );
+
+      /*
+       * Conversion factors are based on metres per second.
+       *
+       * km/h: 1 / 3.6 m/s
+       * mph:  1609.344 / 3600 m/s
+       * m/s:  1 m/s
+       * ft/s: 0.3048 m/s
+       * knot: 1852 / 3600 m/s
+       */
+
+      const units = {
+        kmh: {
+          name: "Kilometres per hour",
+          symbol: "km/h",
+          metresPerSecond: 1 / 3.6
+        },
+
+        mph: {
+          name: "Miles per hour",
+          symbol: "mph",
+          metresPerSecond: 1609.344 / 3600
+        },
+
+        ms: {
+          name: "Metres per second",
+          symbol: "m/s",
+          metresPerSecond: 1
+        },
+
+        fts: {
+          name: "Feet per second",
+          symbol: "ft/s",
+          metresPerSecond: 0.3048
+        },
+
+        knots: {
+          name: "Knots",
+          symbol: "kn",
+          metresPerSecond: 1852 / 3600
+        }
+      };
+
+      let latestResults = {
+        one: null,
+        two: null
+      };
+
+      function formatNumber(value) {
+        if (!Number.isFinite(value)) {
+          return "—";
+        }
+
+        const normalized = Math.abs(value) < 0.0000005 ? 0 : value;
+
+        return normalized.toLocaleString("en-US", {
+          maximumFractionDigits: 6,
+          useGrouping: false
+        });
+      }
+
+      function convertSpeed(value, fromUnit, toUnit) {
+        const metresPerSecond =
+          value * units[fromUnit].metresPerSecond;
+
+        return metresPerSecond / units[toUnit].metresPerSecond;
+      }
+
+      function getOutputUnits(fromUnit) {
+        const preferredOutputs = {
+          kmh: ["mph", "ms"],
+          mph: ["kmh", "ms"],
+          ms: ["kmh", "mph"],
+          fts: ["ms", "kmh"],
+          knots: ["kmh", "mph"]
+        };
+
+        return preferredOutputs[fromUnit] || ["mph", "ms"];
+      }
+
+      function resetResults() {
+        resultOne.textContent = "—";
+        resultTwo.textContent = "—";
+
+        latestResults = {
+          one: null,
+          two: null
+        };
+
+        copyButtons.forEach((button) => {
+          button.disabled = true;
+        });
+      }
+
+      function updateSwapLabel() {
+        const currentUnit = fromSelect.value;
+
+        if (currentUnit === "kmh") {
+          swapButton.textContent = "Swap km/h and mph";
+        } else if (currentUnit === "mph") {
+          swapButton.textContent = "Swap mph and km/h";
+        } else {
+          swapButton.textContent = "Switch to km/h";
+        }
+      }
+
+      function updateResults() {
+        const rawValue = input.value.trim();
+        const fromUnit = fromSelect.value;
+
+        updateSwapLabel();
+
+        if (rawValue === "") {
+          resetResults();
+          status.textContent = "Enter a speed to see the conversion results.";
+          return;
+        }
+
+        const value = Number(rawValue);
+
+        if (!Number.isFinite(value)) {
+          resetResults();
+          status.textContent = "Enter a valid numeric speed.";
+          return;
+        }
+
+        if (value < 0) {
+          resetResults();
+          status.textContent =
+            "Enter a speed of zero or greater.";
+          return;
+        }
+
+        const outputUnits = getOutputUnits(fromUnit);
+        const firstUnit = outputUnits[0];
+        const secondUnit = outputUnits[1];
+
+        const firstValue = convertSpeed(
+          value,
+          fromUnit,
+          firstUnit
+        );
+
+        const secondValue = convertSpeed(
+          value,
+          fromUnit,
+          secondUnit
+        );
+
+        latestResults = {
+          one: firstValue,
+          two: secondValue
+        };
+
+        resultOne.textContent = formatNumber(firstValue);
+        resultTwo.textContent = formatNumber(secondValue);
+
+        resultOneLabel.textContent = units[firstUnit].name;
+        resultTwoLabel.textContent = units[secondUnit].name;
+
+        resultOneUnit.textContent = units[firstUnit].symbol;
+        resultTwoUnit.textContent = units[secondUnit].symbol;
+
+        status.textContent =
+          formatNumber(value) + " " + units[fromUnit].symbol +
+          " converted to " + units[firstUnit].name +
+          " and " + units[secondUnit].name + ".";
+
+        copyButtons.forEach((button) => {
+          button.disabled = false;
+        });
+      }
+
+      function swapUnits() {
+        const currentUnit = fromSelect.value;
+
+        if (currentUnit === "kmh") {
+          fromSelect.value = "mph";
+        } else {
+          fromSelect.value = "kmh";
+        }
+
+        updateResults();
+      }
+
+      async function copyResult(which) {
+        const value = latestResults[which];
+
+        if (!Number.isFinite(value)) {
+          status.textContent = "There is no valid result to copy.";
+          return;
+        }
+
+        const fromUnit = fromSelect.value;
+        const outputUnits = getOutputUnits(fromUnit);
+        const targetUnit = which === "one"
+          ? outputUnits[0]
+          : outputUnits[1];
+
+        const textToCopy =
+          formatNumber(value) + " " + units[targetUnit].symbol;
+
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(textToCopy);
+          } else {
+            const temporaryInput = document.createElement("textarea");
+
+            temporaryInput.value = textToCopy;
+            temporaryInput.setAttribute("readonly", "");
+            temporaryInput.style.position = "fixed";
+            temporaryInput.style.opacity = "0";
+
+            document.body.appendChild(temporaryInput);
+            temporaryInput.select();
+
+            const copied = document.execCommand("copy");
+            temporaryInput.remove();
+
+            if (!copied) {
+              throw new Error("Clipboard copy failed.");
+            }
+          }
+
+          status.textContent =
+            textToCopy + " copied to clipboard.";
+        } catch (error) {
+          status.textContent =
+            "Unable to copy automatically. Result: " + textToCopy;
+        }
+      }
+
+      input.addEventListener("input", updateResults);
+
+      fromSelect.addEventListener("change", updateResults);
+
+      convertButton.addEventListener("click", updateResults);
+
+      swapButton.addEventListener("click", swapUnits);
+
+      copyButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          copyResult(button.dataset.copy);
+        });
+      });
+
+      updateResults();
+    })();
+  </script>
+</body>
+</html>

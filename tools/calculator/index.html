@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Basic Calculator Online | MohakTools</title>
+    <meta name="description" content="Calculate addition, subtraction, multiplication, division, and percentages with the free MohakTools Basic Calculator.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="canonical" href="https://mohaktools.com/tools/calculator/">
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/themes.css">
+    
+<meta property="og:title" content="Basic Calculator Online | MohakTools">
+<meta property="og:description" content="Calculate addition, subtraction, multiplication, division, and percentages with the free MohakTools Basic Calculator.">
+<meta property="og:image" content="https://mohaktools.com/assets/images/basic-calculator-og.png">
+
+
+
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
+
+
+<style>
+    /* ========================================
+       MohakTools — Basic Calculator
+       Theme-aware page-specific styles
+       Uses assets/css/themes.css variables
+    ======================================== */
+
+    .calculator-page {
+        width: min(1100px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 72px;
+        color: var(--color-text);
+    }
+
+    .calculator-breadcrumb {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 28px;
+        font-size: 14px;
+        color: var(--color-text-secondary);
+    }
+
+    .calculator-breadcrumb a {
+        color: var(--color-primary);
+        text-decoration: none;
+        transition: color 180ms ease;
+    }
+
+    .calculator-breadcrumb a:hover {
+        color: var(--color-primary-hover);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .calculator-intro {
+        margin-bottom: 30px;
+    }
+
+    .calculator-intro h1 {
+        margin: 0 0 12px;
+        font-size: clamp(30px, 5vw, 42px);
+        line-height: 1.2;
+        letter-spacing: -1px;
+        color: var(--color-text);
+    }
+
+    .calculator-intro p {
+        max-width: 650px;
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--color-text-secondary);
+    }
+
+    .calculator-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.8fr);
+        gap: 24px;
+        align-items: start;
+    }
+
+    /* Calculator and information cards */
+
+    .calculator-card,
+    .calculator-info-card {
+        min-width: 0;
+        color: var(--color-text);
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg, 18px);
+        box-shadow: 0 8px 28px var(--color-card-shadow);
+    }
+
+    .calculator-card {
+        padding: 24px;
+    }
+
+    /* Calculator display */
+
+    .calculator-display {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-width: 0;
+        min-height: 132px;
+        padding: 18px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        color: var(--color-text);
+        background-color: var(--color-input-bg);
+        border: 1px solid var(--color-input-border);
+        border-radius: var(--radius-md, 12px);
+        text-align: right;
+    }
+
+    .calculator-expression {
+        min-height: 24px;
+        overflow: hidden;
+        color: var(--color-text-secondary);
+        font-size: 15px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .calculator-result {
+        display: block;
+        width: 100%;
+        margin-top: 8px;
+        overflow: hidden;
+        color: var(--color-text);
+        font-size: clamp(30px, 6vw, 44px);
+        font-weight: 650;
+        line-height: 1.3;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* Keypad */
+
+    .calculator-keypad {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .calculator-key {
+        display: flex;
+        min-width: 0;
+        min-height: 62px;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        color: var(--color-text);
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md, 12px);
+        font: inherit;
+        font-size: 19px;
+        font-weight: 550;
+        cursor: pointer;
+        transition:
+            background-color 180ms ease,
+            border-color 180ms ease,
+            color 180ms ease,
+            transform 150ms ease;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .calculator-key:hover {
+        background-color: var(--color-surface-secondary);
+        border-color: var(--color-primary);
+    }
+
+    .calculator-key:active {
+        transform: scale(0.96);
+    }
+
+    .calculator-key:focus-visible {
+        outline: 3px solid var(--color-primary);
+        outline-offset: 3px;
+    }
+
+    .calculator-key.function {
+        color: var(--color-text);
+        background-color: var(--color-surface-secondary);
+    }
+
+    .calculator-key.operator {
+        color: var(--color-primary);
+        background-color: var(--color-surface-secondary);
+        border-color: var(--color-border);
+        font-size: 22px;
+    }
+
+    .calculator-key.equals {
+        color: var(--color-primary-text);
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+
+    .calculator-key.equals:hover {
+        background-color: var(--color-primary-hover);
+        border-color: var(--color-primary-hover);
+        filter: none;
+    }
+
+    .calculator-key.zero {
+        grid-column: span 2;
+    }
+
+    .calculator-keypad-note {
+        margin: 16px 0 0;
+        color: var(--color-text-secondary);
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    /* Information card */
+
+    .calculator-info-card {
+        padding: 24px;
+    }
+
+    .calculator-info-card h2 {
+        margin: 0 0 14px;
+        color: var(--color-text);
+        font-size: 20px;
+        letter-spacing: -0.3px;
+    }
+
+    .calculator-info-card h3 {
+        margin: 24px 0 10px;
+        color: var(--color-text);
+        font-size: 16px;
+    }
+
+    .calculator-info-card p,
+    .calculator-info-card li {
+        color: var(--color-text-secondary);
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .calculator-info-card ul {
+        padding-left: 20px;
+        margin: 8px 0 0;
+    }
+
+    .calculator-info-card li + li {
+        margin-top: 6px;
+    }
+
+    /* Status messages */
+
+    .calculator-status {
+        min-height: 20px;
+        margin: 10px 0 0;
+        color: var(--color-text-secondary);
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .calculator-status.error {
+        color: var(--color-danger);
+    }
+
+    /* SEO content */
+
+    .calculator-seo {
+        margin-top: 48px;
+        padding-top: 28px;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .calculator-seo h2 {
+        margin: 0 0 14px;
+        color: var(--color-text);
+        font-size: 24px;
+    }
+
+    .calculator-seo h3 {
+        color: var(--color-text);
+    }
+
+    .calculator-seo p {
+        max-width: 850px;
+        margin: 0 0 14px;
+        color: var(--color-text-secondary);
+        font-size: 15px;
+        line-height: 1.9;
+    }
+
+    /* Tablet and mobile */
+
+    @media (max-width: 760px) {
+        .calculator-layout {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .calculator-info-card {
+            padding: 22px;
+        }
+
+        .calculator-page {
+            padding-top: 24px;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .calculator-page {
+            width: calc(100% - 24px);
+        }
+
+        .calculator-card {
+            padding: 14px;
+            border-radius: 16px;
+        }
+
+        .calculator-keypad {
+            gap: 7px;
+        }
+
+        .calculator-key {
+            min-height: 54px;
+            padding: 8px 4px;
+            border-radius: 10px;
+            font-size: 17px;
+        }
+
+        .calculator-display {
+            min-height: 112px;
+            padding: 14px;
+        }
+    }
+
+    /* Accessibility */
+
+    @media (prefers-reduced-motion: reduce) {
+        .calculator-key,
+        .calculator-breadcrumb a {
+            transition: none;
+        }
+
+        .calculator-key:active {
+            transform: none;
+        }
+    }
+</style>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "MohakTools Basic Calculator",
+    "url": "https://mohaktools.com/tools/calculator/",
+    "description": "A free online calculator for basic arithmetic, percentages and decimal calculations.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+    }
+}
+</script>
+</head>
+
+<body>
+    <script src="/assets/js/tools-registry.js" defer></script>
+    <div id="site-header"></div>
+
+    <main class="calculator-page">
+        <nav class="calculator-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <a href="/#calculators">Calculators</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Basic Calculator</span>
+        </nav>
+
+        <header class="calculator-intro">
+            <h1>Basic Calculator</h1>
+            <p>
+                Perform addition, subtraction, multiplication and division
+                with this free online calculator. Supports decimal numbers,
+                percentages and keyboard input on desktop and mobile.
+            </p>
+        </header>
+
+        <div class="calculator-layout">
+            <section class="calculator-card" aria-label="Calculator">
+                <div class="calculator-display"
+                     role="group"
+                     aria-label="Calculator display">
+                    <div class="calculator-expression"
+                         id="calculator-expression"
+                         aria-hidden="true"></div>
+
+                    <output class="calculator-result"
+                            id="calculator-result"
+                            aria-live="polite"
+                            aria-atomic="true">0</output>
+                </div>
+
+                <div class="calculator-keypad" id="calculator-keypad">
+                    <button class="calculator-key function"
+                            type="button" data-action="clear"
+                            aria-label="Clear all">AC</button>
+
+                    <button class="calculator-key function"
+                            type="button" data-action="backspace"
+                            aria-label="Backspace">⌫</button>
+
+                    <button class="calculator-key function"
+                            type="button" data-action="percent"
+                            aria-label="Percentage">%</button>
+
+                    <button class="calculator-key operator"
+                            type="button" data-operator="/"
+                            aria-label="Divide">÷</button>
+
+                    <button class="calculator-key"
+                            type="button" data-digit="7">7</button>
+
+                    <button class="calculator-key"
+                            type="button" data-digit="8">8</button>
+
+                    <button class="calculator-key"
+                            type="button" data-digit="9">9</button>
+
+                    <button class="calculator-key operator"
+                            type="button" data-operator="*"
+                            aria-label="Multiply">×</button>
+
+                    <button class="calculator-key"
+                            type="button" data-digit="4">4</button>
+
+                    <button class="calculator-key"
+                            type="button" data-digit="5">5</button>
+
+                    <button class="calculator-key"
+                            type="button" data-digit="6">6</button>
+
+                    <button class="calculator-key operator"
+                            type="button" data-operator="-"
+                            aria-label="Subtract">−</button>
+
+                    <button class="calculator-key"
+                            type="button" data-digit="1">1</button>
+
+                    <button class="calculator-key"
+                            type="button" data-digit="2">2</button>
+
+                    <button class="calculator-key"
+                            type="button" data-digit="3">3</button>
+
+                    <button class="calculator-key operator"
+                            type="button" data-operator="+"
+                            aria-label="Add">+</button>
+
+                    <button class="calculator-key function"
+                            type="button" data-action="sign"
+                            aria-label="Change sign">±</button>
+
+                    <button class="calculator-key zero"
+                            type="button" data-digit="0">0</button>
+
+                    <button class="calculator-key"
+                            type="button" data-action="decimal"
+                            aria-label="Decimal point">.</button>
+
+                    <button class="calculator-key equals"
+                            type="button" data-action="equals"
+                            aria-label="Calculate result">=</button>
+                </div>
+
+                <p class="calculator-status"
+                   id="calculator-status"
+                   role="status"
+                   aria-live="polite">Ready to calculate</p>
+
+                <p class="calculator-keypad-note">
+                    Keyboard supported: numbers, +, -, *, /, %, Enter,
+                    Backspace and Escape.
+                </p>
+            </section>
+
+            <aside class="calculator-info-card">
+                <h2>How to use this calculator</h2>
+
+                <p>
+                    Enter a number using the keypad or your keyboard.
+                    Select an arithmetic operator, enter the next number,
+                    and press equals to calculate the result.
+                </p>
+
+                <h3>Calculator features</h3>
+
+                <ul>
+                    <li>Addition, subtraction, multiplication and division</li>
+                    <li>Decimal number calculations</li>
+                    <li>Percentage conversion</li>
+                    <li>Positive and negative numbers</li>
+                    <li>Keyboard shortcuts</li>
+                    <li>Responsive mobile-friendly interface</li>
+                    <li>Clear and backspace controls</li>
+                </ul>
+
+                <h3>Example calculation</h3>
+
+                <p>
+                    To calculate 25 × 4, enter 25, select multiplication,
+                    enter 4 and press equals. The result is 100.
+                </p>
+            </aside>
+        </div>
+
+        <section class="calculator-seo">
+            <h2>Free Online Basic Calculator</h2>
+
+            <p>
+                The MohakTools Basic Calculator is a simple online tool
+                for everyday mathematical calculations. Use it to add,
+                subtract, multiply and divide numbers without installing
+                an application or creating an account.
+            </p>
+
+            <p>
+                The calculator supports decimal values, percentage
+                conversion and negative numbers. Its responsive layout
+                works on desktop computers, tablets and mobile phones.
+                Calculations run directly in your browser.
+            </p>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <h3>Is this calculator free?</h3>
+            <p>
+                Yes. You can use the Basic Calculator free of charge.
+            </p>
+
+            <h3>Can I use my keyboard?</h3>
+            <p>
+                Yes. Enter numbers and arithmetic operators directly.
+                Press Enter or equals to calculate, Backspace to delete,
+                and Escape to clear the current calculation.
+            </p>
+
+            <h3>Does it work on mobile devices?</h3>
+            <p>
+                Yes. The calculator layout adapts to smaller screens and
+                supports touch input.
+            </p>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script>
+    (() => {
+        "use strict";
+
+        const keypad = document.getElementById("calculator-keypad");
+        const resultDisplay = document.getElementById("calculator-result");
+        const expressionDisplay = document.getElementById("calculator-expression");
+        const statusDisplay = document.getElementById("calculator-status");
+
+        if (!keypad || !resultDisplay || !expressionDisplay || !statusDisplay) {
+            return;
+        }
+
+        let currentInput = "0";
+        let storedValue = null;
+        let pendingOperator = null;
+        let waitingForOperand = false;
+        let expressionText = "";
+        let hasError = false;
+
+        const operatorSymbols = {
+            "+": "+",
+            "-": "−",
+            "*": "×",
+            "/": "÷"
+        };
+
+        function formatNumber(number) {
+            if (!Number.isFinite(number)) {
+                return "Error";
+            }
+
+            if (Object.is(number, -0)) {
+                number = 0;
+            }
+
+            const rounded = Number(number.toPrecision(12));
+            return String(rounded);
+        }
+
+        function render() {
+            resultDisplay.textContent = currentInput;
+            expressionDisplay.textContent = expressionText;
+        }
+
+        function setStatus(message, isError = false) {
+            statusDisplay.textContent = message;
+            statusDisplay.classList.toggle("error", isError);
+        }
+
+        function clearAll() {
+            currentInput = "0";
+            storedValue = null;
+            pendingOperator = null;
+            waitingForOperand = false;
+            expressionText = "";
+            hasError = false;
+
+            render();
+            setStatus("Ready to calculate");
+        }
+
+        function clearErrorIfNeeded() {
+            if (hasError) {
+                clearAll();
+            }
+        }
+
+        function inputDigit(digit) {
+            clearErrorIfNeeded();
+
+            if (waitingForOperand) {
+                currentInput = digit;
+                waitingForOperand = false;
+            } else if (currentInput === "0") {
+                currentInput = digit;
+            } else if (currentInput.replace("-", "").length < 15) {
+                currentInput += digit;
+            }
+
+            render();
+            setStatus("Number entered");
+        }
+
+        function inputDecimal() {
+            clearErrorIfNeeded();
+
+            if (waitingForOperand) {
+                currentInput = "0.";
+                waitingForOperand = false;
+            } else if (!currentInput.includes(".")) {
+                currentInput += ".";
+            }
+
+            render();
+        }
+
+        function calculate(a, b, operator) {
+            switch (operator) {
+                case "+":
+                    return a + b;
+
+                case "-":
+                    return a - b;
+
+                case "*":
+                    return a * b;
+
+                case "/":
+                    if (b === 0) {
+                        throw new Error("Cannot divide by zero.");
+                    }
+                    return a / b;
+
+                default:
+                    return b;
+            }
+        }
+
+        function showError(message) {
+            currentInput = "Error";
+            expressionText = "";
+            storedValue = null;
+            pendingOperator = null;
+            waitingForOperand = true;
+            hasError = true;
+
+            render();
+            setStatus(message, true);
+        }
+
+        function chooseOperator(operator) {
+            clearErrorIfNeeded();
+
+            const inputValue = Number(currentInput);
+
+            if (!Number.isFinite(inputValue)) {
+                showError("Enter a valid number.");
+                return;
+            }
+
+            if (pendingOperator && !waitingForOperand) {
+                try {
+                    const result = calculate(
+                        storedValue,
+                        inputValue,
+                        pendingOperator
+                    );
+
+                    if (!Number.isFinite(result)) {
+                        showError("The result is outside the supported range.");
+                        return;
+                    }
+
+                    currentInput = formatNumber(result);
+                    storedValue = result;
+                    expressionText = currentInput + " " + operatorSymbols[operator];
+                } catch (error) {
+                    showError(error.message);
+                    return;
+                }
+            } else {
+                storedValue = inputValue;
+                expressionText = currentInput + " " + operatorSymbols[operator];
+            }
+
+            pendingOperator = operator;
+            waitingForOperand = true;
+
+            render();
+            setStatus("Enter the next number");
+        }
+
+        function equals() {
+            if (hasError) {
+                return;
+            }
+
+            if (pendingOperator === null || storedValue === null) {
+                return;
+            }
+
+            const secondValue = Number(currentInput);
+            const firstValue = storedValue;
+            const operator = pendingOperator;
+
+            try {
+                const answer = calculate(firstValue, secondValue, operator);
+
+                if (!Number.isFinite(answer)) {
+                    showError("The result is outside the supported range.");
+                    return;
+                }
+
+                expressionText =
+                    formatNumber(firstValue) + " " +
+                    operatorSymbols[operator] + " " +
+                    formatNumber(secondValue) + " =";
+
+                currentInput = formatNumber(answer);
+                storedValue = null;
+                pendingOperator = null;
+                waitingForOperand = true;
+
+                render();
+                setStatus("Calculation complete");
+            } catch (error) {
+                showError(error.message);
+            }
+        }
+
+        function backspace() {
+            clearErrorIfNeeded();
+
+            if (waitingForOperand) {
+                return;
+            }
+
+            if (currentInput.length <= 1 ||
+                (currentInput.length === 2 && currentInput.startsWith("-"))) {
+                currentInput = "0";
+            } else {
+                currentInput = currentInput.slice(0, -1);
+            }
+
+            render();
+        }
+
+        function toggleSign() {
+            clearErrorIfNeeded();
+
+            if (currentInput === "0") {
+                return;
+            }
+
+            currentInput = currentInput.startsWith("-")
+                ? currentInput.slice(1)
+                : "-" + currentInput;
+
+            render();
+        }
+
+        function percentage() {
+            clearErrorIfNeeded();
+
+            const value = Number(currentInput);
+
+            if (!Number.isFinite(value)) {
+                showError("Enter a valid number.");
+                return;
+            }
+
+            currentInput = formatNumber(value / 100);
+            waitingForOperand = false;
+
+            render();
+            setStatus("Converted to a percentage value");
+        }
+
+        keypad.addEventListener("click", (event) => {
+            const button = event.target.closest("button");
+
+            if (!button || !keypad.contains(button)) {
+                return;
+            }
+
+            if (button.dataset.digit !== undefined) {
+                inputDigit(button.dataset.digit);
+                return;
+            }
+
+            if (button.dataset.operator) {
+                chooseOperator(button.dataset.operator);
+                return;
+            }
+
+            switch (button.dataset.action) {
+                case "clear":
+                    clearAll();
+                    break;
+
+                case "backspace":
+                    backspace();
+                    break;
+
+                case "decimal":
+                    inputDecimal();
+                    break;
+
+                case "sign":
+                    toggleSign();
+                    break;
+
+                case "percent":
+                    percentage();
+                    break;
+
+                case "equals":
+                    equals();
+                    break;
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.altKey || event.ctrlKey || event.metaKey) {
+                return;
+            }
+
+            const target = event.target;
+
+            if (target instanceof HTMLElement &&
+                (target.isContentEditable ||
+                 ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName))) {
+                return;
+            }
+
+            if (/^[0-9]$/.test(event.key)) {
+                event.preventDefault();
+                inputDigit(event.key);
+                return;
+            }
+
+            if (event.key === ".") {
+                event.preventDefault();
+                inputDecimal();
+                return;
+            }
+
+            if (["+", "-", "*", "/"].includes(event.key)) {
+                event.preventDefault();
+                chooseOperator(event.key);
+                return;
+            }
+
+            if (event.key === "%") {
+                event.preventDefault();
+                percentage();
+                return;
+            }
+
+            if (event.key === "Enter" || event.key === "=") {
+                event.preventDefault();
+                equals();
+                return;
+            }
+
+            if (event.key === "Backspace") {
+                event.preventDefault();
+                backspace();
+                return;
+            }
+
+            if (event.key === "Escape") {
+                event.preventDefault();
+                clearAll();
+            }
+        });
+
+        render();
+    })();
+    </script>
+
+    <!-- Keep the shared scripts consistent with the rest of MohakTools. -->
+    <script src="/assets/js/theme.js" defer></script>
+    <script src="/assets/js/header.js" defer></script>
+    <script src="/assets/js/footer.js" defer></script>
+</body>
+</html>

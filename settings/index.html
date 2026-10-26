@@ -1,0 +1,104 @@
+ 
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Settings | MohakTools</title>
+  <meta name="description" content="Customize your MohakTools preferences.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="color-scheme" content="light dark">
+
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/global.css">
+
+  <script src="/assets/js/theme.js"></script>
+
+  <style>
+    .settings-page {
+      max-width: 820px;
+      margin: 0 auto;
+      padding-block: 40px 64px;
+    }
+
+    .settings-intro {
+      margin-bottom: 28px;
+    }
+
+    .settings-intro p,
+    .settings-description {
+      color: var(--color-text-secondary);
+    }
+
+    .settings-card {
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface);
+      box-shadow: var(--color-card-shadow);
+    }
+
+    .settings-card h2 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .settings-description {
+      margin: 0 0 20px;
+      line-height: 1.6;
+    }
+
+    .settings-link {
+      color: var(--color-primary);
+    }
+
+    .settings-link:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 600px) {
+      .settings-page {
+        padding-block: 28px 44px;
+      }
+
+      .settings-card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main class="container settings-page">
+    <div class="settings-intro">
+      <h1>Settings</h1>
+      <p>Customize how you browse and use MohakTools.</p>
+    </div>
+
+    <section class="settings-card" aria-labelledby="appearance-heading">
+      <h2 id="appearance-heading">Appearance</h2>
+
+      <p class="settings-description">
+        Change between light and dark themes using the theme control
+        in the site header. Your theme preference is managed by MohakTools.
+      </p>
+
+      <a class="settings-link" href="/">
+        Return to homepage
+      </a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+</body>
+</html>

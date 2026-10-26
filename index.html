@@ -1,0 +1,1730 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>MohakTools – Free Online Tools, Calculators & Converters</title>
+
+  <meta name="description" content="Explore free online tools at MohakTools. Use calculators, unit converters, text utilities, developer tools, clocks, timers, and more. Fast, simple, and easy to use.">
+  <meta name="keywords" content="MohakTools, free online tools, online calculators, unit converters, text tools, developer tools, word counter, UUID generator, time converter">
+  <meta name="author" content="MohakTools">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="application-name" content="MohakTools">
+
+  <link rel="canonical" href="https://mohaktools.com/">
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="MohakTools – Free Online Tools">
+  <meta property="og:description" content="Discover free online calculators, converters, text tools, developer utilities, and more.">
+  <meta property="og:url" content="https://mohaktools.com/">
+
+  <!-- Twitter / social sharing -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MohakTools – Free Online Tools">
+  <meta name="twitter:description" content="Simple and useful online tools for everyday tasks, calculations, conversions, and development.">
+
+  <!-- Shared website assets -->
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/global.css">
+
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+
+  <style>
+    /* =====================================
+       HOMEPAGE BASE
+    ===================================== */
+
+    .home-page {
+      overflow: clip;
+      color: var(--color-text);
+    }
+
+    .home-container {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .home-section {
+      padding: 88px 0;
+      scroll-margin-top: 40px;
+    }
+
+    .home-section-alt {
+      background: var(--color-input-bg);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--color-primary);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 15px;
+      color: var(--color-text);
+      font-size: clamp(27px, 4vw, 38px);
+      line-height: 1.2;
+      letter-spacing: -0.8px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--color-text-secondary);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .home-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 47px;
+      padding: 12px 20px;
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 650;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .home-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .home-button-primary {
+      color: #ffffff;
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+
+    .home-button-primary:hover {
+      filter: brightness(1.06);
+    }
+
+    .home-button-secondary {
+      color: var(--color-text);
+      background: var(--color-surface);
+    }
+
+    .home-button-secondary:hover {
+      border-color: var(--color-primary);
+    }
+
+    /* =====================================
+       HERO
+    ===================================== */
+
+    .home-hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 590px;
+      padding: 90px 0 84px;
+      text-align: center;
+      isolation: isolate;
+    }
+
+    .hero-decoration {
+      position: absolute;
+      z-index: -1;
+      width: 360px;
+      height: 360px;
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.45;
+      animation: hero-orbit 28s linear infinite;
+    }
+
+    .hero-decoration::before,
+    .hero-decoration::after {
+      position: absolute;
+      content: "";
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+    }
+
+    .hero-decoration::before {
+      inset: 35px;
+    }
+
+    .hero-decoration::after {
+      inset: 75px;
+    }
+
+    .hero-decoration-one {
+      top: -175px;
+      left: -155px;
+    }
+
+    .hero-decoration-two {
+      right: -175px;
+      bottom: -190px;
+      animation-direction: reverse;
+    }
+
+    @keyframes hero-orbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-content {
+      width: min(850px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 25px;
+      padding: 9px 14px;
+      color: var(--color-text-secondary);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 550;
+      animation: hero-enter 0.7s ease both;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px var(--color-input-bg);
+    }
+
+    .hero-content h1 {
+      margin: 0 auto 22px;
+      color: var(--color-text);
+      font-size: clamp(39px, 7vw, 70px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -2.5px;
+      animation: hero-enter 0.8s ease 0.08s both;
+    }
+
+    .hero-highlight {
+      color: var(--color-primary);
+    }
+
+    .hero-description {
+      max-width: 660px;
+      margin: 0 auto;
+      color: var(--color-text-secondary);
+      font-size: clamp(15px, 2vw, 18px);
+      line-height: 1.85;
+      animation: hero-enter 0.8s ease 0.16s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+      animation: hero-enter 0.8s ease 0.24s both;
+    }
+
+    .hero-mini-note {
+      margin-top: 23px;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+      animation: hero-enter 0.8s ease 0.32s both;
+    }
+
+    @keyframes hero-enter {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =====================================
+       QUICK SEARCH
+    ===================================== */
+
+    .quick-search-wrap {
+      position: relative;
+      z-index: 2;
+      width: min(710px, calc(100% - 36px));
+      margin: -27px auto 0;
+    }
+
+    .quick-search-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 10px 9px 17px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 15px;
+      box-shadow: var(--color-card-shadow);
+    }
+
+    .search-symbol {
+      flex-shrink: 0;
+      color: var(--color-text-secondary);
+      font-size: 20px;
+    }
+
+    .quick-search-box input {
+      width: 100%;
+      min-width: 0;
+      height: 42px;
+      padding: 8px 0;
+      color: var(--color-text);
+      background: transparent;
+      border: none;
+      outline: none;
+      font: inherit;
+      font-size: 14px;
+    }
+
+    .quick-search-box input::placeholder {
+      color: var(--color-text-secondary);
+      opacity: 0.8;
+    }
+
+    .quick-search-box input:focus-visible {
+      outline: none;
+    }
+
+    .quick-search-box:focus-within {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 12%, transparent);
+    }
+
+    .quick-search-box button {
+      flex-shrink: 0;
+      min-height: 40px;
+      padding: 9px 14px;
+      color: #ffffff;
+      background: var(--color-primary);
+      border: 0;
+      border-radius: 9px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    /* =====================================
+       FEATURE STRIP
+    ===================================== */
+
+    .feature-strip {
+      padding: 42px 0 20px;
+    }
+
+    .feature-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature-strip-item {
+      padding: 23px 18px;
+      text-align: center;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 13px;
+    }
+
+    .feature-strip-item h3 {
+      margin: 0 0 8px;
+      color: var(--color-text);
+      font-size: 15px;
+    }
+
+    .feature-strip-item p {
+      margin: 0;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* =====================================
+       TOOL CARDS
+    ===================================== */
+
+    .home-tool-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .home-tool-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 225px;
+      padding: 23px;
+      color: var(--color-text);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 15px;
+      box-shadow: var(--color-card-shadow);
+      text-decoration: none;
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .home-tool-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--color-primary);
+    }
+
+    .home-tool-card:focus-visible,
+    .category-card:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 4px;
+    }
+
+    .tool-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 19px;
+    }
+
+    .tool-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      color: var(--color-primary);
+      background: var(--color-input-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      font-size: 23px;
+      font-weight: 700;
+    }
+
+    .tool-type {
+      padding: 6px 9px;
+      color: var(--color-text-secondary);
+      background: var(--color-input-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 7px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .home-tool-card h3 {
+      margin: 0 0 10px;
+      color: var(--color-text);
+      font-size: 17px;
+      line-height: 1.45;
+    }
+
+    .home-tool-card p {
+      margin: 0 0 18px;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .tool-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: auto;
+      color: var(--color-primary);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .home-tool-card:hover .tool-card-link {
+      gap: 11px;
+    }
+
+    .tool-card-link,
+    .home-tool-card {
+      transition:
+        gap 0.2s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .section-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 35px;
+    }
+
+    /* =====================================
+       CATEGORIES
+    ===================================== */
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .category-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 180px;
+      padding: 22px;
+      color: var(--color-text);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      text-decoration: none;
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--color-primary);
+    }
+
+    .category-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 17px;
+    }
+
+    .category-symbol {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 41px;
+      height: 41px;
+      color: var(--color-primary);
+      background: var(--color-input-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 11px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .category-arrow {
+      color: var(--color-primary);
+      font-size: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .category-card:hover .category-arrow {
+      transform: translateX(4px);
+    }
+
+    .category-card h3 {
+      margin: 0 0 8px;
+      color: var(--color-text);
+      font-size: 16px;
+    }
+
+    .category-card p {
+      margin: 0;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    /* =====================================
+       HOW IT WORKS
+    ===================================== */
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .step-card {
+      padding: 26px 22px;
+      text-align: center;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+    }
+
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 47px;
+      height: 47px;
+      margin: 0 auto 17px;
+      color: var(--color-primary);
+      background: var(--color-input-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      font-size: 16px;
+      font-weight: 750;
+    }
+
+    .step-card h3 {
+      margin: 0 0 10px;
+      color: var(--color-text);
+      font-size: 16px;
+    }
+
+    .step-card p {
+      margin: 0;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* =====================================
+       FINAL CTA
+    ===================================== */
+
+    .home-cta {
+      padding: 0 0 88px;
+    }
+
+    .cta-panel {
+      position: relative;
+      overflow: hidden;
+      padding: 55px 28px;
+      text-align: center;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      box-shadow: var(--color-card-shadow);
+    }
+
+    .cta-panel h2 {
+      margin: 0 0 15px;
+      color: var(--color-text);
+      font-size: clamp(27px, 4vw, 38px);
+      line-height: 1.25;
+      letter-spacing: -0.7px;
+    }
+
+    .cta-panel p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--color-text-secondary);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .cta-panel .hero-actions {
+      margin-top: 25px;
+    }
+
+    /* =====================================
+       SEARCH RESULTS
+    ===================================== */
+
+    .quick-search-results {
+      display: none;
+      margin-top: 14px;
+      padding: 18px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 13px;
+      box-shadow: var(--color-card-shadow);
+    }
+
+    .quick-search-results.is-visible {
+      display: block;
+    }
+
+    .search-results-heading {
+      margin: 0 0 12px;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .search-results-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .search-result-link {
+      display: block;
+      padding: 12px;
+      color: var(--color-text);
+      background: var(--color-input-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 9px;
+      text-decoration: none;
+    }
+
+    .search-result-link:hover {
+      border-color: var(--color-primary);
+    }
+
+    .search-result-link strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 13px;
+    }
+
+    .search-result-link span {
+      display: block;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .search-no-results {
+      margin: 0;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .search-all-link {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--color-primary);
+      font-size: 13px;
+      font-weight: 650;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* =====================================
+       SCROLL REVEAL ANIMATIONS
+    ===================================== */
+
+    .js-reveal .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .js-reveal .reveal.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .js-reveal .reveal-delay-1 {
+      transition-delay: 0.08s;
+    }
+
+    .js-reveal .reveal-delay-2 {
+      transition-delay: 0.16s;
+    }
+
+    .js-reveal .reveal-delay-3 {
+      transition-delay: 0.24s;
+    }
+
+    /* =====================================
+       RESPONSIVE
+    ===================================== */
+
+    @media (max-width: 900px) {
+      .home-tool-grid,
+      .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .home-hero {
+        min-height: 520px;
+      }
+
+      .home-section {
+        padding: 72px 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .home-container {
+        width: min(100% - 24px, 1160px);
+      }
+
+      .home-hero {
+        min-height: auto;
+        padding: 78px 0 72px;
+      }
+
+      .hero-content h1 {
+        font-size: clamp(37px, 11vw, 52px);
+        letter-spacing: -1.7px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .hero-decoration {
+        width: 240px;
+        height: 240px;
+      }
+
+      .hero-decoration-one {
+        top: -110px;
+        left: -150px;
+      }
+
+      .hero-decoration-two {
+        right: -150px;
+        bottom: -130px;
+      }
+
+      .home-section {
+        padding: 58px 0;
+      }
+
+      .section-heading {
+        margin-bottom: 30px;
+      }
+
+      .section-heading p {
+        font-size: 14px;
+      }
+
+      .quick-search-wrap {
+        width: calc(100% - 24px);
+        margin-top: -19px;
+      }
+
+      .quick-search-box {
+        gap: 9px;
+        padding-left: 12px;
+      }
+
+      .quick-search-box button {
+        padding: 9px 11px;
+      }
+
+      .feature-strip-grid,
+      .home-tool-grid,
+      .category-grid,
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-strip {
+        padding-top: 30px;
+      }
+
+      .feature-strip-grid {
+        gap: 11px;
+      }
+
+      .feature-strip-item {
+        padding: 19px 16px;
+      }
+
+      .home-tool-card {
+        min-height: 205px;
+        padding: 20px;
+      }
+
+      .category-card {
+        min-height: 150px;
+        padding: 19px;
+      }
+
+      .steps-grid {
+        gap: 13px;
+      }
+
+      .step-card {
+        padding: 23px 18px;
+      }
+
+      .home-cta {
+        padding-bottom: 58px;
+      }
+
+      .cta-panel {
+        padding: 38px 19px;
+        border-radius: 15px;
+      }
+
+      .search-results-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        gap: 10px;
+      }
+
+      .hero-actions .home-button {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .js-reveal .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main class="home-page">
+
+    <!-- HERO -->
+    <section class="home-hero" aria-labelledby="hero-title">
+      <div class="hero-decoration hero-decoration-one" aria-hidden="true"></div>
+      <div class="hero-decoration hero-decoration-two" aria-hidden="true"></div>
+
+      <div class="home-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            Useful tools, all in one place
+          </div>
+
+          <h1 id="hero-title">
+            Everyday tasks.<br>
+            <span class="hero-highlight">Made simpler.</span>
+          </h1>
+
+          <p class="hero-description">
+            Welcome to MohakTools — a collection of practical online tools
+            designed to help you calculate, convert, organise, and get things
+            done without unnecessary complexity.
+          </p>
+
+          <div class="hero-actions">
+            <a class="home-button home-button-primary" href="/tools/">
+              Explore All Tools <span aria-hidden="true">→</span>
+            </a>
+
+            <a class="home-button home-button-secondary" href="#featured-tools">
+              Discover Popular Tools
+            </a>
+          </div>
+
+          <p class="hero-mini-note">
+            Calculators · Converters · Text Utilities · Developer Tools
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK SEARCH -->
+    <div class="quick-search-wrap" id="quick-search">
+      <form class="quick-search-box" id="homeSearchForm" role="search">
+        <span class="search-symbol" aria-hidden="true">⌕</span>
+        <input
+          type="search"
+          id="homeToolSearch"
+          placeholder="What do you need to do?"
+          aria-label="Search MohakTools"
+          autocomplete="off"
+        >
+        <button type="submit">Search</button>
+      </form>
+
+      <div class="quick-search-results" id="homeSearchResults" aria-live="polite">
+        <p class="search-results-heading" id="searchResultsHeading">Matching tools</p>
+        <div class="search-results-list" id="searchResultsList"></div>
+        <a class="search-all-link" href="/tools/">Browse the full tools directory →</a>
+      </div>
+    </div>
+
+    <!-- BENEFITS -->
+    <section class="feature-strip">
+      <div class="home-container">
+        <div class="feature-strip-grid">
+          <article class="feature-strip-item reveal">
+            <h3>Simple to Use</h3>
+            <p>Clear interfaces that help you complete everyday tasks with less friction.</p>
+          </article>
+
+          <article class="feature-strip-item reveal reveal-delay-1">
+            <h3>Tools for Different Tasks</h3>
+            <p>Find calculators, converters, text utilities, and developer helpers.</p>
+          </article>
+
+          <article class="feature-strip-item reveal reveal-delay-2">
+            <h3>One Convenient Directory</h3>
+            <p>Search for a tool or browse the complete collection by category.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED TOOLS -->
+    <section class="home-section" id="featured-tools">
+      <div class="home-container">
+        <div class="section-heading reveal">
+          <span class="section-eyebrow">Featured tools</span>
+          <h2>Tools for your everyday workflow</h2>
+          <p>
+            Start with some useful tools from the MohakTools collection.
+            Select a tool to open its dedicated page.
+          </p>
+        </div>
+
+        <div class="home-tool-grid">
+
+          <a class="home-tool-card reveal"
+             href="/tools/calculator/"
+             data-tool-name="Basic Calculator"
+             data-tool-description="Perform everyday arithmetic calculations, including addition, subtraction, multiplication, and division.">
+            <div class="tool-card-top">
+              <span class="tool-icon" aria-hidden="true">±</span>
+              <span class="tool-type">Calculator</span>
+            </div>
+            <h3>Basic Calculator</h3>
+            <p>Perform everyday arithmetic calculations with a straightforward calculator.</p>
+            <span class="tool-card-link">Use Calculator <span aria-hidden="true">→</span></span>
+          </a>
+
+          <a class="home-tool-card reveal reveal-delay-1"
+             href="/tools/percentage-calculator/"
+             data-tool-name="Percentage Calculator"
+             data-tool-description="Calculate percentages, percentage increases, decreases, and differences.">
+            <div class="tool-card-top">
+              <span class="tool-icon" aria-hidden="true">%</span>
+              <span class="tool-type">Calculator</span>
+            </div>
+            <h3>Percentage Calculator</h3>
+            <p>Calculate percentages and percentage changes for everyday problems.</p>
+            <span class="tool-card-link">Calculate Percentage <span aria-hidden="true">→</span></span>
+          </a>
+
+          <a class="home-tool-card reveal reveal-delay-2"
+             href="/tools/age-calculator/"
+             data-tool-name="Age Calculator"
+             data-tool-description="Calculate age from a date of birth in years, months, and days.">
+            <div class="tool-card-top">
+              <span class="tool-icon" aria-hidden="true">◷</span>
+              <span class="tool-type">Calculator</span>
+            </div>
+            <h3>Age Calculator</h3>
+            <p>Find the time between your date of birth and a selected date.</p>
+            <span class="tool-card-link">Calculate Age <span aria-hidden="true">→</span></span>
+          </a>
+
+          <a class="home-tool-card reveal"
+             href="/tools/word-counter/"
+             data-tool-name="Word Counter"
+             data-tool-description="Count words, characters, and lines in text.">
+            <div class="tool-card-top">
+              <span class="tool-icon" aria-hidden="true">Aa</span>
+              <span class="tool-type">Text Tool</span>
+            </div>
+            <h3>Word Counter</h3>
+            <p>Count words, characters, and lines in text while writing or editing.</p>
+            <span class="tool-card-link">Count Words <span aria-hidden="true">→</span></span>
+          </a>
+
+          <a class="home-tool-card reveal reveal-delay-1"
+             href="/tools/time-converter/"
+             data-tool-name="Time Converter"
+             data-tool-description="Convert seconds, minutes, hours, days, and other time units.">
+            <div class="tool-card-top">
+              <span class="tool-icon" aria-hidden="true">◴</span>
+              <span class="tool-type">Converter</span>
+            </div>
+            <h3>Time Converter</h3>
+            <p>Convert between common time units in a few steps.</p>
+            <span class="tool-card-link">Convert Time <span aria-hidden="true">→</span></span>
+          </a>
+
+          <a class="home-tool-card reveal reveal-delay-2"
+             href="/tools/uuid-generator/"
+             data-tool-name="UUID Generator"
+             data-tool-description="Generate UUID v4 identifiers for development and testing.">
+            <div class="tool-card-top">
+              <span class="tool-icon" aria-hidden="true">#</span>
+              <span class="tool-type">Developer Tool</span>
+            </div>
+            <h3>UUID Generator</h3>
+            <p>Generate UUID identifiers for development, testing, and data records.</p>
+            <span class="tool-card-link">Generate UUID <span aria-hidden="true">→</span></span>
+          </a>
+
+          <a class="home-tool-card reveal"
+             href="/tools/json-formatter/"
+             data-tool-name="JSON Formatter"
+             data-tool-description="Format and beautify JSON data for easier reading.">
+            <div class="tool-card-top">
+              <span class="tool-icon" aria-hidden="true">{ }</span>
+              <span class="tool-type">Developer Tool</span>
+            </div>
+            <h3>JSON Formatter</h3>
+            <p>Format JSON into a more readable structure when working with data.</p>
+            <span class="tool-card-link">Format JSON <span aria-hidden="true">→</span></span>
+          </a>
+
+          <a class="home-tool-card reveal reveal-delay-1"
+             href="/tools/password-generator/"
+             data-tool-name="Password Generator"
+             data-tool-description="Generate random passwords using configurable character options.">
+            <div class="tool-card-top">
+              <span class="tool-icon" aria-hidden="true">⌑</span>
+              <span class="tool-type">Utility</span>
+            </div>
+            <h3>Password Generator</h3>
+            <p>Generate random passwords with configurable character options.</p>
+            <span class="tool-card-link">Generate Password <span aria-hidden="true">→</span></span>
+          </a>
+
+          <a class="home-tool-card reveal reveal-delay-2"
+             href="/tools/qr-code-generator/"
+             data-tool-name="QR Code Generator"
+             data-tool-description="Create QR codes from supported text and URLs.">
+            <div class="tool-card-top">
+              <span class="tool-icon" aria-hidden="true">▦</span>
+              <span class="tool-type">Utility</span>
+            </div>
+            <h3>QR Code Generator</h3>
+            <p>Create QR codes from links and other supported content.</p>
+            <span class="tool-card-link">Create QR Code <span aria-hidden="true">→</span></span>
+          </a>
+
+        </div>
+
+        <div class="section-actions reveal">
+          <a class="home-button home-button-primary" href="/tools/">
+            View All Tools <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="home-section home-section-alt" id="tool-categories">
+      <div class="home-container">
+        <div class="section-heading reveal">
+          <span class="section-eyebrow">Explore by category</span>
+          <h2>Find the right tool for the task</h2>
+          <p>
+            Browse the full directory by the type of work you need to do.
+            Each category links to the complete collection of tools.
+          </p>
+        </div>
+
+        <div class="category-grid">
+
+          <a class="category-card reveal" href="/tools/#calculators">
+            <div class="category-card-top">
+              <span class="category-symbol" aria-hidden="true">∑</span>
+              <span class="category-arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3>Calculators</h3>
+            <p>Calculate percentages, ages, discounts, loan instalments, and more.</p>
+          </a>
+
+          <a class="category-card reveal reveal-delay-1" href="/tools/#converters">
+            <div class="category-card-top">
+              <span class="category-symbol" aria-hidden="true">⇄</span>
+              <span class="category-arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3>Converters</h3>
+            <p>Convert length, area, temperature, speed, time, and other units.</p>
+          </a>
+
+          <a class="category-card reveal reveal-delay-2" href="/tools/#text-tools">
+            <div class="category-card-top">
+              <span class="category-symbol" aria-hidden="true">Aa</span>
+              <span class="category-arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3>Text Tools</h3>
+            <p>Count, sort, reverse, clean, and transform text for different tasks.</p>
+          </a>
+
+          <a class="category-card reveal" href="/tools/#developer-tools">
+            <div class="category-card-top">
+              <span class="category-symbol" aria-hidden="true">{ }</span>
+              <span class="category-arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3>Developer Tools</h3>
+            <p>Work with JSON, Base64, URL encoding, UUIDs, and HTML entities.</p>
+          </a>
+
+          <a class="category-card reveal reveal-delay-1" href="/tools/#time-tools">
+            <div class="category-card-top">
+              <span class="category-symbol" aria-hidden="true">◷</span>
+              <span class="category-arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3>Clocks & Timers</h3>
+            <p>Use clocks, countdowns, alarms, a stopwatch, and a Pomodoro timer.</p>
+          </a>
+
+          <a class="category-card reveal reveal-delay-2" href="/tools/#everyday-utilities">
+            <div class="category-card-top">
+              <span class="category-symbol" aria-hidden="true">▧</span>
+              <span class="category-arrow" aria-hidden="true">↗</span>
+            </div>
+            <h3>Image Tools</h3>
+            <p>Resize images or reduce image file sizes with the available utilities.</p>
+          </a>
+
+        </div>
+
+        <div class="section-actions reveal">
+          <a class="home-button home-button-secondary" href="/tools/">
+            Browse the Complete Directory <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="home-section" id="how-it-works">
+      <div class="home-container">
+        <div class="section-heading reveal">
+          <span class="section-eyebrow">Getting started</span>
+          <h2>Three simple steps</h2>
+          <p>
+            Find a tool, enter what you need, and use the result for your task.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card reveal">
+            <div class="step-number">01</div>
+            <h3>Find a Tool</h3>
+            <p>Search by name or browse the categories to find a suitable utility.</p>
+          </article>
+
+          <article class="step-card reveal reveal-delay-1">
+            <div class="step-number">02</div>
+            <h3>Enter Your Details</h3>
+            <p>Provide the numbers, text, dates, or other input required by the tool.</p>
+          </article>
+
+          <article class="step-card reveal reveal-delay-2">
+            <div class="step-number">03</div>
+            <h3>Get Your Result</h3>
+            <p>View the output and use the available options on that tool's page.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION -->
+    <section class="home-cta">
+      <div class="home-container">
+        <div class="cta-panel reveal">
+          <span class="section-eyebrow">MohakTools directory</span>
+          <h2>Ready to find your next tool?</h2>
+          <p>
+            Explore the full collection of online utilities, from everyday
+            calculations to text processing and developer tasks.
+          </p>
+
+          <div class="hero-actions">
+            <a class="home-button home-button-primary" href="/tools/">
+              Explore All Tools <span aria-hidden="true">→</span>
+            </a>
+
+            <a class="home-button home-button-secondary" href="/about/">
+              About MohakTools
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <!-- HOMEPAGE INTERACTIONS -->
+  <script>
+    (() => {
+      "use strict";
+
+      /* -------------------------------------
+         Scroll reveal animation
+      ------------------------------------- */
+
+      const revealElements = document.querySelectorAll(".reveal");
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        revealElements.forEach((element) => {
+          element.classList.add("is-revealed");
+        });
+      } else {
+        document.documentElement.classList.add("js-reveal");
+
+        const revealObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-revealed");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.12,
+            rootMargin: "0px 0px -35px 0px"
+          }
+        );
+
+        revealElements.forEach((element) => {
+          revealObserver.observe(element);
+        });
+      }
+
+      /* -------------------------------------
+         Homepage tool search
+      ------------------------------------- */
+
+      const searchForm = document.getElementById("homeSearchForm");
+      const searchInput = document.getElementById("homeToolSearch");
+      const resultsPanel = document.getElementById("homeSearchResults");
+      const resultsList = document.getElementById("searchResultsList");
+      const resultsHeading = document.getElementById("searchResultsHeading");
+
+      const tools = [
+        {
+          name: "Basic Calculator",
+          description: "Perform everyday arithmetic calculations.",
+          url: "/tools/calculator/",
+          keywords: "math addition subtraction multiplication division"
+        },
+        {
+          name: "Scientific Calculator",
+          description: "Perform advanced mathematical calculations.",
+          url: "/tools/scientific-calculator/",
+          keywords: "trigonometry logarithm advanced math"
+        },
+        {
+          name: "Percentage Calculator",
+          description: "Calculate percentages and percentage changes.",
+          url: "/tools/percentage-calculator/",
+          keywords: "percent increase decrease"
+        },
+        {
+          name: "Age Calculator",
+          description: "Calculate age from a date of birth.",
+          url: "/tools/age-calculator/",
+          keywords: "birthday years months days"
+        },
+        {
+          name: "BMI Calculator",
+          description: "Calculate body mass index.",
+          url: "/tools/bmi-calculator/",
+          keywords: "height weight body mass"
+        },
+        {
+          name: "Discount Calculator",
+          description: "Calculate discounts and final prices.",
+          url: "/tools/discount-calculator/",
+          keywords: "sale savings price shopping"
+        },
+        {
+          name: "GST Calculator",
+          description: "Calculate GST and tax-inclusive prices.",
+          url: "/tools/gst-calculator/",
+          keywords: "tax goods services"
+        },
+        {
+          name: "Loan EMI Calculator",
+          description: "Estimate monthly loan instalments.",
+          url: "/tools/loan-emi-calculator/",
+          keywords: "loan interest repayment monthly payment"
+        },
+        {
+          name: "Time Converter",
+          description: "Convert between common time units.",
+          url: "/tools/time-converter/",
+          keywords: "seconds minutes hours days"
+        },
+        {
+          name: "Area Converter",
+          description: "Convert common area measurement units.",
+          url: "/tools/area-converter/",
+          keywords: "square metre acre hectare"
+        },
+        {
+          name: "Length Converter",
+          description: "Convert length and distance units.",
+          url: "/tools/length-converter/",
+          keywords: "metres kilometres miles feet"
+        },
+        {
+          name: "Temperature Converter",
+          description: "Convert Celsius, Fahrenheit, and Kelvin.",
+          url: "/tools/temperature-converter/",
+          keywords: "degrees celsius fahrenheit kelvin"
+        },
+        {
+          name: "Word Counter",
+          description: "Count words, characters, and lines.",
+          url: "/tools/word-counter/",
+          keywords: "writing text document essay"
+        },
+        {
+          name: "Character Counter",
+          description: "Count characters in your text.",
+          url: "/tools/character-counter/",
+          keywords: "letters symbols spaces"
+        },
+        {
+          name: "Case Converter",
+          description: "Change text case and formatting.",
+          url: "/tools/case-converter/",
+          keywords: "uppercase lowercase title case"
+        },
+        {
+          name: "Text Sorter",
+          description: "Sort lines of text alphabetically.",
+          url: "/tools/text-sorter/",
+          keywords: "sort alphabetically list lines"
+        },
+        {
+          name: "JSON Formatter",
+          description: "Format JSON data for easier reading.",
+          url: "/tools/json-formatter/",
+          keywords: "developer code beautify format"
+        },
+        {
+          name: "JSON Validator",
+          description: "Check whether JSON syntax is valid.",
+          url: "/tools/json-validator/",
+          keywords: "developer debug syntax errors"
+        },
+        {
+          name: "Base64 Encoder / Decoder",
+          description: "Encode or decode Base64 text.",
+          url: "/tools/base64-encoder-decoder/",
+          keywords: "developer encode decode"
+        },
+        {
+          name: "URL Encoder / Decoder",
+          description: "Encode or decode URL components.",
+          url: "/tools/url-encoder-decoder/",
+          keywords: "web development links percent encoding"
+        },
+        {
+          name: "HTML Entity Encoder",
+          description: "Encode or decode HTML entities.",
+          url: "/tools/html-entity-encoder/",
+          keywords: "html special characters entities"
+        },
+        {
+          name: "UUID Generator",
+          description: "Generate UUID v4 identifiers.",
+          url: "/tools/uuid-generator/",
+          keywords: "developer unique identifier random id"
+        },
+        {
+          name: "Password Generator",
+          description: "Generate random passwords.",
+          url: "/tools/password-generator/",
+          keywords: "random secure password"
+        },
+        {
+          name: "QR Code Generator",
+          description: "Create QR codes from supported content.",
+          url: "/tools/qr-code-generator/",
+          keywords: "qr link url scan"
+        },
+        {
+          name: "Unix Timestamp Converter",
+          description: "Convert Unix timestamps and dates.",
+          url: "/tools/unix-timestamp-converter/",
+          keywords: "epoch timestamp unix date time"
+        },
+        {
+          name: "Date Difference Calculator",
+          description: "Calculate the time between two dates.",
+          url: "/tools/date-difference-calculator/",
+          keywords: "days between dates calendar"
+        },
+        {
+          name: "Time Duration Calculator",
+          description: "Calculate the duration between two times.",
+          url: "/tools/time-duration-calculator/",
+          keywords: "hours minutes elapsed duration"
+        },
+        {
+          name: "Digital Clock",
+          description: "View the current time digitally.",
+          url: "/tools/digital-clock/",
+          keywords: "current time clock"
+        },
+        {
+          name: "World Clock",
+          description: "Check times in different time zones.",
+          url: "/tools/world-clock/",
+          keywords: "international timezone city time"
+        },
+        {
+          name: "Countdown Timer",
+          description: "Count down to a selected time or event.",
+          url: "/tools/countdown-timer/",
+          keywords: "timer countdown event"
+        },
+        {
+          name: "Stopwatch",
+          description: "Measure elapsed time.",
+          url: "/tools/stopwatch/",
+          keywords: "timer stopwatch seconds"
+        },
+        {
+          name: "Alarm Clock",
+          description: "Set a browser-based alarm.",
+          url: "/tools/alarm-clock/",
+          keywords: "alarm reminder wake up"
+        },
+        {
+          name: "Pomodoro Timer",
+          description: "Organise work sessions and breaks.",
+          url: "/tools/pomodoro-timer/",
+          keywords: "productivity focus study break"
+        },
+        {
+          name: "Calendar",
+          description: "Explore dates on a calendar.",
+          url: "/tools/calendar/",
+          keywords: "date month year schedule"
+        },
+        {
+          name: "Image Compressor",
+          description: "Reduce image file sizes.",
+          url: "/tools/image-compressor/",
+          keywords: "image photo file size compression"
+        },
+        {
+          name: "Image Resizer",
+          description: "Resize images to custom dimensions.",
+          url: "/tools/image-resizer/",
+          keywords: "image photo width height pixels"
+        },
+        {
+          name: "Random Number Generator",
+          description: "Generate random numbers within a range.",
+          url: "/tools/random-number-generator/",
+          keywords: "random number range minimum maximum"
+        },
+        {
+          name: "Random Choice Picker",
+          description: "Pick a random option from a list.",
+          url: "/tools/random-choice-picker/",
+          keywords: "random decision choice picker"
+        },
+        {
+          name: "Duplicate Line Remover",
+          description: "Remove duplicate lines from text.",
+          url: "/tools/duplicate-line-remover/",
+          keywords: "text repeated lines unique"
+        },
+        {
+          name: "Remove Extra Spaces",
+          description: "Clean repeated spaces in text.",
+          url: "/tools/remove-extra-spaces/",
+          keywords: "text whitespace clean"
+        },
+        {
+          name: "Text Reverser",
+          description: "Reverse the characters in text.",
+          url: "/tools/text-reverser/",
+          keywords: "reverse letters string"
+        },
+        {
+          name: "Text to Slug",
+          description: "Create URL-friendly text slugs.",
+          url: "/tools/text-to-slug/",
+          keywords: "slug url seo title"
+        },
+        {
+          name: "Line Counter",
+          description: "Count lines in a block of text.",
+          url: "/tools/line-counter/",
+          keywords: "text lines count"
+        },
+        {
+          name: "Typing Speed Test",
+          description: "Test typing speed and accuracy.",
+          url: "/tools/typing-speed-test/",
+          keywords: "typing wpm words per minute keyboard"
+        },
+        {
+          name: "Data Storage Converter",
+          description: "Convert digital storage units.",
+          url: "/tools/data-storage-converter/",
+          keywords: "bytes kilobytes megabytes gigabytes data"
+        },
+        {
+          name: "Speed Converter",
+          description: "Convert speed measurement units.",
+          url: "/tools/speed-converter/",
+          keywords: "kmh mph metres per second"
+        },
+        {
+          name: "Weight Converter",
+          description: "Convert weight and mass units.",
+          url: "/tools/weight-converter/",
+          keywords: "kilograms grams pounds ounces mass"
+        },
+        {
+          name: "Color Code Converter",
+          description: "Convert common colour code formats.",
+          url: "/tools/color-code-converter/",
+          keywords: "hex rgb colour color design"
+        },
+        {
+          name: "Aspect Ratio Calculator",
+          description: "Calculate proportional dimensions.",
+          url: "/tools/aspect-ratio-calculator/",
+          keywords: "image video ratio width height"
+        },
+        {
+          name: "Unit Converter",
+          description: "Convert supported measurement units.",
+          url: "/tools/unit-converter/",
+          keywords: "measurement units conversion"
+        }
+      ];
+
+      function renderResults(query) {
+        const normalizedQuery = query.trim().toLowerCase();
+
+        resultsList.replaceChildren();
+
+        if (!normalizedQuery) {
+          resultsHeading.textContent = "Enter a name or keyword to search";
+          resultsList.innerHTML =
+            '<p class="search-no-results">Try searching for calculator, word counter, JSON, time, or converter.</p>';
+          resultsPanel.classList.add("is-visible");
+          return;
+        }
+
+        const matches = tools.filter((tool) => {
+          const searchableText = [
+            tool.name,
+            tool.description,
+            tool.keywords
+          ].join(" ").toLowerCase();
+
+          return searchableText.includes(normalizedQuery);
+        }).slice(0, 8);
+
+        resultsHeading.textContent = matches.length
+          ? `Found ${matches.length}${matches.length === 8 ? "+" : ""} matching tool${matches.length === 1 ? "" : "s"}`
+          : "No matching tools found";
+
+        if (matches.length === 0) {
+          const message = document.createElement("p");
+          message.className = "search-no-results";
+          message.textContent = "Try another keyword or browse the complete tools directory.";
+          resultsList.appendChild(message);
+        } else {
+          matches.forEach((tool) => {
+            const link = document.createElement("a");
+            link.className = "search-result-link";
+            link.href = tool.url;
+
+            const title = document.createElement("strong");
+            title.textContent = tool.name;
+
+            const description = document.createElement("span");
+            description.textContent = tool.description;
+
+            link.append(title, description);
+            resultsList.appendChild(link);
+          });
+        }
+
+        resultsPanel.classList.add("is-visible");
+      }
+
+      searchForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        renderResults(searchInput.value);
+      });
+
+      searchInput.addEventListener("input", () => {
+        if (searchInput.value.trim()) {
+          renderResults(searchInput.value);
+        } else {
+          resultsPanel.classList.remove("is-visible");
+          resultsList.replaceChildren();
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        if (
+          !searchForm.contains(event.target) &&
+          !resultsPanel.contains(event.target)
+        ) {
+          resultsPanel.classList.remove("is-visible");
+        }
+      });
+
+      searchInput.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          resultsPanel.classList.remove("is-visible");
+          searchInput.blur();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

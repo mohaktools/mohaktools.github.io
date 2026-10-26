@@ -1,0 +1,745 @@
+{
+  "categories": [
+    {
+      "id": "calculators",
+      "name": "Calculators"
+    },
+    {
+      "id": "time-tools",
+      "name": "Time & Productivity"
+    },
+    {
+      "id": "converters",
+      "name": "Converters"
+    },
+    {
+      "id": "text-tools",
+      "name": "Text Tools"
+    },
+    {
+      "id": "developer-tools",
+      "name": "Developer Tools"
+    },
+    {
+      "id": "everyday-utilities",
+      "name": "Everyday Utilities"
+    }
+  ],
+  "tools": [
+    {
+      "id": "calculator",
+      "name": "Basic Calculator",
+      "category": "calculators",
+      "url": "/tools/calculator/",
+      "description": "Perform addition, subtraction, multiplication and division.",
+      "keywords": [
+        "math",
+        "arithmetic",
+        "calculate"
+      ],
+      "icon": "+",
+      "featured": true,
+      "popularity": 100
+    },
+    {
+      "id": "scientific-calculator",
+      "name": "Scientific Calculator",
+      "category": "calculators",
+      "url": "/tools/scientific-calculator/",
+      "description": "Calculate scientific expressions and mathematical functions.",
+      "keywords": [
+        "math",
+        "trigonometry",
+        "sin",
+        "cos",
+        "log"
+      ],
+      "icon": "π",
+      "popularity": 85
+    },
+    {
+      "id": "percentage-calculator",
+      "name": "Percentage Calculator",
+      "category": "calculators",
+      "url": "/tools/percentage-calculator/",
+      "description": "Calculate percentages, increases and decreases.",
+      "keywords": [
+        "percent",
+        "math"
+      ],
+      "icon": "%",
+      "featured": true,
+      "popularity": 90
+    },
+    {
+      "id": "age-calculator",
+      "name": "Age Calculator",
+      "category": "calculators",
+      "url": "/tools/age-calculator/",
+      "description": "Calculate age using a date of birth.",
+      "keywords": [
+        "birthday",
+        "birth date",
+        "dob"
+      ],
+      "icon": "▦",
+      "featured": true,
+      "popularity": 88
+    },
+    {
+      "id": "bmi-calculator",
+      "name": "BMI Calculator",
+      "category": "calculators",
+      "url": "/tools/bmi-calculator/",
+      "description": "Calculate body mass index from height and weight.",
+      "keywords": [
+        "health",
+        "body mass index",
+        "fitness"
+      ],
+      "icon": "↗",
+      "popularity": 75
+    },
+    {
+      "id": "discount-calculator",
+      "name": "Discount Calculator",
+      "category": "calculators",
+      "url": "/tools/discount-calculator/",
+      "description": "Calculate sale prices and discount amounts.",
+      "keywords": [
+        "sale",
+        "shopping",
+        "savings"
+      ],
+      "icon": "%",
+      "popularity": 80
+    },
+    {
+      "id": "gst-calculator",
+      "name": "GST Calculator",
+      "category": "calculators",
+      "url": "/tools/gst-calculator/",
+      "description": "Calculate GST amounts and tax-inclusive totals.",
+      "keywords": [
+        "tax",
+        "india",
+        "goods and services tax"
+      ],
+      "icon": "₹",
+      "popularity": 82
+    },
+    {
+      "id": "loan-emi-calculator",
+      "name": "Loan EMI Calculator",
+      "category": "calculators",
+      "url": "/tools/loan-emi-calculator/",
+      "description": "Estimate monthly loan instalments and interest.",
+      "keywords": [
+        "finance",
+        "loan",
+        "interest",
+        "emi"
+      ],
+      "icon": "₹",
+      "popularity": 78
+    },
+    {
+      "id": "date-difference-calculator",
+      "name": "Date Difference Calculator",
+      "category": "calculators",
+      "url": "/tools/date-difference-calculator/",
+      "description": "Find the time between two dates.",
+      "keywords": [
+        "days between dates",
+        "calendar"
+      ],
+      "icon": "▦",
+      "popularity": 70
+    },
+    {
+      "id": "time-duration-calculator",
+      "name": "Time Duration Calculator",
+      "category": "calculators",
+      "url": "/tools/time-duration-calculator/",
+      "description": "Calculate the duration between two times.",
+      "keywords": [
+        "hours",
+        "minutes",
+        "elapsed time"
+      ],
+      "icon": "◷",
+      "popularity": 68
+    },
+    {
+      "id": "alarm-clock",
+      "name": "Alarm Clock",
+      "category": "time-tools",
+      "url": "/tools/alarm-clock/",
+      "description": "Set an alarm using your browser.",
+      "keywords": [
+        "wake up",
+        "reminder",
+        "alert"
+      ],
+      "icon": "◷",
+      "featured": true,
+      "popularity": 95
+    },
+    {
+      "id": "stopwatch",
+      "name": "Stopwatch",
+      "category": "time-tools",
+      "url": "/tools/stopwatch/",
+      "description": "Measure elapsed time and lap times.",
+      "keywords": [
+        "timer",
+        "laps",
+        "seconds"
+      ],
+      "icon": "◴",
+      "featured": true,
+      "popularity": 86
+    },
+    {
+      "id": "countdown-timer",
+      "name": "Countdown Timer",
+      "category": "time-tools",
+      "url": "/tools/countdown-timer/",
+      "description": "Count down to a chosen time.",
+      "keywords": [
+        "clock",
+        "deadline",
+        "minutes"
+      ],
+      "icon": "◴",
+      "popularity": 84
+    },
+    {
+      "id": "pomodoro-timer",
+      "name": "Pomodoro Timer",
+      "category": "time-tools",
+      "url": "/tools/pomodoro-timer/",
+      "description": "Organize focused work and break sessions.",
+      "keywords": [
+        "study",
+        "focus",
+        "productivity"
+      ],
+      "icon": "◉",
+      "popularity": 79
+    },
+    {
+      "id": "world-clock",
+      "name": "World Clock",
+      "category": "time-tools",
+      "url": "/tools/world-clock/",
+      "description": "Check the current time in different locations.",
+      "keywords": [
+        "timezone",
+        "international time"
+      ],
+      "icon": "◎",
+      "popularity": 70
+    },
+    {
+      "id": "digital-clock",
+      "name": "Digital Clock",
+      "category": "time-tools",
+      "url": "/tools/digital-clock/",
+      "description": "Display the current digital time.",
+      "keywords": [
+        "live clock",
+        "current time"
+      ],
+      "icon": "◷",
+      "popularity": 65
+    },
+    {
+      "id": "calendar",
+      "name": "Calendar",
+      "category": "time-tools",
+      "url": "/tools/calendar/",
+      "description": "View dates and organize your calendar.",
+      "keywords": [
+        "date",
+        "month",
+        "year"
+      ],
+      "icon": "▦",
+      "popularity": 73
+    },
+    {
+      "id": "unit-converter",
+      "name": "Unit Converter",
+      "category": "converters",
+      "url": "/tools/unit-converter/",
+      "description": "Convert between common measurement units.",
+      "keywords": [
+        "measurement",
+        "units"
+      ],
+      "icon": "↔",
+      "featured": true,
+      "popularity": 98
+    },
+    {
+      "id": "length-converter",
+      "name": "Length Converter",
+      "category": "converters",
+      "url": "/tools/length-converter/",
+      "description": "Convert metres, kilometres, miles, feet and more.",
+      "keywords": [
+        "distance",
+        "metre",
+        "mile",
+        "feet"
+      ],
+      "icon": "↔",
+      "popularity": 82
+    },
+    {
+      "id": "weight-converter",
+      "name": "Weight Converter",
+      "category": "converters",
+      "url": "/tools/weight-converter/",
+      "description": "Convert grams, kilograms, pounds and ounces.",
+      "keywords": [
+        "mass",
+        "kg",
+        "lbs"
+      ],
+      "icon": "kg",
+      "popularity": 80
+    },
+    {
+      "id": "temperature-converter",
+      "name": "Temperature Converter",
+      "category": "converters",
+      "url": "/tools/temperature-converter/",
+      "description": "Convert Celsius, Fahrenheit and Kelvin.",
+      "keywords": [
+        "celsius",
+        "degrees",
+        "fahrenheit",
+        "kelvin",
+        "temperature",
+        "weather"
+      ],
+      "icon": "°",
+      "featured": true,
+      "popularity": 85
+    },
+    {
+      "id": "speed-converter",
+      "name": "Speed Converter",
+      "category": "converters",
+      "url": "/tools/speed-converter/",
+      "description": "Convert km/h, mph, metres per second and more.",
+      "keywords": [
+        "velocity",
+        "kmh",
+        "mph"
+      ],
+      "icon": "↗",
+      "popularity": 70
+    },
+    {
+      "id": "time-converter",
+      "name": "Time Converter",
+      "category": "converters",
+      "url": "/tools/time-converter/",
+      "description": "Convert seconds, minutes, hours and days.",
+      "keywords": [
+        "duration",
+        "hours",
+        "minutes"
+      ],
+      "icon": "◷",
+      "popularity": 72
+    },
+    {
+      "id": "area-converter",
+      "name": "Area Converter",
+      "category": "converters",
+      "url": "/tools/area-converter/",
+      "description": "Convert square metres, acres, hectares and more.",
+      "keywords": [
+        "land",
+        "acre",
+        "hectare"
+      ],
+      "icon": "▧",
+      "popularity": 65
+    },
+    {
+      "id": "data-storage-converter",
+      "name": "Data Storage Converter",
+      "category": "converters",
+      "url": "/tools/data-storage-converter/",
+      "description": "Convert bytes, KB, MB, GB and TB.",
+      "keywords": [
+        "computer",
+        "memory",
+        "storage",
+        "bytes"
+      ],
+      "icon": "▤",
+      "popularity": 78
+    },
+    {
+      "id": "word-counter",
+      "name": "Word Counter",
+      "category": "text-tools",
+      "url": "/tools/word-counter/",
+      "description": "Count words, characters and lines in text.",
+      "keywords": [
+        "characters",
+        "essay",
+        "letters",
+        "word count",
+        "writing"
+      ],
+      "icon": "Aa",
+      "featured": true,
+      "popularity": 92
+    },
+    {
+      "id": "case-converter",
+      "name": "Case Converter",
+      "category": "text-tools",
+      "url": "/tools/case-converter/",
+      "description": "Convert text to uppercase, lowercase and title case.",
+      "keywords": [
+        "capitalization",
+        "uppercase",
+        "lowercase"
+      ],
+      "icon": "Aa",
+      "popularity": 83
+    },
+    {
+      "id": "remove-extra-spaces",
+      "name": "Remove Extra Spaces",
+      "category": "text-tools",
+      "url": "/tools/remove-extra-spaces/",
+      "description": "Clean up repeated spaces in text.",
+      "keywords": [
+        "trim",
+        "whitespace",
+        "clean text"
+      ],
+      "icon": "↔",
+      "popularity": 65
+    },
+    {
+      "id": "text-reverser",
+      "name": "Text Reverser",
+      "category": "text-tools",
+      "url": "/tools/text-reverser/",
+      "description": "Reverse text or the order of characters.",
+      "keywords": [
+        "backwards",
+        "reverse string"
+      ],
+      "icon": "↔",
+      "popularity": 63
+    },
+    {
+      "id": "character-counter",
+      "name": "Character Counter",
+      "category": "text-tools",
+      "url": "/tools/character-counter/",
+      "description": "Count characters with and without spaces.",
+      "keywords": [
+        "letters",
+        "writing",
+        "length"
+      ],
+      "icon": "#",
+      "popularity": 76
+    },
+    {
+      "id": "line-counter",
+      "name": "Line Counter",
+      "category": "text-tools",
+      "url": "/tools/line-counter/",
+      "description": "Count lines in a block of text.",
+      "keywords": [
+        "rows",
+        "text lines"
+      ],
+      "icon": "☰",
+      "popularity": 58
+    },
+    {
+      "id": "text-to-slug",
+      "name": "Text to Slug",
+      "category": "text-tools",
+      "url": "/tools/text-to-slug/",
+      "description": "Convert text into URL-friendly slugs.",
+      "keywords": [
+        "url",
+        "seo",
+        "permalink"
+      ],
+      "icon": "↗",
+      "popularity": 69
+    },
+    {
+      "id": "duplicate-line-remover",
+      "name": "Duplicate Line Remover",
+      "category": "text-tools",
+      "url": "/tools/duplicate-line-remover/",
+      "description": "Remove repeated lines from text.",
+      "keywords": [
+        "unique lines",
+        "deduplicate"
+      ],
+      "icon": "≡",
+      "popularity": 64
+    },
+    {
+      "id": "text-sorter",
+      "name": "Text Sorter",
+      "category": "text-tools",
+      "url": "/tools/text-sorter/",
+      "description": "Sort text lines alphabetically.",
+      "keywords": [
+        "alphabetical",
+        "ascending",
+        "descending"
+      ],
+      "icon": "↕",
+      "popularity": 66
+    },
+    {
+      "id": "json-formatter",
+      "name": "JSON Formatter",
+      "category": "developer-tools",
+      "url": "/tools/json-formatter/",
+      "description": "Format and beautify JSON data.",
+      "keywords": [
+        "pretty print",
+        "code",
+        "developer"
+      ],
+      "icon": "{ }",
+      "featured": true,
+      "popularity": 87
+    },
+    {
+      "id": "json-validator",
+      "name": "JSON Validator",
+      "category": "developer-tools",
+      "url": "/tools/json-validator/",
+      "description": "Check JSON syntax and validity.",
+      "keywords": [
+        "debug",
+        "parse",
+        "developer"
+      ],
+      "icon": "✓",
+      "popularity": 79
+    },
+    {
+      "id": "base64-encoder-decoder",
+      "name": "Base64 Encoder/Decoder",
+      "category": "developer-tools",
+      "url": "/tools/base64-encoder-decoder/",
+      "description": "Encode and decode Base64 text.",
+      "keywords": [
+        "encoding",
+        "decode",
+        "web development"
+      ],
+      "icon": "</>",
+      "popularity": 81
+    },
+    {
+      "id": "url-encoder-decoder",
+      "name": "URL Encoder/Decoder",
+      "category": "developer-tools",
+      "url": "/tools/url-encoder-decoder/",
+      "description": "Encode or decode URL components.",
+      "keywords": [
+        "percent encoding",
+        "web",
+        "links"
+      ],
+      "icon": "↗",
+      "popularity": 77
+    },
+    {
+      "id": "html-entity-encoder",
+      "name": "HTML Entity Encoder",
+      "category": "developer-tools",
+      "url": "/tools/html-entity-encoder/",
+      "description": "Encode and decode HTML special characters.",
+      "keywords": [
+        "html entities",
+        "escape",
+        "web"
+      ],
+      "icon": "<>",
+      "popularity": 62
+    },
+    {
+      "id": "uuid-generator",
+      "name": "UUID Generator",
+      "category": "developer-tools",
+      "url": "/tools/uuid-generator/",
+      "description": "Generate universally unique identifiers.",
+      "keywords": [
+        "guid",
+        "random id",
+        "developer"
+      ],
+      "icon": "#",
+      "popularity": 74
+    },
+    {
+      "id": "unix-timestamp-converter",
+      "name": "Unix Timestamp Converter",
+      "category": "developer-tools",
+      "url": "/tools/unix-timestamp-converter/",
+      "description": "Convert Unix timestamps to readable dates.",
+      "keywords": [
+        "epoch",
+        "UTC",
+        "programming"
+      ],
+      "icon": "◷",
+      "popularity": 71
+    },
+    {
+      "id": "color-code-converter",
+      "name": "Color Code Converter",
+      "category": "developer-tools",
+      "url": "/tools/color-code-converter/",
+      "description": "Convert HEX, RGB and HSL color codes.",
+      "keywords": [
+        "colour",
+        "hex",
+        "hsl",
+        "rgb",
+        "web design"
+      ],
+      "icon": "◉",
+      "popularity": 80
+    },
+    {
+      "id": "password-generator",
+      "name": "Password Generator",
+      "category": "everyday-utilities",
+      "url": "/tools/password-generator/",
+      "description": "Generate random passwords in your browser.",
+      "keywords": [
+        "password",
+        "random password",
+        "security"
+      ],
+      "icon": "●",
+      "featured": true,
+      "popularity": 91
+    },
+    {
+      "id": "qr-code-generator",
+      "name": "QR Code Generator",
+      "category": "everyday-utilities",
+      "url": "/tools/qr-code-generator/",
+      "description": "Create QR codes from text or links.",
+      "keywords": [
+        "scan",
+        "barcode",
+        "url"
+      ],
+      "icon": "▦",
+      "featured": true,
+      "popularity": 89
+    },
+    {
+      "id": "random-number-generator",
+      "name": "Random Number Generator",
+      "category": "everyday-utilities",
+      "url": "/tools/random-number-generator/",
+      "description": "Generate random numbers within a range.",
+      "keywords": [
+        "randomizer",
+        "number picker"
+      ],
+      "icon": "⅓",
+      "popularity": 75
+    },
+    {
+      "id": "random-choice-picker",
+      "name": "Random Choice Picker",
+      "category": "everyday-utilities",
+      "url": "/tools/random-choice-picker/",
+      "description": "Pick a random option from your list.",
+      "keywords": [
+        "decision",
+        "chooser",
+        "lottery"
+      ],
+      "icon": "✓",
+      "popularity": 68
+    },
+    {
+      "id": "image-compressor",
+      "name": "Image Compressor",
+      "category": "everyday-utilities",
+      "url": "/tools/image-compressor/",
+      "description": "Reduce image file size in your browser.",
+      "keywords": [
+        "photo",
+        "image optimization",
+        "jpg",
+        "png"
+      ],
+      "icon": "▧",
+      "popularity": 84
+    },
+    {
+      "id": "image-resizer",
+      "name": "Image Resizer",
+      "category": "everyday-utilities",
+      "url": "/tools/image-resizer/",
+      "description": "Resize images to your desired dimensions.",
+      "keywords": [
+        "photo",
+        "pixels",
+        "dimensions"
+      ],
+      "icon": "↗",
+      "popularity": 82
+    },
+    {
+      "id": "aspect-ratio-calculator",
+      "name": "Aspect Ratio Calculator",
+      "category": "everyday-utilities",
+      "url": "/tools/aspect-ratio-calculator/",
+      "description": "Calculate proportions for images and screens.",
+      "keywords": [
+        "dimensions",
+        "resolution",
+        "video"
+      ],
+      "icon": "▣",
+      "popularity": 67
+    },
+    {
+      "id": "typing-speed-test",
+      "name": "Typing Speed Test",
+      "category": "everyday-utilities",
+      "url": "/tools/typing-speed-test/",
+      "description": "Test typing speed and accuracy.",
+      "keywords": [
+        "WPM",
+        "keyboard",
+        "practice"
+      ],
+      "icon": "⌨",
+      "popularity": 78
+    }
+  ]
+}
