@@ -1,359 +1,168 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Unit Converter - Length, Weight, Temperature & More | MohakTools</title>
-  <meta name="description" content="Convert units of length, weight, temperature, area, volume, speed, time and digital storage instantly with the free MohakTools Unit Converter.">
-  <meta name="robots" content="index, follow">
+  <!-- Primary SEO -->
+  <title>Free Unit Converter – Length, Weight, Temperature | MohakTools</title>
+  <meta name="description" content="Free online unit converter for length, weight, temperature, area, volume, speed, time and data storage. Instant, accurate results with formulas. No signup.">
+  <meta name="keywords" content="unit converter, online unit converter, length converter, weight converter, temperature converter, km to miles, kg to lbs, celsius to fahrenheit, MB to GB, MohakTools">
+  <meta name="author" content="Mohak Choubey">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="theme-color" content="#4f46e5">
   <link rel="canonical" href="https://mohaktools.com/tools/unit-converter/">
 
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Free Online Unit Converter | MohakTools">
-  <meta property="og:description" content="Convert common measurement units quickly and accurately.">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Free Unit Converter – Length, Weight, Temperature & More">
+  <meta property="og:description" content="Convert length, weight, temperature, area, volume, speed, time and digital storage instantly. Free, fast and private.">
   <meta property="og:url" content="https://mohaktools.com/tools/unit-converter/">
+  <meta property="og:image" content="https://mohaktools.com/assets/images/og/unit-converter.png">
+  <meta property="og:image:alt" content="MohakTools Unit Converter">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Unit Converter | MohakTools">
+  <meta name="twitter:description" content="Instant conversions for length, weight, temperature, area, volume, speed, time and data storage.">
+  <meta name="twitter:image" content="https://mohaktools.com/assets/images/og/unit-converter.png">
 
   <link rel="stylesheet" href="/assets/css/themes.css">
 
   <style>
-    /* =========================================
-       MohakTools — Unit Converter
-       ========================================= */
+    .uc-page { width: min(100% - 32px, 1040px); margin: 0 auto; padding: 36px 0 64px; color: var(--text-color, inherit); }
 
-    .uc-page {
-      width: min(100% - 32px, 1000px);
-      margin: 0 auto;
-      padding: 36px 0 64px;
-      color: var(--text-color, inherit);
-    }
+    /* Breadcrumb */
+    .uc-crumbs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 22px; padding: 0; list-style: none; font-size: 13px; color: var(--muted-text-color, #777); }
+    .uc-crumbs li + li::before { content: "/"; margin-right: 6px; opacity: .5; }
+    .uc-crumbs a { color: inherit; text-decoration: none; }
+    .uc-crumbs a:hover { text-decoration: underline; }
 
-    .uc-hero {
-      text-align: center;
-      margin-bottom: 32px;
-    }
+    /* Hero */
+    .uc-hero { text-align: center; margin-bottom: 30px; }
+    .uc-eyebrow { display: inline-block; margin-bottom: 14px; padding: 6px 14px; border: 1px solid var(--border-color, #ddd); border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .uc-hero h1 { margin: 0 0 12px; font-size: clamp(30px, 5vw, 48px); line-height: 1.12; letter-spacing: -.035em; }
+    .uc-hero p { max-width: 660px; margin: 0 auto; color: var(--muted-text-color, #666); font-size: 16px; line-height: 1.7; }
 
-    .uc-eyebrow {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 6px 12px;
-      border: 1px solid var(--border-color, #ddd);
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
+    /* Card */
+    .uc-card { padding: clamp(20px, 4vw, 34px); border: 1px solid var(--border-color, #ddd); border-radius: 22px; background: var(--card-background, var(--surface-color, transparent)); box-shadow: 0 10px 34px rgb(0 0 0 / 5%); }
 
-    .uc-hero h1 {
-      margin: 0 0 12px;
-      font-size: clamp(30px, 5vw, 46px);
-      line-height: 1.15;
-      letter-spacing: -.035em;
-    }
+    /* Category tabs */
+    .uc-tabs { display: flex; gap: 8px; margin: 0 0 26px; padding: 2px 2px 8px; overflow-x: auto; scrollbar-width: thin; }
+    .uc-tab { flex: 0 0 auto; padding: 9px 16px; border: 1px solid var(--border-color, #ddd); border-radius: 999px; background: transparent; color: inherit; font: inherit; font-size: 14px; font-weight: 650; cursor: pointer; transition: background .2s, border-color .2s, color .2s; }
+    .uc-tab:hover { border-color: var(--primary-color, #4f46e5); }
+    .uc-tab[aria-pressed="true"] { border-color: var(--primary-color, #4f46e5); background: var(--primary-color, #4f46e5); color: #fff; }
 
-    .uc-hero p {
-      max-width: 640px;
-      margin: 0 auto;
-      color: var(--muted-text-color, #666);
-      font-size: 16px;
-      line-height: 1.7;
-    }
+    .uc-field { display: flex; flex-direction: column; gap: 9px; min-width: 0; }
+    .uc-field label { font-size: 13px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: var(--muted-text-color, #777); }
 
-    .uc-card {
-      padding: clamp(20px, 4vw, 34px);
-      border: 1px solid var(--border-color, #ddd);
-      border-radius: 20px;
-      background: var(--card-background, var(--surface-color, transparent));
-      box-shadow: 0 8px 28px rgb(0 0 0 / 4%);
-    }
+    .uc-select, .uc-number { width: 100%; min-width: 0; min-height: 48px; padding: 12px 14px; border: 1px solid var(--border-color, #ccc); border-radius: 12px; background: var(--input-background, var(--background-color, transparent)); color: inherit; font: inherit; outline: none; box-sizing: border-box; transition: border-color .2s, box-shadow .2s; }
+    .uc-select:focus, .uc-number:focus { border-color: var(--primary-color, #4f46e5); box-shadow: 0 0 0 3px rgb(79 70 229 / 14%); }
+    .uc-number { font-size: 24px; font-weight: 650; min-height: 58px; }
 
-    .uc-field {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-      min-width: 0;
-    }
+    .uc-converter-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: end; gap: 16px; }
+    .uc-swap-wrap { display: flex; justify-content: center; padding-bottom: 6px; }
 
-    .uc-field label,
-    .uc-category-label {
-      font-size: 14px;
-      font-weight: 700;
-    }
+    .uc-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 11px 18px; border: 1px solid var(--border-color, #ccc); border-radius: 12px; background: transparent; color: inherit; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; transition: opacity .2s, transform .2s; }
+    .uc-button:hover { opacity: .82; }
+    .uc-button:active { transform: scale(.97); }
+    .uc-button:focus-visible, .uc-tab:focus-visible, .uc-chip:focus-visible { outline: 2px solid var(--primary-color, #4f46e5); outline-offset: 3px; }
+    .uc-button-primary { border-color: var(--primary-color, #4f46e5); background: var(--primary-color, #4f46e5); color: #fff; }
+    .uc-swap-button { width: 48px; height: 48px; padding: 0; border-radius: 50%; font-size: 20px; transition: transform .35s ease, opacity .2s; }
+    .uc-swap-button.is-spun { transform: rotate(180deg); }
 
-    .uc-category-wrap {
-      margin-bottom: 26px;
-    }
+    /* Result */
+    .uc-result { margin-top: 26px; padding: 22px; border: 1px solid var(--border-color, #ddd); border-radius: 16px; background: var(--result-background, rgb(127 127 127 / 6%)); }
+    .uc-result-label { margin-bottom: 8px; color: var(--muted-text-color, #777); font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .uc-result-value { overflow-wrap: anywhere; font-size: clamp(24px, 5vw, 36px); font-weight: 750; line-height: 1.3; }
+    .uc-result-description { margin-top: 10px; color: var(--muted-text-color, #777); font-size: 13px; line-height: 1.6; }
+    .uc-formula { margin-top: 10px; padding: 8px 12px; border-radius: 8px; background: rgb(127 127 127 / 10%); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; overflow-wrap: anywhere; }
 
-    .uc-select,
-    .uc-number,
-    .uc-search {
-      width: 100%;
-      min-width: 0;
-      min-height: 48px;
-      padding: 12px 14px;
-      border: 1px solid var(--border-color, #ccc);
-      border-radius: 10px;
-      background: var(--input-background, var(--background-color, transparent));
-      color: inherit;
-      font: inherit;
-      outline: none;
-      box-sizing: border-box;
-    }
+    .uc-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .uc-message { min-height: 20px; margin-top: 12px; color: var(--muted-text-color, #777); font-size: 13px; }
 
-    .uc-select:focus,
-    .uc-number:focus,
-    .uc-search:focus {
-      border-color: var(--primary-color, #4f46e5);
-      box-shadow: 0 0 0 3px rgb(79 70 229 / 12%);
-    }
+    /* Sections */
+    .uc-section { margin-top: 44px; }
+    .uc-section h2 { margin: 0 0 12px; font-size: clamp(22px, 3vw, 28px); letter-spacing: -.02em; }
+    .uc-section > p { color: var(--muted-text-color, #666); line-height: 1.8; }
 
-    .uc-converter-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-      align-items: end;
-      gap: 16px;
-    }
+    .uc-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .uc-chip { padding: 10px 16px; border: 1px solid var(--border-color, #ddd); border-radius: 12px; background: transparent; color: inherit; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: border-color .2s, transform .2s; }
+    .uc-chip:hover { border-color: var(--primary-color, #4f46e5); transform: translateY(-2px); }
 
-    .uc-number {
-      font-size: 22px;
-      font-weight: 600;
-    }
+    .uc-table-wrap { margin-top: 16px; overflow-x: auto; border: 1px solid var(--border-color, #ddd); border-radius: 14px; }
+    .uc-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .uc-table th, .uc-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border-color, #eee); white-space: nowrap; }
+    .uc-table th { font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted-text-color, #777); }
+    .uc-table tr:last-child td { border-bottom: 0; }
+    .uc-table td:last-child { font-variant-numeric: tabular-nums; font-weight: 650; }
 
-    .uc-unit-name {
-      margin-top: 2px;
-      color: var(--muted-text-color, #777);
-      font-size: 12px;
-      line-height: 1.5;
-    }
+    .uc-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 18px; padding: 0; list-style: none; counter-reset: step; }
+    .uc-steps li { counter-increment: step; padding: 18px; border: 1px solid var(--border-color, #ddd); border-radius: 14px; line-height: 1.65; color: var(--muted-text-color, #666); font-size: 14px; }
+    .uc-steps li::before { content: counter(step); display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; margin-bottom: 10px; border-radius: 50%; background: var(--primary-color, #4f46e5); color: #fff; font-weight: 700; font-size: 14px; }
+    .uc-steps strong { display: block; margin-bottom: 4px; color: var(--text-color, inherit); }
 
-    .uc-swap-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-bottom: 30px;
-    }
+    .uc-faq-list { display: grid; gap: 12px; }
+    .uc-faq-list details { padding: 17px 18px; border: 1px solid var(--border-color, #ddd); border-radius: 14px; transition: border-color .2s; }
+    .uc-faq-list details[open] { border-color: var(--primary-color, #4f46e5); }
+    .uc-faq-list summary { font-weight: 700; cursor: pointer; line-height: 1.6; }
+    .uc-faq-list details p { margin: 12px 0 0; color: var(--muted-text-color, #666); line-height: 1.8; }
 
-    .uc-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 44px;
-      padding: 11px 17px;
-      border: 1px solid var(--border-color, #ccc);
-      border-radius: 10px;
-      background: transparent;
-      color: inherit;
-      font: inherit;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: opacity .2s ease, transform .2s ease;
-    }
-
-    .uc-button:hover {
-      opacity: .82;
-    }
-
-    .uc-button:active {
-      transform: scale(.98);
-    }
-
-    .uc-button:focus-visible {
-      outline: 2px solid var(--primary-color, #4f46e5);
-      outline-offset: 3px;
-    }
-
-    .uc-button-primary {
-      border-color: var(--primary-color, #4f46e5);
-      background: var(--primary-color, #4f46e5);
-      color: #fff;
-    }
-
-    .uc-swap-button {
-      width: 46px;
-      height: 46px;
-      padding: 0;
-      border-radius: 50%;
-      font-size: 20px;
-    }
-
-    .uc-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .uc-result {
-      margin-top: 24px;
-      padding: 20px;
-      border: 1px solid var(--border-color, #ddd);
-      border-radius: 14px;
-      background: var(--result-background, rgb(127 127 127 / 6%));
-    }
-
-    .uc-result-label {
-      margin-bottom: 8px;
-      color: var(--muted-text-color, #777);
-      font-size: 13px;
-    }
-
-    .uc-result-value {
-      overflow-wrap: anywhere;
-      font-size: clamp(25px, 5vw, 36px);
-      font-weight: 750;
-      line-height: 1.3;
-    }
-
-    .uc-result-description {
-      margin-top: 8px;
-      color: var(--muted-text-color, #777);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .uc-message {
-      min-height: 20px;
-      margin-top: 12px;
-      color: var(--muted-text-color, #777);
-      font-size: 13px;
-    }
-
-    .uc-section {
-      margin-top: 38px;
-    }
-
-    .uc-section h2 {
-      margin: 0 0 14px;
-      font-size: clamp(22px, 3vw, 28px);
-      letter-spacing: -.02em;
-    }
-
-    .uc-section > p {
-      color: var(--muted-text-color, #666);
-      line-height: 1.8;
-    }
-
-    .uc-category-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .uc-category-button {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 58px;
-      padding: 14px;
-      border: 1px solid var(--border-color, #ddd);
-      border-radius: 12px;
-      background: transparent;
-      color: inherit;
-      text-align: left;
-      font: inherit;
-      font-size: 14px;
-      font-weight: 650;
-      cursor: pointer;
-    }
-
-    .uc-category-button:hover,
-    .uc-category-button[aria-pressed="true"] {
-      border-color: var(--primary-color, #4f46e5);
-      background: var(--result-background, rgb(127 127 127 / 7%));
-    }
-
-    .uc-faq-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .uc-faq-list details {
-      padding: 17px 18px;
-      border: 1px solid var(--border-color, #ddd);
-      border-radius: 12px;
-    }
-
-    .uc-faq-list summary {
-      font-weight: 700;
-      cursor: pointer;
-      line-height: 1.6;
-    }
-
-    .uc-faq-list details p {
-      margin: 12px 0 0;
-      color: var(--muted-text-color, #666);
-      line-height: 1.8;
-    }
-
-    .uc-note {
-      font-size: 13px;
-      line-height: 1.7;
-      color: var(--muted-text-color, #777);
-    }
+    .uc-note { margin-top: 36px; font-size: 13px; line-height: 1.7; color: var(--muted-text-color, #777); }
 
     @media (max-width: 700px) {
-      .uc-page {
-        width: min(100% - 24px, 1000px);
-        padding-top: 26px;
-      }
-
-      .uc-converter-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 16px;
-      }
-
-      .uc-swap-wrap {
-        padding: 0;
-      }
-
-      .uc-swap-button {
-        transform: rotate(90deg);
-      }
-
-      .uc-swap-button:active {
-        transform: rotate(90deg) scale(.98);
-      }
-
-      .uc-category-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .uc-card {
-        border-radius: 15px;
-      }
+      .uc-page { width: min(100% - 24px, 1040px); padding-top: 24px; }
+      .uc-converter-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+      .uc-swap-wrap { padding: 0; }
+      .uc-swap-button.is-spun { transform: rotate(180deg); }
+      .uc-steps { grid-template-columns: minmax(0, 1fr); }
+      .uc-card { border-radius: 16px; }
     }
-
-    @media (max-width: 360px) {
-      .uc-category-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .uc-actions .uc-button {
-        flex: 1 1 100%;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .uc-button {
-        transition: none;
-      }
-    }
+    @media (max-width: 360px) { .uc-actions .uc-button { flex: 1 1 100%; } }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
   </style>
 
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "MohakTools Unit Converter",
-    "url": "https://mohaktools.com/tools/unit-converter/",
-    "applicationCategory": "UtilitiesApplication",
-    "operatingSystem": "Any",
-    "description": "A free online tool for converting common measurement units."
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://mohaktools.com/tools/unit-converter/#app",
+        "name": "MohakTools Unit Converter",
+        "url": "https://mohaktools.com/tools/unit-converter/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "inLanguage": "en",
+        "description": "Free online converter for length, weight, temperature, area, volume, speed, time and digital storage units.",
+        "featureList": "Length, weight, temperature, area, volume, speed, time and digital storage conversion; instant results; swap units; copy result",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@type": "Person", "name": "Mohak Choubey" },
+        "publisher": { "@type": "Organization", "name": "MohakTools", "url": "https://mohaktools.com/" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mohaktools.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://mohaktools.com/tools/" },
+          { "@type": "ListItem", "position": 3, "name": "Unit Converter", "item": "https://mohaktools.com/tools/unit-converter/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is a unit converter?", "acceptedAnswer": { "@type": "Answer", "text": "A unit converter changes a measurement from one unit to another equivalent unit, such as kilometres to miles or kilograms to pounds." } },
+          { "@type": "Question", "name": "Which units can I convert?", "acceptedAnswer": { "@type": "Answer", "text": "This tool supports length, weight and mass, temperature, area, volume, speed, time and digital storage conversions." } },
+          { "@type": "Question", "name": "How do I convert Celsius to Fahrenheit?", "acceptedAnswer": { "@type": "Answer", "text": "Multiply the Celsius value by 9/5 and add 32. For example, 100 °C is 212 °F." } },
+          { "@type": "Question", "name": "What is the difference between MB and MiB?", "acceptedAnswer": { "@type": "Answer", "text": "A megabyte (MB) is 1,000,000 bytes in the decimal system, while a mebibyte (MiB) is 1,048,576 bytes in the binary system. This converter keeps both standards separate." } },
+          { "@type": "Question", "name": "Is the MohakTools Unit Converter free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. It runs entirely in your browser, needs no account and your values are never sent to a server." } }
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -363,216 +172,153 @@
   <div id="site-header"></div>
 
   <main class="uc-page">
+    <nav aria-label="Breadcrumb">
+      <ol class="uc-crumbs">
+        <li><a href="/">Home</a></li>
+        <li><a href="/tools/">Tools</a></li>
+        <li aria-current="page">Unit Converter</li>
+      </ol>
+    </nav>
+
     <header class="uc-hero">
       <span class="uc-eyebrow">Free Online Tool</span>
       <h1>Unit Converter</h1>
       <p>
-        Convert measurements between common units of length, weight,
-        temperature, area, volume, speed, time and digital storage.
-        Get results instantly without installing anything.
+        Convert length, weight, temperature, area, volume, speed, time and
+        digital storage in one place. Instant, accurate and private &ndash;
+        everything runs in your browser.
       </p>
     </header>
 
     <section class="uc-card" aria-label="Unit conversion calculator">
-      <div class="uc-category-wrap">
-        <label class="uc-category-label" for="uc-category">
-          Conversion category
-        </label>
-        <select class="uc-select" id="uc-category">
-          <option value="length">Length</option>
-          <option value="weight">Weight and Mass</option>
-          <option value="temperature">Temperature</option>
-          <option value="area">Area</option>
-          <option value="volume">Volume</option>
-          <option value="speed">Speed</option>
-          <option value="time">Time</option>
-          <option value="data">Digital Storage</option>
-        </select>
+      <div class="uc-tabs" id="uc-tabs" role="group" aria-label="Conversion category">
+        <button class="uc-tab" type="button" data-category="length" aria-pressed="true">Length</button>
+        <button class="uc-tab" type="button" data-category="weight" aria-pressed="false">Weight</button>
+        <button class="uc-tab" type="button" data-category="temperature" aria-pressed="false">Temperature</button>
+        <button class="uc-tab" type="button" data-category="area" aria-pressed="false">Area</button>
+        <button class="uc-tab" type="button" data-category="volume" aria-pressed="false">Volume</button>
+        <button class="uc-tab" type="button" data-category="speed" aria-pressed="false">Speed</button>
+        <button class="uc-tab" type="button" data-category="time" aria-pressed="false">Time</button>
+        <button class="uc-tab" type="button" data-category="data" aria-pressed="false">Digital Storage</button>
       </div>
 
       <div class="uc-converter-grid">
         <div class="uc-field">
           <label for="uc-from-value">From</label>
-          <input
-            class="uc-number"
-            id="uc-from-value"
-            type="number"
-            value="1"
-            step="any"
-            inputmode="decimal"
-            autocomplete="off"
-            aria-label="Value to convert"
-          >
+          <input class="uc-number" id="uc-from-value" type="number" value="1" step="any" inputmode="decimal" autocomplete="off" aria-label="Value to convert">
           <select class="uc-select" id="uc-from-unit" aria-label="Convert from unit"></select>
-          <div class="uc-unit-name" id="uc-from-description"></div>
         </div>
 
         <div class="uc-swap-wrap">
-          <button
-            class="uc-button uc-swap-button"
-            id="uc-swap"
-            type="button"
-            aria-label="Swap conversion units"
-            title="Swap units"
-          >⇄</button>
+          <button class="uc-button uc-swap-button" id="uc-swap" type="button" aria-label="Swap conversion units" title="Swap units">⇄</button>
         </div>
 
         <div class="uc-field">
           <label for="uc-to-value">To</label>
-          <input
-            class="uc-number"
-            id="uc-to-value"
-            type="text"
-            value="0"
-            readonly
-            aria-label="Converted result"
-          >
+          <input class="uc-number" id="uc-to-value" type="text" value="0" readonly aria-label="Converted result">
           <select class="uc-select" id="uc-to-unit" aria-label="Convert to unit"></select>
-          <div class="uc-unit-name" id="uc-to-description"></div>
         </div>
       </div>
 
       <div class="uc-result" aria-live="polite" aria-atomic="true">
         <div class="uc-result-label">Conversion result</div>
-        <div class="uc-result-value" id="uc-result-value">1 metre = 100 centimetres</div>
-        <div class="uc-result-description" id="uc-result-description">
-          Change the value or units to calculate a new result.
-        </div>
+        <div class="uc-result-value" id="uc-result-value">1 m = 100 cm</div>
+        <div class="uc-result-description" id="uc-result-description">Change the value or units to calculate a new result.</div>
+        <div class="uc-formula" id="uc-formula"></div>
       </div>
 
       <div class="uc-actions">
-        <button class="uc-button uc-button-primary" id="uc-copy" type="button">
-          Copy result
-        </button>
-        <button class="uc-button" id="uc-reset" type="button">
-          Reset
-        </button>
+        <button class="uc-button uc-button-primary" id="uc-copy" type="button">Copy result</button>
+        <button class="uc-button" id="uc-share" type="button">Copy link</button>
+        <button class="uc-button" id="uc-reset" type="button">Reset</button>
       </div>
-
       <div class="uc-message" id="uc-message" role="status"></div>
     </section>
 
     <section class="uc-section">
-      <h2>Choose a conversion category</h2>
-      <p>Select a category to quickly switch between different types of measurements.</p>
+      <h2>Popular conversions</h2>
+      <p>Jump straight to the conversions people search for most.</p>
+      <div class="uc-chips" id="uc-chips">
+        <button class="uc-chip" type="button" data-category="length" data-from="km" data-to="mi">Kilometres to miles</button>
+        <button class="uc-chip" type="button" data-category="weight" data-from="kg" data-to="lb">Kilograms to pounds</button>
+        <button class="uc-chip" type="button" data-category="temperature" data-from="C" data-to="F">Celsius to Fahrenheit</button>
+        <button class="uc-chip" type="button" data-category="length" data-from="ft" data-to="m">Feet to metres</button>
+        <button class="uc-chip" type="button" data-category="length" data-from="in" data-to="cm">Inches to centimetres</button>
+        <button class="uc-chip" type="button" data-category="volume" data-from="gal" data-to="l">Gallons to litres</button>
+        <button class="uc-chip" type="button" data-category="speed" data-from="kmh" data-to="mph">km/h to mph</button>
+        <button class="uc-chip" type="button" data-category="data" data-from="GB" data-to="MB">GB to MB</button>
+        <button class="uc-chip" type="button" data-category="area" data-from="acre" data-to="ha">Acres to hectares</button>
+      </div>
+    </section>
 
-      <div class="uc-category-grid" id="uc-category-buttons">
-        <button class="uc-category-button" type="button" data-category="length" aria-pressed="true">Length</button>
-        <button class="uc-category-button" type="button" data-category="weight" aria-pressed="false">Weight and Mass</button>
-        <button class="uc-category-button" type="button" data-category="temperature" aria-pressed="false">Temperature</button>
-        <button class="uc-category-button" type="button" data-category="area" aria-pressed="false">Area</button>
-        <button class="uc-category-button" type="button" data-category="volume" aria-pressed="false">Volume</button>
-        <button class="uc-category-button" type="button" data-category="speed" aria-pressed="false">Speed</button>
-        <button class="uc-category-button" type="button" data-category="time" aria-pressed="false">Time</button>
-        <button class="uc-category-button" type="button" data-category="data" aria-pressed="false">Digital Storage</button>
+    <section class="uc-section">
+      <h2>All <span id="uc-table-unit">metre</span> conversions</h2>
+      <p>See your value in every unit of this category at a glance.</p>
+      <div class="uc-table-wrap">
+        <table class="uc-table">
+          <thead><tr><th scope="col">Unit</th><th scope="col">Value</th></tr></thead>
+          <tbody id="uc-table-body"></tbody>
+        </table>
       </div>
     </section>
 
     <section class="uc-section">
       <h2>How to use the Unit Converter</h2>
-      <p>
-        Choose a conversion category, enter the value you want to convert,
-        and select the starting and target units. The converted result
-        updates automatically. Use the swap button to reverse the units,
-        or copy the result to your clipboard.
-      </p>
+      <ol class="uc-steps">
+        <li><strong>Pick a category</strong>Choose length, weight, temperature, area, volume, speed, time or digital storage.</li>
+        <li><strong>Enter a value</strong>Type your number and choose the starting and target units. Results update instantly.</li>
+        <li><strong>Copy or share</strong>Swap units, copy the result, or copy a link that reopens this exact conversion.</li>
+      </ol>
     </section>
 
     <section class="uc-section">
       <h2>Frequently asked questions</h2>
-
       <div class="uc-faq-list">
         <details>
           <summary>What is a unit converter?</summary>
-          <p>
-            A unit converter changes a measurement from one unit to another
-            equivalent unit, such as kilometres to miles or kilograms to pounds.
-          </p>
+          <p>A unit converter changes a measurement from one unit to another equivalent unit, such as kilometres to miles or kilograms to pounds.</p>
         </details>
-
         <details>
           <summary>Which units can I convert?</summary>
-          <p>
-            This tool supports length, weight and mass, temperature, area,
-            volume, speed, time and digital storage conversions.
-          </p>
+          <p>This tool supports length, weight and mass, temperature, area, volume, speed, time and digital storage conversions.</p>
         </details>
-
         <details>
-          <summary>Are conversions calculated automatically?</summary>
-          <p>
-            Yes. The result updates when you change the input value,
-            conversion category or either unit.
-          </p>
+          <summary>How do I convert Celsius to Fahrenheit?</summary>
+          <p>Multiply the Celsius value by 9/5 and add 32. For example, 100 °C is 212 °F.</p>
         </details>
-
+        <details>
+          <summary>What is the difference between MB and MiB?</summary>
+          <p>A megabyte (MB) is 1,000,000 bytes in the decimal system, while a mebibyte (MiB) is 1,048,576 bytes in the binary system. This converter keeps both standards separate.</p>
+        </details>
         <details>
           <summary>Is the MohakTools Unit Converter free?</summary>
-          <p>
-            Yes. You can use this browser-based converter without installing
-            software or creating an account.
-          </p>
-        </details>
-
-        <details>
-          <summary>How does digital storage conversion work?</summary>
-          <p>
-            Digital storage units can use decimal multiples, where 1 KB is
-            1,000 bytes, or binary multiples, where 1 KiB is 1,024 bytes.
-            This converter keeps these standards distinct.
-          </p>
+          <p>Yes. It runs entirely in your browser, needs no account and your values are never sent to a server.</p>
         </details>
       </div>
     </section>
 
     <p class="uc-note">
-      Note: Results are calculated using standard unit conversion factors.
-      Displayed values may be rounded for readability.
+      Note: Results use standard conversion factors and may be rounded for readability.
+      Gallons, pints and cups are US customary units unless labelled Imperial.
     </p>
   </main>
 
   <div id="site-footer"></div>
 
   <script>
-    /* =========================================
-       MohakTools — Unit Converter Logic
-       ========================================= */
-
     (() => {
       "use strict";
 
-      const categorySelect = document.getElementById("uc-category");
-      const fromValue = document.getElementById("uc-from-value");
-      const toValue = document.getElementById("uc-to-value");
-      const fromUnit = document.getElementById("uc-from-unit");
-      const toUnit = document.getElementById("uc-to-unit");
-      const fromDescription = document.getElementById("uc-from-description");
-      const toDescription = document.getElementById("uc-to-description");
-      const resultValue = document.getElementById("uc-result-value");
-      const resultDescription = document.getElementById("uc-result-description");
-      const message = document.getElementById("uc-message");
-      const swapButton = document.getElementById("uc-swap");
-      const copyButton = document.getElementById("uc-copy");
-      const resetButton = document.getElementById("uc-reset");
-      const categoryButtons = document.querySelectorAll("[data-category]");
+      const $ = id => document.getElementById(id);
+      const fromValue = $("uc-from-value"), toValue = $("uc-to-value");
+      const fromUnit = $("uc-from-unit"), toUnit = $("uc-to-unit");
+      const resultValue = $("uc-result-value"), resultDescription = $("uc-result-description");
+      const formulaEl = $("uc-formula"), message = $("uc-message");
+      const tableBody = $("uc-table-body"), tableUnit = $("uc-table-unit");
+      const tabs = document.querySelectorAll(".uc-tab");
+      if (!fromValue || !toValue || !fromUnit || !toUnit) return;
 
-      if (
-        !categorySelect ||
-        !fromValue ||
-        !toValue ||
-        !fromUnit ||
-        !toUnit
-      ) {
-        return;
-      }
-
-      /*
-       * Factors for linear conversions are expressed relative to
-       * the category's base unit.
-       *
-       * Temperature uses dedicated conversion functions.
-       * Digital storage includes decimal and binary units.
-       */
+      let category = "length";
 
       const units = {
         length: [
@@ -586,7 +332,6 @@
           { id: "mi", name: "Mile", symbol: "mi", factor: 1609.344 },
           { id: "nmi", name: "Nautical mile", symbol: "nmi", factor: 1852 }
         ],
-
         weight: [
           { id: "mg", name: "Milligram", symbol: "mg", factor: 0.000001 },
           { id: "g", name: "Gram", symbol: "g", factor: 0.001 },
@@ -596,13 +341,11 @@
           { id: "lb", name: "Pound", symbol: "lb", factor: 0.45359237 },
           { id: "st", name: "Stone", symbol: "st", factor: 6.35029318 }
         ],
-
         temperature: [
           { id: "C", name: "Celsius", symbol: "°C" },
           { id: "F", name: "Fahrenheit", symbol: "°F" },
           { id: "K", name: "Kelvin", symbol: "K" }
         ],
-
         area: [
           { id: "mm2", name: "Square millimetre", symbol: "mm²", factor: 0.000001 },
           { id: "cm2", name: "Square centimetre", symbol: "cm²", factor: 0.0001 },
@@ -613,7 +356,6 @@
           { id: "ft2", name: "Square foot", symbol: "ft²", factor: 0.09290304 },
           { id: "yd2", name: "Square yard", symbol: "yd²", factor: 0.83612736 }
         ],
-
         volume: [
           { id: "ml", name: "Millilitre", symbol: "mL", factor: 0.001 },
           { id: "l", name: "Litre", symbol: "L", factor: 1 },
@@ -626,7 +368,6 @@
           { id: "gal", name: "US gallon", symbol: "gal", factor: 3.785411784 },
           { id: "impgal", name: "Imperial gallon", symbol: "imp gal", factor: 4.54609 }
         ],
-
         speed: [
           { id: "ms", name: "Metre per second", symbol: "m/s", factor: 1 },
           { id: "kmh", name: "Kilometre per hour", symbol: "km/h", factor: 1 / 3.6 },
@@ -634,7 +375,6 @@
           { id: "fts", name: "Foot per second", symbol: "ft/s", factor: 0.3048 },
           { id: "knot", name: "Knot", symbol: "kn", factor: 0.5144444444444445 }
         ],
-
         time: [
           { id: "ms", name: "Millisecond", symbol: "ms", factor: 0.001 },
           { id: "s", name: "Second", symbol: "s", factor: 1 },
@@ -644,13 +384,12 @@
           { id: "week", name: "Week", symbol: "week", factor: 604800 },
           { id: "year", name: "365-day year", symbol: "year", factor: 31536000 }
         ],
-
         data: [
           { id: "B", name: "Byte", symbol: "B", factor: 1 },
-          { id: "KB", name: "Kilobyte (decimal)", symbol: "KB", factor: 1000 },
-          { id: "MB", name: "Megabyte (decimal)", symbol: "MB", factor: 1000000 },
-          { id: "GB", name: "Gigabyte (decimal)", symbol: "GB", factor: 1000000000 },
-          { id: "TB", name: "Terabyte (decimal)", symbol: "TB", factor: 1000000000000 },
+          { id: "KB", name: "Kilobyte (decimal)", symbol: "KB", factor: 1e3 },
+          { id: "MB", name: "Megabyte (decimal)", symbol: "MB", factor: 1e6 },
+          { id: "GB", name: "Gigabyte (decimal)", symbol: "GB", factor: 1e9 },
+          { id: "TB", name: "Terabyte (decimal)", symbol: "TB", factor: 1e12 },
           { id: "KiB", name: "Kibibyte (binary)", symbol: "KiB", factor: 1024 },
           { id: "MiB", name: "Mebibyte (binary)", symbol: "MiB", factor: 1048576 },
           { id: "GiB", name: "Gibibyte (binary)", symbol: "GiB", factor: 1073741824 },
@@ -658,257 +397,184 @@
         ]
       };
 
-      const defaultUnits = {
-        length: ["m", "cm"],
-        weight: ["kg", "lb"],
-        temperature: ["C", "F"],
-        area: ["m2", "ft2"],
-        volume: ["l", "ml"],
-        speed: ["kmh", "mph"],
-        time: ["h", "min"],
-        data: ["MB", "GB"]
+      const defaults = {
+        length: ["m", "cm"], weight: ["kg", "lb"], temperature: ["C", "F"],
+        area: ["m2", "ft2"], volume: ["l", "ml"], speed: ["kmh", "mph"],
+        time: ["h", "min"], data: ["MB", "GB"]
       };
 
-      const getCurrentUnits = () => units[categorySelect.value] || [];
+      const getUnit = (cat, id) => (units[cat] || []).find(u => u.id === id);
 
-      const getUnit = (category, id) =>
-        (units[category] || []).find(unit => unit.id === id);
+      const formatNumber = v => {
+        if (!Number.isFinite(v)) return "Result out of range";
+        if (v === 0) return "0";
+        const abs = Math.abs(v);
+        if (abs >= 1e15 || abs < 1e-8) return v.toExponential(6).replace(/\.?0+e/, "e");
+        return Number(v.toPrecision(10)).toLocaleString("en-US", { maximumFractionDigits: 10, useGrouping: false });
+      };
 
-      const formatNumber = value => {
-        if (!Number.isFinite(value)) {
-          return "Result out of range";
+      const toCelsius = (v, f) => f === "C" ? v : f === "F" ? (v - 32) * 5 / 9 : v - 273.15;
+      const fromCelsius = (c, t) => t === "C" ? c : t === "F" ? c * 9 / 5 + 32 : c + 273.15;
+
+      const convert = (v, cat, f, t) => {
+        if (cat === "temperature") return fromCelsius(toCelsius(v, f), t);
+        const s = getUnit(cat, f), d = getUnit(cat, t);
+        return s && d ? v * s.factor / d.factor : NaN;
+      };
+
+      const formulaText = (cat, f, t) => {
+        if (f === t) return "Same unit – no conversion needed.";
+        if (cat === "temperature") {
+          const map = {
+            "C>F": "°F = °C × 9/5 + 32", "F>C": "°C = (°F − 32) × 5/9",
+            "C>K": "K = °C + 273.15", "K>C": "°C = K − 273.15",
+            "F>K": "K = (°F − 32) × 5/9 + 273.15", "K>F": "°F = (K − 273.15) × 9/5 + 32"
+          };
+          return map[f + ">" + t] || "";
         }
+        const s = getUnit(cat, f), d = getUnit(cat, t);
+        return `1 ${s.symbol} = ${formatNumber(s.factor / d.factor)} ${d.symbol}`;
+      };
 
-        if (Object.is(value, -0) || value === 0) {
-          return "0";
-        }
-
-        const abs = Math.abs(value);
-
-        if (abs >= 1e15 || abs < 1e-8) {
-          return value.toExponential(8).replace(/\.?0+e/, "e");
-        }
-
-        return Number(value.toPrecision(12)).toLocaleString("en-US", {
-          maximumFractionDigits: 12,
-          useGrouping: false
+      const fillSelect = (select, value) => {
+        select.replaceChildren();
+        units[category].forEach(u => {
+          const o = document.createElement("option");
+          o.value = u.id;
+          o.textContent = `${u.name} (${u.symbol})`;
+          select.appendChild(o);
         });
+        select.value = value;
       };
 
-      const convertTemperature = (value, from, to) => {
-        let celsius;
-
-        if (from === "C") {
-          celsius = value;
-        } else if (from === "F") {
-          celsius = (value - 32) * 5 / 9;
-        } else {
-          celsius = value - 273.15;
-        }
-
-        if (to === "C") {
-          return celsius;
-        }
-
-        if (to === "F") {
-          return celsius * 9 / 5 + 32;
-        }
-
-        return celsius + 273.15;
-      };
-
-      const convertValue = (value, category, fromId, toId) => {
-        if (category === "temperature") {
-          return convertTemperature(value, fromId, toId);
-        }
-
-        const source = getUnit(category, fromId);
-        const target = getUnit(category, toId);
-
-        if (!source || !target) {
-          return NaN;
-        }
-
-        return value * source.factor / target.factor;
-      };
-
-      const populateUnits = (preserveSelection = false) => {
-        const category = categorySelect.value;
-        const categoryUnits = getCurrentUnits();
-        const defaults = defaultUnits[category];
-
-        const previousFrom = preserveSelection ? fromUnit.value : "";
-        const previousTo = preserveSelection ? toUnit.value : "";
-
-        const createOptions = (select, previous, fallback) => {
-          select.replaceChildren();
-
-          categoryUnits.forEach(unit => {
-            const option = document.createElement("option");
-            option.value = unit.id;
-            option.textContent = `${unit.name} (${unit.symbol})`;
-            select.appendChild(option);
-          });
-
-          const validPrevious = categoryUnits.some(unit => unit.id === previous);
-          select.value = validPrevious ? previous : fallback;
-        };
-
-        createOptions(fromUnit, previousFrom, defaults[0]);
-        createOptions(toUnit, previousTo, defaults[1]);
-
-        updateDescription();
-        updateCategoryButtons();
+      const setCategory = (cat, from, to) => {
+        category = cat;
+        fillSelect(fromUnit, from || defaults[cat][0]);
+        fillSelect(toUnit, to || defaults[cat][1]);
+        tabs.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.category === cat)));
         calculate();
       };
 
-      const updateDescription = () => {
-        const category = categorySelect.value;
-        const source = getUnit(category, fromUnit.value);
-        const target = getUnit(category, toUnit.value);
-
-        fromDescription.textContent = source ? source.name : "";
-        toDescription.textContent = target ? target.name : "";
-      };
-
-      const updateCategoryButtons = () => {
-        categoryButtons.forEach(button => {
-          const active = button.dataset.category === categorySelect.value;
-          button.setAttribute("aria-pressed", String(active));
+      const renderTable = value => {
+        tableBody.replaceChildren();
+        const src = getUnit(category, fromUnit.value);
+        tableUnit.textContent = src ? src.name.toLowerCase() : "";
+        units[category].forEach(u => {
+          const tr = document.createElement("tr");
+          const a = document.createElement("td");
+          const b = document.createElement("td");
+          a.textContent = `${u.name} (${u.symbol})`;
+          b.textContent = formatNumber(convert(value, category, fromUnit.value, u.id));
+          tr.append(a, b);
+          tableBody.appendChild(tr);
         });
       };
 
       const calculate = () => {
-        const category = categorySelect.value;
-        const value = fromValue.value.trim();
-        const source = getUnit(category, fromUnit.value);
-        const target = getUnit(category, toUnit.value);
-
+        const raw = fromValue.value.trim();
         message.textContent = "";
-
-        if (value === "" || !Number.isFinite(Number(value))) {
+        if (raw === "" || !Number.isFinite(Number(raw))) {
           toValue.value = "";
           resultValue.textContent = "Enter a valid number";
           resultDescription.textContent = "Enter a numeric value to calculate the conversion.";
+          formulaEl.hidden = true;
+          tableBody.replaceChildren();
           return;
         }
-
-        const numericValue = Number(value);
-        const converted = convertValue(
-          numericValue,
-          category,
-          fromUnit.value,
-          toUnit.value
-        );
-
-        if (!Number.isFinite(converted)) {
+        const n = Number(raw);
+        const out = convert(n, category, fromUnit.value, toUnit.value);
+        const s = getUnit(category, fromUnit.value), d = getUnit(category, toUnit.value);
+        if (!Number.isFinite(out)) {
           toValue.value = "";
           resultValue.textContent = "Result out of range";
           resultDescription.textContent = "Try a smaller or more appropriate input value.";
+          formulaEl.hidden = true;
           return;
         }
-
-        const formattedInput = formatNumber(numericValue);
-        const formattedOutput = formatNumber(converted);
-
-        toValue.value = formattedOutput;
-
-        resultValue.textContent =
-          `${formattedInput} ${source.symbol} = ${formattedOutput} ${target.symbol}`;
-
-        resultDescription.textContent =
-          `${source.name} to ${target.name}. Results are calculated automatically.`;
+        const fo = formatNumber(out);
+        toValue.value = fo;
+        resultValue.textContent = `${formatNumber(n)} ${s.symbol} = ${fo} ${d.symbol}`;
+        resultDescription.textContent = `${s.name} to ${d.name}. Results update automatically.`;
+        formulaEl.hidden = false;
+        formulaEl.textContent = formulaText(category, fromUnit.value, toUnit.value);
+        renderTable(n);
       };
 
-      categorySelect.addEventListener("change", () => {
-        populateUnits(false);
-      });
+      const shareURL = () => {
+        const p = new URLSearchParams({ c: category, f: fromUnit.value, t: toUnit.value, v: fromValue.value });
+        return `${location.origin}${location.pathname}?${p.toString()}`;
+      };
 
-      fromValue.addEventListener("input", calculate);
-
-      fromUnit.addEventListener("change", () => {
-        updateDescription();
-        calculate();
-      });
-
-      toUnit.addEventListener("change", () => {
-        updateDescription();
-        calculate();
-      });
-
-      swapButton.addEventListener("click", () => {
-        const previousFrom = fromUnit.value;
-        const previousTo = toUnit.value;
-
-        fromUnit.value = previousTo;
-        toUnit.value = previousFrom;
-
-        updateDescription();
-        calculate();
-      });
-
-      resetButton.addEventListener("click", () => {
-        categorySelect.value = "length";
-        fromValue.value = "1";
-        populateUnits(false);
-        message.textContent = "Converter reset.";
-      });
-
-      copyButton.addEventListener("click", async () => {
-        const text = resultValue.textContent;
-
-        if (!text || text === "Enter a valid number" || text === "Result out of range") {
-          message.textContent = "Enter a valid value before copying.";
-          return;
-        }
-
+      const copyText = async (text, okMsg) => {
         try {
           if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(text);
           } else {
-            const temporary = document.createElement("textarea");
-            temporary.value = text;
-            temporary.setAttribute("readonly", "");
-            temporary.style.position = "fixed";
-            temporary.style.opacity = "0";
-            document.body.appendChild(temporary);
-            temporary.select();
-
-            const copied = document.execCommand("copy");
-            temporary.remove();
-
-            if (!copied) {
-              throw new Error("Clipboard copy failed");
-            }
+            const ta = document.createElement("textarea");
+            ta.value = text; ta.setAttribute("readonly", "");
+            ta.style.cssText = "position:fixed;opacity:0";
+            document.body.appendChild(ta); ta.select();
+            const ok = document.execCommand("copy");
+            ta.remove();
+            if (!ok) throw new Error("copy failed");
           }
-
-          message.textContent = "Result copied to clipboard.";
-        } catch (error) {
-          message.textContent = "Unable to copy automatically. Select the result and copy it manually.";
+          message.textContent = okMsg;
+        } catch {
+          message.textContent = "Unable to copy automatically. Please copy it manually.";
         }
-      });
+      };
 
-      categoryButtons.forEach(button => {
-        button.addEventListener("click", () => {
-          const category = button.dataset.category;
+      tabs.forEach(b => b.addEventListener("click", () => setCategory(b.dataset.category)));
 
-          if (!units[category]) {
-            return;
-          }
-
-          categorySelect.value = category;
-          populateUnits(false);
-
-          document.querySelector(".uc-card").scrollIntoView({
-            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-              ? "auto"
-              : "smooth",
-            block: "start"
-          });
+      document.querySelectorAll(".uc-chip").forEach(c => c.addEventListener("click", () => {
+        setCategory(c.dataset.category, c.dataset.from, c.dataset.to);
+        document.querySelector(".uc-card").scrollIntoView({
+          behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+          block: "start"
         });
+      }));
+
+      fromValue.addEventListener("input", calculate);
+      fromUnit.addEventListener("change", calculate);
+      toUnit.addEventListener("change", calculate);
+
+      $("uc-swap").addEventListener("click", e => {
+        const a = fromUnit.value;
+        fromUnit.value = toUnit.value;
+        toUnit.value = a;
+        e.currentTarget.classList.toggle("is-spun");
+        calculate();
       });
 
-      populateUnits(false);
+      $("uc-reset").addEventListener("click", () => {
+        fromValue.value = "1";
+        setCategory("length");
+        message.textContent = "Converter reset.";
+      });
+
+      $("uc-copy").addEventListener("click", () => {
+        const t = resultValue.textContent;
+        if (!t || t === "Enter a valid number" || t === "Result out of range") {
+          message.textContent = "Enter a valid value before copying.";
+          return;
+        }
+        copyText(t, "Result copied to clipboard.");
+      });
+
+      $("uc-share").addEventListener("click", () => copyText(shareURL(), "Link copied. It reopens this exact conversion."));
+
+      // Restore from shared link
+      const q = new URLSearchParams(location.search);
+      const qc = q.get("c");
+      if (qc && units[qc]) {
+        const f = getUnit(qc, q.get("f")) ? q.get("f") : null;
+        const t = getUnit(qc, q.get("t")) ? q.get("t") : null;
+        const v = q.get("v");
+        if (v !== null && Number.isFinite(Number(v))) fromValue.value = v;
+        setCategory(qc, f, t);
+      } else {
+        setCategory("length");
+      }
     })();
   </script>
 
