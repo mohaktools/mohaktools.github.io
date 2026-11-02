@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+<title>JWT Decoder | MohakTools</title>
+<meta name="description" content="Decode and inspect JWT token header, payload and signature.">
+<meta name="keywords" content="JWT decoder, JSON Web Token, decode JWT">
+<link rel="canonical" href="https://mohaktools.com/tools/jwt-decoder/">
+<meta property="og:title" content="JWT Decoder | MohakTools">
+<meta property="og:description" content="Decode and inspect JWT token header, payload and signature.">
+<meta property="og:url" content="https://mohaktools.com/tools/jwt-decoder/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JWT Decoder | MohakTools">
+<meta name="twitter:description" content="Decode and inspect JWT token header, payload and signature.">
+<script src="/assets/js/tools-registry.js" defer></script>
+<style>
+.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
+.mt-field{margin-bottom:14px}
+.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
+.mt-field input[type="text"],.mt-field input[type="number"],.mt-field input[type="email"],.mt-field input[type="date"],.mt-field input[type="time"],.mt-field input[type="datetime-local"],.mt-field input[type="color"],.mt-field input[type="range"],.mt-field input[type="file"],.mt-field select,.mt-field textarea{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s;box-sizing:border-box}
+.mt-field input:focus,.mt-field select:focus,.mt-field textarea:focus{border-color:var(--color-primary)}
+.mt-field textarea{resize:vertical;min-height:120px;font-family:inherit}
+.mt-output{display:block;width:100%;min-height:160px;padding:12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:13px/1.6 inherit;resize:vertical;box-sizing:border-box}
+.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
+.mt-button:active{transform:scale(.97)}
+.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
+.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
+.mt-stat strong{font-size:20px;font-weight:700;color:var(--color-text)}
+.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
+.mt-help{font-size:12px;color:var(--color-text-secondary);margin-top:8px;line-height:1.5}
+.mt-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
+.mt-option input{accent-color:var(--color-primary)}
+.mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
+</style>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+    <span style="margin:0 6px">/</span>
+    <a href="/tools/?category=developer-tools" style="color:var(--color-primary);text-decoration:none">Developer Tools</a>
+    <span style="margin:0 6px">/</span>
+    <span>JWT Decoder</span>
+  </nav>
+
+  <header style="margin-bottom:24px">
+    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">JWT Decoder</h1>
+    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Decode and inspect JWT token header, payload and signature.</p>
+  </header>
+
+  <div class="mt-tool-grid">
+    
+<section class="mt-panel"><h2 id="tool-input-heading">JWT Token</h2>
+<div class="mt-field"><label for="mt-input">Paste JWT Token</label><textarea id="mt-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9…" style="font-family:monospace;font-size:12px;min-height:100px;word-break:break-all"></textarea></div>
+<div class="mt-button-row"><button class="mt-button mt-primary" id="calc">Decode</button><button class="mt-button mt-secondary" id="reset">Clear</button></div>
+<p class="mt-status" id="mt-status" role="status" aria-live="polite"></p></section>
+<section class="mt-panel"><h2>Decoded JWT</h2>
+<div class="mt-stat-grid">
+<div class="mt-stat"><span>Algorithm</span><strong id="alg">—</strong></div>
+<div class="mt-stat"><span>Token Type</span><strong id="typ">—</strong></div>
+<div class="mt-stat"><span>Issued At</span><strong id="iat">—</strong></div>
+<div class="mt-stat"><span>Expires At</span><strong id="exp">—</strong></div>
+</div>
+<div style="margin-top:12px">
+<h3 style="font-size:13px;margin-bottom:6px;color:var(--color-text-secondary)">Header</h3>
+<pre id="jwthead" style="background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:10px;padding:12px;font-family:monospace;font-size:12px;overflow:auto;color:var(--color-text)"></pre>
+<h3 style="font-size:13px;margin:12px 0 6px;color:var(--color-text-secondary)">Payload</h3>
+<pre id="jwtpay" style="background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:10px;padding:12px;font-family:monospace;font-size:12px;overflow:auto;color:var(--color-text)"></pre>
+</div>
+<p class="mt-help">Signature is NOT verified. This tool is for inspection only — never share tokens containing sensitive data.</p></section>
+  </div>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Developer Tools</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/json-formatter/" class="mt-related-chip">JSON Formatter</a><a href="/tools/base64-encoder-decoder/" class="mt-related-chip">Base64 Encoder/Decoder</a><a href="/tools/url-encoder-decoder/" class="mt-related-chip">URL Encoder/Decoder</a></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+  <script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+
+function b64url(s){s=s.replace(/-/g,"+").replace(/_/g,"/");while(s.length%4)s+="=";try{return JSON.parse(atob(s));}catch(e){return null;}}
+function fmtTime(ts){return ts?new Date(ts*1000).toLocaleString("en-IN"):"—";}
+document.getElementById("calc").onclick=()=>{
+  const token=document.getElementById("mt-input").value.trim();
+  if(!token){document.getElementById("mt-status").textContent="Paste a JWT token.";return;}
+  const parts=token.split(".");
+  if(parts.length!==3){document.getElementById("mt-status").textContent="Invalid JWT format (expected 3 parts).";return;}
+  const header=b64url(parts[0]),payload=b64url(parts[1]);
+  if(!header||!payload){document.getElementById("mt-status").textContent="Could not decode token.";return;}
+  document.getElementById("alg").textContent=header.alg||"—";
+  document.getElementById("typ").textContent=header.typ||"—";
+  document.getElementById("iat").textContent=fmtTime(payload.iat);
+  document.getElementById("exp").textContent=fmtTime(payload.exp);
+  document.getElementById("jwthead").textContent=JSON.stringify(header,null,2);
+  document.getElementById("jwtpay").textContent=JSON.stringify(payload,null,2);
+  const now=Math.floor(Date.now()/1000);
+  if(payload.exp&&payload.exp<now)document.getElementById("mt-status").textContent="⚠️ Token is EXPIRED.";
+  else document.getElementById("mt-status").textContent="Token decoded successfully.";
+};
+document.getElementById("reset").onclick=()=>{document.getElementById("mt-input").value="";["alg","typ","iat","exp"].forEach(id=>document.getElementById(id).textContent="—");document.getElementById("jwthead").textContent="";document.getElementById("jwtpay").textContent="";};
+</script>
+</body>
+</html>

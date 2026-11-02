@@ -1,5 +1,10 @@
+sitemap.xml
+
+
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://mohaktools.com/</loc></url>
   <url><loc>https://mohaktools.com/tools/</loc></url>
 
   <url><loc>https://mohaktools.com/tools/calculator/</loc></url>
@@ -12,6 +17,30 @@
   <url><loc>https://mohaktools.com/tools/loan-emi-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/date-difference-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/time-duration-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/average-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/body-fat-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/break-even-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/calorie-bmr-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/compound-interest-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/date-add-subtract-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/dpi-screen-resolution-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/fixed-deposit-maturity-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/fraction-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/fuel-cost-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/gpa-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/gratuity-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/hra-exemption-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/income-tax-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/inhand-salary-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/loan-prepayment-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/overtime-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/pregnancy-due-date-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/profit-margin-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/ratio-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/simple-interest-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/sip-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/tip-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/water-intake-calculator/</loc></url>
 
   <url><loc>https://mohaktools.com/tools/alarm-clock/</loc></url>
   <url><loc>https://mohaktools.com/tools/stopwatch/</loc></url>
@@ -20,6 +49,16 @@
   <url><loc>https://mohaktools.com/tools/world-clock/</loc></url>
   <url><loc>https://mohaktools.com/tools/digital-clock/</loc></url>
   <url><loc>https://mohaktools.com/tools/calendar/</loc></url>
+  <url><loc>https://mohaktools.com/tools/business-days-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/habit-tracker/</loc></url>
+  <url><loc>https://mohaktools.com/tools/interval-timer/</loc></url>
+  <url><loc>https://mohaktools.com/tools/meeting-planner/</loc></url>
+  <url><loc>https://mohaktools.com/tools/sleep-cycle-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/sunrise-sunset-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/timezone-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/todo-list/</loc></url>
+  <url><loc>https://mohaktools.com/tools/week-number-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/work-hours-timesheet-calculator/</loc></url>
 
   <url><loc>https://mohaktools.com/tools/unit-converter/</loc></url>
   <url><loc>https://mohaktools.com/tools/length-converter/</loc></url>
@@ -29,6 +68,18 @@
   <url><loc>https://mohaktools.com/tools/time-converter/</loc></url>
   <url><loc>https://mohaktools.com/tools/area-converter/</loc></url>
   <url><loc>https://mohaktools.com/tools/data-storage-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/angle-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/cooking-measurement-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/currency-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/energy-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/frequency-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/fuel-economy-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/land-unit-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/power-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/pressure-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/roman-numeral-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/shoe-size-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/volume-converter/</loc></url>
 
   <url><loc>https://mohaktools.com/tools/word-counter/</loc></url>
   <url><loc>https://mohaktools.com/tools/case-converter/</loc></url>
@@ -39,6 +90,23 @@
   <url><loc>https://mohaktools.com/tools/text-to-slug/</loc></url>
   <url><loc>https://mohaktools.com/tools/duplicate-line-remover/</loc></url>
   <url><loc>https://mohaktools.com/tools/text-sorter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/anagram-solver/</loc></url>
+  <url><loc>https://mohaktools.com/tools/diff-checker/</loc></url>
+  <url><loc>https://mohaktools.com/tools/emoji-remover/</loc></url>
+  <url><loc>https://mohaktools.com/tools/find-and-replace/</loc></url>
+  <url><loc>https://mohaktools.com/tools/hashtag-generator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/keyword-density-checker/</loc></url>
+  <url><loc>https://mohaktools.com/tools/line-breaks-to-commas/</loc></url>
+  <url><loc>https://mohaktools.com/tools/lorem-ipsum-generator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/meta-length-checker/</loc></url>
+  <url><loc>https://mohaktools.com/tools/morse-code-translator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/number-to-words/</loc></url>
+  <url><loc>https://mohaktools.com/tools/palindrome-checker/</loc></url>
+  <url><loc>https://mohaktools.com/tools/readability-score/</loc></url>
+  <url><loc>https://mohaktools.com/tools/remove-line-breaks/</loc></url>
+  <url><loc>https://mohaktools.com/tools/text-diff-compare/</loc></url>
+  <url><loc>https://mohaktools.com/tools/text-to-handwriting/</loc></url>
+  <url><loc>https://mohaktools.com/tools/unicode-text-converter/</loc></url>
 
   <url><loc>https://mohaktools.com/tools/json-formatter/</loc></url>
   <url><loc>https://mohaktools.com/tools/json-validator/</loc></url>
@@ -48,6 +116,27 @@
   <url><loc>https://mohaktools.com/tools/uuid-generator/</loc></url>
   <url><loc>https://mohaktools.com/tools/unix-timestamp-converter/</loc></url>
   <url><loc>https://mohaktools.com/tools/color-code-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/chmod-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/colour-picker/</loc></url>
+  <url><loc>https://mohaktools.com/tools/cron-expression-generator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/css-gradient-boxshadow/</loc></url>
+  <url><loc>https://mohaktools.com/tools/css-minifier-beautifier/</loc></url>
+  <url><loc>https://mohaktools.com/tools/csv-to-json-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/favicon-generator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/gitignore-generator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/hash-generator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/html-formatter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/http-status-reference/</loc></url>
+  <url><loc>https://mohaktools.com/tools/ip-subnet-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/javascript-minifier/</loc></url>
+  <url><loc>https://mohaktools.com/tools/jwt-decoder/</loc></url>
+  <url><loc>https://mohaktools.com/tools/markdown-to-html/</loc></url>
+  <url><loc>https://mohaktools.com/tools/mock-data-generator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/number-base-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/regex-tester/</loc></url>
+  <url><loc>https://mohaktools.com/tools/sql-formatter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/xml-formatter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/yaml-json-converter/</loc></url>
 
   <url><loc>https://mohaktools.com/tools/password-generator/</loc></url>
   <url><loc>https://mohaktools.com/tools/qr-code-generator/</loc></url>
@@ -57,9 +146,25 @@
   <url><loc>https://mohaktools.com/tools/image-resizer/</loc></url>
   <url><loc>https://mohaktools.com/tools/aspect-ratio-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/typing-speed-test/</loc></url>
+  <url><loc>https://mohaktools.com/tools/background-remover/</loc></url>
+  <url><loc>https://mohaktools.com/tools/barcode-generator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/coin-flip/</loc></url>
+  <url><loc>https://mohaktools.com/tools/dice-roller/</loc></url>
+  <url><loc>https://mohaktools.com/tools/image-cropper/</loc></url>
+  <url><loc>https://mohaktools.com/tools/image-format-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/image-to-pdf/</loc></url>
+  <url><loc>https://mohaktools.com/tools/image-to-text-ocr/</loc></url>
+  <url><loc>https://mohaktools.com/tools/internet-speed-test/</loc></url>
+  <url><loc>https://mohaktools.com/tools/name-picker-wheel/</loc></url>
+  <url><loc>https://mohaktools.com/tools/password-strength-checker/</loc></url>
+  <url><loc>https://mohaktools.com/tools/pdf-compressor/</loc></url>
+  <url><loc>https://mohaktools.com/tools/pdf-merge-split/</loc></url>
+  <url><loc>https://mohaktools.com/tools/qr-code-scanner/</loc></url>
+  <url><loc>https://mohaktools.com/tools/whats-my-ip/</loc></url>
 
   <url><loc>https://mohaktools.com/about/</loc></url>
   <url><loc>https://mohaktools.com/contact/</loc></url>
+  <url><loc>https://mohaktools.com/feedback/</loc></url>
   <url><loc>https://mohaktools.com/terms/</loc></url>
-  <url><loc>https://mohaktools.com/privacy/</loc></url>
+  <url><loc>https://mohaktools.com/privacy-policy/</loc></url>
 </urlset>

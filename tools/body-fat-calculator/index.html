@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+<title>Body Fat Calculator | MohakTools</title>
+<meta name="description" content="Estimate body fat percentage using the Navy method.">
+<meta name="keywords" content="body fat percentage, navy method, fitness">
+<link rel="canonical" href="https://mohaktools.com/tools/body-fat-calculator/">
+<meta property="og:title" content="Body Fat Calculator | MohakTools">
+<meta property="og:description" content="Estimate body fat percentage using the Navy method.">
+<meta property="og:url" content="https://mohaktools.com/tools/body-fat-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Body Fat Calculator | MohakTools">
+<meta name="twitter:description" content="Estimate body fat percentage using the Navy method.">
+<script src="/assets/js/tools-registry.js" defer></script>
+<style>
+.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
+.mt-field{margin-bottom:14px}
+.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
+.mt-field input[type="text"],.mt-field input[type="number"],.mt-field input[type="email"],.mt-field input[type="date"],.mt-field input[type="time"],.mt-field input[type="datetime-local"],.mt-field input[type="color"],.mt-field input[type="range"],.mt-field input[type="file"],.mt-field select,.mt-field textarea{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s;box-sizing:border-box}
+.mt-field input:focus,.mt-field select:focus,.mt-field textarea:focus{border-color:var(--color-primary)}
+.mt-field textarea{resize:vertical;min-height:120px;font-family:inherit}
+.mt-output{display:block;width:100%;min-height:160px;padding:12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:13px/1.6 inherit;resize:vertical;box-sizing:border-box}
+.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
+.mt-button:active{transform:scale(.97)}
+.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
+.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
+.mt-stat strong{font-size:20px;font-weight:700;color:var(--color-text)}
+.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
+.mt-help{font-size:12px;color:var(--color-text-secondary);margin-top:8px;line-height:1.5}
+.mt-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
+.mt-option input{accent-color:var(--color-primary)}
+.mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
+</style>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+    <span style="margin:0 6px">/</span>
+    <a href="/tools/?category=calculators" style="color:var(--color-primary);text-decoration:none">Calculators</a>
+    <span style="margin:0 6px">/</span>
+    <span>Body Fat Calculator</span>
+  </nav>
+
+  <header style="margin-bottom:24px">
+    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">Body Fat Calculator</h1>
+    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Estimate body fat percentage using the Navy method.</p>
+  </header>
+
+  <div class="mt-tool-grid">
+    
+<section class="mt-panel"><h2 id="tool-input-heading">Measurements</h2>
+<div class="mt-field"><label for="f0">Gender</label><select id="f0"><option value="m">Male</option><option value="f">Female</option></select></div>
+<div class="mt-field"><label for="f1">Height (cm)</label><input type="number" id="f1" placeholder="175"></div>
+<div class="mt-field"><label for="f2">Neck (cm)</label><input type="number" id="f2" placeholder="38" step="0.1"></div>
+<div class="mt-field"><label for="f3">Waist (cm)</label><input type="number" id="f3" placeholder="85" step="0.1"></div>
+<div class="mt-field" id="hiprow"><label for="f4">Hips (cm) — Females only</label><input type="number" id="f4" placeholder="95" step="0.1"></div>
+<div class="mt-button-row"><button class="mt-button mt-primary" id="calc">Calculate</button><button class="mt-button mt-secondary" id="reset">Reset</button></div>
+<p class="mt-status" id="mt-status" role="status" aria-live="polite"></p></section>
+<section class="mt-panel"><h2>Result</h2>
+<div class="mt-stat-grid"><div class="mt-stat" style="grid-column:1/-1"><span>Body Fat %</span><strong id="bf">—</strong></div></div>
+<p class="mt-help">US Navy formula. For guidance only.</p></section>
+  </div>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+  <script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+
+document.getElementById("f0").onchange=function(){document.getElementById("hiprow").hidden=this.value==="m";};
+document.getElementById("calc").onclick=()=>{
+  const g=document.getElementById("f0").value,h=+document.getElementById("f1").value,
+        neck=+document.getElementById("f2").value,waist=+document.getElementById("f3").value;
+  if(!h||!neck||!waist){document.getElementById("mt-status").textContent="Fill all fields.";return;}
+  let bf;
+  if(g==="m"){bf=495/(1.0324-.19077*Math.log10(waist-neck)+.15456*Math.log10(h))-450;}
+  else{const hip=+document.getElementById("f4").value;if(!hip){document.getElementById("mt-status").textContent="Enter hip measurement.";return;}bf=495/(1.29579-.35004*Math.log10(waist+hip-neck)+.22100*Math.log10(h))-450;}
+  document.getElementById("bf").textContent=bf.toFixed(1)+"%";
+  document.getElementById("mt-status").textContent="";
+};
+document.getElementById("reset").onclick=()=>["f1","f2","f3","f4"].forEach(id=>document.getElementById(id).value="");
+</script>
+</body>
+</html>

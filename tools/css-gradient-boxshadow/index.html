@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+<title>CSS Gradient & Box Shadow Generator | MohakTools</title>
+<meta name="description" content="Build CSS gradients and box shadows visually and copy the code.">
+<meta name="keywords" content="CSS gradient generator, box shadow, CSS effects">
+<link rel="canonical" href="https://mohaktools.com/tools/css-gradient-boxshadow/">
+<meta property="og:title" content="CSS Gradient & Box Shadow Generator | MohakTools">
+<meta property="og:description" content="Build CSS gradients and box shadows visually and copy the code.">
+<meta property="og:url" content="https://mohaktools.com/tools/css-gradient-boxshadow/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS Gradient & Box Shadow Generator | MohakTools">
+<meta name="twitter:description" content="Build CSS gradients and box shadows visually and copy the code.">
+<script src="/assets/js/tools-registry.js" defer></script>
+<style>
+.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
+.mt-field{margin-bottom:14px}
+.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
+.mt-field input[type="text"],.mt-field input[type="number"],.mt-field input[type="email"],.mt-field input[type="date"],.mt-field input[type="time"],.mt-field input[type="datetime-local"],.mt-field input[type="color"],.mt-field input[type="range"],.mt-field input[type="file"],.mt-field select,.mt-field textarea{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s;box-sizing:border-box}
+.mt-field input:focus,.mt-field select:focus,.mt-field textarea:focus{border-color:var(--color-primary)}
+.mt-field textarea{resize:vertical;min-height:120px;font-family:inherit}
+.mt-output{display:block;width:100%;min-height:160px;padding:12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:13px/1.6 inherit;resize:vertical;box-sizing:border-box}
+.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
+.mt-button:active{transform:scale(.97)}
+.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
+.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
+.mt-stat strong{font-size:20px;font-weight:700;color:var(--color-text)}
+.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
+.mt-help{font-size:12px;color:var(--color-text-secondary);margin-top:8px;line-height:1.5}
+.mt-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
+.mt-option input{accent-color:var(--color-primary)}
+.mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
+</style>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+    <span style="margin:0 6px">/</span>
+    <a href="/tools/?category=developer-tools" style="color:var(--color-primary);text-decoration:none">Developer Tools</a>
+    <span style="margin:0 6px">/</span>
+    <span>CSS Gradient & Box Shadow Generator</span>
+  </nav>
+
+  <header style="margin-bottom:24px">
+    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">CSS Gradient & Box Shadow Generator</h1>
+    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Build CSS gradients and box shadows visually and copy the code.</p>
+  </header>
+
+  <div class="mt-tool-grid">
+    
+<section class="mt-panel"><h2 id="tool-input-heading">CSS Gradient Generator</h2>
+<div class="mt-field"><label for="gtype">Gradient Type</label>
+<select id="gtype"><option value="linear">Linear</option><option value="radial">Radial</option></select></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div class="mt-field"><label for="gc1">Color 1</label><input type="color" id="gc1" value="#667eea"></div>
+<div class="mt-field"><label for="gc2">Color 2</label><input type="color" id="gc2" value="#764ba2"></div>
+</div>
+<div class="mt-field"><label for="gangle">Angle (linear only)</label><input type="range" id="gangle" min="0" max="360" value="135"><span id="angle-val">135°</span></div>
+<div id="gpreview" style="height:100px;border-radius:10px;margin-bottom:10px;border:1px solid var(--color-border)"></div>
+<div class="mt-button-row"><button class="mt-button mt-secondary" id="copycss1">Copy CSS</button></div>
+<p id="gcss" style="font-family:monospace;font-size:12px;color:var(--color-text-secondary);word-break:break-all;padding:8px 0"></p>
+<hr style="border-color:var(--color-border);margin:16px 0">
+<h2 style="margin-bottom:12px">Box Shadow Generator</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<div class="mt-field"><label>X Offset</label><input type="range" id="bx" min="-50" max="50" value="4"><span id="bxv">4px</span></div>
+<div class="mt-field"><label>Y Offset</label><input type="range" id="by" min="-50" max="50" value="4"><span id="byv">4px</span></div>
+<div class="mt-field"><label>Blur</label><input type="range" id="bb" min="0" max="80" value="15"><span id="bbv">15px</span></div>
+<div class="mt-field"><label>Spread</label><input type="range" id="bs" min="-20" max="40" value="0"><span id="bsv">0px</span></div>
+</div>
+<div class="mt-field"><label for="bc">Shadow Color</label><input type="color" id="bc" value="#00000033"></div>
+<div id="bpreview" style="height:80px;border-radius:10px;background:var(--color-surface-secondary);margin-bottom:10px"></div>
+<div class="mt-button-row"><button class="mt-button mt-secondary" id="copycss2">Copy CSS</button></div>
+<p id="bcss" style="font-family:monospace;font-size:12px;color:var(--color-text-secondary);word-break:break-all;padding:8px 0"></p>
+<p class="mt-status" id="mt-status" role="status" aria-live="polite"></p></section>
+  </div>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Developer Tools</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/json-formatter/" class="mt-related-chip">JSON Formatter</a><a href="/tools/base64-encoder-decoder/" class="mt-related-chip">Base64 Encoder/Decoder</a><a href="/tools/url-encoder-decoder/" class="mt-related-chip">URL Encoder/Decoder</a></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+  <script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+
+function updateGrad(){
+  const t=document.getElementById("gtype").value,c1=document.getElementById("gc1").value,c2=document.getElementById("gc2").value,a=document.getElementById("gangle").value;
+  document.getElementById("angle-val").textContent=a+"°";
+  const css=t==="linear"?`linear-gradient(${a}deg, ${c1}, ${c2})`:`radial-gradient(circle, ${c1}, ${c2})`;
+  document.getElementById("gpreview").style.background=css;
+  document.getElementById("gcss").textContent="background: "+css+";";
+}
+function updateShadow(){
+  const x=document.getElementById("bx").value,y=document.getElementById("by").value,b=document.getElementById("bb").value,s=document.getElementById("bs").value,c=document.getElementById("bc").value;
+  document.getElementById("bxv").textContent=x+"px";document.getElementById("byv").textContent=y+"px";
+  document.getElementById("bbv").textContent=b+"px";document.getElementById("bsv").textContent=s+"px";
+  const css=`${x}px ${y}px ${b}px ${s}px ${c}`;
+  document.getElementById("bpreview").style.boxShadow=css;
+  document.getElementById("bcss").textContent="box-shadow: "+css+";";
+}
+["gtype","gc1","gc2","gangle"].forEach(id=>document.getElementById(id).addEventListener("input",updateGrad));
+["bx","by","bb","bs","bc"].forEach(id=>document.getElementById(id).addEventListener("input",updateShadow));
+document.getElementById("copycss1").onclick=()=>{navigator.clipboard.writeText(document.getElementById("gcss").textContent).then(()=>document.getElementById("mt-status").textContent="Gradient CSS copied!");};
+document.getElementById("copycss2").onclick=()=>{navigator.clipboard.writeText(document.getElementById("bcss").textContent).then(()=>document.getElementById("mt-status").textContent="Box shadow CSS copied!");};
+updateGrad();updateShadow();
+</script>
+</body>
+</html>

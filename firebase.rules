@@ -1,0 +1,22 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Public ratings for all MohakTools tools
+    match /tools/{toolId}/ratings/{ratingId} {
+
+      // Anyone can read public ratings
+      allow read: if true;
+
+      // All writes must go through trusted Cloud Functions
+      allow create, update, delete: if false;
+    }
+
+    // Block all other unauthorized database access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

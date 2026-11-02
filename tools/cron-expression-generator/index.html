@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+<title>Cron Expression Generator | MohakTools</title>
+<meta name="description" content="Build and explain cron job schedule expressions visually.">
+<meta name="keywords" content="cron generator, cron expression, cron job scheduler">
+<link rel="canonical" href="https://mohaktools.com/tools/cron-expression-generator/">
+<meta property="og:title" content="Cron Expression Generator | MohakTools">
+<meta property="og:description" content="Build and explain cron job schedule expressions visually.">
+<meta property="og:url" content="https://mohaktools.com/tools/cron-expression-generator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cron Expression Generator | MohakTools">
+<meta name="twitter:description" content="Build and explain cron job schedule expressions visually.">
+<script src="/assets/js/tools-registry.js" defer></script>
+<style>
+.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
+.mt-field{margin-bottom:14px}
+.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
+.mt-field input[type="text"],.mt-field input[type="number"],.mt-field input[type="email"],.mt-field input[type="date"],.mt-field input[type="time"],.mt-field input[type="datetime-local"],.mt-field input[type="color"],.mt-field input[type="range"],.mt-field input[type="file"],.mt-field select,.mt-field textarea{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s;box-sizing:border-box}
+.mt-field input:focus,.mt-field select:focus,.mt-field textarea:focus{border-color:var(--color-primary)}
+.mt-field textarea{resize:vertical;min-height:120px;font-family:inherit}
+.mt-output{display:block;width:100%;min-height:160px;padding:12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:13px/1.6 inherit;resize:vertical;box-sizing:border-box}
+.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
+.mt-button:active{transform:scale(.97)}
+.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
+.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
+.mt-stat strong{font-size:20px;font-weight:700;color:var(--color-text)}
+.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
+.mt-help{font-size:12px;color:var(--color-text-secondary);margin-top:8px;line-height:1.5}
+.mt-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
+.mt-option input{accent-color:var(--color-primary)}
+.mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
+</style>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+    <span style="margin:0 6px">/</span>
+    <a href="/tools/?category=developer-tools" style="color:var(--color-primary);text-decoration:none">Developer Tools</a>
+    <span style="margin:0 6px">/</span>
+    <span>Cron Expression Generator</span>
+  </nav>
+
+  <header style="margin-bottom:24px">
+    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">Cron Expression Generator</h1>
+    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Build and explain cron job schedule expressions visually.</p>
+  </header>
+
+  <div class="mt-tool-grid">
+    
+<section class="mt-panel"><h2 id="tool-input-heading">Cron Expression</h2>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px">
+<div class="mt-field"><label>Minute (0-59)</label><input type="text" id="cm" value="*" placeholder="*" style="font-family:monospace"></div>
+<div class="mt-field"><label>Hour (0-23)</label><input type="text" id="ch" value="*" placeholder="*" style="font-family:monospace"></div>
+<div class="mt-field"><label>Day of Month</label><input type="text" id="cd" value="*" placeholder="*" style="font-family:monospace"></div>
+<div class="mt-field"><label>Month (1-12)</label><input type="text" id="cmo" value="*" placeholder="*" style="font-family:monospace"></div>
+<div class="mt-field"><label>Day of Week</label><input type="text" id="cw" value="*" placeholder="*" style="font-family:monospace"></div>
+</div>
+<div class="mt-field"><label for="preset">Quick Presets</label>
+<select id="preset"><option value="">— Select —</option><option value="* * * * *">Every minute</option><option value="0 * * * *">Every hour</option><option value="0 9 * * *">Daily at 9 AM</option><option value="0 9 * * 1-5">Weekdays at 9 AM</option><option value="0 0 * * 0">Weekly on Sunday midnight</option><option value="0 0 1 * *">Monthly on 1st</option><option value="0 0 1 1 *">Yearly on Jan 1st</option><option value="*/5 * * * *">Every 5 minutes</option><option value="*/15 * * * *">Every 15 minutes</option><option value="0 */2 * * *">Every 2 hours</option></select></div>
+<div class="mt-button-row"><button class="mt-button mt-primary" id="calc">Explain</button><button class="mt-button mt-secondary" id="copy">Copy Expression</button></div>
+<p class="mt-status" id="mt-status" role="status" aria-live="polite"></p></section>
+<section class="mt-panel"><h2>Result</h2>
+<div class="mt-stat-grid">
+<div class="mt-stat" style="grid-column:1/-1"><span>Expression</span><strong id="expr" style="font-family:monospace;font-size:20px;letter-spacing:2px">* * * * *</strong></div>
+<div class="mt-stat" style="grid-column:1/-1"><span>Human-readable</span><strong id="human">—</strong></div>
+</div>
+<div id="next-runs" style="margin-top:10px;display:flex;flex-direction:column;gap:4px"></div></section>
+  </div>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Developer Tools</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/json-formatter/" class="mt-related-chip">JSON Formatter</a><a href="/tools/base64-encoder-decoder/" class="mt-related-chip">Base64 Encoder/Decoder</a><a href="/tools/url-encoder-decoder/" class="mt-related-chip">URL Encoder/Decoder</a></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+  <script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+
+document.getElementById("preset").onchange=function(){
+  if(!this.value)return;
+  const [m,h,d,mo,w]=this.value.split(" ");
+  document.getElementById("cm").value=m;document.getElementById("ch").value=h;
+  document.getElementById("cd").value=d;document.getElementById("cmo").value=mo;
+  document.getElementById("cw").value=w;
+  document.getElementById("calc").click();
+};
+function descPart(val,unit,names){
+  if(val==="*")return`every ${unit}`;
+  if(val.startsWith("*/"))return`every ${val.slice(2)} ${unit}s`;
+  if(val.includes("-"))return`${unit}s ${val.replace("-"," through ")}`;
+  if(val.includes(","))return`${unit}s ${val}`;
+  if(names&&names[+val])return names[+val];
+  return`${unit} ${val}`;
+}
+const MONTHS=["","January","February","March","April","May","June","July","August","September","October","November","December"];
+const DAYS=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+document.getElementById("calc").onclick=()=>{
+  const m=document.getElementById("cm").value||"*",h=document.getElementById("ch").value||"*",
+        d=document.getElementById("cd").value||"*",mo=document.getElementById("cmo").value||"*",
+        w=document.getElementById("cw").value||"*";
+  const expr=`${m} ${h} ${d} ${mo} ${w}`;
+  document.getElementById("expr").textContent=expr;
+  let human="Runs ";
+  human+=descPart(m,"minute");human+=", ";
+  human+=descPart(h,"hour");
+  if(d!=="*")human+=`, on day ${d} of the month`;
+  if(mo!=="*")human+=` in ${descPart(mo,"month",MONTHS)}`;
+  if(w!=="*")human+=` on ${descPart(w,"weekday",DAYS)}`;
+  document.getElementById("human").textContent=human+".";
+  document.getElementById("mt-status").textContent="";
+};
+document.getElementById("copy").onclick=()=>{const e=document.getElementById("expr").textContent;navigator.clipboard.writeText(e).then(()=>document.getElementById("mt-status").textContent="Copied: "+e);};
+document.getElementById("calc").click();
+</script>
+</body>
+</html>

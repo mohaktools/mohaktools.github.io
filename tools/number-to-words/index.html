@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+<title>Number to Words | MohakTools</title>
+<meta name="description" content="Convert numbers to words in Indian and international formats.">
+<meta name="keywords" content="number to words, number in words, Indian format, rupees in words">
+<link rel="canonical" href="https://mohaktools.com/tools/number-to-words/">
+<meta property="og:title" content="Number to Words | MohakTools">
+<meta property="og:description" content="Convert numbers to words in Indian and international formats.">
+<meta property="og:url" content="https://mohaktools.com/tools/number-to-words/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Number to Words | MohakTools">
+<meta name="twitter:description" content="Convert numbers to words in Indian and international formats.">
+<script src="/assets/js/tools-registry.js" defer></script>
+<style>
+.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
+.mt-field{margin-bottom:14px}
+.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
+.mt-field input[type="text"],.mt-field input[type="number"],.mt-field input[type="email"],.mt-field input[type="date"],.mt-field input[type="time"],.mt-field input[type="datetime-local"],.mt-field input[type="color"],.mt-field input[type="range"],.mt-field input[type="file"],.mt-field select,.mt-field textarea{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s;box-sizing:border-box}
+.mt-field input:focus,.mt-field select:focus,.mt-field textarea:focus{border-color:var(--color-primary)}
+.mt-field textarea{resize:vertical;min-height:120px;font-family:inherit}
+.mt-output{display:block;width:100%;min-height:160px;padding:12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:13px/1.6 inherit;resize:vertical;box-sizing:border-box}
+.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
+.mt-button:active{transform:scale(.97)}
+.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
+.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
+.mt-stat strong{font-size:20px;font-weight:700;color:var(--color-text)}
+.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
+.mt-help{font-size:12px;color:var(--color-text-secondary);margin-top:8px;line-height:1.5}
+.mt-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
+.mt-option input{accent-color:var(--color-primary)}
+.mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
+</style>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+    <span style="margin:0 6px">/</span>
+    <a href="/tools/?category=text-tools" style="color:var(--color-primary);text-decoration:none">Text Tools</a>
+    <span style="margin:0 6px">/</span>
+    <span>Number to Words</span>
+  </nav>
+
+  <header style="margin-bottom:24px">
+    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">Number to Words</h1>
+    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Convert numbers to words in Indian and international formats.</p>
+  </header>
+
+  <div class="mt-tool-grid">
+    
+<section class="mt-panel"><h2 id="tool-input-heading">Number</h2>
+<div class="mt-field"><label for="mt-input">Enter a number</label><input type="number" id="mt-input" placeholder="e.g. 12345" step="any"></div>
+<div class="mt-field"><label for="f1">Format</label>
+<select id="f1"><option value="int">International</option><option value="ind" selected>Indian (Lakh/Crore)</option><option value="inr">Indian Rupees in Words</option></select></div>
+<div class="mt-button-row"><button class="mt-button mt-primary" id="calc">Convert</button><button class="mt-button mt-secondary" id="reset">Clear</button></div>
+<p class="mt-status" id="mt-status" role="status" aria-live="polite"></p></section>
+<section class="mt-panel"><h2>Result</h2>
+<div class="mt-stat-grid"><div class="mt-stat" style="grid-column:1/-1"><span>In Words</span><strong id="result" style="font-size:16px;line-height:1.4">—</strong></div></div></section>
+  </div>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/word-counter/" class="mt-related-chip">Word Counter</a><a href="/tools/character-counter/" class="mt-related-chip">Character Counter</a><a href="/tools/case-converter/" class="mt-related-chip">Case Converter</a></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+  <script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+
+const a=["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"];
+const b=["","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"];
+function inWords(n){if(n===0)return"Zero";if(n<0)return"Minus "+inWords(-n);if(n<20)return a[n];if(n<100)return b[Math.floor(n/10)]+(n%10?" "+a[n%10]:"");if(n<1000)return a[Math.floor(n/100)]+" Hundred"+(n%100?" "+inWords(n%100):"");if(n<100000)return inWords(Math.floor(n/1000))+" Thousand"+(n%1000?" "+inWords(n%1000):"");if(n<10000000)return inWords(Math.floor(n/100000))+" Lakh"+(n%100000?" "+inWords(n%100000):"");if(n<1000000000)return inWords(Math.floor(n/10000000))+" Crore"+(n%10000000?" "+inWords(n%10000000):"");return inWords(Math.floor(n/1000000000))+" Arab"+(n%1000000000?" "+inWords(n%1000000000):"");}
+function intWords(n){if(n===0)return"Zero";if(n<0)return"Minus "+intWords(-n);if(n<1000)return inWords(n);if(n<1000000)return intWords(Math.floor(n/1000))+" Thousand"+(n%1000?" "+inWords(n%1000):"");if(n<1000000000)return intWords(Math.floor(n/1000000))+" Million"+(n%1000000?" "+intWords(n%1000000):"");return intWords(Math.floor(n/1000000000))+" Billion"+(n%1000000000?" "+intWords(n%1000000000):"");}
+document.getElementById("calc").onclick=()=>{
+  const v=+document.getElementById("mt-input").value,fmt=document.getElementById("f1").value;
+  if(isNaN(v)){document.getElementById("mt-status").textContent="Enter a valid number.";return;}
+  const n=Math.floor(Math.abs(v));let result=fmt==="int"?intWords(n):inWords(n);
+  if(fmt==="inr")result="Rupees "+result+" Only";
+  if(v<0)result="Minus "+result;
+  document.getElementById("result").textContent=result;document.getElementById("mt-status").textContent="";
+};
+document.getElementById("reset").onclick=()=>{document.getElementById("mt-input").value="";document.getElementById("result").textContent="—";};
+</script>
+</body>
+</html>

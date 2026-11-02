@@ -740,6 +740,1498 @@
       ],
       "icon": "⌨",
       "popularity": 78
+    },
+
+    {
+      "id": "anagram-solver",
+      "name": "Anagram Solver",
+      "category": "text-tools",
+      "url": "/tools/anagram-solver/",
+      "description": "Find words that can be formed from a set of letters.",
+      "keywords": [
+        "anagram",
+        "word puzzle",
+        "letters",
+        "scrabble"
+      ],
+      "icon": "Aa",
+      "popularity": 72
+    },
+    {
+      "id": "angle-converter",
+      "name": "Angle Converter",
+      "category": "converters",
+      "url": "/tools/angle-converter/",
+      "description": "Convert between degrees, radians and gradians.",
+      "keywords": [
+        "degrees",
+        "radians",
+        "gradians",
+        "geometry"
+      ],
+      "icon": "↔",
+      "popularity": 62
+    },
+    {
+      "id": "average-calculator",
+      "name": "Average Calculator",
+      "category": "calculators",
+      "url": "/tools/average-calculator/",
+      "description": "Calculate the mean, median and mode of a set of numbers.",
+      "keywords": [
+        "mean",
+        "median",
+        "mode",
+        "statistics"
+      ],
+      "icon": "÷",
+      "popularity": 68
+    },
+    {
+      "id": "background-remover",
+      "name": "Background Remover",
+      "category": "everyday-utilities",
+      "url": "/tools/background-remover/",
+      "description": "Remove the background from images in your browser.",
+      "keywords": [
+        "photo",
+        "transparent background",
+        "png",
+        "cutout"
+      ],
+      "icon": "▧",
+      "popularity": 81
+    },
+    {
+      "id": "barcode-generator",
+      "name": "Barcode Generator",
+      "category": "everyday-utilities",
+      "url": "/tools/barcode-generator/",
+      "description": "Create barcodes from numbers and text.",
+      "keywords": [
+        "barcode",
+        "ean",
+        "upc",
+        "label"
+      ],
+      "icon": "▥",
+      "popularity": 66
+    },
+    {
+      "id": "body-fat-calculator",
+      "name": "Body Fat Calculator",
+      "category": "calculators",
+      "url": "/tools/body-fat-calculator/",
+      "description": "Estimate body fat percentage from body measurements.",
+      "keywords": [
+        "health",
+        "fitness",
+        "body fat",
+        "navy method"
+      ],
+      "icon": "↗",
+      "popularity": 71
+    },
+    {
+      "id": "break-even-calculator",
+      "name": "Break-Even Calculator",
+      "category": "calculators",
+      "url": "/tools/break-even-calculator/",
+      "description": "Work out the sales needed to cover your costs.",
+      "keywords": [
+        "business",
+        "costs",
+        "profit",
+        "margin"
+      ],
+      "icon": "₹",
+      "popularity": 64
+    },
+    {
+      "id": "business-days-calculator",
+      "name": "Business Days Calculator",
+      "category": "time-tools",
+      "url": "/tools/business-days-calculator/",
+      "description": "Count working days between two dates, skipping weekends.",
+      "keywords": [
+        "working days",
+        "weekdays",
+        "holidays",
+        "business"
+      ],
+      "icon": "▦",
+      "popularity": 73
+    },
+    {
+      "id": "calorie-bmr-calculator",
+      "name": "Calorie & BMR Calculator",
+      "category": "calculators",
+      "url": "/tools/calorie-bmr-calculator/",
+      "description": "Calculate daily calorie needs and basal metabolic rate.",
+      "keywords": [
+        "calories",
+        "bmr",
+        "tdee",
+        "diet",
+        "fitness"
+      ],
+      "icon": "◉",
+      "popularity": 77
+    },
+    {
+      "id": "chmod-calculator",
+      "name": "Chmod Calculator",
+      "category": "developer-tools",
+      "url": "/tools/chmod-calculator/",
+      "description": "Convert file permissions between octal and symbolic form.",
+      "keywords": [
+        "permissions",
+        "unix",
+        "file mode",
+        "755"
+      ],
+      "icon": "✓",
+      "popularity": 63
+    },
+    {
+      "id": "coin-flip",
+      "name": "Coin Flip",
+      "category": "everyday-utilities",
+      "url": "/tools/coin-flip/",
+      "description": "Flip a virtual coin for a quick decision.",
+      "keywords": [
+        "heads or tails",
+        "random",
+        "decision"
+      ],
+      "icon": "◉",
+      "popularity": 70
+    },
+    {
+      "id": "colour-picker",
+      "name": "Colour Picker",
+      "category": "developer-tools",
+      "url": "/tools/colour-picker/",
+      "description": "Pick colours and copy their HEX, RGB and HSL values.",
+      "keywords": [
+        "colour",
+        "hex",
+        "rgb",
+        "palette"
+      ],
+      "icon": "◉",
+      "popularity": 74
+    },
+    {
+      "id": "compound-interest-calculator",
+      "name": "Compound Interest Calculator",
+      "category": "calculators",
+      "url": "/tools/compound-interest-calculator/",
+      "description": "See how an investment grows with compound interest.",
+      "keywords": [
+        "interest",
+        "investment",
+        "savings",
+        "compounding"
+      ],
+      "icon": "₹",
+      "popularity": 79
+    },
+    {
+      "id": "cooking-measurement-converter",
+      "name": "Cooking Measurement Converter",
+      "category": "converters",
+      "url": "/tools/cooking-measurement-converter/",
+      "description": "Convert cups, tablespoons, grams and millilitres.",
+      "keywords": [
+        "cooking",
+        "recipe",
+        "cups",
+        "grams"
+      ],
+      "icon": "↔",
+      "popularity": 69
+    },
+    {
+      "id": "cron-expression-generator",
+      "name": "Cron Expression Generator",
+      "category": "developer-tools",
+      "url": "/tools/cron-expression-generator/",
+      "description": "Build and read cron schedule expressions.",
+      "keywords": [
+        "cron",
+        "schedule",
+        "crontab",
+        "jobs"
+      ],
+      "icon": "{ }",
+      "popularity": 65
+    },
+    {
+      "id": "css-gradient-boxshadow",
+      "name": "CSS Gradient & Box Shadow",
+      "category": "developer-tools",
+      "url": "/tools/css-gradient-boxshadow/",
+      "description": "Generate CSS gradients and box shadows visually.",
+      "keywords": [
+        "css",
+        "gradient",
+        "box shadow",
+        "web design"
+      ],
+      "icon": "◉",
+      "popularity": 72
+    },
+    {
+      "id": "css-minifier-beautifier",
+      "name": "CSS Minifier & Beautifier",
+      "category": "developer-tools",
+      "url": "/tools/css-minifier-beautifier/",
+      "description": "Minify or beautify CSS stylesheets.",
+      "keywords": [
+        "css",
+        "minify",
+        "beautify",
+        "compress"
+      ],
+      "icon": "</>",
+      "popularity": 70
+    },
+    {
+      "id": "csv-to-json-converter",
+      "name": "CSV to JSON Converter",
+      "category": "developer-tools",
+      "url": "/tools/csv-to-json-converter/",
+      "description": "Convert CSV data into JSON.",
+      "keywords": [
+        "csv",
+        "json",
+        "data",
+        "convert"
+      ],
+      "icon": "{ }",
+      "popularity": 75
+    },
+    {
+      "id": "currency-converter",
+      "name": "Currency Converter",
+      "category": "converters",
+      "url": "/tools/currency-converter/",
+      "description": "Convert between world currencies using live rates.",
+      "keywords": [
+        "forex",
+        "exchange rate",
+        "usd",
+        "inr"
+      ],
+      "icon": "₹",
+      "featured": true,
+      "popularity": 93
+    },
+    {
+      "id": "date-add-subtract-calculator",
+      "name": "Date Add/Subtract Calculator",
+      "category": "calculators",
+      "url": "/tools/date-add-subtract-calculator/",
+      "description": "Add or subtract days, weeks and months from a date.",
+      "keywords": [
+        "date",
+        "days",
+        "calendar",
+        "deadline"
+      ],
+      "icon": "▦",
+      "popularity": 74
+    },
+    {
+      "id": "dice-roller",
+      "name": "Dice Roller",
+      "category": "everyday-utilities",
+      "url": "/tools/dice-roller/",
+      "description": "Roll virtual dice for games and decisions.",
+      "keywords": [
+        "dice",
+        "random",
+        "d6",
+        "rpg"
+      ],
+      "icon": "◉",
+      "popularity": 67
+    },
+    {
+      "id": "diff-checker",
+      "name": "Diff Checker",
+      "category": "text-tools",
+      "url": "/tools/diff-checker/",
+      "description": "Compare two blocks of text and highlight the differences.",
+      "keywords": [
+        "compare",
+        "diff",
+        "changes",
+        "text"
+      ],
+      "icon": "≡",
+      "popularity": 76
+    },
+    {
+      "id": "dpi-screen-resolution-calculator",
+      "name": "DPI & Screen Resolution Calculator",
+      "category": "calculators",
+      "url": "/tools/dpi-screen-resolution-calculator/",
+      "description": "Calculate DPI, pixel density and print sizes.",
+      "keywords": [
+        "dpi",
+        "ppi",
+        "resolution",
+        "print",
+        "screen"
+      ],
+      "icon": "▣",
+      "popularity": 61
+    },
+    {
+      "id": "emoji-remover",
+      "name": "Emoji Remover",
+      "category": "text-tools",
+      "url": "/tools/emoji-remover/",
+      "description": "Strip emojis from text.",
+      "keywords": [
+        "emoji",
+        "clean text",
+        "remove"
+      ],
+      "icon": "Aa",
+      "popularity": 60
+    },
+    {
+      "id": "energy-converter",
+      "name": "Energy Converter",
+      "category": "converters",
+      "url": "/tools/energy-converter/",
+      "description": "Convert joules, calories, kilowatt-hours and BTU.",
+      "keywords": [
+        "energy",
+        "joule",
+        "calorie",
+        "kwh"
+      ],
+      "icon": "↔",
+      "popularity": 59
+    },
+    {
+      "id": "favicon-generator",
+      "name": "Favicon Generator",
+      "category": "developer-tools",
+      "url": "/tools/favicon-generator/",
+      "description": "Create favicon files from an image or text.",
+      "keywords": [
+        "favicon",
+        "ico",
+        "website",
+        "icon"
+      ],
+      "icon": "▣",
+      "popularity": 66
+    },
+    {
+      "id": "find-and-replace",
+      "name": "Find and Replace",
+      "category": "text-tools",
+      "url": "/tools/find-and-replace/",
+      "description": "Find and replace text, with optional case matching.",
+      "keywords": [
+        "replace",
+        "search",
+        "regex",
+        "edit text"
+      ],
+      "icon": "Aa",
+      "popularity": 77
+    },
+    {
+      "id": "fixed-deposit-maturity-calculator",
+      "name": "Fixed Deposit Maturity Calculator",
+      "category": "calculators",
+      "url": "/tools/fixed-deposit-maturity-calculator/",
+      "description": "Calculate FD maturity value and the interest earned.",
+      "keywords": [
+        "fd",
+        "fixed deposit",
+        "bank",
+        "interest"
+      ],
+      "icon": "₹",
+      "popularity": 80
+    },
+    {
+      "id": "fraction-calculator",
+      "name": "Fraction Calculator",
+      "category": "calculators",
+      "url": "/tools/fraction-calculator/",
+      "description": "Add, subtract, multiply and divide fractions.",
+      "keywords": [
+        "fractions",
+        "math",
+        "numerator",
+        "denominator"
+      ],
+      "icon": "½",
+      "popularity": 65
+    },
+    {
+      "id": "frequency-converter",
+      "name": "Frequency Converter",
+      "category": "converters",
+      "url": "/tools/frequency-converter/",
+      "description": "Convert hertz, kilohertz, megahertz and gigahertz.",
+      "keywords": [
+        "frequency",
+        "hertz",
+        "mhz",
+        "ghz"
+      ],
+      "icon": "↔",
+      "popularity": 58
+    },
+    {
+      "id": "fuel-cost-calculator",
+      "name": "Fuel Cost Calculator",
+      "category": "calculators",
+      "url": "/tools/fuel-cost-calculator/",
+      "description": "Estimate trip fuel cost from distance and mileage.",
+      "keywords": [
+        "petrol",
+        "diesel",
+        "mileage",
+        "trip cost"
+      ],
+      "icon": "₹",
+      "popularity": 72
+    },
+    {
+      "id": "fuel-economy-converter",
+      "name": "Fuel Economy Converter",
+      "category": "converters",
+      "url": "/tools/fuel-economy-converter/",
+      "description": "Convert mileage between km/l, mpg and l/100 km.",
+      "keywords": [
+        "mileage",
+        "mpg",
+        "kmpl",
+        "fuel efficiency"
+      ],
+      "icon": "↔",
+      "popularity": 63
+    },
+    {
+      "id": "gitignore-generator",
+      "name": "gitignore Generator",
+      "category": "developer-tools",
+      "url": "/tools/gitignore-generator/",
+      "description": "Generate .gitignore files for your stack.",
+      "keywords": [
+        "git",
+        "gitignore",
+        "ignore files",
+        "version control"
+      ],
+      "icon": "{ }",
+      "popularity": 68
+    },
+    {
+      "id": "gpa-calculator",
+      "name": "GPA Calculator",
+      "category": "calculators",
+      "url": "/tools/gpa-calculator/",
+      "description": "Calculate GPA and CGPA from grades and credits.",
+      "keywords": [
+        "gpa",
+        "cgpa",
+        "grades",
+        "college",
+        "marks"
+      ],
+      "icon": "✓",
+      "popularity": 78
+    },
+    {
+      "id": "gratuity-calculator",
+      "name": "Gratuity Calculator",
+      "category": "calculators",
+      "url": "/tools/gratuity-calculator/",
+      "description": "Calculate gratuity payable under the Payment of Gratuity Act.",
+      "keywords": [
+        "gratuity",
+        "salary",
+        "india",
+        "retirement"
+      ],
+      "icon": "₹",
+      "popularity": 71
+    },
+    {
+      "id": "habit-tracker",
+      "name": "Habit Tracker",
+      "category": "time-tools",
+      "url": "/tools/habit-tracker/",
+      "description": "Track daily habits and build streaks.",
+      "keywords": [
+        "habits",
+        "streak",
+        "routine",
+        "productivity"
+      ],
+      "icon": "✓",
+      "popularity": 69
+    },
+    {
+      "id": "hash-generator",
+      "name": "Hash Generator",
+      "category": "developer-tools",
+      "url": "/tools/hash-generator/",
+      "description": "Generate MD5, SHA-1 and SHA-256 hashes.",
+      "keywords": [
+        "md5",
+        "sha256",
+        "hash",
+        "checksum"
+      ],
+      "icon": "#",
+      "popularity": 73
+    },
+    {
+      "id": "hashtag-generator",
+      "name": "Hashtag Generator",
+      "category": "text-tools",
+      "url": "/tools/hashtag-generator/",
+      "description": "Generate hashtags for social media posts.",
+      "keywords": [
+        "hashtags",
+        "instagram",
+        "social media",
+        "seo"
+      ],
+      "icon": "#",
+      "popularity": 64
+    },
+    {
+      "id": "hra-exemption-calculator",
+      "name": "HRA Exemption Calculator",
+      "category": "calculators",
+      "url": "/tools/hra-exemption-calculator/",
+      "description": "Calculate house rent allowance exemption.",
+      "keywords": [
+        "hra",
+        "salary",
+        "tax",
+        "rent",
+        "india"
+      ],
+      "icon": "₹",
+      "popularity": 70
+    },
+    {
+      "id": "html-formatter",
+      "name": "HTML Formatter",
+      "category": "developer-tools",
+      "url": "/tools/html-formatter/",
+      "description": "Format and beautify HTML markup.",
+      "keywords": [
+        "html",
+        "beautify",
+        "pretty print",
+        "code"
+      ],
+      "icon": "<>",
+      "popularity": 74
+    },
+    {
+      "id": "http-status-reference",
+      "name": "HTTP Status Reference",
+      "category": "developer-tools",
+      "url": "/tools/http-status-reference/",
+      "description": "Look up HTTP status codes and what they mean.",
+      "keywords": [
+        "http",
+        "status codes",
+        "404",
+        "api"
+      ],
+      "icon": "✓",
+      "popularity": 67
+    },
+    {
+      "id": "image-cropper",
+      "name": "Image Cropper",
+      "category": "everyday-utilities",
+      "url": "/tools/image-cropper/",
+      "description": "Crop images to the exact area you need.",
+      "keywords": [
+        "photo",
+        "crop",
+        "trim",
+        "image editing"
+      ],
+      "icon": "▧",
+      "popularity": 79
+    },
+    {
+      "id": "image-format-converter",
+      "name": "Image Format Converter",
+      "category": "everyday-utilities",
+      "url": "/tools/image-format-converter/",
+      "description": "Convert images between JPG, PNG and WebP.",
+      "keywords": [
+        "jpg",
+        "png",
+        "webp",
+        "convert image"
+      ],
+      "icon": "▧",
+      "popularity": 80
+    },
+    {
+      "id": "image-to-pdf",
+      "name": "Image to PDF",
+      "category": "everyday-utilities",
+      "url": "/tools/image-to-pdf/",
+      "description": "Combine images into a single PDF file.",
+      "keywords": [
+        "pdf",
+        "jpg to pdf",
+        "convert",
+        "document"
+      ],
+      "icon": "▤",
+      "featured": true,
+      "popularity": 86
+    },
+    {
+      "id": "image-to-text-ocr",
+      "name": "Image to Text (OCR)",
+      "category": "everyday-utilities",
+      "url": "/tools/image-to-text-ocr/",
+      "description": "Extract text from images using OCR.",
+      "keywords": [
+        "ocr",
+        "text from image",
+        "scan",
+        "extract"
+      ],
+      "icon": "▧",
+      "popularity": 76
+    },
+    {
+      "id": "income-tax-calculator",
+      "name": "Income Tax Calculator",
+      "category": "calculators",
+      "url": "/tools/income-tax-calculator/",
+      "description": "Estimate income tax under the new and old regimes.",
+      "keywords": [
+        "income tax",
+        "tds",
+        "slab",
+        "india",
+        "finance"
+      ],
+      "icon": "₹",
+      "featured": true,
+      "popularity": 90
+    },
+    {
+      "id": "inhand-salary-calculator",
+      "name": "In-Hand Salary Calculator",
+      "category": "calculators",
+      "url": "/tools/inhand-salary-calculator/",
+      "description": "Work out take-home pay after deductions.",
+      "keywords": [
+        "salary",
+        "in hand",
+        "ctc",
+        "pf",
+        "india"
+      ],
+      "icon": "₹",
+      "popularity": 84
+    },
+    {
+      "id": "internet-speed-test",
+      "name": "Internet Speed Test",
+      "category": "everyday-utilities",
+      "url": "/tools/internet-speed-test/",
+      "description": "Measure your download and upload speed.",
+      "keywords": [
+        "speed test",
+        "bandwidth",
+        "mbps",
+        "network"
+      ],
+      "icon": "↗",
+      "popularity": 75
+    },
+    {
+      "id": "interval-timer",
+      "name": "Interval Timer",
+      "category": "time-tools",
+      "url": "/tools/interval-timer/",
+      "description": "Run timed work and rest intervals.",
+      "keywords": [
+        "hiit",
+        "intervals",
+        "workout",
+        "timer"
+      ],
+      "icon": "◴",
+      "popularity": 70
+    },
+    {
+      "id": "ip-subnet-calculator",
+      "name": "IP Subnet Calculator",
+      "category": "developer-tools",
+      "url": "/tools/ip-subnet-calculator/",
+      "description": "Calculate subnet masks, usable ranges and CIDR blocks.",
+      "keywords": [
+        "subnet",
+        "cidr",
+        "netmask",
+        "networking"
+      ],
+      "icon": "#",
+      "popularity": 62
+    },
+    {
+      "id": "javascript-minifier",
+      "name": "JavaScript Minifier",
+      "category": "developer-tools",
+      "url": "/tools/javascript-minifier/",
+      "description": "Minify JavaScript to reduce file size.",
+      "keywords": [
+        "javascript",
+        "minify",
+        "compress",
+        "code"
+      ],
+      "icon": "</>",
+      "popularity": 71
+    },
+    {
+      "id": "jwt-decoder",
+      "name": "JWT Decoder",
+      "category": "developer-tools",
+      "url": "/tools/jwt-decoder/",
+      "description": "Decode JWT headers and payload claims.",
+      "keywords": [
+        "jwt",
+        "token",
+        "decode",
+        "auth"
+      ],
+      "icon": "{ }",
+      "popularity": 72
+    },
+    {
+      "id": "keyword-density-checker",
+      "name": "Keyword Density Checker",
+      "category": "text-tools",
+      "url": "/tools/keyword-density-checker/",
+      "description": "Check keyword density and frequency in your text.",
+      "keywords": [
+        "seo",
+        "keywords",
+        "density",
+        "content"
+      ],
+      "icon": "#",
+      "popularity": 66
+    },
+    {
+      "id": "land-unit-converter",
+      "name": "Land Unit Converter",
+      "category": "converters",
+      "url": "/tools/land-unit-converter/",
+      "description": "Convert bigha, acre, hectare, guntha and square feet.",
+      "keywords": [
+        "land",
+        "bigha",
+        "acre",
+        "hectare",
+        "property"
+      ],
+      "icon": "▧",
+      "popularity": 74
+    },
+    {
+      "id": "line-breaks-to-commas",
+      "name": "Line Breaks to Commas",
+      "category": "text-tools",
+      "url": "/tools/line-breaks-to-commas/",
+      "description": "Turn line breaks into commas in one click.",
+      "keywords": [
+        "list",
+        "commas",
+        "csv",
+        "convert"
+      ],
+      "icon": "≡",
+      "popularity": 61
+    },
+    {
+      "id": "loan-prepayment-calculator",
+      "name": "Loan Prepayment Calculator",
+      "category": "calculators",
+      "url": "/tools/loan-prepayment-calculator/",
+      "description": "See how prepayments cut loan interest and tenure.",
+      "keywords": [
+        "loan",
+        "prepayment",
+        "emi",
+        "interest saved"
+      ],
+      "icon": "₹",
+      "popularity": 76
+    },
+    {
+      "id": "lorem-ipsum-generator",
+      "name": "Lorem Ipsum Generator",
+      "category": "text-tools",
+      "url": "/tools/lorem-ipsum-generator/",
+      "description": "Generate lorem ipsum placeholder text.",
+      "keywords": [
+        "placeholder",
+        "dummy text",
+        "lorem"
+      ],
+      "icon": "Aa",
+      "popularity": 68
+    },
+    {
+      "id": "markdown-to-html",
+      "name": "Markdown to HTML",
+      "category": "developer-tools",
+      "url": "/tools/markdown-to-html/",
+      "description": "Convert Markdown into HTML.",
+      "keywords": [
+        "markdown",
+        "html",
+        "convert",
+        "docs"
+      ],
+      "icon": "</>",
+      "popularity": 73
+    },
+    {
+      "id": "meeting-planner",
+      "name": "Meeting Planner",
+      "category": "time-tools",
+      "url": "/tools/meeting-planner/",
+      "description": "Find a meeting time that works across time zones.",
+      "keywords": [
+        "meeting",
+        "timezone",
+        "scheduling",
+        "calendar"
+      ],
+      "icon": "◷",
+      "popularity": 67
+    },
+    {
+      "id": "meta-length-checker",
+      "name": "Meta Length Checker",
+      "category": "text-tools",
+      "url": "/tools/meta-length-checker/",
+      "description": "Check title and meta description lengths for SEO.",
+      "keywords": [
+        "seo",
+        "meta title",
+        "meta description",
+        "serp"
+      ],
+      "icon": "✓",
+      "popularity": 65
+    },
+    {
+      "id": "mock-data-generator",
+      "name": "Mock Data Generator",
+      "category": "developer-tools",
+      "url": "/tools/mock-data-generator/",
+      "description": "Generate fake JSON data for testing.",
+      "keywords": [
+        "mock data",
+        "test data",
+        "json",
+        "fake"
+      ],
+      "icon": "{ }",
+      "popularity": 64
+    },
+    {
+      "id": "morse-code-translator",
+      "name": "Morse Code Translator",
+      "category": "text-tools",
+      "url": "/tools/morse-code-translator/",
+      "description": "Translate text to Morse code and back.",
+      "keywords": [
+        "morse",
+        "code",
+        "translate",
+        "signal"
+      ],
+      "icon": "Aa",
+      "popularity": 62
+    },
+    {
+      "id": "name-picker-wheel",
+      "name": "Name Picker Wheel",
+      "category": "everyday-utilities",
+      "url": "/tools/name-picker-wheel/",
+      "description": "Spin a wheel to pick a name at random.",
+      "keywords": [
+        "wheel",
+        "random picker",
+        "raffle",
+        "names"
+      ],
+      "icon": "◉",
+      "popularity": 71
+    },
+    {
+      "id": "number-base-converter",
+      "name": "Number Base Converter",
+      "category": "developer-tools",
+      "url": "/tools/number-base-converter/",
+      "description": "Convert numbers between binary, octal, decimal and hexadecimal.",
+      "keywords": [
+        "binary",
+        "hex",
+        "octal",
+        "decimal"
+      ],
+      "icon": "#",
+      "popularity": 69
+    },
+    {
+      "id": "number-to-words",
+      "name": "Number to Words",
+      "category": "text-tools",
+      "url": "/tools/number-to-words/",
+      "description": "Convert numbers into words, including Indian formats.",
+      "keywords": [
+        "numbers",
+        "words",
+        "cheque",
+        "amount in words"
+      ],
+      "icon": "Aa",
+      "popularity": 67
+    },
+    {
+      "id": "overtime-calculator",
+      "name": "Overtime Calculator",
+      "category": "calculators",
+      "url": "/tools/overtime-calculator/",
+      "description": "Calculate overtime pay from hours worked and hourly rate.",
+      "keywords": [
+        "overtime",
+        "wages",
+        "payroll",
+        "hours"
+      ],
+      "icon": "₹",
+      "popularity": 66
+    },
+    {
+      "id": "palindrome-checker",
+      "name": "Palindrome Checker",
+      "category": "text-tools",
+      "url": "/tools/palindrome-checker/",
+      "description": "Check whether text reads the same backwards.",
+      "keywords": [
+        "palindrome",
+        "word game",
+        "reverse"
+      ],
+      "icon": "↔",
+      "popularity": 58
+    },
+    {
+      "id": "password-strength-checker",
+      "name": "Password Strength Checker",
+      "category": "everyday-utilities",
+      "url": "/tools/password-strength-checker/",
+      "description": "Test how strong a password is before you use it.",
+      "keywords": [
+        "password",
+        "security",
+        "strength",
+        "entropy"
+      ],
+      "icon": "●",
+      "popularity": 78
+    },
+    {
+      "id": "pdf-compressor",
+      "name": "PDF Compressor",
+      "category": "everyday-utilities",
+      "url": "/tools/pdf-compressor/",
+      "description": "Reduce PDF file size while keeping quality.",
+      "keywords": [
+        "pdf",
+        "compress",
+        "shrink",
+        "file size"
+      ],
+      "icon": "▤",
+      "popularity": 83
+    },
+    {
+      "id": "pdf-merge-split",
+      "name": "PDF Merge & Split",
+      "category": "everyday-utilities",
+      "url": "/tools/pdf-merge-split/",
+      "description": "Merge or split PDF files in your browser.",
+      "keywords": [
+        "pdf",
+        "merge",
+        "split",
+        "pages"
+      ],
+      "icon": "▤",
+      "featured": true,
+      "popularity": 85
+    },
+    {
+      "id": "power-converter",
+      "name": "Power Converter",
+      "category": "converters",
+      "url": "/tools/power-converter/",
+      "description": "Convert watts, kilowatts and horsepower.",
+      "keywords": [
+        "power",
+        "watt",
+        "horsepower",
+        "kw"
+      ],
+      "icon": "↔",
+      "popularity": 57
+    },
+    {
+      "id": "pregnancy-due-date-calculator",
+      "name": "Pregnancy Due Date Calculator",
+      "category": "calculators",
+      "url": "/tools/pregnancy-due-date-calculator/",
+      "description": "Estimate a due date from the last menstrual period.",
+      "keywords": [
+        "pregnancy",
+        "due date",
+        "weeks",
+        "health"
+      ],
+      "icon": "▦",
+      "popularity": 70
+    },
+    {
+      "id": "pressure-converter",
+      "name": "Pressure Converter",
+      "category": "converters",
+      "url": "/tools/pressure-converter/",
+      "description": "Convert pascal, bar, psi and atmosphere.",
+      "keywords": [
+        "pressure",
+        "psi",
+        "bar",
+        "pascal"
+      ],
+      "icon": "↔",
+      "popularity": 56
+    },
+    {
+      "id": "profit-margin-calculator",
+      "name": "Profit Margin Calculator",
+      "category": "calculators",
+      "url": "/tools/profit-margin-calculator/",
+      "description": "Calculate profit, margin and markup.",
+      "keywords": [
+        "profit",
+        "margin",
+        "markup",
+        "business"
+      ],
+      "icon": "₹",
+      "popularity": 73
+    },
+    {
+      "id": "qr-code-scanner",
+      "name": "QR Code Scanner",
+      "category": "everyday-utilities",
+      "url": "/tools/qr-code-scanner/",
+      "description": "Scan QR codes with your camera or from an image.",
+      "keywords": [
+        "qr",
+        "scan",
+        "camera",
+        "decode"
+      ],
+      "icon": "▦",
+      "popularity": 80
+    },
+    {
+      "id": "ratio-calculator",
+      "name": "Ratio Calculator",
+      "category": "calculators",
+      "url": "/tools/ratio-calculator/",
+      "description": "Simplify ratios and solve proportions.",
+      "keywords": [
+        "ratio",
+        "proportion",
+        "math",
+        "scale"
+      ],
+      "icon": "⅓",
+      "popularity": 63
+    },
+    {
+      "id": "readability-score",
+      "name": "Readability Score",
+      "category": "text-tools",
+      "url": "/tools/readability-score/",
+      "description": "Score your text with Flesch and other readability metrics.",
+      "keywords": [
+        "readability",
+        "flesch",
+        "grade level",
+        "writing"
+      ],
+      "icon": "Aa",
+      "popularity": 62
+    },
+    {
+      "id": "regex-tester",
+      "name": "Regex Tester",
+      "category": "developer-tools",
+      "url": "/tools/regex-tester/",
+      "description": "Test regular expressions against sample text.",
+      "keywords": [
+        "regex",
+        "regular expression",
+        "pattern",
+        "match"
+      ],
+      "icon": "{ }",
+      "popularity": 79
+    },
+    {
+      "id": "remove-line-breaks",
+      "name": "Remove Line Breaks",
+      "category": "text-tools",
+      "url": "/tools/remove-line-breaks/",
+      "description": "Remove line breaks and join text into one paragraph.",
+      "keywords": [
+        "line breaks",
+        "join lines",
+        "clean text"
+      ],
+      "icon": "≡",
+      "popularity": 60
+    },
+    {
+      "id": "roman-numeral-converter",
+      "name": "Roman Numeral Converter",
+      "category": "converters",
+      "url": "/tools/roman-numeral-converter/",
+      "description": "Convert numbers to Roman numerals and back.",
+      "keywords": [
+        "roman numerals",
+        "numbers",
+        "convert"
+      ],
+      "icon": "↔",
+      "popularity": 64
+    },
+    {
+      "id": "shoe-size-converter",
+      "name": "Shoe Size Converter",
+      "category": "converters",
+      "url": "/tools/shoe-size-converter/",
+      "description": "Convert shoe sizes between UK, US, EU and India.",
+      "keywords": [
+        "shoe size",
+        "uk",
+        "us",
+        "eu",
+        "india"
+      ],
+      "icon": "↔",
+      "popularity": 66
+    },
+    {
+      "id": "simple-interest-calculator",
+      "name": "Simple Interest Calculator",
+      "category": "calculators",
+      "url": "/tools/simple-interest-calculator/",
+      "description": "Calculate simple interest on a principal amount.",
+      "keywords": [
+        "interest",
+        "loan",
+        "savings",
+        "finance"
+      ],
+      "icon": "₹",
+      "popularity": 71
+    },
+    {
+      "id": "sip-calculator",
+      "name": "SIP Calculator",
+      "category": "calculators",
+      "url": "/tools/sip-calculator/",
+      "description": "Estimate mutual fund SIP returns and maturity value.",
+      "keywords": [
+        "sip",
+        "mutual fund",
+        "investment",
+        "returns"
+      ],
+      "icon": "₹",
+      "featured": true,
+      "popularity": 87
+    },
+    {
+      "id": "sleep-cycle-calculator",
+      "name": "Sleep Cycle Calculator",
+      "category": "time-tools",
+      "url": "/tools/sleep-cycle-calculator/",
+      "description": "Find the best times to fall asleep or wake up.",
+      "keywords": [
+        "sleep",
+        "rem",
+        "cycles",
+        "bedtime"
+      ],
+      "icon": "◷",
+      "popularity": 72
+    },
+    {
+      "id": "sql-formatter",
+      "name": "SQL Formatter",
+      "category": "developer-tools",
+      "url": "/tools/sql-formatter/",
+      "description": "Format SQL queries for readability.",
+      "keywords": [
+        "sql",
+        "format",
+        "query",
+        "database"
+      ],
+      "icon": "{ }",
+      "popularity": 70
+    },
+    {
+      "id": "sunrise-sunset-calculator",
+      "name": "Sunrise & Sunset Calculator",
+      "category": "time-tools",
+      "url": "/tools/sunrise-sunset-calculator/",
+      "description": "Find sunrise and sunset times for any location.",
+      "keywords": [
+        "sunrise",
+        "sunset",
+        "daylight",
+        "sun"
+      ],
+      "icon": "◎",
+      "popularity": 64
+    },
+    {
+      "id": "text-diff-compare",
+      "name": "Text Diff & Compare",
+      "category": "text-tools",
+      "url": "/tools/text-diff-compare/",
+      "description": "Compare two texts side by side and see what changed.",
+      "keywords": [
+        "diff",
+        "compare",
+        "changes",
+        "text"
+      ],
+      "icon": "≡",
+      "popularity": 74
+    },
+    {
+      "id": "text-to-handwriting",
+      "name": "Text to Handwriting",
+      "category": "text-tools",
+      "url": "/tools/text-to-handwriting/",
+      "description": "Turn typed text into handwriting-style images.",
+      "keywords": [
+        "handwriting",
+        "assignment",
+        "convert text",
+        "font"
+      ],
+      "icon": "Aa",
+      "popularity": 75
+    },
+    {
+      "id": "timezone-converter",
+      "name": "Timezone Converter",
+      "category": "time-tools",
+      "url": "/tools/timezone-converter/",
+      "description": "Convert a time between world time zones.",
+      "keywords": [
+        "timezone",
+        "utc",
+        "ist",
+        "convert time"
+      ],
+      "icon": "◎",
+      "popularity": 76
+    },
+    {
+      "id": "tip-calculator",
+      "name": "Tip Calculator",
+      "category": "calculators",
+      "url": "/tools/tip-calculator/",
+      "description": "Work out tips and split the bill.",
+      "keywords": [
+        "tip",
+        "bill",
+        "restaurant",
+        "split"
+      ],
+      "icon": "₹",
+      "popularity": 72
+    },
+    {
+      "id": "todo-list",
+      "name": "To-Do List",
+      "category": "time-tools",
+      "url": "/tools/todo-list/",
+      "description": "Keep a simple to-do list in your browser.",
+      "keywords": [
+        "tasks",
+        "checklist",
+        "productivity",
+        "notes"
+      ],
+      "icon": "✓",
+      "popularity": 77
+    },
+    {
+      "id": "unicode-text-converter",
+      "name": "Unicode Text Converter",
+      "category": "text-tools",
+      "url": "/tools/unicode-text-converter/",
+      "description": "Convert text to Unicode escapes and back.",
+      "keywords": [
+        "unicode",
+        "escape",
+        "encode",
+        "code points"
+      ],
+      "icon": "</>",
+      "popularity": 59
+    },
+    {
+      "id": "volume-converter",
+      "name": "Volume Converter",
+      "category": "converters",
+      "url": "/tools/volume-converter/",
+      "description": "Convert litres, millilitres, gallons and cups.",
+      "keywords": [
+        "volume",
+        "litre",
+        "gallon",
+        "liquid"
+      ],
+      "icon": "↔",
+      "popularity": 65
+    },
+    {
+      "id": "water-intake-calculator",
+      "name": "Water Intake Calculator",
+      "category": "calculators",
+      "url": "/tools/water-intake-calculator/",
+      "description": "Estimate how much water to drink each day.",
+      "keywords": [
+        "water",
+        "hydration",
+        "health",
+        "daily intake"
+      ],
+      "icon": "◉",
+      "popularity": 68
+    },
+    {
+      "id": "week-number-calculator",
+      "name": "Week Number Calculator",
+      "category": "time-tools",
+      "url": "/tools/week-number-calculator/",
+      "description": "Find the ISO week number for any date.",
+      "keywords": [
+        "week number",
+        "iso week",
+        "calendar"
+      ],
+      "icon": "▦",
+      "popularity": 61
+    },
+    {
+      "id": "whats-my-ip",
+      "name": "What's My IP",
+      "category": "everyday-utilities",
+      "url": "/tools/whats-my-ip/",
+      "description": "See your public IP address and approximate location.",
+      "keywords": [
+        "ip address",
+        "network",
+        "location",
+        "isp"
+      ],
+      "icon": "↗",
+      "popularity": 74
+    },
+    {
+      "id": "work-hours-timesheet-calculator",
+      "name": "Work Hours & Timesheet Calculator",
+      "category": "time-tools",
+      "url": "/tools/work-hours-timesheet-calculator/",
+      "description": "Add up work hours and calculate weekly pay.",
+      "keywords": [
+        "timesheet",
+        "work hours",
+        "payroll",
+        "overtime"
+      ],
+      "icon": "◷",
+      "popularity": 73
+    },
+    {
+      "id": "xml-formatter",
+      "name": "XML Formatter",
+      "category": "developer-tools",
+      "url": "/tools/xml-formatter/",
+      "description": "Format and beautify XML documents.",
+      "keywords": [
+        "xml",
+        "beautify",
+        "pretty print",
+        "code"
+      ],
+      "icon": "<>",
+      "popularity": 66
+    },
+    {
+      "id": "yaml-json-converter",
+      "name": "YAML to JSON Converter",
+      "category": "developer-tools",
+      "url": "/tools/yaml-json-converter/",
+      "description": "Convert between YAML and JSON.",
+      "keywords": [
+        "yaml",
+        "json",
+        "convert",
+        "config"
+      ],
+      "icon": "{ }",
+      "popularity": 71
     }
   ]
 }
