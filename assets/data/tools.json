@@ -2218,6 +2218,20 @@
       "icon": "<>",
       "popularity": 66
     },
+     {
+      "id": "track-activity",
+      "name": "Track My Activity",
+      "category": "developer-tools",
+      "url": "https://track.mohaktools.com",
+      "description": "Track and analyze your daily activities.",
+      "keywords": [
+        "activity",
+        "tracking",
+        "productivity"
+      ],
+      "icon": "📊",
+      "popularity": 73
+    },
     {
       "id": "yaml-json-converter",
       "name": "YAML to JSON Converter",
