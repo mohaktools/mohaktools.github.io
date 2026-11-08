@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>How to Calculate EMI: Formula, Example and Free Calculator | MohakTools</title>
+    <meta name="description" content="Learn how to calculate EMI with the formula, a step-by-step loan example, common mistakes, and a free EMI calculator to check your result.">
+    <meta name="author" content="Mohak Choubey">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mohaktools.com/articles/emi-calculate-guide.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How to Calculate EMI: Formula, Example and Free Calculator">
+    <meta property="og:description" content="Learn how to calculate EMI with the formula, a step-by-step loan example, common mistakes, and a free EMI calculator.">
+    <meta property="og:url" content="https://mohaktools.com/articles/emi-calculate-guide.html">
+    <meta property="article:published_time" content="2026-11-8">
+    <meta property="article:author" content="Mohak Choubey">
+
+    <link rel="icon" href="/favicon.webp" type="image/webp">
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/themes.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "headline": "How to Calculate EMI: Formula, Example and Free Calculator",
+                "description": "Learn how to calculate EMI with the formula, a step-by-step loan example, common mistakes, and a free EMI calculator to check your result.",
+                "datePublished": "2026-11-08",
+                "dateModified": "2026-11-08",
+                "author": { "@type": "Person", "name": "Mohak Choubey", "url": "https://mohakchoubey.github.io/" },
+                "publisher": { "@type": "Organization", "name": "MohakTools", "url": "https://mohaktools.com" },
+                "mainEntityOfPage": "https://mohaktools.com/articles/emi-calculate-guide.html"
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is EMI?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "EMI stands for Equated Monthly Instalment. It is the fixed amount you pay every month to repay a loan, including both principal and interest." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is the formula for EMI?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "EMI = P x r x (1 + r)^n / ((1 + r)^n - 1), where P is the loan amount, r is the monthly interest rate, and n is the number of monthly instalments." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does a longer loan tenure reduce EMI?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "Yes. A longer tenure lowers the monthly EMI, but you pay more total interest over the life of the loan." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is the EMI calculator on MohakTools free?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The EMI calculator is free to use and runs in your browser." }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        .article-page {
+            width: min(760px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 32px 0 72px;
+            color: var(--color-text);
+        }
+
+        .article-breadcrumb {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 28px;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .article-breadcrumb a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .article-breadcrumb a:hover {
+            color: var(--color-primary-hover);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .article-header {
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .article-header h1 {
+            margin: 0 0 12px;
+            font-size: clamp(28px, 5vw, 40px);
+            line-height: 1.2;
+            letter-spacing: -0.8px;
+            color: var(--color-text);
+        }
+
+        .article-meta {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .article-summary {
+            margin: 14px 0 0;
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+        }
+
+        .article-body h2 {
+            margin: 40px 0 12px;
+            font-size: 24px;
+            letter-spacing: -0.3px;
+            color: var(--color-text);
+        }
+
+        .article-body h3 {
+            margin: 28px 0 10px;
+            font-size: 18px;
+            color: var(--color-text);
+        }
+
+        .article-body p,
+        .article-body li {
+            font-size: 16px;
+            line-height: 1.85;
+            color: var(--color-text);
+        }
+
+        .article-body p {
+            margin: 0 0 18px;
+        }
+
+        .article-body ul,
+        .article-body ol {
+            margin: 0 0 18px;
+            padding-left: 22px;
+        }
+
+        .article-body li + li {
+            margin-top: 6px;
+        }
+
+        .article-body a {
+            color: var(--color-primary);
+        }
+
+        .article-body a:hover {
+            color: var(--color-primary-hover);
+        }
+
+        .article-box {
+            margin: 24px 0;
+            padding: 18px 20px;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md, 12px);
+        }
+
+        .article-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .article-cta {
+            margin: 32px 0;
+            padding: 22px 24px;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg, 18px);
+            box-shadow: 0 8px 28px var(--color-card-shadow);
+        }
+
+        .article-cta p {
+            margin: 0 0 12px;
+        }
+
+        .article-cta a.button {
+            display: inline-block;
+            padding: 10px 18px;
+            color: var(--color-primary-text);
+            background-color: var(--color-primary);
+            border-radius: var(--radius-md, 12px);
+            text-decoration: none;
+            font-weight: 550;
+        }
+
+        .article-cta a.button:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .related {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .related h2 {
+            margin: 0 0 14px;
+            font-size: 22px;
+            color: var(--color-text);
+        }
+
+        .related ul {
+            margin: 0;
+            padding-left: 22px;
+        }
+
+        .related li + li {
+            margin-top: 8px;
+        }
+
+        .related a {
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 420px) {
+            .article-page {
+                width: calc(100% - 24px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="/assets/js/tools-registry.js" defer></script>
+
+    <div id="site-header"></div>
+
+    <main class="article-page">
+        <nav class="article-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <a href="/articles/">Articles</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">How to Calculate EMI</span>
+        </nav>
+
+        <article>
+            <header class="article-header">
+                <h1>How to Calculate EMI: Formula, Example and Free Calculator</h1>
+                <div class="article-meta">Calculators · Published 15 November 2026</div>
+                <p class="article-summary">
+                    Taking a loan means paying a fixed amount every month. This guide explains
+                    what EMI is, how the formula works, and how to calculate it by hand with a
+                    real example.
+                </p>
+            </header>
+
+            <div class="article-body">
+                <p>
+                    When you take a home loan, car loan, or personal loan, the lender usually
+                    asks you to repay it in equal monthly payments. That fixed amount is called
+                    EMI, short for Equated Monthly Instalment. Knowing your EMI before you sign
+                    helps you plan your monthly budget and compare loan offers fairly.
+                </p>
+
+                <p>
+                    In this article, you will learn what EMI means, the formula behind it, a
+                    step-by-step example, and the mistakes people commonly make. At the end,
+                    you can check your own numbers with our free EMI calculator.
+                </p>
+
+                <h2>What is EMI?</h2>
+
+                <p>
+                    EMI is the amount you pay to the bank every month until the loan is fully
+                    repaid. Each EMI has two parts: the principal (the money you borrowed) and
+                    the interest (the cost of borrowing). In the early months, a bigger share of
+                    your EMI goes towards interest. As the loan reduces, more of it goes towards
+                    the principal.
+                </p>
+
+                <h2>The EMI formula</h2>
+
+                <p>The standard formula for EMI is:</p>
+
+                <div class="article-box">
+                    <p><strong>EMI = P × r × (1 + r)<sup>n</sup> / ((1 + r)<sup>n</sup> − 1)</strong></p>
+                </div>
+
+                <p>Where:</p>
+
+                <ul>
+                    <li><strong>P</strong> is the principal, or the loan amount.</li>
+                    <li><strong>r</strong> is the monthly interest rate. If the annual rate is 10%, then r = 10 ÷ 12 ÷ 100 = 0.00833.</li>
+                    <li><strong>n</strong> is the number of monthly instalments. A 5-year loan has n = 60.</li>
+                </ul>
+
+                <p>
+                    The formula looks complicated, but you only need to plug in three numbers.
+                    Let's go through a full example so you can see how it works.
+                </p>
+
+                <h2>Step-by-step example</h2>
+
+                <p>
+                    Suppose you take a personal loan of ₹10,00,000 at 10% annual interest for 5
+                    years. Here is how to find the EMI.
+                </p>
+
+                <h3>Step 1: Note down the three values</h3>
+
+                <ul>
+                    <li>P = ₹10,00,000</li>
+                    <li>Annual interest = 10%, so monthly r = 10 ÷ 12 ÷ 100 = 0.008333</li>
+                    <li>Tenure = 5 years, so n = 5 × 12 = 60 months</li>
+                </ul>
+
+                <h3>Step 2: Calculate (1 + r)<sup>n</sup></h3>
+
+                <p>
+                    (1 + 0.008333)<sup>60</sup> is approximately 1.6453. You can calculate this
+                    on a scientific calculator, or use the tool linked below to skip this step.
+                </p>
+
+                <h3>Step 3: Put the values into the formula</h3>
+
+                <p>
+                    EMI = 10,00,000 × 0.008333 × 1.6453 / (1.6453 − 1)
+                </p>
+
+                <p>
+                    That gives an EMI of about <strong>₹21,247 per month</strong>.
+                </p>
+
+                <h3>Step 4: Check the total cost</h3>
+
+                <p>
+                    Over 60 months, you will pay ₹21,247 × 60 = ₹12,74,820 in total. Out of
+                    this, ₹2,74,820 is interest. This is the real cost of borrowing ₹10 lakh for
+                    5 years at 10%.
+                </p>
+
+                <h2>What happens if you change the tenure?</h2>
+
+                <p>
+                    The tenure has a big effect on your monthly payment. Using the same
+                    ₹10,00,000 at 10%:
+                </p>
+
+                <ul>
+                    <li><strong>3 years (36 months):</strong> EMI is about ₹32,267. Total interest is about ₹1,61,612.</li>
+                    <li><strong>5 years (60 months):</strong> EMI is about ₹21,247. Total interest is about ₹2,74,820.</li>
+                    <li><strong>7 years (84 months):</strong> EMI is about ₹16,122. Total interest is about ₹3,54,248.</li>
+                </ul>
+
+                <p>
+                    A longer tenure gives a smaller EMI, which feels easier on your monthly
+                    budget. But you pay much more interest in the end. Choose the shortest
+                    tenure you can comfortably afford.
+                </p>
+
+                <h2>Common mistakes to avoid</h2>
+
+                <h3>Using the annual rate directly</h3>
+
+                <p>
+                    The formula needs the monthly rate, not the annual rate. If you put 10 in
+                    place of 0.00833, your answer will be far too high. Always divide the annual
+                    rate by 12 and by 100.
+                </p>
+
+                <h3>Mixing up months and years</h3>
+
+                <p>
+                    A 5-year loan is 60 instalments, not 5. Using years instead of months will
+                    give a wrong result.
+                </p>
+
+                <h3>Ignoring processing fees and other charges</h3>
+
+                <p>
+                    The EMI formula only covers principal and interest. Processing fees, insurance,
+                    and penalties are separate. Read the loan agreement to know the full cost.
+                </p>
+
+                <h3>Forgetting that the rate can be floating</h3>
+
+                <p>
+                    Many home loans have a floating rate, which can change over time. Your EMI
+                    may go up or down. The calculation above shows a fixed-rate example.
+                </p>
+
+                <div class="article-cta">
+                    <p>
+                        Don't want to do the math by hand? Enter your loan amount, rate, and tenure
+                        in our free calculator and see your EMI and total interest instantly.
+                    </p>
+                    <a class="button" href="/tools/loan-emi-calculator/">Try the free EMI calculator</a>
+                </div>
+
+                <h2>Frequently asked questions</h2>
+
+                <h3>What is EMI?</h3>
+                <p>
+                    EMI stands for Equated Monthly Instalment. It is the fixed amount you pay
+                    every month to repay a loan, including both principal and interest.
+                </p>
+
+                <h3>What is the formula for EMI?</h3>
+                <p>
+                    EMI = P × r × (1 + r)<sup>n</sup> / ((1 + r)<sup>n</sup> − 1), where P is the
+                    loan amount, r is the monthly interest rate, and n is the number of monthly
+                    instalments.
+                </p>
+
+                <h3>Does a longer loan tenure reduce EMI?</h3>
+                <p>
+                    Yes. A longer tenure lowers your monthly EMI, but you pay more total interest
+                    over the life of the loan.
+                </p>
+
+                <h3>Is the EMI calculator on MohakTools free?</h3>
+                <p>
+                    Yes. The calculator is free to use and runs in your browser.
+                </p>
+
+                <h2>Conclusion</h2>
+
+                <p>
+                    EMI is simple once you know the three inputs: loan amount, monthly rate, and
+                    number of months. Calculate it before you borrow, compare different tenures,
+                    and pick the option that fits your budget without paying too much interest.
+                </p>
+
+                <p>
+                    <strong>Next step:</strong> Open the <a href="/tools/emi-calculator/">EMI calculator</a>,
+                    enter the loan you are considering, and check the numbers yourself.
+                </p>
+
+                <section class="related" aria-label="Related content">
+                    <h2>Related</h2>
+                    <ul>
+                        <li><a href="/tools/percentage-calculator/">Percentage Calculator: find discounts and percentage change</a></li>
+                        <li><a href="/tools/calculator/">Basic Calculator: quick arithmetic for everyday use</a></li>
+                        <li><a href="/articles/">More articles on calculations and free tools</a></li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="/assets/js/theme.js" defer></script>
+    <script src="/assets/js/header.js" defer></script>
+    <script src="/assets/js/footer.js" defer></script>
+</body>
+</html>
