@@ -2218,10 +2218,10 @@
       "icon": "<>",
       "popularity": 66
     },
-     {
+      {
       "id": "track-activity",
       "name": "Track My Activity",
-      "category": "developer-tools",
+      "category": "everyday-utilities",
       "url": "https://track.mohaktools.com",
       "description": "Track and analyze your daily activities.",
       "keywords": [
@@ -2232,6 +2232,21 @@
       "icon": "📊",
       "popularity": 73
     },
+      {
+      "id": "search-tool",
+      "name": "Search on Youtube",
+      "category": "everyday-utilities",
+      "url": "/tools/youtube-search-bar/",
+      "description": "Search on Youtube without ads and distractions.",
+      "keywords": [
+        "search",
+        "blockads",
+        "distractionfromyoutube"
+      ],
+      "icon": "🔎",
+      "popularity": 82
+    },
+  
     {
       "id": "yaml-json-converter",
       "name": "YAML to JSON Converter",
