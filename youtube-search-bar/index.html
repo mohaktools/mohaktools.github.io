@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>YouTube Search Engine: Search Videos, Music and Shorts | MohakTools</title>
+    <meta name="description" content="Search YouTube, YouTube Music, or Shorts directly from one clean page. Free, fast, and private: your recent searches stay on your device.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Mohak Choubey">
+    <link rel="canonical" href="https://mohaktools.com/tools/youtube-search/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="YouTube Search Engine | MohakTools">
+    <meta property="og:description" content="Search YouTube, YouTube Music, or Shorts from one clean page. Free and fast.">
+    <meta property="og:url" content="https://mohaktools.com/tools/youtube-search/">
+    <meta property="og:image" content="https://mohaktools.com/assets/images/og-default.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="/favicon.webp" type="image/webp">
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/themes.css">
+    <link rel="stylesheet" href="/assets/css/tool-page.css">
+
+    <!-- Theme head mein load hota hai taaki page pehle galat theme mein na dikhe -->
+    <script src="/assets/js/theme.js"></script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebApplication",
+                "name": "MohakTools YouTube Search Engine",
+                "url": "https://mohaktools.com/tools/youtube-search/",
+                "description": "Search YouTube, YouTube Music, or Shorts from one clean page.",
+                "applicationCategory": "UtilitiesApplication",
+                "operatingSystem": "Any",
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Is this YouTube search tool free?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The tool is free to use. It opens YouTube search results in a new page, so you can use all YouTube features there." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Are my searches saved?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "Your last five searches are saved only in your browser's local storage. Nothing is sent to MohakTools servers, and you can clear them anytime with the Clear button." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is the difference between YouTube, Music and Shorts search?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "YouTube searches all videos. YouTube Music searches songs and music content. The Shorts option adds the word shorts to your query to find short vertical videos." }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does voice search work on every device?",
+                        "acceptedAnswer": { "@type": "Answer", "text": "Voice search depends on your browser. It works in most Chromium-based browsers, such as Chrome and Edge. If your browser does not support it, the button is hidden." }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        .yt-page {
+            width: min(860px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 32px 0 72px;
+            color: var(--color-text);
+        }
+
+        .yt-breadcrumb {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 28px;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .yt-breadcrumb a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .yt-breadcrumb a:hover {
+            color: var(--color-primary-hover);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .yt-intro {
+            margin-bottom: 28px;
+        }
+
+        .yt-intro h1 {
+            margin: 0 0 12px;
+            font-size: clamp(30px, 5vw, 42px);
+            line-height: 1.2;
+            letter-spacing: -1px;
+            color: var(--color-text);
+        }
+
+        .yt-intro p {
+            max-width: 650px;
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+        }
+
+        .yt-card {
+            padding: 24px;
+            color: var(--color-text);
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg, 18px);
+            box-shadow: 0 8px 28px var(--color-card-shadow);
+        }
+
+        .yt-form {
+            display: grid;
+            gap: 12px;
+        }
+
+        .yt-row {
+            display: flex;
+            gap: 10px;
+            align-items: stretch;
+        }
+
+        .yt-select,
+        .yt-input {
+            font: inherit;
+            font-size: 15px;
+            color: var(--color-text);
+            background-color: var(--color-input-bg);
+            border: 1px solid var(--color-input-border);
+            border-radius: var(--radius-md, 12px);
+            padding: 12px 14px;
+            min-width: 0;
+        }
+
+        .yt-select {
+            flex: 0 0 auto;
+            max-width: 160px;
+        }
+
+        .yt-input {
+            flex: 1 1 auto;
+        }
+
+        .yt-select:focus-visible,
+        .yt-input:focus-visible,
+        .yt-btn:focus-visible,
+        .yt-chip:focus-visible,
+        .yt-link:focus-visible,
+        .yt-breadcrumb a:focus-visible {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 3px;
+        }
+
+        .yt-btn {
+            font: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 12px 20px;
+            color: var(--color-primary-text);
+            background-color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            border-radius: var(--radius-md, 12px);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 180ms ease;
+        }
+
+        .yt-btn:hover {
+            background-color: var(--color-primary-hover);
+            border-color: var(--color-primary-hover);
+        }
+
+        .yt-btn-ghost {
+            color: var(--color-text);
+            background-color: var(--color-surface-secondary);
+            border-color: var(--color-border);
+        }
+
+        .yt-btn-ghost:hover {
+            background-color: var(--color-surface);
+            border-color: var(--color-primary);
+        }
+
+        .yt-btn-icon {
+            padding: 12px 14px;
+        }
+
+        .yt-btn[hidden] {
+            display: none;
+        }
+
+        .yt-helper {
+            margin: 0;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            min-height: 18px;
+        }
+
+        .yt-helper.error {
+            color: var(--color-danger);
+        }
+
+        .yt-section {
+            margin-top: 24px;
+        }
+
+        .yt-section h2 {
+            margin: 0 0 12px;
+            font-size: 16px;
+            color: var(--color-text);
+        }
+
+        .yt-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .yt-chip {
+            font: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 7px 14px;
+            color: var(--color-text-secondary);
+            background-color: var(--color-surface-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 999px;
+            cursor: pointer;
+            transition: border-color 180ms ease, color 180ms ease;
+        }
+
+        .yt-chip:hover {
+            color: var(--color-text);
+            border-color: var(--color-primary);
+        }
+
+        .yt-recent {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 8px;
+        }
+
+        .yt-recent li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 10px 14px;
+            background-color: var(--color-surface-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md, 12px);
+        }
+
+        .yt-recent button {
+            font: inherit;
+            font-size: 14px;
+            color: var(--color-text);
+            background: none;
+            border: 0;
+            padding: 0;
+            text-align: left;
+            cursor: pointer;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .yt-recent button:hover {
+            color: var(--color-primary);
+        }
+
+        .yt-recent-empty {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+
+        .yt-tool-foot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .yt-seo {
+            margin-top: 48px;
+            padding-top: 28px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .yt-seo h2 {
+            margin: 0 0 14px;
+            font-size: 24px;
+            color: var(--color-text);
+        }
+
+        .yt-seo h3 {
+            margin: 24px 0 8px;
+            font-size: 17px;
+            color: var(--color-text);
+        }
+
+        .yt-seo p,
+        .yt-seo li {
+            font-size: 15px;
+            line-height: 1.85;
+            color: var(--color-text-secondary);
+        }
+
+        .yt-seo p {
+            margin: 0 0 14px;
+            max-width: 850px;
+        }
+
+        .yt-seo ul {
+            margin: 0 0 14px;
+            padding-left: 22px;
+        }
+
+        .yt-related {
+            display: grid;
+            gap: 8px;
+            padding-left: 22px;
+        }
+
+        .yt-link {
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 600px) {
+            .yt-row {
+                flex-direction: column;
+            }
+
+            .yt-select {
+                max-width: none;
+            }
+
+            .yt-card {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .yt-page {
+                width: calc(100% - 24px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .yt-btn,
+            .yt-chip {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="/assets/js/tools-registry.js" defer></script>
+
+    <div id="site-header"></div>
+
+    <main class="yt-page">
+        <nav class="yt-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <a href="/tools/">Tools</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">YouTube Search</span>
+        </nav>
+
+        <header class="yt-intro">
+            <h1>YouTube Search Engine</h1>
+            <p>
+                Search YouTube, YouTube Music, or Shorts from one clean page. Type your
+                topic, pick where to search, and you will land directly on the results.
+            </p>
+        </header>
+
+        <section class="yt-card" aria-label="Search">
+            <form class="yt-form" id="yt-form" autocomplete="off">
+                <div class="yt-row">
+                    <label class="sr-only" for="yt-engine">Search in</label>
+                    <select class="yt-select" id="yt-engine">
+                        <option value="youtube">YouTube</option>
+                        <option value="music">YouTube Music</option>
+                        <option value="shorts">Shorts</option>
+                    </select>
+
+                    <label class="sr-only" for="yt-query">Search query</label>
+                    <input class="yt-input" id="yt-query" name="q" type="search"
+                           placeholder="Search videos, songs, tutorials..."
+                           maxlength="200" required>
+
+                    <button class="yt-btn yt-btn-ghost yt-btn-icon" type="button" id="yt-voice"
+                            aria-label="Voice search" hidden>
+                        &#127908;
+                    </button>
+
+                    <button class="yt-btn" type="submit">Search</button>
+                </div>
+                <p class="yt-helper" id="yt-helper" role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="yt-section">
+                <h2>Quick topics</h2>
+                <div class="yt-chips" id="yt-topics"></div>
+            </div>
+
+            <div class="yt-section">
+                <h2>Recent searches</h2>
+                <ul class="yt-recent" id="yt-recent"></ul>
+            </div>
+
+            <div class="yt-tool-foot">
+                <button class="yt-btn yt-btn-ghost" type="button" id="yt-copy">Copy tool link</button>
+                <button class="yt-btn yt-btn-ghost" type="button" id="yt-clear">Clear recent searches</button>
+            </div>
+        </section>
+
+        <section class="yt-seo">
+            <h2>About this YouTube search tool</h2>
+
+            <p>
+                This tool gives you a faster way to search YouTube. Instead of opening
+                YouTube first and then typing your query, you can enter your topic here
+                and go straight to the results. It is useful when you search for the same
+                kind of content often, such as tutorials, music, or short videos.
+            </p>
+
+            <p>
+                You can search three places. <strong>YouTube</strong> searches all videos.
+                <strong>YouTube Music</strong> opens music search results. <strong>Shorts</strong>
+                adds the word "shorts" to your query, so you see short vertical videos
+                first.
+            </p>
+
+            <h3>How to use it</h3>
+            <ul>
+                <li>Choose where to search from the dropdown.</li>
+                <li>Type your topic and press Enter or click Search.</li>
+                <li>Use a quick topic chip if you are not sure what to search for.</li>
+                <li>Open a recent search again with one click.</li>
+            </ul>
+
+            <h3>Privacy</h3>
+            <p>
+                Your recent searches are stored only in your browser's local storage.
+                MohakTools does not send your searches to a server. You can clear them
+                anytime with the Clear button.
+            </p>
+
+            <h2>Frequently asked questions</h2>
+
+            <h3>Is this YouTube search tool free?</h3>
+            <p>
+                Yes. The tool is free to use. It opens YouTube search results, so you can
+                use all YouTube features there.
+            </p>
+
+            <h3>Are my searches saved?</h3>
+            <p>
+                Your last five searches are saved only in your browser. Nothing is sent to
+                MohakTools servers.
+            </p>
+
+            <h3>What is the difference between YouTube, Music and Shorts search?</h3>
+            <p>
+                YouTube searches all videos. YouTube Music searches songs and music content.
+                The Shorts option adds "shorts" to your query to find short vertical videos.
+            </p>
+
+            <h3>Does voice search work on every device?</h3>
+            <p>
+                Voice search depends on your browser. It works in most Chromium-based
+                browsers, such as Chrome and Edge. If your browser does not support it, the
+                microphone button is hidden.
+            </p>
+
+            <h2>Related tools</h2>
+            <ul class="yt-related">
+                <li><a class="yt-link" href="/tools/calculator/">Basic Calculator</a></li>
+                <li><a class="yt-link" href="/tools/word-counter/">Word Counter</a></li>
+                <li><a class="yt-link" href="/tools/password-generator/">Password Generator</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="/assets/js/theme.js" defer></script>
+    <script src="/assets/js/header.js" defer></script>
+    <script src="/assets/js/footer.js" defer></script>
+
+    <script>
+    (() => {
+        "use strict";
+
+        const PAGE_URL = "https://mohaktools.com/tools/youtube-search/";
+        const HISTORY_KEY = "mt-youtube-search-history";
+        const MAX_HISTORY = 5;
+
+        const form = document.getElementById("yt-form");
+        const input = document.getElementById("yt-query");
+        const engine = document.getElementById("yt-engine");
+        const helper = document.getElementById("yt-helper");
+        const topicsEl = document.getElementById("yt-topics");
+        const recentEl = document.getElementById("yt-recent");
+        const voiceBtn = document.getElementById("yt-voice");
+        const copyBtn = document.getElementById("yt-copy");
+        const clearBtn = document.getElementById("yt-clear");
+
+        const TOPICS = [
+            "Technology", "Education", "Music", "News", "Gaming",
+            "Science", "Cooking", "Fitness", "Travel", "Podcasts"
+        ];
+
+        const URLS = {
+            youtube: q => "https://www.youtube.com/results?search_query=" + encodeURIComponent(q),
+            music: q => "https://music.youtube.com/search?q=" + encodeURIComponent(q),
+            shorts: q => "https://www.youtube.com/results?search_query=" + encodeURIComponent(q + " shorts")
+        };
+
+        function loadHistory() {
+            try {
+                const list = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
+                return Array.isArray(list) ? list.filter(x => typeof x === "string") : [];
+            } catch {
+                return [];
+            }
+        }
+
+        function saveHistory(list) {
+            try {
+                localStorage.setItem(HISTORY_KEY, JSON.stringify(list));
+            } catch {
+                /* storage band ho to bhi search chalta rahe */
+            }
+        }
+
+        function addToHistory(q) {
+            const next = [q, ...loadHistory().filter(x => x !== q)].slice(0, MAX_HISTORY);
+            saveHistory(next);
+        }
+
+        function renderRecent() {
+            const list = loadHistory();
+            recentEl.textContent = "";
+
+            if (!list.length) {
+                const p = document.createElement("li");
+                p.className = "yt-recent-empty";
+                p.textContent = "No recent searches yet.";
+                recentEl.appendChild(p);
+                return;
+            }
+
+            list.forEach(q => {
+                const li = document.createElement("li");
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.textContent = q;
+                btn.addEventListener("click", () => run(q));
+                li.appendChild(btn);
+                recentEl.appendChild(li);
+            });
+        }
+
+        function renderTopics() {
+            TOPICS.forEach(topic => {
+                const chip = document.createElement("button");
+                chip.type = "button";
+                chip.className = "yt-chip";
+                chip.textContent = topic;
+                chip.addEventListener("click", () => run(topic));
+                topicsEl.appendChild(chip);
+            });
+        }
+
+        function setHelper(message, isError = false) {
+            helper.textContent = message;
+            helper.classList.toggle("error", isError);
+        }
+
+        function run(raw) {
+            const q = String(raw ?? "").trim().replace(/\s+/g, " ");
+            if (!q) {
+                setHelper("Pehle kuch likho, phir search karo.", true);
+                input.focus();
+                return;
+            }
+            input.value = q;
+            addToHistory(q);
+            const build = URLS[engine.value] || URLS.youtube;
+            window.location.href = build(q);
+        }
+
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+            run(input.value);
+        });
+
+        input.addEventListener("input", () => setHelper(""));
+
+        input.addEventListener("keydown", e => {
+            if (e.key === "Escape") {
+                input.value = "";
+                setHelper("");
+            }
+        });
+
+        clearBtn.addEventListener("click", () => {
+            saveHistory([]);
+            renderRecent();
+            setHelper("Recent searches clear ho gayi.");
+        });
+
+        copyBtn.addEventListener("click", async () => {
+            try {
+                await navigator.clipboard.writeText(PAGE_URL);
+                setHelper("Tool ka link copy ho gaya.");
+            } catch {
+                setHelper("Copy nahi ho paya. Address bar se link copy karo.", true);
+            }
+        });
+
+        // Voice search: sirf wahan dikhao jahan browser support karta hai
+        const Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (Speech) {
+            voiceBtn.hidden = false;
+            voiceBtn.addEventListener("click", () => {
+                const rec = new Speech();
+                rec.lang = "en-IN";
+                rec.interimResults = false;
+                rec.maxAlternatives = 1;
+                setHelper("Sun raha hoon... bolo.");
+                rec.onresult = e => {
+                    const said = e.results[0][0].transcript;
+                    run(said);
+                };
+                rec.onerror = () => setHelper("Voice search kaam nahi kiya. Dobara try karo.", true);
+                rec.start();
+            });
+        }
+
+        renderTopics();
+        renderRecent();
+    })();
+    </script>
+</body>
+</html>
