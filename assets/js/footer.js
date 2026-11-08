@@ -344,8 +344,9 @@
               <a href="/feedback/">Give Feedback</a>
               <a href="/privacy-policy/">Privacy Policy</a>
               <a href="/terms/">Terms of Use</a>
+              <a href="/articles/"> Articles </a>
             </nav>
-          </section>
+          </section> 
 
         </div>
 
