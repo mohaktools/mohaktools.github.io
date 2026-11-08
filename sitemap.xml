@@ -1,3 +1,7 @@
+sitemap.xml
+
+
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://mohaktools.com/</loc></url>
@@ -6,10 +10,6 @@
   <url><loc>https://mohaktools.com/tools/calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/scientific-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/percentage-calculator/</loc></url>
-    <url><loc>https://mohaktools.com/articles/emi-calculate-guide</loc></url>
-  <url><loc>https://mohaktools.com/articles/word-count-guide</loc></url>
-  <url><loc>https://mohaktools.com/articles/top-10-free-tools-students</loc></url>
-  <url><loc>https://mohaktools.com/articles/simple-vs-compound-interest</loc></url>
   <url><loc>https://mohaktools.com/tools/age-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/bmi-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/discount-calculator/</loc></url>
@@ -161,6 +161,11 @@
   <url><loc>https://mohaktools.com/tools/pdf-merge-split/</loc></url>
   <url><loc>https://mohaktools.com/tools/qr-code-scanner/</loc></url>
   <url><loc>https://mohaktools.com/tools/whats-my-ip/</loc></url>
+  <url><loc>https://mohaktools.com/articles/emi-calculate-guide</loc></url>
+  <url><loc>https://mohaktools.com/articles/word-count-guide</loc></url>
+  <url><loc>https://mohaktools.com/articles/top-10-free-tools-students</loc></url>
+  <url><loc>https://mohaktools.com/articles/simple-vs-compound-interest</loc></url>
+  <url><loc>https://mohaktools.com/tools/youtube-search-bar/</loc></url>
 
   <url><loc>https://mohaktools.com/about/</loc></url>
   <url><loc>https://mohaktools.com/contact/</loc></url>
