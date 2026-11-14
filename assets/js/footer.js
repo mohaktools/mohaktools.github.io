@@ -16,11 +16,23 @@
    - Automatically creates missing footer mount
    ========================================= */
 
+/* Umami analytics */
+(() => {
+  if (document.querySelector('script[src="https://cloud.umami.is/script.js"]')) return;
+
+  const umami = document.createElement("script");
+  umami.defer = true;
+  umami.src = "https://cloud.umami.is/script.js";
+  umami.dataset.websiteId = "c34f77a2-973c-4e58-82ac-e96fca33443e";
+  document.head.append(umami);
+})();
+
 (() => {
   "use strict";
 
   let mount = document.getElementById("site-footer");
 
+   
   if (!mount) {
     mount = document.createElement("div");
     mount.id = "site-footer";
@@ -503,3 +515,6 @@
 
   initializeFooter();
 })();
+
+
+
