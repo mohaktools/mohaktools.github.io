@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<title>Sitemap | MohakTools</title>
+<meta name="description" content="Every page on MohakTools in one place: all 150 free online tools across calculators, converters, text tools, developer tools, time tools and everyday utilities.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mohaktools.com/sitemap.html">
+<meta property="og:title" content="Sitemap | MohakTools">
+<meta property="og:description" content="Every page on MohakTools in one place: 150 free online tools.">
+<meta property="og:url" content="https://mohaktools.com/sitemap.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sitemap | MohakTools">
+<meta name="twitter:description" content="Every page on MohakTools in one place: 150 free online tools.">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
+<link rel="stylesheet" href="/assets/css/global.css">
+<link rel="stylesheet" href="/assets/css/themes.css">
+ <script src="/assets/js/tools-registry.js" defer></script>
+<style>
+  .sm-main{width:min(1040px,calc(100% - 32px));margin:0 auto;padding:32px 0 72px;color:var(--color-text)}
+
+  .sm-intro{max-width:720px;margin:0 0 24px;color:var(--color-text-secondary);font-size:15px;line-height:1.75}
+  .sm-main h1{margin:0 0 10px;font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.6px}
+
+  .sm-search{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;
+    margin:0 0 8px;padding:12px 0;background:var(--color-surface)}
+  .sm-search label{font-size:13px;font-weight:600;color:var(--color-text-secondary);white-space:nowrap}
+  .sm-search input{flex:1;min-width:0;padding:11px 14px;border:1px solid var(--color-border);
+    border-radius:10px;background:var(--color-input-bg,var(--color-surface));color:var(--color-text);
+    font:inherit;font-size:14px;outline:none;transition:border-color .2s}
+  .sm-search input:focus{border-color:var(--color-primary)}
+  .sm-count{margin:0 0 20px;font-size:13px;color:var(--color-text-secondary);min-height:18px}
+
+  .sm-group{margin-top:34px;padding-top:22px;border-top:1px solid var(--color-border)}
+  .sm-group:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  .sm-group h2{display:flex;align-items:center;gap:10px;margin:0 0 14px;
+    font-size:18px;font-weight:750;color:var(--color-text);line-height:1.4}
+  .sm-icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;
+    border:1px solid var(--color-border);border-radius:9px;background:var(--color-surface-secondary);
+    color:var(--color-primary);font-size:15px;font-weight:700;flex-shrink:0}
+  .sm-badge{margin-left:auto;padding:3px 9px;border:1px solid var(--color-border);border-radius:20px;
+    background:var(--color-surface-secondary);color:var(--color-text-secondary);
+    font-size:12px;font-weight:700}
+
+  .sm-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:2px 18px;
+    margin:0;padding:0;list-style:none}
+  .sm-list li{min-width:0}
+  .sm-list a{display:block;padding:8px 2px;color:var(--color-text);text-decoration:none;
+    font-size:14px;line-height:1.5;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
+  .sm-list a:hover,.sm-list a:focus-visible{color:var(--color-primary);border-bottom-color:var(--color-primary)}
+
+  .sm-empty{display:none;padding:28px 0;color:var(--color-text-secondary);font-size:14px}
+  .sm-empty.is-visible{display:block}
+
+  @media (max-width:600px){
+    .sm-main{width:calc(100% - 24px);padding:20px 0 48px}
+    .sm-list{grid-template-columns:1fr}
+    .sm-group h2{font-size:16px}
+  }
+</style>
+</head>
+<body>
+    
+<div id="site-header"></div>
+
+<main class="sm-main">
+  <h1>Sitemap</h1>
+  <p class="sm-intro">
+    Every page on MohakTools in one place: 150 free online tools across six categories.
+    Use the filter to jump straight to one, or browse a category below.
+  </p>
+
+  <div class="sm-search">
+    <label for="sm-filter">Filter</label>
+    <input id="sm-filter" type="search" placeholder="Search 150 tools, e.g. GST, PDF, colour" autocomplete="off">
+  </div>
+  <p class="sm-count" id="sm-count" role="status" aria-live="polite"></p>
+
+  <div id="sm-groups">
+      <section class="sm-group">
+        <h2><span class="sm-icon" aria-hidden="true">⌂</span>Main pages<span class="sm-badge">2</span></h2>
+        <ul class="sm-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">All tools</a></li>
+        </ul>
+      </section>
+      <section class="sm-group" data-group="calculators">
+        <h2><span class="sm-icon" aria-hidden="true">∑</span>Calculators<span class="sm-badge">31</span></h2>
+        <ul class="sm-list">
+            <li><a href="/tools/age-calculator/">Age Calculator</a></li>
+            <li><a href="/tools/average-calculator/">Average Calculator</a></li>
+            <li><a href="/tools/calculator/">Basic Calculator</a></li>
+            <li><a href="/tools/bmi-calculator/">BMI Calculator</a></li>
+            <li><a href="/tools/body-fat-calculator/">Body Fat Calculator</a></li>
+            <li><a href="/tools/break-even-calculator/">Break-Even Calculator</a></li>
+            <li><a href="/tools/calorie-bmr-calculator/">Calorie / BMR Calculator</a></li>
+            <li><a href="/tools/compound-interest-calculator/">Compound Interest Calculator</a></li>
+            <li><a href="/tools/date-difference-calculator/">Date Difference Calculator</a></li>
+            <li><a href="/tools/discount-calculator/">Discount Calculator</a></li>
+            <li><a href="/tools/fixed-deposit-maturity-calculator/">Fixed Deposit Maturity Calculator</a></li>
+            <li><a href="/tools/fraction-calculator/">Fraction Calculator</a></li>
+            <li><a href="/tools/fuel-cost-calculator/">Fuel Cost Calculator</a></li>
+            <li><a href="/tools/gpa-calculator/">GPA Calculator</a></li>
+            <li><a href="/tools/gratuity-calculator/">Gratuity Calculator</a></li>
+            <li><a href="/tools/gst-calculator/">GST Calculator</a></li>
+            <li><a href="/tools/hra-exemption-calculator/">HRA Exemption Calculator</a></li>
+            <li><a href="/tools/inhand-salary-calculator/">In-hand Salary Calculator</a></li>
+            <li><a href="/tools/income-tax-calculator/">Income Tax Calculator (India)</a></li>
+            <li><a href="/tools/loan-emi-calculator/">Loan EMI Calculator</a></li>
+            <li><a href="/tools/loan-prepayment-calculator/">Loan Prepayment Calculator</a></li>
+            <li><a href="/tools/percentage-calculator/">Percentage Calculator</a></li>
+            <li><a href="/tools/pregnancy-due-date-calculator/">Pregnancy Due Date Calculator</a></li>
+            <li><a href="/tools/profit-margin-calculator/">Profit Margin Calculator</a></li>
+            <li><a href="/tools/ratio-calculator/">Ratio Calculator</a></li>
+            <li><a href="/tools/scientific-calculator/">Scientific Calculator</a></li>
+            <li><a href="/tools/simple-interest-calculator/">Simple Interest Calculator</a></li>
+            <li><a href="/tools/sip-calculator/">SIP Calculator</a></li>
+            <li><a href="/tools/time-duration-calculator/">Time Duration Calculator</a></li>
+            <li><a href="/tools/tip-calculator/">Tip Calculator</a></li>
+            <li><a href="/tools/water-intake-calculator/">Water Intake Calculator</a></li>
+        </ul>
+      </section>
+      <section class="sm-group" data-group="time-tools">
+        <h2><span class="sm-icon" aria-hidden="true">◴</span>Time &amp; Productivity<span class="sm-badge">19</span></h2>
+        <ul class="sm-list">
+            <li><a href="/tools/alarm-clock/">Alarm Clock</a></li>
+            <li><a href="/tools/business-days-calculator/">Business Days Calculator</a></li>
+            <li><a href="/tools/calendar/">Calendar</a></li>
+            <li><a href="/tools/countdown-timer/">Countdown Timer</a></li>
+            <li><a href="/tools/date-add-subtract-calculator/">Date Calculator (Add / Subtract)</a></li>
+            <li><a href="/tools/digital-clock/">Digital Clock</a></li>
+            <li><a href="/tools/habit-tracker/">Habit Tracker</a></li>
+            <li><a href="/tools/interval-timer/">Interval Timer (HIIT)</a></li>
+            <li><a href="/tools/meeting-planner/">Meeting Planner</a></li>
+            <li><a href="/tools/overtime-calculator/">Overtime Calculator</a></li>
+            <li><a href="/tools/pomodoro-timer/">Pomodoro Timer</a></li>
+            <li><a href="/tools/sleep-cycle-calculator/">Sleep Cycle Calculator</a></li>
+            <li><a href="/tools/stopwatch/">Stopwatch</a></li>
+            <li><a href="/tools/sunrise-sunset-calculator/">Sunrise &amp; Sunset Calculator</a></li>
+            <li><a href="/tools/timezone-converter/">Time Zone Converter</a></li>
+            <li><a href="/tools/todo-list/">To-Do List</a></li>
+            <li><a href="/tools/week-number-calculator/">Week Number Calculator</a></li>
+            <li><a href="/tools/work-hours-timesheet-calculator/">Working Hours Timesheet Calculator</a></li>
+            <li><a href="/tools/world-clock/">World Clock</a></li>
+        </ul>
+      </section>
+      <section class="sm-group" data-group="converters">
+        <h2><span class="sm-icon" aria-hidden="true">⇄</span>Converters<span class="sm-badge">21</span></h2>
+        <ul class="sm-list">
+            <li><a href="/tools/angle-converter/">Angle Converter</a></li>
+            <li><a href="/tools/area-converter/">Area Converter</a></li>
+            <li><a href="/tools/cooking-measurement-converter/">Cooking Measurement Converter</a></li>
+            <li><a href="/tools/currency-converter/">Currency Converter</a></li>
+            <li><a href="/tools/data-storage-converter/">Data Storage Converter</a></li>
+            <li><a href="/tools/energy-converter/">Energy Converter</a></li>
+            <li><a href="/tools/frequency-converter/">Frequency Converter</a></li>
+            <li><a href="/tools/fuel-economy-converter/">Fuel Economy Converter</a></li>
+            <li><a href="/tools/land-unit-converter/">Land Unit Converter</a></li>
+            <li><a href="/tools/length-converter/">Length Converter</a></li>
+            <li><a href="/tools/number-base-converter/">Number Base Converter</a></li>
+            <li><a href="/tools/power-converter/">Power Converter</a></li>
+            <li><a href="/tools/pressure-converter/">Pressure Converter</a></li>
+            <li><a href="/tools/roman-numeral-converter/">Roman Numeral Converter</a></li>
+            <li><a href="/tools/shoe-size-converter/">Shoe Size Converter</a></li>
+            <li><a href="/tools/speed-converter/">Speed Converter</a></li>
+            <li><a href="/tools/temperature-converter/">Temperature Converter</a></li>
+            <li><a href="/tools/time-converter/">Time Converter</a></li>
+            <li><a href="/tools/unit-converter/">Unit Converter</a></li>
+            <li><a href="/tools/volume-converter/">Volume Converter</a></li>
+            <li><a href="/tools/weight-converter/">Weight Converter</a></li>
+        </ul>
+      </section>
+      <section class="sm-group" data-group="text-tools">
+        <h2><span class="sm-icon" aria-hidden="true">Aa</span>Text Tools<span class="sm-badge">26</span></h2>
+        <ul class="sm-list">
+            <li><a href="/tools/anagram-solver/">Anagram Solver</a></li>
+            <li><a href="/tools/case-converter/">Case Converter</a></li>
+            <li><a href="/tools/character-counter/">Character Counter</a></li>
+            <li><a href="/tools/duplicate-line-remover/">Duplicate Line Remover</a></li>
+            <li><a href="/tools/emoji-remover/">Emoji Remover</a></li>
+            <li><a href="/tools/find-and-replace/">Find and Replace</a></li>
+            <li><a href="/tools/hashtag-generator/">Hashtag Generator</a></li>
+            <li><a href="/tools/keyword-density-checker/">Keyword Density Checker</a></li>
+            <li><a href="/tools/line-breaks-to-commas/">Line Breaks to Commas</a></li>
+            <li><a href="/tools/line-counter/">Line Counter</a></li>
+            <li><a href="/tools/lorem-ipsum-generator/">Lorem Ipsum Generator</a></li>
+            <li><a href="/tools/markdown-to-html/">Markdown to HTML</a></li>
+            <li><a href="/tools/meta-length-checker/">Meta Title &amp; Description Length Checker</a></li>
+            <li><a href="/tools/morse-code-translator/">Morse Code Translator</a></li>
+            <li><a href="/tools/number-to-words/">Number to Words</a></li>
+            <li><a href="/tools/palindrome-checker/">Palindrome Checker</a></li>
+            <li><a href="/tools/readability-score/">Readability Score</a></li>
+            <li><a href="/tools/remove-extra-spaces/">Remove Extra Spaces</a></li>
+            <li><a href="/tools/remove-line-breaks/">Remove Line Breaks</a></li>
+            <li><a href="/tools/text-diff-compare/">Text Diff / Compare</a></li>
+            <li><a href="/tools/text-reverser/">Text Reverser</a></li>
+            <li><a href="/tools/text-sorter/">Text Sorter</a></li>
+            <li><a href="/tools/text-to-handwriting/">Text to Handwriting</a></li>
+            <li><a href="/tools/text-to-slug/">Text to Slug</a></li>
+            <li><a href="/tools/unicode-text-converter/">Unicode Text Converter</a></li>
+            <li><a href="/tools/word-counter/">Word Counter</a></li>
+        </ul>
+      </section>
+      <section class="sm-group" data-group="developer-tools">
+        <h2><span class="sm-icon" aria-hidden="true">{ }</span>Developer Tools<span class="sm-badge">28</span></h2>
+        <ul class="sm-list">
+            <li><a href="/tools/base64-encoder-decoder/">Base64 Encoder / Decoder</a></li>
+            <li><a href="/tools/chmod-calculator/">Chmod Calculator</a></li>
+            <li><a href="/tools/color-code-converter/">Color Code Converter</a></li>
+            <li><a href="/tools/cron-expression-generator/">Cron Expression Generator</a></li>
+            <li><a href="/tools/css-gradient-boxshadow/">CSS Gradient &amp; Box Shadow Generator</a></li>
+            <li><a href="/tools/css-minifier-beautifier/">CSS Minifier / Beautifier</a></li>
+            <li><a href="/tools/csv-to-json-converter/">CSV to JSON Converter</a></li>
+            <li><a href="/tools/diff-checker/">Diff Checker</a></li>
+            <li><a href="/tools/favicon-generator/">Favicon Generator</a></li>
+            <li><a href="/tools/gitignore-generator/">Gitignore Generator</a></li>
+            <li><a href="/tools/hash-generator/">Hash Generator</a></li>
+            <li><a href="/tools/html-entity-encoder/">HTML Entity Encoder</a></li>
+            <li><a href="/tools/html-formatter/">HTML Formatter</a></li>
+            <li><a href="/tools/http-status-reference/">HTTP Status Code Reference</a></li>
+            <li><a href="/tools/ip-subnet-calculator/">IP / Subnet Calculator</a></li>
+            <li><a href="/tools/javascript-minifier/">JavaScript Minifier</a></li>
+            <li><a href="/tools/json-formatter/">JSON Formatter</a></li>
+            <li><a href="/tools/json-validator/">JSON Validator</a></li>
+            <li><a href="/tools/jwt-decoder/">JWT Decoder</a></li>
+            <li><a href="/tools/mock-data-generator/">Mock Data Generator</a></li>
+            <li><a href="/tools/password-generator/">Password Generator</a></li>
+            <li><a href="/tools/regex-tester/">Regex Tester</a></li>
+            <li><a href="/tools/sql-formatter/">SQL Formatter</a></li>
+            <li><a href="/tools/unix-timestamp-converter/">Unix Timestamp Converter</a></li>
+            <li><a href="/tools/url-encoder-decoder/">URL Encoder / Decoder</a></li>
+            <li><a href="/tools/uuid-generator/">UUID Generator</a></li>
+            <li><a href="/tools/xml-formatter/">XML Formatter</a></li>
+            <li><a href="/tools/yaml-json-converter/">YAML ↔ JSON Converter</a></li>
+        </ul>
+      </section>
+      <section class="sm-group" data-group="everyday-utilities">
+        <h2><span class="sm-icon" aria-hidden="true">✦</span>Everyday Utilities<span class="sm-badge">25</span></h2>
+        <ul class="sm-list">
+            <li><a href="/tools/aspect-ratio-calculator/">Aspect Ratio Calculator</a></li>
+            <li><a href="/tools/background-remover/">Background Remover</a></li>
+            <li><a href="/tools/barcode-generator/">Barcode Generator</a></li>
+            <li><a href="/tools/coin-flip/">Coin Flip</a></li>
+            <li><a href="/tools/colour-picker/">Colour Picker</a></li>
+            <li><a href="/tools/dice-roller/">Dice Roller</a></li>
+            <li><a href="/tools/dpi-screen-resolution-calculator/">DPI / Screen Resolution Calculator</a></li>
+            <li><a href="/tools/image-compressor/">Image Compressor</a></li>
+            <li><a href="/tools/image-cropper/">Image Cropper</a></li>
+            <li><a href="/tools/image-format-converter/">Image Format Converter</a></li>
+            <li><a href="/tools/image-resizer/">Image Resizer</a></li>
+            <li><a href="/tools/image-to-pdf/">Image to PDF</a></li>
+            <li><a href="/tools/image-to-text-ocr/">Image to Text (OCR)</a></li>
+            <li><a href="/tools/internet-speed-test/">Internet Speed Test</a></li>
+            <li><a href="/tools/name-picker-wheel/">Name Picker / Wheel Spinner</a></li>
+            <li><a href="/tools/password-strength-checker/">Password Strength Checker</a></li>
+            <li><a href="/tools/pdf-compressor/">PDF Compressor</a></li>
+            <li><a href="/tools/pdf-merge-split/">PDF Merge / Split</a></li>
+            <li><a href="/tools/qr-code-generator/">QR Code Generator</a></li>
+            <li><a href="/tools/qr-code-scanner/">QR Code Scanner</a></li>
+            <li><a href="/tools/random-choice-picker/">Random Choice Picker</a></li>
+            <li><a href="/tools/random-number-generator/">Random Number Generator</a></li>
+            <li><a href="/tools/typing-speed-test/">Typing Speed Test</a></li>
+            <li><a href="/tools/whats-my-ip/">What&#x27;s My IP</a></li>
+            <li><a href="/tools/youtube-search-bar/">YouTube Search Engine</a></li>
+        </ul>
+      </section>
+  </div>
+
+  <p class="sm-empty" id="sm-empty">No tool matches that search. Try a shorter word, or clear the filter.</p>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+(function () {
+  "use strict";
+  var input = document.getElementById("sm-filter");
+  var countEl = document.getElementById("sm-count");
+  var emptyEl = document.getElementById("sm-empty");
+  var groups = Array.prototype.slice.call(document.querySelectorAll(".sm-group"));
+  if (!input) return;
+
+  var totalLinks = document.querySelectorAll(".sm-list a").length;
+
+  function apply() {
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+
+    groups.forEach(function (group) {
+      var links = group.querySelectorAll(".sm-list a");
+      var visible = 0;
+      links.forEach(function (a) {
+        var match = !q || a.textContent.toLowerCase().indexOf(q) !== -1;
+        a.parentNode.style.display = match ? "" : "none";
+        if (match) visible++;
+      });
+      group.style.display = visible ? "" : "none";
+      shown += visible;
+    });
+
+    if (emptyEl) emptyEl.classList.toggle("is-visible", shown === 0);
+    if (countEl) {
+      countEl.textContent = q
+        ? shown + " of " + totalLinks + " tools match \u201c" + input.value.trim() + "\u201d"
+        : totalLinks + " tools listed";
+    }
+  }
+
+  input.addEventListener("input", apply);
+  apply();
+})();
+</script>
+</body>
+</html>
