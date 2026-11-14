@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GST Calculation Explained: Formula and Example | MohakTools</title>
+    <meta name="description" content="Learn how to calculate GST on a price, how to find GST in an inclusive amount, and how to split it into CGST and SGST, with worked examples.">
+    <meta name="author" content="Mohak Choubey">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mohaktools.com/articles/gst-calculation-guide">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="GST Calculation Explained: Formula and Example">
+    <meta property="og:description" content="Learn how to calculate GST on a price, how to find GST in an inclusive amount, and how to split it into CGST and SGST, with worked examples.">
+    <meta property="og:url" content="https://mohaktools.com/articles/gst-calculation-guide">
+    <meta property="article:published_time" content="2026-11-15">
+    <meta property="article:author" content="Mohak Choubey">
+
+    <link rel="icon" href="/favicon.webp" type="image/webp">
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/themes.css">
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Article",
+            "headline": "How to Calculate GST: Formula, Example and Free Calculator",
+            "description": "Learn how to calculate GST on a price, how to find GST in an inclusive amount, and how to split it into CGST and SGST, with worked examples.",
+            "datePublished": "2026-11-15",
+            "dateModified": "2026-11-15",
+            "author": {
+                "@type": "Person",
+                "name": "Mohak Choubey",
+                "url": "https://github.com/mohakdev1220"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "MohakTools",
+                "url": "https://mohaktools.com"
+            },
+            "mainEntityOfPage": "https://mohaktools.com/articles/gst-calculation-guide"
+        },
+        {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is the formula to add GST?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "GST amount = price before tax × GST rate ÷ 100, and the total is the price before tax plus the GST amount."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do I find GST if the price already includes it?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Divide the total by (100 + GST rate) and multiply by 100 to get the base price. The GST is the total minus that base price."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is the difference between CGST and SGST?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "CGST goes to the central government and SGST goes to the state government. For intra-state sales, the GST rate is split equally between them."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is a GST calculator accurate?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A calculator is accurate if you enter the correct rate. The rate depends on the item, so confirm it before you invoice."
+                    }
+                }
+            ]
+        }
+    ]
+}
+    </script>
+
+    <style>
+        .article-page { width: min(760px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 72px; color: var(--color-text); }
+        .article-breadcrumb { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 28px; font-size: 14px; color: var(--color-text-secondary); }
+        .article-breadcrumb a { color: var(--color-primary); text-decoration: none; }
+        .article-breadcrumb a:hover { color: var(--color-primary-hover); text-decoration: underline; text-underline-offset: 3px; }
+        .article-header { margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--color-border); }
+        .article-header h1 { margin: 0 0 12px; font-size: clamp(28px, 5vw, 40px); line-height: 1.2; letter-spacing: -0.8px; color: var(--color-text); }
+        .article-meta { font-size: 14px; color: var(--color-text-secondary); }
+        .article-summary { margin: 14px 0 0; font-size: 17px; line-height: 1.7; color: var(--color-text-secondary); }
+        .article-body h2 { margin: 40px 0 12px; font-size: 24px; letter-spacing: -0.3px; color: var(--color-text); }
+        .article-body h3 { margin: 28px 0 10px; font-size: 18px; color: var(--color-text); }
+        .article-body p, .article-body li { font-size: 16px; line-height: 1.85; color: var(--color-text); }
+        .article-body p { margin: 0 0 18px; }
+        .article-body ul, .article-body ol { margin: 0 0 18px; padding-left: 22px; }
+        .article-body li + li { margin-top: 6px; }
+        .article-body a { color: var(--color-primary); }
+        .article-body a:hover { color: var(--color-primary-hover); }
+        .article-box { margin: 24px 0; padding: 18px 20px; background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md, 12px); }
+        .article-box p:last-child { margin-bottom: 0; }
+        .article-cta { margin: 32px 0; padding: 22px 24px; background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg, 18px); box-shadow: 0 8px 28px var(--color-card-shadow); }
+        .article-cta p { margin: 0 0 12px; }
+        .article-cta a.button { display: inline-block; padding: 10px 18px; color: var(--color-primary-text); background-color: var(--color-primary); border-radius: var(--radius-md, 12px); text-decoration: none; font-weight: 550; }
+        .article-cta a.button:hover { background-color: var(--color-primary-hover); }
+        .related { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--color-border); }
+        .related h2 { margin: 0 0 14px; font-size: 22px; color: var(--color-text); }
+        .related ul { margin: 0; padding-left: 22px; }
+        .related li + li { margin-top: 8px; }
+        .related a { color: var(--color-primary); }
+        @media (max-width: 420px) { .article-page { width: calc(100% - 24px); } }
+    </style>
+</head>
+
+<body>
+    <script src="/assets/js/tools-registry.js" defer></script>
+
+    <div id="site-header"></div>
+
+    <main class="article-page">
+        <nav class="article-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <a href="/articles/">Articles</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">How to Calculate GST</span>
+        </nav>
+
+        <article>
+            <header class="article-header">
+                <h1>How to Calculate GST: Formula, Example and Free Calculator</h1>
+                <div class="article-meta">Calculators · Published 15 November 2026</div>
+                <p class="article-summary">Whether you are billing a client, checking a shop receipt, or filing your accounts, GST is easy to get wrong when the price already includes tax. This guide shows both directions with clear examples.</p>
+            </header>
+
+            <div class="article-body">
+
+                <p>GST, or Goods and Services Tax, is added to most goods and services sold in India. Small businesses, freelancers, and anyone who buys things online need to handle it correctly. A mistake in one direction can make a bill look cheaper or dearer than it really is.</p>
+
+                <p>There are two situations you will meet. In the first, the price you have is before tax, and you need to add GST. In the second, the price already includes GST, and you need to find the original amount and the tax inside it.</p>
+
+                <h2>The two basic formulas</h2>
+
+                <div class="article-box"><p><strong>GST amount = Price before tax × GST rate ÷ 100</strong></p><p><strong>Total = Price before tax + GST amount</strong></p></div>
+
+                <p>When the price already includes GST, use these instead:</p>
+
+                <div class="article-box"><p><strong>Price before tax = Total × 100 ÷ (100 + GST rate)</strong></p><p><strong>GST amount = Total − Price before tax</strong></p></div>
+
+                <h2>Example 1: Adding GST to a price</h2>
+
+                <p>A consultant charges ₹2,500 for a service, and GST at 18% applies.</p>
+
+                <ul>
+                    <li>GST = 2,500 × 18 ÷ 100 = ₹450</li>
+                    <li>Total invoice amount = 2,500 + 450 = <strong>₹2,950</strong></li>
+                </ul>
+
+                <h2>Example 2: Finding GST in a price that includes it</h2>
+
+                <p>A shop displays ₹5,900 for a product, and the price includes 18% GST. How much of that is tax?</p>
+
+                <ul>
+                    <li>Price before tax = 5,900 × 100 ÷ 118 = <strong>₹5,000</strong></li>
+                    <li>GST = 5,900 − 5,000 = <strong>₹900</strong></li>
+                </ul>
+
+                <p>A common wrong method is to take 18% of ₹5,900 and call that the GST. That gives ₹1,062, which is too high, because the 18% applies to the base price, not to the final amount.</p>
+
+                <h2>CGST and SGST: how the tax is split</h2>
+
+                <p>Within one state, GST is split equally between the central and state governments. At 18%, that means CGST of 9% and SGST of 9%. In the Example 1 invoice, that is ₹225 CGST and ₹225 SGST. When the buyer and seller are in different states, the full amount is charged as IGST instead, which is 18% in this case.</p>
+
+                <h2>Common mistakes to avoid</h2>
+
+                <h3>Using the wrong base when reversing a price</h3>
+                <p>If a price includes GST, dividing by 1.18 gives the base price. Taking 18% of the total gives a wrong answer.</p>
+
+                <h3>Forgetting that rates differ by item</h3>
+                <p>Different goods and services have different GST rates, and the rates are revised from time to time. Always check the current rate for the exact item before you invoice.</p>
+
+                <h3>Rounding too early</h3>
+                <p>Calculate the full value first and round at the end. Rounding each small step can shift the final total by a rupee or two on large invoices.</p>
+
+
+                <div class="article-cta">
+                    <p>Want to skip the arithmetic? Enter the amount and rate in our free GST calculator and get the base price, tax and total in one step.</p>
+                    <a class="button" href="/tools/gst-calculator/">Try the free GST calculator</a>
+                </div>
+
+                <h2>Frequently asked questions</h2>
+                <h3>What is the formula to add GST?</h3>
+                <p>GST amount = price before tax × GST rate ÷ 100, and the total is the price before tax plus the GST amount.</p>
+                <h3>How do I find GST if the price already includes it?</h3>
+                <p>Divide the total by (100 + GST rate) and multiply by 100 to get the base price. The GST is the total minus that base price.</p>
+                <h3>What is the difference between CGST and SGST?</h3>
+                <p>CGST goes to the central government and SGST goes to the state government. For intra-state sales, the GST rate is split equally between them.</p>
+                <h3>Is a GST calculator accurate?</h3>
+                <p>A calculator is accurate if you enter the correct rate. The rate depends on the item, so confirm it before you invoice.</p>
+
+                <h2>Conclusion</h2>
+                <p>GST is simple once you know which direction you are calculating. Use the add-on formula when you start from a base price, and the reverse formula when the price already includes tax. Check the rate for your item, and keep the rounding for the final step.</p>
+
+                <section class="related" aria-label="Related content">
+                    <h2>Related</h2>
+                    <ul>
+                        <li><a href="/tools/gst-calculator/">GST Calculator: add or remove GST from any amount</a></li>
+                        <li><a href="/tools/discount-calculator/">Discount Calculator: find the sale price after a discount</a></li>
+                        <li><a href="/tools/percentage-calculator/">Percentage Calculator: quick percentage checks for bills and invoices</a></li>
+                        <li><a href="/articles/">More articles on free tools and everyday calculations</a></li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="/assets/js/theme.js" defer></script>
+    <script src="/assets/js/header.js" defer></script>
+    <script src="/assets/js/footer.js" defer></script>
+</body>
+</html>
