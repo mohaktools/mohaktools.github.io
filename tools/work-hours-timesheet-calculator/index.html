@@ -8,6 +8,8 @@
 <meta name="description" content="Calculate total work hours and pay from timesheet entries.">
 <meta name="keywords" content="timesheet calculator, work hours, payroll">
 <link rel="canonical" href="https://mohaktools.com/tools/work-hours-timesheet-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Working Hours Timesheet Calculator | MohakTools">
 <meta property="og:description" content="Calculate total work hours and pay from timesheet entries.">
 <meta property="og:url" content="https://mohaktools.com/tools/work-hours-timesheet-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -80,6 +97,43 @@
 <div class="mt-stat"><span>Earnings</span><strong id="earn">—</strong></div>
 </div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Working Hours Timesheet Calculator</h2>
+    <div class="mt-prose">
+      <p>The Working Hours Timesheet Calculator adds up the hours in a week from start and end times, and converts them to earnings if you enter an hourly rate.</p>
+      <p>Each row takes a clock-in and clock-out time. The difference is worked out in minutes and summed across the week, so a shift from 09:15 to 18:00 counts as eight hours and forty-five minutes rather than being rounded to the nearest hour.</p>
+      <p>Breaks are not subtracted automatically. If you take an hour for lunch, either enter the two halves of the day as separate rows or deduct the break yourself. Overtime rates are not applied either: the earnings figure is total hours multiplied by one rate.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How are the hours calculated?</h3>
+      <p>The difference between clock-in and clock-out for each row, summed across the week in minutes and then converted to hours.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it subtract lunch breaks?</h3>
+      <p>No. Enter the morning and afternoon blocks as separate rows, or subtract the break manually.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it handle overnight shifts?</h3>
+      <p>A shift ending after midnight needs care, since the end time is earlier than the start on the clock. Split it into two rows.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it apply overtime rates?</h3>
+      <p>No. Earnings are total hours multiplied by the single hourly rate you enter.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is the pay figure gross or net?</h3>
+      <p>Gross. Tax, provident fund and professional tax are not deducted.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it save my entries?</h3>
+      <p>No. The table is in memory for the session, so print or note the total before you leave the page.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Time & Productivity</h2>

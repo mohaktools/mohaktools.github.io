@@ -847,6 +847,19 @@
   <div id="site-header"></div>
 
   <main class="ir-page">
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+
+      <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+
+      <span style="margin:0 6px">/</span>
+
+      <a href="/tools/?category=everyday-utilities" style="color:var(--color-primary);text-decoration:none">Everyday Utilities</a>
+
+      <span style="margin:0 6px">/</span>
+
+      <span>Image Resizer</span>
+
+    </nav>
     <section class="ir-hero">
       <div class="ir-eyebrow">
         <span class="ir-dot"></span>
@@ -1193,7 +1206,44 @@
         <a href="/tools/random-choice-picker/">Random Choice Picker</a>
       </div>
     </section>
-  </main>
+    <section class="mt-panel" style="margin-top:24px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Image Resizer</h2>
+    <div class="mt-prose">
+      <p>The Image Resizer changes an image's pixel dimensions, either to an exact size or to a preset such as a social post or a thumbnail. Choose the width and height, the output format and the quality.</p>
+      <p>Resizing down is safe and useful: it reduces file size and makes images load faster. Resizing up adds pixels that were never captured, so the result looks soft. If you need a larger image, start from a larger source.</p>
+      <p>Keep the aspect ratio unless you deliberately want a different shape. Stretching a photo to fit a fixed box is the most common resizing mistake, and it is obvious to anyone looking at faces.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Will enlarging an image improve quality?</h3>
+      <p>No. Upscaling interpolates pixels that do not exist, so the result is softer than the original.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How do I avoid stretching?</h3>
+      <p>Keep the aspect ratio locked so the height follows the width proportionally.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What are the preset sizes for?</h3>
+      <p>They match common platform dimensions, so a post or thumbnail fits without manual calculation.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does resizing reduce file size?</h3>
+      <p>Yes, usually substantially, since there are fewer pixels to store.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which format should I choose?</h3>
+      <p>JPG or WebP for photos, PNG where transparency or crisp text matters.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is my image uploaded?</h3>
+      <p>No, the resizing happens locally in the browser.</p>
+    </div>
+  </section>
+
+</main>
 
   <div id="site-footer"></div>
 

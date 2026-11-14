@@ -127,6 +127,14 @@
 .time-seo h2 { margin:0 0 12px; color:var(--color-text); font-size:22px; }
 .time-seo h3 { margin:22px 0 8px; color:var(--color-text); font-size:17px; }
 .time-seo p { max-width:850px; color:var(--color-text-secondary); font-size:14px; line-height:1.85; }
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){.mt-panel{padding:16px}.mt-prose p,.mt-faq p{font-size:13.5px}}
 @media(max-width:800px) { .time-tool-page { width:min(640px,calc(100% - 28px)); padding-top:22px; padding-bottom:44px; } .time-tool-layout { grid-template-columns:minmax(0,1fr); gap:16px; } .time-tool-main,.time-info { padding:16px; } .time-intro { margin-bottom:20px; } }
 @media(max-width:520px) { .time-tool-page { width:calc(100% - 22px); padding-top:18px; padding-bottom:36px; } .time-breadcrumb { margin-bottom:16px; font-size:12px; } .time-intro h1 { font-size:clamp(25px,7vw,31px); letter-spacing:-.4px; } .time-intro p { font-size:14px; line-height:1.7; } .time-tool-main,.time-info,.time-card { padding:13px; border-radius:12px; } .time-tool-layout { gap:14px; } .duration-fields { gap:8px; } .field input,.field select { padding:9px 8px; } .world-clock-grid { grid-template-columns:minmax(0,1fr); } .world-clock-card { padding:15px; } .calendar-grid { gap:3px; } .calendar-day { min-height:38px; font-size:12px; } .calendar-weekday { font-size:11px; } .mode-tabs { gap:4px; } .mode-button { padding:8px 4px; font-size:11px; } }
 @media(max-width:360px) { .time-tool-page { width:calc(100% - 16px); } .duration-fields { grid-template-columns:minmax(0,1fr); } .large-time { font-size:30px; } .calendar-toolbar { grid-template-columns:38px minmax(0,1fr) 38px; gap:5px; } .calendar-day { min-height:34px; } }
@@ -142,7 +150,7 @@
     <main class="time-tool-page">
         <nav class="time-breadcrumb" aria-label="Breadcrumb">
             <a href="/">Home</a><span aria-hidden="true">/</span>
-            <a href="/tools/">Tools</a><span aria-hidden="true">/</span>
+            <a href="/tools/?category=time-tools">Time &amp; Productivity</a><span aria-hidden="true">/</span>
             <span aria-current="page">World Clock</span>
         </nav>
 
@@ -188,7 +196,44 @@
             <h3>How to use this tool</h3>
             <p>Open the tool, choose the available settings, and use the on-screen controls to start or update it. Results and time displays update in the page. For time-sensitive tasks, keep the page open and check your device's clock and browser settings.</p>
         </section>
-    </main>
+      <section class="mt-panel" style="margin-top:24px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the World Clock</h2>
+    <div class="mt-prose">
+      <p>The World Clock shows the current time in cities and time zones around the world, so you can see at a glance what time it is where a colleague, client or family member lives.</p>
+      <p>The times come from your device's clock plus the time-zone database in your browser, which knows about daylight saving. That matters because zones shift by an hour twice a year on dates that differ between the northern and southern hemispheres.</p>
+      <p>Offsets are not always whole hours. India is UTC+5:30, Nepal UTC+5:45 and parts of Australia UTC+9:30, so a quick mental subtraction from your own time often goes wrong by half an hour.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How current are the times?</h3>
+      <p>They update live from your device's clock, adjusted by the time zone you select.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it handle daylight saving?</h3>
+      <p>Yes, using the browser's time-zone data, which applies the correct offset for the current date.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is India half an hour off?</h3>
+      <p>IST is UTC+5:30, chosen to keep solar noon near midday across the country.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I add my own city?</h3>
+      <p>Yes, add any city or time zone from the list.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is the date shown as well as the time?</h3>
+      <p>Yes, because a city on the other side of the world can already be on the next day.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it work offline?</h3>
+      <p>Yes, the time-zone data is built into the browser.</p>
+    </div>
+  </section>
+
+</main>
 
     <div id="site-footer"></div>
 

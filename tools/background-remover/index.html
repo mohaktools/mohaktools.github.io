@@ -8,6 +8,8 @@
 <meta name="description" content="Remove the background from photos automatically.">
 <meta name="keywords" content="background remover, remove background, transparent PNG">
 <link rel="canonical" href="https://mohaktools.com/tools/background-remover/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Background Remover | MohakTools">
 <meta property="og:description" content="Remove the background from photos automatically.">
 <meta property="og:url" content="https://mohaktools.com/tools/background-remover/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -75,6 +92,43 @@
 <canvas id="bg-canvas" style="max-width:100%;border-radius:10px;border:1px dashed var(--color-border)"></canvas>
 <p class="mt-help">Works best on images with a solid, uniform background. For complex images, consider a dedicated AI tool.</p></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Background Remover</h2>
+    <div class="mt-prose">
+      <p>The Background Remover takes a photo and turns the background transparent. It works by colour: pick the shade to remove, set a tolerance, and every pixel close enough to that colour becomes transparent while the subject stays.</p>
+      <p>This is chroma-key removal, the same idea as a green screen. It works best on a plain, evenly lit background that differs clearly from the subject. It struggles with busy backgrounds, with hair or fur at the edges, and with subjects that share the background colour.</p>
+      <p>The tolerance slider is the important control. Too low and a halo of leftover background survives; too high and parts of the subject disappear with it. Nudge it until the edge looks clean, and remember the result is a PNG, since transparency needs an alpha channel that JPG does not have.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How does the removal work?</h3>
+      <p>Pixels within the tolerance of the chosen background colour are made transparent. Everything else is kept as it was.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What kind of images work best?</h3>
+      <p>Plain, evenly lit backgrounds that contrast with the subject, such as a product on a white sheet or a person against a plain wall.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What does the tolerance setting do?</h3>
+      <p>It sets how close a pixel must be to the background colour to be removed. Low values are strict, high values remove more but can eat into the subject.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can it handle hair and fur?</h3>
+      <p>Only roughly. Fine edges need a proper segmentation model, not colour matching.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What format should I save as?</h3>
+      <p>PNG or WebP. JPG has no transparency, so a removed background becomes white.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is my photo uploaded?</h3>
+      <p>No. The processing happens on a canvas in your browser.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Everyday Utilities</h2>

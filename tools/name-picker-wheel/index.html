@@ -8,6 +8,8 @@
 <meta name="description" content="Spin a wheel to randomly pick a winner from your list.">
 <meta name="keywords" content="name picker, wheel spinner, random picker, lucky draw">
 <link rel="canonical" href="https://mohaktools.com/tools/name-picker-wheel/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Name Picker / Wheel Spinner | MohakTools">
 <meta property="og:description" content="Spin a wheel to randomly pick a winner from your list.">
 <meta property="og:url" content="https://mohaktools.com/tools/name-picker-wheel/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -79,6 +96,43 @@ Dave" style="min-height:140px"></textarea></div>
 <div class="mt-stat-grid"><div class="mt-stat" style="grid-column:1/-1"><span>Winner</span><strong id="winner" style="font-size:28px;color:var(--color-primary)">—</strong></div></div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Name Picker / Wheel Spinner</h2>
+    <div class="mt-prose">
+      <p>The Name Picker spins a wheel to choose one name from a list at random. Paste your entries, one per line, press spin, and the wheel stops on a winner.</p>
+      <p>It is the digital version of drawing lots: a fair way to pick a winner for a quiz, assign a task, or settle who goes first. The pick is uniform, so every name has the same chance on every spin, regardless of where it sits on the wheel.</p>
+      <p>For a public draw, keep a record: the list you used, the number of entries and the result. A random pick is only convincing if the process behind it can be shown to have been fair.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Is the pick fair?</h3>
+      <p>Each name has an equal chance on every spin, using the browser's random number generator.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How should I enter the names?</h3>
+      <p>One per line. Blank lines are ignored.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does the position on the wheel affect the odds?</h3>
+      <p>No. The winner is chosen randomly; the spin is only the animation.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I remove a winner after the spin?</h3>
+      <p>Edit the list and spin again. There is no automatic elimination, so delete the name yourself for a knockout draw.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is there a limit on how many names?</h3>
+      <p>A few dozen is comfortable. Far more than that and the labels become unreadable on the wheel.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I save the result?</h3>
+      <p>Take a screenshot, or note it down. Nothing is stored after you close the page.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Everyday Utilities</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/password-generator/" class="mt-related-chip">Password Generator</a><a href="/tools/qr-code-generator/" class="mt-related-chip">QR Code Generator</a><a href="/tools/random-number-generator/" class="mt-related-chip">Random Number Generator</a></div>
@@ -110,8 +164,7 @@ function drawWheel(names,angle){
 }
 let spinning=false;
 document.getElementById("calc").onclick=()=>{
-  const names=document.getElementById("f0").value.split("
-").map(s=>s.trim()).filter(Boolean);
+  const names=document.getElementById("f0").value.split("\n").map(s=>s.trim()).filter(Boolean);
   if(names.length<2){document.getElementById("mt-status").textContent="Enter at least 2 names.";return;}
   if(spinning)return;spinning=true;
   document.getElementById("winner").textContent="Spinning…";

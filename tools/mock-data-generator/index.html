@@ -8,6 +8,8 @@
 <meta name="description" content="Generate realistic mock data sets for names, emails and addresses.">
 <meta name="keywords" content="mock data, dummy data, fake data generator">
 <link rel="canonical" href="https://mohaktools.com/tools/mock-data-generator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Mock Data Generator | MohakTools">
 <meta property="og:description" content="Generate realistic mock data sets for names, emails and addresses.">
 <meta property="og:url" content="https://mohaktools.com/tools/mock-data-generator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -85,6 +102,43 @@
 <section class="mt-panel"><h2>Generated Data</h2>
 <textarea id="mt-output" class="mt-output" readonly style="font-family:monospace;font-size:12px;min-height:260px"></textarea></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Mock Data Generator</h2>
+    <div class="mt-prose">
+      <p>The Mock Data Generator produces realistic fake records for testing: names, emails and addresses, in JSON or CSV. Set how many rows you need and which fields to include.</p>
+      <p>Mock data lets you build and test a table, a chart or an import without waiting for a real export and without putting anyone's personal data into a development environment. That second point matters legally as well as ethically: test data built from real customers carries the same obligations as production data.</p>
+      <p>The records are generated, so they are not real people. Do not treat a generated email as deliverable or a generated phone number as dialable; some will collide with real ones by chance.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Is the generated data real?</h3>
+      <p>No. It is randomly generated for testing, though a name or number may coincidentally match a real one.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which fields can I generate?</h3>
+      <p>Names, emails and addresses, selected per record. The output can be JSON or CSV.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why use mock data instead of a real export?</h3>
+      <p>It avoids putting personal data into test environments, and it is faster than anonymising a real dataset.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I use it for load testing?</h3>
+      <p>Small volumes, yes. For large-scale tests generate the data in code so it can be reproduced and seeded.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is it safe to email the generated addresses?</h3>
+      <p>No. They are not real mailboxes, and some will belong to real people by chance.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it generate Indian names?</h3>
+      <p>The pool is international. Check the output before using it in a demo that needs to look locally realistic.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Developer Tools</h2>

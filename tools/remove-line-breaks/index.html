@@ -8,6 +8,8 @@
 <meta name="description" content="Strip or replace line breaks and carriage returns from text.">
 <meta name="keywords" content="remove line breaks, strip newlines, clean text">
 <link rel="canonical" href="https://mohaktools.com/tools/remove-line-breaks/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Remove Line Breaks | MohakTools">
 <meta property="og:description" content="Strip or replace line breaks and carriage returns from text.">
 <meta property="og:url" content="https://mohaktools.com/tools/remove-line-breaks/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -73,6 +90,43 @@
 <textarea id="mt-output" class="mt-output" readonly></textarea>
 <p class="mt-help">Removes all line breaks and collapses spaces.</p></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Remove Line Breaks</h2>
+    <div class="mt-prose">
+      <p>Remove Line Breaks flattens multi-line text into a single paragraph. Every line break and carriage return is replaced by a space, and runs of spaces are collapsed to one, so text copied out of a PDF or an email stops breaking mid-sentence.</p>
+      <p>This is the usual fix for text that has been hard-wrapped at a fixed width. Copying from a PDF, a terminal or an email often inserts a break at every line of the original layout, which leaves a paragraph that looks fine in the source and ragged everywhere else. Collapsing the breaks and the doubled spaces puts it back together.</p>
+      <p>The result is a single block with no paragraph structure. If you need to keep paragraphs, use the version that turns each line into a comma-separated item instead, or clean the text in a word processor where you can keep the double breaks that mark a real paragraph.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What exactly does it remove?</h3>
+      <p>Line breaks and carriage returns, replaced with a single space, with repeated spaces collapsed afterwards.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Will it keep my paragraphs?</h3>
+      <p>No, everything becomes one block. Use the line-breaks-to-commas tool if you want to preserve line boundaries.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How is it different from Line Breaks to Commas?</h3>
+      <p>This joins lines with spaces; that tool joins them with commas. One is for prose, the other for lists.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it fix double spaces?</h3>
+      <p>Yes, runs of spaces are collapsed to one after the breaks are replaced.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it handle Windows line endings?</h3>
+      <p>Yes, both \r\n and \n are removed.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I undo it?</h3>
+      <p>Not automatically. Work on a copy if the original line structure matters.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>

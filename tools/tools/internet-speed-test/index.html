@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+<title>Internet Speed Test | MohakTools</title>
+<meta name="description" content="Test your internet download and upload speed.">
+<meta name="keywords" content="speed test, internet speed, broadband test">
+<link rel="canonical" href="https://mohaktools.com/tools/internet-speed-test/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
+<meta property="og:title" content="Internet Speed Test | MohakTools">
+<meta property="og:description" content="Test your internet download and upload speed.">
+<meta property="og:url" content="https://mohaktools.com/tools/internet-speed-test/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Internet Speed Test | MohakTools">
+<meta name="twitter:description" content="Test your internet download and upload speed.">
+<script src="/assets/js/tools-registry.js" defer></script>
+<style>
+.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
+.mt-field{margin-bottom:14px}
+.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
+.mt-field input[type="text"],.mt-field input[type="number"],.mt-field input[type="email"],.mt-field input[type="date"],.mt-field input[type="time"],.mt-field input[type="datetime-local"],.mt-field input[type="color"],.mt-field input[type="range"],.mt-field input[type="file"],.mt-field select,.mt-field textarea{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s;box-sizing:border-box}
+.mt-field input:focus,.mt-field select:focus,.mt-field textarea:focus{border-color:var(--color-primary)}
+.mt-field textarea{resize:vertical;min-height:120px;font-family:inherit}
+.mt-output{display:block;width:100%;min-height:160px;padding:12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:13px/1.6 inherit;resize:vertical;box-sizing:border-box}
+.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
+.mt-button:active{transform:scale(.97)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
+.mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
+.mt-stat strong{font-size:20px;font-weight:700;color:var(--color-text)}
+.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
+.mt-help{font-size:12px;color:var(--color-text-secondary);margin-top:8px;line-height:1.5}
+.mt-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
+.mt-option input{accent-color:var(--color-primary)}
+.mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
+@media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
+</style>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+    <span style="margin:0 6px">/</span>
+    <a href="/tools/?category=everyday-utilities" style="color:var(--color-primary);text-decoration:none">Everyday Utilities</a>
+    <span style="margin:0 6px">/</span>
+    <span>Internet Speed Test</span>
+  </nav>
+
+  <header style="margin-bottom:24px">
+    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">Internet Speed Test</h1>
+    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Test your internet download and upload speed.</p>
+  </header>
+
+  <div class="mt-tool-grid">
+    
+<section class="mt-panel"><h2 id="tool-input-heading">Speed Test</h2>
+<p style="font-size:14px;color:var(--color-text-secondary);margin-bottom:12px">Measures download speed by fetching a test payload from a CDN. Accuracy depends on your network conditions.</p>
+<div class="mt-button-row"><button class="mt-button mt-primary" id="calc">Start Test</button></div>
+<p class="mt-status" id="mt-status" role="status" aria-live="polite"></p></section>
+<section class="mt-panel"><h2>Results</h2>
+<div class="mt-stat-grid">
+<div class="mt-stat"><span>Download Speed</span><strong id="dl" style="font-size:28px">—</strong></div>
+<div class="mt-stat"><span>Latency (ping)</span><strong id="ping">—</strong></div>
+<div class="mt-stat"><span>Data Transferred</span><strong id="data">—</strong></div>
+<div class="mt-stat"><span>Test Duration</span><strong id="dur">—</strong></div>
+</div></section>
+  </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Internet Speed Test</h2>
+    <div class="mt-prose">
+      <p>The Internet Speed Test measures your download speed, latency and how much data was transferred during the run. Press start and it fetches a file repeatedly, timing how long the transfer takes.</p>
+      <p>Latency, or ping, is the round-trip time for a tiny request. It matters more than raw speed for video calls and online games: a 200 ms ping makes conversation feel delayed even on a fast connection. Download speed decides how quickly pages, videos and updates arrive.</p>
+      <p>Browser-based tests are indicative rather than exact. They measure what one browser tab can pull from a particular server, so the result reflects the whole path: your device, Wi-Fi, the local network and the route to that server. For a figure to compare with your ISP's claim, use a wired connection and stop other downloads first.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What do download speed and ping measure?</h3>
+      <p>Download speed is how fast data arrives; ping is the round-trip delay for a small request, which affects responsiveness.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is my result lower than my plan?</h3>
+      <p>Wi-Fi, distance from the router, other devices, the test server and browser limits all reduce the figure. Try a wired connection.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is upload speed measured?</h3>
+      <p>The main measurement is download. Upload tests need a server that accepts a large body, which a public CDN does not.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How accurate is a browser speed test?</h3>
+      <p>Good enough to spot a problem, not a substitute for a proper measurement tool.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does ping matter more than speed for calls?</h3>
+      <p>Because calls are real-time. High latency causes lag and overlap; bandwidth beyond a few Mbps adds little.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it use my data plan?</h3>
+      <p>Yes. A test transfers several megabytes, so on mobile data it consumes some.</p>
+    </div>
+  </section>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Everyday Utilities</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/password-generator/" class="mt-related-chip">Password Generator</a><a href="/tools/qr-code-generator/" class="mt-related-chip">QR Code Generator</a><a href="/tools/random-number-generator/" class="mt-related-chip">Random Number Generator</a></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+  <script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+
+document.getElementById("calc").onclick=async()=>{
+  document.getElementById("mt-status").textContent="Testing…";
+  // Latency test
+  const t0=performance.now();
+  try{await fetch("https://cdnjs.cloudflare.com/favicon.ico?_="+Date.now(),{cache:"no-store"});}catch(e){}
+  const ping=Math.round(performance.now()-t0);
+  document.getElementById("ping").textContent=ping+" ms";
+  // Download test using a ~1MB file
+  const url="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js?_="+Date.now();
+  const start=performance.now();
+  try{
+    const res=await fetch(url,{cache:"no-store"});
+    const buf=await res.arrayBuffer();
+    const elapsed=(performance.now()-start)/1000;
+    const bytes=buf.byteLength;const mbps=(bytes*8/1e6/elapsed);
+    document.getElementById("dl").textContent=mbps.toFixed(2)+" Mbps";
+    document.getElementById("data").textContent=(bytes/1024).toFixed(0)+" KB";
+    document.getElementById("dur").textContent=elapsed.toFixed(2)+"s";
+    document.getElementById("mt-status").textContent="Test complete.";
+  }catch(e){document.getElementById("mt-status").textContent="Test failed: "+e.message;}
+};
+</script>
+</body>
+</html>

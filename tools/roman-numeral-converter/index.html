@@ -8,6 +8,8 @@
 <meta name="description" content="Convert between Arabic numbers and Roman numerals.">
 <meta name="keywords" content="roman numerals, number to roman, roman to number">
 <link rel="canonical" href="https://mohaktools.com/tools/roman-numeral-converter/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Roman Numeral Converter | MohakTools">
 <meta property="og:description" content="Convert between Arabic numbers and Roman numerals.">
 <meta property="og:url" content="https://mohaktools.com/tools/roman-numeral-converter/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -75,6 +92,43 @@
 <div class="mt-stat"><span>Arabic Number</span><strong id="arabic">—</strong></div>
 </div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Roman Numeral Converter</h2>
+    <div class="mt-prose">
+      <p>The Roman Numeral Converter turns a number into Roman numerals and reads Roman numerals back into numbers. Type either form and the other appears.</p>
+      <p>The system uses seven symbols: I for one, V for five, X for ten, L for fifty, C for a hundred, D for five hundred and M for a thousand. Values are normally written largest first and added, but six subtractive pairs are allowed to keep numerals short: IV for four, IX for nine, XL for forty, XC for ninety, CD for four hundred and CM for nine hundred.</p>
+      <p>The standard form covers one to 3,999. Beyond that, the conventional notation runs out of symbols, since M repeats without a dedicated sign for five thousand. Clock faces traditionally use IIII rather than IV for four, which is a stylistic exception rather than a rule.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Why does the converter stop at 3,999?</h3>
+      <p>Standard Roman notation has no symbol above M, so larger numbers need extra marks such as a bar over a letter, which is outside the usual system.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How does subtractive notation work?</h3>
+      <p>A smaller symbol before a larger one subtracts: IV is four, IX is nine, XL is forty, XC is ninety, CD is four hundred, CM is nine hundred.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is IIII ever correct?</h3>
+      <p>On some clock faces, yes, by tradition. In normal writing four is IV.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is there a Roman numeral for zero?</h3>
+      <p>No. The system has no zero; it counts positions rather than quantities with a placeholder.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I enter lowercase letters?</h3>
+      <p>Yes, i, v and x are read the same as capitals.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why do some years look different from others?</h3>
+      <p>Because there are several conventions for large numbers. This tool uses the standard form used for years and dates.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Converters</h2>

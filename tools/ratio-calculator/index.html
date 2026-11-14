@@ -8,6 +8,8 @@
 <meta name="description" content="Solve, simplify and scale ratios instantly.">
 <meta name="keywords" content="ratio calculator, proportion, simplify ratio">
 <link rel="canonical" href="https://mohaktools.com/tools/ratio-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Ratio Calculator | MohakTools">
 <meta property="og:description" content="Solve, simplify and scale ratios instantly.">
 <meta property="og:url" content="https://mohaktools.com/tools/ratio-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,25 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+.mt-ratio-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:end}
+.mt-ratio-grid .mt-colon{padding-bottom:12px;font-size:20px;font-weight:700;color:var(--color-text)}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-ratio-grid{gap:6px}
+.mt-ratio-grid label{font-size:12px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -66,9 +87,9 @@
   <div class="mt-tool-grid">
     
 <section class="mt-panel"><h2 id="tool-input-heading">Ratio</h2>
-<div class="mt-field" style="display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:end">
+<div class="mt-field mt-ratio-grid">
 <div><label for="f0">A</label><input type="number" id="f0" placeholder="4"></div>
-<span style="padding-bottom:12px;font-size:20px;font-weight:700;color:var(--color-text)">:</span>
+<span class="mt-colon" aria-hidden="true">:</span>
 <div><label for="f1">B</label><input type="number" id="f1" placeholder="6"></div>
 </div>
 <div class="mt-field"><label for="f2">Scale A to value (optional)</label><input type="number" id="f2" placeholder="10"></div>
@@ -81,6 +102,49 @@
 <div class="mt-stat"><span>Scaled B</span><strong id="scaled">—</strong></div>
 </div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Ratio Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The Ratio Calculator simplifies a ratio to its lowest whole-number form and scales it. Enter A and B and it divides both by their greatest common divisor, so 4 : 6 becomes 2 : 3. Optionally enter a new value for A and it works out the B that keeps the proportion intact.
+      </p>
+      <p>
+        Decimals are handled by converting both sides to whole numbers first, so 2.5 : 3.5 simplifies to 5 : 7 rather than being rejected. That also means the simplified form is always whole numbers, which is what a ratio is supposed to be: a comparison of two quantities in the same units.
+      </p>
+      <p>
+        Scaling is the practical use. If a paint mix is 2 : 3 and you have ten litres of the first component, the calculator tells you that you need fifteen of the second. The decimal output, A divided by B, is the same comparison expressed as a single number, and it is what you need when one side is fixed at one.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How do I simplify a ratio?</h3>
+      <p>Both sides are divided by their greatest common divisor. For 12 : 18 the divisor is 6, so the simplified ratio is 2 : 3.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I enter decimal values?</h3>
+      <p>Yes. Both sides are scaled to whole numbers before simplifying, so 2.5 : 3.5 becomes 5 : 7.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What does the scale box do?</h3>
+      <p>Enter a new value for A and it returns the B that preserves the ratio. For 2 : 3 with A set to 10, B becomes 15.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why can't B be zero?</h3>
+      <p>A ratio compares two quantities, and dividing by zero has no meaning. Both sides must be above zero.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is the decimal output?</h3>
+      <p>A divided by B, to four decimal places. It is the same ratio expressed as a single number, useful when the second side is one.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How is a ratio different from a fraction?</h3>
+      <p>The arithmetic is identical; only the notation differs. A ratio can compare parts of a whole, like 2 : 3, whereas a fraction usually expresses one part of the whole, like 2/5.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
@@ -95,18 +159,62 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-function gcd(a,b){return b?gcd(b,a%b):a;}
-document.getElementById("calc").onclick=()=>{
-  const a=+document.getElementById("f0").value,b=+document.getElementById("f1").value;
-  if(!a||!b){document.getElementById("mt-status").textContent="Enter both values.";return;}
-  const g=gcd(a,b);
-  document.getElementById("simp").textContent=(a/g)+" : "+(b/g);
-  document.getElementById("dec").textContent=(a/b).toFixed(4);
-  const s=+document.getElementById("f2").value;
-  document.getElementById("scaled").textContent=s?(s/a*b).toFixed(4):"—";
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const OUT = ["simp", "dec", "scaled"];
+const clearOut = () => OUT.forEach(id => { $(id).textContent = "\u2014"; });
+
+function gcd(a, b) {
+  a = Math.abs(a); b = Math.abs(b);
+  while (b) { const t = a % b; a = b; b = t; }
+  return a || 1;
+}
+
+function decimals(x) {
+  const s = String(x);
+  const dot = s.indexOf(".");
+  return dot === -1 ? 0 : s.length - dot - 1;
+}
+
+$("calc").onclick = () => {
+  const aRaw = $("f0").value, bRaw = $("f1").value;
+
+  if (aRaw.trim() === "" || bRaw.trim() === "" ||
+      !Number.isFinite(+aRaw) || !Number.isFinite(+bRaw)) {
+    clearOut();
+    $("mt-status").textContent = "Enter both values of the ratio.";
+    return;
+  }
+
+  const a = +aRaw, b = +bRaw;
+
+  if (a <= 0 || b <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Both values must be greater than zero.";
+    return;
+  }
+
+  const factor = Math.pow(10, Math.max(decimals(a), decimals(b)));
+  const ia = Math.round(a * factor), ib = Math.round(b * factor);
+  const g = gcd(ia, ib);
+
+  $("simp").textContent = (ia / g) + " : " + (ib / g);
+  $("dec").textContent = (a / b).toFixed(4);
+
+  const sRaw = $("f2").value;
+  if (sRaw.trim() === "" || !Number.isFinite(+sRaw) || +sRaw <= 0) {
+    $("scaled").textContent = "\u2014";
+  } else {
+    $("scaled").textContent = (+sRaw / a * b).toFixed(4);
+  }
+
+  $("mt-status").textContent = "";
 };
-document.getElementById("reset").onclick=()=>["f0","f1","f2"].forEach(id=>document.getElementById(id).value="");
+
+$("reset").onclick = () => {
+  ["f0", "f1", "f2"].forEach(id => { $(id).value = ""; });
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

@@ -8,6 +8,8 @@
 <meta name="description" content="Convert km/l, L/100km, mpg and other fuel efficiency units.">
 <meta name="keywords" content="fuel economy, kmpl to mpg, mileage converter">
 <link rel="canonical" href="https://mohaktools.com/tools/fuel-economy-converter/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Fuel Economy Converter | MohakTools">
 <meta property="og:description" content="Convert km/l, L/100km, mpg and other fuel efficiency units.">
 <meta property="og:url" content="https://mohaktools.com/tools/fuel-economy-converter/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -77,6 +94,43 @@
 <div class="mt-stat-grid"><div class="mt-stat" style="grid-column:1/-1"><span>Result</span><strong id="result" style="font-size:26px">—</strong></div></div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Fuel Economy Converter</h2>
+    <div class="mt-prose">
+      <p>The Fuel Economy Converter translates between km per litre, litres per 100 km, and miles per gallon in both US and UK measures. Enter the figure and choose the units on each side.</p>
+      <p>The first thing to know is that these units run in opposite directions. km/L and mpg count distance per unit of fuel, so bigger is better. L/100km counts fuel per distance, so smaller is better. That is why the conversion is a division rather than a multiplication, and why a car improving from 5 to 4 L/100km gains more than one going from 15 to 14.</p>
+      <p>The two gallons also differ: a US gallon is 3.785 litres and an imperial gallon is 4.546, so UK mpg figures look about twenty per cent better for the same car. Indian brochures quote km/L, usually from a standardised test that real driving does not reproduce.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Why is L/100km the inverse of km/L?</h3>
+      <p>One measures distance per fuel, the other fuel per distance. Converting between them means dividing 100 by the value.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does UK mpg differ from US mpg?</h3>
+      <p>The gallons are different sizes. An imperial gallon is 4.546 litres against 3.785 in the US, so the same car shows about 20% better UK mpg.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is a good km/L figure in India?</h3>
+      <p>A small petrol hatchback typically returns 12 to 18 km/L in mixed driving. Figures above 20 usually come from a test track rather than traffic.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How do I convert mpg to km/L?</h3>
+      <p>Multiply US mpg by 0.425, or UK mpg by 0.354. The tool does this for you.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does doubling km/L halve L/100km?</h3>
+      <p>Because they are reciprocals. Doubling distance per litre halves the fuel needed for a fixed distance.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does this account for the fuel type?</h3>
+      <p>No. Petrol, diesel, CNG and electric use different measures, so compare like with like.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Converters</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/unit-converter/" class="mt-related-chip">Unit Converter</a><a href="/tools/length-converter/" class="mt-related-chip">Length Converter</a><a href="/tools/weight-converter/" class="mt-related-chip">Weight Converter</a></div>
@@ -107,7 +161,8 @@ document.getElementById("calc").onclick=()=>{
   const v=+document.getElementById("f0").value,f=document.getElementById("f1").value,t=document.getElementById("f2").value;
   if(!v){document.getElementById("mt-status").textContent="Enter a value.";return;}
   const res=fromKmL(toKmL(v,f),t);
-  document.getElementById("result").textContent=res.toFixed(4)+" "+t.replace("_"," ").replace("L100","L/100km");
+  const LBL={km_L:"km/L",L_100:"L/100km",mpg_us:"mpg (US)",mpg_uk:"mpg (UK)"};
+  document.getElementById("result").textContent=res.toFixed(4)+" "+(LBL[t]||t);
   document.getElementById("mt-status").textContent="";
 };
 document.getElementById("swap").onclick=()=>{const f=document.getElementById("f1"),t=document.getElementById("f2");[f.value,t.value]=[t.value,f.value];};

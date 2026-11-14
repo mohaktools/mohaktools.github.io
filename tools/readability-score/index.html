@@ -8,6 +8,8 @@
 <meta name="description" content="Measure text readability with Flesch Reading Ease and grade level.">
 <meta name="keywords" content="readability score, Flesch Kincaid, reading ease">
 <link rel="canonical" href="https://mohaktools.com/tools/readability-score/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Readability Score | MohakTools">
 <meta property="og:description" content="Measure text readability with Flesch Reading Ease and grade level.">
 <meta property="og:url" content="https://mohaktools.com/tools/readability-score/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -79,6 +96,43 @@
 <div class="mt-stat"><span>Avg Words/Sentence</span><strong id="aws">—</strong></div>
 </div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Readability Score</h2>
+    <div class="mt-prose">
+      <p>The Readability Score measures how easy a piece of text is to read. Paste your draft and it returns the Flesch Reading Ease score, an approximate reading level, and the counts behind them: words, sentences, syllables and average sentence length.</p>
+      <p>Flesch Reading Ease weighs average sentence length against average syllables per word. Scores run from 0 to 100, where higher is easier: 60 to 70 is plain English that most adults read comfortably, 30 to 50 is fairly difficult, and anything under 30 is dense. The reading level converts the same score into a US school grade, which is why you will see figures like grade 8.</p>
+      <p>The formula was built for English and counts syllables by vowel groups, so it struggles with Indian names, technical terms and long compound words, and it says nothing about whether the writing is any good. Use it to catch sentences that have quietly grown to forty words, not as a target to optimise against.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is Flesch Reading Ease?</h3>
+      <p>A readability formula that combines average sentence length with average syllables per word. Higher scores mean easier reading, on a scale from 0 to 100.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is a good score?</h3>
+      <p>60 to 70 is plain English suitable for a general audience. Below 30 is difficult enough that many readers will give up.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How are syllables counted?</h3>
+      <p>By counting vowel groups in each word, with a correction for a trailing silent e. It is an approximation, not a dictionary lookup.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What does the reading level mean?</h3>
+      <p>It converts the Flesch score into a US school grade, so grade 8 means a typical thirteen to fourteen year old should follow it.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it work for Hindi or other Indian languages?</h3>
+      <p>No. The syllable counting assumes English spelling, so scores for other languages are not meaningful.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Should I rewrite until I hit a number?</h3>
+      <p>No. Use it to find sentences that have grown too long. Readability scores reward short sentences and short words, which is not always better writing.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>

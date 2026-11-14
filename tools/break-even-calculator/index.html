@@ -8,6 +8,8 @@
 <meta name="description" content="Find the break-even point in units and revenue.">
 <meta name="keywords" content="break even, BEP calculator, fixed costs">
 <link rel="canonical" href="https://mohaktools.com/tools/break-even-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Break-Even Calculator | MohakTools">
 <meta property="og:description" content="Find the break-even point in units and revenue.">
 <meta property="og:url" content="https://mohaktools.com/tools/break-even-calculator/">
@@ -40,6 +42,13 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -79,6 +88,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Break-Even Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The Break-Even Calculator finds how many units you need to sell before the business covers its costs. Enter fixed costs such as rent, salaries and subscriptions that you pay whether or not anything sells, along with the variable cost of producing one unit and the price you sell it at.
+      </p>
+      <p>
+        The gap between selling price and variable cost is the contribution margin. Each unit sold contributes that amount towards the fixed costs, so the break-even point is fixed costs divided by contribution margin. A business with ₹50,000 of monthly fixed costs, a ₹200 variable cost and a ₹500 selling price has a contribution margin of ₹300 and therefore needs 167 units, which is about ₹83,500 of revenue. The unit count is rounded up, because 166.67 units is not something anyone can sell.
+      </p>
+      <p>
+        Read the output as a decision aid rather than a forecast. It assumes costs are linear and prices hold steady, which is reasonable over a normal range and breaks down under volume discounts, overtime or a price change. Tax, interest and depreciation are not modelled separately, so fold them into your fixed costs if they matter.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is the break-even point?</h3>
+      <p>The sales volume at which total revenue exactly equals total costs, so the business makes neither a profit nor a loss. Everything sold beyond it is profit, ignoring tax.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is contribution margin?</h3>
+      <p>Selling price per unit minus variable cost per unit. It is the amount each sale contributes towards covering fixed costs.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is the unit figure rounded up?</h3>
+      <p>You cannot sell a fraction of a unit. At 166.67 units the business is still slightly short, so 167 is the first unit count that clears all costs.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What if my selling price is below the variable cost?</h3>
+      <p>The calculator stops and tells you the selling price must exceed the variable cost. When each unit loses money, no sales volume ever breaks even.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does this include GST or other taxes?</h3>
+      <p>No. Enter figures on a consistent basis, either all pre-tax or all inclusive, and remember that GST collected is not revenue.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I use it for a service business?</h3>
+      <p>Yes. Treat fixed costs as your monthly overheads, the variable cost as the direct cost of delivering one job, and the selling price as what you charge per job.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
@@ -92,18 +144,49 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-const fmt=n=>"₹"+Number(n.toFixed(2)).toLocaleString("en-IN");
-document.getElementById("calc").onclick=()=>{
-  const fc=+document.getElementById("f0").value,vc=+document.getElementById("f1").value,sp=+document.getElementById("f2").value;
-  if(!fc||vc===undefined||!sp){document.getElementById("mt-status").textContent="Fill all fields.";return;}
-  if(sp<=vc){document.getElementById("mt-status").textContent="Selling price must exceed variable cost.";return;}
-  const cm=sp-vc,units=fc/cm;
-  document.getElementById("units").textContent=Math.ceil(units)+" units";
-  document.getElementById("rev").textContent=fmt(Math.ceil(units)*sp);
-  document.getElementById("cm").textContent=fmt(cm)+" per unit";
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const fmt = n => "\u20b9" + Number(n).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const clearOut = () => ["units", "rev", "cm"].forEach(id => { $(id).textContent = "\u2014"; });
+
+$("calc").onclick = () => {
+  const raw = [$("f0").value, $("f1").value, $("f2").value];
+
+  if (raw.some(v => v.trim() === "") || raw.some(v => !Number.isFinite(+v))) {
+    clearOut();
+    $("mt-status").textContent = "Fill all three fields with numbers.";
+    return;
+  }
+
+  const fc = +raw[0], vc = +raw[1], sp = +raw[2];
+
+  if (fc < 0 || vc < 0 || sp < 0) {
+    clearOut();
+    $("mt-status").textContent = "Values cannot be negative.";
+    return;
+  }
+
+  if (sp <= vc) {
+    clearOut();
+    $("mt-status").textContent = "Selling price must exceed variable cost.";
+    return;
+  }
+
+  const cm = sp - vc;
+  const units = fc === 0 ? 0 : Math.ceil(fc / cm);
+
+  $("units").textContent = units + " units";
+  $("rev").textContent = fmt(units * sp);
+  $("cm").textContent = fmt(cm) + " per unit";
+  $("mt-status").textContent = fc === 0
+    ? "No fixed costs entered, so there is nothing to recover."
+    : "";
 };
-document.getElementById("reset").onclick=()=>["f0","f1","f2"].forEach(id=>document.getElementById(id).value="");
+
+$("reset").onclick = () => {
+  ["f0", "f1", "f2"].forEach(id => { $(id).value = ""; });
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

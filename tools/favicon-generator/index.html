@@ -8,6 +8,8 @@
 <meta name="description" content="Generate a favicon from text, emoji or an uploaded image.">
 <meta name="keywords" content="favicon generator, site icon, browser tab icon">
 <link rel="canonical" href="https://mohaktools.com/tools/favicon-generator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Favicon Generator | MohakTools">
 <meta property="og:description" content="Generate a favicon from text, emoji or an uploaded image.">
 <meta property="og:url" content="https://mohaktools.com/tools/favicon-generator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -84,6 +101,43 @@
 </div>
 </div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Favicon Generator</h2>
+    <div class="mt-prose">
+      <p>The Favicon Generator turns text, an emoji or an uploaded image into the small square PNG that browsers show in a tab. Choose a background colour and size, preview it, then download.</p>
+      <p>A favicon is the tiny image beside your page title in a browser tab, in bookmarks and in some search results. Modern browsers accept a PNG at 32 by 32 pixels for tabs and use a 180 by 180 apple-touch-icon when the page is saved to a phone home screen, so generating both sizes covers almost every case.</p>
+      <p>One image at 512 by 512 is also worth keeping, because some services and PWA manifests ask for a large icon. Older browsers looked for favicon.ico, but every current browser will use a PNG declared with a link tag.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What size should I generate?</h3>
+      <p>32x32 for browser tabs and 180x180 for the apple-touch-icon. A 512x512 is useful for app manifests.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What format should it be?</h3>
+      <p>PNG. Every current browser supports it, and transparency works.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How do I add it to my page?</h3>
+      <p>Put the file at your site root and add link rel="icon" href="/favicon.png" in the head section.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Do I still need favicon.ico?</h3>
+      <p>Not for current browsers. A PNG declared with a link tag takes precedence.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I use an emoji as a favicon?</h3>
+      <p>Yes. That is the quickest option when you do not have a logo: render a single emoji on a coloured square.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does my favicon not update?</h3>
+      <p>Browsers cache favicons aggressively. Hard-refresh, or add a version query to the href, such as favicon.png?v=2.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Developer Tools</h2>

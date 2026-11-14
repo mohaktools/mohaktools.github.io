@@ -8,6 +8,8 @@
 <meta name="description" content="Count working days between two dates, excluding weekends.">
 <meta name="keywords" content="business days, working days, weekday calculator">
 <link rel="canonical" href="https://mohaktools.com/tools/business-days-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Business Days Calculator | MohakTools">
 <meta property="og:description" content="Count working days between two dates, excluding weekends.">
 <meta property="og:url" content="https://mohaktools.com/tools/business-days-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -80,6 +97,43 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Business Days Calculator</h2>
+    <div class="mt-prose">
+      <p>The Business Days Calculator counts the working days between two dates. Give it a start and an end date and it returns business days, total calendar days and how many weekends fall inside the range.</p>
+      <p>A business day here means Monday to Friday. Saturdays and Sundays are counted as weekends, which suits most Indian offices but not every one: some work Saturdays, and government offices follow a different holiday calendar again.</p>
+      <p>The holiday option subtracts a built-in list of gazetted national holidays. That list covers fixed-date days such as Republic Day, Independence Day and Gandhi Jayanti. Festival holidays that move each year, including Holi, Diwali, Eid and Dussehra, are not in it, so for a precise count subtract those yourself.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Does it count both the start and end date?</h3>
+      <p>Yes, both dates are included in the range, so a Friday to Monday range counts four calendar days.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How are weekends treated?</h3>
+      <p>Saturday and Sunday are excluded from the business-day count and reported separately.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which holidays are excluded?</h3>
+      <p>A built-in list of fixed national holidays. Movable festival dates are not included, so subtract them manually if your office closes.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I count a range that crosses years?</h3>
+      <p>Yes. The loop walks day by day, so any range works, though very long ranges take longer to compute.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it handle a Saturday-only working week?</h3>
+      <p>No. It assumes a Monday to Friday week. For a six-day week, add the Saturdays back from the calendar-day total.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does my count differ from my company's leave system?</h3>
+      <p>Because of holiday calendars and regional weekends. Company systems usually follow their own published list.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Time & Productivity</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/stopwatch/" class="mt-related-chip">Stopwatch</a><a href="/tools/countdown-timer/" class="mt-related-chip">Countdown Timer</a><a href="/tools/world-clock/" class="mt-related-chip">World Clock</a></div>
@@ -93,7 +147,7 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-const HOLIDAYS_2025=["2025-01-26","2025-03-17","2025-04-14","2025-04-18","2025-05-01","2025-08-15","2025-10-02","2025-10-20","2025-10-24","2025-12-25"];
+const HOLIDAYS=["2025-01-26","2025-03-17","2025-04-14","2025-04-18","2025-05-01","2025-08-15","2025-10-02","2025-10-20","2025-10-24","2025-12-25","2026-01-26","2026-05-01","2026-08-15","2026-10-02","2026-12-25"];
 document.getElementById("calc").onclick=()=>{
   const s=new Date(document.getElementById("f0").value),e=new Date(document.getElementById("f1").value);
   if(isNaN(s)||isNaN(e)){document.getElementById("mt-status").textContent="Select both dates.";return;}
@@ -103,7 +157,7 @@ document.getElementById("calc").onclick=()=>{
   while(cur<=e){
     cal++;const dow=cur.getDay();const iso=cur.toISOString().split("T")[0];
     if(dow===0||dow===6)wends++;
-    else if(exHol&&HOLIDAYS_2025.includes(iso)){hols++;}
+    else if(exHol&&HOLIDAYS.includes(iso)){hols++;}
     else bdays++;
     cur.setDate(cur.getDate()+1);
   }

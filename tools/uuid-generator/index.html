@@ -415,7 +415,7 @@
     <nav class="mt-breadcrumbs" aria-label="Breadcrumb">
       <a href="/">Home</a>
       <span aria-hidden="true">/</span>
-      <a href="/tools/">Tools</a>
+      <a href="/tools/?category=developer-tools">Developer Tools</a>
       <span aria-hidden="true">/</span>
       <span aria-current="page">UUID Generator</span>
     </nav>
@@ -615,7 +615,21 @@
         </div>
       </section>
     </div>
-  </main>
+    <section class="mt-panel" style="margin-top:24px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the UUID Generator</h2>
+    <div class="mt-prose">
+      <p>The UUID Generator produces universally unique identifiers, the 128-bit values used as primary keys, correlation IDs and session tokens where a sequential number would collide or leak information.</p>
+      <p>Version 4 UUIDs are random: 122 bits of the 128 are random, and the rest encode the version and variant. That leaves enough combinations that a duplicate is not something you need to design around.</p>
+      <p>They are generated in your browser using the platform's cryptographic random source, so they are not predictable. Because a v4 UUID carries no ordering, do not use one as a database primary key if you need efficient range queries; a time-ordered identifier serves that better.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+<div class="mt-faq"><h3>Are these UUIDs really unique?</h3><p>Version 4 UUIDs carry 122 random bits, so a collision is not a practical concern.</p></div>
+  </section>
+
+</main>
 
   <div id="site-footer"></div>
 

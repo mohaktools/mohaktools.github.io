@@ -8,6 +8,8 @@
 <meta name="description" content="Build CSS gradients and box shadows visually and copy the code.">
 <meta name="keywords" content="CSS gradient generator, box shadow, CSS effects">
 <link rel="canonical" href="https://mohaktools.com/tools/css-gradient-boxshadow/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="CSS Gradient & Box Shadow Generator | MohakTools">
 <meta property="og:description" content="Build CSS gradients and box shadows visually and copy the code.">
 <meta property="og:url" content="https://mohaktools.com/tools/css-gradient-boxshadow/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -90,6 +107,43 @@
 <p id="bcss" style="font-family:monospace;font-size:12px;color:var(--color-text-secondary);word-break:break-all;padding:8px 0"></p>
 <p class="mt-status" id="mt-status" role="status" aria-live="polite"></p></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the CSS Gradient & Box Shadow Generator</h2>
+    <div class="mt-prose">
+      <p>The CSS Gradient and Box Shadow Generator builds two of the fiddliest bits of CSS visually. Pick two colours and an angle for a gradient, or set the offsets, blur, spread and colour of a box shadow, then copy the generated declaration.</p>
+      <p>A linear gradient runs along a line at the angle you choose, 0deg pointing up and 90deg pointing right. A radial gradient spreads out from a centre point instead, which suits spotlights and vignettes. Both accept any colour format CSS understands, including rgba for transparency.</p>
+      <p>Box shadows take an x offset, a y offset, a blur radius and optionally a spread, plus a colour. A positive y offset puts the shadow below the element, a negative one above it. Soft, realistic shadows use a large blur and low opacity, usually under 0.2, rather than a solid black.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is a linear gradient?</h3>
+      <p>A smooth transition between colours along a straight line, defined by an angle or a direction keyword.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How do the angle values work?</h3>
+      <p>0deg points to the top and the angle increases clockwise, so 90deg runs left to right and 180deg top to bottom.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What do the box-shadow values mean?</h3>
+      <p>Horizontal offset, vertical offset, blur radius, optional spread, then colour.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I use transparent colours?</h3>
+      <p>Yes. rgba() or an eight-digit hex colour lets the shadow or gradient fade out.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Do I need vendor prefixes?</h3>
+      <p>Not for current browsers. Prefixes were needed a decade ago for old Safari and Firefox versions.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does my shadow look harsh?</h3>
+      <p>Usually too much opacity or too little blur. Try a blur of 20px or more with opacity around 0.1 to 0.15.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Developer Tools</h2>

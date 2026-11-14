@@ -8,6 +8,8 @@
 <meta name="description" content="Scan QR codes using your device camera or an uploaded image.">
 <meta name="keywords" content="QR code scanner, scan QR, decode QR">
 <link rel="canonical" href="https://mohaktools.com/tools/qr-code-scanner/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="QR Code Scanner | MohakTools">
 <meta property="og:description" content="Scan QR codes using your device camera or an uploaded image.">
 <meta property="og:url" content="https://mohaktools.com/tools/qr-code-scanner/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -74,6 +91,43 @@
 <div class="mt-stat-grid"><div class="mt-stat" style="grid-column:1/-1"><span>Decoded Text</span><strong id="result" style="font-size:16px;word-break:break-all">—</strong></div></div>
 <p class="mt-help">Uses the jsQR library loaded from CDN. Image stays in your browser.</p></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the QR Code Scanner</h2>
+    <div class="mt-prose">
+      <p>The QR Code Scanner reads a QR code from an uploaded image and shows the text inside it, whether that is a link, a message, contact details or Wi-Fi credentials.</p>
+      <p>Decoding is done by jsQR, a JavaScript library that locates the three corner squares of the code, corrects for perspective and reads the data. That is why a photo taken at an angle usually still works: the library straightens it first.</p>
+      <p>A QR code is just text in a square. That is worth remembering before scanning an unknown one: the code cannot install anything, but the link inside it can lead anywhere. Read the decoded text here before you open it.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How does it read a QR code?</h3>
+      <p>It locates the position markers, corrects for angle, then decodes the pattern into text.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it work with a photo at an angle?</h3>
+      <p>Usually yes, up to a point. Straight-on, well-lit images decode most reliably.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I use my camera?</h3>
+      <p>This page reads an uploaded image. For live camera scanning, use your phone's camera app.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is the image uploaded?</h3>
+      <p>No. Decoding happens in the browser.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does my code not decode?</h3>
+      <p>Blur, glare, low contrast or too little of the code in frame. A larger, sharper image usually fixes it.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is it safe to open the decoded link?</h3>
+      <p>Only if you trust the source. The code itself is harmless; the destination may not be.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Everyday Utilities</h2>

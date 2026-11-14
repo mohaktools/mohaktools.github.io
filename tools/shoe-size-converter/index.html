@@ -8,6 +8,8 @@
 <meta name="description" content="Convert shoe sizes between US, UK, EU and Indian systems.">
 <meta name="keywords" content="shoe size converter, US UK EU shoe size">
 <link rel="canonical" href="https://mohaktools.com/tools/shoe-size-converter/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Shoe Size Converter | MohakTools">
 <meta property="og:description" content="Convert shoe sizes between US, UK, EU and Indian systems.">
 <meta property="og:url" content="https://mohaktools.com/tools/shoe-size-converter/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -80,6 +97,43 @@
 <div class="mt-stat"><span>Foot Length (cm)</span><strong id="cm">—</strong></div>
 </div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Shoe Size Converter</h2>
+    <div class="mt-prose">
+      <p>The Shoe Size Converter translates a shoe size between US men's, US women's, UK and EU systems, and shows the approximate foot length in centimetres for each. Enter a size and the system it is in.</p>
+      <p>The systems are not simply offset versions of one another. UK sizes run half a size below US men's, US women's sizes run about one and a half sizes above US men's, and EU sizes use a different scale entirely, based on the length of the last in centimetres rather than on barleycorns. That is why a single number does not translate cleanly across all four.</p>
+      <p>Brands make this worse. A running shoe from one maker can fit like a half size larger from another, and the same brand may differ between models. Use the conversion as a starting point and check the manufacturer's own size chart, which is usually given in foot length in centimetres.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Why do US and UK sizes differ?</h3>
+      <p>They use different zero points and increments. UK sizes run roughly half a size below the equivalent US men's size.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How do US women's sizes compare with men's?</h3>
+      <p>Women's sizes are about one and a half sizes higher than the men's size for the same foot, so a women's 8 is close to a men's 6.5.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How do I measure my foot?</h3>
+      <p>Stand on paper, mark the heel and the longest toe, and measure the distance in centimetres. Measure both feet and use the larger.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is EU sizing based on?</h3>
+      <p>The length of the shoe last in centimetres, which is why EU sizes look like large numbers and do not line up neatly with UK or US sizes.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Are half sizes available everywhere?</h3>
+      <p>In the US and UK, yes. EU sizing typically uses whole sizes only, so you round to the nearest.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does the same size feel different between brands?</h3>
+      <p>Lasts, materials and manufacturing vary. The centimetre measurement is the more reliable guide.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Converters</h2>

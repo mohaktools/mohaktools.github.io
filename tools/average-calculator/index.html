@@ -8,6 +8,8 @@
 <meta name="description" content="Compute mean, median and mode for a list of numbers.">
 <meta name="keywords" content="average calculator, mean, median, mode">
 <link rel="canonical" href="https://mohaktools.com/tools/average-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Average Calculator | MohakTools">
 <meta property="og:description" content="Compute mean, median and mode for a list of numbers.">
 <meta property="og:url" content="https://mohaktools.com/tools/average-calculator/">
@@ -40,6 +42,13 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -81,6 +90,46 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Average Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The Average Calculator takes a list of numbers and returns six statistics from it: mean, median, mode, sum, count and range. The mean is the arithmetic average, found by adding every value and dividing by how many values there are. The median is the middle value once the list is sorted, so a single unusually large or small number cannot pull it away. The mode is the value that appears most often, and when several values tie for the highest frequency the calculator lists all of them rather than choosing one.
+      </p>
+      <p>
+        Read together, the three say more than any one alone. A mean well above the median is the classic signature of outliers, which is exactly how salaries, house prices and exam marks behave. The range shows the spread between the smallest and largest entry, while sum and count let you check the arithmetic by hand. Enter your numbers separated by commas, spaces or new lines, in any order; decimals and negative numbers are accepted. The list is never uploaded anywhere, because the whole calculation runs in your browser.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is the difference between mean, median and mode?</h3>
+      <p>The mean is the total divided by the count. The median is the middle value of the sorted list, or the average of the two middle values when the count is even. The mode is the most frequently occurring value.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How should I separate the numbers?</h3>
+      <p>Commas, spaces and new lines all work, and you can mix them. "4, 8, 15" and "4 8 15" produce identical results.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What happens when two values tie for most frequent?</h3>
+      <p>Every tied value is reported, separated by commas, because the list genuinely has more than one mode. If no value repeats at all, it reports No mode, because a list where every value appears exactly once has no mode.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does the order of my numbers matter?</h3>
+      <p>No. The median is calculated from a sorted copy of your list and the other statistics do not depend on order at all.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How precise is the mean?</h3>
+      <p>The mean is displayed to four decimal places. The median is shown exactly, so an even-sized list can give a value such as 12.5.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I use negative numbers and decimals?</h3>
+      <p>Yes. Both are handled normally, so a list such as -3, 0.5, 2.75 is valid.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
@@ -94,26 +143,54 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-document.getElementById("calc").onclick=()=>{
-  const nums=document.getElementById("f0").value.split(/[,
-\s]+/).map(Number).filter(n=>!isNaN(n)&&document.getElementById("f0").value.trim());
-  if(!nums.length){document.getElementById("mt-status").textContent="Enter some numbers.";return;}
-  const sorted=[...nums].sort((a,b)=>a-b);
-  const sum=nums.reduce((a,b)=>a+b,0),mean=sum/nums.length;
-  const mid=Math.floor(sorted.length/2);
-  const median=sorted.length%2?sorted[mid]:(sorted[mid-1]+sorted[mid])/2;
-  const freq={};nums.forEach(n=>freq[n]=(freq[n]||0)+1);
-  const maxF=Math.max(...Object.values(freq));
-  const mode=Object.keys(freq).filter(k=>freq[k]===maxF).join(", ");
-  document.getElementById("mean").textContent=mean.toFixed(4);
-  document.getElementById("med").textContent=median;
-  document.getElementById("mode").textContent=mode;
-  document.getElementById("sum").textContent=sum;
-  document.getElementById("count").textContent=nums.length;
-  document.getElementById("range").textContent=(sorted[sorted.length-1]-sorted[0]);
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const OUT = ["mean", "med", "mode", "sum", "count", "range"];
+const clearOut = () => OUT.forEach(id => { $(id).textContent = "\u2014"; });
+
+$("calc").onclick = () => {
+  const tokens = $("f0").value.split(/[\s,]+/).filter(t => t !== "");
+  const nums = tokens.map(Number).filter(n => Number.isFinite(n));
+
+  if (!nums.length) {
+    clearOut();
+    $("mt-status").textContent = "Enter some numbers.";
+    return;
+  }
+
+  const ignored = tokens.length - nums.length;
+  $("mt-status").textContent = ignored
+    ? ignored + (ignored === 1 ? " entry was" : " entries were") + " not a number and was ignored."
+    : "";
+
+  const sorted = [...nums].sort((a, b) => a - b);
+  const sum = nums.reduce((a, b) => a + b, 0);
+  const mean = sum / nums.length;
+  const mid = Math.floor(sorted.length / 2);
+  const median = sorted.length % 2
+    ? sorted[mid]
+    : (sorted[mid - 1] + sorted[mid]) / 2;
+
+  const freq = new Map();
+  nums.forEach(n => freq.set(n, (freq.get(n) || 0) + 1));
+  const maxF = Math.max(...freq.values());
+  const modes = [...freq.entries()]
+    .filter(([, c]) => c === maxF)
+    .map(([v]) => v)
+    .sort((a, b) => a - b);
+
+  $("mean").textContent = mean.toFixed(4);
+  $("med").textContent = median;
+  $("mode").textContent = maxF === 1 ? "No mode" : modes.join(", ");
+  $("sum").textContent = sum;
+  $("count").textContent = nums.length;
+  $("range").textContent = sorted[sorted.length - 1] - sorted[0];
 };
-document.getElementById("reset").onclick=()=>document.getElementById("f0").value="";
+
+$("reset").onclick = () => {
+  $("f0").value = "";
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

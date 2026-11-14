@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+<title>Image to Text (OCR) | MohakTools</title>
+<meta name="description" content="Extract text from images using optical character recognition.">
+<meta name="keywords" content="OCR, image to text, extract text from image">
+<link rel="canonical" href="https://mohaktools.com/tools/image-to-text-ocr/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
+<meta property="og:title" content="Image to Text (OCR) | MohakTools">
+<meta property="og:description" content="Extract text from images using optical character recognition.">
+<meta property="og:url" content="https://mohaktools.com/tools/image-to-text-ocr/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Image to Text (OCR) | MohakTools">
+<meta name="twitter:description" content="Extract text from images using optical character recognition.">
+<script src="/assets/js/tools-registry.js" defer></script>
+<style>
+.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
+.mt-field{margin-bottom:14px}
+.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
+.mt-field input[type="text"],.mt-field input[type="number"],.mt-field input[type="email"],.mt-field input[type="date"],.mt-field input[type="time"],.mt-field input[type="datetime-local"],.mt-field input[type="color"],.mt-field input[type="range"],.mt-field input[type="file"],.mt-field select,.mt-field textarea{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s;box-sizing:border-box}
+.mt-field input:focus,.mt-field select:focus,.mt-field textarea:focus{border-color:var(--color-primary)}
+.mt-field textarea{resize:vertical;min-height:120px;font-family:inherit}
+.mt-output{display:block;width:100%;min-height:160px;padding:12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:13px/1.6 inherit;resize:vertical;box-sizing:border-box}
+.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
+.mt-button:active{transform:scale(.97)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
+.mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
+.mt-stat strong{font-size:20px;font-weight:700;color:var(--color-text)}
+.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
+.mt-help{font-size:12px;color:var(--color-text-secondary);margin-top:8px;line-height:1.5}
+.mt-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
+.mt-option input{accent-color:var(--color-primary)}
+.mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
+@media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
+</style>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+    <span style="margin:0 6px">/</span>
+    <a href="/tools/?category=everyday-utilities" style="color:var(--color-primary);text-decoration:none">Everyday Utilities</a>
+    <span style="margin:0 6px">/</span>
+    <span>Image to Text (OCR)</span>
+  </nav>
+
+  <header style="margin-bottom:24px">
+    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">Image to Text (OCR)</h1>
+    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Extract text from images using optical character recognition.</p>
+  </header>
+
+  <div class="mt-tool-grid">
+    
+<section class="mt-panel"><h2 id="tool-input-heading">Image</h2>
+<div class="mt-field"><label for="f0">Upload image with text</label><input type="file" id="f0" accept="image/*"></div>
+<div class="mt-field"><label for="f1">Language</label>
+<select id="f1"><option value="eng">English</option><option value="hin">Hindi</option><option value="fra">French</option><option value="deu">German</option><option value="spa">Spanish</option></select></div>
+<div class="mt-button-row"><button class="mt-button mt-primary" id="calc">Extract Text</button><button class="mt-button mt-secondary" id="copy">Copy Text</button></div>
+<p class="mt-status" id="mt-status" role="status" aria-live="polite"></p></section>
+<section class="mt-panel"><h2>Extracted Text</h2>
+<img id="ocr-preview" style="max-width:200px;border-radius:8px;margin-bottom:10px;display:none" alt="Preview">
+<textarea id="mt-output" class="mt-output" readonly placeholder="Extracted text will appear here…"></textarea></section>
+  </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Image to Text (OCR)</h2>
+    <div class="mt-prose">
+      <p>The Image to Text tool runs optical character recognition on a picture and returns the words it finds as selectable, copyable text. Upload a scan or a photo of a document, choose the language, and it extracts the content.</p>
+      <p>Recognition is done by Tesseract, the open-source OCR engine, compiled to run in the browser. That means the image is not uploaded to a server, which matters for anything confidential, but it also means the first run downloads a language model and takes a few seconds.</p>
+      <p>Results depend heavily on the input. A flat, evenly lit scan at 300 dpi is close to perfect; a phone photo at an angle, with shadow or a patterned background, will produce errors. Cropping to the text and straightening the page before uploading improves accuracy more than any setting.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is OCR?</h3>
+      <p>Optical character recognition: software that reads the shapes of letters in an image and converts them into machine-readable text.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which languages are supported?</h3>
+      <p>The major Latin-script languages plus a few others. English gives the best results.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How accurate is it?</h3>
+      <p>On a clean 300 dpi scan, close to perfect. On a skewed phone photo, expect mistakes with similar characters and small text.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is my image uploaded?</h3>
+      <p>No. Tesseract runs locally in the browser, though the engine itself is downloaded from a CDN on first use.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it preserve formatting?</h3>
+      <p>Partly. Line breaks usually survive; columns, tables and fonts do not.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is the first run slow?</h3>
+      <p>The language model has to download before recognition starts. Later runs are faster.</p>
+    </div>
+  </section>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Everyday Utilities</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/password-generator/" class="mt-related-chip">Password Generator</a><a href="/tools/qr-code-generator/" class="mt-related-chip">QR Code Generator</a><a href="/tools/random-number-generator/" class="mt-related-chip">Random Number Generator</a></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+  <script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+
+const TJS_SRC="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/4.1.2/tesseract.min.js";
+function loadLib(src){return new Promise((res,rej)=>{if(window.Tesseract)return res();const s=document.createElement("script");s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
+document.getElementById("calc").onclick=async()=>{
+  const file=document.getElementById("f0").files[0],lang=document.getElementById("f1").value;
+  if(!file){document.getElementById("mt-status").textContent="Select an image.";return;}
+  document.getElementById("ocr-preview").src=URL.createObjectURL(file);document.getElementById("ocr-preview").style.display="block";
+  document.getElementById("mt-status").textContent="Loading OCR engine… (may take ~10s first time)";
+  await loadLib(TJS_SRC);
+  try{
+    const result=await window.Tesseract.recognize(file,lang,{logger:m=>{if(m.status==="recognizing text")document.getElementById("mt-status").textContent="Recognising… "+Math.round(m.progress*100)+"%";}});
+    document.getElementById("mt-output").value=result.data.text.trim();
+    document.getElementById("mt-status").textContent="Extraction complete. Confidence: "+Math.round(result.data.confidence)+"%";
+  }catch(e){document.getElementById("mt-status").textContent="OCR error: "+e.message;}
+};
+document.getElementById("copy").onclick=()=>{const o=document.getElementById("mt-output").value;if(o)navigator.clipboard.writeText(o).then(()=>document.getElementById("mt-status").textContent="Copied!");};
+</script>
+</body>
+</html>

@@ -8,6 +8,8 @@
 <meta name="description" content="Highlight differences between two blocks of text side by side.">
 <meta name="keywords" content="text diff, compare text, text comparison tool">
 <link rel="canonical" href="https://mohaktools.com/tools/text-diff-compare/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Text Diff / Compare | MohakTools">
 <meta property="og:description" content="Highlight differences between two blocks of text side by side.">
 <meta property="og:url" content="https://mohaktools.com/tools/text-diff-compare/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -75,6 +92,43 @@
 <section class="mt-panel" style="grid-column:1/-1"><h2>Diff Result</h2>
 <div id="diff-out" style="font-family:ui-monospace,monospace;font-size:13px;line-height:1.7;white-space:pre-wrap;word-break:break-all"></div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Text Diff / Compare</h2>
+    <div class="mt-prose">
+      <p>Text Diff compares two blocks of text and highlights what changed between them. Paste the original on one side and the modified version on the other, and the result marks lines that were added, removed or left alone.</p>
+      <p>The comparison works line by line using a longest-common-subsequence algorithm, the same family of method that version control tools use. That means it finds the smallest set of line insertions and deletions that turns one text into the other, rather than flagging everything after the first difference.</p>
+      <p>Because it compares lines, a single character changed inside a long line shows the whole line as modified. For prose that is usually what you want; for code review, where you care which character moved, a word-level diff is more informative.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How does the comparison work?</h3>
+      <p>It compares the two texts line by line and finds the longest shared sequence of lines, then reports the insertions and deletions around it.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it compare words or lines?</h3>
+      <p>Lines. A one-character edit inside a line marks that whole line as changed.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What do the markings mean?</h3>
+      <p>Lines only in the original were removed, lines only in the modified text were added, and unmarked lines are identical in both.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it ignore whitespace differences?</h3>
+      <p>No, spacing counts as part of the line. Trailing spaces will show up as a change.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is there a size limit?</h3>
+      <p>Very large texts are slow because the algorithm compares every line against every other. A few thousand lines is comfortable.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is my text uploaded?</h3>
+      <p>No, the comparison runs entirely in the browser.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>

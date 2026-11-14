@@ -8,6 +8,8 @@
 <meta name="description" content="Flip a virtual coin and get heads or tails with animation.">
 <meta name="keywords" content="coin flip, heads or tails, random coin">
 <link rel="canonical" href="https://mohaktools.com/tools/coin-flip/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Coin Flip | MohakTools">
 <meta property="og:description" content="Flip a virtual coin and get heads or tails with animation.">
 <meta property="og:url" content="https://mohaktools.com/tools/coin-flip/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -79,6 +96,43 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Coin Flip</h2>
+    <div class="mt-prose">
+      <p>The Coin Flip tosses a virtual coin using the browser's random number generator. Flip once for a simple heads or tails, or set a number of flips to see the totals and the ratio between them.</p>
+      <p>Each flip is independent and has no memory, so a run of five heads does not make tails more likely on the next toss. That misconception, the gambler's fallacy, is exactly what a large number of flips demonstrates: the ratio drifts towards 50:50 not because the coin corrects itself, but because early imbalance gets diluted.</p>
+      <p>For settling a decision it is as fair as the browser's randomness. It is not cryptographically secure, so do not use it for anything that needs to be unpredictable to an adversary, such as generating a key or a password.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Is the flip really random?</h3>
+      <p>It uses the browser's Math.random, which is fine for games and decisions but not cryptographically secure.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does a previous result affect the next flip?</h3>
+      <p>No. Every flip is independent, so the odds stay 50:50 regardless of what came before.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I flip many times at once?</h3>
+      <p>Yes. Set the number of flips and the page shows heads, tails and the ratio.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does the ratio not come out exactly 50:50?</h3>
+      <p>Random variation. The gap narrows as a proportion as the number of flips grows, but rarely lands exactly even.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I use this to generate a password?</h3>
+      <p>No. Math.random is not secure enough for secrets. Use a cryptographic generator.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it work offline?</h3>
+      <p>Yes, the flip happens entirely in the page.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Everyday Utilities</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/password-generator/" class="mt-related-chip">Password Generator</a><a href="/tools/qr-code-generator/" class="mt-related-chip">QR Code Generator</a><a href="/tools/random-number-generator/" class="mt-related-chip">Random Number Generator</a></div>
@@ -98,7 +152,7 @@ document.getElementById("calc").onclick=()=>{
   coin.style.transform="rotateY(360deg)";setTimeout(()=>{coin.style.transform="rotateY(0)";},300);
   let heads=0,tails=0;
   for(let i=0;i<n;i++){Math.random()<.5?heads++:tails++;}
-  const last=Math.random()<.5?"Heads":"Tails";
+  const last=n===1?(heads===1?"Heads":"Tails"):(heads>tails?"More Heads":"More Tails");
   if(n===1){coin.textContent=last==="Heads"?"👑":"🦅";}
   document.getElementById("result").textContent=n===1?last:(heads>tails?"More Heads":"More Tails");
   document.getElementById("heads").textContent=heads+(n>1?" ("+Math.round(heads/n*100)+"%)":"");

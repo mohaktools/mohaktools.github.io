@@ -8,6 +8,8 @@
 <meta name="description" content="Find a meeting time that works across multiple time zones.">
 <meta name="keywords" content="meeting planner, international meeting, schedule across zones">
 <link rel="canonical" href="https://mohaktools.com/tools/meeting-planner/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Meeting Planner | MohakTools">
 <meta property="og:description" content="Find a meeting time that works across multiple time zones.">
 <meta property="og:url" content="https://mohaktools.com/tools/meeting-planner/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -83,6 +100,43 @@
 <section class="mt-panel"><h2>Time in Each Zone</h2>
 <div id="tzout" style="display:flex;flex-direction:column;gap:8px"></div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Meeting Planner</h2>
+    <div class="mt-prose">
+      <p>The Meeting Planner shows what a chosen date and time looks like in several time zones at once, so you can pick a slot that works for everyone.</p>
+      <p>The conversion uses your browser's built-in time-zone database, which knows about daylight saving. That matters: London shifts by an hour twice a year and New York by an hour in March and November, so a slot that worked last month may not work now.</p>
+      <p>Watch for zones with half-hour or forty-five-minute offsets. India is UTC+5:30, Nepal is UTC+5:45 and parts of Australia use UTC+9:30, so there is no whole-hour shortcut that works everywhere.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How does it handle daylight saving?</h3>
+      <p>It uses the browser's time-zone data, which includes DST rules, so the offsets shown are correct for the chosen date.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is India on a half-hour offset?</h3>
+      <p>IST is UTC+5:30, which keeps solar noon close to midday across the country without splitting it into two zones.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does the date change in some zones?</h3>
+      <p>Yes. A late evening slot in India is still the same day in Europe but can be the next morning in New Zealand.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How many zones can I compare?</h3>
+      <p>Several at once. Add the locations your team is in.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it account for a country changing its DST rules?</h3>
+      <p>Only as far as your browser's data is current. Very old browsers may be out of date.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I share the result?</h3>
+      <p>Copy the times and send them. The page does not generate a link.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Time & Productivity</h2>

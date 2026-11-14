@@ -8,6 +8,8 @@
 <meta name="description" content="Estimate body fat percentage using the Navy method.">
 <meta name="keywords" content="body fat percentage, navy method, fitness">
 <link rel="canonical" href="https://mohaktools.com/tools/body-fat-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Body Fat Calculator | MohakTools">
 <meta property="og:description" content="Estimate body fat percentage using the Navy method.">
 <meta property="og:url" content="https://mohaktools.com/tools/body-fat-calculator/">
@@ -40,6 +42,13 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -78,6 +87,49 @@
 <p class="mt-help">US Navy formula. For guidance only.</p></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Body Fat Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The Body Fat Calculator estimates body fat percentage from a few tape measurements using the US Navy circumference method. For men it compares waist and neck against height; for women it also needs the hip measurement. The result is the share of your body weight that is fat rather than lean tissue, which means muscle, bone, organs and water.
+      </p>
+      <p>
+        Circumference methods exist because the two numbers most people track, weight and BMI, cannot separate fat from muscle. A 90 kg athlete and a 90 kg sedentary adult of the same height share a BMI but not a body composition. Waist size carries real signal too: fat stored around the abdomen is more closely linked to metabolic risk than fat on the hips and thighs, which is why the formula weights the waist so heavily.
+      </p>
+      <p>
+        Treat the figure as an estimate rather than a measurement. The Navy formula usually lands within about three to four percentage points of a DEXA scan, and it assumes a fairly typical fat distribution, so very muscular people tend to score slightly high and very lean people slightly low. For tracking, measure at the same time of day with the tape snug but not compressing the skin, and compare readings over months rather than days.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How accurate is the Navy method?</h3>
+      <p>For most people it comes within roughly three to four percentage points of a DEXA scan. That is good enough to follow a trend, not precise enough to treat a single reading as a medical measurement.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why do women need a hip measurement?</h3>
+      <p>The female equation includes the hips because fat distribution differs between sexes. For men the hip measurement is ignored, so you can leave it empty.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I enter inches instead of centimetres?</h3>
+      <p>This calculator takes centimetres only. Multiply an inch measurement by 2.54 to convert it.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is a healthy body fat percentage?</h3>
+      <p>Commonly cited ranges put a healthy level at roughly 10-20% for men and 20-30% for women, with trained athletes lower and older adults often higher. These are general guides, not targets for an individual.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does this differ from my smart scale?</h3>
+      <p>Scales use bioimpedance, which shifts with hydration, recent meals and exercise. Neither method is exact, so pick one and use it consistently rather than comparing readings across tools.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is body fat percentage better than BMI?</h3>
+      <p>It says more about body composition, but it is still an estimate from a formula. BMI remains a fast population-level screen; body fat adds detail for an individual.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
@@ -91,18 +143,66 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-document.getElementById("f0").onchange=function(){document.getElementById("hiprow").hidden=this.value==="m";};
-document.getElementById("calc").onclick=()=>{
-  const g=document.getElementById("f0").value,h=+document.getElementById("f1").value,
-        neck=+document.getElementById("f2").value,waist=+document.getElementById("f3").value;
-  if(!h||!neck||!waist){document.getElementById("mt-status").textContent="Fill all fields.";return;}
+const $ = id => document.getElementById(id);
+const clearOut = () => { $("bf").textContent = "\u2014"; };
+const syncHips = () => { $("hiprow").hidden = $("f0").value === "m"; };
+
+$("f0").onchange = syncHips;
+syncHips();
+
+$("calc").onclick = () => {
+  const gender = $("f0").value;
+  const hRaw = $("f1").value, nRaw = $("f2").value, wRaw = $("f3").value;
+  const bad = [hRaw, nRaw, wRaw].some(v => v.trim() === "" || !Number.isFinite(+v) || +v <= 0);
+
+  if (bad) {
+    clearOut();
+    $("mt-status").textContent = "Enter height, neck and waist in centimetres.";
+    return;
+  }
+
+  const h = +hRaw, neck = +nRaw, waist = +wRaw;
   let bf;
-  if(g==="m"){bf=495/(1.0324-.19077*Math.log10(waist-neck)+.15456*Math.log10(h))-450;}
-  else{const hip=+document.getElementById("f4").value;if(!hip){document.getElementById("mt-status").textContent="Enter hip measurement.";return;}bf=495/(1.29579-.35004*Math.log10(waist+hip-neck)+.22100*Math.log10(h))-450;}
-  document.getElementById("bf").textContent=bf.toFixed(1)+"%";
-  document.getElementById("mt-status").textContent="";
+
+  if (gender !== "f") {
+    if (waist <= neck) {
+      clearOut();
+      $("mt-status").textContent = "Waist must be larger than neck.";
+      return;
+    }
+    bf = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(h)) - 450;
+  } else {
+    const hipRaw = $("f4").value;
+    if (hipRaw.trim() === "" || !Number.isFinite(+hipRaw) || +hipRaw <= 0) {
+      clearOut();
+      $("mt-status").textContent = "Enter a hip measurement for females.";
+      return;
+    }
+    const hip = +hipRaw;
+    if (waist + hip <= neck) {
+      clearOut();
+      $("mt-status").textContent = "Check your measurements.";
+      return;
+    }
+    bf = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(h)) - 450;
+  }
+
+  if (!Number.isFinite(bf) || bf <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Those measurements give an impossible result. Check them.";
+    return;
+  }
+
+  $("bf").textContent = bf.toFixed(1) + "%";
+  $("mt-status").textContent = "";
 };
-document.getElementById("reset").onclick=()=>["f1","f2","f3","f4"].forEach(id=>document.getElementById(id).value="");
+
+$("reset").onclick = () => {
+  ["f1", "f2", "f3", "f4"].forEach(id => { $(id).value = ""; });
+  clearOut();
+  $("mt-status").textContent = "";
+  syncHips();
+};
 </script>
 </body>
 </html>

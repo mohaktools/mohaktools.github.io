@@ -8,6 +8,8 @@
 <meta name="description" content="Browse all HTTP status codes with descriptions and use cases.">
 <meta name="keywords" content="HTTP status codes, 404, 200, 500, REST API">
 <link rel="canonical" href="https://mohaktools.com/tools/http-status-reference/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="HTTP Status Code Reference | MohakTools">
 <meta property="og:description" content="Browse all HTTP status codes with descriptions and use cases.">
 <meta property="og:url" content="https://mohaktools.com/tools/http-status-reference/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -71,6 +88,43 @@
 <section class="mt-panel"><h2>Status Codes</h2>
 <div id="codes-out"></div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the HTTP Status Code Reference</h2>
+    <div class="mt-prose">
+      <p>The HTTP Status Reference lists the status codes a server can return, with what each one means and when to use it. Search by number or by keyword such as auth, redirect or timeout.</p>
+      <p>Codes are grouped in hundreds. 1xx means the request is still being processed, 2xx means success, 3xx means a redirect or a cached copy, 4xx means the client did something wrong, and 5xx means the server failed. The first digit tells you whose problem it is before you read the rest.</p>
+      <p>Two pairs are worth knowing by heart. 401 means you are not authenticated, 403 means you are authenticated but not allowed. 301 is a permanent redirect that browsers and search engines cache, 302 is temporary; getting them the wrong way round can leave a stale redirect in place for months.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What do the first digits mean?</h3>
+      <p>1xx informational, 2xx success, 3xx redirection, 4xx client error, 5xx server error.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is the difference between 401 and 403?</h3>
+      <p>401 means authentication is missing or failed. 403 means the identity is known but does not have permission.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>301 or 302 for a redirect?</h3>
+      <p>301 is permanent and gets cached by browsers and search engines. 302 is temporary. Use 301 only when the move really is permanent.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is 429?</h3>
+      <p>Too many requests: the client is being rate limited and should slow down or back off.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What does 204 mean?</h3>
+      <p>Success with no content in the body, common for a successful DELETE or an update with nothing to return.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is 418 a real code?</h3>
+      <p>It exists as an April Fools joke that was formally reserved. Do not use it in production APIs.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Developer Tools</h2>

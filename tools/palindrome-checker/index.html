@@ -8,6 +8,8 @@
 <meta name="description" content="Check if a word, phrase or number reads the same forwards and backwards.">
 <meta name="keywords" content="palindrome checker, reverse word, is palindrome">
 <link rel="canonical" href="https://mohaktools.com/tools/palindrome-checker/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Palindrome Checker | MohakTools">
 <meta property="og:description" content="Check if a word, phrase or number reads the same forwards and backwards.">
 <meta property="og:url" content="https://mohaktools.com/tools/palindrome-checker/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -76,6 +93,43 @@
 <div class="mt-stat"><span>Reversed</span><strong id="rev">—</strong></div>
 </div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Palindrome Checker</h2>
+    <div class="mt-prose">
+      <p>The Palindrome Checker tells you whether a word, phrase or number reads the same forwards and backwards. It also shows the reversed version, so you can see exactly why a phrase passes or fails.</p>
+      <p>With the ignore-case option on, the comparison lowercases the text first, which is what makes phrases like Never odd or even count. Spaces and punctuation are stripped for the comparison, since a palindrome is about the letters and digits, not the formatting around them.</p>
+      <p>Numbers work the same way, so 12321 is a palindrome and 12345 is not. Palindromic phrases are a staple of puzzles and wordplay; the longest single-word examples in English run to several letters, and constructed sentences can be far longer.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is a palindrome?</h3>
+      <p>A word, phrase or number that reads identically forwards and backwards, such as level, madam or 12321.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it ignore spaces and punctuation?</h3>
+      <p>Yes, they are removed before comparing, so a phrase like A man, a plan, a canal, Panama passes.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is the check case sensitive?</h3>
+      <p>You choose. With the ignore-case option on, case differences do not affect the result.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Do numbers work?</h3>
+      <p>Yes, digits are compared the same way as letters, so 12321 is reported as a palindrome.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does my phrase fail when it looks symmetrical?</h3>
+      <p>Usually a hidden character, a hyphen or an accented letter that does not reverse cleanly. Check the reversed output to see what changed.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is the longest palindrome?</h3>
+      <p>Single-word examples in English run to several letters, and deliberately constructed sentences can be much longer.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>

@@ -8,6 +8,8 @@
 <meta name="description" content="Find text and replace it with plain or regex-powered substitution.">
 <meta name="keywords" content="find and replace, text substitution, regex replace">
 <link rel="canonical" href="https://mohaktools.com/tools/find-and-replace/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Find and Replace | MohakTools">
 <meta property="og:description" content="Find text and replace it with plain or regex-powered substitution.">
 <meta property="og:url" content="https://mohaktools.com/tools/find-and-replace/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -79,6 +96,43 @@
 <section class="mt-panel"><h2>Output</h2>
 <textarea id="mt-output" class="mt-output" readonly></textarea></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Find and Replace</h2>
+    <div class="mt-prose">
+      <p>Find and Replace rewrites every occurrence of one string inside your text. Paste the source text, type what to look for, type what to put in its place, and the output box shows the result. Leaving the replacement empty deletes the matches instead of substituting them.</p>
+      <p>The tool supports two modes. In plain mode the search string is matched literally, which is what you want for ordinary words and punctuation. In regex mode the search is treated as a JavaScript regular expression, so patterns like \d+ for any number, or \s+ for runs of whitespace, become usable, and capture groups can be referenced in the replacement as $1, $2 and so on.</p>
+      <p>Regex is powerful and easy to misuse. A pattern that matches an empty string, such as .* or a bare ?, will behave unexpectedly, and special characters like . * + ? ( ) [ ] need escaping with a backslash if you mean them literally. Try the pattern on a short sample first when the text matters.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Does it replace every occurrence?</h3>
+      <p>Yes, a global replace is applied to the whole text rather than just the first match.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How do I use regular expressions?</h3>
+      <p>Tick the regex option and write the pattern in the Find box. For example \d+ finds runs of digits and \s+ finds runs of spaces.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I use capture groups?</h3>
+      <p>Yes. Groups written as ( ) in the pattern are available in the replacement as $1, $2 and so on.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is the search case sensitive?</h3>
+      <p>Plain mode matches exactly what you type, including case. For case-insensitive matching use regex mode and write the pattern with the i flag if the option is available.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How do I delete instead of replace?</h3>
+      <p>Leave the Replace box empty. Every match is removed.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it handle multiple lines?</h3>
+      <p>Yes, the whole text is treated as one string, so patterns can cross line breaks when you use \n or the s flag in regex mode.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>

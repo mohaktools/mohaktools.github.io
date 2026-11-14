@@ -8,6 +8,8 @@
 <meta name="description" content="Render typed text in a handwriting style on a canvas.">
 <meta name="keywords" content="text to handwriting, handwriting generator, write style">
 <link rel="canonical" href="https://mohaktools.com/tools/text-to-handwriting/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Text to Handwriting | MohakTools">
 <meta property="og:description" content="Render typed text in a handwriting style on a canvas.">
 <meta property="og:url" content="https://mohaktools.com/tools/text-to-handwriting/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -74,6 +91,43 @@
 <section class="mt-panel"><h2>Preview</h2>
 <canvas id="hw-canvas" style="width:100%;border:1px solid var(--color-border);border-radius:10px;background:#fffff8"></canvas></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Text to Handwriting</h2>
+    <div class="mt-prose">
+      <p>Text to Handwriting renders your typed text onto a canvas in a handwriting-style font, so it can be saved as an image and used in notes, mockups or classroom material. Choose the text, the font size and the ink colour, and the preview updates.</p>
+      <p>The output is a flat image of rendered text, not editable handwriting and not a document. That matters if the result is going to be printed or pasted into a slide, since it will be as sharp as the canvas resolution allows and cannot be reflowed afterwards.</p>
+      <p>It is a design shortcut, not a substitute for actual handwriting. Anything that needs to look handwritten for a real purpose, a signature or a personal letter, should be handwritten. For assignments, check whether your institution allows rendered text before using it.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Can I download the image?</h3>
+      <p>Yes, the rendered canvas can be saved as an image file from the preview.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is this real handwriting?</h3>
+      <p>No. It is typed text rendered in a handwriting-style font, which is why it looks even and regular rather than human.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I change the paper or background?</h3>
+      <p>The preview uses the page background. For a lined or textured paper effect you would composite the image afterwards.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it work for long text?</h3>
+      <p>Short to medium passages fit comfortably. Very long text will overflow the canvas or become too small to read.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is my text stored anywhere?</h3>
+      <p>No, rendering happens in the browser and the text is not uploaded.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Should I use this for assignments?</h3>
+      <p>Only if your institution allows rendered text. Submitting generated handwriting where handwriting is required is usually treated as misconduct.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>

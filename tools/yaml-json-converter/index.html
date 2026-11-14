@@ -8,6 +8,8 @@
 <meta name="description" content="Convert between YAML and JSON formats in both directions.">
 <meta name="keywords" content="YAML to JSON, JSON to YAML, config converter">
 <link rel="canonical" href="https://mohaktools.com/tools/yaml-json-converter/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="YAML ↔ JSON Converter | MohakTools">
 <meta property="og:description" content="Convert between YAML and JSON formats in both directions.">
 <meta property="og:url" content="https://mohaktools.com/tools/yaml-json-converter/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -77,6 +94,43 @@
 <section class="mt-panel"><h2>Output</h2>
 <textarea id="mt-output" class="mt-output" readonly style="font-family:monospace;font-size:12px"></textarea></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the YAML ↔ JSON Converter</h2>
+    <div class="mt-prose">
+      <p>The YAML to JSON Converter translates in both directions. Paste JSON and get YAML, or paste YAML and get JSON, with the structure and values preserved.</p>
+      <p>JSON is strict: every key is quoted, every comma matters, and there are no comments. YAML is the human-friendly equivalent, using indentation instead of braces and allowing comments. That makes YAML pleasant to write and easy to break, since a single misplaced space changes the nesting.</p>
+      <p>Two rules catch people out. YAML forbids tabs for indentation, so use spaces consistently. And unquoted values like yes, no, on and off are read as booleans, which is why a country code of NO becomes false unless it is quoted.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is the difference between YAML and JSON?</h3>
+      <p>Both represent the same data structures. JSON uses braces and brackets, YAML uses indentation, and only YAML allows comments.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I convert in both directions?</h3>
+      <p>Yes. The tool detects which format you pasted and converts to the other.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does my YAML fail?</h3>
+      <p>Usually tabs used for indentation, or inconsistent spacing between levels. YAML requires spaces only.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Are comments preserved?</h3>
+      <p>No. JSON has no comment syntax, so comments are lost when converting to JSON.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it support anchors and aliases?</h3>
+      <p>The parser handles common YAML. Advanced features such as anchors, aliases and multi-document streams may not survive.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why did my value become true or false?</h3>
+      <p>Unquoted yes, no, on and off are YAML booleans. Quote the value if you mean the word.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Developer Tools</h2>

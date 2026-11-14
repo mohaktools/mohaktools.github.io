@@ -71,7 +71,7 @@
   <script src="/assets/js/tools-registry.js" defer></script>
   <div id="site-header"></div>
   <main class="mt-page">
-    <nav class="mt-breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/tools/">Tools</a><span aria-hidden="true">/</span><span aria-current="page">Unix Timestamp Converter</span></nav>
+    <nav class="mt-breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/tools/?category=developer-tools">Developer Tools</a><span aria-hidden="true">/</span><span aria-current="page">Unix Timestamp Converter</span></nav>
     <header class="mt-hero"><h1>Unix Timestamp Converter</h1><p>Convert Unix timestamps to readable dates and dates to Unix seconds or milliseconds. Convert Unix epoch timestamps into readable local and UTC dates, or convert a date into Unix seconds and milliseconds. Unix timestamps count time from 1 January 1970 UTC.</p></header>
     <section class="mt-tool-grid" aria-label="Unix Timestamp Converter tool">
       <section class="mt-panel" aria-labelledby="tool-input-heading">
@@ -99,7 +99,7 @@
       <p class="mt-help">Privacy note: processing runs in your browser. Avoid entering confidential data on shared or untrusted devices.</p>
     </div>
   </main>
-  <div id="site-footer"></div>
+  <div id="site-footer"></div><div class="mt-faq"><h3>What is a Unix timestamp?</h3><p>The number of seconds since 1 January 1970 at 00:00 UTC, used because it is a single integer that sorts and compares trivially.</p></div><div class="mt-faq"><h3>Why is my timestamp in milliseconds?</h3><p>JavaScript and some APIs use milliseconds, which is a 13-digit number rather than 10. Divide by 1,000 before converting.</p></div><div class="mt-faq"><h3>Does it handle the year 2038 problem?</h3><p>A signed 32-bit timestamp overflows in January 2038. This tool uses wider arithmetic, so it handles dates beyond that.</p></div>
   <script src="/assets/js/theme.js" defer></script>
   <script src="/assets/js/header.js" defer></script>
   <script src="/assets/js/footer.js" defer></script>

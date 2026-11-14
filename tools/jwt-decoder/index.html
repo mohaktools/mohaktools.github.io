@@ -8,6 +8,8 @@
 <meta name="description" content="Decode and inspect JWT token header, payload and signature.">
 <meta name="keywords" content="JWT decoder, JSON Web Token, decode JWT">
 <link rel="canonical" href="https://mohaktools.com/tools/jwt-decoder/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="JWT Decoder | MohakTools">
 <meta property="og:description" content="Decode and inspect JWT token header, payload and signature.">
 <meta property="og:url" content="https://mohaktools.com/tools/jwt-decoder/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -84,6 +101,43 @@
 </div>
 <p class="mt-help">Signature is NOT verified. This tool is for inspection only — never share tokens containing sensitive data.</p></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the JWT Decoder</h2>
+    <div class="mt-prose">
+      <p>The JWT Decoder reads a JSON Web Token and shows its three parts: the header, the payload and the signature. It also surfaces the registered claims, such as the algorithm, the issue time and the expiry, in readable form.</p>
+      <p>A JWT is three base64url strings joined by dots. The header says which algorithm signed it, the payload carries the claims, and the signature is the cryptographic proof. Decoding is just base64 decoding: it needs no key and proves nothing.</p>
+      <p>That distinction is the security point. Decoding tells you what a token claims, not whether it is genuine. Only the server holding the key can verify the signature. Never trust a token's contents until it has been verified, and treat any token you paste anywhere as a secret, since a valid one is as good as a password.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Does decoding verify the token?</h3>
+      <p>No. It only decodes the base64 parts. Verification requires the signing key and happens on the server.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What are the three parts?</h3>
+      <p>Header, payload and signature, separated by dots. The first two are base64url encoded JSON.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What does exp mean?</h3>
+      <p>Expiry time, as a Unix timestamp in seconds. After that moment the token should be rejected.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is it safe to paste a token here?</h3>
+      <p>The decoding runs in your browser, but a live token is a credential. Avoid pasting production tokens anywhere, and revoke one if you do.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does my token fail to decode?</h3>
+      <p>Usually the base64 padding or a copy that lost characters. Tokens are base64url, which uses - and _ instead of + and /.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I create a token with this?</h3>
+      <p>No, this only reads them. Signing needs the private key and belongs on the server.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Developer Tools</h2>

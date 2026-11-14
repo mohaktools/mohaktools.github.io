@@ -8,6 +8,8 @@
 <meta name="description" content="Strip all emojis from text with one click.">
 <meta name="keywords" content="remove emoji, emoji stripper, clean text">
 <link rel="canonical" href="https://mohaktools.com/tools/emoji-remover/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Emoji Remover | MohakTools">
 <meta property="og:description" content="Strip all emojis from text with one click.">
 <meta property="og:url" content="https://mohaktools.com/tools/emoji-remover/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -73,6 +90,43 @@
 <textarea id="mt-output" class="mt-output" readonly></textarea>
 <p class="mt-help">Strips emoji and Unicode symbols from your text.</p></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Emoji Remover</h2>
+    <div class="mt-prose">
+      <p>The Emoji Remover strips emoji characters out of text and leaves everything else untouched. Paste text with emojis in it, press the button, and the cleaned version appears with the letters, numbers, spaces and punctuation exactly as they were.</p>
+      <p>It works by matching the Unicode ranges where emoji live: the pictographs around U+1F300 to U+1FAFF, the emoticon blocks, flags, symbols and the variation selectors that make some characters render as emoji. Skin-tone modifiers and zero-width joiners go with them, so a multi-part emoji disappears whole rather than leaving fragments behind.</p>
+      <p>This is useful for cleaning text before it goes into a spreadsheet, a database column, an SMS, a printed label or a meta description where emoji cause encoding trouble. Ordinary typographic characters are not touched: an ampersand, an accented letter, a rupee sign or a dash all survive, because they are not emoji.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What counts as an emoji?</h3>
+      <p>Pictographic characters in the Unicode emoji blocks, including faces, objects, flags, symbols and the skin-tone modifiers that attach to them.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Are flags and family emojis removed completely?</h3>
+      <p>Yes. Flags are regional-indicator pairs and family emojis are joined sequences, and both are matched as a unit rather than leaving stray pieces.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it remove the rupee sign or accented letters?</h3>
+      <p>No. Currency symbols, accented characters, punctuation and mathematical symbols are ordinary text, not emoji, and are preserved.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is my text uploaded anywhere?</h3>
+      <p>No. The removal runs in your browser; the text never leaves the page.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can it remove other symbols too?</h3>
+      <p>It targets emoji only. To strip all non-ASCII characters you would need a different tool, since that would also remove legitimate accented text.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why would I want to remove emojis?</h3>
+      <p>Emoji break CSV imports, database collations, SMS segment limits and some CMS fields, and they can render as boxes in older systems.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>

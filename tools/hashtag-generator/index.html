@@ -8,6 +8,8 @@
 <meta name="description" content="Generate relevant hashtags for social media from keywords or text.">
 <meta name="keywords" content="hashtag generator, Instagram hashtags, social media tags">
 <link rel="canonical" href="https://mohaktools.com/tools/hashtag-generator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Hashtag Generator | MohakTools">
 <meta property="og:description" content="Generate relevant hashtags for social media from keywords or text.">
 <meta property="og:url" content="https://mohaktools.com/tools/hashtag-generator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -73,6 +90,43 @@
 <section class="mt-panel"><h2>Hashtags</h2>
 <div id="hash-out" style="display:flex;flex-wrap:wrap;gap:8px"></div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Hashtag Generator</h2>
+    <div class="mt-prose">
+      <p>The Hashtag Generator turns a description or a list of keywords into ready-to-paste hashtags for social media. Describe what the post is about, choose how many tags you want, and it returns a set drawn from the significant words in your text.</p>
+      <p>It lowercases everything, splits on anything that is not a letter or a number, drops words that are too short or too common to be useful, removes duplicates, and puts a hash in front of what remains. That is why hashtags come out as one unbroken string: spaces are not allowed inside a tag, so a two-word idea becomes a single compound tag.</p>
+      <p>Use the output as a starting point, not a finished campaign. Tags that are broad and popular are crowded and rarely surface, while very specific tags reach a smaller but more relevant audience. Mixing two or three broad tags with several narrow ones usually performs better than a long list of generic words.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How are the hashtags chosen?</h3>
+      <p>The text is split into words, short and common words are dropped, duplicates are removed, and a hash is added to each remaining word.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How many hashtags can I generate?</h3>
+      <p>Set the count field. The tool returns up to that many, fewer if your text does not contain that many distinct usable words.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why are there no spaces in my hashtags?</h3>
+      <p>A hashtag ends at the first space, so two-word ideas have to be joined into one compound tag to work.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I use these on Instagram, X and YouTube?</h3>
+      <p>Yes, the format is the same everywhere. Platform limits on how many tags are worth using differ, so adjust the count accordingly.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Do numbers work in hashtags?</h3>
+      <p>Yes, digits are kept, so a tag like 2026trends is valid.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Will it remove duplicates?</h3>
+      <p>Yes. Each tag appears once even if the word occurs several times in your text.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>

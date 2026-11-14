@@ -177,7 +177,7 @@
     <nav aria-label="Breadcrumb">
       <ol class="uc-crumbs">
         <li><a href="/">Home</a></li>
-        <li><a href="/tools/">Tools</a></li>
+        <li><a href="/tools/?category=converters">Converters</a></li>
         <li aria-current="page">Unit Converter</li>
       </ol>
     </nav>
@@ -303,7 +303,44 @@
       Note: Results use standard conversion factors and may be rounded for readability.
       Gallons, pints and cups are US customary units unless labelled Imperial.
     </p>
-  </main>
+    <section class="mt-panel" style="margin-top:24px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Unit Converter</h2>
+    <div class="mt-prose">
+      <p>The Unit Converter is a general-purpose converter that covers length, weight, temperature, area, volume, speed, time and digital storage in one place. Pick a category, choose the two units and enter a value.</p>
+      <p>Every conversion goes through a base unit for its category, which keeps the factors consistent: length through the metre, mass through the kilogram, volume through the litre. Temperature is the exception, because its scales do not share a zero point, so it needs an offset as well as a factor.</p>
+      <p>For anything you do regularly, a dedicated converter is easier: it shows the unit list for that quantity and nothing else. Use this one when you need a single conversion across categories.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Which quantities does it cover?</h3>
+      <p>Length, weight, temperature, area, volume, speed, time and digital storage.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How does it convert between units?</h3>
+      <p>Each unit is defined against a base unit for its category, so any pair converts through that base.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is temperature handled differently?</h3>
+      <p>Because Celsius, Fahrenheit and Kelvin have different zero points. Converting needs an offset as well as a multiplier.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Are the factors exact?</h3>
+      <p>They use the standard definitions, such as 2.54 cm per inch. Display is rounded to your chosen precision.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I convert between categories?</h3>
+      <p>No. A length cannot be converted to a weight; each category is separate.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which converter should I use for a single quantity?</h3>
+      <p>The dedicated one, such as the Length or Weight Converter, which shows only relevant units.</p>
+    </div>
+  </section>
+
+</main>
 
   <div id="site-footer"></div>
 

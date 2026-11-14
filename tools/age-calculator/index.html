@@ -399,6 +399,97 @@
             line-height: 1.7;
         }
 
+        /* Related tools */
+
+        .age-related {
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .age-related h2 {
+            margin: 0 0 12px;
+            color: var(--color-text);
+            font-size: 22px;
+            line-height: 1.4;
+        }
+
+        .age-related > p {
+            max-width: 850px;
+            margin: 0 0 18px;
+            color: var(--color-text-secondary);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .age-related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .age-related-grid li {
+            margin: 0;
+        }
+
+        .age-related-card a {
+            display: block;
+            height: 100%;
+            padding: 16px 18px;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            background: var(--color-surface);
+            color: inherit;
+            text-decoration: none;
+            transition: border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .age-related-card a:hover,
+        .age-related-card a:focus-visible {
+            border-color: var(--color-primary);
+            box-shadow: var(--color-card-shadow);
+        }
+
+        .age-related-card strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--color-primary);
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .age-related-card span {
+            display: block;
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .age-related-more {
+            margin: 18px 0 0;
+            font-size: 14px;
+        }
+
+        .age-related-more a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .age-related-more a:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .age-related-card a {
+                transition: none;
+            }
+        }
+
         @media (max-width: 600px) {
             .age-page {
                 padding: 26px 14px 44px;
@@ -521,6 +612,13 @@
     <div id="site-header"></div>
 
     <main class="age-page">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+          <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+          <span style="margin:0 6px">/</span>
+          <a href="/tools/?category=calculators" style="color:var(--color-primary);text-decoration:none">Calculators</a>
+          <span style="margin:0 6px">/</span>
+          <span>Age Calculator</span>
+        </nav>
         <header class="age-hero">
             <h1>Age Calculator</h1>
             <p>
@@ -794,6 +892,53 @@
                 the rules applicable to the relevant organization
                 or jurisdiction.
             </p>
+
+            <section class="age-related" aria-labelledby="age-related-title">
+                <h2 id="age-related-title">Related calculators and tools</h2>
+
+                <p>
+                    Age is one date calculation among many. These MohakTools pages cover
+                    the date maths that usually sits around it, plus the health numbers
+                    people tend to work out at the same time.
+                </p>
+
+                <ul class="age-related-grid">
+                    <li class="age-related-card">
+                        <a href="/tools/date-add-subtract-calculator/">
+                            <strong>Date Add / Subtract Calculator</strong>
+                            <span>Add or subtract days, weeks, months or years from any calendar date.</span>
+                        </a>
+                    </li>
+                    <li class="age-related-card">
+                        <a href="/tools/pregnancy-due-date-calculator/">
+                            <strong>Pregnancy Due Date Calculator</strong>
+                            <span>Estimate a due date and track a pregnancy in weeks and days.</span>
+                        </a>
+                    </li>
+                    <li class="age-related-card">
+                        <a href="/tools/time-converter/">
+                            <strong>Time Converter</strong>
+                            <span>Convert between seconds, minutes, hours, days, weeks and years.</span>
+                        </a>
+                    </li>
+                    <li class="age-related-card">
+                        <a href="/tools/bmi-calculator/">
+                            <strong>BMI Calculator</strong>
+                            <span>Screen weight against height in metric or imperial units.</span>
+                        </a>
+                    </li>
+                    <li class="age-related-card">
+                        <a href="/tools/water-intake-calculator/">
+                            <strong>Water Intake Calculator</strong>
+                            <span>Estimate a daily water target from body weight and activity level.</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="age-related-more">
+                    <a href="/tools/">Browse every MohakTools calculator and converter</a>
+                </p>
+            </section>
         </article>
     </main>
 

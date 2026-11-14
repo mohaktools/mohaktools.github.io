@@ -403,6 +403,97 @@
         overflow-wrap: anywhere;
     }
 
+    /* Related tools */
+
+    .scientific-related {
+        margin-top: 36px;
+        padding-top: 24px;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .scientific-related h2 {
+        margin: 0 0 12px;
+        color: var(--color-text);
+        font-size: 22px;
+        line-height: 1.4;
+    }
+
+    .scientific-related > p {
+        max-width: 850px;
+        margin: 0 0 18px;
+        color: var(--color-text-secondary);
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .scientific-related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .scientific-related-grid li {
+        margin: 0;
+    }
+
+    .scientific-related-card a {
+        display: block;
+        height: 100%;
+        padding: 16px 18px;
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        background: var(--color-surface);
+        color: inherit;
+        text-decoration: none;
+        transition: border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .scientific-related-card a:hover,
+    .scientific-related-card a:focus-visible {
+        border-color: var(--color-primary);
+        box-shadow: var(--color-card-shadow);
+    }
+
+    .scientific-related-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--color-primary);
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.5;
+    }
+
+    .scientific-related-card span {
+        display: block;
+        color: var(--color-text-secondary);
+        font-size: 13px;
+        line-height: 1.65;
+    }
+
+    .scientific-related-more {
+        margin: 18px 0 0;
+        font-size: 14px;
+    }
+
+    .scientific-related-more a {
+        color: var(--color-primary);
+        text-decoration: none;
+    }
+
+    .scientific-related-more a:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .scientific-related-card a {
+            transition: none;
+        }
+    }
+
     /* Tablet */
     @media (max-width: 800px) {
         .scientific-page {
@@ -630,7 +721,7 @@
         <nav class="scientific-breadcrumb" aria-label="Breadcrumb">
             <a href="/">Home</a>
             <span aria-hidden="true">/</span>
-            <a href="/#tools">Tools</a>
+            <a href="/tools/?category=calculators">Calculators</a>
             <span aria-hidden="true">/</span>
             <span aria-current="page">Scientific Calculator</span>
         </nav>
@@ -852,7 +943,82 @@
             <h3>Can I use my keyboard?</h3>
             <p>
                 Yes. Enter numbers and supported operators using your keyboard.
+
+            <h3>What is the difference between log and ln?</h3>
+            <p>
+                log is the base-10 logarithm, so log(1000) is 3. ln is the natural
+                logarithm, base e, which is what calculus and most scientific formulas
+                use. They differ by a constant factor, so mixing them up gives an
+                answer that looks plausible but is wrong.
+            </p>
+
+            <h3>What does the Ans key do?</h3>
+            <p>
+                Ans inserts the result of your previous calculation, so you can chain
+                steps without retyping a long number. It is the calculator equivalent
+                of the answer you would write at the top of the next line.
+            </p>
+
+            <h3>Can I use the constants pi and e?</h3>
+            <p>
+                Yes. Both keys insert their value into the current expression, so
+                something like pi/2 can be entered directly and evaluated in radian
+                mode.
+            </p>
                 Press Enter to calculate, Backspace to delete, and Escape to clear.
+            </p>
+        </section>
+
+        <section class="scientific-related" aria-labelledby="scientific-related-title">
+            <h2 id="scientific-related-title">Related calculators</h2>
+
+            <p>
+                The scientific calculator handles one expression at a time. These
+                MohakTools pages cover the calculations students, teachers and
+                professionals most often reach for next.
+            </p>
+
+            <ul class="scientific-related-grid">
+                <li class="scientific-related-card">
+                    <a href="/tools/calculator/">
+                        <strong>Basic Calculator</strong>
+                        <span>Everyday addition, subtraction, multiplication and division with keyboard support.</span>
+                    </a>
+                </li>
+                <li class="scientific-related-card">
+                    <a href="/tools/fraction-calculator/">
+                        <strong>Fraction Calculator</strong>
+                        <span>Add, subtract, multiply and divide fractions and simplify the answer.</span>
+                    </a>
+                </li>
+                <li class="scientific-related-card">
+                    <a href="/tools/average-calculator/">
+                        <strong>Average Calculator</strong>
+                        <span>Mean, median, mode, sum, count and range for a list of numbers.</span>
+                    </a>
+                </li>
+                <li class="scientific-related-card">
+                    <a href="/tools/ratio-calculator/">
+                        <strong>Ratio Calculator</strong>
+                        <span>Simplify a ratio or compare two ratios without doing the division by hand.</span>
+                    </a>
+                </li>
+                <li class="scientific-related-card">
+                    <a href="/tools/compound-interest-calculator/">
+                        <strong>Compound Interest Calculator</strong>
+                        <span>See how a lump sum grows with compound interest over a chosen tenure.</span>
+                    </a>
+                </li>
+                <li class="scientific-related-card">
+                    <a href="/tools/gpa-calculator/">
+                        <strong>GPA Calculator</strong>
+                        <span>Turn course grades and credit hours into a 10-point and 4-point GPA.</span>
+                    </a>
+                </li>
+            </ul>
+
+            <p class="scientific-related-more">
+                <a href="/tools/">Browse every MohakTools calculator and converter</a>
             </p>
         </section>
     </main>

@@ -127,6 +127,17 @@
 .time-seo h2 { margin:0 0 12px; color:var(--color-text); font-size:22px; }
 .time-seo h3 { margin:22px 0 8px; color:var(--color-text); font-size:17px; }
 .time-seo p { max-width:850px; color:var(--color-text-secondary); font-size:14px; line-height:1.85; }
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:800px) { .time-tool-page { width:min(640px,calc(100% - 28px)); padding-top:22px; padding-bottom:44px; } .time-tool-layout { grid-template-columns:minmax(0,1fr); gap:16px; } .time-tool-main,.time-info { padding:16px; } .time-intro { margin-bottom:20px; } }
 @media(max-width:520px) { .time-tool-page { width:calc(100% - 22px); padding-top:18px; padding-bottom:36px; } .time-breadcrumb { margin-bottom:16px; font-size:12px; } .time-intro h1 { font-size:clamp(25px,7vw,31px); letter-spacing:-.4px; } .time-intro p { font-size:14px; line-height:1.7; } .time-tool-main,.time-info,.time-card { padding:13px; border-radius:12px; } .time-tool-layout { gap:14px; } .duration-fields { gap:8px; } .field input,.field select { padding:9px 8px; } .world-clock-grid { grid-template-columns:minmax(0,1fr); } .world-clock-card { padding:15px; } .calendar-grid { gap:3px; } .calendar-day { min-height:38px; font-size:12px; } .calendar-weekday { font-size:11px; } .mode-tabs { gap:4px; } .mode-button { padding:8px 4px; font-size:11px; } }
 @media(max-width:360px) { .time-tool-page { width:calc(100% - 16px); } .duration-fields { grid-template-columns:minmax(0,1fr); } .large-time { font-size:30px; } .calendar-toolbar { grid-template-columns:38px minmax(0,1fr) 38px; gap:5px; } .calendar-day { min-height:34px; } }
@@ -142,7 +153,7 @@
     <main class="time-tool-page">
         <nav class="time-breadcrumb" aria-label="Breadcrumb">
             <a href="/">Home</a><span aria-hidden="true">/</span>
-            <a href="/tools/">Tools</a><span aria-hidden="true">/</span>
+            <a href="/tools/?category=time-tools">Time &amp; Productivity</a><span aria-hidden="true">/</span>
             <span aria-current="page">Pomodoro Timer</span>
         </nav>
 
@@ -194,7 +205,44 @@
             <h3>How to use this tool</h3>
             <p>Open the tool, choose the available settings, and use the on-screen controls to start or update it. Results and time displays update in the page. For time-sensitive tasks, keep the page open and check your device's clock and browser settings.</p>
         </section>
-    </main>
+      <section class="mt-panel" style="margin-top:24px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Pomodoro Timer</h2>
+    <div class="mt-prose">
+      <p>The Pomodoro Timer runs the focus-and-break cycle behind the Pomodoro Technique: a block of concentrated work, a short break, and a longer break after several rounds.</p>
+      <p>The classic settings are 25 minutes of focus and a 5-minute break, with a longer break of 15 to 30 minutes after four rounds. The numbers are not magic; the method works because a fixed end point makes starting easier and a scheduled break prevents the fatigue that builds over an uninterrupted stretch.</p>
+      <p>Adjust the durations to what you actually sustain. Some people do better with 50 minutes and 10, and the technique still works. What matters is that the focus block is free of interruption and the break is genuinely taken.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is the Pomodoro Technique?</h3>
+      <p>Working in fixed focus blocks separated by short breaks, with a longer break after several rounds.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What are the standard durations?</h3>
+      <p>25 minutes of focus, a 5-minute short break, and a 15 to 30 minute long break after four rounds.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I change the timings?</h3>
+      <p>Yes. Focus, short break and long break are all configurable.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why 25 minutes?</h3>
+      <p>It is short enough to start without resistance and long enough to make progress. It is a convention, not a rule.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it track how many rounds I complete?</h3>
+      <p>The timer runs the cycle. Keep your own count if you want a daily total.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Will it keep running in a background tab?</h3>
+      <p>Browsers throttle background tabs, so keep the page visible for accurate timing.</p>
+    </div>
+  </section>
+
+</main>
 
     <div id="site-footer"></div>
 

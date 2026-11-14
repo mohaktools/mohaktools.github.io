@@ -8,6 +8,8 @@
 <meta name="description" content="Convert Pascal, bar, PSI, atm and other pressure units.">
 <meta name="keywords" content="pressure converter, PSI, Pascal, bar">
 <link rel="canonical" href="https://mohaktools.com/tools/pressure-converter/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Pressure Converter | MohakTools">
 <meta property="og:description" content="Convert Pascal, bar, PSI, atm and other pressure units.">
 <meta property="og:url" content="https://mohaktools.com/tools/pressure-converter/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -75,6 +92,43 @@
 <div class="mt-stat-grid"><div class="mt-stat" style="grid-column:1/-1"><span>Result</span><strong id="result" style="font-size:26px">—</strong></div></div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Pressure Converter</h2>
+    <div class="mt-prose">
+      <p>The Pressure Converter translates between pascals, kilopascals, megapascals, bar, millibar, atmospheres, PSI, torr and kilograms-force per square centimetre. Enter a value and choose the units on each side.</p>
+      <p>The pascal is the SI unit, one newton per square metre, which is a very small amount: atmospheric pressure is about 101,325 of them. That is why practical measures are scaled up. One bar is 100,000 pascals, one atmosphere is 101,325, and one PSI, the unit on every tyre inflator in India, is about 6,895 pascals.</p>
+      <p>The unit you meet depends on the trade. Tyre pressure is PSI, weather reports use hectopascals or millibar, gas cylinders and compressors quote kgf/cm², plumbing and hydraulics use bar, and engineering drawings often specify MPa. Torr is another name for a millimetre of mercury, still used in vacuum work.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How many PSI is one bar?</h3>
+      <p>About 14.5 PSI. That is why a 2 bar tyre is roughly 29 PSI.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is standard atmospheric pressure?</h3>
+      <p>101,325 pascals, or 1 atm, or 1.013 bar, or 14.696 PSI.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why do tyres use PSI in India?</h3>
+      <p>Inflators and owner's manuals are marked in PSI, though some gauges also show bar or kgf/cm².</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is kgf/cm²?</h3>
+      <p>Kilogram-force per square centimetre, about 98,066 pascals. It appears on compressor and cylinder ratings.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is torr the same as mmHg?</h3>
+      <p>Effectively yes. One torr is one millimetre of mercury for practical purposes.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which unit should I use in engineering?</h3>
+      <p>MPa or bar for hydraulics and pneumatics, kPa for HVAC and weather, depending on the local standard.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Converters</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/unit-converter/" class="mt-related-chip">Unit Converter</a><a href="/tools/length-converter/" class="mt-related-chip">Length Converter</a><a href="/tools/weight-converter/" class="mt-related-chip">Weight Converter</a></div>
@@ -92,7 +146,7 @@ const UNITS={"Pa":1.0,"kPa":1000.0,"MPa":1000000.0,"bar":100000.0,"mbar":100.0,"
 document.getElementById("calc").onclick=()=>{
   const v=+document.getElementById("f0").value,f=document.getElementById("f1").value,t=document.getElementById("f2").value;
   if(isNaN(v)){document.getElementById("mt-status").textContent="Enter a number.";return;}
-  const res=v/UNITS[f]*UNITS[t];
+  const res=v*UNITS[f]/UNITS[t];
   const units=document.getElementById("f2").options[document.getElementById("f2").selectedIndex].text.split("(").pop().replace(")","").trim();
   document.getElementById("result").textContent=res.toLocaleString(undefined,{maximumFractionDigits:8})+" "+t;
   document.getElementById("mt-status").textContent="";

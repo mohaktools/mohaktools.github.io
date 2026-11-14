@@ -8,6 +8,8 @@
 <meta name="description" content="Compute overtime pay based on hourly rate and hours worked.">
 <meta name="keywords" content="overtime calculator, OT pay, extra hours">
 <link rel="canonical" href="https://mohaktools.com/tools/overtime-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Overtime Calculator | MohakTools">
 <meta property="og:description" content="Compute overtime pay based on hourly rate and hours worked.">
 <meta property="og:url" content="https://mohaktools.com/tools/overtime-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,25 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+.mt-ratio-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:end}
+.mt-ratio-grid .mt-colon{padding-bottom:12px;font-size:20px;font-weight:700;color:var(--color-text)}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-ratio-grid{gap:6px}
+.mt-ratio-grid label{font-size:12px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -82,6 +103,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Overtime Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The Overtime Calculator splits a day's hours into regular time and overtime, then prices both. Hours up to your regular daily limit are paid at the normal hourly rate; everything beyond it is paid at the rate multiplied by the overtime factor you choose.
+      </p>
+      <p>
+        The multiplier is the part that varies. Time and a half is the common commercial figure, but India's Factories Act requires twice the ordinary rate of wages for workers who put in more than nine hours in a day or forty-eight hours in a week, so factory staff should select 2x. A quarter-time uplift is occasionally used for shift or holiday arrangements.
+      </p>
+      <p>
+        This is a per-day calculation, so it does not track a weekly total. If your overtime is judged weekly rather than daily, add the week's hours first and compare against your weekly limit instead of using this page. Overtime pay is fully taxable as part of salary, and it also counts towards provident fund and gratuity calculations at most employers.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How is overtime pay calculated?</h3>
+      <p>Hours up to the regular daily limit are paid at the hourly rate. Hours beyond it are paid at the hourly rate multiplied by the overtime factor, and the two are added together.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which multiplier should I use?</h3>
+      <p>1.5x is the usual commercial figure. Factory workers covered by the Factories Act are entitled to twice the ordinary rate, so choose 2x if that applies to you.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is overtime pay taxable?</h3>
+      <p>Yes. It is part of salary income and taxed at your slab rate. It also usually counts towards provident fund and gratuity.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it handle weekly overtime?</h3>
+      <p>No, this page works on a single day. For weekly overtime, add the week's hours and compare them with your weekly limit, then price the excess separately.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What should I enter as regular hours?</h3>
+      <p>Your normal shift length, usually 8 hours. The Factories Act sets 9 hours a day and 48 hours a week as the thresholds for overtime.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Are there legal limits on overtime?</h3>
+      <p>Yes. Labour law caps how much overtime can be worked, so a large figure here does not mean it is lawful to work it. Check your state's rules and your contract.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Time & Productivity</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/stopwatch/" class="mt-related-chip">Stopwatch</a><a href="/tools/countdown-timer/" class="mt-related-chip">Countdown Timer</a><a href="/tools/world-clock/" class="mt-related-chip">World Clock</a></div>
@@ -95,20 +159,66 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-const fmt=n=>"₹"+Number(n.toFixed(2)).toLocaleString("en-IN");
-document.getElementById("calc").onclick=()=>{
-  const rate=+document.getElementById("f0").value,reg=+document.getElementById("f1").value,
-        worked=+document.getElementById("f2").value,mult=+document.getElementById("f3").value;
-  if(!rate||!reg||!worked){document.getElementById("mt-status").textContent="Fill all fields.";return;}
-  const regH=Math.min(worked,reg),otH=Math.max(0,worked-reg);
-  const regPay=regH*rate,otPay=otH*rate*mult;
-  document.getElementById("reg").textContent=fmt(regPay);
-  document.getElementById("ot").textContent=fmt(otPay);
-  document.getElementById("tot").textContent=fmt(regPay+otPay);
-  document.getElementById("oth").textContent=otH.toFixed(2)+" hrs";
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const fmt = n => "\u20b9" + Number(n).toLocaleString("en-IN", {
+  minimumFractionDigits: 2, maximumFractionDigits: 2
+});
+const OUT = ["reg", "ot", "tot", "oth"];
+const clearOut = () => OUT.forEach(id => { $(id).textContent = "\u2014"; });
+
+$("calc").onclick = () => {
+  const rRaw = $("f0").value, hRaw = $("f1").value, wRaw = $("f2").value;
+  const raw = [rRaw, hRaw, wRaw];
+
+  if (raw.some(v => v.trim() === "") || raw.some(v => !Number.isFinite(+v))) {
+    clearOut();
+    $("mt-status").textContent = "Fill all three fields with numbers.";
+    return;
+  }
+
+  const rate = +rRaw, regularHours = +hRaw, worked = +wRaw;
+  const multiplier = +$("f3").value;
+
+  if (rate < 0 || regularHours < 0 || worked < 0) {
+    clearOut();
+    $("mt-status").textContent = "Values cannot be negative.";
+    return;
+  }
+
+  if (rate === 0) {
+    clearOut();
+    $("mt-status").textContent = "Enter your hourly rate.";
+    return;
+  }
+
+  if (regularHours === 0) {
+    clearOut();
+    $("mt-status").textContent = "Regular hours per day must be above zero.";
+    return;
+  }
+
+  const regularPaid = Math.min(worked, regularHours);
+  const overtimeHours = Math.max(0, worked - regularHours);
+  const regularPay = regularPaid * rate;
+  const overtimePay = overtimeHours * rate * multiplier;
+
+  $("reg").textContent = fmt(regularPay);
+  $("ot").textContent = fmt(overtimePay);
+  $("tot").textContent = fmt(regularPay + overtimePay);
+  $("oth").textContent = overtimeHours.toFixed(2) + " hrs";
+  $("mt-status").textContent = overtimeHours === 0
+    ? "No overtime: hours worked did not exceed the regular day."
+    : "";
 };
-document.getElementById("reset").onclick=()=>["f0","f2"].forEach(id=>document.getElementById(id).value="");
+
+$("reset").onclick = () => {
+  $("f0").value = "";
+  $("f1").value = "8";
+  $("f2").value = "";
+  $("f3").value = "1.5";
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

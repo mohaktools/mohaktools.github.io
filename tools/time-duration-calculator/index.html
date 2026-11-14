@@ -509,7 +509,7 @@
     <nav class="tdc-breadcrumbs" aria-label="Breadcrumb">
       <a href="/">Home</a>
       <span aria-hidden="true">/</span>
-      <a href="/tools/">Tools</a>
+      <a href="/tools/?category=calculators">Calculators</a>
       <span aria-hidden="true">/</span>
       <span aria-current="page">Time Duration Calculator</span>
     </nav>
@@ -793,7 +793,16 @@
         </div>
       </section>
     </div>
-  </main>
+    <section class="mt-panel" style="margin-top:24px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Time Duration Calculator</h2>
+    <div class="mt-prose">
+      <p>The Time Duration Calculator measures the interval between two clock times and returns it in hours and minutes, with a decimal form for timesheets and billing.</p>
+      <p>It handles the awkward case of a period that crosses midnight: a shift from 22:00 to 06:00 is eight hours, not minus sixteen. The calculation rolls the end time into the next day when it is earlier than the start.</p>
+      <p>For billing, the decimal form is the useful one. Eight hours and thirty minutes is 8.5 hours, and multiplying that by an hourly rate is what an invoice needs.</p>
+    </div>
+  </section>
+
+</main>
 
   <!-- Shared Footer -->
   <div id="site-footer"></div>

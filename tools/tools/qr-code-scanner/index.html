@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+<title>QR Code Scanner | MohakTools</title>
+<meta name="description" content="Scan QR codes using your device camera or an uploaded image.">
+<meta name="keywords" content="QR code scanner, scan QR, decode QR">
+<link rel="canonical" href="https://mohaktools.com/tools/qr-code-scanner/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
+<meta property="og:title" content="QR Code Scanner | MohakTools">
+<meta property="og:description" content="Scan QR codes using your device camera or an uploaded image.">
+<meta property="og:url" content="https://mohaktools.com/tools/qr-code-scanner/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="QR Code Scanner | MohakTools">
+<meta name="twitter:description" content="Scan QR codes using your device camera or an uploaded image.">
+<script src="/assets/js/tools-registry.js" defer></script>
+<style>
+.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
+.mt-field{margin-bottom:14px}
+.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
+.mt-field input[type="text"],.mt-field input[type="number"],.mt-field input[type="email"],.mt-field input[type="date"],.mt-field input[type="time"],.mt-field input[type="datetime-local"],.mt-field input[type="color"],.mt-field input[type="range"],.mt-field input[type="file"],.mt-field select,.mt-field textarea{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s;box-sizing:border-box}
+.mt-field input:focus,.mt-field select:focus,.mt-field textarea:focus{border-color:var(--color-primary)}
+.mt-field textarea{resize:vertical;min-height:120px;font-family:inherit}
+.mt-output{display:block;width:100%;min-height:160px;padding:12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:13px/1.6 inherit;resize:vertical;box-sizing:border-box}
+.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
+.mt-button:active{transform:scale(.97)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
+.mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
+.mt-stat strong{font-size:20px;font-weight:700;color:var(--color-text)}
+.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
+.mt-help{font-size:12px;color:var(--color-text-secondary);margin-top:8px;line-height:1.5}
+.mt-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
+.mt-option input{accent-color:var(--color-primary)}
+.mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
+@media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
+</style>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+    <span style="margin:0 6px">/</span>
+    <a href="/tools/?category=everyday-utilities" style="color:var(--color-primary);text-decoration:none">Everyday Utilities</a>
+    <span style="margin:0 6px">/</span>
+    <span>QR Code Scanner</span>
+  </nav>
+
+  <header style="margin-bottom:24px">
+    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">QR Code Scanner</h1>
+    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Scan QR codes using your device camera or an uploaded image.</p>
+  </header>
+
+  <div class="mt-tool-grid">
+    
+<section class="mt-panel"><h2 id="tool-input-heading">Scan QR Code</h2>
+<div class="mt-field"><label for="f0">Upload QR Code Image</label><input type="file" id="f0" accept="image/*"></div>
+<div class="mt-button-row"><button class="mt-button mt-primary" id="calc">Decode QR</button><button class="mt-button mt-secondary" id="reset">Clear</button></div>
+<p class="mt-status" id="mt-status" role="status" aria-live="polite"></p></section>
+<section class="mt-panel"><h2>QR Content</h2>
+<img id="qr-preview" style="max-width:200px;border-radius:10px;display:none;margin-bottom:10px" alt="QR preview">
+<div class="mt-stat-grid"><div class="mt-stat" style="grid-column:1/-1"><span>Decoded Text</span><strong id="result" style="font-size:16px;word-break:break-all">—</strong></div></div>
+<p class="mt-help">Uses the jsQR library loaded from CDN. Image stays in your browser.</p></section>
+  </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the QR Code Scanner</h2>
+    <div class="mt-prose">
+      <p>The QR Code Scanner reads a QR code from an uploaded image and shows the text inside it, whether that is a link, a message, contact details or Wi-Fi credentials.</p>
+      <p>Decoding is done by jsQR, a JavaScript library that locates the three corner squares of the code, corrects for perspective and reads the data. That is why a photo taken at an angle usually still works: the library straightens it first.</p>
+      <p>A QR code is just text in a square. That is worth remembering before scanning an unknown one: the code cannot install anything, but the link inside it can lead anywhere. Read the decoded text here before you open it.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How does it read a QR code?</h3>
+      <p>It locates the position markers, corrects for angle, then decodes the pattern into text.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it work with a photo at an angle?</h3>
+      <p>Usually yes, up to a point. Straight-on, well-lit images decode most reliably.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I use my camera?</h3>
+      <p>This page reads an uploaded image. For live camera scanning, use your phone's camera app.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is the image uploaded?</h3>
+      <p>No. Decoding happens in the browser.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does my code not decode?</h3>
+      <p>Blur, glare, low contrast or too little of the code in frame. A larger, sharper image usually fixes it.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is it safe to open the decoded link?</h3>
+      <p>Only if you trust the source. The code itself is harmless; the destination may not be.</p>
+    </div>
+  </section>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Everyday Utilities</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/password-generator/" class="mt-related-chip">Password Generator</a><a href="/tools/qr-code-generator/" class="mt-related-chip">QR Code Generator</a><a href="/tools/random-number-generator/" class="mt-related-chip">Random Number Generator</a></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+  <script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+
+const JSQR_SRC="https://cdnjs.cloudflare.com/ajax/libs/jsqr/1.4.0/jsQR.min.js";
+function loadLib(src){return new Promise((res,rej)=>{if(window.jsQR)return res();const s=document.createElement("script");s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
+document.getElementById("calc").onclick=async()=>{
+  const file=document.getElementById("f0").files[0];
+  if(!file){document.getElementById("mt-status").textContent="Select a QR code image.";return;}
+  document.getElementById("mt-status").textContent="Loading decoder…";
+  await loadLib(JSQR_SRC);
+  const img=new Image();
+  img.onload=()=>{
+    const canvas=document.createElement("canvas");canvas.width=img.width;canvas.height=img.height;
+    const ctx=canvas.getContext("2d");ctx.drawImage(img,0,0);
+    const data=ctx.getImageData(0,0,img.width,img.height);
+    const code=window.jsQR(data.data,data.width,data.height);
+    if(code){document.getElementById("result").textContent=code.data;document.getElementById("mt-status").textContent="QR decoded successfully.";}
+    else{document.getElementById("result").textContent="—";document.getElementById("mt-status").textContent="No QR code detected in this image.";}
+    document.getElementById("qr-preview").src=URL.createObjectURL(file);document.getElementById("qr-preview").style.display="block";
+  };
+  img.src=URL.createObjectURL(file);
+};
+document.getElementById("reset").onclick=()=>{document.getElementById("f0").value="";document.getElementById("result").textContent="—";document.getElementById("qr-preview").style.display="none";};
+</script>
+</body>
+</html>

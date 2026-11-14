@@ -8,6 +8,8 @@
 <meta name="description" content="Convert between world currencies using live exchange rates.">
 <meta name="keywords" content="currency converter, exchange rate, forex">
 <link rel="canonical" href="https://mohaktools.com/tools/currency-converter/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Currency Converter | MohakTools">
 <meta property="og:description" content="Convert between world currencies using live exchange rates.">
 <meta property="og:url" content="https://mohaktools.com/tools/currency-converter/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -82,6 +99,43 @@
 <p class="mt-help">Rates via open.er-api.com — may be up to 24h old. For informational use only.</p></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Currency Converter</h2>
+    <div class="mt-prose">
+      <p>The Currency Converter changes an amount from one currency to another using exchange rates fetched live from a public rates API. Enter the amount, pick the source and target currency, and it shows both the converted figure and the rate it used.</p>
+      <p>The rate shown is the mid-market rate, the midpoint between buy and sell prices on the wholesale market. That is the honest reference number, but it is not what you will get. Banks, cards and exchange counters add a spread, typically one to three per cent, so the amount that actually lands in your account is lower.</p>
+      <p>If the rates cannot be fetched, the tool falls back to a small built-in table of approximate rates so it still gives a rough answer, and says so on the page. Those offline figures are fixed at the time the page was written and drift as markets move, so treat them as indicative only.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Where do the exchange rates come from?</h3>
+      <p>A public exchange-rate API is queried when you convert. The page shows the date the rates were last updated.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How often are the rates updated?</h3>
+      <p>Once a day on the free tier. Intraday movement is not reflected.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does my bank give a worse rate?</h3>
+      <p>Banks and card networks add a margin of roughly one to three per cent over the mid-market rate, and some charge a separate fee.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What happens if I am offline?</h3>
+      <p>The tool falls back to a small set of approximate built-in rates and tells you the figure is an estimate.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it work for every currency?</h3>
+      <p>The live API covers most world currencies. The offline fallback covers only ten.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is this financial advice?</h3>
+      <p>No. It is a reference conversion. For anything involving a transfer or a trade, use the rate your provider quotes.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Converters</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/unit-converter/" class="mt-related-chip">Unit Converter</a><a href="/tools/length-converter/" class="mt-related-chip">Length Converter</a><a href="/tools/weight-converter/" class="mt-related-chip">Weight Converter</a></div>
@@ -95,22 +149,67 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-let rates={};let lastBase="";
-async function fetchRates(base){
-  if(lastBase===base&&Object.keys(rates).length)return;
-  document.getElementById("mt-status").textContent="Fetching rates…";
-  try{const r=await fetch("https://open.er-api.com/v6/latest/"+base);const d=await r.json();if(d.result==="success"){rates=d.rates;lastBase=base;document.getElementById("upd").textContent=new Date(d.time_last_update_utc).toLocaleDateString();document.getElementById("mt-status").textContent="";}else throw new Error(d["error-type"]);}
-  catch(e){document.getElementById("mt-status").textContent="Rate fetch failed. Showing approximate offline rates.";rates={USD:1,EUR:.92,GBP:.79,INR:83.5,JPY:149,CAD:1.36,AUD:1.52,SGD:1.34,AED:3.67,CNY:7.24};lastBase="USD";}
+const $ = id => document.getElementById(id);
+
+let rates = {};
+let lastBase = "";
+
+async function fetchRates(base) {
+  if (lastBase === base && Object.keys(rates).length) return;
+  $("mt-status").textContent = "Fetching rates\u2026";
+  try {
+    const r = await fetch("https://open.er-api.com/v6/latest/" + base);
+    const d = await r.json();
+    if (d.result === "success") {
+      rates = d.rates;
+      lastBase = base;
+      $("upd").textContent = new Date(d.time_last_update_utc).toLocaleDateString();
+      $("mt-status").textContent = "";
+    } else {
+      throw new Error(d["error-type"]);
+    }
+  } catch (e) {
+    $("mt-status").textContent = "Rate fetch failed. Showing approximate offline rates.";
+    rates = { USD: 1, EUR: 0.92, GBP: 0.79, INR: 83.5, JPY: 149,
+              CAD: 1.36, AUD: 1.52, SGD: 1.34, AED: 3.67, CNY: 7.24 };
+    lastBase = "USD";
+  }
 }
-document.getElementById("calc").onclick=async()=>{
-  const amt=+document.getElementById("f0").value,from=document.getElementById("f1").value,to=document.getElementById("f2").value;
-  if(!amt){document.getElementById("mt-status").textContent="Enter an amount.";return;}
+
+$("calc").onclick = async () => {
+  const aRaw = $("f0").value;
+  if (aRaw.trim() === "" || !Number.isFinite(+aRaw)) {
+    $("mt-status").textContent = "Enter an amount.";
+    return;
+  }
+
+  const amt = +aRaw;
+  const from = $("f1").value, to = $("f2").value;
+
   await fetchRates(from);
-  const rate=rates[to];const result=amt*rate;
-  document.getElementById("result").textContent=result.toLocaleString(undefined,{maximumFractionDigits:4})+" "+to;
-  document.getElementById("rate").textContent="1 "+from+" = "+rate.toFixed(6)+" "+to;
+
+  // When the fallback table is in use it is USD-based, so cross-convert.
+  const rate = lastBase === from
+    ? rates[to]
+    : (rates[to] || 0) / (rates[from] || 1);
+
+  if (!Number.isFinite(rate) || rate <= 0) {
+    $("mt-status").textContent = "No rate available for that pair.";
+    return;
+  }
+
+  $("result").textContent = (amt * rate).toLocaleString(undefined, { maximumFractionDigits: 4 }) + " " + to;
+  $("rate").textContent = "1 " + from + " = " + rate.toFixed(6) + " " + to;
+  if (lastBase !== from) {
+    $("mt-status").textContent = "Approximate offline rates: cross-converted through USD.";
+  }
 };
-document.getElementById("swap").onclick=()=>{const f=document.getElementById("f1"),t=document.getElementById("f2");[f.value,t.value]=[t.value,f.value];lastBase="";};
+
+$("swap").onclick = () => {
+  const f = $("f1"), t = $("f2");
+  const tmp = f.value; f.value = t.value; t.value = tmp;
+  lastBase = "";
+};
 </script>
 </body>
 </html>

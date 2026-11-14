@@ -127,6 +127,17 @@
 .time-seo h2 { margin:0 0 12px; color:var(--color-text); font-size:22px; }
 .time-seo h3 { margin:22px 0 8px; color:var(--color-text); font-size:17px; }
 .time-seo p { max-width:850px; color:var(--color-text-secondary); font-size:14px; line-height:1.85; }
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:800px) { .time-tool-page { width:min(640px,calc(100% - 28px)); padding-top:22px; padding-bottom:44px; } .time-tool-layout { grid-template-columns:minmax(0,1fr); gap:16px; } .time-tool-main,.time-info { padding:16px; } .time-intro { margin-bottom:20px; } }
 @media(max-width:520px) { .time-tool-page { width:calc(100% - 22px); padding-top:18px; padding-bottom:36px; } .time-breadcrumb { margin-bottom:16px; font-size:12px; } .time-intro h1 { font-size:clamp(25px,7vw,31px); letter-spacing:-.4px; } .time-intro p { font-size:14px; line-height:1.7; } .time-tool-main,.time-info,.time-card { padding:13px; border-radius:12px; } .time-tool-layout { gap:14px; } .duration-fields { gap:8px; } .field input,.field select { padding:9px 8px; } .world-clock-grid { grid-template-columns:minmax(0,1fr); } .world-clock-card { padding:15px; } .calendar-grid { gap:3px; } .calendar-day { min-height:38px; font-size:12px; } .calendar-weekday { font-size:11px; } .mode-tabs { gap:4px; } .mode-button { padding:8px 4px; font-size:11px; } }
 @media(max-width:360px) { .time-tool-page { width:calc(100% - 16px); } .duration-fields { grid-template-columns:minmax(0,1fr); } .large-time { font-size:30px; } .calendar-toolbar { grid-template-columns:38px minmax(0,1fr) 38px; gap:5px; } .calendar-day { min-height:34px; } }
@@ -142,7 +153,7 @@
     <main class="time-tool-page">
         <nav class="time-breadcrumb" aria-label="Breadcrumb">
             <a href="/">Home</a><span aria-hidden="true">/</span>
-            <a href="/tools/">Tools</a><span aria-hidden="true">/</span>
+            <a href="/tools/?category=time-tools">Time &amp; Productivity</a><span aria-hidden="true">/</span>
             <span aria-current="page">Countdown Timer</span>
         </nav>
 
@@ -193,7 +204,44 @@
             <h3>How to use this tool</h3>
             <p>Open the tool, choose the available settings, and use the on-screen controls to start or update it. Results and time displays update in the page. For time-sensitive tasks, keep the page open and check your device's clock and browser settings.</p>
         </section>
-    </main>
+      <section class="mt-panel" style="margin-top:24px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Countdown Timer</h2>
+    <div class="mt-prose">
+      <p>The Countdown Timer counts down from a set number of hours, minutes and seconds and alerts you when it reaches zero. It is the straightforward timer for cooking, presentations, workouts or a focused stretch of work.</p>
+      <p>Set the duration once and start. The remaining time updates every second, and when it finishes the page shows a clear alert rather than silently stopping, which is the failure mode of most phone timers left face down.</p>
+      <p>Keep the tab visible. Browsers throttle timers in background tabs, so a countdown can drift or finish late if you switch away, and the alert may not appear until you return.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is the maximum duration?</h3>
+      <p>Hours, minutes and seconds are separate fields, so anything from a few seconds to several hours works.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Will it alert me if I switch tabs?</h3>
+      <p>The countdown keeps running but may be throttled, and the alert appears when you return. Keep the tab visible for a reliable alert.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I pause or reset it?</h3>
+      <p>The timer can be stopped and a new duration set at any point.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it make a sound?</h3>
+      <p>The alert is shown on the page. There is no separate audio cue, so keep the screen in view.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I set several timers at once?</h3>
+      <p>This page runs one countdown. For several at the same time, open another tab.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it work offline?</h3>
+      <p>Yes, once loaded.</p>
+    </div>
+  </section>
+
+</main>
 
     <div id="site-footer"></div>
 

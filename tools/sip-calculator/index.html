@@ -8,6 +8,8 @@
 <meta name="description" content="Estimate returns on your monthly SIP investments.">
 <meta name="keywords" content="SIP calculator, mutual fund, monthly investment">
 <link rel="canonical" href="https://mohaktools.com/tools/sip-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="SIP Calculator | MohakTools">
 <meta property="og:description" content="Estimate returns on your monthly SIP investments.">
 <meta property="og:url" content="https://mohaktools.com/tools/sip-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,25 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+.mt-ratio-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:end}
+.mt-ratio-grid .mt-colon{padding-bottom:12px;font-size:20px;font-weight:700;color:var(--color-text)}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-ratio-grid{gap:6px}
+.mt-ratio-grid label{font-size:12px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -79,6 +100,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the SIP Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The SIP Calculator projects what a monthly systematic investment plan could grow to. Enter the monthly amount, the annual return you expect and the number of years, and it returns the total you put in, the estimated returns and the maturity value.
+      </p>
+      <p>
+        The formula treats each instalment as invested at the start of its month, so it compounds for the full month: maturity equals the monthly amount, multiplied by ((1 + i)^n - 1) / i, multiplied by (1 + i), where i is the monthly rate and n the number of instalments. That extra (1 + i) is the difference between this and an ordinary annuity, and it is worth roughly one month's growth on the final value.
+      </p>
+      <p>
+        The return is an assumption, not a promise. Twelve per cent is a common long-run figure for Indian equity funds, but actual returns vary by year and by fund, and a bad decade is possible. The result also ignores expense ratios, exit loads and tax on gains, all of which reduce what you actually receive.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How is the SIP maturity value calculated?</h3>
+      <p>Maturity = monthly amount x ((1 + i)^n - 1) / i x (1 + i), where i is the monthly rate of return and n the number of monthly instalments.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is there a (1 + i) at the end?</h3>
+      <p>It assumes each instalment is invested at the start of the month and so earns a full month's return. Investing at month end would drop that factor.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What return should I assume?</h3>
+      <p>Twelve per cent is a common long-run assumption for Indian equity funds. Debt funds have historically been lower. Treat any figure as a scenario, not a forecast.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Are returns guaranteed?</h3>
+      <p>No. Mutual fund returns depend on the market and are not fixed. The calculator shows what a steady return would produce, which real markets never deliver evenly.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it account for expense ratio or exit load?</h3>
+      <p>No. Both reduce your actual return. A 1% expense ratio alone can take a noticeable bite out of a long-term corpus.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I model a yearly increase in my SIP?</h3>
+      <p>Not here. A step-up SIP needs each year's instalments calculated at a different amount. You can approximate by running the years separately and adding the results.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
@@ -92,18 +156,62 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-const fmt=n=>"₹"+Math.round(n).toLocaleString("en-IN");
-document.getElementById("calc").onclick=()=>{
-  const m=+document.getElementById("f0").value,r=+document.getElementById("f1").value/100/12,
-        n=+document.getElementById("f2").value*12;
-  if(!m||!r||!n){document.getElementById("mt-status").textContent="Please fill all fields.";return;}
-  const mat=m*((Math.pow(1+r,n)-1)/r)*(1+r);
-  document.getElementById("inv").textContent=fmt(m*n);
-  document.getElementById("ret").textContent=fmt(mat-m*n);
-  document.getElementById("mat").textContent=fmt(mat);
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const fmt = n => "\u20b9" + Math.round(n).toLocaleString("en-IN");
+const OUT = ["inv", "ret", "mat"];
+const clearOut = () => OUT.forEach(id => { $(id).textContent = "\u2014"; });
+
+$("calc").onclick = () => {
+  const mRaw = $("f0").value, rRaw = $("f1").value, yRaw = $("f2").value;
+  const raw = [mRaw, rRaw, yRaw];
+
+  if (raw.some(v => v.trim() === "") || raw.some(v => !Number.isFinite(+v))) {
+    clearOut();
+    $("mt-status").textContent = "Fill all three fields with numbers.";
+    return;
+  }
+
+  const monthly = +mRaw, annualRate = +rRaw, years = +yRaw;
+
+  if (monthly <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Monthly investment must be greater than zero.";
+    return;
+  }
+
+  if (annualRate < 0) {
+    clearOut();
+    $("mt-status").textContent = "Expected return cannot be negative.";
+    return;
+  }
+
+  if (years <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Investment period must be greater than zero.";
+    return;
+  }
+
+  const months = Math.round(years * 12);
+  const i = annualRate / 100 / 12;
+
+  // Annuity due: instalment at the start of each month.
+  const maturity = i === 0
+    ? monthly * months
+    : monthly * ((Math.pow(1 + i, months) - 1) / i) * (1 + i);
+
+  const invested = monthly * months;
+
+  $("inv").textContent = fmt(invested);
+  $("ret").textContent = fmt(maturity - invested);
+  $("mat").textContent = fmt(maturity);
+  $("mt-status").textContent = "";
 };
-document.getElementById("reset").onclick=()=>["f0","f1","f2"].forEach(id=>document.getElementById(id).value="");
+
+$("reset").onclick = () => {
+  ["f0", "f1", "f2"].forEach(id => { $(id).value = ""; });
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

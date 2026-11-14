@@ -8,6 +8,8 @@
 <meta name="description" content="Crop images to any size or aspect ratio in your browser.">
 <meta name="keywords" content="image cropper, crop photo, trim image">
 <link rel="canonical" href="https://mohaktools.com/tools/image-cropper/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Image Cropper | MohakTools">
 <meta property="og:description" content="Crop images to any size or aspect ratio in your browser.">
 <meta property="og:url" content="https://mohaktools.com/tools/image-cropper/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -79,6 +96,43 @@
 <img id="img-preview" style="max-width:100%;border-radius:10px;display:none" alt="Preview">
 <canvas id="crop-canvas" style="display:none"></canvas></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Image Cropper</h2>
+    <div class="mt-prose">
+      <p>The Image Cropper cuts an image to the area you want, right in the browser. Load a photo, set the crop box with x, y, width and height, and download the result.</p>
+      <p>Cropping changes the framing and the aspect ratio at the same time. Cutting a landscape photo to a square for a profile picture removes the sides; cutting to a portrait format removes the sides even more. Whatever falls outside the box is gone, so keep the original file.</p>
+      <p>Because the work happens on a canvas in your browser, the image never leaves your machine. That is worth knowing for photos you would not upload to a random website, such as identity documents.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Does cropping reduce quality?</h3>
+      <p>The kept area is re-encoded once, so a JPG loses a little sharpness. Cropping does not add pixels, it only removes them.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I crop to an exact aspect ratio?</h3>
+      <p>Yes, set width and height to the ratio you need, such as 1:1 for a square or 16:9 for a video thumbnail.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is my image uploaded?</h3>
+      <p>No. The crop runs on a canvas locally; nothing is sent to a server.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What formats can I export?</h3>
+      <p>PNG or JPG, depending on whether you need transparency.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I undo a crop?</h3>
+      <p>Only by reloading the original. Keep a copy before you start.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why did my crop come out blurry?</h3>
+      <p>Usually because the crop was small and then enlarged. Crop at the size you need, or start from a larger source image.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Everyday Utilities</h2>

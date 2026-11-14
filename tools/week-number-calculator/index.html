@@ -8,6 +8,8 @@
 <meta name="description" content="Find the ISO week number for any date of the year.">
 <meta name="keywords" content="week number, ISO week, calendar week">
 <link rel="canonical" href="https://mohaktools.com/tools/week-number-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Week Number Calculator | MohakTools">
 <meta property="og:description" content="Find the ISO week number for any date of the year.">
 <meta property="og:url" content="https://mohaktools.com/tools/week-number-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -77,6 +94,43 @@
 <div class="mt-stat"><span>Quarter</span><strong id="qtr">—</strong></div>
 </div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Week Number Calculator</h2>
+    <div class="mt-prose">
+      <p>The Week Number Calculator tells you which ISO week a date falls in, along with the day of the year, days remaining and the quarter.</p>
+      <p>ISO 8601 defines week 1 as the week containing the first Thursday of the year, and weeks start on Monday. That produces a quirk worth knowing: the last days of December can belong to week 1 of the following year, and the first days of January can belong to week 52 or 53 of the previous one.</p>
+      <p>This matters in business. Payroll, logistics and European calendars often run on ISO weeks, so a delivery scheduled for 'week 1' may be in December rather than January.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is an ISO week?</h3>
+      <p>A week running Monday to Sunday, numbered so that week 1 is the week containing the first Thursday of the year.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is 1 January sometimes in week 52?</h3>
+      <p>Because ISO weeks follow the Thursday rule, so the first days of January can still belong to the previous year's final week.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is the day of year?</h3>
+      <p>The count of days since 1 January, where 1 January is day 1.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why do some years have 53 weeks?</h3>
+      <p>A year has 53 ISO weeks when it starts on a Thursday, or is a leap year starting on a Wednesday.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it use Monday or Sunday as the first day?</h3>
+      <p>Monday, which is the ISO standard. US calendars often start the week on Sunday and number differently.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is the quarter?</h3>
+      <p>The year split into four three-month blocks, so January to March is Q1.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Time & Productivity</h2>

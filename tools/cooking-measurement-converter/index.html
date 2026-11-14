@@ -8,6 +8,8 @@
 <meta name="description" content="Convert cups, tablespoons, teaspoons and metric volumes for cooking.">
 <meta name="keywords" content="cooking converter, cups to ml, tablespoon converter">
 <link rel="canonical" href="https://mohaktools.com/tools/cooking-measurement-converter/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Cooking Measurement Converter | MohakTools">
 <meta property="og:description" content="Convert cups, tablespoons, teaspoons and metric volumes for cooking.">
 <meta property="og:url" content="https://mohaktools.com/tools/cooking-measurement-converter/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -75,6 +92,43 @@
 <div class="mt-stat-grid"><div class="mt-stat" style="grid-column:1/-1"><span>Result</span><strong id="result" style="font-size:26px">—</strong></div></div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Cooking Measurement Converter</h2>
+    <div class="mt-prose">
+      <p>The Cooking Measurement Converter changes volumes between the units recipes actually use: teaspoons, tablespoons, fluid ounces, cups, pints, quarts, gallons and millilitres or litres. Enter the amount and choose the two units.</p>
+      <p>The conversions follow the US customary definitions, where one tablespoon is three teaspoons, one fluid ounce is two tablespoons, one cup is eight fluid ounces or about 236.6 millilitres, and a US gallon is 3.785 litres. A UK or Australian recipe may use a different cup: the metric cup is 250 ml, and the old UK cup was slightly larger than the US one.</p>
+      <p>Volume is not weight. A cup of flour and a cup of sugar weigh very different amounts, so a recipe written in grams cannot be converted here. For baking, weighing in grams is more reliable than any cup measure, since how tightly the cup is packed changes the amount by a fifth or more.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Is a US cup the same as a metric cup?</h3>
+      <p>No. A US cup is about 236.6 ml, while the metric cup used in Australia, New Zealand and Canada is 250 ml. The difference matters in baking.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How many teaspoons are in a tablespoon?</h3>
+      <p>Three. A tablespoon is also half a fluid ounce, and there are sixteen tablespoons in a US cup.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I convert grams to cups?</h3>
+      <p>Not with this tool, because that depends on the ingredient's density. A cup of flour is about 120 g while a cup of sugar is about 200 g.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which fluid ounce is used here?</h3>
+      <p>The US fluid ounce, which is 29.57 ml. The imperial fluid ounce is slightly smaller at 28.41 ml.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does my recipe not match the conversion?</h3>
+      <p>Recipes vary by country and by era. Check whether the source uses US, metric or imperial measures before trusting a conversion.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Should I measure liquids by volume or weight?</h3>
+      <p>Volume is fine for liquids. For dry ingredients, especially flour, weighing is more consistent.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Converters</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/unit-converter/" class="mt-related-chip">Unit Converter</a><a href="/tools/length-converter/" class="mt-related-chip">Length Converter</a><a href="/tools/weight-converter/" class="mt-related-chip">Weight Converter</a></div>
@@ -92,7 +146,7 @@ const UNITS={"tsp":1.0,"tbsp":3.0,"floz":6.0,"cup":48.0,"pint":96.0,"quart":192.
 document.getElementById("calc").onclick=()=>{
   const v=+document.getElementById("f0").value,f=document.getElementById("f1").value,t=document.getElementById("f2").value;
   if(isNaN(v)){document.getElementById("mt-status").textContent="Enter a number.";return;}
-  const res=v/UNITS[f]*UNITS[t];
+  const res=v*UNITS[f]/UNITS[t];
   const units=document.getElementById("f2").options[document.getElementById("f2").selectedIndex].text.split("(").pop().replace(")","").trim();
   document.getElementById("result").textContent=res.toLocaleString(undefined,{maximumFractionDigits:8})+" "+t;
   document.getElementById("mt-status").textContent="";

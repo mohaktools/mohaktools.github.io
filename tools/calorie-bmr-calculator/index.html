@@ -8,6 +8,8 @@
 <meta name="description" content="Calculate BMR and daily calorie needs based on activity level.">
 <meta name="keywords" content="BMR calculator, TDEE, calorie needs, metabolism">
 <link rel="canonical" href="https://mohaktools.com/tools/calorie-bmr-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Calorie / BMR Calculator | MohakTools">
 <meta property="og:description" content="Calculate BMR and daily calorie needs based on activity level.">
 <meta property="og:url" content="https://mohaktools.com/tools/calorie-bmr-calculator/">
@@ -40,6 +42,13 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -83,6 +92,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Calorie / BMR Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The Calorie / BMR Calculator estimates two numbers. Basal Metabolic Rate is the energy your body spends at complete rest just staying alive: breathing, circulating blood, maintaining temperature. Total Daily Energy Expenditure scales that figure by how active you are, and it is the number that actually decides whether you gain, hold or lose weight.
+      </p>
+      <p>
+        The calculation uses the Mifflin-St Jeor equation, the formula most dietitians prefer because it is more accurate than the older Harris-Benedict equation for modern populations. It needs weight, height, age and sex, then multiplies the result by an activity factor: 1.2 for sedentary, 1.375 for light activity, 1.55 for moderate, 1.725 for active and 1.9 for a physically demanding job.
+      </p>
+      <p>
+        The weight-loss and weight-gain figures apply a 500 kcal deficit or surplus to your TDEE. That is the widely used rule of thumb for roughly half a kilogram a week in either direction, based on about 7,700 kcal per kilogram of body fat. Real change is slower and noisier than the arithmetic suggests, and eating below your BMR for long stretches is not advisable without medical supervision.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is the difference between BMR and TDEE?</h3>
+      <p>BMR is what you burn doing nothing at all. TDEE is BMR multiplied by an activity factor, so it reflects a real day including movement and exercise.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which formula does this use?</h3>
+      <p>Mifflin-St Jeor. For men it is 10 x weight + 6.25 x height - 5 x age + 5; for women the constant is -161 instead of +5, with weight in kilograms and height in centimetres.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does the activity level change the result so much?</h3>
+      <p>The multipliers run from 1.2 to 1.9, so the highest is about 58% above the lowest. Being honest about your typical week matters more than any other input.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why 500 calories for loss and gain?</h3>
+      <p>A 500 kcal daily gap works out to about 3,500 kcal a week, roughly half a kilogram of body fat. It is a starting point to adjust from, not a guarantee.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Should I eat below my BMR?</h3>
+      <p>Generally no, not without medical supervision. Very low intake tends to cost muscle and is hard to sustain; aim below TDEE but around or above BMR.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is this accurate for everyone?</h3>
+      <p>No. Pregnancy, competitive athletics, very high muscle mass, thyroid conditions and some medications all shift real energy needs away from the formula.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
@@ -96,20 +148,45 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-document.getElementById("calc").onclick=()=>{
-  const age=+document.getElementById("f0").value,g=document.getElementById("f1").value,
-        w=+document.getElementById("f2").value,h=+document.getElementById("f3").value,
-        act=+document.getElementById("f4").value;
-  if(!age||!w||!h){document.getElementById("mt-status").textContent="Fill all fields.";return;}
-  const bmr=g==="m"?10*w+6.25*h-5*age+5:10*w+6.25*h-5*age-161;
-  const tdee=bmr*act;
-  document.getElementById("bmr").textContent=Math.round(bmr)+" kcal";
-  document.getElementById("tdee").textContent=Math.round(tdee)+" kcal";
-  document.getElementById("loss").textContent=Math.round(tdee-500)+" kcal";
-  document.getElementById("gain").textContent=Math.round(tdee+500)+" kcal";
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const clearOut = () => ["bmr", "tdee", "loss", "gain"].forEach(id => { $(id).textContent = "\u2014"; });
+
+$("calc").onclick = () => {
+  const aRaw = $("f0").value, wRaw = $("f2").value, hRaw = $("f3").value;
+  const raw = [aRaw, wRaw, hRaw];
+
+  if (raw.some(v => v.trim() === "") || raw.some(v => !Number.isFinite(+v) || +v <= 0)) {
+    clearOut();
+    $("mt-status").textContent = "Enter a valid age, weight and height.";
+    return;
+  }
+
+  const age = +aRaw, weight = +wRaw, height = +hRaw;
+  const gender = $("f1").value;
+  const activity = +$("f4").value;
+
+  const bmr = 10 * weight + 6.25 * height - 5 * age + (gender === "m" ? 5 : -161);
+
+  if (!Number.isFinite(bmr) || bmr <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Those details give an impossible BMR. Check them.";
+    return;
+  }
+
+  const tdee = bmr * activity;
+
+  $("bmr").textContent = Math.round(bmr) + " kcal";
+  $("tdee").textContent = Math.round(tdee) + " kcal";
+  $("loss").textContent = Math.round(tdee - 500) + " kcal";
+  $("gain").textContent = Math.round(tdee + 500) + " kcal";
+  $("mt-status").textContent = "";
 };
-document.getElementById("reset").onclick=()=>["f0","f2","f3"].forEach(id=>document.getElementById(id).value="");
+
+$("reset").onclick = () => {
+  ["f0", "f2", "f3"].forEach(id => { $(id).value = ""; });
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

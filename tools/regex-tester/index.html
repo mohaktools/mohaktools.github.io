@@ -8,6 +8,8 @@
 <meta name="description" content="Test and debug regular expressions with live match highlighting.">
 <meta name="keywords" content="regex tester, regular expression, regex debugger">
 <link rel="canonical" href="https://mohaktools.com/tools/regex-tester/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Regex Tester | MohakTools">
 <meta property="og:description" content="Test and debug regular expressions with live match highlighting.">
 <meta property="og:url" content="https://mohaktools.com/tools/regex-tester/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -80,6 +97,43 @@
 <div id="highlight-out" style="font-family:monospace;font-size:14px;line-height:1.8;min-height:80px;padding:12px;border:1px solid var(--color-border);border-radius:10px;background:var(--color-surface-secondary);white-space:pre-wrap;word-break:break-all;margin-bottom:12px"></div>
 <div id="matches-list" style="display:flex;flex-direction:column;gap:6px"></div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Regex Tester</h2>
+    <div class="mt-prose">
+      <p>The Regex Tester runs a regular expression against your sample text and highlights what it matches, live as you type. Add flags for case-insensitive, global or multiline matching, and optionally a replacement string to see the substituted result.</p>
+      <p>Regular expressions describe a pattern rather than a literal string, which is what makes them powerful and unreadable in equal measure. \d is a digit, \w a word character, \s whitespace, and the quantifiers * + ? and {n,m} say how many times the previous thing may repeat.</p>
+      <p>Two practical warnings. Special characters such as . * + ? ( ) [ ] need escaping with a backslash when you mean them literally. And some patterns, particularly nested quantifiers like (a+)+, can backtrack catastrophically and hang on certain inputs, so avoid them on untrusted text.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What do the flags do?</h3>
+      <p>g finds all matches rather than the first, i ignores case, and m makes ^ and $ match the start and end of each line.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does my pattern match nothing?</h3>
+      <p>Usually an unescaped special character. A literal dot needs \. and a literal bracket needs \[.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I test a replacement?</h3>
+      <p>Yes. Enter the replacement string and the tool shows the substituted output, with $1 referring to the first capture group.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it support lookbehind?</h3>
+      <p>Modern browsers support (?<=...) and (?<!...). Older engines may not, so test in your target environment.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is catastrophic backtracking?</h3>
+      <p>A pattern that explores exponentially many ways to fail, freezing the browser. Nested quantifiers are the usual cause.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is my text uploaded?</h3>
+      <p>No. Matching happens in the browser.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Developer Tools</h2>

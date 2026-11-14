@@ -8,6 +8,8 @@
 <meta name="description" content="Convert watts, kilowatts, horsepower and more.">
 <meta name="keywords" content="power converter, watt, kilowatt, horsepower">
 <link rel="canonical" href="https://mohaktools.com/tools/power-converter/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Power Converter | MohakTools">
 <meta property="og:description" content="Convert watts, kilowatts, horsepower and more.">
 <meta property="og:url" content="https://mohaktools.com/tools/power-converter/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -75,6 +92,43 @@
 <div class="mt-stat-grid"><div class="mt-stat" style="grid-column:1/-1"><span>Result</span><strong id="result" style="font-size:26px">—</strong></div></div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Power Converter</h2>
+    <div class="mt-prose">
+      <p>The Power Converter changes power between watts, kilowatts, megawatts, mechanical horsepower, metric horsepower, BTU per hour and foot-pounds per minute. Enter the value and choose the units.</p>
+      <p>The watt is the SI unit, one joule per second. Everything else converts into it: mechanical horsepower is about 745.7 watts, while metric horsepower, marked PS and used across Europe and in Indian car specifications, is 735.5 watts. The difference is small but real, about 1.4 per cent, and it is why the same engine can be quoted with two different power figures.</p>
+      <p>Power is a rate, not an amount of energy. A 1,000 watt appliance running for one hour uses one kilowatt-hour of energy, which is what your meter records and your bill charges for. Air-conditioner capacity is often given in BTU per hour, where one ton of cooling is about 12,000 BTU per hour or 3.5 kilowatts.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is the difference between hp and PS?</h3>
+      <p>Mechanical horsepower is 745.7 watts; metric horsepower, PS, is 735.5 watts. Car brochures in India often quote PS.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How many kW is one horsepower?</h3>
+      <p>About 0.746 kW for mechanical horsepower, or 0.7355 kW for metric horsepower.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is a BTU per hour?</h3>
+      <p>A rate of energy transfer used for cooling. One ton of air-conditioning is about 12,000 BTU per hour, or 3.5 kW.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is a watt the same as a watt-hour?</h3>
+      <p>No. A watt is a rate of power; a watt-hour is an amount of energy, one watt sustained for an hour.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is my electricity bill in kWh?</h3>
+      <p>Because you are billed for energy used, not for the rate at which you used it. A 1,000 W device for one hour is 1 kWh.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Are the conversions exact?</h3>
+      <p>The horsepower definitions are exact by convention. Displayed results are rounded.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Converters</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/unit-converter/" class="mt-related-chip">Unit Converter</a><a href="/tools/length-converter/" class="mt-related-chip">Length Converter</a><a href="/tools/weight-converter/" class="mt-related-chip">Weight Converter</a></div>
@@ -92,7 +146,7 @@ const UNITS={"W":1.0,"kW":1000.0,"MW":1000000.0,"hp":745.7,"PS":735.499,"BTU_h":
 document.getElementById("calc").onclick=()=>{
   const v=+document.getElementById("f0").value,f=document.getElementById("f1").value,t=document.getElementById("f2").value;
   if(isNaN(v)){document.getElementById("mt-status").textContent="Enter a number.";return;}
-  const res=v/UNITS[f]*UNITS[t];
+  const res=v*UNITS[f]/UNITS[t];
   const units=document.getElementById("f2").options[document.getElementById("f2").selectedIndex].text.split("(").pop().replace(")","").trim();
   document.getElementById("result").textContent=res.toLocaleString(undefined,{maximumFractionDigits:8})+" "+t;
   document.getElementById("mt-status").textContent="";

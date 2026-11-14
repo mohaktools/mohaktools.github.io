@@ -8,6 +8,8 @@
 <meta name="description" content="Split bills and calculate tips for any group size.">
 <meta name="keywords" content="tip calculator, bill split, restaurant tip">
 <link rel="canonical" href="https://mohaktools.com/tools/tip-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Tip Calculator | MohakTools">
 <meta property="og:description" content="Split bills and calculate tips for any group size.">
 <meta property="og:url" content="https://mohaktools.com/tools/tip-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,25 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+.mt-ratio-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:end}
+.mt-ratio-grid .mt-colon{padding-bottom:12px;font-size:20px;font-weight:700;color:var(--color-text)}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-ratio-grid{gap:6px}
+.mt-ratio-grid label{font-size:12px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -79,6 +100,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Tip Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The Tip Calculator works out a tip from a bill, adds it on, and splits the result between any number of people. Enter the bill, the percentage you want to leave and how many are sharing, and it returns the tip, the total and the amount each person owes.
+      </p>
+      <p>
+        The arithmetic is simple: tip equals bill multiplied by the percentage divided by a hundred, the total is the bill plus the tip, and the per-person share is that total divided by the number of people. Nothing is rounded to the nearest rupee, so you can see the exact figure and decide how to round it yourselves.
+      </p>
+      <p>
+        In India a tip of five to ten per cent is normal at a sit-down restaurant, and many establishments already add a service charge of similar size to the bill. Check the bill before tipping on top of it, since paying both is voluntary. Tipping is not customary for counter service, and the amount is not tax-deductible.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How is the tip calculated?</h3>
+      <p>Tip = bill amount x tip percentage / 100. The total is the bill plus the tip, and each person pays the total divided by the number of people.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Should I tip on the amount before or after tax?</h3>
+      <p>Convention varies, but many people tip on the pre-tax amount. Either is defensible as long as you know which you used.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How much should I tip in India?</h3>
+      <p>Five to ten per cent at a sit-down restaurant is usual. Check whether a service charge has already been added, since tipping on top of it is optional.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it split the tip or the whole bill?</h3>
+      <p>It splits the whole bill, tip included, which is what each person actually owes.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can different people pay different amounts?</h3>
+      <p>Not here. This divides the total equally. For unequal shares, calculate each person's portion of the bill separately.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is the result rounded?</h3>
+      <p>No. It is shown to two decimal places so you can see the exact amount, then round up or down as you prefer.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
@@ -92,17 +156,54 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-const fmt=n=>"₹"+Number(n.toFixed(2)).toLocaleString("en-IN");
-document.getElementById("calc").onclick=()=>{
-  const b=+document.getElementById("f0").value,t=+document.getElementById("f1").value,p=+document.getElementById("f2").value||1;
-  if(!b){document.getElementById("mt-status").textContent="Enter bill amount.";return;}
-  const tip=b*t/100,total=b+tip;
-  document.getElementById("tip").textContent=fmt(tip);
-  document.getElementById("total").textContent=fmt(total);
-  document.getElementById("pp").textContent=fmt(total/p);
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const fmt = n => "\u20b9" + Number(n).toLocaleString("en-IN", {
+  minimumFractionDigits: 2, maximumFractionDigits: 2
+});
+const OUT = ["tip", "total", "pp"];
+const clearOut = () => OUT.forEach(id => { $(id).textContent = "\u2014"; });
+
+$("calc").onclick = () => {
+  const bRaw = $("f0").value, tRaw = $("f1").value, pRaw = $("f2").value;
+
+  if (bRaw.trim() === "" || !Number.isFinite(+bRaw) || +bRaw <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Enter the bill amount.";
+    return;
+  }
+
+  const bill = +bRaw;
+  const tipPercent = tRaw.trim() === "" ? 0 : +tRaw;
+  const people = pRaw.trim() === "" ? 1 : +pRaw;
+
+  if (!Number.isFinite(tipPercent) || tipPercent < 0) {
+    clearOut();
+    $("mt-status").textContent = "Tip percentage cannot be negative.";
+    return;
+  }
+
+  if (!Number.isFinite(people) || people < 1 || !Number.isInteger(people)) {
+    clearOut();
+    $("mt-status").textContent = "Number of people must be a whole number, at least 1.";
+    return;
+  }
+
+  const tip = bill * tipPercent / 100;
+  const total = bill + tip;
+
+  $("tip").textContent = fmt(tip);
+  $("total").textContent = fmt(total);
+  $("pp").textContent = fmt(total / people);
+  $("mt-status").textContent = "";
 };
-document.getElementById("reset").onclick=()=>{["f0","f1"].forEach(id=>document.getElementById(id).value="");document.getElementById("f2").value="1";};
+
+$("reset").onclick = () => {
+  $("f0").value = "";
+  $("f1").value = "";
+  $("f2").value = "1";
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

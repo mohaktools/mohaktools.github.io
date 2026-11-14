@@ -8,6 +8,8 @@
 <meta name="description" content="Convert one or more images into a single PDF file.">
 <meta name="keywords" content="image to PDF, JPG to PDF, PNG to PDF">
 <link rel="canonical" href="https://mohaktools.com/tools/image-to-pdf/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Image to PDF | MohakTools">
 <meta property="og:description" content="Convert one or more images into a single PDF file.">
 <meta property="og:url" content="https://mohaktools.com/tools/image-to-pdf/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -75,6 +92,43 @@
 <div id="img-list" style="display:flex;gap:10px;flex-wrap:wrap;min-height:80px"></div>
 <div id="pdf-out" style="margin-top:12px"></div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Image to PDF</h2>
+    <div class="mt-prose">
+      <p>The Image to PDF tool combines one or more images into a single PDF file. Select the images, choose a page size, and it builds the document in the order you added them.</p>
+      <p>This is the quick way to turn phone photos of documents into something that can be emailed, printed or uploaded to a portal that only accepts PDF. The images are placed on the page rather than recompressed aggressively, so the output is usually clearer than a screenshot pasted into a word processor.</p>
+      <p>Keep an eye on file size. Photographs at full resolution can produce a very large PDF; resizing them to the page size first is the simplest way to keep it manageable.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Can I combine several images into one PDF?</h3>
+      <p>Yes, select multiple files and they are placed in the order chosen.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which image formats work?</h3>
+      <p>PNG, JPG and WebP, which covers phone photos and screenshots.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I choose the page size?</h3>
+      <p>Yes, A4 and Letter are available so the images fit standard printing.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Will the images be searchable?</h3>
+      <p>No. A PDF of images contains no text layer, so nothing in it can be searched or selected.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is my data uploaded?</h3>
+      <p>No. The PDF is assembled in the browser, so the images stay on your device.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is my PDF so large?</h3>
+      <p>Full-resolution photos. Resize them before adding, or compress the PDF afterwards.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Everyday Utilities</h2>

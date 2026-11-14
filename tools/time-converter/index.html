@@ -671,6 +671,70 @@
       line-height: 1.8;
     }
 
+    /* Related tools */
+
+    .time-related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .time-related-grid li {
+      margin-bottom: 0;
+      color: inherit;
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .time-related-card a {
+      display: block;
+      height: 100%;
+      padding: 17px;
+      color: inherit;
+      text-decoration: none;
+      border: 1px solid var(--time-border);
+      border-radius: 12px;
+      transition: border-color 180ms ease, background-color 180ms ease;
+    }
+
+    .time-related-card a:hover,
+    .time-related-card a:focus-visible {
+      border-color: var(--time-primary);
+      background: var(--time-soft);
+    }
+
+    .time-related-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .time-related-card span {
+      display: block;
+      color: var(--time-muted);
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+
+    .time-related-more {
+      margin: 18px 0 0;
+      font-size: 0.94rem;
+    }
+
+    .time-related-more a {
+      color: var(--time-primary);
+      text-decoration: none;
+    }
+
+    .time-related-more a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     /* Tablet */
 
     @media (max-width: 760px) {
@@ -864,6 +928,13 @@
   <div id="site-header"></div>
 
   <main class="time-tool">
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+      <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+      <span style="margin:0 6px">/</span>
+      <a href="/tools/?category=converters" style="color:var(--color-primary);text-decoration:none">Converters</a>
+      <span style="margin:0 6px">/</span>
+      <span>Time Converter</span>
+    </nav>
     <header class="time-hero">
       <span class="time-eyebrow">FREE ONLINE CALCULATOR</span>
       <h1>Time Converter</h1>
@@ -1288,6 +1359,59 @@
           an external conversion API. The website itself must be loaded first.
         </p>
       </div>
+    </section>
+
+    <section class="time-section" aria-labelledby="time-related-title">
+      <h2 id="time-related-title">Related time and date tools</h2>
+
+      <p>
+        Converting a duration is often only part of the job. If you need to move
+        a date forward, work out how long someone has been alive, or price the
+        hours on a timesheet, these free MohakTools calculators handle the rest.
+      </p>
+
+      <ul class="time-related-grid">
+        <li class="time-related-card">
+          <a href="/tools/date-add-subtract-calculator/">
+            <strong>Date Add / Subtract Calculator</strong>
+            <span>Add or subtract days, weeks, months or years from a date and get the exact resulting date.</span>
+          </a>
+        </li>
+        <li class="time-related-card">
+          <a href="/tools/age-calculator/">
+            <strong>Age Calculator</strong>
+            <span>Find an exact age in years, months and days, plus total days lived and the next birthday.</span>
+          </a>
+        </li>
+        <li class="time-related-card">
+          <a href="/tools/overtime-calculator/">
+            <strong>Overtime Calculator</strong>
+            <span>Turn extra hours worked into overtime pay using your hourly rate and multiplier.</span>
+          </a>
+        </li>
+        <li class="time-related-card">
+          <a href="/tools/pregnancy-due-date-calculator/">
+            <strong>Pregnancy Due Date Calculator</strong>
+            <span>Estimate a due date and see how far along a pregnancy is in weeks and days.</span>
+          </a>
+        </li>
+        <li class="time-related-card">
+          <a href="/tools/fuel-cost-calculator/">
+            <strong>Fuel Cost Calculator</strong>
+            <span>Work out trip fuel cost and travel time from distance, mileage and fuel price.</span>
+          </a>
+        </li>
+        <li class="time-related-card">
+          <a href="/tools/calculator/">
+            <strong>Basic Calculator</strong>
+            <span>Add, subtract, multiply and divide when you need a quick sum alongside a conversion.</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="time-related-more">
+        <a href="/tools/">Browse every MohakTools calculator and converter</a>
+      </p>
     </section>
   </main>
 

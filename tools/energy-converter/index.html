@@ -8,6 +8,8 @@
 <meta name="description" content="Convert joules, calories, kWh and BTU.">
 <meta name="keywords" content="energy converter, joule, calorie, kilowatt hour">
 <link rel="canonical" href="https://mohaktools.com/tools/energy-converter/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Energy Converter | MohakTools">
 <meta property="og:description" content="Convert joules, calories, kWh and BTU.">
 <meta property="og:url" content="https://mohaktools.com/tools/energy-converter/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -75,6 +92,43 @@
 <div class="mt-stat-grid"><div class="mt-stat" style="grid-column:1/-1"><span>Result</span><strong id="result" style="font-size:26px">—</strong></div></div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Energy Converter</h2>
+    <div class="mt-prose">
+      <p>The Energy Converter translates between joules, kilojoules, megajoules, calories, kilocalories, watt-hours, kilowatt-hours, BTU and electron-volts. Enter a value and pick the two units.</p>
+      <p>The joule is the SI unit, so everything else is defined against it. One calorie is 4.184 joules, and the calorie on a food label is actually a kilocalorie, a thousand of them, which is why a snack bar says 250 kcal rather than 250 calories. One kilowatt-hour, the unit on your electricity bill, is 3.6 megajoules. One BTU, used for air-conditioning, is about 1,055 joules.</p>
+      <p>The electron-volt belongs to particle physics, where it is a convenient size: roughly 1.6 × 10⁻¹⁹ joules. Because the units span so many orders of magnitude, results are shown in a compact form rather than with a fixed number of decimals.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is the difference between calories and kilocalories?</h3>
+      <p>A kilocalorie is a thousand calories. Food labels in most countries use kcal, sometimes written as Calories with a capital C.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How many joules are in a kilowatt-hour?</h3>
+      <p>3.6 million, or 3.6 megajoules. That is why electricity is billed in kWh: one unit on the meter is one kWh.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is a BTU?</h3>
+      <p>The British thermal unit, about 1,055 joules. Air-conditioner capacity is often described in BTU per hour.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is an electron-volt used for?</h3>
+      <p>Atomic and particle physics, where energies are tiny. One eV is about 1.6 x 10^-19 joules.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is my electricity bill in units rather than joules?</h3>
+      <p>One unit equals one kilowatt-hour, a practical size for household consumption. In joules the same figure would be huge.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Are these conversions exact?</h3>
+      <p>The calorie and BTU factors are exact by definition. Results are rounded for display.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Converters</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/unit-converter/" class="mt-related-chip">Unit Converter</a><a href="/tools/length-converter/" class="mt-related-chip">Length Converter</a><a href="/tools/weight-converter/" class="mt-related-chip">Weight Converter</a></div>
@@ -92,7 +146,7 @@ const UNITS={"J":1.0,"kJ":1000.0,"MJ":1000000.0,"cal":4.184,"kcal":4184.0,"Wh":3
 document.getElementById("calc").onclick=()=>{
   const v=+document.getElementById("f0").value,f=document.getElementById("f1").value,t=document.getElementById("f2").value;
   if(isNaN(v)){document.getElementById("mt-status").textContent="Enter a number.";return;}
-  const res=v/UNITS[f]*UNITS[t];
+  const res=v*UNITS[f]/UNITS[t];
   const units=document.getElementById("f2").options[document.getElementById("f2").selectedIndex].text.split("(").pop().replace(")","").trim();
   document.getElementById("result").textContent=res.toLocaleString(undefined,{maximumFractionDigits:8})+" "+t;
   document.getElementById("mt-status").textContent="";

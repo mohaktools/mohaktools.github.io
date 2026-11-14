@@ -502,6 +502,97 @@
             line-height: 1.75;
         }
 
+        /* Related tools */
+
+        .discount-related {
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .discount-related h2 {
+            margin: 0 0 12px;
+            color: var(--color-text);
+            font-size: 22px;
+            line-height: 1.4;
+        }
+
+        .discount-related > p {
+            max-width: 850px;
+            margin: 0 0 18px;
+            color: var(--color-text-secondary);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .discount-related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .discount-related-grid li {
+            margin: 0;
+        }
+
+        .discount-related-card a {
+            display: block;
+            height: 100%;
+            padding: 16px 18px;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            background: var(--color-surface);
+            color: inherit;
+            text-decoration: none;
+            transition: border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .discount-related-card a:hover,
+        .discount-related-card a:focus-visible {
+            border-color: var(--color-primary);
+            box-shadow: var(--color-card-shadow);
+        }
+
+        .discount-related-card strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--color-primary);
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .discount-related-card span {
+            display: block;
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .discount-related-more {
+            margin: 18px 0 0;
+            font-size: 14px;
+        }
+
+        .discount-related-more a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .discount-related-more a:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .discount-related-card a {
+                transition: none;
+            }
+        }
+
         @media (max-width: 600px) {
             .discount-page {
                 padding: 26px 14px 44px;
@@ -616,6 +707,13 @@
     <div id="site-header"></div>
 
     <main class="discount-page">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+          <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+          <span style="margin:0 6px">/</span>
+          <a href="/tools/?category=calculators" style="color:var(--color-primary);text-decoration:none">Calculators</a>
+          <span style="margin:0 6px">/</span>
+          <span>Discount Calculator</span>
+        </nav>
         <header class="discount-hero">
             <h1>Discount Calculator</h1>
             <p>
@@ -1005,6 +1103,52 @@
                 entered. The actual checkout price may differ if taxes,
                 shipping fees, exclusions, or other offer conditions apply.
             </p>
+
+            <section class="discount-related" aria-labelledby="discount-related-title">
+                <h2 id="discount-related-title">Related pricing and money calculators</h2>
+
+                <p>
+                    A discount is only one part of what you actually pay or earn. These
+                    MohakTools calculators pick up the rest of the sum.
+                </p>
+
+                <ul class="discount-related-grid">
+                    <li class="discount-related-card">
+                        <a href="/tools/profit-margin-calculator/">
+                            <strong>Profit Margin Calculator</strong>
+                            <span>Work out margin, markup and profit from cost and selling price.</span>
+                        </a>
+                    </li>
+                    <li class="discount-related-card">
+                        <a href="/tools/tip-calculator/">
+                            <strong>Tip Calculator</strong>
+                            <span>Add a tip percentage and split the final bill between any number of people.</span>
+                        </a>
+                    </li>
+                    <li class="discount-related-card">
+                        <a href="/tools/simple-interest-calculator/">
+                            <strong>Simple Interest Calculator</strong>
+                            <span>Calculate simple interest and the total amount payable on a principal.</span>
+                        </a>
+                    </li>
+                    <li class="discount-related-card">
+                        <a href="/tools/income-tax-calculator/">
+                            <strong>Income Tax Calculator (India)</strong>
+                            <span>Estimate income tax and take-home pay under the Indian new tax regime.</span>
+                        </a>
+                    </li>
+                    <li class="discount-related-card">
+                        <a href="/tools/calculator/">
+                            <strong>Basic Calculator</strong>
+                            <span>Quick arithmetic for percentages, quantities and price comparisons.</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="discount-related-more">
+                    <a href="/tools/">Browse every MohakTools calculator and converter</a>
+                </p>
+            </section>
         </article>
     </main>
 

@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#2563eb">
-<title>Date Calculator (Add / Subtract) | Fast & Free </title>
+<title>Date Calculator (Add / Subtract) | MohakTools</title>
 <meta name="description" content="Add or subtract days, weeks and months from any date.">
 <meta name="keywords" content="date calculator, add days, subtract date">
 <link rel="canonical" href="https://mohaktools.com/tools/date-add-subtract-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Date Calculator (Add / Subtract) | MohakTools">
 <meta property="og:description" content="Add or subtract days, weeks and months from any date.">
 <meta property="og:url" content="https://mohaktools.com/tools/date-add-subtract-calculator/">
@@ -40,6 +42,13 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -84,6 +93,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Date Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The Date Calculator adds or subtracts a combination of years, months and days from a starting date, then tells you the resulting date, its weekday and how far away it is from today.
+      </p>
+      <p>
+        Years and months are applied as calendar steps first, then days, so nothing is converted into a fixed block of 30- or 365-day periods. That difference matters. Adding one month to 15 January gives 15 February, and adding twelve months gives the same day of the month a year later, but adding 365 days can land a day either side depending on whether a leap year falls in between. For deadlines and notice periods, count days. For anniversaries, renewals and billing cycles, use months or years.
+      </p>
+      <p>
+        One edge case is worth knowing. When the target month is shorter than the starting day, the day is clamped to the last valid date: 31 January plus one month becomes 28 February, or 29 February in a leap year. Years follow the same rule, so 29 February plus one year lands on 28 February.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How do I add 90 days to a date?</h3>
+      <p>Enter the start date, choose Add, put 90 in the Days field and leave years and months at zero.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What happens when the target month is shorter?</h3>
+      <p>The day is clamped to the last date in that month, so 31 January plus one month gives 28 February, or 29 February in a leap year. Nothing rolls over into the next month.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Are leap years handled?</h3>
+      <p>Yes. The calculation uses real calendar dates, so 29 February exists in leap years and is skipped in others.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I combine years, months and days?</h3>
+      <p>Yes. All three fields are applied together, in the order years, months, days.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I calculate a date in the past?</h3>
+      <p>Choose Subtract instead of Add, and the same values are taken away from the start date.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What does the Days from today figure mean?</h3>
+      <p>It is the difference between the result and today's date. A positive number is in the future, a negative number is in the past, and zero means today.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Time & Productivity</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/stopwatch/" class="mt-related-chip">Stopwatch</a><a href="/tools/countdown-timer/" class="mt-related-chip">Countdown Timer</a><a href="/tools/world-clock/" class="mt-related-chip">World Clock</a></div>
@@ -97,19 +149,61 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-document.getElementById("today").onclick=()=>{const n=new Date();document.getElementById("f0").value=n.toISOString().split("T")[0];};
-document.getElementById("calc").onclick=()=>{
-  const start=new Date(document.getElementById("f0").value);
-  if(isNaN(start)){document.getElementById("mt-status").textContent="Select a start date.";return;}
-  const op=document.getElementById("f1").value,y=+document.getElementById("f2").value,m=+document.getElementById("f3").value,d=+document.getElementById("f4").value;
-  const res=new Date(start);
-  if(op==="add"){res.setFullYear(res.getFullYear()+y);res.setMonth(res.getMonth()+m);res.setDate(res.getDate()+d);}
-  else{res.setFullYear(res.getFullYear()-y);res.setMonth(res.getMonth()-m);res.setDate(res.getDate()-d);}
-  document.getElementById("result").textContent=res.toLocaleDateString("en-IN",{day:"numeric",month:"long",year:"numeric"});
-  document.getElementById("dow").textContent=res.toLocaleDateString("en-IN",{weekday:"long"});
-  const diff=Math.round((res-new Date())/864e5);
-  document.getElementById("dft").textContent=(diff===0?"Today":diff>0?"+"+diff+" days":diff+" days");
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const clearOut = () => ["result", "dow", "dft"].forEach(id => { $(id).textContent = "\u2014"; });
+
+function parseDateInput(value) {
+  const parts = value.split("-").map(Number);
+  if (parts.length !== 3 || parts.some(n => !Number.isFinite(n))) return null;
+  return new Date(parts[0], parts[1] - 1, parts[2]);
+}
+
+function addMonthsClamped(date, months) {
+  const day = date.getDate();
+  const target = new Date(date.getFullYear(), date.getMonth() + months, 1);
+  const lastDay = new Date(target.getFullYear(), target.getMonth() + 1, 0).getDate();
+  target.setDate(Math.min(day, lastDay));
+  return target;
+}
+
+function startOfToday() {
+  const now = new Date();
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+}
+
+function toInputValue(date) {
+  const pad = v => String(v).padStart(2, "0");
+  return date.getFullYear() + "-" + pad(date.getMonth() + 1) + "-" + pad(date.getDate());
+}
+
+$("today").onclick = () => {
+  $("f0").value = toInputValue(new Date());
+};
+
+$("calc").onclick = () => {
+  const start = parseDateInput($("f0").value);
+  if (!start) {
+    clearOut();
+    $("mt-status").textContent = "Select a start date.";
+    return;
+  }
+
+  const sign = $("f1").value === "sub" ? -1 : 1;
+  const years = Math.abs(Math.trunc(+$("f2").value || 0));
+  const months = Math.abs(Math.trunc(+$("f3").value || 0));
+  const days = Math.abs(Math.trunc(+$("f4").value || 0));
+
+  const result = addMonthsClamped(start, sign * (years * 12 + months));
+  result.setDate(result.getDate() + sign * days);
+
+  $("result").textContent = result.toLocaleDateString("en-IN", {
+    day: "numeric", month: "long", year: "numeric"
+  });
+  $("dow").textContent = result.toLocaleDateString("en-IN", { weekday: "long" });
+
+  const diff = Math.round((result - startOfToday()) / 86400000);
+  $("dft").textContent = diff === 0 ? "Today" : (diff > 0 ? "+" + diff + " days" : diff + " days");
+  $("mt-status").textContent = "";
 };
 </script>
 </body>

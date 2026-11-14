@@ -8,6 +8,8 @@
 <meta name="description" content="Estimate pregnancy due date and trimester milestones.">
 <meta name="keywords" content="due date calculator, pregnancy, EDD, LMP">
 <link rel="canonical" href="https://mohaktools.com/tools/pregnancy-due-date-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Pregnancy Due Date Calculator | MohakTools">
 <meta property="og:description" content="Estimate pregnancy due date and trimester milestones.">
 <meta property="og:url" content="https://mohaktools.com/tools/pregnancy-due-date-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,25 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+.mt-ratio-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:end}
+.mt-ratio-grid .mt-colon{padding-bottom:12px;font-size:20px;font-weight:700;color:var(--color-text)}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-ratio-grid{gap:6px}
+.mt-ratio-grid label{font-size:12px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -76,8 +97,51 @@
 <div class="mt-stat"><span>Conception (approx)</span><strong id="con">—</strong></div>
 <div class="mt-stat"><span>2nd Trimester starts</span><strong id="t2">—</strong></div>
 <div class="mt-stat"><span>3rd Trimester starts</span><strong id="t3">—</strong></div>
-</div><p class="mt-help">Naegele's rule applied. Consult your doctor for medical advice.</p></section>
+</div><p class="mt-help">Naegele's rule, adjusted for cycle length. Second trimester from 13 completed weeks, third from 28. Consult your doctor for medical advice.</p></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Pregnancy Due Date Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The Pregnancy Due Date Calculator applies Naegele's rule: take the first day of your last menstrual period, add 280 days, and adjust for the length of your cycle. It also returns an approximate conception date and the two trimester boundaries, so you can see how the forty weeks divide up.
+      </p>
+      <p>
+        The adjustment matters if your cycle is not the textbook 28 days. The rule assumes ovulation around day 14, so a 32-day cycle pushes the due date four days later, and a 26-day cycle pulls it two days earlier. The conception date shown here is LMP plus cycle length minus fourteen, which is the same assumption expressed differently.
+      </p>
+      <p>
+        Treat the result as a window rather than an appointment. Only about four per cent of babies arrive on the estimated date, and the great majority arrive within two weeks either side of it. A first-trimester ultrasound, which measures the baby directly, is more accurate than any calculation from dates, and an IVF pregnancy is dated from the transfer instead.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How is the due date calculated?</h3>
+      <p>Naegele's rule: 280 days from the first day of your last menstrual period, adjusted by however much your cycle differs from 28 days.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What if my cycle is not 28 days?</h3>
+      <p>Enter your average cycle length. Each day above 28 pushes the due date a day later, and each day below pulls it a day earlier.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How accurate is the estimated due date?</h3>
+      <p>Roughly four per cent of births land on it, and most fall within two weeks either side. An early dating scan is more accurate than any date calculation.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What does the conception date mean here?</h3>
+      <p>It is LMP plus cycle length minus fourteen, an estimate of ovulation. Actual conception can happen a few days either side of that.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>When do the trimesters start?</h3>
+      <p>This page marks the second trimester at 13 completed weeks and the third at 28 completed weeks, which is the usual clinical split.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it work for IVF or irregular cycles?</h3>
+      <p>Not reliably. IVF pregnancies are dated from the embryo transfer, and irregular cycles are better dated by ultrasound. Ask your doctor for the official date.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
@@ -92,19 +156,69 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-const fmtDate=d=>d.toLocaleDateString("en-IN",{day:"numeric",month:"long",year:"numeric"});
-function addDays(d,n){const r=new Date(d);r.setDate(r.getDate()+n);return r;}
-document.getElementById("calc").onclick=()=>{
-  const lmp=new Date(document.getElementById("f0").value),cycle=+document.getElementById("f1").value||28;
-  if(isNaN(lmp)){document.getElementById("mt-status").textContent="Enter LMP date.";return;}
-  const con=addDays(lmp,cycle-14),edd=addDays(lmp,280+(cycle-28));
-  document.getElementById("edd").textContent=fmtDate(edd);
-  document.getElementById("con").textContent=fmtDate(con);
-  document.getElementById("t2").textContent=fmtDate(addDays(lmp,91));
-  document.getElementById("t3").textContent=fmtDate(addDays(lmp,182));
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const OUT = ["edd", "con", "t2", "t3"];
+const clearOut = () => OUT.forEach(id => { $(id).textContent = "\u2014"; });
+
+function fmtDate(d) {
+  return d.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });
+}
+
+function parseDateInput(value) {
+  const parts = value.split("-").map(Number);
+  if (parts.length !== 3 || parts.some(n => !Number.isFinite(n))) return null;
+  const d = new Date(parts[0], parts[1] - 1, parts[2]);
+  return Number.isFinite(d.getTime()) ? d : null;
+}
+
+function addDays(date, n) {
+  const r = new Date(date);
+  r.setDate(r.getDate() + n);
+  return r;
+}
+
+function startOfToday() {
+  const n = new Date();
+  return new Date(n.getFullYear(), n.getMonth(), n.getDate());
+}
+
+$("calc").onclick = () => {
+  const lmp = parseDateInput($("f0").value);
+
+  if (!lmp) {
+    clearOut();
+    $("mt-status").textContent = "Enter the first day of your last period.";
+    return;
+  }
+
+  if (lmp > startOfToday()) {
+    clearOut();
+    $("mt-status").textContent = "The last period date cannot be in the future.";
+    return;
+  }
+
+  const cRaw = $("f1").value;
+  const cycle = cRaw.trim() === "" ? 28 : +cRaw;
+
+  if (!Number.isFinite(cycle) || cycle < 21 || cycle > 35) {
+    clearOut();
+    $("mt-status").textContent = "Cycle length should be between 21 and 35 days.";
+    return;
+  }
+
+  $("edd").textContent = fmtDate(addDays(lmp, 280 + (cycle - 28)));
+  $("con").textContent = fmtDate(addDays(lmp, cycle - 14));
+  $("t2").textContent = fmtDate(addDays(lmp, 91));
+  $("t3").textContent = fmtDate(addDays(lmp, 196));
+  $("mt-status").textContent = "";
 };
-document.getElementById("reset").onclick=()=>{document.getElementById("f0").value="";document.getElementById("f1").value="28";};
+
+$("reset").onclick = () => {
+  $("f0").value = "";
+  $("f1").value = "28";
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

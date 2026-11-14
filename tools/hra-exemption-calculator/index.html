@@ -8,6 +8,8 @@
 <meta name="description" content="Calculate HRA exemption from taxable income.">
 <meta name="keywords" content="HRA calculator, house rent allowance, tax exemption">
 <link rel="canonical" href="https://mohaktools.com/tools/hra-exemption-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="HRA Exemption Calculator | MohakTools">
 <meta property="og:description" content="Calculate HRA exemption from taxable income.">
 <meta property="og:url" content="https://mohaktools.com/tools/hra-exemption-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,26 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+.mt-fraction-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-bottom:12px}
+.mt-fraction-grid select{padding:8px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-input-bg,var(--color-surface));color:var(--color-text);font:inherit;font-size:22px}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-fraction-grid{gap:6px}
+.mt-fraction-grid label{font-size:11px}
+.mt-fraction-grid select{font-size:18px;padding:6px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -82,6 +104,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the HRA Exemption Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The HRA Exemption Calculator works out how much of the house rent allowance in your salary can be excluded from taxable income. The rule is a least-of-three test, and the calculator shows all three figures so you can see which one is doing the limiting.
+      </p>
+      <p>
+        The three tests are: the HRA actually received, rent paid minus ten per cent of basic salary plus DA, and fifty per cent of basic plus DA if you live in Delhi, Mumbai, Chennai or Kolkata, or forty per cent anywhere else. The exemption is the smallest of the three. If your rent is below ten per cent of basic, the second test falls to zero and no exemption is available.
+      </p>
+      <p>
+        All three figures must be entered on the same basis, so use annual amounts throughout, as the labels ask. HRA exemption is available only under the old tax regime; if you have opted for the new regime, this deduction does not apply at all. Keep rent receipts, and if annual rent exceeds one lakh rupees, the landlord's PAN is normally required.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How is HRA exemption calculated?</h3>
+      <p>It is the least of three amounts: HRA received, rent paid minus 10% of basic plus DA, and 50% of basic plus DA for metro cities or 40% elsewhere.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which cities count as metro?</h3>
+      <p>Delhi, Mumbai, Chennai and Kolkata get the 50% limit. Every other city uses 40%, whatever its size.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is HRA exemption available under the new tax regime?</h3>
+      <p>No. The exemption is part of the old regime. If you have opted for the new regime, the entire HRA is taxable.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What documents do I need?</h3>
+      <p>Rent receipts for the year, and the landlord's PAN if annual rent exceeds one lakh rupees. A rent agreement helps if the claim is ever questioned.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does rent paid to a parent count?</h3>
+      <p>It can, if the arrangement is genuine: rent is actually paid, ideally by bank transfer, and the parent declares it as income. Paying rent to a spouse is not accepted.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is my exemption zero?</h3>
+      <p>Usually because rent is less than 10% of your basic plus DA, which makes the second test zero, or because you selected the metro option without living in one of the four metro cities.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
@@ -95,20 +160,55 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-const fmt=n=>"₹"+Math.round(n).toLocaleString("en-IN");
-document.getElementById("calc").onclick=()=>{
-  const basic=+document.getElementById("f0").value,hra=+document.getElementById("f1").value,
-        rent=+document.getElementById("f2").value,metro=document.getElementById("f3").value==="metro";
-  if(!basic||!hra||!rent){document.getElementById("mt-status").textContent="Fill all fields.";return;}
-  const pct=basic*(metro?.5:.4),excess=Math.max(0,rent-basic*.1);
-  const exempt=Math.min(hra,pct,excess);
-  document.getElementById("r1").textContent=fmt(hra);
-  document.getElementById("r2").textContent=fmt(excess);
-  document.getElementById("r3").textContent=fmt(pct);
-  document.getElementById("exempt").textContent=fmt(exempt);
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const fmt = n => "\u20b9" + Math.round(n).toLocaleString("en-IN");
+const OUT = ["r1", "r2", "r3", "exempt"];
+const clearOut = () => OUT.forEach(id => { $(id).textContent = "\u2014"; });
+
+$("calc").onclick = () => {
+  const bRaw = $("f0").value, hRaw = $("f1").value, rRaw = $("f2").value;
+  const raw = [bRaw, hRaw, rRaw];
+
+  if (raw.some(v => v.trim() === "") || raw.some(v => !Number.isFinite(+v))) {
+    clearOut();
+    $("mt-status").textContent = "Fill all three fields with annual amounts.";
+    return;
+  }
+
+  const basic = +bRaw, hra = +hRaw, rent = +rRaw;
+
+  if (basic <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Enter your annual basic plus DA.";
+    return;
+  }
+
+  if (hra < 0 || rent < 0) {
+    clearOut();
+    $("mt-status").textContent = "Amounts cannot be negative.";
+    return;
+  }
+
+  const isMetro = $("f3").value === "metro";
+  const percentCap = basic * (isMetro ? 0.5 : 0.4);
+  const rentTest = Math.max(0, rent - basic * 0.1);
+  const exempt = Math.max(0, Math.min(hra, percentCap, rentTest));
+
+  $("r1").textContent = fmt(hra);
+  $("r2").textContent = fmt(rentTest);
+  $("r3").textContent = fmt(percentCap);
+  $("exempt").textContent = fmt(exempt);
+  $("mt-status").textContent = exempt === 0
+    ? "No exemption: one of the three tests came out at zero."
+    : "";
 };
-document.getElementById("reset").onclick=()=>["f0","f1","f2"].forEach(id=>document.getElementById(id).value="");
+
+$("reset").onclick = () => {
+  ["f0", "f1", "f2"].forEach(id => { $(id).value = ""; });
+  $("f3").value = "metro";
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

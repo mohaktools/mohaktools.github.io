@@ -300,6 +300,97 @@
         line-height: 1.9;
     }
 
+    /* Related tools */
+
+    .calculator-related {
+        margin-top: 48px;
+        padding-top: 28px;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .calculator-related h2 {
+        margin: 0 0 14px;
+        color: var(--color-text);
+        font-size: 24px;
+    }
+
+    .calculator-related-intro {
+        max-width: 850px;
+        margin: 0 0 18px;
+        color: var(--color-text-secondary);
+        font-size: 15px;
+        line-height: 1.9;
+    }
+
+    .calculator-related-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .calculator-related-card a {
+        display: block;
+        height: 100%;
+        padding: 16px 18px;
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        background: var(--color-surface);
+        color: inherit;
+        text-decoration: none;
+        transition: border-color 180ms ease, box-shadow 180ms ease,
+                    transform 180ms ease;
+    }
+
+    .calculator-related-card a:hover,
+    .calculator-related-card a:focus-visible {
+        border-color: var(--color-primary);
+        box-shadow: var(--color-card-shadow);
+        transform: translateY(-2px);
+    }
+
+    .calculator-related-name {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--color-primary);
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .calculator-related-desc {
+        display: block;
+        color: var(--color-text-secondary);
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .calculator-related-more {
+        margin: 18px 0 0;
+        font-size: 14px;
+    }
+
+    .calculator-related-more a {
+        color: var(--color-primary);
+        text-decoration: none;
+    }
+
+    .calculator-related-more a:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .calculator-related-card a {
+            transition: none;
+        }
+
+        .calculator-related-card a:hover {
+            transform: none;
+        }
+    }
+
     /* Tablet and mobile */
 
     @media (max-width: 760px) {
@@ -355,6 +446,207 @@
             transform: none;
         }
     }
+
+    /* Focused, viewport-friendly basic calculator */
+    .calculator-page {
+        width: min(1100px, calc(100% - 24px));
+        padding: 12px 0 40px;
+    }
+
+    .calculator-breadcrumb {
+        margin-bottom: 8px;
+        font-size: 12px;
+    }
+
+    .calculator-intro {
+        margin: 0 auto 12px;
+        max-width: 520px;
+        text-align: center;
+    }
+
+    .calculator-intro h1 {
+        margin-bottom: 4px;
+        font-size: clamp(23px, 3.5vw, 30px);
+        line-height: 1.15;
+        letter-spacing: -0.6px;
+    }
+
+    .calculator-intro p {
+        margin: 0 auto;
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .calculator-layout {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    .calculator-card {
+        width: min(100%, 440px);
+        padding: 14px;
+        border-radius: 18px;
+    }
+
+    .calculator-display {
+        min-height: clamp(76px, 12svh, 104px);
+        padding: 12px 14px;
+        margin-bottom: 10px;
+        border-radius: 13px;
+    }
+
+    .calculator-expression {
+        min-height: 18px;
+        font-size: 13px;
+    }
+
+    .calculator-result {
+        margin-top: 3px;
+        font-size: clamp(30px, 7vw, 40px);
+        line-height: 1.15;
+    }
+
+    .calculator-keypad {
+        gap: 7px;
+    }
+
+    .calculator-key {
+        min-height: clamp(43px, 7.2svh, 57px);
+        padding: 6px;
+        border-radius: 12px;
+        font-size: clamp(17px, 3vw, 20px);
+    }
+
+    .calculator-key.operator {
+        font-size: 22px;
+    }
+
+    .calculator-status {
+        min-height: 16px;
+        margin: 7px 0 0;
+        font-size: 12px;
+    }
+
+    .calculator-seo {
+        max-width: 850px;
+        margin: 42px auto 0;
+    }
+
+    @media (max-width: 600px) {
+        .calculator-page {
+            width: calc(100% - 20px);
+            padding-top: 8px;
+        }
+
+        .calculator-intro {
+            margin-bottom: 9px;
+        }
+
+        .calculator-intro p {
+            max-width: 420px;
+            font-size: 12px;
+        }
+
+        .calculator-card {
+            padding: 11px;
+            border-radius: 16px;
+        }
+
+        .calculator-keypad {
+            gap: 6px;
+        }
+
+        .calculator-key {
+            min-height: clamp(42px, 7.4svh, 52px);
+            border-radius: 10px;
+        }
+
+        .calculator-display {
+            min-height: clamp(70px, 11svh, 88px);
+            padding: 10px 12px;
+            margin-bottom: 8px;
+        }
+
+        .calculator-seo {
+            margin-top: 32px;
+        }
+    }
+
+    /* Short screens: keep the complete keypad and display in the first view. */
+    @media (max-height: 700px) {
+        .calculator-page {
+            padding-top: 5px;
+        }
+
+        .calculator-breadcrumb {
+            margin-bottom: 4px;
+        }
+
+        .calculator-intro {
+            margin-bottom: 7px;
+        }
+
+        .calculator-intro h1 {
+            font-size: 22px;
+        }
+
+        .calculator-intro p {
+            display: none;
+        }
+
+        .calculator-card {
+            padding: 9px;
+        }
+
+        .calculator-display {
+            min-height: 66px;
+            padding: 8px 11px;
+            margin-bottom: 7px;
+        }
+
+        .calculator-keypad {
+            gap: 5px;
+        }
+
+        .calculator-key {
+            min-height: clamp(38px, 7svh, 48px);
+            padding: 4px;
+        }
+
+        .calculator-status {
+            margin-top: 4px;
+        }
+    }
+
+    @media (max-height: 560px) {
+        .calculator-breadcrumb {
+            display: none;
+        }
+
+        .calculator-intro {
+            margin-bottom: 5px;
+        }
+
+        .calculator-intro h1 {
+            font-size: 19px;
+        }
+
+        .calculator-card {
+            padding: 7px;
+        }
+
+        .calculator-display {
+            min-height: 54px;
+            margin-bottom: 5px;
+        }
+
+        .calculator-key {
+            min-height: 34px;
+        }
+    }
+
 </style>
 
 <script type="application/ld+json">
@@ -384,7 +676,7 @@
         <nav class="calculator-breadcrumb" aria-label="Breadcrumb">
             <a href="/">Home</a>
             <span aria-hidden="true">/</span>
-            <a href="/#calculators">Calculators</a>
+            <a href="/tools/?category=calculators">Calculators</a>
             <span aria-hidden="true">/</span>
             <span aria-current="page">Basic Calculator</span>
         </nav>
@@ -399,7 +691,7 @@
         </header>
 
         <div class="calculator-layout">
-            <section class="calculator-card" aria-label="Calculator">
+            <section class="calculator-card" aria-label="Basic calculator">
                 <div class="calculator-display"
                      role="group"
                      aria-label="Calculator display">
@@ -490,40 +782,9 @@
                    role="status"
                    aria-live="polite">Ready to calculate</p>
 
-                <p class="calculator-keypad-note">
-                    Keyboard supported: numbers, +, -, *, /, %, Enter,
-                    Backspace and Escape.
-                </p>
             </section>
 
-            <aside class="calculator-info-card">
-                <h2>How to use this calculator</h2>
 
-                <p>
-                    Enter a number using the keypad or your keyboard.
-                    Select an arithmetic operator, enter the next number,
-                    and press equals to calculate the result.
-                </p>
-
-                <h3>Calculator features</h3>
-
-                <ul>
-                    <li>Addition, subtraction, multiplication and division</li>
-                    <li>Decimal number calculations</li>
-                    <li>Percentage conversion</li>
-                    <li>Positive and negative numbers</li>
-                    <li>Keyboard shortcuts</li>
-                    <li>Responsive mobile-friendly interface</li>
-                    <li>Clear and backspace controls</li>
-                </ul>
-
-                <h3>Example calculation</h3>
-
-                <p>
-                    To calculate 25 × 4, enter 25, select multiplication,
-                    enter 4 and press equals. The result is 100.
-                </p>
-            </aside>
         </div>
 
         <section class="calculator-seo">
@@ -560,9 +821,85 @@
             <h3>Does it work on mobile devices?</h3>
             <p>
                 Yes. The calculator layout adapts to smaller screens and
+
+            <h3>Can I enter negative numbers?</h3>
+            <p>
+                Yes. Use the plus-minus key to flip the sign of the number you are
+                entering, or type a minus before the digits. Negative results appear
+                in the display the same way.
+            </p>
+
+            <h3>What is the difference between AC and the backspace key?</h3>
+            <p>
+                AC clears the whole calculation and starts again from zero, including
+                the pending operator and the previous number. Backspace removes only
+                the last digit you typed, which is what you want after a single typo.
+            </p>
+
+            <h3>Can I work with percentages?</h3>
+            <p>
+                Yes. The percentage key converts the number in the display to a
+                percentage, which is useful for discounts, tips and tax. For a
+                percentage of a specific amount, multiply first and then apply the
+                percentage key.
+            </p>
                 supports touch input.
             </p>
         </section>
+
+        <section class="calculator-related" aria-labelledby="related-tools-heading">
+            <h2 id="related-tools-heading">Related calculators and tools</h2>
+
+            <p class="calculator-related-intro">
+                The Basic Calculator covers everyday arithmetic. When a sum needs
+                something more than add, subtract, multiply and divide, these free
+                MohakTools calculators pick up where it stops.
+            </p>
+
+            <ul class="calculator-related-grid">
+                <li class="calculator-related-card">
+                    <a href="/tools/scientific-calculator/">
+                        <span class="calculator-related-name">Scientific Calculator</span>
+                        <span class="calculator-related-desc">Trigonometry, logarithms, powers, roots, factorials and constants for advanced maths.</span>
+                    </a>
+                </li>
+                <li class="calculator-related-card">
+                    <a href="/tools/fraction-calculator/">
+                        <span class="calculator-related-name">Fraction Calculator</span>
+                        <span class="calculator-related-desc">Add, subtract, multiply and divide fractions and get the answer in its simplest form.</span>
+                    </a>
+                </li>
+                <li class="calculator-related-card">
+                    <a href="/tools/average-calculator/">
+                        <span class="calculator-related-name">Average Calculator</span>
+                        <span class="calculator-related-desc">Find the mean, median, mode, sum, count and range of a list of numbers.</span>
+                    </a>
+                </li>
+                <li class="calculator-related-card">
+                    <a href="/tools/ratio-calculator/">
+                        <span class="calculator-related-name">Ratio Calculator</span>
+                        <span class="calculator-related-desc">Simplify a ratio or compare two ratios without doing the division by hand.</span>
+                    </a>
+                </li>
+                <li class="calculator-related-card">
+                    <a href="/tools/discount-calculator/">
+                        <span class="calculator-related-name">Discount Calculator</span>
+                        <span class="calculator-related-desc">Work out the sale price, the discount amount and the total saving on a purchase.</span>
+                    </a>
+                </li>
+                <li class="calculator-related-card">
+                    <a href="/tools/tip-calculator/">
+                        <span class="calculator-related-name">Tip Calculator</span>
+                        <span class="calculator-related-desc">Calculate a tip percentage and split the final bill between any number of people.</span>
+                    </a>
+                </li>
+            </ul>
+
+            <p class="calculator-related-more">
+                <a href="/tools/">Browse every MohakTools calculator and converter</a>
+            </p>
+        </section>
+
     </main>
 
     <div id="site-footer"></div>

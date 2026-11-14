@@ -8,6 +8,8 @@
 <meta name="description" content="Find savings and new tenure after a loan prepayment.">
 <meta name="keywords" content="loan prepayment, part payment, EMI savings">
 <link rel="canonical" href="https://mohaktools.com/tools/loan-prepayment-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Loan Prepayment Calculator | MohakTools">
 <meta property="og:description" content="Find savings and new tenure after a loan prepayment.">
 <meta property="og:url" content="https://mohaktools.com/tools/loan-prepayment-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,26 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+.mt-fraction-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-bottom:12px}
+.mt-fraction-grid select{padding:8px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-input-bg,var(--color-surface));color:var(--color-text);font:inherit;font-size:22px}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-fraction-grid{gap:6px}
+.mt-fraction-grid label{font-size:11px}
+.mt-fraction-grid select{font-size:18px;padding:6px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -81,6 +103,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Loan Prepayment Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The Loan Prepayment Calculator shows what happens when you pay a lump sum against a loan while keeping the EMI unchanged. The EMI is recalculated from the outstanding principal and remaining tenure, then the reduced balance is spread over the same EMI to find how many months are left. The difference in total interest, and in months, is your saving.
+      </p>
+      <p>
+        Keeping the EMI fixed is the option that saves the most. Because interest is charged on the outstanding balance, a prepayment made early removes interest for every remaining year, while the same amount paid in the final years saves comparatively little. That is why a modest prepayment in year three of a twenty-year home loan can cut years off the term.
+      </p>
+      <p>
+        The calculation assumes a fixed rate and no charges. Floating-rate home loans to individuals carry no prepayment penalty in India, but fixed-rate loans and some other products may, so check before you pay. The tool also assumes the prepayment is made now rather than on a future date.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How does prepayment reduce the tenure?</h3>
+      <p>The lump sum cuts the outstanding principal. With the EMI held constant, the smaller balance is cleared sooner, so the remaining months fall.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is the EMI formula?</h3>
+      <p>EMI = P x r x (1+r)^n / ((1+r)^n - 1), where P is the principal, r the monthly interest rate and n the number of months.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Should I reduce the EMI or the tenure?</h3>
+      <p>Reducing the tenure saves more interest, because the balance falls faster. Reducing the EMI lowers the monthly outflow instead. This calculator models the tenure option.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Are there prepayment charges?</h3>
+      <p>Floating-rate home loans to individuals cannot carry a prepayment penalty in India. Fixed-rate loans and some personal or car loans can, so confirm with your lender first.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does an early prepayment save so much?</h3>
+      <p>Interest is charged on the outstanding balance. Money paid early stops accruing interest for every year that remains, while the same amount paid near the end saves almost nothing.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What if I prepay more than the outstanding principal?</h3>
+      <p>That is not a prepayment but a full closure. The calculator requires the prepayment to be smaller than the balance and asks you to check the figure.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
@@ -94,22 +159,85 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-const fmt=n=>"₹"+Math.round(n).toLocaleString("en-IN");
-function emi(p,r,n){return p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);}
-function tenure(p,r,emi){return Math.ceil(-Math.log(1-p*r/emi)/Math.log(1+r));}
-document.getElementById("calc").onclick=()=>{
-  const p=+document.getElementById("f0").value,r=+document.getElementById("f1").value/100/12,
-        n=+document.getElementById("f2").value,pre=+document.getElementById("f3").value;
-  if(!p||!r||!n){document.getElementById("mt-status").textContent="Fill all fields.";return;}
-  const e=emi(p,r,n),oldInt=e*n-p;
-  const newP=p-pre,newN=tenure(newP,r,e),newInt=e*newN-newP;
-  document.getElementById("emi").textContent=fmt(e);
-  document.getElementById("newten").textContent=newN+" months";
-  document.getElementById("saved").textContent=fmt(oldInt-newInt);
-  document.getElementById("saved2").textContent=(n-newN)+" months";
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const fmt = n => "\u20b9" + Math.round(n).toLocaleString("en-IN");
+const OUT = ["emi", "newten", "saved", "saved2"];
+const clearOut = () => OUT.forEach(id => { $(id).textContent = "\u2014"; });
+
+function emiAmount(p, r, n) {
+  return p * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+}
+
+function monthsLeft(p, r, emi) {
+  const ratio = 1 - (p * r) / emi;
+  if (ratio <= 0) return Infinity;
+  return Math.ceil(-Math.log(ratio) / Math.log(1 + r));
+}
+
+$("calc").onclick = () => {
+  const pRaw = $("f0").value, rRaw = $("f1").value,
+        nRaw = $("f2").value, preRaw = $("f3").value;
+  const raw = [pRaw, rRaw, nRaw, preRaw];
+
+  if (raw.some(v => v.trim() === "") || raw.some(v => !Number.isFinite(+v))) {
+    clearOut();
+    $("mt-status").textContent = "Fill all four fields with numbers.";
+    return;
+  }
+
+  const principal = +pRaw, annualRate = +rRaw, months = +nRaw, prepay = +preRaw;
+
+  if (principal <= 0 || months <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Outstanding principal and remaining tenure must be greater than zero.";
+    return;
+  }
+
+  if (annualRate <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Enter an annual interest rate above zero.";
+    return;
+  }
+
+  if (prepay <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Enter a prepayment amount above zero.";
+    return;
+  }
+
+  if (prepay >= principal) {
+    clearOut();
+    $("mt-status").textContent = "Prepayment must be less than the outstanding principal. That would be a full closure.";
+    return;
+  }
+
+  const r = annualRate / 100 / 12;
+  const emi = emiAmount(principal, r, months);
+  const oldInterest = emi * months - principal;
+
+  const balance = principal - prepay;
+  const newMonths = monthsLeft(balance, r, emi);
+
+  if (!Number.isFinite(newMonths) || newMonths <= 0) {
+    clearOut();
+    $("mt-status").textContent = "The EMI is too small to clear this balance. Check your inputs.";
+    return;
+  }
+
+  const newInterest = emi * newMonths - balance;
+
+  $("emi").textContent = fmt(emi);
+  $("newten").textContent = newMonths + " months";
+  $("saved").textContent = fmt(Math.max(0, oldInterest - newInterest));
+  $("saved2").textContent = (months - newMonths) + " months";
+  $("mt-status").textContent = "";
 };
-document.getElementById("reset").onclick=()=>["f0","f1","f2","f3"].forEach(id=>document.getElementById(id).value="");
+
+$("reset").onclick = () => {
+  ["f0", "f1", "f2", "f3"].forEach(id => { $(id).value = ""; });
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

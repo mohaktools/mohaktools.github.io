@@ -8,6 +8,8 @@
 <meta name="description" content="Calculate simple interest on principal, rate and time.">
 <meta name="keywords" content="simple interest, SI calculator, interest formula">
 <link rel="canonical" href="https://mohaktools.com/tools/simple-interest-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Simple Interest Calculator | MohakTools">
 <meta property="og:description" content="Calculate simple interest on principal, rate and time.">
 <meta property="og:url" content="https://mohaktools.com/tools/simple-interest-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,25 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+.mt-ratio-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:end}
+.mt-ratio-grid .mt-colon{padding-bottom:12px;font-size:20px;font-weight:700;color:var(--color-text)}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-ratio-grid{gap:6px}
+.mt-ratio-grid label{font-size:12px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -78,6 +99,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Simple Interest Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The Simple Interest Calculator applies the interest formula every loan agreement starts from: principal multiplied by rate multiplied by time, divided by a hundred. It returns the interest earned or charged, and the total amount payable when that interest is added back to the principal.
+      </p>
+      <p>
+        Simple interest is charged only on the original principal, so it grows in a straight line: ten thousand rupees at eight per cent for two years earns sixteen hundred rupees, and doubling the time exactly doubles the interest. That is what distinguishes it from compound interest, where the interest itself starts earning and the curve bends upward.
+      </p>
+      <p>
+        In practice you will meet simple interest on short-term borrowing, some gold loans, informal lending and certain older deposit schemes. Bank fixed deposits in India normally compound quarterly instead, and a credit card or home loan uses reducing-balance interest, which is a different calculation again. Enter the time in years; for months, divide by twelve, so nine months is 0.75.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is the simple interest formula?</h3>
+      <p>Simple Interest = Principal x Rate x Time / 100, with the rate as an annual percentage and time in years.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How is it different from compound interest?</h3>
+      <p>Simple interest is charged only on the principal, so it grows in a straight line. Compound interest is charged on the principal plus accumulated interest, so it grows faster.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What if my tenure is in months?</h3>
+      <p>Convert to years by dividing by twelve. Nine months is 0.75 years, and eighteen months is 1.5.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is this how bank fixed deposits work?</h3>
+      <p>Usually not. Most Indian banks compound fixed deposits quarterly. Simple interest appears on short-term loans, some gold loans and informal lending.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does the total include tax?</h3>
+      <p>No. The total is principal plus interest, before any tax. Interest income is taxable at your slab rate and may attract TDS.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is the total amount principal plus interest?</h3>
+      <p>Simple interest is not reinvested, so at the end of the term you receive your principal back along with the interest it earned.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
@@ -91,16 +155,50 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-const fmt=n=>"₹"+Number(n.toFixed(2)).toLocaleString("en-IN");
-document.getElementById("calc").onclick=()=>{
-  const p=+document.getElementById("f0").value,r=+document.getElementById("f1").value,t=+document.getElementById("f2").value;
-  if(!p||!r||!t){document.getElementById("mt-status").textContent="Please fill all fields.";return;}
-  const si=p*r*t/100;
-  document.getElementById("si").textContent=fmt(si);
-  document.getElementById("total").textContent=fmt(p+si);
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const fmt = n => "\u20b9" + Number(n).toLocaleString("en-IN", {
+  minimumFractionDigits: 2, maximumFractionDigits: 2
+});
+const clearOut = () => { $("si").textContent = "\u2014"; $("total").textContent = "\u2014"; };
+
+$("calc").onclick = () => {
+  const pRaw = $("f0").value, rRaw = $("f1").value, tRaw = $("f2").value;
+  const raw = [pRaw, rRaw, tRaw];
+
+  if (raw.some(v => v.trim() === "") || raw.some(v => !Number.isFinite(+v))) {
+    clearOut();
+    $("mt-status").textContent = "Fill all three fields with numbers.";
+    return;
+  }
+
+  const principal = +pRaw, rate = +rRaw, time = +tRaw;
+
+  if (principal <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Principal must be greater than zero.";
+    return;
+  }
+
+  if (rate < 0 || time < 0) {
+    clearOut();
+    $("mt-status").textContent = "Rate and time cannot be negative.";
+    return;
+  }
+
+  const interest = principal * rate * time / 100;
+
+  $("si").textContent = fmt(interest);
+  $("total").textContent = fmt(principal + interest);
+  $("mt-status").textContent = rate === 0 || time === 0
+    ? "No interest: the rate or the tenure is zero."
+    : "";
 };
-document.getElementById("reset").onclick=()=>{["f0","f1","f2"].forEach(id=>document.getElementById(id).value="");document.getElementById("si").textContent="—";document.getElementById("total").textContent="—";};
+
+$("reset").onclick = () => {
+  ["f0", "f1", "f2"].forEach(id => { $(id).value = ""; });
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

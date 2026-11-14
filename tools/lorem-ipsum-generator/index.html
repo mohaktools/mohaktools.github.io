@@ -8,6 +8,8 @@
 <meta name="description" content="Generate placeholder Lorem Ipsum text by words, sentences or paragraphs.">
 <meta name="keywords" content="lorem ipsum generator, placeholder text, dummy text">
 <link rel="canonical" href="https://mohaktools.com/tools/lorem-ipsum-generator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Lorem Ipsum Generator | MohakTools">
 <meta property="og:description" content="Generate placeholder Lorem Ipsum text by words, sentences or paragraphs.">
 <meta property="og:url" content="https://mohaktools.com/tools/lorem-ipsum-generator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -76,6 +93,43 @@
 <textarea id="mt-output" class="mt-output" readonly placeholder="Lorem ipsum text will appear here…"></textarea></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Lorem Ipsum Generator</h2>
+    <div class="mt-prose">
+      <p>The Lorem Ipsum Generator produces placeholder text for layouts and mockups. Choose whether you want words, sentences or paragraphs, set how many, and it returns filler text you can drop into a design without anyone reading it as content.</p>
+      <p>Lorem ipsum is scrambled Latin, drawn from Cicero's De Finibus Bonorum et Malorum and used by typesetters since the 1500s. It is popular precisely because it is meaningless: a reviewer stops reading the words and starts looking at the layout, the line lengths and the typography, which is the point of a mockup.</p>
+      <p>Use it while designing and replace it before publishing. Placeholder text left on a live page is a visible defect, and search engines treat pages full of it as having no real content. Some CMS themes also ship with it, so check new templates before they go live.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is Lorem Ipsum?</h3>
+      <p>Scrambled Latin text used as a placeholder in design. It comes from a work by Cicero and has been used by printers since the sixteenth century.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is it real Latin?</h3>
+      <p>It is derived from real Latin but the words are rearranged and altered, so it does not translate into a coherent passage.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I generate words, sentences or paragraphs?</h3>
+      <p>Yes, pick the unit and then set how many of that unit you want.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Should I publish a page with this text?</h3>
+      <p>No. Replace it before going live, since placeholder text gives visitors nothing and search engines nothing to rank.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why do designers use it instead of real copy?</h3>
+      <p>Because meaningful words distract reviewers from layout. Nonsense text keeps the attention on spacing, hierarchy and type.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is there a limit on how much I can generate?</h3>
+      <p>Very large counts will slow the page down. A few thousand words at a time is comfortable.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/word-counter/" class="mt-related-chip">Word Counter</a><a href="/tools/character-counter/" class="mt-related-chip">Character Counter</a><a href="/tools/case-converter/" class="mt-related-chip">Case Converter</a></div>
@@ -96,9 +150,7 @@ function paragraph(){const sc=3+Math.floor(Math.random()*4);return Array.from({l
 document.getElementById("calc").onclick=()=>{
   const type=document.getElementById("f0").value,count=+document.getElementById("f1").value||3,start=document.getElementById("f2").checked;
   let out="";
-  if(type==="p"){const paras=Array.from({length:count},paragraph);if(start)paras[0]="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "+paras[0];out=paras.join("
-
-");}
+  if(type==="p"){const paras=Array.from({length:count},paragraph);if(start)paras[0]="Lorem ipsum dolor sit amet, consectetur adipiscing elit. "+paras[0];out=paras.join("\n\n");}
   else if(type==="s"){const sents=Array.from({length:count},sentence);if(start)sents[0]="Lorem ipsum dolor sit amet, consectetur adipiscing elit.";out=sents.join(" ");}
   else{const wds=Array.from({length:count},randWord);if(start)wds.splice(0,2,"Lorem","ipsum");out=wds.join(" ");}
   document.getElementById("mt-output").value=out;document.getElementById("mt-status").textContent="";

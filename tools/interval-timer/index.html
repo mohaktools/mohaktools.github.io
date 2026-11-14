@@ -8,6 +8,8 @@
 <meta name="description" content="Set work and rest intervals for HIIT or circuit training.">
 <meta name="keywords" content="interval timer, HIIT timer, circuit training">
 <link rel="canonical" href="https://mohaktools.com/tools/interval-timer/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Interval Timer (HIIT) | MohakTools">
 <meta property="og:description" content="Set work and rest intervals for HIIT or circuit training.">
 <meta property="og:url" content="https://mohaktools.com/tools/interval-timer/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -83,6 +100,43 @@
 <div class="mt-stat"><span>Total Time</span><strong id="totalT">—</strong></div>
 </div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Interval Timer (HIIT)</h2>
+    <div class="mt-prose">
+      <p>The Interval Timer runs alternating work and rest periods for HIIT, circuits or sprint training. Set the work duration, the rest duration and the number of rounds, and it counts down through the whole session.</p>
+      <p>Interval training alternates short efforts with recovery. The work period should be hard enough that you could not sustain it continuously, and the rest long enough to repeat the effort with similar quality. Typical beginner intervals are 30 seconds of work with 30 to 60 seconds of rest.</p>
+      <p>Keep the tab visible while it runs. Browsers throttle timers in background tabs, so the countdown can drift or stall if you switch away, which matters when the whole point is precise timing.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is HIIT?</h3>
+      <p>High-intensity interval training: short bursts of hard effort separated by recovery periods, repeated for a set number of rounds.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How long should work and rest be?</h3>
+      <p>A common starting point is 30 seconds of work with 30 to 60 seconds of rest. Adjust so you can repeat each round with similar quality.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it keep running if I switch tabs?</h3>
+      <p>Browsers throttle background tabs, so the countdown may drift. Keep the page visible.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I set different work and rest times?</h3>
+      <p>Yes, both are separate fields, along with the number of rounds.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is there an audio cue?</h3>
+      <p>The timer shows the phase and the time left on screen. There is no sound, so keep the screen in view.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How many rounds should I do?</h3>
+      <p>Beginners often start with six to eight rounds and build up. Stop if form breaks down.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Time & Productivity</h2>

@@ -569,7 +569,7 @@
     <nav class="mt-breadcrumbs" aria-label="Breadcrumb">
       <a href="/">Home</a>
       <span aria-hidden="true">/</span>
-      <a href="/tools/">Tools</a>
+      <a href="/tools/?category=developer-tools">Developer Tools</a>
       <span aria-hidden="true">/</span>
       <span aria-current="page">Password Generator</span>
     </nav>
@@ -873,7 +873,16 @@
         </div>
       </section>
     </div>
-  </main>
+    <section class="mt-panel" style="margin-top:24px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Password Generator</h2>
+    <div class="mt-prose">
+      <p>The Password Generator creates random passwords of a length and character mix you choose. Set the length, tick the character types, pick how many you need, and copy the results.</p>
+      <p>Length is the single biggest factor in strength. Each added character multiplies the number of guesses an attacker needs, so a 16-character password built from letters, digits and symbols is far stronger than an 8-character one using the same set.</p>
+      <p>Passwords are generated in your browser with the platform's cryptographic random source, not Math.random, so they are not predictable. Use a password manager to store them, and never reuse one across sites: a breach at one service then exposes only that account.</p>
+    </div>
+  </section>
+
+</main>
 
   <div id="site-footer"></div>
 

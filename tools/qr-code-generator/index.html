@@ -517,6 +517,97 @@
             font-size: 17px;
         }
 
+        /* Related tools */
+
+        .qr-related {
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .qr-related h2 {
+            margin: 0 0 12px;
+            color: var(--color-text);
+            font-size: 22px;
+            line-height: 1.4;
+        }
+
+        .qr-related > p {
+            max-width: 850px;
+            margin: 0 0 18px;
+            color: var(--color-text-secondary);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .qr-related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .qr-related-grid li {
+            margin: 0;
+        }
+
+        .qr-related-card a {
+            display: block;
+            height: 100%;
+            padding: 16px 18px;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            background: var(--color-surface);
+            color: inherit;
+            text-decoration: none;
+            transition: border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .qr-related-card a:hover,
+        .qr-related-card a:focus-visible {
+            border-color: var(--color-primary);
+            box-shadow: var(--color-card-shadow);
+        }
+
+        .qr-related-card strong {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--color-primary);
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .qr-related-card span {
+            display: block;
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .qr-related-more {
+            margin: 18px 0 0;
+            font-size: 14px;
+        }
+
+        .qr-related-more a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .qr-related-more a:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .qr-related-card a {
+                transition: none;
+            }
+        }
+
         /* Tablet */
 
         @media (max-width: 800px) {
@@ -687,7 +778,7 @@
         <nav class="qr-breadcrumb" aria-label="Breadcrumb">
             <a href="/">Home</a>
             <span aria-hidden="true">/</span>
-            <a href="/#tools">All tools</a>
+            <a href="/tools/?category=everyday-utilities">Everyday Utilities</a>
             <span aria-hidden="true">/</span>
             <span aria-current="page">QR Code Generator</span>
         </nav>
@@ -959,6 +1050,47 @@
             <p>
                 Choose PNG for everyday digital use. Choose SVG when you need a
                 scalable vector image, particularly for print layouts.
+            </p>
+        </section>
+
+        <section class="qr-related" aria-labelledby="qr-related-title">
+            <h2 id="qr-related-title">Related tools</h2>
+
+            <p>
+                Generating the code is the easy part. Sizing and printing it correctly
+                is where most QR problems start, so these MohakTools pages cover the
+                numbers behind the image.
+            </p>
+
+            <ul class="qr-related-grid">
+                <li class="qr-related-card">
+                    <a href="/tools/dpi-screen-resolution-calculator/">
+                        <strong>DPI / Screen Resolution Calculator</strong>
+                        <span>Work out print resolution and physical size so a printed code stays sharp and scannable.</span>
+                    </a>
+                </li>
+                <li class="qr-related-card">
+                    <a href="/tools/ratio-calculator/">
+                        <strong>Ratio Calculator</strong>
+                        <span>Keep proportions exact when you scale a graphic up or down.</span>
+                    </a>
+                </li>
+                <li class="qr-related-card">
+                    <a href="/tools/calculator/">
+                        <strong>Basic Calculator</strong>
+                        <span>Quick arithmetic for sizes, quantities and batch pricing.</span>
+                    </a>
+                </li>
+                <li class="qr-related-card">
+                    <a href="/tools/scientific-calculator/">
+                        <strong>Scientific Calculator</strong>
+                        <span>Powers, roots and trigonometry for when a plain calculator is not enough.</span>
+                    </a>
+                </li>
+            </ul>
+
+            <p class="qr-related-more">
+                <a href="/tools/">Browse every MohakTools calculator and converter</a>
             </p>
         </section>
     </main>

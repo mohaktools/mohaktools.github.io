@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+<title>Barcode Generator | MohakTools</title>
+<meta name="description" content="Generate EAN-13, Code-128 and other barcodes from any value.">
+<meta name="keywords" content="barcode generator, EAN barcode, Code128">
+<link rel="canonical" href="https://mohaktools.com/tools/barcode-generator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
+<meta property="og:title" content="Barcode Generator | MohakTools">
+<meta property="og:description" content="Generate EAN-13, Code-128 and other barcodes from any value.">
+<meta property="og:url" content="https://mohaktools.com/tools/barcode-generator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Barcode Generator | MohakTools">
+<meta name="twitter:description" content="Generate EAN-13, Code-128 and other barcodes from any value.">
+<script src="/assets/js/tools-registry.js" defer></script>
+<style>
+.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
+.mt-field{margin-bottom:14px}
+.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
+.mt-field input[type="text"],.mt-field input[type="number"],.mt-field input[type="email"],.mt-field input[type="date"],.mt-field input[type="time"],.mt-field input[type="datetime-local"],.mt-field input[type="color"],.mt-field input[type="range"],.mt-field input[type="file"],.mt-field select,.mt-field textarea{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s;box-sizing:border-box}
+.mt-field input:focus,.mt-field select:focus,.mt-field textarea:focus{border-color:var(--color-primary)}
+.mt-field textarea{resize:vertical;min-height:120px;font-family:inherit}
+.mt-output{display:block;width:100%;min-height:160px;padding:12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:13px/1.6 inherit;resize:vertical;box-sizing:border-box}
+.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
+.mt-button:active{transform:scale(.97)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
+.mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
+.mt-stat strong{font-size:20px;font-weight:700;color:var(--color-text)}
+.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
+.mt-help{font-size:12px;color:var(--color-text-secondary);margin-top:8px;line-height:1.5}
+.mt-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
+.mt-option input{accent-color:var(--color-primary)}
+.mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
+@media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
+</style>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+    <span style="margin:0 6px">/</span>
+    <a href="/tools/?category=everyday-utilities" style="color:var(--color-primary);text-decoration:none">Everyday Utilities</a>
+    <span style="margin:0 6px">/</span>
+    <span>Barcode Generator</span>
+  </nav>
+
+  <header style="margin-bottom:24px">
+    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">Barcode Generator</h1>
+    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Generate EAN-13, Code-128 and other barcodes from any value.</p>
+  </header>
+
+  <div class="mt-tool-grid">
+    
+<section class="mt-panel"><h2 id="tool-input-heading">Barcode Options</h2>
+<div class="mt-field"><label for="f0">Data / Value</label><input type="text" id="f0" placeholder="e.g. 1234567890128" style="font-family:monospace"></div>
+<div class="mt-field"><label for="f1">Format</label>
+<select id="f1"><option value="CODE128">Code 128 (text/alphanumeric)</option><option value="EAN13">EAN-13 (13 digits)</option><option value="EAN8">EAN-8 (8 digits)</option><option value="UPC">UPC-A (12 digits)</option><option value="CODE39">Code 39</option><option value="ITF14">ITF-14 (14 digits)</option><option value="MSI">MSI</option></select></div>
+<div class="mt-field"><label for="f2">Width (px)</label><input type="number" id="f2" value="2" min="1" max="5"></div>
+<div class="mt-field"><label for="f3">Height (px)</label><input type="number" id="f3" value="100" min="30" max="300"></div>
+<div class="mt-button-row"><button class="mt-button mt-primary" id="calc">Generate</button><button class="mt-button mt-secondary" id="dl">Download PNG</button></div>
+<p class="mt-status" id="mt-status" role="status" aria-live="polite"></p></section>
+<section class="mt-panel"><h2>Barcode Preview</h2>
+<div id="bc-wrap" style="background:#fff;padding:16px;border-radius:10px;display:inline-block;border:1px solid var(--color-border)">
+<svg id="bc-svg"></svg></div></section>
+  </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Barcode Generator</h2>
+    <div class="mt-prose">
+      <p>The Barcode Generator turns a number or string into a scannable barcode. Choose the format, set the width and height, and the preview updates; you can then download it as an SVG.</p>
+      <p>The format has to match the data. EAN-13 and UPC-A are fixed-length retail codes with a check digit, so they accept twelve or thirteen digits and nothing else. Code 128 is the flexible one: it encodes arbitrary text and is what you use for inventory labels, serial numbers and internal IDs.</p>
+      <p>The barcode is drawn by a small JavaScript library loaded from a public CDN, so the page needs a working connection the first time it runs. Printing at a sensible size matters too: below about 2 cm wide, phone scanners start to struggle.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Which format should I use?</h3>
+      <p>Code 128 for general text and internal labels. EAN-13 for retail products that need a standard barcode.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does EAN-13 reject my number?</h3>
+      <p>EAN-13 is fixed length: it expects twelve digits plus a check digit, or thirteen including it. Use Code 128 for other lengths.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I encode letters?</h3>
+      <p>Yes, with Code 128. EAN and UPC formats are numeric only.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How big should I print it?</h3>
+      <p>At least 2 to 3 cm wide for reliable phone scanning, with quiet space on both sides.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I download the barcode?</h3>
+      <p>Yes, as an SVG, which stays sharp at any print size.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it need an internet connection?</h3>
+      <p>The barcode library is fetched from a CDN on first use, so yes for the initial load.</p>
+    </div>
+  </section>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Everyday Utilities</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/password-generator/" class="mt-related-chip">Password Generator</a><a href="/tools/qr-code-generator/" class="mt-related-chip">QR Code Generator</a><a href="/tools/random-number-generator/" class="mt-related-chip">Random Number Generator</a></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+  <script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+
+const JB_SRC="https://cdnjs.cloudflare.com/ajax/libs/JsBarcode/3.11.6/JsBarcode.all.min.js";
+function loadLib(src){return new Promise((res,rej)=>{if(window.JsBarcode)return res();const s=document.createElement("script");s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
+document.getElementById("calc").onclick=async()=>{
+  const val=document.getElementById("f0").value.trim(),fmt=document.getElementById("f1").value;
+  if(!val){document.getElementById("mt-status").textContent="Enter a value.";return;}
+  document.getElementById("mt-status").textContent="Loading barcode library…";
+  await loadLib(JB_SRC);
+  try{
+    window.JsBarcode("#bc-svg",val,{format:fmt,width:+document.getElementById("f2").value,height:+document.getElementById("f3").value,displayValue:true,background:"#ffffff"});
+    document.getElementById("mt-status").textContent="";
+  }catch(e){document.getElementById("mt-status").textContent="Error: "+e.message;}
+};
+document.getElementById("dl").onclick=()=>{
+  const svg=document.getElementById("bc-svg");
+  const data=new XMLSerializer().serializeToString(svg);
+  const blob=new Blob([data],{type:"image/svg+xml"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="barcode.svg";a.click();
+};
+</script>
+</body>
+</html>

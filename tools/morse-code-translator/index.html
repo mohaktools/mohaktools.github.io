@@ -8,6 +8,8 @@
 <meta name="description" content="Encode text to Morse code or decode Morse code to text.">
 <meta name="keywords" content="morse code, morse translator, dot dash">
 <link rel="canonical" href="https://mohaktools.com/tools/morse-code-translator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Morse Code Translator | MohakTools">
 <meta property="og:description" content="Encode text to Morse code or decode Morse code to text.">
 <meta property="og:url" content="https://mohaktools.com/tools/morse-code-translator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -77,6 +94,43 @@
 <section class="mt-panel"><h2>Result</h2>
 <textarea id="mt-output" class="mt-output" readonly style="font-family:monospace;letter-spacing:2px"></textarea></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Morse Code Translator</h2>
+    <div class="mt-prose">
+      <p>The Morse Code Translator converts ordinary text into Morse code and back again. Type letters, numbers and punctuation, and it returns the dots and dashes; paste Morse in and it decodes it to text.</p>
+      <p>Letters are separated by a space and words by a slash, which is the convention that keeps the output readable. Each character maps to a fixed pattern: A is dot-dash, B is dash-dot-dot-dot, and so on, with digits using five symbols each. The mapping is the international standard, so anything you generate here can be read by any Morse reference.</p>
+      <p>Morse is no longer required for maritime distress, that role ended in 1999, but it survives in amateur radio, aviation beacons and as a puzzle format. If you are learning it, the rhythm matters more than the visual pattern: the gaps between letters and words are what make a transmission readable.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How are letters and words separated?</h3>
+      <p>A single space separates letters and a slash separates words, which is the standard written convention.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it support numbers?</h3>
+      <p>Yes, all ten digits have five-symbol codes, and common punctuation is included too.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I decode Morse back to text?</h3>
+      <p>Yes, paste the dots and dashes and the tool converts them to letters, as long as the letter and word separators are present.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is Morse code case sensitive?</h3>
+      <p>No. Uppercase and lowercase letters map to the same pattern.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is Morse code still used?</h3>
+      <p>Not for commercial distress signals since 1999, but it remains in amateur radio, navigation beacons and puzzles.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What if my Morse has no spaces?</h3>
+      <p>It cannot be decoded reliably. Without separators the boundaries between letters are ambiguous.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>

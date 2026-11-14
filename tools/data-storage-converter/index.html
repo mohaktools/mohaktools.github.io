@@ -1587,7 +1587,7 @@
 
       <span aria-hidden="true">/</span>
 
-      <a href="/tools/">Tools</a>
+      <a href="/tools/?category=converters">Converters</a>
 
       <span aria-hidden="true">/</span>
 
@@ -2225,7 +2225,44 @@
 
     </p>
 
-  </main>
+    <section class="mt-panel" style="margin-top:24px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Data Storage Converter</h2>
+    <div class="mt-prose">
+      <p>The Data Storage Converter translates between units of digital storage: bytes, kilobytes, megabytes, gigabytes, terabytes and the binary equivalents, along with bits and kilobits where relevant.</p>
+      <p>The confusion here is decimal against binary. A kilobyte is 1,000 bytes in the SI sense, but 1,024 bytes in the binary sense, which is what operating systems have historically used. That is why a drive sold as 1 TB shows about 931 GB in Windows: the manufacturer counts decimal, the system counts binary.</p>
+      <p>The IEC names remove the ambiguity: KiB is a kibibyte, 1,024 bytes, while kB is a kilobyte, 1,000 bytes. Storage vendors and network speeds use decimal; memory and many file systems use binary. Knowing which one a figure refers to explains most discrepancies.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Why does my 1 TB drive show less space?</h3>
+      <p>Manufacturers count 1 TB as 1,000,000,000,000 bytes, while the operating system divides by 1,024, showing about 931 GB.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is the difference between a kilobyte and a kibibyte?</h3>
+      <p>A kilobyte is 1,000 bytes; a kibibyte is 1,024. The IEC introduced the -bi names to end the ambiguity.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How many bits are in a byte?</h3>
+      <p>Eight. Network speeds are quoted in bits per second, storage in bytes, which is why a 100 Mbps connection downloads at about 12.5 MB per second.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which units does RAM use?</h3>
+      <p>Binary. A module sold as 8 GB holds 8 gibibytes, 8,589,934,592 bytes.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does this convert between bits and bytes?</h3>
+      <p>Yes, and the factor of eight is the usual reason a quoted speed looks wrong.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Are the results exact?</h3>
+      <p>The factors are exact; display precision is rounded.</p>
+    </div>
+  </section>
+
+</main>
 
 
 

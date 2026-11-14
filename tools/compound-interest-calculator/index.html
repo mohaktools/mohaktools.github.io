@@ -8,6 +8,8 @@
 <meta name="description" content="Calculate compound interest with different compounding frequencies.">
 <meta name="keywords" content="compound interest, CI calculator, investment growth">
 <link rel="canonical" href="https://mohaktools.com/tools/compound-interest-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Compound Interest Calculator | MohakTools">
 <meta property="og:description" content="Calculate compound interest with different compounding frequencies.">
 <meta property="og:url" content="https://mohaktools.com/tools/compound-interest-calculator/">
@@ -40,6 +42,13 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -80,6 +89,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Compound Interest Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        Compound interest is interest that earns interest. An investment paying 8% a year does not simply add 8% of the original amount each year; it adds 8% of whatever the balance has grown to, so the total accelerates as the years pass.
+      </p>
+      <p>
+        The calculator applies A = P x (1 + r/n)^(n x t), where P is the principal, r the annual rate as a decimal, n the number of compounding periods per year and t the tenure in years. Compounding frequency matters more than most people expect. ₹1,00,000 at 8% for ten years becomes about ₹2,15,892 compounded annually, ₹2,20,804 compounded quarterly and ₹2,21,964 compounded monthly, all at the same headline rate, because more frequent compounding means each period's interest starts earning sooner.
+      </p>
+      <p>
+        The frequency is not always your choice. Indian banks typically compound fixed deposits quarterly, while most loan and many mutual fund calculations use monthly rests. Enter the frequency your product actually uses, otherwise the result will be a little off. The figures are gross of tax, and they assume interest is reinvested rather than paid out to you.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is compound interest?</h3>
+      <p>Interest calculated on both the original principal and the interest already added. Each period's interest joins the balance and earns from then on.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How do I know which compounding frequency to choose?</h3>
+      <p>Use what the product specifies. Bank fixed deposits in India are usually compounded quarterly, most loans monthly, and many illustrations quote annual compounding for simplicity.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is the difference from simple interest?</h3>
+      <p>Simple interest is charged only on the principal. ₹1,00,000 at 8% for ten years earns ₹80,000 simple, against about ₹1,15,892 compounded annually, because compounding pays interest on the interest.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does this account for tax?</h3>
+      <p>No. The maturity amount is gross. Interest is taxable at your slab rate, and TDS may apply depending on the product and the interest earned.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I enter a tenure in months?</h3>
+      <p>Enter the tenure in years, using decimals for part-years, so 18 months is 1.5. The compounding frequency handles how often interest is added within that time.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What if the interest is paid out instead of reinvested?</h3>
+      <p>Then compounding does not happen and the simple interest result is closer to reality. This calculator assumes the interest stays invested.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
@@ -93,17 +145,46 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-const fmt=n=>"₹"+Number(n.toFixed(2)).toLocaleString("en-IN");
-document.getElementById("calc").onclick=()=>{
-  const p=+document.getElementById("f0").value,r=+document.getElementById("f1").value/100,
-        t=+document.getElementById("f2").value,n=+document.getElementById("f3").value;
-  if(!p||!r||!t){document.getElementById("mt-status").textContent="Please fill all fields.";return;}
-  const amt=p*Math.pow(1+r/n,n*t);
-  document.getElementById("ci").textContent=fmt(amt-p);
-  document.getElementById("amt").textContent=fmt(amt);
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const fmt = n => "\u20b9" + Number(n).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const clearOut = () => ["ci", "amt"].forEach(id => { $(id).textContent = "\u2014"; });
+
+$("calc").onclick = () => {
+  const pRaw = $("f0").value, rRaw = $("f1").value, tRaw = $("f2").value;
+  const raw = [pRaw, rRaw, tRaw];
+
+  if (raw.some(v => v.trim() === "") || raw.some(v => !Number.isFinite(+v))) {
+    clearOut();
+    $("mt-status").textContent = "Fill all fields with numbers.";
+    return;
+  }
+
+  const p = +pRaw, rate = +rRaw, t = +tRaw, n = +$("f3").value;
+
+  if (p <= 0 || t <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Principal and time must be greater than zero.";
+    return;
+  }
+
+  if (rate < 0) {
+    clearOut();
+    $("mt-status").textContent = "The annual rate cannot be negative.";
+    return;
+  }
+
+  const amount = p * Math.pow(1 + (rate / 100) / n, n * t);
+
+  $("ci").textContent = fmt(amount - p);
+  $("amt").textContent = fmt(amount);
+  $("mt-status").textContent = "";
 };
-document.getElementById("reset").onclick=()=>["f0","f1","f2"].forEach(id=>document.getElementById(id).value="");
+
+$("reset").onclick = () => {
+  ["f0", "f1", "f2"].forEach(id => { $(id).value = ""; });
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

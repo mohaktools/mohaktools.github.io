@@ -8,6 +8,8 @@
 <meta name="description" content="Check if your meta title and description fit Google's character limits.">
 <meta name="keywords" content="meta title length, meta description checker, SEO preview">
 <link rel="canonical" href="https://mohaktools.com/tools/meta-length-checker/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Meta Title & Description Length Checker | MohakTools">
 <meta property="og:description" content="Check if your meta title and description fit Google's character limits.">
 <meta property="og:url" content="https://mohaktools.com/tools/meta-length-checker/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -82,6 +99,43 @@
 <div id="prev-desc" style="color:#545454;font-size:13px;font-family:arial,sans-serif"></div>
 </div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Meta Title & Description Length Checker</h2>
+    <div class="mt-prose">
+      <p>The Meta Length Checker counts your title tag and meta description and tells you whether they fit inside what Google usually displays. Paste each one and it shows the character count with a status of too short, good, or likely to be cut off.</p>
+      <p>Google truncates by pixel width rather than character count, roughly 580 pixels for a title and 920 for a description, but the familiar guidance of about 60 and 160 characters is a reasonable proxy. A title that runs long gets an ellipsis, and the words after it never reach the searcher, which is why the front of the title matters most.</p>
+      <p>Character counts are a guide, not a rule. Google rewrites titles and descriptions more often than not, taking text from the page when it thinks a different snippet answers the query better. Writing a clear, specific title that matches the page is worth more than hitting an exact number.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What are the recommended limits?</h3>
+      <p>About 60 characters for a title and about 160 for a meta description. Beyond that, the snippet is usually truncated.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why 60 and 160?</h3>
+      <p>They approximate the pixel widths Google uses in results. Google measures pixels, not characters, so wide letters like W use more room than narrow ones like i.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does Google always truncate at that length?</h3>
+      <p>No. It truncates by pixel width, so a title of narrow letters can run past 60 characters and still fit, while a wide one may be cut short.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Will Google use my description?</h3>
+      <p>Often not. Google frequently generates a snippet from the page content when it answers the query better.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Should I include keywords in the title?</h3>
+      <p>Put the main topic near the front, in plain language. Keyword stuffing is ignored at best and looks spammy at worst.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does the length matter for mobile?</h3>
+      <p>More than for desktop, since narrower screens fit fewer characters before truncating.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>

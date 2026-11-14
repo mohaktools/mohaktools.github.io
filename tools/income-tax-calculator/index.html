@@ -8,6 +8,8 @@
 <meta name="description" content="Estimate income tax liability under the Indian tax regime.">
 <meta name="keywords" content="income tax calculator India, tax slab, ITR">
 <link rel="canonical" href="https://mohaktools.com/tools/income-tax-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Income Tax Calculator (India) | MohakTools">
 <meta property="og:description" content="Estimate income tax liability under the Indian tax regime.">
 <meta property="og:url" content="https://mohaktools.com/tools/income-tax-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,26 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+.mt-fraction-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-bottom:12px}
+.mt-fraction-grid select{padding:8px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-input-bg,var(--color-surface));color:var(--color-text);font:inherit;font-size:22px}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-fraction-grid{gap:6px}
+.mt-fraction-grid label{font-size:11px}
+.mt-fraction-grid select{font-size:18px;padding:6px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -68,7 +90,7 @@
 <section class="mt-panel"><h2 id="tool-input-heading">Annual Income Details</h2>
 <div class="mt-field"><label for="f0">Total Annual Income (₹)</label><input type="number" id="f0" placeholder="800000" min="0"></div>
 <div class="mt-field"><label for="f1">Regime</label>
-<select id="f1"><option value="new">New Regime (FY 2024-25)</option><option value="old">Old Regime</option></select></div>
+<select id="f1"><option value="new">New Regime (FY 2026-27)</option><option value="old">Old Regime</option></select></div>
 <div class="mt-field" id="drow"><label for="f2">Deductions under 80C/80D etc. (₹) — Old regime only</label><input type="number" id="f2" placeholder="150000" min="0"></div>
 <div class="mt-button-row"><button class="mt-button mt-primary" id="calc">Calculate</button><button class="mt-button mt-secondary" id="reset">Reset</button></div>
 <p class="mt-status" id="mt-status" role="status" aria-live="polite"></p></section>
@@ -79,8 +101,51 @@
 <div class="mt-stat"><span>Surcharge + Cess (4%)</span><strong id="cess">—</strong></div>
 <div class="mt-stat"><span>Total Tax Liability</span><strong id="total">—</strong></div>
 </div>
-<p class="mt-help">Estimates only. Standard deduction of ₹75,000 applied for new regime. Consult a tax professional for filing.</p></section>
+<p class="mt-help">Estimates only. Standard deduction of ₹75,000 applied under the new regime and ₹50,000 under the old. Marginal relief on surcharge is not modelled. Consult a tax professional for filing.</p></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Income Tax Calculator (India)</h2>
+    <div class="mt-prose">
+      <p>
+        The Income Tax Calculator estimates Indian income tax for the current financial year under both the new regime, which is the default, and the old regime. Enter your total annual income, pick a regime, and it returns taxable income, the tax at slab rates, surcharge and cess, and the total liability.
+      </p>
+      <p>
+        Under the new regime for FY 2026-27 the slabs run from nil up to four lakh, then 5% to eight lakh, 10% to twelve, 15% to sixteen, 20% to twenty, 25% to twenty-four, and 30% above that. A salaried taxpayer also gets the standard deduction of seventy-five thousand. Where total income is up to twelve lakh, the section 87A rebate of up to sixty thousand wipes out the tax entirely, and marginal relief stops the liability from jumping the moment income crosses that line.
+      </p>
+      <p>
+        The old regime keeps the two-and-a-half lakh exemption, a fifty-thousand standard deduction, and the deductions you enter, such as 80C and 80D. Surcharge is applied on high incomes and cess at four per cent on tax plus surcharge. This is an estimate for planning, not a return: it ignores marginal relief on surcharge, capital gains taxed at special rates, and anything specific to your situation.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Which financial year does this use?</h3>
+      <p>FY 2026-27, the year covered by the Finance Act 2026 and the new Income-tax Act, 2025. The slabs were unchanged from FY 2025-26.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What are the new regime slabs?</h3>
+      <p>Nil up to 4 lakh, 5% from 4 to 8 lakh, 10% from 8 to 12 lakh, 15% from 12 to 16 lakh, 20% from 16 to 20 lakh, 25% from 20 to 24 lakh and 30% above 24 lakh.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is income up to 12 lakh really tax-free?</h3>
+      <p>For a resident individual under the new regime, yes: the section 87A rebate of up to 60,000 cancels the slab tax at that level. Salaried taxpayers effectively reach 12.75 lakh because of the 75,000 standard deduction.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is marginal relief?</h3>
+      <p>Just above 12 lakh, the tax payable is capped at the amount by which income exceeds 12 lakh, so crossing the line by a rupee does not cost you 60,000. The calculator applies this for the new regime.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which regime should I choose?</h3>
+      <p>The new regime wins for most people because of the higher rebate and exemption, but the old regime can win if you claim large deductions for HRA, home loan interest, 80C and 80D. Run both and compare the totals.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How is surcharge applied?</h3>
+      <p>10% above 50 lakh, 15% above 1 crore and 25% above 2 crore of taxable income. The old regime also has a 37% rate above 5 crore, which the new regime caps at 25%. Cess of 4% is charged on tax plus surcharge.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
@@ -95,35 +160,100 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-const fmt=n=>"₹"+Math.round(n).toLocaleString("en-IN");
-document.getElementById("f1").onchange=function(){document.getElementById("drow").hidden=this.value==="new";};
-document.getElementById("calc").onclick=()=>{
-  const income=+document.getElementById("f0").value,regime=document.getElementById("f1").value;
-  if(!income){document.getElementById("mt-status").textContent="Enter income.";return;}
-  let taxable=income,tax=0;
-  if(regime==="new"){
-    taxable=Math.max(0,income-75000);
-    const slabs=[[300000,0],[300000,.05],[300000,.1],[300000,.15],[300000,.2],[Infinity,.3]];
-    let rem=taxable;
-    for(const[limit,rate]of slabs){const chunk=Math.min(rem,limit);tax+=chunk*rate;rem-=chunk;if(rem<=0)break;}
-    if(taxable<=700000)tax=0;
-  } else {
-    const ded=Math.min(+document.getElementById("f2").value||0,150000);
-    taxable=Math.max(0,income-50000-ded);
-    if(taxable<=250000)tax=0;
-    else if(taxable<=500000)tax=(taxable-250000)*.05;
-    else if(taxable<=1000000)tax=12500+(taxable-500000)*.2;
-    else tax=112500+(taxable-1000000)*.3;
-    if(income<=500000)tax=0;
+const $ = id => document.getElementById(id);
+const fmt = n => "\u20b9" + Math.round(n).toLocaleString("en-IN");
+const OUT = ["taxable", "tax", "cess", "total"];
+const clearOut = () => OUT.forEach(id => { $(id).textContent = "\u2014"; });
+
+// New regime slabs, FY 2026-27 (unchanged from FY 2025-26)
+const NEW_SLABS = [[400000, 0], [400000, 0.05], [400000, 0.10], [400000, 0.15],
+                   [400000, 0.20], [400000, 0.25], [Infinity, 0.30]];
+// Old regime slabs
+const OLD_SLABS = [[250000, 0], [250000, 0.05], [500000, 0.20], [Infinity, 0.30]];
+
+function slabTax(income, slabs) {
+  let tax = 0, remaining = income;
+  for (const [limit, rate] of slabs) {
+    if (remaining <= 0) break;
+    const chunk = Math.min(remaining, limit);
+    tax += chunk * rate;
+    remaining -= chunk;
   }
-  const cess=tax*.04,total=tax+cess;
-  document.getElementById("taxable").textContent=fmt(taxable);
-  document.getElementById("tax").textContent=fmt(tax);
-  document.getElementById("cess").textContent=fmt(cess);
-  document.getElementById("total").textContent=fmt(total);
-  document.getElementById("mt-status").textContent="";
+  return tax;
+}
+
+function surchargeRate(taxable, regime) {
+  if (taxable > 50000000) return regime === "new" ? 0.25 : 0.37;
+  if (taxable > 20000000) return 0.25;
+  if (taxable > 10000000) return 0.15;
+  if (taxable > 5000000) return 0.10;
+  return 0;
+}
+
+const syncDeductions = () => { $("drow").hidden = $("f1").value !== "old"; };
+$("f1").onchange = syncDeductions;
+syncDeductions();
+
+$("calc").onclick = () => {
+  const iRaw = $("f0").value;
+
+  if (iRaw.trim() === "" || !Number.isFinite(+iRaw)) {
+    clearOut();
+    $("mt-status").textContent = "Enter your total annual income.";
+    return;
+  }
+
+  const income = +iRaw;
+
+  if (income < 0) {
+    clearOut();
+    $("mt-status").textContent = "Income cannot be negative.";
+    return;
+  }
+
+  const regime = $("f1").value;
+  let taxable, tax;
+
+  if (regime === "new") {
+    taxable = Math.max(0, income - 75000);
+    tax = slabTax(taxable, NEW_SLABS);
+
+    if (taxable <= 1200000) {
+      tax = 0;                        // 87A rebate, up to 60,000
+    } else {
+      const excess = taxable - 1200000;
+      if (tax > excess) tax = excess; // marginal relief
+    }
+  } else {
+    const dRaw = $("f2").value;
+    if (dRaw.trim() !== "" && !Number.isFinite(+dRaw)) {
+      clearOut();
+      $("mt-status").textContent = "Enter deductions as a number, or leave the box empty.";
+      return;
+    }
+    const deductions = Math.max(0, dRaw.trim() === "" ? 0 : +dRaw);
+    taxable = Math.max(0, income - 50000 - deductions);
+    tax = slabTax(taxable, OLD_SLABS);
+    if (taxable <= 500000) tax = 0;   // 87A rebate, up to 12,500
+  }
+
+  const surcharge = tax * surchargeRate(taxable, regime);
+  const cess = (tax + surcharge) * 0.04;
+
+  $("taxable").textContent = fmt(taxable);
+  $("tax").textContent = fmt(tax);
+  $("cess").textContent = fmt(surcharge + cess);
+  $("total").textContent = fmt(tax + surcharge + cess);
+  $("mt-status").textContent = "";
 };
-document.getElementById("reset").onclick=()=>{["f0","f2"].forEach(id=>document.getElementById(id).value="");document.getElementById("f1").value="new";};
+
+$("reset").onclick = () => {
+  ["f0", "f2"].forEach(id => { $(id).value = ""; });
+  $("f1").value = "new";
+  syncDeductions();
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

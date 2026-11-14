@@ -8,6 +8,8 @@
 <meta name="description" content="Pick any colour from the wheel and get HEX, RGB and HSL values.">
 <meta name="keywords" content="color picker, colour picker, hex color, RGB picker">
 <link rel="canonical" href="https://mohaktools.com/tools/colour-picker/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Colour Picker | MohakTools">
 <meta property="og:description" content="Pick any colour from the wheel and get HEX, RGB and HSL values.">
 <meta property="og:url" content="https://mohaktools.com/tools/colour-picker/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -82,6 +99,43 @@
 </div>
 <div class="mt-button-row" style="margin-top:10px"><button class="mt-button mt-secondary" id="copyhex">Copy HEX</button><button class="mt-button mt-secondary" id="copyrgb">Copy RGB</button><button class="mt-button mt-secondary" id="copyhsl">Copy HSL</button></div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Colour Picker</h2>
+    <div class="mt-prose">
+      <p>The Colour Picker gives you the same colour in every format you might need: HEX, RGB, HSL and a CSS custom property. Pick from the wheel or type a hex code and the other values update.</p>
+      <p>The formats describe the same thing differently. HEX is compact and used in HTML and CSS. RGB gives three channels from 0 to 255, which is how screens mix light. HSL gives hue, saturation and lightness, which is far easier to reason about when you want a lighter shade of the same colour: raise the lightness and leave the hue alone.</p>
+      <p>The CSS variable output is the practical one for a design system. Define --brand-primary once at the root and every component references it, so a colour change is one edit rather than a search and replace across a stylesheet.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is the difference between HEX, RGB and HSL?</h3>
+      <p>They are three ways of writing the same colour. HEX is compact, RGB is the screen's native channel model, and HSL is easier to adjust by hand.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why would I use HSL?</h3>
+      <p>Because hue, saturation and lightness map onto how people describe colour. Making a shade lighter means changing one number.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is the CSS variable output for?</h3>
+      <p>It writes --name: value; so the colour can be defined once and reused across a stylesheet.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I enter a colour directly?</h3>
+      <p>Yes, type a hex code and the picker and other formats follow.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it handle transparency?</h3>
+      <p>The outputs are solid colours. For alpha you would add an rgba or eight-digit hex value yourself.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Will the colour look the same on every screen?</h3>
+      <p>Approximately. Screens differ in calibration and gamut, so a colour is a close match rather than an exact one.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Everyday Utilities</h2>

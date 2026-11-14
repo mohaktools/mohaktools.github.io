@@ -898,6 +898,19 @@
   <div id="site-header"></div>
 
   <main class="ic-page">
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+
+      <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+
+      <span style="margin:0 6px">/</span>
+
+      <a href="/tools/?category=everyday-utilities" style="color:var(--color-primary);text-decoration:none">Everyday Utilities</a>
+
+      <span style="margin:0 6px">/</span>
+
+      <span>Image Compressor</span>
+
+    </nav>
     <section class="ic-hero">
       <div class="ic-eyebrow">
         <span class="ic-eyebrow-dot"></span>
@@ -1245,7 +1258,44 @@
         <a href="/tools/random-choice-picker/">Random Choice Picker</a>
       </div>
     </section>
-  </main>
+    <section class="mt-panel" style="margin-top:24px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Image Compressor</h2>
+    <div class="mt-prose">
+      <p>The Image Compressor reduces the file size of a photo or graphic without visibly changing how it looks. Choose a quality level, optionally set the output dimensions, and it re-encodes the image in your browser.</p>
+      <p>Compression works by discarding detail the eye is unlikely to notice. A photograph at 75 to 80 per cent quality is usually indistinguishable from the original at a fraction of the size. Below about 60 per cent, gradients and skies start to band and edges to block.</p>
+      <p>Resizing usually saves more than compression alone. A 4000-pixel photo displayed at 800 pixels carries four times the pixels it needs; scaling it down first and then compressing gives the smallest sensible file.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How much smaller will my image get?</h3>
+      <p>Photographs often shrink by 60 to 80 per cent at quality 75 with no visible loss. PNG graphics compress less.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What quality setting should I use?</h3>
+      <p>75 to 80 for photographs. Lower values shrink further at the cost of visible artefacts.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it change the dimensions?</h3>
+      <p>Only if you set a width or height. Otherwise the pixel dimensions are kept.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which format should I output?</h3>
+      <p>JPG or WebP for photographs, PNG when you need transparency or sharp text.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is my image uploaded?</h3>
+      <p>No. Compression runs on a canvas in your browser.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I compress a GIF?</h3>
+      <p>It is treated as a still image, so animation is lost.</p>
+    </div>
+  </section>
+
+</main>
 
   <div id="site-footer"></div>
 

@@ -8,6 +8,8 @@
 <meta name="description" content="Calculate subnet mask, network address and usable host range.">
 <meta name="keywords" content="subnet calculator, IP address, CIDR, network">
 <link rel="canonical" href="https://mohaktools.com/tools/ip-subnet-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="IP / Subnet Calculator | MohakTools">
 <meta property="og:description" content="Calculate subnet mask, network address and usable host range.">
 <meta property="og:url" content="https://mohaktools.com/tools/ip-subnet-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -80,6 +97,43 @@
 <div class="mt-stat"><span>CIDR</span><strong id="cidr" style="font-family:monospace">—</strong></div>
 </div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the IP / Subnet Calculator</h2>
+    <div class="mt-prose">
+      <p>The IP and Subnet Calculator works out what a CIDR block actually contains: the network address, the broadcast address, the subnet mask, the usable host range and how many hosts fit.</p>
+      <p>CIDR notation such as 192.168.1.10/24 says the first 24 bits are the network and the remaining 8 identify hosts. The mask for /24 is 255.255.255.0. You can enter either the prefix length or a dotted mask; the calculator accepts both.</p>
+      <p>Two addresses in every block cannot be used by a host: the network address, where all host bits are zero, and the broadcast address, where they are all one. That is why a /24 holds 256 addresses but only 254 usable hosts. A /31 is the exception, used for point-to-point links where both addresses are usable.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is CIDR notation?</h3>
+      <p>An address followed by a slash and the number of network bits, such as 192.168.1.0/24.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How many hosts does a /24 have?</h3>
+      <p>256 addresses, of which 254 are usable after removing the network and broadcast addresses.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why subtract two addresses?</h3>
+      <p>The network address identifies the subnet itself and the broadcast address reaches every host, so neither can be assigned to a device.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What is a /31 used for?</h3>
+      <p>Point-to-point links between two routers. Both addresses are usable and there is no broadcast.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which ranges are private?</h3>
+      <p>10.0.0.0/8, 172.16.0.0/12 and 192.168.0.0/16. They are not routed on the public internet.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I enter a subnet mask instead of a prefix?</h3>
+      <p>Yes, 255.255.255.0 is read as /24.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Developer Tools</h2>

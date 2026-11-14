@@ -8,6 +8,8 @@
 <meta name="description" content="Find all anagrams for a word using a built-in word list.">
 <meta name="keywords" content="anagram solver, word anagram, letter scramble">
 <link rel="canonical" href="https://mohaktools.com/tools/anagram-solver/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Anagram Solver | MohakTools">
 <meta property="og:description" content="Find all anagrams for a word using a built-in word list.">
 <meta property="og:url" content="https://mohaktools.com/tools/anagram-solver/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -72,6 +89,43 @@
 <section class="mt-panel"><h2>Anagrams Found</h2>
 <div id="anagram-out" style="line-height:2;color:var(--color-text)"></div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Anagram Solver</h2>
+    <div class="mt-prose">
+      <p>The Anagram Solver finds words that use exactly the same letters as the word you enter. Type a word, press Solve, and every match from the built-in list is shown as a chip below. The comparison is made by sorting the letters of both words and checking they are identical, which is the definition of an anagram.</p>
+      <p>The list behind this tool is deliberately small, a few dozen common English words. That keeps the page fast and offline, but it also means a valid anagram can exist in English and still not be found here. Treat the results as suggestions rather than a complete answer, and use a full dictionary if you are setting or solving a puzzle.</p>
+      <p>Matching is case-insensitive, so LISTEN and listen behave the same, and the word you typed is never returned as its own anagram. The input is capped at twelve characters, since the number of possible letter arrangements explodes as words get longer and a long string is very unlikely to appear in a short word list.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is an anagram?</h3>
+      <p>A word or phrase formed by rearranging the letters of another, using every letter exactly once. Listen and silent are anagrams of each other.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How does the solver find them?</h3>
+      <p>It sorts the letters of your word alphabetically and compares that signature against every entry in its word list. Two words with the same signature are anagrams.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why do I get so few results?</h3>
+      <p>The built-in word list is short by design so the page stays fast and works without a server. A full dictionary would find more, at the cost of a much larger download.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does capitalisation matter?</h3>
+      <p>No. Matching ignores case, so Listen, LISTEN and listen all return the same results.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I enter more than one word?</h3>
+      <p>The input is limited to twelve characters, so short single words work best. Spaces are treated as characters and will usually stop a match.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Will it show the word I typed?</h3>
+      <p>No. Only other words that use the same letters are listed, because a word is not usually considered its own anagram.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>

@@ -8,6 +8,8 @@
 <meta name="description" content="Calculate FD maturity amount and interest earned.">
 <meta name="keywords" content="FD calculator, fixed deposit, bank interest">
 <link rel="canonical" href="https://mohaktools.com/tools/fixed-deposit-maturity-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Fixed Deposit Maturity Calculator | MohakTools">
 <meta property="og:description" content="Calculate FD maturity amount and interest earned.">
 <meta property="og:url" content="https://mohaktools.com/tools/fixed-deposit-maturity-calculator/">
@@ -40,6 +42,13 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -80,6 +89,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Fixed Deposit Maturity Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The FD Maturity Calculator projects what a fixed deposit will be worth at the end of its term. Enter the principal, the annual interest rate, the tenure in years and the compounding frequency, and it returns both the interest earned and the total maturity amount.
+      </p>
+      <p>
+        The maths is the standard compound interest formula, A = P x (1 + r/n)^(n x t). Indian banks compound fixed deposits quarterly by default, which is why that option is preselected, but check your deposit receipt, because a bank compounding quarterly and one paying simple interest at the same headline rate give noticeably different maturity values. ₹1,00,000 at 7% for three years grows to about ₹1,23,144 compounded quarterly, against ₹1,21,000 on simple interest.
+      </p>
+      <p>
+        The result is gross of tax. Interest on fixed deposits is taxed at your slab rate, and banks deduct TDS once interest crosses ₹50,000 in a financial year, or ₹1,00,000 for senior citizens. Premature withdrawal penalties, typically 0.5 to 1 percentage point off the contracted rate, are not modelled either, so the maturity figure assumes the deposit runs its full term.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How is the maturity amount calculated?</h3>
+      <p>With compound interest: principal multiplied by one plus the periodic rate, raised to the number of compounding periods over the whole tenure.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which compounding frequency should I choose?</h3>
+      <p>Quarterly for most Indian bank fixed deposits, which is the default here. Check the deposit advice, since a few products compound monthly or pay simple interest.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is this amount before or after tax?</h3>
+      <p>Before tax. Interest is taxable at your slab rate, and TDS applies above ₹50,000 of interest in a year, or ₹1,00,000 for senior citizens.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What happens if I withdraw early?</h3>
+      <p>Banks usually apply a penalty of 0.5 to 1 percentage point on the applicable rate. This calculator assumes the deposit is held to maturity.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it include the extra rate for senior citizens?</h3>
+      <p>Not automatically. Enter the rate your bank actually offered you, including any senior citizen addition.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I use it for a recurring deposit?</h3>
+      <p>No. This tool assumes a single lump sum. A recurring deposit needs a monthly contribution, which is a different calculation.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
@@ -93,17 +145,46 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-const fmt=n=>"₹"+Number(n.toFixed(2)).toLocaleString("en-IN");
-document.getElementById("calc").onclick=()=>{
-  const p=+document.getElementById("f0").value,r=+document.getElementById("f1").value/100,
-        t=+document.getElementById("f2").value,n=+document.getElementById("f3").value;
-  if(!p||!r||!t){document.getElementById("mt-status").textContent="Fill all fields.";return;}
-  const mat=p*Math.pow(1+r/n,n*t);
-  document.getElementById("int").textContent=fmt(mat-p);
-  document.getElementById("mat").textContent=fmt(mat);
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const fmt = n => "\u20b9" + Number(n).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const clearOut = () => ["int", "mat"].forEach(id => { $(id).textContent = "\u2014"; });
+
+$("calc").onclick = () => {
+  const pRaw = $("f0").value, rRaw = $("f1").value, tRaw = $("f2").value;
+  const raw = [pRaw, rRaw, tRaw];
+
+  if (raw.some(v => v.trim() === "") || raw.some(v => !Number.isFinite(+v))) {
+    clearOut();
+    $("mt-status").textContent = "Fill all fields with numbers.";
+    return;
+  }
+
+  const p = +pRaw, rate = +rRaw, t = +tRaw, n = +$("f3").value;
+
+  if (p <= 0 || t <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Principal and tenure must be greater than zero.";
+    return;
+  }
+
+  if (rate < 0) {
+    clearOut();
+    $("mt-status").textContent = "The interest rate cannot be negative.";
+    return;
+  }
+
+  const maturity = p * Math.pow(1 + (rate / 100) / n, n * t);
+
+  $("int").textContent = fmt(maturity - p);
+  $("mat").textContent = fmt(maturity);
+  $("mt-status").textContent = "";
 };
-document.getElementById("reset").onclick=()=>["f0","f1","f2"].forEach(id=>document.getElementById(id).value="");
+
+$("reset").onclick = () => {
+  ["f0", "f1", "f2"].forEach(id => { $(id).value = ""; });
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

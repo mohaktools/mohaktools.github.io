@@ -8,6 +8,8 @@
 <meta name="description" content="Calculate GPA from grades and credit hours.">
 <meta name="keywords" content="GPA calculator, grade point average, CGPA">
 <link rel="canonical" href="https://mohaktools.com/tools/gpa-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="GPA Calculator | MohakTools">
 <meta property="og:description" content="Calculate GPA from grades and credit hours.">
 <meta property="og:url" content="https://mohaktools.com/tools/gpa-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,26 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+.mt-fraction-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-bottom:12px}
+.mt-fraction-grid select{padding:8px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-input-bg,var(--color-surface));color:var(--color-text);font:inherit;font-size:22px}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-fraction-grid{gap:6px}
+.mt-fraction-grid label{font-size:11px}
+.mt-fraction-grid select{font-size:18px;padding:6px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -86,6 +108,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the GPA Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The GPA Calculator converts a list of course grades and credit hours into a credit-weighted grade point average. Each grade is turned into a grade point on the ten-point scale, multiplied by the credits that course carries, and the total is divided by the credits attempted. A four-credit course therefore moves your GPA twice as much as a two-credit one.
+      </p>
+      <p>
+        The grade points follow the common Indian ten-point convention: O and A+ are worth 10, A is 9, B+ is 8, B is 7, C+ is 6, C is 5, D is 4 and F is 0. Letter grades with a minus or plus from the US system are accepted too, with A- at 9, B- at 7, C- at 5 and D+ at 4. Add a row for each course, enter its credits, and the tool ignores nothing silently: an unrecognised grade stops the calculation and tells you which one it could not read.
+      </p>
+      <p>
+        The four-point figure is a straight linear conversion of the ten-point result, so a 9.0 becomes 3.6. Real US universities use their own conversion tables, and WES and other credential evaluators use theirs, so treat the four-point number as a rough guide rather than an official equivalent.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How is GPA calculated?</h3>
+      <p>Each grade is converted to a grade point, multiplied by the course credits, and the products are added. That total is divided by the total credits attempted.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Which grade scale does it use?</h3>
+      <p>The ten-point scale: O and A+ = 10, A and A- = 9, B+ = 8, B and B- = 7, C+ = 6, C and C- = 5, D and D+ = 4, F = 0.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How is the four-point GPA worked out?</h3>
+      <p>By scaling the ten-point GPA by four-tenths, so 8.5 becomes 3.4. It is an approximation; universities and credential evaluators use their own tables.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How do I handle a pass/fail course?</h3>
+      <p>Leave it out. A pass/fail course usually carries credits but no grade point, so including it would distort the average.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What if a course carries zero credits?</h3>
+      <p>It contributes nothing to the result either way. The credit total is what the division uses, so zero-credit rows are harmless.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I calculate CGPA with this?</h3>
+      <p>Yes, if you enter one row per semester with the semester's SGPA as the grade and the semester's credits as the credits. The result is the credit-weighted CGPA.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
@@ -99,34 +164,97 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-const GRADE={O:10,"A+":10,A:9,"B+":8,B:7,"C+":6,C:5,D:4,F:0,
-  "A":9,"A-":9,"B":8,"B-":7,"C":6,"C-":5,"D+":4};
-document.getElementById("addrow").onclick=()=>{
-  const row=document.createElement("div");
-  row.className="gpa-row mt-field";row.style.cssText="display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end";
-  row.innerHTML=`<div><label>Grade</label><input type="text" class="ggrade" placeholder="A" maxlength="3" style="display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-input-bg,var(--color-surface));color:var(--color-text);font:inherit;outline:none"></div>
-<div><label>Credits</label><input type="number" class="gcred" placeholder="3" min="0" style="display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-input-bg,var(--color-surface));color:var(--color-text);font:inherit;outline:none"></div>
-<button type="button" class="mt-button mt-secondary" style="margin-top:24px" onclick="this.closest('.gpa-row').remove()">✕</button>`;
-  document.getElementById("rows").appendChild(row);
+const $ = id => document.getElementById(id);
+const GRADE = {
+  "O": 10, "A+": 10, "A": 9, "A-": 9,
+  "B+": 8, "B": 7, "B-": 7,
+  "C+": 6, "C": 5, "C-": 5,
+  "D+": 4, "D": 4, "F": 0
 };
-document.getElementById("calc").onclick=()=>{
-  const grades=[...document.querySelectorAll(".ggrade")];
-  const credits=[...document.querySelectorAll(".gcred")];
-  let pts=0,cr=0;
-  for(let i=0;i<grades.length;i++){
-    const g=grades[i].value.trim().toUpperCase(),c=+credits[i].value;
-    const gp=GRADE[g];
-    if(gp===undefined){document.getElementById("mt-status").textContent=`Unknown grade "${g}". Use O/A+/A/B+/B/C+/C/D/F.`;return;}
-    pts+=gp*c;cr+=c;
+const clearOut = () => {
+  $("gpa").textContent = "\u2014";
+  $("gpa4").textContent = "\u2014";
+  $("credits").textContent = "\u2014";
+};
+
+function makeRow(withHeading) {
+  const row = document.createElement("div");
+  row.className = "gpa-row mt-field";
+  row.style.cssText = "display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end";
+  row.innerHTML =
+    '<div><label>' + (withHeading ? "Grade (A/B+/\u2026)" : "Grade") + '</label>' +
+    '<input type="text" class="ggrade" placeholder="A" maxlength="3" style="display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-input-bg,var(--color-surface));color:var(--color-text);font:inherit;outline:none"></div>' +
+    '<div><label>Credits</label>' +
+    '<input type="number" class="gcred" placeholder="3" min="0" max="60" style="display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-input-bg,var(--color-surface));color:var(--color-text);font:inherit;outline:none"></div>' +
+    '<button type="button" class="mt-button mt-secondary" style="margin-top:24px" aria-label="Remove course" onclick="this.closest(\'.gpa-row\').remove()">\u2715</button>';
+  return row;
+}
+
+$("addrow").onclick = () => {
+  $("rows").appendChild(makeRow(false));
+};
+
+$("calc").onclick = () => {
+  const grades = [...document.querySelectorAll(".ggrade")];
+  const credits = [...document.querySelectorAll(".gcred")];
+
+  if (!grades.length) {
+    clearOut();
+    $("mt-status").textContent = "Add at least one course.";
+    return;
   }
-  if(!cr){document.getElementById("mt-status").textContent="Add at least one course.";return;}
-  const gpa=pts/cr;
-  document.getElementById("gpa").textContent=gpa.toFixed(2);
-  document.getElementById("gpa4").textContent=(gpa/10*4).toFixed(2);
-  document.getElementById("credits").textContent=cr;
-  document.getElementById("mt-status").textContent="";
+
+  let points = 0, total = 0;
+
+  for (let i = 0; i < grades.length; i++) {
+    const g = grades[i].value.trim().toUpperCase();
+    const cRaw = credits[i].value;
+
+    if (g === "" && cRaw.trim() === "") continue;
+
+    if (g === "") {
+      clearOut();
+      $("mt-status").textContent = "Row " + (i + 1) + " has credits but no grade.";
+      return;
+    }
+
+    if (GRADE[g] === undefined) {
+      clearOut();
+      $("mt-status").textContent = "Unknown grade \"" + g + "\". Use O, A+, A, B+, B, C+, C, D or F.";
+      return;
+    }
+
+    if (cRaw.trim() === "" || !Number.isFinite(+cRaw) || +cRaw < 0) {
+      clearOut();
+      $("mt-status").textContent = "Row " + (i + 1) + " needs a valid credit value.";
+      return;
+    }
+
+    const c = +cRaw;
+    points += GRADE[g] * c;
+    total += c;
+  }
+
+  if (!total) {
+    clearOut();
+    $("mt-status").textContent = "Enter at least one course with credits above zero.";
+    return;
+  }
+
+  const gpa = points / total;
+
+  $("gpa").textContent = gpa.toFixed(2);
+  $("gpa4").textContent = (gpa / 10 * 4).toFixed(2);
+  $("credits").textContent = total;
+  $("mt-status").textContent = "";
 };
-document.getElementById("reset").onclick=()=>{document.getElementById("rows").innerHTML="";document.getElementById("gpa").textContent=document.getElementById("gpa4").textContent=document.getElementById("credits").textContent="—";};
+
+$("reset").onclick = () => {
+  $("rows").innerHTML = "";
+  $("rows").appendChild(makeRow(true));
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

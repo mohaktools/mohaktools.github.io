@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Alarm Clock | Online Web </title>
+    <title>Alarm Clock Tool | MohakTools</title>
     <meta name="description" content="Free online alarm clock with multiple alarms, repeat days, five alarm sounds, snooze and a live countdown. Works on desktop and mobile — no sign-up needed.">
     <meta name="keywords" content="online alarm clock, browser alarm, set alarm online, free alarm clock, multiple alarms, snooze alarm, repeating alarm">
     <meta name="robots" content="index, follow">
@@ -217,6 +217,17 @@ body.is-ringing { overflow:hidden; }
 @keyframes popIn { from { opacity:0; transform:scale(.94) } to { opacity:1; transform:scale(1) } }
 @keyframes pulseDot { 0%,100% { opacity:1; transform:scale(1) } 50% { opacity:.35; transform:scale(.8) } }
 
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:860px) { .time-tool-layout { grid-template-columns:minmax(0,1fr); gap:16px; } }
 @media(max-width:800px) { .time-tool-page { width:min(640px,calc(100% - 28px)); padding-top:22px; padding-bottom:44px; } .time-intro { margin-bottom:20px; } }
 @media(max-width:560px) {
@@ -249,7 +260,7 @@ body.is-ringing { overflow:hidden; }
     <main class="time-tool-page">
         <nav class="time-breadcrumb" aria-label="Breadcrumb">
             <a href="/">Home</a><span aria-hidden="true">/</span>
-            <a href="/tools/">Tools</a><span aria-hidden="true">/</span>
+            <a href="/tools/?category=time-tools">Time &amp; Productivity</a><span aria-hidden="true">/</span>
             <span aria-current="page">Alarm Clock</span>
         </nav>
 
@@ -436,7 +447,44 @@ body.is-ringing { overflow:hidden; }
             <h3>When a browser alarm is the right tool</h3>
             <p>An online alarm clock is handy for short, focused work sessions, cooking, workouts, reminders during a long meeting, or a nap at your desk. For waking up in the morning, a phone's built-in alarm is still the safer choice, because it keeps working when the phone screen locks and the browser is closed.</p>
         </section>
-    </main>
+      <section class="mt-panel" style="margin-top:24px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Alarm Clock</h2>
+    <div class="mt-prose">
+      <p>The Alarm Clock is a browser alarm that rings on your schedule. Set a time, add a label if you like, choose whether it repeats, and it counts down to the next alert with a full-screen notice and a sound when the moment arrives.</p>
+      <p>Because it runs in a tab, it is best for short-range reminders: a power nap, a meeting you must not miss while working at the desk, a timer for the oven. It is not a replacement for your phone's alarm, which keeps working when the screen locks and the browser is closed.</p>
+      <p>The clock stays accurate as long as the page is open. Browsers throttle background tabs, so if you switch away for a long time the alert can be late; keep the tab visible, or at least awake, when the alarm matters.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Will the alarm ring if the browser is closed?</h3>
+      <p>No. The alarm only works while the page is open. For waking up, use your phone's built-in alarm.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I set more than one alarm?</h3>
+      <p>Yes. Each alarm has its own time, label, repeat rule and on/off switch.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it repeat?</h3>
+      <p>Yes. Choose every day, weekdays only, weekends only, or a custom set of days.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why was my alarm late?</h3>
+      <p>Browsers slow down background tabs to save power, which can delay the alert. Keep the tab in front when the time matters.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I snooze it?</h3>
+      <p>Yes. Snooze is available at 5, 9, 10 or 15 minutes, and the alert also has a dismiss button.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it work offline?</h3>
+      <p>Yes, once the page has loaded. Nothing is sent to a server.</p>
+    </div>
+  </section>
+
+</main>
 
     <div id="site-footer"></div>
 

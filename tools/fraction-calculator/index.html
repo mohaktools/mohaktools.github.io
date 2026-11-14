@@ -8,6 +8,8 @@
 <meta name="description" content="Add, subtract, multiply and divide fractions.">
 <meta name="keywords" content="fraction calculator, add fractions, simplify fraction">
 <link rel="canonical" href="https://mohaktools.com/tools/fraction-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Fraction Calculator | MohakTools">
 <meta property="og:description" content="Add, subtract, multiply and divide fractions.">
 <meta property="og:url" content="https://mohaktools.com/tools/fraction-calculator/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,26 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+.mt-fraction-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-bottom:12px}
+.mt-fraction-grid select{padding:8px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-input-bg,var(--color-surface));color:var(--color-text);font:inherit;font-size:22px}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-fraction-grid{gap:6px}
+.mt-fraction-grid label{font-size:11px}
+.mt-fraction-grid select{font-size:18px;padding:6px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -66,12 +88,12 @@
   <div class="mt-tool-grid">
     
 <section class="mt-panel"><h2 id="tool-input-heading">Fractions</h2>
-<div style="display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-bottom:12px">
+<div class="mt-fraction-grid">
 <div>
 <div class="mt-field"><label for="n1">Numerator</label><input type="number" id="n1" placeholder="1"></div>
 <div class="mt-field"><label for="d1">Denominator</label><input type="number" id="d1" placeholder="2"></div>
 </div>
-<select id="op" style="padding:8px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:22px">
+<select id="op" aria-label="Operation">
 <option>+</option><option>−</option><option>×</option><option>÷</option></select>
 <div>
 <div class="mt-field"><label for="n2">Numerator</label><input type="number" id="n2" placeholder="1"></div>
@@ -87,6 +109,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Fraction Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        The Fraction Calculator adds, subtracts, multiplies and divides two fractions and returns the answer as a simplified fraction alongside its decimal value. Enter the numerator and denominator of each fraction, pick an operation, and the result is reduced to lowest terms automatically.
+      </p>
+      <p>
+        For addition and subtraction the calculator puts both fractions over a common denominator, combines the numerators, then divides top and bottom by their greatest common divisor. For multiplication it multiplies straight across, and for division it inverts the second fraction and multiplies. The sign is always carried on the numerator, so you will see -3/4 rather than 3/-4.
+      </p>
+      <p>
+        The decimal output is rounded to six places, which is enough to compare answers but not to treat as exact. A fraction that works out to a whole number is shown as one, so 4/2 appears as 2. Denominators must be non-zero, and the tool works with whole-number numerators and denominators: convert a mixed number such as 2 1/2 into 5/2 before entering it.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How do I add fractions with different denominators?</h3>
+      <p>The calculator finds a common denominator by multiplying the two denominators, combines the numerators, and then simplifies. Adding 1/2 and 1/3 gives 5/6.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it simplify the answer?</h3>
+      <p>Yes. Both the numerator and denominator are divided by their greatest common divisor, so 6/8 is reported as 3/4.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I enter negative fractions?</h3>
+      <p>Yes. Put the minus sign on the numerator. The answer is always normalised so the sign sits on the top, never the bottom.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I enter a mixed number like 2 1/2?</h3>
+      <p>Not directly. Convert it to an improper fraction first: 2 1/2 becomes 5/2. The answer can be converted back to a mixed number by hand.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does the decimal differ slightly from the fraction?</h3>
+      <p>The decimal is rounded to six places. The fraction is the exact value, so trust the fraction when the two disagree in the last digits.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why can't the denominator be zero?</h3>
+      <p>Division by zero is undefined, so a fraction with a zero denominator has no value. The calculator stops and asks you to check the input.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/calculator/" class="mt-related-chip">Basic Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/gst-calculator/" class="mt-related-chip">GST Calculator</a></div>
@@ -100,23 +165,71 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-function gcd(a,b){return b?gcd(b,a%b):a;}
-document.getElementById("calc").onclick=()=>{
-  const n1=+document.getElementById("n1").value,d1=+document.getElementById("d1").value,
-        n2=+document.getElementById("n2").value,d2=+document.getElementById("d2").value,
-        op=document.getElementById("op").value;
-  if(!d1||!d2){document.getElementById("mt-status").textContent="Denominators cannot be zero.";return;}
-  let rn,rd;
-  if(op==="+"){rn=n1*d2+n2*d1;rd=d1*d2;}
-  else if(op==="−"){rn=n1*d2-n2*d1;rd=d1*d2;}
-  else if(op==="×"){rn=n1*n2;rd=d1*d2;}
-  else{if(!n2){document.getElementById("mt-status").textContent="Cannot divide by zero.";return;}rn=n1*d2;rd=d1*n2;}
-  const g=gcd(Math.abs(rn),Math.abs(rd));
-  document.getElementById("frac").textContent=(rn/g)+"/"+(rd/g);
-  document.getElementById("dec").textContent=(rn/rd).toFixed(6);
-  document.getElementById("mt-status").textContent="";
+const $ = id => document.getElementById(id);
+const clearOut = () => { $("frac").textContent = "\u2014"; $("dec").textContent = "\u2014"; };
+
+function gcd(a, b) {
+  a = Math.abs(a); b = Math.abs(b);
+  while (b) { const t = a % b; a = b; b = t; }
+  return a || 1;
+}
+
+$("calc").onclick = () => {
+  const fields = ["n1", "d1", "n2", "d2"];
+  const raw = fields.map(id => $(id).value);
+
+  if (raw.some(v => v.trim() === "") || raw.some(v => !Number.isFinite(+v))) {
+    clearOut();
+    $("mt-status").textContent = "Fill all four boxes with numbers.";
+    return;
+  }
+
+  const [n1, d1, n2, d2] = raw.map(Number);
+
+  if (!Number.isInteger(n1) || !Number.isInteger(d1) ||
+      !Number.isInteger(n2) || !Number.isInteger(d2)) {
+    clearOut();
+    $("mt-status").textContent = "Use whole numbers only. Convert decimals to fractions first.";
+    return;
+  }
+
+  if (d1 === 0 || d2 === 0) {
+    clearOut();
+    $("mt-status").textContent = "Denominators cannot be zero.";
+    return;
+  }
+
+  const op = $("op").value;
+  let rn, rd;
+
+  if (op === "+") { rn = n1 * d2 + n2 * d1; rd = d1 * d2; }
+  else if (op === "\u2212") { rn = n1 * d2 - n2 * d1; rd = d1 * d2; }
+  else if (op === "\u00d7") { rn = n1 * n2; rd = d1 * d2; }
+  else {
+    if (n2 === 0) {
+      clearOut();
+      $("mt-status").textContent = "Cannot divide by zero.";
+      return;
+    }
+    rn = n1 * d2; rd = d1 * n2;
+  }
+
+  if (rd < 0) { rn = -rn; rd = -rd; }
+
+  const g = gcd(rn, rd);
+  rn = rn / g; rd = rd / g;
+
+  $("frac").textContent = rd === 1 ? String(rn) : rn + "/" + rd;
+  $("dec").textContent = (rn / rd).toFixed(6);
+  $("mt-status").textContent = "";
 };
-document.getElementById("reset").onclick=()=>["n1","d1","n2","d2"].forEach(id=>document.getElementById(id).value="");
+
+$("reset").onclick = () => {
+  ["n1", "d1", "n2", "d2"].forEach(id => { $(id).value = ""; });
+  $("op").value = "+";
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

@@ -8,6 +8,8 @@
 <meta name="description" content="Calculate screen DPI, PPI and resolution from display dimensions.">
 <meta name="keywords" content="DPI calculator, PPI, screen resolution, pixel density">
 <link rel="canonical" href="https://mohaktools.com/tools/dpi-screen-resolution-calculator/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="DPI / Screen Resolution Calculator | MohakTools">
 <meta property="og:description" content="Calculate screen DPI, PPI and resolution from display dimensions.">
 <meta property="og:url" content="https://mohaktools.com/tools/dpi-screen-resolution-calculator/">
@@ -40,6 +42,13 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -82,6 +91,49 @@
 </div></section>
   </div>
 
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the DPI / Screen Resolution Calculator</h2>
+    <div class="mt-prose">
+      <p>
+        This calculator works out the pixel density of a screen or image: how many pixels are packed into every inch. Give it the resolution in pixels and the diagonal size in inches, and it returns DPI/PPI along with total pixels, megapixels and the aspect ratio in its simplest form.
+      </p>
+      <p>
+        Pixel density is the diagonal in pixels divided by the diagonal in inches. A 1920 x 1080 display measures about 2,200 pixels across its diagonal, so on a 24-inch monitor that is roughly 92 PPI, while the same resolution on a 13-inch laptop comes out near 166 PPI. Higher density means smoother text and finer detail at the same physical size, which is why phone screens sit around 300-460 PPI while desktop monitors often stay under 110.
+      </p>
+      <p>
+        Strictly speaking DPI belongs to printing and PPI to displays, but the arithmetic is identical and the two terms are used interchangeably. For print work the question is different: an image needs enough pixels to fill its printed size at the target resolution, so a 4 x 6 inch photo at 300 DPI needs about 1200 x 1800 pixels. The aspect ratio output helps when resizing, since keeping the same ratio is what stops an image looking stretched.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>What is DPI or PPI?</h3>
+      <p>The number of pixels in one linear inch of a screen or printed image. It is a measure of density, not of how good the picture itself is.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How is it calculated?</h3>
+      <p>The diagonal in pixels is divided by the diagonal in inches. The diagonal comes from the square root of width squared plus height squared.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Are DPI and PPI the same thing?</h3>
+      <p>In practice yes, for this calculation. DPI originally described printer dots per inch and PPI display pixels per inch, but both reduce to pixels divided by inches here.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why is the detected resolution higher than my monitor's specification?</h3>
+      <p>The Detect My Screen button multiplies CSS pixels by your browser's device pixel ratio, and browser zoom affects that too. Enter the manufacturer's native resolution for the true figure.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>What DPI should I use for printing?</h3>
+      <p>300 DPI is the usual standard for photos and documents held in the hand. Large posters viewed from a distance often look fine at 150 DPI or less.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does a higher DPI always mean a better image?</h3>
+      <p>No. It describes how tightly pixels are packed on a display. A low-resolution file shown on a high-density screen still looks soft.</p>
+    </div>
+  </section>
+
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Everyday Utilities</h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/password-generator/" class="mt-related-chip">Password Generator</a><a href="/tools/qr-code-generator/" class="mt-related-chip">QR Code Generator</a><a href="/tools/random-number-generator/" class="mt-related-chip">Random Number Generator</a></div>
@@ -95,25 +147,56 @@
 <script src="/assets/js/footer.js" defer></script>
 <script>
 
-function gcd(a,b){return b?gcd(b,a%b):a;}
-document.getElementById("detect").onclick=()=>{
-  document.getElementById("f0").value=window.screen.width*window.devicePixelRatio;
-  document.getElementById("f1").value=window.screen.height*window.devicePixelRatio;
-  document.getElementById("mt-status").textContent="Screen resolution detected. Enter diagonal size to calculate DPI.";
+const $ = id => document.getElementById(id);
+const clearOut = () => ["dpi", "total", "aspect", "mp"].forEach(id => { $(id).textContent = "\u2014"; });
+
+function gcd(a, b) {
+  a = Math.abs(Math.round(a));
+  b = Math.abs(Math.round(b));
+  while (b) { const t = a % b; a = b; b = t; }
+  return a || 1;
+}
+
+$("detect").onclick = () => {
+  const dpr = window.devicePixelRatio || 1;
+  $("f0").value = Math.round(window.screen.width * dpr);
+  $("f1").value = Math.round(window.screen.height * dpr);
+  $("mt-status").textContent = "Resolution detected. Add the diagonal size in inches to get DPI.";
 };
-document.getElementById("calc").onclick=()=>{
-  const w=+document.getElementById("f0").value,h=+document.getElementById("f1").value,diag=+document.getElementById("f2").value;
-  if(!w||!h){document.getElementById("mt-status").textContent="Enter width and height.";return;}
-  const total=w*h,mp=(total/1e6).toFixed(2);
-  const g=gcd(w,h);const ar=(w/g)+":"+(h/g);
-  document.getElementById("total").textContent=total.toLocaleString()+" px";
-  document.getElementById("aspect").textContent=ar;
-  document.getElementById("mp").textContent=mp+" MP";
-  if(diag){const dpi=Math.round(Math.sqrt(w*w+h*h)/diag);document.getElementById("dpi").textContent=dpi+" PPI";}
-  else{document.getElementById("dpi").textContent="Need diagonal";}
-  document.getElementById("mt-status").textContent="";
+
+$("calc").onclick = () => {
+  const wRaw = $("f0").value, hRaw = $("f1").value, dRaw = $("f2").value;
+
+  if (wRaw.trim() === "" || hRaw.trim() === "" ||
+      !Number.isFinite(+wRaw) || !Number.isFinite(+hRaw) ||
+      +wRaw <= 0 || +hRaw <= 0) {
+    clearOut();
+    $("mt-status").textContent = "Enter a width and height in pixels.";
+    return;
+  }
+
+  const w = Math.round(+wRaw), h = Math.round(+hRaw);
+  const total = w * h;
+  const g = gcd(w, h);
+
+  $("total").textContent = total.toLocaleString("en-IN") + " px";
+  $("aspect").textContent = (w / g) + ":" + (h / g);
+  $("mp").textContent = (total / 1e6).toFixed(2) + " MP";
+
+  if (dRaw.trim() !== "" && Number.isFinite(+dRaw) && +dRaw > 0) {
+    $("dpi").textContent = Math.round(Math.sqrt(w * w + h * h) / +dRaw) + " PPI";
+  } else {
+    $("dpi").textContent = "Need diagonal";
+  }
+
+  $("mt-status").textContent = "";
 };
-document.getElementById("reset").onclick=()=>["f0","f1","f2"].forEach(id=>document.getElementById(id).value="");
+
+$("reset").onclick = () => {
+  ["f0", "f1", "f2"].forEach(id => { $(id).value = ""; });
+  clearOut();
+  $("mt-status").textContent = "";
+};
 </script>
 </body>
 </html>

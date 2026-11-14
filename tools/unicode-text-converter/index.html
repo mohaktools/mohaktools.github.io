@@ -8,6 +8,8 @@
 <meta name="description" content="Transform text into bold, italic, monospace and other Unicode styles.">
 <meta name="keywords" content="unicode text, fancy text, bold text generator">
 <link rel="canonical" href="https://mohaktools.com/tools/unicode-text-converter/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Unicode Text Converter | MohakTools">
 <meta property="og:description" content="Transform text into bold, italic, monospace and other Unicode styles.">
 <meta property="og:url" content="https://mohaktools.com/tools/unicode-text-converter/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -72,6 +89,43 @@
 <section class="mt-panel"><h2>Styles</h2>
 <div id="uni-out" style="display:flex;flex-direction:column;gap:8px"></div></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Unicode Text Converter</h2>
+    <div class="mt-prose">
+      <p>The Unicode Text Converter restyles text into bold, italic, monospace and other typographic variants by swapping each letter for a different Unicode character that looks the part. Type once and the same words appear in every style, ready to copy.</p>
+      <p>Nothing is actually formatted. The bold output is not bold text; it is a set of characters from the Mathematical Alphanumeric Symbols block that happen to render as bold letters. That is why the styling survives being pasted into a social media post or a username field where formatting is not supported.</p>
+      <p>The catch is that those characters are not the letters they resemble. Screen readers may read them oddly or spell them out, search treats them as different characters, and some fonts have no glyph for them, which shows up as an empty box. Use the styles for display text, not for anything that needs to be read by a machine or found by search.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>How does it work?</h3>
+      <p>Each letter is replaced with a different Unicode character that looks bold, italic or monospaced. The underlying text is changed, not just styled.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does the bold text paste into Instagram?</h3>
+      <p>Because it is real text made of different characters, not formatting. Any field that accepts text will show it.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why does it sometimes show as boxes?</h3>
+      <p>The font in use may not include those characters, so they render as empty rectangles or fall back to a different look.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Will search engines treat it as the same word?</h3>
+      <p>Usually not. The characters differ, so a styled word may not match a plain-text search.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Is it accessible?</h3>
+      <p>Poorly. Screen readers can struggle with these characters. Avoid them for anything important to read aloud.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Can I convert it back to normal text?</h3>
+      <p>Yes, by retyping or by running a reverse mapping, but there is no automatic undo here.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Text Tools</h2>

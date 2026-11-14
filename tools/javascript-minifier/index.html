@@ -8,6 +8,8 @@
 <meta name="description" content="Minify JavaScript code to reduce file size.">
 <meta name="keywords" content="JS minifier, JavaScript compress, minify script">
 <link rel="canonical" href="https://mohaktools.com/tools/javascript-minifier/">
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="JavaScript Minifier | MohakTools">
 <meta property="og:description" content="Minify JavaScript code to reduce file size.">
 <meta property="og:url" content="https://mohaktools.com/tools/javascript-minifier/">
@@ -28,8 +30,8 @@
 .mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
 .mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
-.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
+.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
 .mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
 .mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
@@ -40,6 +42,21 @@
 .mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
 .mt-option input{accent-color:var(--color-primary)}
 .mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){
+.mt-panel{padding:16px}
+.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.mt-stat strong{font-size:17px}
+.mt-button-row{gap:8px}
+.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
+.mt-prose p,.mt-faq p{font-size:13.5px}
+}
 @media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
 </style>
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -73,6 +90,43 @@
 <textarea id="mt-output" class="mt-output" readonly style="font-family:monospace;font-size:12px"></textarea>
 <p class="mt-help">Basic whitespace/comment minification. For production use, consider Terser or UglifyJS.</p></section>
   </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the JavaScript Minifier</h2>
+    <div class="mt-prose">
+      <p>The JavaScript Minifier strips comments, indentation and redundant whitespace from a script so it downloads faster. Paste your code and copy the compressed result.</p>
+      <p>This is a whitespace-and-comments minifier, not a compiler. It does not rename variables, inline functions or tree-shake, which is what Terser or esbuild do. That makes it safe and predictable, but the savings are smaller: usually 20 to 40 per cent on readable source.</p>
+      <p>The one real hazard is automatic semicolon insertion. JavaScript lets you omit semicolons, and the parser inserts them by rule, but if a minifier joins two lines that relied on a line break, the meaning can change. Keep a copy of the readable source, and prefer a real bundler for production builds.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <div class="mt-faq">
+      <h3>Is minifying JavaScript safe?</h3>
+      <p>For well-formed code with explicit semicolons, yes. Code relying on automatic semicolon insertion can break.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it rename variables?</h3>
+      <p>No. That is what Terser and similar tools do. This only removes whitespace and comments.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>How much smaller will it be?</h3>
+      <p>Typically 20 to 40 per cent on readable source. Minified code barely changes.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Why did my script stop working after minifying?</h3>
+      <p>Almost always a missing semicolon where a line break was doing the work. Add semicolons and try again.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Does it support modern syntax?</h3>
+      <p>It treats the code as text, so any syntax survives as long as the whitespace rules hold.</p>
+    </div>
+    <div class="mt-faq">
+      <h3>Should I minify in production?</h3>
+      <p>Yes, but through a build tool that also bundles and caches. Keep readable source in version control.</p>
+    </div>
+  </section>
 
   <section style="margin-top:32px">
     <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Developer Tools</h2>
