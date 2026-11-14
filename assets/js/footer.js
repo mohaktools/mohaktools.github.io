@@ -345,6 +345,7 @@
               <a href="/privacy-policy/">Privacy Policy</a>
               <a href="/terms/">Terms of Use</a>
               <a href="/articles/"> Articles </a>
+              <a href="/sitemap/"> Sitemap </a>
             </nav>
           </section> 
 
