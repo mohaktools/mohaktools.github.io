@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>AI Email Writer — Write and Send Emails | MohakTools</title>
+  <meta name="description" content="Write a clear, polished email with AI. Choose a tone, refine your draft, and send it securely through your Gmail account.">
+  <meta name="keywords" content="AI email writer, email generator, write email, Gmail email assistant">
+  <meta name="author" content="MohakTools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mohaktools.com/tools/ai-email-writer/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AI Email Writer | MohakTools">
+  <meta property="og:description" content="Turn a few notes into a polished email and send it with Gmail.">
+  <meta property="og:url" content="https://mohaktools.com/tools/ai-email-writer/">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <style>
+    .email-page { max-width: 1080px; margin: 0 auto; padding: 28px 18px 64px; color: var(--color-text); }
+    .email-breadcrumb { margin-bottom: 20px; color: var(--color-text-secondary); font-size: 13px; }
+    .email-breadcrumb a { color: var(--color-primary); text-decoration: none; }
+    .email-hero { max-width: 720px; margin: 0 auto 28px; text-align: center; }
+    .email-kicker { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 12px; padding: 6px 11px; color: var(--color-primary); background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface)); border: 1px solid color-mix(in srgb, var(--color-primary) 22%, var(--color-border)); border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .email-hero h1 { margin: 0 0 10px; font-size: clamp(30px, 5vw, 44px); font-weight: 800; letter-spacing: -.04em; line-height: 1.12; }
+    .email-hero p { max-width: 620px; margin: 0 auto; color: var(--color-text-secondary); font-size: 16px; line-height: 1.7; }
+    .email-workspace { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); overflow: hidden; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl, 20px); box-shadow: var(--color-card-shadow, 0 8px 30px rgb(0 0 0 / 7%)); }
+    .email-compose, .email-preview { min-width: 0; padding: 25px; }
+    .email-compose { border-right: 1px solid var(--color-border); }
+    .email-section-heading { display: flex; align-items: center; gap: 11px; margin-bottom: 21px; }
+    .email-section-icon { display: grid; width: 38px; height: 38px; place-items: center; color: var(--color-primary); background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface)); border-radius: 12px; font-size: 18px; }
+    .email-section-heading h2 { margin: 0 0 3px; font-size: 17px; }
+    .email-section-heading p { margin: 0; color: var(--color-text-secondary); font-size: 12px; }
+    .email-field { margin-bottom: 16px; }
+    .email-field label { display: block; margin-bottom: 7px; color: var(--color-text); font-size: 13px; font-weight: 650; }
+    .email-field label small { color: var(--color-text-secondary); font-weight: 400; }
+    .email-field input, .email-field textarea, .email-field select, .email-subject, .email-body { display: block; box-sizing: border-box; width: 100%; padding: 11px 12px; border: 1px solid var(--color-border); border-radius: var(--radius-md, 10px); background: var(--color-surface); color: var(--color-text); font: inherit; font-size: 14px; outline: none; transition: border-color .18s, box-shadow .18s; }
+    .email-field input:focus, .email-field textarea:focus, .email-field select:focus, .email-subject:focus, .email-body:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 16%, transparent); }
+    .email-field textarea { min-height: 132px; resize: vertical; line-height: 1.6; }
+    .email-field select { cursor: pointer; }
+    .email-choice-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .email-helper { margin: 7px 0 0; color: var(--color-text-secondary); font-size: 11px; line-height: 1.55; }
+    .email-button { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; gap: 8px; padding: 10px 15px; border: 1px solid var(--color-border); border-radius: var(--radius-md, 10px); background: var(--color-surface); color: var(--color-text); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; transition: transform .15s, opacity .15s, border-color .15s; }
+    .email-button:hover { border-color: var(--color-primary); }
+    .email-button:active { transform: translateY(1px); }
+    .email-button:disabled { cursor: wait; opacity: .6; }
+    .email-button-primary { border-color: var(--color-primary); background: var(--color-primary); color: #fff; }
+    .email-button-primary:hover { opacity: .91; }
+    .email-button-row { display: flex; flex-wrap: wrap; gap: 9px; }
+    .email-compose .email-button-primary { width: 100%; min-height: 46px; margin-top: 2px; font-size: 14px; }
+    .email-status { min-height: 20px; margin: 11px 0 0; color: var(--color-text-secondary); font-size: 12px; line-height: 1.55; }
+    .email-status[data-kind="error"] { color: #c43e42; }
+    .email-status[data-kind="success"] { color: #16804a; }
+    .email-preview-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 17px; }
+    .email-preview-head .email-section-heading { margin: 0; }
+    .email-preview-head .email-section-icon { background: var(--color-surface-secondary); color: var(--color-text-secondary); }
+    .email-field-preview { margin-bottom: 13px; }
+    .email-field-preview label { display: block; margin: 0 0 6px 2px; color: var(--color-text-secondary); font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .email-subject { min-height: 43px; }
+    .email-body { min-height: 300px; resize: vertical; line-height: 1.7; }
+    .email-preview-meta { display: flex; justify-content: space-between; gap: 10px; margin: 8px 2px 17px; color: var(--color-text-secondary); font-size: 11px; }
+    .email-info { margin-top: 22px; padding: 22px 24px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl, 20px); }
+    .email-info h2 { margin: 0 0 10px; font-size: 18px; }
+    .email-info p { margin: 0 0 10px; color: var(--color-text-secondary); font-size: 14px; line-height: 1.75; }
+    .email-info p:last-child { margin-bottom: 0; }
+    .email-faq { padding: 13px 0; border-bottom: 1px solid var(--color-border); }
+    .email-faq:last-child { padding-bottom: 0; border-bottom: 0; }
+    .email-faq h3 { margin: 0 0 5px; font-size: 14px; }
+    .email-faq p { margin: 0; font-size: 13px; }
+    .email-related { margin: 25px 0 0; }
+    .email-related h2 { margin-bottom: 10px; color: var(--color-text-secondary); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+    .email-related a { display: inline-flex; margin: 0 7px 7px 0; padding: 8px 12px; color: var(--color-text); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 999px; font-size: 12px; text-decoration: none; }
+    .email-related a:hover { border-color: var(--color-primary); }
+    @media (max-width: 760px) { .email-workspace { grid-template-columns: 1fr; } .email-compose { border-right: 0; border-bottom: 1px solid var(--color-border); } }
+    @media (max-width: 520px) { .email-page { padding: 20px 13px 44px; } .email-compose, .email-preview { padding: 19px 16px; } .email-choice-row { grid-template-columns: 1fr; gap: 0; } .email-preview-head { align-items: flex-start; flex-direction: column; } .email-preview-head .email-button-row { width: 100%; } .email-preview-head .email-button { flex: 1; } .email-body { min-height: 240px; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="email-page">
+    <nav class="email-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true"> / </span><a href="/tools/?category=ai-tools">AI Tools</a><span aria-hidden="true"> / </span><span aria-current="page">AI Email Writer</span></nav>
+    <header class="email-hero">
+      <span class="email-kicker"><span aria-hidden="true">✦</span> AI writing assistant</span>
+      <h1>Write your next email, effortlessly.</h1>
+      <p>Share what you want to say. Get a polished draft in your voice, make it your own, and send it with Gmail when you’re ready.</p>
+    </header>
+
+    <section class="email-workspace" aria-label="AI Email Writer">
+      <form class="email-compose" id="email-form">
+        <div class="email-section-heading"><span class="email-section-icon" aria-hidden="true">✦</span><div><h2>Build your email</h2><p>A few details are all you need</p></div></div>
+        <div class="email-field"><label for="email-purpose">What’s the email about?</label><textarea id="email-purpose" maxlength="1800" required placeholder="e.g. Follow up after yesterday’s interview and thank Priya for her time. Mention that I’m excited about the role."></textarea><p class="email-helper">Add the key points you want included. Avoid sharing sensitive personal information.</p></div>
+        <div class="email-field"><label for="email-recipient">To <small>(needed to send)</small></label><input id="email-recipient" type="email" autocomplete="email" placeholder="name@example.com"></div>
+        <div class="email-choice-row">
+          <div class="email-field"><label for="email-tone">Tone</label><select id="email-tone"><option value="professional">Professional</option><option value="friendly">Friendly</option><option value="warm">Warm</option><option value="confident">Confident</option><option value="concise">Concise</option><option value="apologetic">Apologetic</option></select></div>
+          <div class="email-field"><label for="email-length">Length</label><select id="email-length"><option value="standard">Standard</option><option value="short">Short</option><option value="detailed">Detailed</option></select></div>
+        </div>
+        <button class="email-button email-button-primary" id="generate-button" type="submit"><span aria-hidden="true">✦</span> Generate email</button>
+        <p class="email-status" id="generate-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <section class="email-preview" aria-labelledby="preview-title">
+        <div class="email-preview-head">
+          <div class="email-section-heading"><span class="email-section-icon" aria-hidden="true">✉</span><div><h2 id="preview-title">Your draft</h2><p>Edit anything before sending</p></div></div>
+          <div class="email-button-row"><button class="email-button" id="copy-button" type="button">Copy draft</button></div>
+        </div>
+        <div class="email-field-preview"><label for="draft-subject">Subject</label><input class="email-subject" id="draft-subject" maxlength="180" placeholder="Your subject line"></div>
+        <div class="email-field-preview"><label for="draft-body">Message</label><textarea class="email-body" id="draft-body" maxlength="12000" placeholder="Your generated email will appear here. You can edit it before copying or sending."></textarea></div>
+        <div class="email-preview-meta"><span id="draft-count">0 words</span><span>Review your draft before sending</span></div>
+        <div class="email-button-row"><button class="email-button" id="gmail-connect" type="button">Connect Gmail</button><button class="email-button email-button-primary" id="gmail-send" type="button">Send with Gmail</button></div>
+        <p class="email-status" id="gmail-status" role="status" aria-live="polite">Gmail access is requested only when you connect or send.</p>
+      </section>
+    </section>
+
+    <section class="email-info" aria-labelledby="about-title"><h2 id="about-title">About the AI Email Writer</h2><p>This tool turns a short description into a useful first draft. Choose a tone and length, then review and edit the subject and message before copying or sending. AI generated text can make mistakes, so check names, dates, facts, and any commitments in the draft.</p><p>Email generation is sent to the configured MohakTools Cloudflare Worker, which calls Groq’s <code>openai/gpt-oss-120b</code> model. Keep your Groq API key in the Worker environment, never in this page. Gmail is optional: the page requests the limited Gmail send permission when you choose to connect, and sends only after you press “Send with Gmail.”</p></section>
+    <section class="email-info" aria-labelledby="faq-title"><h2 id="faq-title">Frequently Asked Questions</h2>
+      <div class="email-faq"><h3>Is the generated email sent automatically?</h3><p>No. The draft stays editable here. It is sent only after you connect Gmail and choose “Send with Gmail.”</p></div>
+      <div class="email-faq"><h3>Can I edit the AI draft?</h3><p>Yes. Both the subject and message are editable, and you can copy the draft or send your edited version.</p></div>
+      <div class="email-faq"><h3>What does connecting Gmail allow?</h3><p>The page asks Google for the Gmail send permission needed to send a message on your behalf. It does not request access to read your inbox.</p></div>
+      <div class="email-faq"><h3>What should I check before sending?</h3><p>Review the recipient, names, facts, links, dates, and tone. AI can misunderstand context or invent details.</p></div>
+    </section>
+    <nav class="email-related" aria-label="Related tools"><h2>Explore more tools</h2><a href="/tools/#text-tools">Text Tools</a><a href="/tools/#everyday-utilities">Everyday Utilities</a><a href="/tools/">All Tools</a></nav>
+  </main>
+  <div id="site-footer"></div>
+  <script>
+    (() => {
+      "use strict";
+      // Configure these public identifiers/URLs for your deployment. Keep all API secrets in the Worker.
+      const CONFIG = {
+        workerUrl: "https://email-writer.mohakchoubey.workers.dev/",
+        googleClientId: "321020105472-6htc8o8hpaf7i49gfqmn7pki82rjntbf.apps.googleusercontent.com"
+      };
+      const el = id => document.getElementById(id);
+      const form = el("email-form");
+      const purpose = el("email-purpose");
+      const recipient = el("email-recipient");
+      const subject = el("draft-subject");
+      const body = el("draft-body");
+      const genStatus = el("generate-status");
+      const gmailStatus = el("gmail-status");
+      let accessToken = "";
+      let tokenClient = null;
+      let tokenWaiter = null;
+
+      function status(node, message, kind = "") {
+        node.textContent = message;
+        node.dataset.kind = kind;
+      }
+      function configured(value) {
+        return value && !value.includes("YOUR_") && !value.includes("example.com");
+      }
+      function setBusy(button, busy, text) {
+        if (busy) {
+          button.dataset.originalText = button.textContent;
+          button.disabled = true;
+          button.textContent = text;
+        } else {
+          button.disabled = false;
+          if (button.dataset.originalText) button.textContent = button.dataset.originalText;
+        }
+      }
+      function countWords() {
+        const count = body.value.trim() ? body.value.trim().split(/\s+/).length : 0;
+        el("draft-count").textContent = `${count} ${count === 1 ? "word" : "words"}`;
+      }
+      function parseGeneratedEmail(data) {
+        if (data && typeof data.subject === "string" && typeof data.body === "string") return data;
+        const content = data?.choices?.[0]?.message?.content || data?.output || data?.text;
+        if (typeof content !== "string") throw new Error("The writing service returned an unexpected response.");
+        try {
+          const parsed = JSON.parse(content);
+          if (typeof parsed.subject === "string" && typeof parsed.body === "string") return parsed;
+        } catch (_) { /* Treat plain model output as the message body. */ }
+        const match = content.match(/^\s*subject\s*:\s*(.+?)\s*\n+\s*(?:body\s*:\s*)?([\s\S]*)$/i);
+        if (match) return { subject: match[1].trim(), body: match[2].trim() };
+        return { subject: "", body: content.trim() };
+      }
+      form.addEventListener("submit", async event => {
+        event.preventDefault();
+        if (!purpose.value.trim()) {
+          purpose.focus();
+          status(genStatus, "Describe what you want the email to say.", "error");
+          return;
+        }
+        if (!configured(CONFIG.workerUrl)) {
+          status(genStatus, "Add your Cloudflare Worker URL in this page’s CONFIG before generating emails.", "error");
+          return;
+        }
+        const button = el("generate-button");
+        setBusy(button, true, "Writing your email…");
+        status(genStatus, "Creating a thoughtful first draft…");
+        try {
+          const response = await fetch(CONFIG.workerUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ task: "email", purpose: purpose.value.trim(), tone: el("email-tone").value, length: el("email-length").value })
+          });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) throw new Error(data.error || data.message || `The writing service returned ${response.status}.`);
+          const draft = parseGeneratedEmail(data);
+          if (!draft.body) throw new Error("The writing service returned an empty draft. Please try again.");
+          subject.value = draft.subject;
+          body.value = draft.body;
+          countWords();
+          status(genStatus, "Your draft is ready. Review it before sending.", "success");
+        } catch (error) {
+          status(genStatus, error.message || "Couldn’t generate the email. Please try again.", "error");
+        } finally {
+          setBusy(button, false);
+        }
+      });
+      body.addEventListener("input", countWords);
+      el("copy-button").addEventListener("click", async () => {
+        const draft = [subject.value.trim() ? `Subject: ${subject.value.trim()}` : "", body.value.trim()].filter(Boolean).join("\n\n");
+        if (!draft) {
+          status(gmailStatus, "Write or generate a draft before copying it.", "error");
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(draft);
+          status(gmailStatus, "Draft copied to your clipboard.", "success");
+        } catch (_) {
+          body.focus();
+          body.select();
+          status(gmailStatus, "Clipboard access is unavailable. The message is selected so you can copy it.", "error");
+        }
+      });
+      function connectGmail() {
+        if (!configured(CONFIG.googleClientId)) {
+          status(gmailStatus, "Add your Google OAuth web client ID in this page’s CONFIG to enable Gmail.", "error");
+          return Promise.reject(new Error("Gmail is not configured."));
+        }
+        if (!window.google?.accounts?.oauth2) {
+          status(gmailStatus, "Google sign-in is still loading. Please try again in a moment.", "error");
+          return Promise.reject(new Error("Google sign-in is not ready."));
+        }
+        if (accessToken) return Promise.resolve(accessToken);
+        return new Promise((resolve, reject) => {
+          tokenWaiter = { resolve, reject };
+          tokenClient ||= google.accounts.oauth2.initTokenClient({
+            client_id: CONFIG.googleClientId,
+            scope: "https://www.googleapis.com/auth/gmail.send",
+            callback: response => {
+              const waiter = tokenWaiter;
+              tokenWaiter = null;
+              if (response.error || !response.access_token) {
+                const message = response.error_description || response.error || "Gmail authorization was not completed.";
+                if (waiter) waiter.reject(new Error(message));
+                status(gmailStatus, message, "error");
+                return;
+              }
+              accessToken = response.access_token;
+              if (waiter) waiter.resolve(accessToken);
+              status(gmailStatus, "Gmail is connected for this session. The permission is limited to sending email.", "success");
+            }
+          });
+          tokenClient.requestAccessToken({ prompt: accessToken ? "" : "consent" });
+        });
+      }
+      el("gmail-connect").addEventListener("click", () => connectGmail().catch(() => {}));
+      function base64Url(value) {
+        const bytes = new TextEncoder().encode(value);
+        let binary = "";
+        bytes.forEach(byte => { binary += String.fromCharCode(byte); });
+        return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
+      }
+      el("gmail-send").addEventListener("click", async () => {
+        if (!recipient.value.trim() || !recipient.checkValidity()) {
+          recipient.focus();
+          status(gmailStatus, "Enter a valid recipient email address before sending.", "error");
+          return;
+        }
+        if (!body.value.trim()) {
+          body.focus();
+          status(gmailStatus, "Generate or write a message before sending.", "error");
+          return;
+        }
+        if (!subject.value.trim()) {
+          subject.focus();
+          status(gmailStatus, "Add a subject before sending.", "error");
+          return;
+        }
+        const button = el("gmail-send");
+        setBusy(button, true, "Sending…");
+        try {
+          const token = await connectGmail();
+          const mime = [
+            `To: ${recipient.value.trim()}`,
+            `Subject: ${subject.value.trim().replace(/[\r\n]+/g, " ")}`,
+            "MIME-Version: 1.0",
+            "Content-Type: text/plain; charset=UTF-8",
+            "Content-Transfer-Encoding: 8bit",
+            "",
+            body.value.trim()
+          ].join("\r\n");
+          const response = await fetch("https://gmail.googleapis.com/gmail/v1/users/me/messages/send", {
+            method: "POST",
+            headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+            body: JSON.stringify({ raw: base64Url(mime) })
+          });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            if (response.status === 401) accessToken = "";
+            throw new Error(result.error?.message || `Gmail returned ${response.status}.`);
+          }
+          status(gmailStatus, "Email sent. You can check your Gmail Sent folder.", "success");
+        } catch (error) {
+          if (error.message !== "Gmail is not configured." && error.message !== "Google sign-in is not ready.") status(gmailStatus, error.message || "Couldn’t send the email. Please try again.", "error");
+        } finally {
+          setBusy(button, false);
+        }
+      });
+      countWords();
+    })();
+  </script>
+</body>
+</html>
