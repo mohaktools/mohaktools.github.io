@@ -23,9 +23,24 @@
     {
       "id": "everyday-utilities",
       "name": "Everyday Utilities"
+    },
+    {
+      "id": "ai-tools",
+      "name": "AI Tools"
     }
   ],
   "tools": [
+    {
+      "id": "ai-email-writer",
+      "name": "AI Email Writer",
+      "category": "ai-tools",
+      "url": "/tools/ai-email-writer/",
+      "description": "Draft clear, polished emails from a short prompt and send them with Gmail.",
+      "keywords": ["AI", "email generator", "write email", "Gmail", "email assistant"],
+      "icon": "✉",
+      "featured": true,
+      "popularity": 96
+    },
     {
       "id": "calculator",
       "name": "Basic Calculator",
@@ -1313,7 +1328,7 @@
       ],
       "icon": "#",
       "popularity": 64
-    }, 
+    },
     {
       "id": "hra-exemption-calculator",
       "name": "HRA Exemption Calculator",
