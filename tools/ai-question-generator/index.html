@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>AI Question Generator | MohakTools</title>
+  <meta name="description" content="Upload or paste a paragraph and generate 1–15 AI comprehension questions. Choose difficulty, question format, and download a named text file.">
+  <meta name="keywords" content="AI question generator, paragraph to questions, comprehension questions, quiz maker, study questions">
+  <meta name="author" content="MohakTools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mohaktools.com/tools/ai-question-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AI Question Generator | MohakTools">
+  <meta property="og:description" content="Generate useful comprehension questions from a paragraph, with answers you can reveal when ready.">
+  <meta property="og:url" content="https://mohaktools.com/tools/ai-question-generator/">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+  <style>
+    .qg-page { max-width: 1040px; margin: 0 auto; padding: 28px 18px 64px; color: var(--color-text); }
+    .qg-breadcrumb { margin-bottom: 20px; color: var(--color-text-secondary); font-size: 13px; }
+    .qg-breadcrumb a { color: var(--color-primary); text-decoration: none; }
+    .qg-hero { max-width: 720px; margin: 0 auto 28px; text-align: center; }
+    .qg-kicker { display: inline-flex; align-items: center; gap: 7px; margin-bottom: 12px; padding: 6px 11px; color: var(--color-primary); background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface)); border: 1px solid color-mix(in srgb, var(--color-primary) 22%, var(--color-border)); border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .qg-hero h1 { margin: 0 0 10px; font-size: clamp(30px, 5vw, 44px); font-weight: 800; letter-spacing: -.04em; line-height: 1.12; }
+    .qg-hero p { max-width: 620px; margin: 0 auto; color: var(--color-text-secondary); font-size: 16px; line-height: 1.7; }
+    .qg-workspace { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); overflow: hidden; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl, 20px); box-shadow: var(--color-card-shadow, 0 8px 30px rgb(0 0 0 / 7%)); }
+    .qg-input-panel, .qg-results-panel { min-width: 0; padding: 25px; }
+    .qg-input-panel { border-right: 1px solid var(--color-border); }
+    .qg-heading { display: flex; align-items: center; gap: 11px; margin-bottom: 21px; }
+    .qg-icon { display: grid; width: 38px; height: 38px; place-items: center; color: var(--color-primary); background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface)); border-radius: 12px; font-size: 18px; }
+    .qg-heading h2 { margin: 0 0 3px; font-size: 17px; }
+    .qg-heading p { margin: 0; color: var(--color-text-secondary); font-size: 12px; }
+    .qg-field { margin-bottom: 16px; }
+    .qg-field label { display: block; margin-bottom: 7px; color: var(--color-text); font-size: 13px; font-weight: 650; }
+    .qg-field-label { display: block; margin-bottom: 9px; color: var(--color-text); font-size: 13px; font-weight: 650; }
+    .qg-field textarea, .qg-field select { display: block; box-sizing: border-box; width: 100%; padding: 11px 12px; border: 1px solid var(--color-border); border-radius: var(--radius-md, 10px); background: var(--color-surface); color: var(--color-text); font: inherit; font-size: 14px; outline: none; transition: border-color .18s, box-shadow .18s; }
+    .qg-field textarea:focus, .qg-field select:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 16%, transparent); }
+    .qg-field textarea { min-height: 225px; resize: vertical; line-height: 1.65; }
+    .qg-field select { min-height: 43px; cursor: pointer; }
+    .qg-row { display: grid; grid-template-columns: 1fr 1.3fr; gap: 12px; }
+    .qg-help { margin: 7px 0 0; color: var(--color-text-secondary); font-size: 11px; line-height: 1.55; }
+    .qg-button { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; gap: 8px; padding: 10px 15px; border: 1px solid var(--color-border); border-radius: var(--radius-md, 10px); background: var(--color-surface); color: var(--color-text); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; transition: transform .15s, opacity .15s, border-color .15s; }
+    .qg-button:hover { border-color: var(--color-primary); }
+    .qg-button:active { transform: translateY(1px); }
+    .qg-button:disabled { cursor: wait; opacity: .6; }
+    .qg-button-primary { border-color: var(--color-primary); background: var(--color-primary); color: #fff; }
+    .qg-button-primary:hover { opacity: .91; }
+    .qg-input-panel .qg-button-primary { width: 100%; min-height: 46px; font-size: 14px; }
+    .qg-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 17px; }
+    .qg-toolbar .qg-heading { margin: 0; }
+    .qg-status { min-height: 20px; margin: 11px 0 0; color: var(--color-text-secondary); font-size: 12px; line-height: 1.55; }
+    .qg-status[data-kind="error"] { color: #c43e42; }
+    .qg-status[data-kind="success"] { color: #16804a; }
+    .qg-empty { padding: 28px 16px; border: 1px dashed var(--color-border); border-radius: var(--radius-lg, 16px); color: var(--color-text-secondary); text-align: center; font-size: 13px; line-height: 1.7; }
+    .qg-empty-icon { display: block; margin-bottom: 8px; color: var(--color-primary); font-size: 24px; }
+    .qg-question-list { display: grid; gap: 12px; }
+    .qg-question { padding: 16px; border: 1px solid var(--color-border); border-radius: var(--radius-lg, 16px); background: var(--color-surface); }
+    .qg-question-top { display: flex; align-items: flex-start; gap: 10px; }
+    .qg-number { display: grid; width: 27px; height: 27px; flex: 0 0 27px; place-items: center; border-radius: 9px; background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface)); color: var(--color-primary); font-size: 12px; font-weight: 800; }
+    .qg-question h3 { margin: 2px 0 12px; font-size: 14px; font-weight: 700; line-height: 1.55; }
+    .qg-kind { display: inline-block; margin-bottom: 10px; color: var(--color-text-secondary); font-size: 10px; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
+    .qg-options { display: grid; gap: 8px; margin: 0 0 13px 37px; padding: 0; list-style: none; }
+    .qg-option { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 9px 11px; border: 1px solid var(--color-border); border-radius: 10px; background: var(--color-surface); color: var(--color-text); font: inherit; font-size: 13px; line-height: 1.5; text-align: left; cursor: pointer; transition: border-color .16s, background .16s, transform .16s; }
+    .qg-option:hover:not(:disabled), .qg-option:focus-visible { border-color: var(--color-primary); background: color-mix(in srgb, var(--color-primary) 5%, var(--color-surface)); }
+    .qg-option:active:not(:disabled) { transform: scale(.995); }
+    .qg-option:disabled { cursor: default; }
+    .qg-option-letter { display: grid; width: 25px; height: 25px; flex: 0 0 25px; place-items: center; border: 1px solid var(--color-border); border-radius: 8px; color: var(--color-text-secondary); font-size: 11px; font-weight: 750; }
+    .qg-option-text { flex: 1; }
+    .qg-option-mark { font-size: 16px; font-weight: 800; }
+    .qg-option.is-correct { border-color: #16804a; background: color-mix(in srgb, #16804a 8%, var(--color-surface)); color: var(--color-text); }
+    .qg-option.is-correct .qg-option-letter, .qg-option.is-correct .qg-option-mark { border-color: #16804a; color: #16804a; }
+    .qg-option.is-wrong { border-color: #c43e42; background: color-mix(in srgb, #c43e42 7%, var(--color-surface)); }
+    .qg-option.is-wrong .qg-option-letter, .qg-option.is-wrong .qg-option-mark { border-color: #c43e42; color: #c43e42; }
+    .qg-feedback { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin: 11px 0 0 37px; padding: 10px 0 0; border-top: 1px solid var(--color-border); color: var(--color-text-secondary); font-size: 12px; line-height: 1.6; }
+    .qg-feedback[data-kind="correct"] { color: #16804a; }
+    .qg-feedback[data-kind="incorrect"] { color: var(--color-text-secondary); }
+    .qg-feedback-emoji { flex: 0 0 auto; font-size: 23px; line-height: 1; }
+    .qg-quiz-progress { margin: 0 0 17px; padding: 14px 16px; border: 1px solid var(--color-border); border-radius: 13px; background: var(--color-surface-secondary); }
+    .qg-quiz-progress-top { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 9px; color: var(--color-text-secondary); font-size: 12px; }
+    .qg-quiz-progress-top strong { color: var(--color-text); }
+    .qg-progress-track { height: 7px; overflow: hidden; border-radius: 99px; background: var(--color-border); }
+    .qg-progress-fill { width: 0; height: 100%; border-radius: inherit; background: var(--color-primary); transition: width .22s ease; }
+    .qg-toolbar-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .qg-workspace.is-showing-results .qg-stepper, .qg-workspace.is-showing-results #question-form { display: none !important; }
+    .qg-workspace.is-showing-results .qg-results { max-width: none; margin: 0; padding: 0; border-top: 0; }
+    .qg-answer { margin: 12px 0 0 37px; padding-top: 11px; border-top: 1px solid var(--color-border); color: var(--color-text-secondary); font-size: 12px; line-height: 1.65; }
+    .qg-answer strong { color: var(--color-text); }
+    .qg-question details { margin-left: 37px; }
+    .qg-question summary { color: var(--color-primary); font-size: 12px; font-weight: 700; cursor: pointer; }
+    .qg-info { margin-top: 22px; padding: 22px 24px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl, 20px); }
+    .qg-info h2 { margin: 0 0 10px; font-size: 18px; }
+    .qg-info p { margin: 0 0 10px; color: var(--color-text-secondary); font-size: 14px; line-height: 1.75; }
+    .qg-info p:last-child { margin-bottom: 0; }
+    .qg-faq { padding: 13px 0; border-bottom: 1px solid var(--color-border); }
+    .qg-faq:last-child { padding-bottom: 0; border-bottom: 0; }
+    .qg-faq h3 { margin: 0 0 5px; font-size: 14px; }
+    .qg-faq p { margin: 0; font-size: 13px; }
+    .qg-related { margin: 25px 0 0; }
+    .qg-related h2 { margin-bottom: 10px; color: var(--color-text-secondary); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+    .qg-related a { display: inline-flex; margin: 0 7px 7px 0; padding: 8px 12px; color: var(--color-text); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 999px; font-size: 12px; text-decoration: none; }
+    .qg-related a:hover { border-color: var(--color-primary); }
+    .qg-workspace { display: block; overflow: visible; padding: 24px; }
+    .qg-stepper { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0 0 24px; padding: 0; list-style: none; }
+    .qg-stepper li { display: flex; align-items: center; gap: 10px; min-width: 0; padding: 12px; border: 1px solid var(--color-border); border-radius: 12px; color: var(--color-text-secondary); font-size: 12px; }
+    .qg-stepper li[aria-current="step"] { border-color: var(--color-primary); color: var(--color-text); background: color-mix(in srgb, var(--color-primary) 6%, var(--color-surface)); }
+    .qg-step-dot { display: grid; width: 27px; height: 27px; flex: 0 0 27px; place-items: center; border: 1px solid var(--color-border); border-radius: 50%; font-size: 11px; font-weight: 750; }
+    .qg-stepper li.is-complete .qg-step-dot { border-color: var(--color-primary); background: var(--color-primary); color: #fff; }
+    .qg-step-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .qg-step { max-width: 760px; margin: 0 auto; padding: 8px 0; }
+    .qg-step[hidden], .qg-results[hidden] { display: none !important; }
+    .qg-upload { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px; border: 1px dashed var(--color-border); border-radius: 12px; background: var(--color-surface-secondary); }
+    .qg-upload-copy strong { display: block; margin-bottom: 3px; color: var(--color-text); font-size: 13px; }
+    .qg-upload-copy span { color: var(--color-text-secondary); font-size: 11px; }
+    .qg-upload input { max-width: 220px; color: var(--color-text-secondary); font: inherit; font-size: 12px; }
+    .qg-source-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 13px; }
+    .qg-step-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+    .qg-select-group { display: flex; flex-wrap: wrap; gap: 9px; }
+    .qg-choice { min-width: 66px; min-height: 42px; padding: 9px 15px; border: 1px solid var(--color-border); border-radius: 11px; background: var(--color-surface); color: var(--color-text); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+    .qg-choice:hover, .qg-choice[aria-pressed="true"] { border-color: var(--color-primary); color: var(--color-primary); background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface)); }
+    .qg-custom-count { display: none; max-width: 180px; margin-top: 12px; }
+    .qg-custom-count.is-visible { display: block; }
+    .qg-custom-count input, .qg-export-name input { box-sizing: border-box; width: 100%; min-height: 42px; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: 10px; background: var(--color-surface); color: var(--color-text); font: inherit; font-size: 13px; }
+    .qg-step-complete { min-height: 20px; margin: 12px 0 0; color: #16804a; font-size: 12px; font-weight: 650; }
+    .qg-summary { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0 18px; }
+    .qg-summary span { padding: 7px 10px; border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-text-secondary); font-size: 11px; }
+    .qg-results { max-width: 850px; margin: 26px auto 0; padding-top: 24px; border-top: 1px solid var(--color-border); }
+    .qg-export-tools { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px; margin-bottom: 17px; }
+    .qg-export-name { flex: 1 1 180px; }
+    .qg-export-name label { display: block; margin-bottom: 6px; color: var(--color-text-secondary); font-size: 11px; font-weight: 700; }
+    .qg-results-status { min-height: 19px; margin: 0 0 12px; color: var(--color-text-secondary); font-size: 12px; }
+    .qg-results-status[data-kind="success"] { color: #16804a; }
+    .qg-results-status[data-kind="error"] { color: #c43e42; }
+    @media (max-width: 760px) { .qg-workspace { padding: 18px; } }
+    @media (max-width: 520px) { .qg-toolbar { align-items: flex-start; flex-direction: column; } .qg-toolbar-actions { width: 100%; } .qg-toolbar-actions .qg-button { flex: 1; } .qg-export-tools { align-items: stretch; flex-direction: column; } .qg-export-tools > * { width: 100%; } .qg-export-name { box-sizing: border-box; } .qg-feedback { margin-left: 0; } .qg-options { margin-left: 0; } .qg-question details { margin-left: 0; } }
+    @media (max-width: 520px) { .qg-page { padding: 20px 13px 44px; } .qg-workspace { padding: 15px; } .qg-stepper { gap: 6px; } .qg-stepper li { justify-content: center; padding: 9px 5px; } .qg-stepper li .qg-step-label { display: none; } .qg-row { grid-template-columns: 1fr; gap: 0; } .qg-upload { align-items: flex-start; flex-direction: column; } .qg-source-footer { align-items: flex-start; flex-direction: column; } .qg-step-actions .qg-button { width: 100%; } .qg-step-actions { flex-direction: column; } .qg-field textarea { min-height: 190px; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="qg-page">
+    <nav class="qg-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true"> / </span><a href="/tools/?category=ai-tools">AI Tools</a><span aria-hidden="true"> / </span><span aria-current="page">AI Question Generator</span></nav>
+    <header class="qg-hero">
+      <span class="qg-kicker"><span aria-hidden="true">✦</span> AI study assistant</span>
+      <h1>Turn a paragraph into questions.</h1>
+      <p>Paste a passage and create focused comprehension questions with answers. Use them for revision, reading practice, or a quick knowledge check.</p>
+    </header>
+
+    <section class="qg-workspace" id="question-workspace" aria-label="AI Question Generator">
+      <ol class="qg-stepper" aria-label="Question generator progress">
+        <li data-step-indicator="1" aria-current="step"><span class="qg-step-dot">1</span><span class="qg-step-label">Add paragraph</span></li>
+        <li data-step-indicator="2"><span class="qg-step-dot">2</span><span class="qg-step-label">Choose options</span></li>
+        <li data-step-indicator="3"><span class="qg-step-dot">3</span><span class="qg-step-label">Generate</span></li>
+      </ol>
+
+      <form id="question-form" novalidate>
+        <section class="qg-step" id="step-one" aria-labelledby="step-one-title">
+          <div class="qg-heading"><span class="qg-icon" aria-hidden="true">¶</span><div><h2 id="step-one-title">Step 1: Add your paragraph</h2><p>Paste text or upload a plain text file</p></div></div>
+          <div class="qg-field"><label for="source-paragraph">Paragraph or passage</label><textarea id="source-paragraph" maxlength="5000" required placeholder="Paste a passage, textbook excerpt, or any paragraph you want to study…"></textarea><div class="qg-source-footer"><p class="qg-help"><span id="character-count">0</span> / 5,000 characters</p><p class="qg-help">Don’t include private or sensitive information.</p></div></div>
+          <div class="qg-upload"><div class="qg-upload-copy"><strong>Upload a text file</strong><span>Choose a .txt file up to 5,000 characters</span><p class="qg-help" id="upload-status" role="status" aria-live="polite"></p></div><input id="source-file" type="file" accept=".txt,text/plain" aria-label="Upload paragraph text file"></div>
+          <p class="qg-step-complete" id="step-one-complete" role="status" aria-live="polite"></p>
+          <div class="qg-step-actions"><button class="qg-button qg-button-primary" id="continue-step-one" type="button">Continue to options</button></div>
+        </section>
+
+        <section class="qg-step" id="step-two" aria-labelledby="step-two-title" hidden>
+          <div class="qg-heading"><span class="qg-icon" aria-hidden="true">⚙</span><div><h2 id="step-two-title">Step 2: Choose your options</h2><p>Set the number, difficulty, and question format</p></div></div>
+          <p class="qg-step-complete">Step 1 of 3 completed.</p>
+          <fieldset class="qg-field" style="border:0;padding:0;margin:0 0 20px">
+            <legend class="qg-field-label">Number of questions</legend>
+            <div class="qg-select-group" id="count-options" role="group" aria-label="Number of questions">
+              <button class="qg-choice" type="button" data-count="1" aria-pressed="false">1</button>
+              <button class="qg-choice" type="button" data-count="5" aria-pressed="true">5</button>
+              <button class="qg-choice" type="button" data-count="10" aria-pressed="false">10</button>
+              <button class="qg-choice" type="button" data-count="custom" aria-pressed="false">Custom</button>
+            </div>
+            <div class="qg-custom-count" id="custom-count-wrap"><label class="qg-help" for="custom-count">Choose 1–15 questions</label><input id="custom-count" type="number" min="1" max="15" step="1" value="1"></div>
+          </fieldset>
+          <fieldset class="qg-field" style="border:0;padding:0;margin:0 0 20px">
+            <legend class="qg-field-label">Difficulty</legend>
+            <div class="qg-select-group" id="difficulty-options" role="group" aria-label="Question difficulty">
+              <button class="qg-choice" type="button" data-difficulty="easy" aria-pressed="false">Easy</button>
+              <button class="qg-choice" type="button" data-difficulty="medium" aria-pressed="true">Medium</button>
+              <button class="qg-choice" type="button" data-difficulty="hard" aria-pressed="false">Hard</button>
+            </div>
+          </fieldset>
+          <div class="qg-field"><label for="question-type">Question format</label><select id="question-type"><option value="mixed">Mixed</option><option value="multiple_choice">Multiple choice</option><option value="short_answer">Short answer</option></select></div>
+          <p class="qg-step-complete" id="step-two-complete" role="status" aria-live="polite"></p>
+          <div class="qg-step-actions"><button class="qg-button" id="back-step-two" type="button">Back</button><button class="qg-button qg-button-primary" id="continue-step-two" type="button">Continue to final step</button></div>
+        </section>
+
+        <section class="qg-step" id="step-three" aria-labelledby="step-three-title" hidden>
+          <div class="qg-heading"><span class="qg-icon" aria-hidden="true">✦</span><div><h2 id="step-three-title">Step 3: Generate</h2><p>Check your settings, then create the questions</p></div></div>
+          <p class="qg-step-complete">Steps 1 and 2 of 3 completed.</p>
+          <div class="qg-summary" id="generation-summary"></div>
+          <div class="qg-step-actions"><button class="qg-button" id="back-step-three" type="button">Back</button><button class="qg-button qg-button-primary" id="generate-questions" type="submit">Generate question</button></div>
+          <p class="qg-status" id="question-status" role="status" aria-live="polite"></p>
+        </section>
+      </form>
+
+      <section class="qg-results" id="results-panel" aria-labelledby="results-title" hidden>
+        <div class="qg-toolbar">
+          <div class="qg-heading"><span class="qg-icon" aria-hidden="true">☷</span><div><h2 id="results-title">Your questions</h2><p>Choose an answer to check yourself. Short answers can be revealed when you’re ready.</p></div></div>
+          <div class="qg-toolbar-actions"><button class="qg-button" id="edit-settings" type="button">Edit settings</button><button class="qg-button" id="start-over" type="button">New paragraph</button></div>
+        </div>
+        <div class="qg-export-tools">
+          <button class="qg-button" id="copy-questions" type="button">Copy questions</button>
+          <div class="qg-export-name"><label for="export-name">Text file name</label><input id="export-name" type="text" maxlength="60" value="study-questions" placeholder="study-questions"></div>
+          <button class="qg-button qg-button-primary" id="download-questions" type="button">Download as .txt</button>
+        </div>
+        <p class="qg-results-status" id="results-status" role="status" aria-live="polite"></p>
+        <div class="qg-quiz-progress" aria-label="Quiz progress">
+          <div class="qg-quiz-progress-top"><span id="quiz-progress-label">0 of 0 answered</span><strong id="quiz-score">0 correct</strong></div>
+          <div class="qg-progress-track" role="progressbar" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"><div class="qg-progress-fill" id="quiz-progress-fill"></div></div>
+        </div>
+        <div class="qg-question-list" id="question-list" aria-live="polite"></div>
+      </section>
+    </section>
+
+    <section class="qg-info" aria-labelledby="about-title"><h2 id="about-title">About the AI Question Generator</h2><p>This tool creates questions from the ideas and details in your paragraph. Choose a mix of question styles, multiple choice, or short answer, then reveal answers and explanations when you’re ready. Generated questions are a study aid; check them against the original passage for accuracy.</p><p>Your paragraph is sent to the configured MohakTools Cloudflare Worker for processing with Groq’s <code>openai/gpt-oss-120b</code> model. The Groq API key stays on the Worker and is never included in this page.</p></section>
+    <section class="qg-info" aria-labelledby="faq-title"><h2 id="faq-title">Frequently Asked Questions</h2>
+      <div class="qg-faq"><h3>What kind of text can I use?</h3><p>Paste a paragraph or upload a .txt file up to 5,000 characters. The tool uses only the information in that passage to create questions.</p></div>
+      <div class="qg-faq"><h3>Can I answer multiple-choice questions on the page?</h3><p>Yes. Select an option for instant feedback, then track your progress as you work through the set. Short-answer questions include a revealable answer.</p></div>
+      <div class="qg-faq"><h3>Can I save the questions as a text file?</h3><p>Yes. Enter a file name and choose Download as .txt, or copy the full question set to your clipboard.</p></div>
+      <div class="qg-faq"><h3>Are the questions guaranteed to be correct?</h3><p>No. AI can misunderstand a passage. Review the questions and answers against the source text before using them.</p></div>
+    </section>
+    <nav class="qg-related" aria-label="Related tools"><h2>Explore more tools</h2><a href="/tools/ai-email-writer/">AI Email Writer</a><a href="/tools/#text-tools">Text Tools</a><a href="/tools/">All Tools</a></nav>
+  </main>
+  <div id="site-footer"></div>
+  <script>
+    (() => {
+      "use strict";
+      const CONFIG = { workerUrl: "https://email-writer.mohakchoubey.workers.dev/" };
+      const el = id => document.getElementById(id);
+      const form = el("question-form");
+      const paragraph = el("source-paragraph");
+      const status = el("question-status");
+      const resultsStatus = el("results-status");
+      const list = el("question-list");
+      const generateButton = el("generate-questions");
+      const copyButton = el("copy-questions");
+      const resultsPanel = el("results-panel");
+      const sourceFile = el("source-file");
+      const uploadStatus = el("upload-status");
+      const customCount = el("custom-count");
+      const questionWorkspace = el("question-workspace");
+      const quizProgressLabel = el("quiz-progress-label");
+      const quizScore = el("quiz-score");
+      const quizProgressFill = el("quiz-progress-fill");
+      const quizProgressTrack = document.querySelector(".qg-progress-track");
+      let selectedCount = 5;
+      let customCountSelected = false;
+      let selectedDifficulty = "medium";
+      let activeStep = 1;
+      let currentQuestions = [];
+      let reviewedAnswers = [];
+      let correctAnswers = 0;
+
+      function setStatus(message, kind = "") {
+        status.textContent = message;
+        status.dataset.kind = kind;
+      }
+      function setResultsStatus(message, kind = "") {
+        resultsStatus.textContent = message;
+        resultsStatus.dataset.kind = kind;
+      }
+      function setBusy(busy) {
+        generateButton.disabled = busy;
+        generateButton.textContent = busy ? "Creating questions…" : "Generate question";
+      }
+      function questionCount() {
+        return customCountSelected ? Number(customCount.value) : selectedCount;
+      }
+      function validSource() {
+        const source = paragraph.value.trim();
+        if (source.length < 20) {
+          paragraph.focus();
+          setStatus("Add at least 20 characters so there’s enough context for useful questions.", "error");
+          return false;
+        }
+        return true;
+      }
+      function validOptions() {
+        if (!Number.isInteger(questionCount()) || questionCount() < 1 || questionCount() > 15) {
+          customCount.focus();
+          setStatus("Choose a custom question count from 1 to 15.", "error");
+          return false;
+        }
+        return true;
+      }
+      function showStep(step) {
+        activeStep = step;
+        [1, 2, 3].forEach(number => {
+          el(`step-${number === 1 ? "one" : number === 2 ? "two" : "three"}`).hidden = number !== step;
+          const indicator = document.querySelector(`[data-step-indicator="${number}"]`);
+          indicator.classList.toggle("is-complete", number < step);
+          if (number === step) indicator.setAttribute("aria-current", "step");
+          else indicator.removeAttribute("aria-current");
+        });
+        setStatus("");
+      }
+      function updateCountButtons(selected) {
+        document.querySelectorAll("#count-options [data-count]").forEach(button => {
+          const active = selected === "custom"
+            ? button.dataset.count === "custom"
+            : Number(button.dataset.count) === selected;
+          button.setAttribute("aria-pressed", String(active));
+        });
+        el("custom-count-wrap").classList.toggle("is-visible", selected === "custom");
+      }
+      function updateDifficultyButtons() {
+        document.querySelectorAll("#difficulty-options [data-difficulty]").forEach(button => {
+          button.setAttribute("aria-pressed", String(button.dataset.difficulty === selectedDifficulty));
+        });
+      }
+      function updateCharacterCount() {
+        el("character-count").textContent = String(paragraph.value.length);
+      }
+      function formatQuestions() {
+        return currentQuestions.map((question, index) => {
+          const options = question.type === "multiple_choice" && Array.isArray(question.options)
+            ? "\n" + question.options.map((option, optionIndex) => `${String.fromCharCode(65 + optionIndex)}. ${option}`).join("\n")
+            : "";
+          return `${index + 1}. ${question.question}${options}\nAnswer: ${question.answer}${question.explanation ? `\nWhy: ${question.explanation}` : ""}`;
+        }).join("\n\n");
+      }
+      function makeText(tag, className, value) {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        node.textContent = value;
+        return node;
+      }
+      function normalized(value) {
+        return String(value || "").trim().toLowerCase().replace(/^[a-d][).:]\s*/, "").replace(/\s+/g, " ").replace(/[.?!]+$/, "");
+      }
+      function isCorrectOption(question, option, index) {
+        const rawAnswer = String(question.answer || "").trim().toLowerCase();
+        const answer = normalized(rawAnswer);
+        const letter = String.fromCharCode(97 + index);
+        return answer === normalized(option) || answer === letter || answer === `option ${letter}` || (new RegExp(`^${letter}[).:]\\s*`).test(rawAnswer) && answer === normalized(option));
+      }
+      function updateQuizProgress() {
+        const total = currentQuestions.length;
+        const mcqCount = currentQuestions.filter(question => question.type === "multiple_choice").length;
+        const reviewed = reviewedAnswers.filter(Boolean).length;
+        quizProgressLabel.textContent = reviewed === total && total ? `Completed all ${total} question${total === 1 ? "" : "s"}` : `${reviewed} of ${total} answered`;
+        quizScore.textContent = mcqCount ? `${correctAnswers} of ${mcqCount} MCQs correct` : `${reviewed} short answer${reviewed === 1 ? "" : "s"} reviewed`;
+        quizProgressTrack.setAttribute("aria-valuemax", String(total));
+        quizProgressTrack.setAttribute("aria-valuenow", String(reviewed));
+        quizProgressFill.style.width = `${total ? (reviewed / total) * 100 : 0}%`;
+        if (total && reviewed === total) {
+          setResultsStatus(mcqCount ? `All done! You got ${correctAnswers} of ${mcqCount} multiple-choice question${mcqCount === 1 ? "" : "s"} correct.` : "All answers reviewed. Nice work!", "success");
+        }
+      }
+      function renderQuestions(questions) {
+        list.replaceChildren();
+        currentQuestions = questions;
+        reviewedAnswers = questions.map(() => false);
+        correctAnswers = 0;
+        questions.forEach((question, index) => {
+          const card = document.createElement("article");
+          card.className = "qg-question";
+          const kind = question.type === "multiple_choice" ? "Multiple choice" : "Short answer";
+          card.appendChild(makeText("span", "qg-kind", kind));
+          const top = document.createElement("div");
+          top.className = "qg-question-top";
+          top.appendChild(makeText("span", "qg-number", String(index + 1)));
+          top.appendChild(makeText("h3", "", question.question));
+          card.appendChild(top);
+
+          if (question.type === "multiple_choice" && Array.isArray(question.options) && question.options.length) {
+            const options = document.createElement("ol");
+            options.className = "qg-options";
+            question.options.forEach((option, optionIndex) => {
+              const item = document.createElement("li");
+              const button = document.createElement("button");
+              button.type = "button";
+              button.className = "qg-option";
+              button.appendChild(makeText("span", "qg-option-letter", String.fromCharCode(65 + optionIndex)));
+              button.appendChild(makeText("span", "qg-option-text", option));
+              const mark = makeText("span", "qg-option-mark", "");
+              mark.setAttribute("aria-hidden", "true");
+              button.appendChild(mark);
+              button.addEventListener("click", () => {
+                if (reviewedAnswers[index]) return;
+                const correctIndex = question.options.findIndex((candidate, candidateIndex) => isCorrectOption(question, candidate, candidateIndex));
+                const isCorrect = optionIndex === correctIndex;
+                reviewedAnswers[index] = true;
+                if (isCorrect) correctAnswers += 1;
+                options.querySelectorAll("button").forEach((choice, choiceIndex) => {
+                  choice.disabled = true;
+                  if (choiceIndex === correctIndex) {
+                    choice.classList.add("is-correct");
+                    choice.querySelector(".qg-option-mark").textContent = "✓";
+                  }
+                  if (choice === button && !isCorrect) {
+                    choice.classList.add("is-wrong");
+                    choice.querySelector(".qg-option-mark").textContent = "×";
+                  }
+                });
+                const feedback = document.createElement("div");
+                feedback.className = "qg-feedback";
+                feedback.dataset.kind = isCorrect ? "correct" : "incorrect";
+                feedback.appendChild(makeText("span", "", isCorrect ? `Correct!${question.explanation ? ` ${question.explanation}` : " Nice work."}` : `Not quite. The correct answer is ${question.options[correctIndex] || question.answer}.${question.explanation ? ` ${question.explanation}` : ""}`));
+                feedback.appendChild(makeText("span", "qg-feedback-emoji", isCorrect ? "🎉" : "😢"));
+                feedback.lastElementChild.setAttribute("aria-hidden", "true");
+                card.appendChild(feedback);
+                updateQuizProgress();
+              });
+              item.appendChild(button);
+              options.appendChild(item);
+            });
+            card.appendChild(options);
+          }
+
+          const details = document.createElement("details");
+          details.appendChild(makeText("summary", "", question.type === "multiple_choice" ? "Show explanation" : "Show answer"));
+          const answer = document.createElement("p");
+          answer.className = "qg-answer";
+          const answerLabel = makeText("strong", "", "Answer: ");
+          answer.appendChild(answerLabel);
+          answer.appendChild(document.createTextNode(question.answer));
+          if (question.explanation) {
+            answer.appendChild(document.createElement("br"));
+            const explanationLabel = makeText("strong", "", "Why: ");
+            answer.appendChild(explanationLabel);
+            answer.appendChild(document.createTextNode(question.explanation));
+          }
+          details.appendChild(answer);
+          details.addEventListener("toggle", () => {
+            details.querySelector("summary").textContent = details.open ? "Hide details" : question.type === "multiple_choice" ? "Show explanation" : "Show answer";
+            if (question.type !== "multiple_choice" && details.open && !reviewedAnswers[index]) {
+              reviewedAnswers[index] = true;
+              updateQuizProgress();
+            }
+          });
+          card.appendChild(details);
+          list.appendChild(card);
+        });
+      }
+
+      paragraph.addEventListener("input", () => {
+        updateCharacterCount();
+        uploadStatus.textContent = "";
+      });
+
+      sourceFile.addEventListener("change", async () => {
+        const file = sourceFile.files && sourceFile.files[0];
+        if (!file) return;
+        if (!file.name.toLowerCase().endsWith(".txt")) {
+          uploadStatus.textContent = "Choose a plain .txt file.";
+          sourceFile.value = "";
+          return;
+        }
+        try {
+          const content = await file.text();
+          if (content.length > 5000) {
+            uploadStatus.textContent = "This file is longer than 5,000 characters. Please shorten it and upload again.";
+            sourceFile.value = "";
+            return;
+          }
+          paragraph.value = content.trim();
+          updateCharacterCount();
+          uploadStatus.textContent = `${file.name} loaded.`;
+          setStatus("");
+        } catch (_) {
+          uploadStatus.textContent = "Couldn’t read that file. Please try another .txt file.";
+        }
+      });
+
+      document.querySelectorAll("#count-options [data-count]").forEach(button => {
+        button.addEventListener("click", () => {
+          customCountSelected = button.dataset.count === "custom";
+          if (!customCountSelected) selectedCount = Number(button.dataset.count);
+          updateCountButtons(customCountSelected ? "custom" : selectedCount);
+          setStatus("");
+        });
+      });
+      customCount.addEventListener("input", () => {
+        customCountSelected = true;
+        updateCountButtons("custom");
+        setStatus("");
+      });
+      document.querySelectorAll("#difficulty-options [data-difficulty]").forEach(button => {
+        button.addEventListener("click", () => {
+          selectedDifficulty = button.dataset.difficulty;
+          updateDifficultyButtons();
+        });
+      });
+      el("continue-step-one").addEventListener("click", () => {
+        if (!validSource()) return;
+        el("step-one-complete").textContent = "Step 1 of 3 completed.";
+        showStep(2);
+      });
+      el("back-step-two").addEventListener("click", () => showStep(1));
+      el("continue-step-two").addEventListener("click", () => {
+        if (!validOptions()) return;
+        el("step-two-complete").textContent = "Step 2 of 3 completed.";
+        const format = el("question-type").selectedOptions[0].textContent;
+        el("generation-summary").replaceChildren(
+          makeText("span", "", `${questionCount()} question${questionCount() === 1 ? "" : "s"}`),
+          makeText("span", "", `${selectedDifficulty[0].toUpperCase()}${selectedDifficulty.slice(1)} difficulty`),
+          makeText("span", "", format)
+        );
+        showStep(3);
+      });
+      el("back-step-three").addEventListener("click", () => showStep(2));
+
+      form.addEventListener("submit", async event => {
+        event.preventDefault();
+        if (activeStep !== 3) return;
+        const source = paragraph.value.trim();
+        if (!validSource() || !validOptions()) return;
+        setBusy(true);
+        resultsPanel.hidden = true;
+        setStatus("Reading the passage and writing questions…");
+        try {
+          const response = await fetch(CONFIG.workerUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ task: "questions", paragraph: source, count: questionCount(), difficulty: selectedDifficulty, type: el("question-type").value })
+          });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) throw new Error(data.error || `The question service returned ${response.status}.`);
+          if (!Array.isArray(data.questions) || !data.questions.length) throw new Error("The question service returned no questions. Please try again.");
+          const usable = data.questions.filter(q => q && typeof q.question === "string" && typeof q.answer === "string").slice(0, questionCount());
+          if (!usable.length) throw new Error("The question service returned an unexpected response.");
+          renderQuestions(usable);
+          questionWorkspace.classList.add("is-showing-results");
+          resultsPanel.hidden = false;
+          document.querySelector('[data-step-indicator="3"]').classList.add("is-complete");
+          setStatus("");
+          setResultsStatus("Tap an option to answer. You can still copy or download the full set.");
+          updateQuizProgress();
+          resultsPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+        } catch (error) {
+          setStatus(error.message || "Couldn’t create questions. Please try again.", "error");
+        } finally {
+          setBusy(false);
+        }
+      });
+
+      el("edit-settings").addEventListener("click", () => {
+        questionWorkspace.classList.remove("is-showing-results");
+        resultsPanel.hidden = true;
+        showStep(2);
+        el("step-two").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      el("start-over").addEventListener("click", () => {
+        questionWorkspace.classList.remove("is-showing-results");
+        resultsPanel.hidden = true;
+        form.reset();
+        paragraph.value = "";
+        sourceFile.value = "";
+        uploadStatus.textContent = "";
+        el("step-one-complete").textContent = "";
+        el("step-two-complete").textContent = "";
+        selectedCount = 5;
+        customCountSelected = false;
+        selectedDifficulty = "medium";
+        currentQuestions = [];
+        list.replaceChildren();
+        updateCountButtons(selectedCount);
+        updateDifficultyButtons();
+        updateCharacterCount();
+        setResultsStatus("");
+        showStep(1);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      copyButton.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(formatQuestions());
+          copyButton.textContent = "Copied!";
+          copyButton.setAttribute("aria-label", "Questions copied");
+          setResultsStatus("Questions and answers copied to your clipboard.", "success");
+          window.setTimeout(() => {
+            copyButton.textContent = "Copy questions";
+            copyButton.removeAttribute("aria-label");
+          }, 1800);
+        } catch (_) {
+          setResultsStatus("Clipboard access isn’t available here. You can select and copy the questions from the page.", "error");
+        }
+      });
+
+      el("download-questions").addEventListener("click", () => {
+        const requestedName = el("export-name").value.trim();
+        const safeName = (requestedName || "study-questions")
+          .replace(/[<>:"/\\|?*\u0000-\u001F]/g, "-")
+          .replace(/\s+/g, "-")
+          .replace(/-+/g, "-")
+          .replace(/^\.+|\.+$/g, "") || "study-questions";
+        const file = new Blob([formatQuestions()], { type: "text/plain;charset=utf-8" });
+        const url = URL.createObjectURL(file);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `${safeName}.txt`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+        setResultsStatus(`Downloaded ${safeName}.txt`, "success");
+      });
+
+      updateCountButtons(selectedCount);
+      updateDifficultyButtons();
+    })();
+  </script>
+</body>
+</html>

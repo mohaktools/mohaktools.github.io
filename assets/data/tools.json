@@ -42,6 +42,17 @@
       "popularity": 96
     },
     {
+      "id": "ai-question-generator",
+      "name": "AI Question Generator",
+      "category": "ai-tools",
+      "url": "/tools/ai-question-generator/",
+      "description": "Generate comprehension questions and answers from any paragraph.",
+      "keywords": ["questions from paragraph", "comprehension questions", "quiz questions", "study questions", "AI question generator"],
+      "icon": "?",
+      "featured": true,
+      "popularity": 90
+    },
+    {
       "id": "calculator",
       "name": "Basic Calculator",
       "category": "calculators",
