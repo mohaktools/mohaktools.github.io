@@ -89,6 +89,10 @@
     .qg-progress-track { height: 7px; overflow: hidden; border-radius: 99px; background: var(--color-border); }
     .qg-progress-fill { width: 0; height: 100%; border-radius: inherit; background: var(--color-primary); transition: width .22s ease; }
     .qg-toolbar-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .qg-turnstile { margin-top: 16px; }
+    .qg-turnstile-status { min-height: 18px; margin: 7px 0 0; color: var(--color-text-secondary); font-size: 11px; line-height: 1.5; }
+    .qg-turnstile-status[data-kind="error"] { color: #c43e42; }
+    .qg-turnstile-status[data-kind="success"] { color: #16804a; }
     .qg-workspace.is-showing-results .qg-stepper, .qg-workspace.is-showing-results #question-form { display: none !important; }
     .qg-workspace.is-showing-results .qg-results { max-width: none; margin: 0; padding: 0; border-top: 0; }
     .qg-answer { margin: 12px 0 0 37px; padding-top: 11px; border-top: 1px solid var(--color-border); color: var(--color-text-secondary); font-size: 12px; line-height: 1.65; }
@@ -199,6 +203,7 @@
           <div class="qg-heading"><span class="qg-icon" aria-hidden="true">✦</span><div><h2 id="step-three-title">Step 3: Generate</h2><p>Check your settings, then create the questions</p></div></div>
           <p class="qg-step-complete">Steps 1 and 2 of 3 completed.</p>
           <div class="qg-summary" id="generation-summary"></div>
+          <div class="qg-turnstile"><div id="question-turnstile" aria-label="Security verification"></div><p class="qg-turnstile-status" id="question-turnstile-status" role="status" aria-live="polite">Security verification is required before generating questions.</p></div>
           <div class="qg-step-actions"><button class="qg-button" id="back-step-three" type="button">Back</button><button class="qg-button qg-button-primary" id="generate-questions" type="submit">Generate question</button></div>
           <p class="qg-status" id="question-status" role="status" aria-live="polite"></p>
         </section>
@@ -233,10 +238,14 @@
     <nav class="qg-related" aria-label="Related tools"><h2>Explore more tools</h2><a href="/tools/ai-email-writer/">AI Email Writer</a><a href="/tools/#text-tools">Text Tools</a><a href="/tools/">All Tools</a></nav>
   </main>
   <div id="site-footer"></div>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
   <script>
     (() => {
       "use strict";
-      const CONFIG = { workerUrl: "https://email-writer.mohakchoubey.workers.dev/" };
+      const CONFIG = {
+        workerUrl: "https://email-writer.mohakchoubey.workers.dev/",
+        turnstileSiteKey: "0x4AAAAAAGB-vNFSSZmm2a_I"
+      };
       const el = id => document.getElementById(id);
       const form = el("question-form");
       const paragraph = el("source-paragraph");
@@ -254,6 +263,8 @@
       const quizScore = el("quiz-score");
       const quizProgressFill = el("quiz-progress-fill");
       const quizProgressTrack = document.querySelector(".qg-progress-track");
+      const turnstileContainer = el("question-turnstile");
+      const turnstileStatus = el("question-turnstile-status");
       let selectedCount = 5;
       let customCountSelected = false;
       let selectedDifficulty = "medium";
@@ -261,6 +272,8 @@
       let currentQuestions = [];
       let reviewedAnswers = [];
       let correctAnswers = 0;
+      let turnstileToken = "";
+      let turnstileWidgetId = null;
 
       function setStatus(message, kind = "") {
         status.textContent = message;
@@ -269,6 +282,46 @@
       function setResultsStatus(message, kind = "") {
         resultsStatus.textContent = message;
         resultsStatus.dataset.kind = kind;
+      }
+      function turnstileConfigured() {
+        return CONFIG.turnstileSiteKey && !CONFIG.turnstileSiteKey.includes("YOUR_");
+      }
+      function setTurnstileStatus(message, kind = "") {
+        turnstileStatus.textContent = message;
+        turnstileStatus.dataset.kind = kind;
+      }
+      function mountTurnstile() {
+        if (turnstileWidgetId !== null || !turnstileContainer) return;
+        if (!turnstileConfigured()) {
+          setTurnstileStatus("Add your Cloudflare Turnstile site key before enabling question generation.", "error");
+          return;
+        }
+        if (!window.turnstile) {
+          setTurnstileStatus("Security verification could not load. Refresh the page and try again.", "error");
+          return;
+        }
+        turnstileWidgetId = window.turnstile.render(turnstileContainer, {
+          sitekey: CONFIG.turnstileSiteKey,
+          action: "ai_questions",
+          theme: document.documentElement.dataset.theme === "dark" ? "dark" : "light",
+          callback: token => {
+            turnstileToken = token;
+            setTurnstileStatus("Security check complete.", "success");
+          },
+          "expired-callback": () => {
+            turnstileToken = "";
+            setTurnstileStatus("Security check expired. Complete it again to continue.", "error");
+          },
+          "error-callback": () => {
+            turnstileToken = "";
+            setTurnstileStatus("Security verification failed to load. Please refresh and try again.", "error");
+          }
+        });
+      }
+      function resetTurnstile() {
+        turnstileToken = "";
+        if (turnstileWidgetId !== null && window.turnstile) window.turnstile.reset(turnstileWidgetId);
+        setTurnstileStatus("Complete the security check before your next request.");
       }
       function setBusy(busy) {
         generateButton.disabled = busy;
@@ -509,6 +562,7 @@
           makeText("span", "", format)
         );
         showStep(3);
+        mountTurnstile();
       });
       el("back-step-three").addEventListener("click", () => showStep(2));
 
@@ -517,6 +571,15 @@
         if (activeStep !== 3) return;
         const source = paragraph.value.trim();
         if (!validSource() || !validOptions()) return;
+        if (!turnstileConfigured()) {
+          setStatus("Security verification is not configured yet. Add the Turnstile site key and try again.", "error");
+          return;
+        }
+        if (!turnstileToken) {
+          setTurnstileStatus("Complete the security check before generating questions.", "error");
+          return;
+        }
+        const securityToken = turnstileToken;
         setBusy(true);
         resultsPanel.hidden = true;
         setStatus("Reading the passage and writing questions…");
@@ -524,7 +587,7 @@
           const response = await fetch(CONFIG.workerUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ task: "questions", paragraph: source, count: questionCount(), difficulty: selectedDifficulty, type: el("question-type").value })
+            body: JSON.stringify({ task: "questions", paragraph: source, count: questionCount(), difficulty: selectedDifficulty, type: el("question-type").value, turnstileToken: securityToken })
           });
           const data = await response.json().catch(() => ({}));
           if (!response.ok) throw new Error(data.error || `The question service returned ${response.status}.`);
@@ -543,6 +606,7 @@
           setStatus(error.message || "Couldn’t create questions. Please try again.", "error");
         } finally {
           setBusy(false);
+          resetTurnstile();
         }
       });
 
@@ -555,6 +619,7 @@
       el("start-over").addEventListener("click", () => {
         questionWorkspace.classList.remove("is-showing-results");
         resultsPanel.hidden = true;
+        resetTurnstile();
         form.reset();
         paragraph.value = "";
         sourceFile.value = "";

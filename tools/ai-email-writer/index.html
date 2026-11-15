@@ -59,6 +59,8 @@
     .email-status { min-height: 20px; margin: 11px 0 0; color: var(--color-text-secondary); font-size: 12px; line-height: 1.55; }
     .email-status[data-kind="error"] { color: #c43e42; }
     .email-status[data-kind="success"] { color: #16804a; }
+    .email-turnstile { margin: 14px 0 8px; }
+    .email-turnstile-status { margin: 7px 0 0; color: var(--color-text-secondary); font-size: 11px; line-height: 1.5; }
     .email-preview-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 17px; }
     .email-preview-head .email-section-heading { margin: 0; }
     .email-preview-head .email-section-icon { background: var(--color-surface-secondary); color: var(--color-text-secondary); }
@@ -102,6 +104,7 @@
           <div class="email-field"><label for="email-tone">Tone</label><select id="email-tone"><option value="professional">Professional</option><option value="friendly">Friendly</option><option value="warm">Warm</option><option value="confident">Confident</option><option value="concise">Concise</option><option value="apologetic">Apologetic</option></select></div>
           <div class="email-field"><label for="email-length">Length</label><select id="email-length"><option value="standard">Standard</option><option value="short">Short</option><option value="detailed">Detailed</option></select></div>
         </div>
+        <div class="email-turnstile"><div id="email-turnstile" aria-label="Security verification"></div><p class="email-turnstile-status" id="email-turnstile-status" role="status" aria-live="polite">Security verification is required before generating an email.</p></div>
         <button class="email-button email-button-primary" id="generate-button" type="submit"><span aria-hidden="true">✦</span> Generate email</button>
         <p class="email-status" id="generate-status" role="status" aria-live="polite"></p>
       </form>
@@ -129,13 +132,15 @@
     <nav class="email-related" aria-label="Related tools"><h2>Explore more tools</h2><a href="/tools/#text-tools">Text Tools</a><a href="/tools/#everyday-utilities">Everyday Utilities</a><a href="/tools/">All Tools</a></nav>
   </main>
   <div id="site-footer"></div>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
   <script>
     (() => {
       "use strict";
       // Configure these public identifiers/URLs for your deployment. Keep all API secrets in the Worker.
       const CONFIG = {
         workerUrl: "https://email-writer.mohakchoubey.workers.dev/",
-        googleClientId: "321020105472-6htc8o8hpaf7i49gfqmn7pki82rjntbf.apps.googleusercontent.com"
+        googleClientId: "321020105472-6htc8o8hpaf7i49gfqmn7pki82rjntbf.apps.googleusercontent.com",
+        turnstileSiteKey: "0x4AAAAAAGB-vNFSSZmm2a_I"
       };
       const el = id => document.getElementById(id);
       const form = el("email-form");
@@ -145,9 +150,13 @@
       const body = el("draft-body");
       const genStatus = el("generate-status");
       const gmailStatus = el("gmail-status");
+      const turnstileStatus = el("email-turnstile-status");
+      const turnstileContainer = el("email-turnstile");
       let accessToken = "";
       let tokenClient = null;
       let tokenWaiter = null;
+      let turnstileToken = "";
+      let turnstileWidgetId = null;
 
       function status(node, message, kind = "") {
         node.textContent = message;
@@ -155,6 +164,39 @@
       }
       function configured(value) {
         return value && !value.includes("YOUR_") && !value.includes("example.com");
+      }
+      function mountTurnstile() {
+        if (turnstileWidgetId !== null || !turnstileContainer) return;
+        if (!configured(CONFIG.turnstileSiteKey)) {
+          status(turnstileStatus, "Add your Cloudflare Turnstile site key before enabling generation.", "error");
+          return;
+        }
+        if (!window.turnstile) {
+          status(turnstileStatus, "Security verification could not load. Refresh the page and try again.", "error");
+          return;
+        }
+        turnstileWidgetId = window.turnstile.render(turnstileContainer, {
+          sitekey: CONFIG.turnstileSiteKey,
+          action: "ai_email",
+          theme: document.documentElement.dataset.theme === "dark" ? "dark" : "light",
+          callback: token => {
+            turnstileToken = token;
+            status(turnstileStatus, "Security check complete.", "success");
+          },
+          "expired-callback": () => {
+            turnstileToken = "";
+            status(turnstileStatus, "Security check expired. Complete it again to continue.", "error");
+          },
+          "error-callback": () => {
+            turnstileToken = "";
+            status(turnstileStatus, "Security verification failed to load. Please refresh and try again.", "error");
+          }
+        });
+      }
+      function resetTurnstile() {
+        turnstileToken = "";
+        if (turnstileWidgetId !== null && window.turnstile) window.turnstile.reset(turnstileWidgetId);
+        status(turnstileStatus, "Complete the security check before your next request.");
       }
       function setBusy(button, busy, text) {
         if (busy) {
@@ -193,6 +235,15 @@
           status(genStatus, "Add your Cloudflare Worker URL in this page’s CONFIG before generating emails.", "error");
           return;
         }
+        if (!configured(CONFIG.turnstileSiteKey)) {
+          status(genStatus, "Security verification is not configured yet. Add the Turnstile site key and try again.", "error");
+          return;
+        }
+        if (!turnstileToken) {
+          status(turnstileStatus, "Complete the security check before generating your email.", "error");
+          return;
+        }
+        const securityToken = turnstileToken;
         const button = el("generate-button");
         setBusy(button, true, "Writing your email…");
         status(genStatus, "Creating a thoughtful first draft…");
@@ -200,7 +251,7 @@
           const response = await fetch(CONFIG.workerUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ task: "email", purpose: purpose.value.trim(), tone: el("email-tone").value, length: el("email-length").value })
+            body: JSON.stringify({ task: "email", purpose: purpose.value.trim(), tone: el("email-tone").value, length: el("email-length").value, turnstileToken: securityToken })
           });
           const data = await response.json().catch(() => ({}));
           if (!response.ok) throw new Error(data.error || data.message || `The writing service returned ${response.status}.`);
@@ -214,6 +265,7 @@
           status(genStatus, error.message || "Couldn’t generate the email. Please try again.", "error");
         } finally {
           setBusy(button, false);
+          resetTurnstile();
         }
       });
       body.addEventListener("input", countWords);
@@ -318,6 +370,7 @@
         }
       });
       countWords();
+      mountTurnstile();
     })();
   </script>
 </body>
