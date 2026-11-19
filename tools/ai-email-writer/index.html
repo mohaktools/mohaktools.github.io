@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20261116" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261116" />
+  <link rel="shortcut icon" href="/favicon.ico?v=20261116" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261116" />
+  <meta name="apple-mobile-web-app-title" content="MohakTools" />
+  <link rel="manifest" href="/site.webmanifest?v=20261116" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <title>AI Email Writer — Write and Send Emails | MohakTools</title>
-  <meta name="description" content="Write a clear, polished email with AI. Choose a tone, refine your draft, and send it securely through your Gmail account.">
+  <title>AI Email Writer | MohakTools</title>
+  <meta name="description" content="Draft a clear email from a few notes. Choose a tone and length, edit your draft, then send it with Gmail if you want.">
   <meta name="keywords" content="AI email writer, email generator, write email, Gmail email assistant">
   <meta name="author" content="MohakTools">
   <meta name="robots" content="index, follow">
@@ -15,7 +21,6 @@
   <meta property="og:description" content="Turn a few notes into a polished email and send it with Gmail.">
   <meta property="og:url" content="https://mohaktools.com/tools/ai-email-writer/">
   <meta name="twitter:card" content="summary">
-  <link rel="icon" href="/favicon.webp" type="image/webp">
   <link rel="stylesheet" href="/assets/css/global.css">
   <link rel="stylesheet" href="/assets/css/themes.css">
   <link rel="stylesheet" href="/assets/css/tool-page.css">
@@ -24,6 +29,7 @@
   <script src="/assets/js/header.js" defer></script>
   <script src="/assets/js/footer.js" defer></script>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <style>
     .email-page { max-width: 1080px; margin: 0 auto; padding: 28px 18px 64px; color: var(--color-text); }
     .email-breadcrumb { margin-bottom: 20px; color: var(--color-text-secondary); font-size: 13px; }
@@ -59,8 +65,6 @@
     .email-status { min-height: 20px; margin: 11px 0 0; color: var(--color-text-secondary); font-size: 12px; line-height: 1.55; }
     .email-status[data-kind="error"] { color: #c43e42; }
     .email-status[data-kind="success"] { color: #16804a; }
-    .email-turnstile { margin: 14px 0 8px; }
-    .email-turnstile-status { margin: 7px 0 0; color: var(--color-text-secondary); font-size: 11px; line-height: 1.5; }
     .email-preview-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 17px; }
     .email-preview-head .email-section-heading { margin: 0; }
     .email-preview-head .email-section-icon { background: var(--color-surface-secondary); color: var(--color-text-secondary); }
@@ -77,9 +81,9 @@
     .email-faq:last-child { padding-bottom: 0; border-bottom: 0; }
     .email-faq h3 { margin: 0 0 5px; font-size: 14px; }
     .email-faq p { margin: 0; font-size: 13px; }
-    .email-related { margin: 25px 0 0; }
+    .email-related { display: flex; flex-wrap: wrap; gap: 10px; margin: 25px 0 0; }
     .email-related h2 { margin-bottom: 10px; color: var(--color-text-secondary); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
-    .email-related a { display: inline-flex; margin: 0 7px 7px 0; padding: 8px 12px; color: var(--color-text); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 999px; font-size: 12px; text-decoration: none; }
+    .email-related a { display: block; flex: 1 1 190px; margin: 0; padding: 14px 16px; color: var(--color-text); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 14px; font-size: 13px; font-weight: 650; text-decoration: none; }
     .email-related a:hover { border-color: var(--color-primary); }
     @media (max-width: 760px) { .email-workspace { grid-template-columns: 1fr; } .email-compose { border-right: 0; border-bottom: 1px solid var(--color-border); } }
     @media (max-width: 520px) { .email-page { padding: 20px 13px 44px; } .email-compose, .email-preview { padding: 19px 16px; } .email-choice-row { grid-template-columns: 1fr; gap: 0; } .email-preview-head { align-items: flex-start; flex-direction: column; } .email-preview-head .email-button-row { width: 100%; } .email-preview-head .email-button { flex: 1; } .email-body { min-height: 240px; } }
@@ -104,7 +108,8 @@
           <div class="email-field"><label for="email-tone">Tone</label><select id="email-tone"><option value="professional">Professional</option><option value="friendly">Friendly</option><option value="warm">Warm</option><option value="confident">Confident</option><option value="concise">Concise</option><option value="apologetic">Apologetic</option></select></div>
           <div class="email-field"><label for="email-length">Length</label><select id="email-length"><option value="standard">Standard</option><option value="short">Short</option><option value="detailed">Detailed</option></select></div>
         </div>
-        <div class="email-turnstile"><div id="email-turnstile" aria-label="Security verification"></div><p class="email-turnstile-status" id="email-turnstile-status" role="status" aria-live="polite">Security verification is required before generating an email.</p></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAGB-vNFSSZmm2a_I" data-appearance="interaction-only" data-callback="onTurnstileSuccess" data-expired-callback="onTurnstileExpired" data-error-callback="onTurnstileError"></div>
+        <p class="email-helper" id="turnstile-status" role="status" aria-live="polite">Checking this browser…</p>
         <button class="email-button email-button-primary" id="generate-button" type="submit"><span aria-hidden="true">✦</span> Generate email</button>
         <p class="email-status" id="generate-status" role="status" aria-live="polite"></p>
       </form>
@@ -123,24 +128,23 @@
     </section>
 
     <section class="email-info" aria-labelledby="about-title"><h2 id="about-title">About the AI Email Writer</h2><p>This tool turns a short description into a useful first draft. Choose a tone and length, then review and edit the subject and message before copying or sending. AI generated text can make mistakes, so check names, dates, facts, and any commitments in the draft.</p><p>Email generation is sent to the configured MohakTools Cloudflare Worker, which calls Groq’s <code>openai/gpt-oss-120b</code> model. Keep your Groq API key in the Worker environment, never in this page. Gmail is optional: the page requests the limited Gmail send permission when you choose to connect, and sends only after you press “Send with Gmail.”</p></section>
-    <section class="email-info" aria-labelledby="faq-title"><h2 id="faq-title">Frequently Asked Questions</h2>
+    <section class="email-info" aria-labelledby="faq-title"><h2 id="faq-title">Common questions about AI Email Writer</h2>
       <div class="email-faq"><h3>Is the generated email sent automatically?</h3><p>No. The draft stays editable here. It is sent only after you connect Gmail and choose “Send with Gmail.”</p></div>
       <div class="email-faq"><h3>Can I edit the AI draft?</h3><p>Yes. Both the subject and message are editable, and you can copy the draft or send your edited version.</p></div>
       <div class="email-faq"><h3>What does connecting Gmail allow?</h3><p>The page asks Google for the Gmail send permission needed to send a message on your behalf. It does not request access to read your inbox.</p></div>
       <div class="email-faq"><h3>What should I check before sending?</h3><p>Review the recipient, names, facts, links, dates, and tone. AI can misunderstand context or invent details.</p></div>
     </section>
-    <nav class="email-related" aria-label="Related tools"><h2>Explore more tools</h2><a href="/tools/#text-tools">Text Tools</a><a href="/tools/#everyday-utilities">Everyday Utilities</a><a href="/tools/">All Tools</a></nav>
+    <nav class="email-related" aria-label="Suggested tools"><h2>Try another AI tool</h2><a href="/tools/ai-invitation-writer/">Invitation Writer</a><a href="/tools/make-a-paragraph-small/">Make a Paragraph Small</a><a href="/tools/ai-question-generator/">AI Question Generator</a></nav>
   </main>
   <div id="site-footer"></div>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
   <script>
     (() => {
       "use strict";
       // Configure these public identifiers/URLs for your deployment. Keep all API secrets in the Worker.
       const CONFIG = {
         workerUrl: "https://email-writer.mohakchoubey.workers.dev/",
-        googleClientId: "321020105472-6htc8o8hpaf7i49gfqmn7pki82rjntbf.apps.googleusercontent.com",
-        turnstileSiteKey: "0x4AAAAAAGB-vNFSSZmm2a_I"
+        turnstileSiteKey: "0x4AAAAAAGB-vNFSSZmm2a_I",
+        googleClientId: "321020105472-6htc8o8hpaf7i49gfqmn7pki82rjntbf.apps.googleusercontent.com"
       };
       const el = id => document.getElementById(id);
       const form = el("email-form");
@@ -150,13 +154,13 @@
       const body = el("draft-body");
       const genStatus = el("generate-status");
       const gmailStatus = el("gmail-status");
-      const turnstileStatus = el("email-turnstile-status");
-      const turnstileContainer = el("email-turnstile");
+      const turnstileStatus = el("turnstile-status");
+      window.onTurnstileSuccess = token => { window.mohakTurnstileToken = token; turnstileStatus.textContent = "Verified. Ready to generate."; turnstileStatus.dataset.kind = "success"; };
+      window.onTurnstileExpired = () => { window.mohakTurnstileToken = ""; turnstileStatus.textContent = "Verification expired. Checking again…"; turnstileStatus.dataset.kind = ""; };
+      window.onTurnstileError = () => { window.mohakTurnstileToken = ""; turnstileStatus.textContent = "Verification could not load. Check your connection and try again."; turnstileStatus.dataset.kind = "error"; };
       let accessToken = "";
       let tokenClient = null;
       let tokenWaiter = null;
-      let turnstileToken = "";
-      let turnstileWidgetId = null;
 
       function status(node, message, kind = "") {
         node.textContent = message;
@@ -164,39 +168,6 @@
       }
       function configured(value) {
         return value && !value.includes("YOUR_") && !value.includes("example.com");
-      }
-      function mountTurnstile() {
-        if (turnstileWidgetId !== null || !turnstileContainer) return;
-        if (!configured(CONFIG.turnstileSiteKey)) {
-          status(turnstileStatus, "Add your Cloudflare Turnstile site key before enabling generation.", "error");
-          return;
-        }
-        if (!window.turnstile) {
-          status(turnstileStatus, "Security verification could not load. Refresh the page and try again.", "error");
-          return;
-        }
-        turnstileWidgetId = window.turnstile.render(turnstileContainer, {
-          sitekey: CONFIG.turnstileSiteKey,
-          action: "ai_email",
-          theme: document.documentElement.dataset.theme === "dark" ? "dark" : "light",
-          callback: token => {
-            turnstileToken = token;
-            status(turnstileStatus, "Security check complete.", "success");
-          },
-          "expired-callback": () => {
-            turnstileToken = "";
-            status(turnstileStatus, "Security check expired. Complete it again to continue.", "error");
-          },
-          "error-callback": () => {
-            turnstileToken = "";
-            status(turnstileStatus, "Security verification failed to load. Please refresh and try again.", "error");
-          }
-        });
-      }
-      function resetTurnstile() {
-        turnstileToken = "";
-        if (turnstileWidgetId !== null && window.turnstile) window.turnstile.reset(turnstileWidgetId);
-        status(turnstileStatus, "Complete the security check before your next request.");
       }
       function setBusy(button, busy, text) {
         if (busy) {
@@ -236,14 +207,13 @@
           return;
         }
         if (!configured(CONFIG.turnstileSiteKey)) {
-          status(genStatus, "Security verification is not configured yet. Add the Turnstile site key and try again.", "error");
+          status(genStatus, "The Turnstile site key is not configured on this page.", "error");
           return;
         }
-        if (!turnstileToken) {
-          status(turnstileStatus, "Complete the security check before generating your email.", "error");
+        if (!window.mohakTurnstileToken) {
+          status(genStatus, "Browser verification is still running. Please wait and try again.", "error");
           return;
         }
-        const securityToken = turnstileToken;
         const button = el("generate-button");
         setBusy(button, true, "Writing your email…");
         status(genStatus, "Creating a thoughtful first draft…");
@@ -251,7 +221,7 @@
           const response = await fetch(CONFIG.workerUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ task: "email", purpose: purpose.value.trim(), tone: el("email-tone").value, length: el("email-length").value, turnstileToken: securityToken })
+            body: JSON.stringify({ task: "email", purpose: purpose.value.trim(), tone: el("email-tone").value, length: el("email-length").value, turnstileToken: window.mohakTurnstileToken })
           });
           const data = await response.json().catch(() => ({}));
           if (!response.ok) throw new Error(data.error || data.message || `The writing service returned ${response.status}.`);
@@ -264,8 +234,9 @@
         } catch (error) {
           status(genStatus, error.message || "Couldn’t generate the email. Please try again.", "error");
         } finally {
+          window.mohakTurnstileToken = "";
+          if (window.turnstile) window.turnstile.reset();
           setBusy(button, false);
-          resetTurnstile();
         }
       });
       body.addEventListener("input", countWords);
@@ -370,7 +341,6 @@
         }
       });
       countWords();
-      mountTurnstile();
     })();
   </script>
 </body>

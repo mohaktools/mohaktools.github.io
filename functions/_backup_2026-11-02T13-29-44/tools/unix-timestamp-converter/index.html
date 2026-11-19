@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unix Timestamp Converter Online | MohakTools</title>
+  <meta name="description" content="Convert Unix timestamps to readable dates and dates to Unix seconds or milliseconds.">
+  <meta name="keywords" content="Unix timestamp converter, epoch converter, timestamp to date, date to Unix time">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="MohakTools">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="application-name" content="MohakTools">
+  <link rel="canonical" href="https://mohaktools.com/tools/unix-timestamp-converter/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="Unix Timestamp Converter Online | MohakTools">
+  <meta property="og:description" content="Convert Unix timestamps to readable dates and dates to Unix seconds or milliseconds.">
+  <meta property="og:url" content="https://mohaktools.com/tools/unix-timestamp-converter/">
+  <meta property="og:image" content="https://mohaktools.com/assets/images/unix-timestamp-converter-og.png">
+  <meta property="og:image:alt" content="MohakTools Unix Timestamp Converter">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Unix Timestamp Converter Online | MohakTools">
+  <meta name="twitter:description" content="Convert Unix timestamps to readable dates and dates to Unix seconds or milliseconds.">
+  <meta name="twitter:image" content="https://mohaktools.com/assets/images/unix-timestamp-converter-og.png">
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Unix Timestamp Converter","url":"https://mohaktools.com/tools/unix-timestamp-converter/","description":"Convert Unix timestamps to readable dates and dates to Unix seconds or milliseconds.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"publisher":{"@type":"Organization","name":"MohakTools","url":"https://mohaktools.com/"}}</script>
+  <style>
+.mt-page{width:min(100% - 32px,1080px);margin:0 auto;padding:24px 0 56px;color:var(--color-text)}
+.mt-breadcrumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:16px;color:var(--color-text-secondary);font-size:13px}
+.mt-breadcrumbs a{color:var(--color-primary);text-decoration:none}.mt-breadcrumbs a:hover{text-decoration:underline}
+.mt-hero{margin-bottom:18px}.mt-hero h1{margin:0 0 8px;font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacing:-.03em;color:var(--color-text)}
+.mt-hero p{max-width:760px;margin:0;color:var(--color-text-secondary);font-size:15px;line-height:1.6}
+.mt-tool-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:18px;align-items:start}
+.mt-panel{min-width:0;padding:20px;border:1px solid var(--color-border);border-radius:var(--radius-xl,20px);background:var(--color-surface);box-shadow:var(--color-card-shadow,0 4px 18px rgba(0,0,0,.04))}
+.mt-panel h2{margin:0 0 14px;font-size:19px;line-height:1.35;color:var(--color-text)}
+.mt-field{margin-bottom:13px}.mt-field label,.mt-field legend{display:block;margin-bottom:6px;color:var(--color-text);font-size:13px;font-weight:650}
+.mt-field textarea,.mt-field input,.mt-field select{display:block;width:100%;min-height:42px;padding:10px 12px;border:1px solid var(--color-input-border,var(--color-border));border-radius:var(--radius-md,10px);background:var(--color-input-bg,var(--color-surface));color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s}
+.mt-field input[type=color]{padding:4px;height:44px}.mt-field textarea{min-height:210px;resize:vertical;line-height:1.55;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.mt-field textarea:focus,.mt-field input:focus,.mt-field select:focus{border-color:var(--color-primary);box-shadow:0 0 0 3px var(--color-primary-focus,rgba(37,99,235,.14))}
+.mt-option{display:flex;align-items:center;gap:8px;min-height:36px;padding:8px 10px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface-secondary);color:var(--color-text);font-size:12px}
+.mt-option input{width:15px;height:15px;min-height:15px;margin:0;accent-color:var(--color-primary)}
+.mt-help{margin:5px 0 0;color:var(--color-text-secondary);font-size:12px;line-height:1.5}
+.mt-button-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.mt-button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:10px 15px;border:1px solid transparent;border-radius:var(--radius-md,10px);font:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s,transform .2s}
+.mt-button:hover{opacity:.9}.mt-button:active{transform:translateY(1px)}.mt-button:focus-visible{outline:3px solid var(--color-primary);outline-offset:2px}
+.mt-primary{flex:1;background:var(--color-primary);color:var(--color-primary-text,#fff)}.mt-secondary{border-color:var(--color-border);background:var(--color-surface-secondary);color:var(--color-text)}
+.mt-output{min-height:210px}.mt-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-bottom:14px}
+.mt-stat{padding:12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface-secondary);min-width:0}
+.mt-stat span{display:block;color:var(--color-text-secondary);font-size:12px;margin-bottom:5px}.mt-stat strong{display:block;color:var(--color-primary);font-size:clamp(20px,2.5vw,26px);line-height:1.2;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.mt-status{min-height:18px;margin:9px 0 0;color:var(--color-text-secondary);font-size:12px;line-height:1.5}.mt-status.error{color:var(--color-danger)}.mt-status.success{color:var(--color-success)}
+.mt-content{margin-top:26px}.mt-content-section{margin-top:16px;padding:22px;border:1px solid var(--color-border);border-radius:var(--radius-xl,20px);background:var(--color-surface)}
+.mt-content-section h2{margin:0 0 12px;font-size:21px;color:var(--color-text)}.mt-content-section h3{margin:18px 0 7px;font-size:16px;color:var(--color-text)}
+.mt-content-section p,.mt-content-section li{color:var(--color-text-secondary);font-size:14px;line-height:1.75}.mt-content-section p{margin:0 0 10px}.mt-content-section ul{padding-left:20px;margin:8px 0 0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}.mt-faq:last-child{border-bottom:0;padding-bottom:0}.mt-faq h3{margin:0 0 6px;font-size:15px}.mt-faq p{margin:0}
+.mt-related{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.mt-related a{display:inline-flex;padding:8px 11px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);color:var(--color-primary);text-decoration:none;font-size:13px}.mt-related a:hover{border-color:var(--color-primary)}
+[hidden]{display:none!important}
+@media(max-width:760px){.mt-page{width:min(100% - 24px,620px);padding-top:18px}.mt-tool-grid{grid-template-columns:1fr;gap:12px}.mt-panel{padding:16px}.mt-field textarea{min-height:150px}.mt-output{min-height:150px}.mt-content-section{padding:17px}}
+@media(max-width:420px){.mt-page{width:min(100% - 20px,620px)}.mt-button-row{display:grid;grid-template-columns:1fr 1fr}.mt-button{width:100%;padding:9px 10px}.mt-stat-grid{gap:7px}.mt-stat{padding:10px}}
+@media(prefers-reduced-motion:reduce){.mt-button,.mt-field textarea,.mt-field input,.mt-field select{transition:none}}
+</style>
+</head>
+<body>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <div id="site-header"></div>
+  <main class="mt-page">
+    <nav class="mt-breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/tools/">Tools</a><span aria-hidden="true">/</span><span aria-current="page">Unix Timestamp Converter</span></nav>
+    <header class="mt-hero"><h1>Unix Timestamp Converter</h1><p>Convert Unix timestamps to readable dates and dates to Unix seconds or milliseconds. Convert Unix epoch timestamps into readable local and UTC dates, or convert a date into Unix seconds and milliseconds. Unix timestamps count time from 1 January 1970 UTC.</p></header>
+    <section class="mt-tool-grid" aria-label="Unix Timestamp Converter tool">
+      <section class="mt-panel" aria-labelledby="tool-input-heading">
+        <h2 id="tool-input-heading">Input and options</h2>
+        <div class="mt-field"><label for="mt-input">Timestamp or date</label><textarea id="mt-input" placeholder="Enter a Unix timestamp or date…" spellcheck="false"></textarea></div>
+        <div class="mt-field"><label for="ts-action">Conversion</label><select id="ts-action"><option value="to-date">Timestamp → date</option><option value="to-ts">Date → timestamp</option></select></div>
+<div class="mt-field"><label for="ts-unit">Timestamp unit (input)</label><select id="ts-unit"><option value="auto">Auto-detect seconds or milliseconds</option><option value="seconds">Seconds</option><option value="milliseconds">Milliseconds</option></select></div>
+<div class="mt-field"><label for="ts-date">Date input (used for date → timestamp)</label><input id="ts-date" type="datetime-local"></div>
+<div class="mt-button-row"><button class="mt-button mt-secondary" type="button" id="ts-now">Use current time</button></div>
+        
+        <div class="mt-button-row"><button class="mt-button mt-secondary" type="button" id="copy">Copy result</button><button class="mt-button mt-secondary" type="button" id="clear">Clear</button><button class="mt-button mt-secondary" type="button" id="download">Download .txt</button></div>
+        <p class="mt-status" id="mt-status" role="status" aria-live="polite">Ready. Results update as you type.</p>
+      </section>
+      <section class="mt-panel" aria-labelledby="tool-output-heading">
+        <h2 id="tool-output-heading">Result</h2>
+        <div class="mt-field"><label for="mt-output">Output</label><textarea class="mt-output" id="mt-output" readonly placeholder="Your result will appear here…"></textarea></div>
+        <div class="mt-stat-grid"><div class="mt-stat"><span>Input length / items</span><strong id="mt-input-count">0</strong></div><div class="mt-stat"><span>Output length / items</span><strong id="mt-output-count">0</strong></div></div>
+      </section>
+    </section>
+    <div class="mt-content">
+      <section class="mt-content-section"><h2>How to Use the Unix Timestamp Converter</h2><ul><li>Enter or paste your input in the text area, or choose an available input control.</li><li>Select the conversion or formatting options that match your task.</li><li>Review the result and the status message for errors or confirmation.</li><li>Use Copy result or Download .txt to save the output.</li></ul></section>
+      <section class="mt-content-section"><h2>About the Unix Timestamp Converter</h2><p>Convert Unix epoch timestamps into readable local and UTC dates, or convert a date into Unix seconds and milliseconds. Unix timestamps count time from 1 January 1970 UTC.</p><p>This free developer utility is designed for desktop, tablet and mobile screens. It uses the MohakTools centralized theme styles and shared site header and footer scripts.</p></section>
+      <section class="mt-content-section"><h2>Frequently Asked Questions</h2><div class="mt-faq"><h3>What is a Unix timestamp?</h3><p>It represents elapsed time from 1 January 1970 UTC, usually in seconds or milliseconds.</p></div><div class="mt-faq"><h3>How are seconds and milliseconds different?</h3><p>Millisecond timestamps are typically 1,000 times larger than second timestamps.</p></div><div class="mt-faq"><h3>Why can local and UTC dates differ?</h3><p>Local output uses your device's timezone, while UTC output uses Coordinated Universal Time.</p></div></section>
+      <section class="mt-content-section"><h2>Explore Related Tools</h2><p>Continue with other MohakTools developer utilities.</p><div class="mt-related"><a href="/tools/json-formatter/">JSON Formatter</a><a href="/tools/json-validator/">JSON Validator</a><a href="/tools/base64-encoder-decoder/">Base64 Encoder / Decoder</a><a href="/tools/url-encoder-decoder/">URL Encoder / Decoder</a><a href="/tools/html-entity-encoder/">HTML Entity Encoder</a><a href="/tools/uuid-generator/">UUID Generator</a><a href="/tools/color-code-converter/">Color Code Converter</a></div></section>
+      <p class="mt-help">Privacy note: processing runs in your browser. Avoid entering confidential data on shared or untrusted devices.</p>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+  <script>
+  (() => {
+    "use strict";
+    const status=document.getElementById("mt-status");
+    function stats(a,b){document.getElementById("mt-input-count").textContent=Number(a||0).toLocaleString();document.getElementById("mt-output-count").textContent=Number(b||0).toLocaleString()}
+    function copyText(text){if(!text){status.textContent="There is no output to copy.";status.className="mt-status error";return}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(()=>{status.textContent="Copied to clipboard.";status.className="mt-status success"}).catch(()=>fallbackCopy(text))}else fallbackCopy(text)}
+    function fallbackCopy(text){const temp=document.createElement("textarea");temp.value=text;temp.setAttribute("readonly","");temp.style.position="fixed";temp.style.opacity="0";document.body.appendChild(temp);temp.select();try{document.execCommand("copy");status.textContent="Copied to clipboard.";status.className="mt-status success"}catch(e){status.textContent="Copy was unavailable. Select the output and copy it manually.";status.className="mt-status error"}temp.remove()}
+    function downloadText(text,filename){const blob=new Blob([text],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);status.textContent="Text file prepared for download.";status.className="mt-status success"}
+    window.mtCopyText=copyText;window.mtDownloadText=downloadText;
+    const input=document.getElementById("mt-input"),output=document.getElementById("mt-output");
+function run(){const raw=input.value.trim(),action=document.getElementById("ts-action").value;if(action==="to-date"){if(!raw){output.value="";status.textContent="Enter a timestamp.";status.className="mt-status";stats(0,0);return}let n=Number(raw);if(!Number.isFinite(n)){status.textContent="Enter a valid numeric timestamp.";status.className="mt-status error";return}const unit=document.getElementById("ts-unit").value;if(unit==="seconds"||(unit==="auto"&&Math.abs(n)<1e11))n*=1000;const d=new Date(n);if(Number.isNaN(d.getTime())){status.textContent="Timestamp is outside the supported date range.";status.className="mt-status error";return}output.value="UTC: "+d.toISOString()+"\nLocal: "+d.toString()+"\nUnix seconds: "+Math.floor(d.getTime()/1000)+"\nUnix milliseconds: "+d.getTime();status.textContent="Timestamp converted.";status.className="mt-status success";stats(raw.length,4)}else{const v=document.getElementById("ts-date").value;if(!v){status.textContent="Choose a date and time.";status.className="mt-status error";return}const ms=new Date(v).getTime();if(!Number.isFinite(ms)){status.textContent="Enter a valid date.";status.className="mt-status error";return}output.value="Unix seconds: "+Math.floor(ms/1000)+"\nUnix milliseconds: "+ms+"\nUTC: "+new Date(ms).toISOString();status.textContent="Date converted.";status.className="mt-status success";stats(v.length,3)}}
+input.addEventListener("input",run);document.getElementById("ts-action").addEventListener("change",()=>{input.placeholder=document.getElementById("ts-action").value==="to-date"?"Enter a Unix timestamp…":"Use the date and time field below…";run()});document.getElementById("ts-unit").addEventListener("change",run);document.getElementById("ts-date").addEventListener("change",run);document.getElementById("ts-now").addEventListener("click",()=>{const d=new Date();document.getElementById("ts-date").value=new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,16);document.getElementById("ts-action").value="to-ts";run()});
+    document.getElementById("copy").addEventListener("click",()=>copyText(output.value));
+    document.getElementById("clear").addEventListener("click",()=>{input.value="";output.value="";stats(0,0);status.textContent="Cleared.";status.className="mt-status";input.focus();if(typeof run==="function")run()});
+    document.getElementById("download").addEventListener("click",()=>downloadText(output.value,"unix-timestamp-converter-result.txt"));
+    if("unix-timestamp-converter"!=="uuid-generator"){input.addEventListener("input",()=>stats(input.value.length,output.value.length));}
+  })();
+  </script>
+</body>
+</html>

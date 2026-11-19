@@ -7,7 +7,6 @@
    - Accent color customization
    - Font size preference
    - Reduced motion preference
-   - Notification preferences
    - Persistent settings using localStorage
    - Reset settings to defaults
 
@@ -22,18 +21,13 @@
   const STORAGE_KEY = "mohaktools-settings";
 
   const DEFAULT_SETTINGS = {
-    accentColor: "#4f46e5",
+    accentColor: "#0b6f83",
     fontSize: "medium",
     reducedMotion: false,
-    notifications: {
-      enabled: true,
-      toolUpdates: true,
-      tips: true
-    }
   };
 
   const ACCENT_PRESETS = [
-    { name: "Indigo", value: "#4f46e5" },
+    { name: "Mohak Green", value: "#0b6f83" },
     { name: "Blue", value: "#2563eb" },
     { name: "Cyan", value: "#0891b2" },
     { name: "Green", value: "#16a34a" },
@@ -45,6 +39,8 @@
   ];
 
   let settings = loadSettings();
+  const originalFontStyles = new WeakMap();
+  let activeFontScale = 1;
 
   function cloneDefaults() {
     return JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
@@ -61,13 +57,13 @@
       const parsed = JSON.parse(saved);
       const defaults = cloneDefaults();
 
+      if (["#4f46e5", "#146b5d"].includes(parsed.accentColor)) {
+        parsed.accentColor = defaults.accentColor;
+      }
+
       return {
         ...defaults,
         ...parsed,
-        notifications: {
-          ...defaults.notifications,
-          ...(parsed.notifications || {})
-        }
       };
     } catch (error) {
       console.warn("MohakTools: Could not load settings.", error);
@@ -98,22 +94,25 @@
     const accent = isValidColor(settings.accentColor)
       ? settings.accentColor
       : DEFAULT_SETTINGS.accentColor;
+    const isDarkTheme = root.dataset.theme === "dark";
+    const displayAccent = isDarkTheme && accent === DEFAULT_SETTINGS.accentColor
+      ? "#5cc6e2"
+      : accent;
 
-    root.style.setProperty("--mt-accent", accent);
-    root.style.setProperty("--accent-color", accent);
-    root.style.setProperty("--color-primary", accent);
+    root.style.setProperty("--mt-accent", displayAccent);
+    root.style.setProperty("--accent-color", displayAccent);
+    root.style.setProperty("--color-primary", displayAccent);
+    if (isDarkTheme && accent === DEFAULT_SETTINGS.accentColor) {
+      root.style.setProperty("--color-primary-text", "#05303d");
+    } else {
+      root.style.removeProperty("--color-primary-text");
+    }
 
     /* Font size */
-    const fontSizes = {
-      small: "14px",
-      medium: "16px",
-      large: "18px"
-    };
-
-    root.style.setProperty(
-      "--mt-base-font-size",
-      fontSizes[settings.fontSize] || fontSizes.medium
-    );
+    const fontScales = { small: 0.875, medium: 1, large: 1.125 };
+    activeFontScale = fontScales[settings.fontSize] || 1;
+    root.style.setProperty("--mt-font-scale", String(activeFontScale));
+    applyGlobalFontScale(document.body, false);
 
     root.dataset.fontSize = settings.fontSize;
 
@@ -148,17 +147,56 @@
       window.MohakTheme.set(savedTheme);
     }
 
-    /* Make notification preferences available to other scripts */
-    window.MohakNotificationPreferences = {
-      ...settings.notifications
-    };
-
     window.dispatchEvent(
       new CustomEvent("mohaktools:settings-changed", {
         detail: getSettings()
       })
     );
   }
+
+  function applyGlobalFontScale(container, isNewContent) {
+    if (!container) return;
+    const elements = [];
+    if (container.nodeType === Node.ELEMENT_NODE) elements.push(container);
+    if (container.querySelectorAll) elements.push(...container.querySelectorAll("*"));
+
+    elements.forEach(element => {
+      if (!originalFontStyles.has(element)) {
+        const computedSize = getComputedStyle(element).fontSize;
+        const inlineSize = element.style.getPropertyValue("font-size");
+        const inlinePriority = element.style.getPropertyPriority("font-size");
+        let baseSize = parseFloat(computedSize) || 16;
+
+        if (isNewContent && activeFontScale !== 1) {
+          const parent = element.parentElement;
+          const parentSize = parent ? parseFloat(getComputedStyle(parent).fontSize) : 0;
+          const parentBase = parent && originalFontStyles.get(parent)?.baseSize;
+          if (parentBase && Math.abs(baseSize - parentSize) < 0.25) {
+            baseSize = parentBase;
+          }
+        }
+        originalFontStyles.set(element, { baseSize, inlineSize, inlinePriority });
+      }
+
+      const original = originalFontStyles.get(element);
+      if (activeFontScale === 1) {
+        if (original.inlineSize) {
+          element.style.setProperty("font-size", original.inlineSize, original.inlinePriority);
+        } else {
+          element.style.removeProperty("font-size");
+        }
+      } else {
+        element.style.setProperty("font-size", `${original.baseSize * activeFontScale}px`, "important");
+      }
+    });
+  }
+
+  const fontScaleObserver = new MutationObserver(records => {
+    records.forEach(record => record.addedNodes.forEach(node => {
+      if (node.nodeType === Node.ELEMENT_NODE) applyGlobalFontScale(node, true);
+    }));
+  });
+  fontScaleObserver.observe(document.documentElement, { childList: true, subtree: true });
 
   function getThemePreference() {
     if (window.MohakTheme && typeof window.MohakTheme.get === "function") {
@@ -189,27 +227,6 @@
 
     saveSettings();
     applySettings();
-  }
-
-  function updateNotificationSetting(key, value) {
-    if (!Object.prototype.hasOwnProperty.call(
-      settings.notifications,
-      key
-    )) {
-      return;
-    }
-
-    settings.notifications[key] = Boolean(value);
-
-    /* Turning off all notifications disables their subcategories. */
-    if (key === "enabled" && !value) {
-      settings.notifications.toolUpdates = false;
-      settings.notifications.tips = false;
-    }
-
-    saveSettings();
-    applySettings();
-    renderSettings();
   }
 
   function resetSettings() {
@@ -252,10 +269,10 @@
   function getSettingsStyles() {
     return `
       .mt-settings {
-        --mt-settings-border: var(--border-color, #e5e7eb);
-        --mt-settings-surface: var(--card-background, var(--surface-color, #ffffff));
-        --mt-settings-text: var(--text-color, #171717);
-        --mt-settings-muted: var(--muted-text-color, #6b7280);
+        --mt-settings-border: var(--color-border, #e5e7eb);
+        --mt-settings-surface: var(--color-surface, #ffffff);
+        --mt-settings-text: var(--color-text, #171717);
+        --mt-settings-muted: var(--color-text-secondary, #6b7280);
         color: var(--mt-settings-text);
         width: 100%;
         max-width: 960px;
@@ -342,9 +359,15 @@
         min-height: 42px;
         border: 1px solid var(--mt-settings-border);
         border-radius: 9px;
-        background: var(--background-color, var(--page-background, #ffffff));
+        background-color: var(--color-surface, #ffffff);
         color: var(--mt-settings-text);
         font: inherit;
+        color-scheme: inherit;
+      }
+
+      .mt-settings select option {
+        background-color: var(--color-surface, #ffffff);
+        color: var(--color-text, #171717);
       }
 
       .mt-settings select {
@@ -517,11 +540,8 @@
     `;
   }
 
-  function toggleMarkup(id, label, help, checked, notificationKey) {
+  function toggleMarkup(id, label, help, checked) {
     const safeId = escapeHTML(id);
-    const keyAttribute = notificationKey
-      ? `data-notification-key="${escapeHTML(notificationKey)}"`
-      : "";
 
     return `
       <div class="mt-setting-row">
@@ -537,7 +557,6 @@
               id="${safeId}"
               type="checkbox"
               ${checked ? "checked" : ""}
-              ${keyAttribute}
             >
             <span class="mt-settings-toggle-track"></span>
           </label>
@@ -653,38 +672,6 @@
             "Reduce motion",
             "Minimize animations and transitions.",
             settings.reducedMotion
-          )}
-        </section>
-
-        <section class="mt-settings-section" aria-labelledby="mt-notifications-title">
-          <h2 id="mt-notifications-title">Notifications</h2>
-          <p class="mt-settings-section-description">
-            Control which optional site notifications are enabled.
-            Browser notification permission is separate from these preferences.
-          </p>
-
-          ${toggleMarkup(
-            "mt-notifications-enabled",
-            "Enable notifications",
-            "Allow supported site features to show optional notifications.",
-            settings.notifications.enabled,
-            "enabled"
-          )}
-
-          ${toggleMarkup(
-            "mt-notifications-updates",
-            "Tool updates",
-            "Notifications about new tools and tool changes.",
-            settings.notifications.toolUpdates,
-            "toolUpdates"
-          )}
-
-          ${toggleMarkup(
-            "mt-notifications-tips",
-            "Tips and suggestions",
-            "Optional tips for using the website's tools.",
-            settings.notifications.tips,
-            "tips"
           )}
         </section>
 
@@ -811,17 +798,6 @@
       });
     }
 
-    mount.querySelectorAll("[data-notification-key]").forEach(function (input) {
-      input.addEventListener("change", function () {
-        updateNotificationSetting(
-          input.dataset.notificationKey,
-          input.checked
-        );
-
-        showToast("Notification preferences updated.");
-      });
-    });
-
     const resetButton = mount.querySelector("#mt-settings-reset");
 
     if (resetButton) {
@@ -860,11 +836,6 @@
         return getSettings();
       }
 
-      if (key.startsWith("notifications.")) {
-        const notificationKey = key.slice("notifications.".length);
-        return settings.notifications[notificationKey];
-      }
-
       return settings[key];
     },
 
@@ -882,14 +853,6 @@
           }
         }
 
-        return;
-      }
-
-      if (key.startsWith("notifications.")) {
-        updateNotificationSetting(
-          key.slice("notifications.".length),
-          value
-        );
         return;
       }
 
@@ -930,5 +893,7 @@
       renderSettings();
     }
   });
+
+  window.addEventListener("mohak:themechange", applySettings);
 
 })();

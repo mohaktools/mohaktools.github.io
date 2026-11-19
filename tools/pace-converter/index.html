@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20261116" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261116" />
+  <link rel="shortcut icon" href="/favicon.ico?v=20261116" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261116" />
+  <meta name="apple-mobile-web-app-title" content="MohakTools" />
+  <link rel="manifest" href="/site.webmanifest?v=20261116" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+<title>Pace Converter | MohakTools</title>
+<meta name="description" content="Convert running pace between minutes per kilometre, minutes per mile, and speed in km/h or mph.">
+<meta name="keywords" content="pace converter, running pace, min per km, min per mile, pace to speed">
+<link rel="canonical" href="https://mohaktools.com/tools/pace-converter/">
+<meta property="og:title" content="Pace Converter | MohakTools">
+<meta property="og:description" content="Convert running pace to km/h, mph and minutes per mile.">
+<meta property="og:url" content="https://mohaktools.com/tools/pace-converter/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pace Converter | MohakTools">
+<meta name="twitter:description" content="Convert running pace to km/h, mph and minutes per mile.">
+<script src="/assets/js/tools-registry.js" defer></script>
+<style>
+.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
+.mt-field{margin-bottom:14px}
+.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
+.mt-field input[type="number"],.mt-field select{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s;box-sizing:border-box}
+.mt-field input:focus,.mt-field select:focus{border-color:var(--color-primary)}
+.mt-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
+.mt-button:active{transform:scale(.97)}
+.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
+.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
+.mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-stat-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
+.mt-stat strong{font-size:20px;font-weight:700;color:var(--color-text)}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
+</style>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+    <span style="margin:0 6px">/</span>
+    <a href="/tools/?category=converters" style="color:var(--color-primary);text-decoration:none">Converters</a>
+    <span style="margin:0 6px">/</span>
+    <span>Pace Converter</span>
+  </nav>
+
+  <header style="margin-bottom:24px">
+    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">Pace Converter</h1>
+    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Convert running pace into speed and other pace units.</p>
+  </header>
+
+  <div class="mt-tool-grid">
+    <section class="mt-panel"><h2>Pace</h2>
+      <div class="mt-field"><label>Pace per kilometre</label>
+        <div class="mt-row2">
+          <input type="number" id="pm" min="0" step="1" placeholder="min" aria-label="Minutes per kilometre">
+          <input type="number" id="ps" min="0" max="59" step="1" placeholder="sec" aria-label="Seconds per kilometre">
+        </div></div>
+      <div class="mt-field"><label for="unit">Input unit</label>
+        <select id="unit"><option value="km">Minutes per kilometre</option><option value="mi">Minutes per mile</option></select></div>
+      <div class="mt-button-row"><button class="mt-button mt-primary" id="calc">Convert</button><button class="mt-button mt-secondary" id="reset">Reset</button></div>
+      <p class="mt-status" id="mt-status" role="status" aria-live="polite"></p>
+    </section>
+    <section class="mt-panel"><h2>Result</h2>
+      <div class="mt-stat-grid">
+        <div class="mt-stat"><span>Speed (km/h)</span><strong id="kmh">—</strong></div>
+        <div class="mt-stat"><span>Speed (mph)</span><strong id="mph">—</strong></div>
+        <div class="mt-stat"><span>Pace per mile</span><strong id="permi">—</strong></div>
+        <div class="mt-stat"><span>Pace per kilometre</span><strong id="perkm">—</strong></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Pace Converter</h2>
+    <div class="mt-prose">
+      <p>Runners measure pace as time per distance, such as 5:30 per kilometre, while cars and cycling apps use speed, such as 18 km/h. This tool converts one into the other. Enter the pace in minutes and seconds, pick whether it is per kilometre or per mile, and it returns speed in km/h and mph along with the pace in both distance units.</p>
+      <p>Pace and speed are inverses. A faster pace means fewer minutes per distance and a higher speed. For example, 5:00 per kilometre is 12 km/h. Everything runs in your browser, so nothing is uploaded.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Common questions about Pace Converter</h2>
+    <div class="mt-faq"><h3>How do I convert pace to speed?</h3><p>Speed in km/h equals 60 divided by the pace in minutes per kilometre.</p></div>
+    <div class="mt-faq"><h3>What is a mile in kilometres?</h3><p>One mile is 1.609344 kilometres, so a pace per mile is about 1.609 times slower than the same pace per kilometre.</p></div>
+    <div class="mt-faq"><h3>Can I enter seconds greater than 59?</h3><p>No. Seconds must be between 0 and 59, and minutes can be any whole number.</p></div>
+  </section>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Converters</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/speed-converter/" class="mt-related-chip">Speed Converter</a><a href="/tools/time-converter/" class="mt-related-chip">Time Converter</a><a href="/tools/length-converter/" class="mt-related-chip">Length Converter</a></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+const $ = id => document.getElementById(id);
+const OUT = ["kmh", "mph", "permi", "perkm"];
+const clearOut = () => OUT.forEach(id => $(id).textContent = "—");
+const mmss = totalSec => {
+  const m = Math.floor(totalSec / 60), s = Math.round(totalSec % 60);
+  return m + ":" + String(s).padStart(2, "0");
+};
+
+$("calc").onclick = () => {
+  const m = parseFloat($("pm").value) || 0;
+  const s = parseFloat($("ps").value) || 0;
+  if ($("pm").value === "" && $("ps").value === "") {
+    clearOut();
+    $("mt-status").textContent = "Enter a pace.";
+    return;
+  }
+  if (m < 0 || s < 0 || s > 59) {
+    clearOut();
+    $("mt-status").textContent = "Minutes cannot be negative and seconds must be between 0 and 59.";
+    return;
+  }
+  const paceSec = m * 60 + s;
+  if (paceSec <= 0) {
+    clearOut();
+    $("mt-status").textContent = "The pace must be greater than zero.";
+    return;
+  }
+  const KM_PER_MI = 1.609344;
+  let perKmSec = $("unit").value === "km" ? paceSec : paceSec / KM_PER_MI;
+  let perMiSec = perKmSec * KM_PER_MI;
+
+  $("kmh").textContent = (3600 / perKmSec).toFixed(2);
+  $("mph").textContent = (3600 / perMiSec).toFixed(2);
+  $("permi").textContent = mmss(perMiSec) + " /mi";
+  $("perkm").textContent = mmss(perKmSec) + " /km";
+  $("mt-status").textContent = "";
+};
+
+$("reset").onclick = () => {
+  ["pm", "ps"].forEach(id => $(id).value = "");
+  $("unit").value = "km";
+  clearOut();
+  $("mt-status").textContent = "";
+};
+</script>
+</body>
+</html>

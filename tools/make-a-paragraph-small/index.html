@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#fff">
+  <title>Make a Paragraph Small | MohakTools</title>
+  <meta name="description" content="Shorten a long paragraph with AI while keeping its main meaning and important details. Free paragraph shortener from MohakTools.">
+  <meta name="robots" content="index, follow"><link rel="canonical" href="https://mohaktools.com/tools/make-a-paragraph-small/">
+  <meta property="og:title" content="Make a Paragraph Small | MohakTools"><meta property="og:description" content="Shorten a long paragraph with AI while keeping its main meaning."><meta property="og:url" content="https://mohaktools.com/tools/make-a-paragraph-small/"><meta property="og:type" content="website">
+  <link rel="icon" href="/favicon.webp" type="image/webp"><link rel="stylesheet" href="/assets/css/global.css"><link rel="stylesheet" href="/assets/css/themes.css">
+  <script src="/assets/js/theme.js" defer></script><script src="/assets/js/tools-registry.js" defer></script><script src="/assets/js/header.js" defer></script><script src="/assets/js/footer.js" defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <style>
+    .tool-page{width:min(900px,calc(100% - 32px));margin:auto;padding:28px 0 64px;color:var(--color-text)}.crumb{margin-bottom:22px;color:var(--color-text-secondary);font-size:13px}.crumb a,.link{color:var(--color-primary)}.hero{max-width:680px;margin:0 auto 26px;text-align:center}.hero h1{font-size:clamp(30px,5vw,44px);line-height:1.12;margin:0 0 12px}.hero p{color:var(--color-text-secondary);line-height:1.7}.card,.info{padding:24px;background:var(--color-surface);border:1px solid var(--color-border);border-radius:18px;box-shadow:var(--color-card-shadow)}.field{margin-bottom:18px}.field label{display:block;margin-bottom:7px;font-weight:650}.field textarea,.field select,.output{box-sizing:border-box;width:100%;padding:12px;border:1px solid var(--color-border);border-radius:10px;background:var(--color-surface);color:var(--color-text);font:inherit;line-height:1.65}.field textarea,.output{min-height:190px;resize:vertical}.help,.status{color:var(--color-text-secondary);font-size:13px;line-height:1.6}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.button{padding:11px 16px;border:1px solid var(--color-border);border-radius:10px;background:var(--color-surface);color:var(--color-text);font:inherit;font-weight:700;cursor:pointer}.primary{background:var(--color-primary);border-color:var(--color-primary);color:white}.button:disabled{opacity:.6;cursor:wait}.status[data-kind=error]{color:#c43e42}.status[data-kind=success]{color:#16804a}.info{margin-top:20px}.info h2{font-size:18px}.info p{color:var(--color-text-secondary);line-height:1.7}.related{margin-top:22px}.related a{display:inline-block;margin:0 8px 8px 0}.cf-turnstile{margin:16px 0}@media(max-width:560px){.tool-page{width:calc(100% - 24px);padding-top:20px}.card,.info{padding:17px}.actions .button{flex:1}}
+  </style>
+</head>
+<body><div id="site-header"></div>
+<main class="tool-page">
+  <nav class="crumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/tools/?category=ai-tools">AI Tools</a> / <span aria-current="page">Make a Paragraph Small</span></nav>
+  <header class="hero"><h1>Make a paragraph small</h1><p>Turn a long paragraph into a shorter, easier-to-read version while keeping its main point and key details.</p></header>
+  <section class="card" aria-label="Paragraph shortener">
+    <div class="field"><label for="source">Your paragraph</label><textarea id="source" maxlength="5000" placeholder="Paste a paragraph of at least 20 characters…"></textarea><p class="help"><span id="count">0</span> / 5,000 characters. Avoid sharing private information.</p></div>
+    <div class="field"><label for="length">How short should it be?</label><select id="length"><option value="shorter">A little shorter</option><option value="half">About half as long</option><option value="brief">As brief as possible</option></select></div>
+    <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY" data-callback="onTurnstileSuccess" data-expired-callback="onTurnstileExpired"></div>
+    <div class="actions"><button class="button primary" id="shorten" type="button">Shorten paragraph</button><button class="button" id="copy" type="button">Copy result</button></div><p class="status" id="status" role="status" aria-live="polite"></p>
+    <div class="field"><label for="result">Shortened paragraph</label><textarea class="output" id="result" placeholder="Your shorter paragraph will appear here." readonly></textarea></div>
+  </section>
+  <section class="info"><h2>About this paragraph shortener</h2><p>Use this AI tool to trim lengthy notes, descriptions, or draft copy. The result aims to preserve meaning, but review it for accuracy and restore any nuance that matters. Text is sent to the MohakTools Worker for processing. Do not paste confidential or sensitive information.</p><p>Requests are protected by Cloudflare Turnstile. The public site key is configured on this page; the matching secret key belongs in the Worker environment.</p></section>
+  <nav class="related" aria-label="Related tools"><a href="/tools/ai-invitation-writer/">Invitation Writer</a><a href="/tools/ai-question-generator/">AI Question Generator</a><a href="/tools/ai-email-writer/">AI Email Writer</a></nav>
+</main><div id="site-footer"></div>
+<script>
+(() => {"use strict";
+  const WORKER_URL="https://email-writer.mohakchoubey.workers.dev/", SITE_KEY="";
+  const source=document.getElementById("source"), result=document.getElementById("result"), status=document.getElementById("status"), button=document.getElementById("shorten");
+  window.onTurnstileSuccess=token=>{window.mohakTurnstileToken=token}; window.onTurnstileExpired=()=>{window.mohakTurnstileToken=""};
+  source.addEventListener("input",()=>document.getElementById("count").textContent=source.value.length);
+  button.addEventListener("click",async()=>{
+    const paragraph=source.value.trim(); if(paragraph.length<20){source.focus();status.textContent="Enter a paragraph of at least 20 characters.";status.dataset.kind="error";return}
+    if(SITE_KEY.includes("YOUR_")||!window.mohakTurnstileToken){status.textContent="Complete the security check. Configure this page’s Turnstile site key to enable requests.";status.dataset.kind="error";return}
+    button.disabled=true;button.textContent="Shortening…";status.textContent="Creating a concise version…";status.dataset.kind="";
+    try{const response=await fetch(WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({task:"shorten",paragraph,length:document.getElementById("length").value,turnstileToken:window.mohakTurnstileToken})});const data=await response.json().catch(()=>({}));if(!response.ok)throw new Error(data.error||`The service returned ${response.status}.`);if(typeof data.text!=="string"||!data.text.trim())throw new Error("No shortened paragraph was returned.");result.value=data.text;status.textContent="Done. Review the shorter version before using it.";status.dataset.kind="success"}
+    catch(error){status.textContent=error.message||"Could not shorten the paragraph. Try again.";status.dataset.kind="error"}
+    finally{window.mohakTurnstileToken="";if(window.turnstile)window.turnstile.reset();button.disabled=false;button.textContent="Shorten paragraph"}
+  });
+  document.getElementById("copy").addEventListener("click",async()=>{if(!result.value){status.textContent="Shorten a paragraph before copying the result.";status.dataset.kind="error";return}try{await navigator.clipboard.writeText(result.value);status.textContent="Copied to clipboard.";status.dataset.kind="success"}catch(_){result.focus();result.select();status.textContent="Clipboard access is unavailable. The result is selected for copying.";status.dataset.kind="error"}});
+})();
+</script></body></html>

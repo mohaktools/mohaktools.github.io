@@ -1,0 +1,1309 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Password Generator Online | MohakTools</title>
+  <meta name="description" content="Generate secure random passwords online with customizable length, uppercase and lowercase letters, numbers, and symbols. Copy or download passwords instantly with MohakTools.">
+  <meta name="keywords" content="password generator, random password generator, secure password generator, strong password generator, online password generator">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="MohakTools">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="application-name" content="MohakTools">
+
+  <link rel="canonical" href="https://mohaktools.com/tools/password-generator/">
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/webp" href="/favicon.webp">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="Password Generator Online | MohakTools">
+  <meta property="og:description" content="Create random passwords with adjustable length and character options. Generate and copy passwords directly in your browser.">
+  <meta property="og:url" content="https://mohaktools.com/tools/password-generator/">
+  <meta property="og:image" content="https://mohaktools.com/assets/images/password-generator-og.png">
+  <meta property="og:image:alt" content="MohakTools Password Generator">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Password Generator Online | MohakTools">
+  <meta name="twitter:description" content="Generate random passwords with customizable length, numbers, and symbols.">
+  <meta name="twitter:image" content="https://mohaktools.com/assets/images/password-generator-og.png">
+
+  <!-- Shared MohakTools styles -->
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Password Generator",
+    "url": "https://mohaktools.com/tools/password-generator/",
+    "description": "Generate random passwords using configurable character sets and password lengths.",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript and Web Crypto API",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "MohakTools",
+      "url": "https://mohaktools.com/"
+    }
+  }
+  </script>
+
+  <style>
+    .mt-page {
+      width: min(100% - 32px, 1080px);
+      margin: 0 auto;
+      padding: 24px 0 56px;
+      color: var(--color-text);
+    }
+
+    .mt-breadcrumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+    }
+
+    .mt-breadcrumbs a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .mt-breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+
+    .mt-hero {
+      margin-bottom: 22px;
+    }
+
+    .mt-hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -.03em;
+      color: var(--color-text);
+    }
+
+    .mt-hero p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--color-text-secondary);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .mt-tool-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .mt-panel {
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 20px);
+      background: var(--color-surface);
+      box-shadow: var(--color-card-shadow, 0 4px 18px rgba(0,0,0,.04));
+    }
+
+    .mt-panel h2 {
+      margin: 0 0 16px;
+      font-size: 19px;
+      color: var(--color-text);
+    }
+
+    .mt-field {
+      margin-bottom: 15px;
+    }
+
+    .mt-field label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--color-text);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .mt-field input,
+    .mt-field select {
+      display: block;
+      width: 100%;
+      min-height: 43px;
+      padding: 10px 12px;
+      border: 1px solid var(--color-input-border, var(--color-border));
+      border-radius: var(--radius-md, 10px);
+      background: var(--color-input-bg, var(--color-surface));
+      color: var(--color-text);
+      font: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .mt-field input:focus,
+    .mt-field select:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-focus, rgba(37,99,235,.14));
+    }
+
+    .mt-field input[type="checkbox"] {
+      width: 17px;
+      min-height: 17px;
+      height: 17px;
+      margin: 0;
+      accent-color: var(--color-primary);
+      cursor: pointer;
+    }
+
+    .mt-field input[type="range"] {
+      min-height: auto;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      accent-color: var(--color-primary);
+      cursor: pointer;
+    }
+
+    .mt-help {
+      margin: 6px 0 0;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .mt-length-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .mt-length-value {
+      color: var(--color-primary);
+      font-size: 21px;
+      font-weight: 750;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mt-length-presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .mt-preset {
+      min-width: 43px;
+      padding: 6px 10px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px);
+      background: var(--color-surface-secondary);
+      color: var(--color-text);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .mt-preset:hover,
+    .mt-preset.active {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .mt-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 6px 0 17px;
+    }
+
+    .mt-option {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px);
+      background: var(--color-surface-secondary);
+      color: var(--color-text);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .mt-option span {
+      min-width: 0;
+      line-height: 1.4;
+    }
+
+    .mt-button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .mt-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-md, 10px);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .2s, transform .2s;
+    }
+
+    .mt-button:hover {
+      opacity: .88;
+    }
+
+    .mt-button:active {
+      transform: translateY(1px);
+    }
+
+    .mt-button:focus-visible,
+    .mt-preset:focus-visible,
+    .mt-option:focus-within {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .mt-primary {
+      flex: 1;
+      background: var(--color-primary);
+      color: var(--color-primary-text, #fff);
+    }
+
+    .mt-secondary {
+      border-color: var(--color-border);
+      background: var(--color-surface-secondary);
+      color: var(--color-text);
+    }
+
+    .mt-status {
+      min-height: 20px;
+      margin: 12px 0 0;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .mt-status.success {
+      color: var(--color-success, #15803d);
+    }
+
+    .mt-status.error {
+      color: var(--color-danger, #dc2626);
+    }
+
+    .mt-password-wrap {
+      display: flex;
+      align-items: stretch;
+      gap: 8px;
+    }
+
+    .mt-password-wrap input {
+      min-width: 0;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 14px;
+    }
+
+    .mt-icon-button {
+      flex: 0 0 auto;
+      min-width: 43px;
+      padding: 9px;
+    }
+
+    .mt-strength {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px);
+      background: var(--color-surface-secondary);
+    }
+
+    .mt-strength-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 9px;
+      font-size: 12px;
+    }
+
+    .mt-strength-top span {
+      color: var(--color-text-secondary);
+    }
+
+    .mt-strength-top strong {
+      color: var(--color-text);
+    }
+
+    .mt-strength-track {
+      width: 100%;
+      height: 7px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: var(--color-border);
+    }
+
+    .mt-strength-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--color-primary);
+      transition: width .2s, background-color .2s;
+    }
+
+    .mt-strength-note {
+      margin: 9px 0 0;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .mt-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .mt-stat {
+      min-width: 0;
+      padding: 13px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px);
+      background: var(--color-surface-secondary);
+    }
+
+    .mt-stat span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+    }
+
+    .mt-stat strong {
+      display: block;
+      color: var(--color-primary);
+      font-size: 23px;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mt-content {
+      margin-top: 28px;
+    }
+
+    .mt-content-section {
+      margin-top: 16px;
+      padding: 22px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 20px);
+      background: var(--color-surface);
+    }
+
+    .mt-content-section h2 {
+      margin: 0 0 12px;
+      font-size: 21px;
+      color: var(--color-text);
+    }
+
+    .mt-content-section h3 {
+      margin: 0 0 7px;
+      font-size: 15px;
+      color: var(--color-text);
+    }
+
+    .mt-content-section p,
+    .mt-content-section li {
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .mt-content-section p {
+      margin: 0 0 10px;
+    }
+
+    .mt-content-section ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    .mt-faq {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .mt-faq:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .mt-faq p {
+      margin: 0;
+    }
+
+    .mt-related {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .mt-related a {
+      display: inline-flex;
+      padding: 8px 11px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px);
+      color: var(--color-primary);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .mt-related a:hover {
+      border-color: var(--color-primary);
+    }
+
+    @media (max-width: 760px) {
+      .mt-page {
+        width: min(100% - 24px, 620px);
+        padding-top: 18px;
+      }
+
+      .mt-tool-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .mt-panel {
+        padding: 16px;
+      }
+
+      .mt-content-section {
+        padding: 17px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .mt-page {
+        width: min(100% - 20px, 620px);
+      }
+
+      .mt-button-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .mt-button {
+        width: 100%;
+        padding: 9px 10px;
+      }
+
+      .mt-options {
+        gap: 7px;
+      }
+
+      .mt-option {
+        padding: 10px 8px;
+        font-size: 12px;
+      }
+
+      .mt-password-wrap {
+        flex-wrap: wrap;
+      }
+
+      .mt-password-wrap input {
+        flex: 1 1 180px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mt-button,
+      .mt-field input,
+      .mt-field select,
+      .mt-strength-fill {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main class="mt-page">
+    <nav class="mt-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Password Generator</span>
+    </nav>
+
+    <header class="mt-hero">
+      <h1>Password Generator</h1>
+      <p>
+        Generate random passwords with customizable length, uppercase and
+        lowercase letters, numbers, and symbols. Copy or download your
+        password instantly. Generation happens locally in your browser.
+      </p>
+    </header>
+
+    <section class="mt-tool-grid" aria-label="Password generator">
+      <section class="mt-panel" aria-labelledby="options-heading">
+        <h2 id="options-heading">Password options</h2>
+
+        <div class="mt-field">
+          <div class="mt-length-header">
+            <label for="password-length">Password length</label>
+            <output class="mt-length-value" id="length-value" for="password-length">20</output>
+          </div>
+          <input
+            id="password-length"
+            type="range"
+            min="8"
+            max="128"
+            step="1"
+            value="20"
+            aria-describedby="length-help"
+          >
+          <p class="mt-help" id="length-help">
+            Choose a length between 8 and 128 characters.
+          </p>
+
+          <div class="mt-length-presets" aria-label="Password length presets">
+            <button class="mt-preset" type="button" data-length="12">12</button>
+            <button class="mt-preset" type="button" data-length="16">16</button>
+            <button class="mt-preset active" type="button" data-length="20">20</button>
+            <button class="mt-preset" type="button" data-length="32">32</button>
+            <button class="mt-preset" type="button" data-length="64">64</button>
+          </div>
+        </div>
+
+        <div class="mt-field">
+          <label>Character types</label>
+          <div class="mt-options">
+            <label class="mt-option">
+              <input id="include-upper" type="checkbox" checked>
+              <span>Uppercase (A–Z)</span>
+            </label>
+            <label class="mt-option">
+              <input id="include-lower" type="checkbox" checked>
+              <span>Lowercase (a–z)</span>
+            </label>
+            <label class="mt-option">
+              <input id="include-numbers" type="checkbox" checked>
+              <span>Numbers (0–9)</span>
+            </label>
+            <label class="mt-option">
+              <input id="include-symbols" type="checkbox" checked>
+              <span>Symbols (!@#$...)</span>
+            </label>
+          </div>
+          <p class="mt-help">
+            Select at least one character type. Each selected type will be
+            represented in the generated password.
+          </p>
+        </div>
+
+        <div class="mt-field">
+          <label for="password-count">Number of passwords</label>
+          <select id="password-count">
+            <option value="1">1 password</option>
+            <option value="5">5 passwords</option>
+            <option value="10">10 passwords</option>
+            <option value="25">25 passwords</option>
+            <option value="50">50 passwords</option>
+          </select>
+          <p class="mt-help">
+            Generate multiple passwords for testing or account setup.
+          </p>
+        </div>
+
+        <div class="mt-button-row">
+          <button class="mt-button mt-primary" type="button" id="generate">
+            Generate Password
+          </button>
+          <button class="mt-button mt-secondary" type="button" id="reset">
+            Reset
+          </button>
+        </div>
+
+        <p class="mt-status" id="mt-status" role="status" aria-live="polite">
+          Ready. Choose your options and generate a password.
+        </p>
+      </section>
+
+      <section class="mt-panel" aria-labelledby="result-heading">
+        <h2 id="result-heading">Generated password</h2>
+
+        <div class="mt-field">
+          <label for="password-output">Your password</label>
+          <div class="mt-password-wrap">
+            <input
+              id="password-output"
+              type="password"
+              readonly
+              autocomplete="new-password"
+              spellcheck="false"
+              placeholder="Your password will appear here..."
+              aria-describedby="password-help"
+            >
+            <button
+              class="mt-button mt-secondary mt-icon-button"
+              type="button"
+              id="toggle-visibility"
+              aria-label="Show password"
+              aria-pressed="false"
+              title="Show password"
+            >Show</button>
+          </div>
+          <p class="mt-help" id="password-help">
+            Use the visibility button to reveal or hide your password.
+          </p>
+        </div>
+
+        <div class="mt-strength" aria-live="polite">
+          <div class="mt-strength-top">
+            <span>Estimated strength</span>
+            <strong id="strength-label">Not generated</strong>
+          </div>
+          <div
+            class="mt-strength-track"
+            role="progressbar"
+            id="strength-progress"
+            aria-label="Estimated password strength"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div class="mt-strength-fill" id="strength-fill"></div>
+          </div>
+          <p class="mt-strength-note" id="strength-note">
+            Generate a password to see its estimated character-set entropy.
+          </p>
+        </div>
+
+        <div class="mt-stat-grid">
+          <div class="mt-stat">
+            <span>Passwords generated</span>
+            <strong id="password-total">0</strong>
+          </div>
+          <div class="mt-stat">
+            <span>Characters per password</span>
+            <strong id="character-total">0</strong>
+          </div>
+        </div>
+
+        <div class="mt-button-row">
+          <button class="mt-button mt-secondary" type="button" id="copy">
+            Copy password
+          </button>
+          <button class="mt-button mt-secondary" type="button" id="download">
+            Download .txt
+          </button>
+        </div>
+
+        <div class="mt-field" style="margin-top:18px;margin-bottom:0">
+          <label for="password-list">Generated password list</label>
+          <textarea
+            id="password-list"
+            readonly
+            spellcheck="false"
+            rows="5"
+            placeholder="Additional generated passwords will appear here..."
+            style="display:block;width:100%;min-height:115px;padding:10px 12px;border:1px solid var(--color-input-border,var(--color-border));border-radius:var(--radius-md,10px);background:var(--color-input-bg,var(--color-surface));color:var(--color-text);font:13px ui-monospace,SFMono-Regular,Consolas,monospace;resize:vertical;line-height:1.65;overflow-wrap:anywhere"
+          ></textarea>
+          <p class="mt-help">
+            The list contains the current batch. Keep downloaded password
+            files in a secure location and delete them when no longer needed.
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <div class="mt-content">
+      <section class="mt-content-section">
+        <h2>How to Use the Password Generator</h2>
+        <ul>
+          <li>Choose a password length between 8 and 128 characters.</li>
+          <li>Select uppercase letters, lowercase letters, numbers, and symbols.</li>
+          <li>Choose how many passwords you want to generate.</li>
+          <li>Select Generate Password to create a new batch.</li>
+          <li>Copy an individual password or download the complete list as a text file.</li>
+        </ul>
+      </section>
+
+      <section class="mt-content-section">
+        <h2>What Makes a Strong Password?</h2>
+        <p>
+          Longer, unpredictable passwords are generally harder to guess.
+          A password's resistance to guessing depends on its length,
+          randomness, character choices, and whether it has been exposed
+          or reused elsewhere.
+        </p>
+        <p>
+          This generator uses the browser's Web Crypto API to obtain
+          cryptographically secure random values. The strength indicator
+          estimates entropy from the selected character pool and length;
+          it is not a guarantee against every attack and does not check
+          whether a password has appeared in a data breach.
+        </p>
+        <p>
+          Use a unique password for each account. A reputable password
+          manager can help you store and manage passwords securely.
+          Multi-factor authentication adds another layer of account protection.
+        </p>
+      </section>
+
+      <section class="mt-content-section">
+        <h2>Privacy and Security</h2>
+        <p>
+          Passwords are generated and formatted in your browser. This page's
+          generator does not send generated passwords to a MohakTools server.
+          However, browser extensions, compromised devices, screen sharing,
+          or other software on your device may still expose sensitive data.
+        </p>
+        <p>
+          Avoid saving passwords to shared computers or unprotected text files.
+          For important accounts, consider using a trusted password manager
+          and never share your passwords with anyone.
+        </p>
+      </section>
+
+      <section class="mt-content-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="mt-faq">
+          <h3>Is this password generator free?</h3>
+          <p>
+            Yes. You can generate passwords for free in your browser without
+            creating an account.
+          </p>
+        </div>
+
+        <div class="mt-faq">
+          <h3>Can I choose my password length?</h3>
+          <p>
+            Yes. Choose any length from 8 to 128 characters, or use one of
+            the quick length presets.
+          </p>
+        </div>
+
+        <div class="mt-faq">
+          <h3>Can I generate multiple passwords at once?</h3>
+          <p>
+            Yes. You can generate 1, 5, 10, 25, or 50 passwords in one batch
+            and download the results as a text file.
+          </p>
+        </div>
+
+        <div class="mt-faq">
+          <h3>Are passwords sent to a server?</h3>
+          <p>
+            The generator creates passwords locally using the browser's
+            Web Crypto API. The generation code does not upload passwords
+            to the MohakTools server.
+          </p>
+        </div>
+
+        <div class="mt-faq">
+          <h3>What if my browser does not support secure random generation?</h3>
+          <p>
+            Password generation requires the Web Crypto API. Use a modern
+            browser on HTTPS or localhost. The tool reports an error rather
+            than falling back to an insecure random-number generator.
+          </p>
+        </div>
+
+        <div class="mt-faq">
+          <h3>Should I use the same password for multiple accounts?</h3>
+          <p>
+            No. Use a different, unique password for each account to reduce
+            the impact if one service suffers a data breach.
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-content-section">
+        <h2>Explore Related Tools</h2>
+        <div class="mt-related">
+          <a href="/tools/uuid-generator/">UUID Generator</a>
+          <a href="/tools/qr-code-generator/">QR Code Generator</a>
+          <a href="/tools/random-number-generator/">Random Number Generator</a>
+          <a href="/tools/random-choice-picker/">Random Choice Picker</a>
+          <a href="/tools/json-formatter/">JSON Formatter</a>
+          <a href="/tools/base64-encoder-decoder/">Base64 Encoder / Decoder</a>
+          <a href="/tools/url-encoder-decoder/">URL Encoder / Decoder</a>
+          <a href="/tools/">All Tools</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <!-- Shared site scripts -->
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+
+  <!-- Password generator -->
+  <script>
+  (() => {
+    "use strict";
+
+    const $ = id => document.getElementById(id);
+
+    const lengthInput = $("password-length");
+    const lengthValue = $("length-value");
+    const countInput = $("password-count");
+    const upperInput = $("include-upper");
+    const lowerInput = $("include-lower");
+    const numbersInput = $("include-numbers");
+    const symbolsInput = $("include-symbols");
+    const output = $("password-output");
+    const listOutput = $("password-list");
+    const status = $("mt-status");
+    const passwordTotal = $("password-total");
+    const characterTotal = $("character-total");
+    const strengthLabel = $("strength-label");
+    const strengthFill = $("strength-fill");
+    const strengthProgress = $("strength-progress");
+    const strengthNote = $("strength-note");
+    const visibilityButton = $("toggle-visibility");
+
+    const DEFAULTS = {
+      length: 20,
+      count: "1",
+      upper: true,
+      lower: true,
+      numbers: true,
+      symbols: true
+    };
+
+    const CHARACTER_SETS = {
+      upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      lower: "abcdefghijklmnopqrstuvwxyz",
+      numbers: "0123456789",
+      symbols: "!@#$%^&*()-_=+[]{};:,.?/~"
+    };
+
+    let generatedPasswords = [];
+
+    function setStatus(message, type = "") {
+      status.textContent = message;
+      status.className = "mt-status" + (type ? " " + type : "");
+    }
+
+    /*
+     * Uses rejection sampling instead of modulo alone, avoiding
+     * modulo bias when choosing a random character index.
+     */
+    function secureRandomInt(max) {
+      if (!Number.isSafeInteger(max) || max < 1 || max > 0x100000000) {
+        throw new Error("Invalid random selection range.");
+      }
+
+      if (!window.crypto || typeof window.crypto.getRandomValues !== "function") {
+        throw new Error(
+          "Secure random generation is unavailable. Open this page on HTTPS or localhost in a supported browser."
+        );
+      }
+
+      const range = 0x100000000;
+      const limit = range - (range % max);
+      const random = new Uint32Array(1);
+
+      do {
+        window.crypto.getRandomValues(random);
+      } while (random[0] >= limit);
+
+      return random[0] % max;
+    }
+
+    function secureShuffle(items) {
+      for (let i = items.length - 1; i > 0; i--) {
+        const j = secureRandomInt(i + 1);
+        [items[i], items[j]] = [items[j], items[i]];
+      }
+
+      return items;
+    }
+
+    function getSelectedSets() {
+      const sets = [];
+
+      if (upperInput.checked) sets.push(CHARACTER_SETS.upper);
+      if (lowerInput.checked) sets.push(CHARACTER_SETS.lower);
+      if (numbersInput.checked) sets.push(CHARACTER_SETS.numbers);
+      if (symbolsInput.checked) sets.push(CHARACTER_SETS.symbols);
+
+      return sets;
+    }
+
+    function getCharacterPool(sets) {
+      return [...new Set(sets.join(""))];
+    }
+
+    function createPassword(length, sets) {
+      const pool = getCharacterPool(sets);
+
+      if (!sets.length || !pool.length) {
+        throw new Error("Select at least one character type.");
+      }
+
+      if (length < sets.length) {
+        throw new Error(
+          "Password length must be at least " + sets.length +
+          " to include every selected character type."
+        );
+      }
+
+      const passwordCharacters = [];
+
+      // Guarantee at least one character from every selected set.
+      for (const set of sets) {
+        passwordCharacters.push(set[secureRandomInt(set.length)]);
+      }
+
+      // Fill the remaining positions from the combined character pool.
+      while (passwordCharacters.length < length) {
+        passwordCharacters.push(pool[secureRandomInt(pool.length)]);
+      }
+
+      return secureShuffle(passwordCharacters).join("");
+    }
+
+    function estimateStrength(password, sets) {
+      if (!password) {
+        return {
+          label: "Not generated",
+          percent: 0,
+          entropy: 0,
+          note: "Generate a password to see its estimated character-set entropy.",
+          color: "var(--color-primary)"
+        };
+      }
+
+      const poolSize = getCharacterPool(sets).length;
+      const entropy = password.length * Math.log2(Math.max(poolSize, 1));
+
+      let label;
+      let percent;
+      let color;
+      let note;
+
+      if (entropy < 40) {
+        label = "Low";
+        percent = 25;
+        color = "var(--color-danger, #dc2626)";
+        note = "Consider a longer password and more character types.";
+      } else if (entropy < 60) {
+        label = "Fair";
+        percent = 50;
+        color = "#ca8a04";
+        note = "A longer password can provide more resistance to guessing.";
+      } else if (entropy < 80) {
+        label = "Good";
+        percent = 75;
+        color = "#16a34a";
+        note = "This estimate assumes uniformly random character selection.";
+      } else {
+        label = "High";
+        percent = 100;
+        color = "var(--color-success, #15803d)";
+        note = "Estimated entropy is high. Store the password securely.";
+      }
+
+      return { label, percent, entropy, note, color };
+    }
+
+    function updateStrength() {
+      const current = output.value;
+      const sets = getSelectedSets();
+      const result = estimateStrength(current, sets);
+
+      strengthLabel.textContent = result.label;
+      strengthFill.style.width = result.percent + "%";
+      strengthFill.style.backgroundColor = result.color;
+      strengthProgress.setAttribute("aria-valuenow", String(result.percent));
+
+      if (current) {
+        strengthNote.textContent =
+          result.note + " Estimated entropy: " +
+          result.entropy.toFixed(1) + " bits.";
+      } else {
+        strengthNote.textContent = result.note;
+      }
+    }
+
+    function updateStats() {
+      passwordTotal.textContent =
+        generatedPasswords.length.toLocaleString();
+
+      characterTotal.textContent = generatedPasswords.length
+        ? generatedPasswords[0].length.toLocaleString()
+        : "0";
+    }
+
+    function renderResults() {
+      output.value = generatedPasswords[0] || "";
+      listOutput.value = generatedPasswords.join("\n");
+      updateStats();
+      updateStrength();
+
+      // Hide the previous visible password when results change.
+      output.type = "password";
+      visibilityButton.textContent = "Show";
+      visibilityButton.title = "Show password";
+      visibilityButton.setAttribute("aria-label", "Show password");
+      visibilityButton.setAttribute("aria-pressed", "false");
+    }
+
+    function generate() {
+      const length = Number(lengthInput.value);
+      const count = Number(countInput.value);
+      const sets = getSelectedSets();
+
+      if (!Number.isInteger(length) || length < 8 || length > 128) {
+        setStatus("Choose a password length between 8 and 128.", "error");
+        lengthInput.focus();
+        return;
+      }
+
+      if (!Number.isInteger(count) || count < 1 || count > 50) {
+        setStatus("Choose a valid number of passwords.", "error");
+        countInput.focus();
+        return;
+      }
+
+      if (!sets.length) {
+        setStatus("Select at least one character type.", "error");
+        upperInput.focus();
+        return;
+      }
+
+      try {
+        const passwords = [];
+
+        for (let i = 0; i < count; i++) {
+          passwords.push(createPassword(length, sets));
+        }
+
+        generatedPasswords = passwords;
+        renderResults();
+
+        setStatus(
+          "Successfully generated " + count +
+          " password" + (count === 1 ? "" : "s") + ".",
+          "success"
+        );
+      } catch (error) {
+        setStatus(
+          error instanceof Error
+            ? error.message
+            : "Unable to generate passwords in this browser.",
+          "error"
+        );
+      }
+    }
+
+    function clearResults() {
+      generatedPasswords = [];
+      renderResults();
+      setStatus("Password results cleared.");
+    }
+
+    function resetOptions() {
+      lengthInput.value = String(DEFAULTS.length);
+      countInput.value = DEFAULTS.count;
+      upperInput.checked = DEFAULTS.upper;
+      lowerInput.checked = DEFAULTS.lower;
+      numbersInput.checked = DEFAULTS.numbers;
+      symbolsInput.checked = DEFAULTS.symbols;
+
+      updateLengthDisplay();
+      clearActivePresets();
+      $("preset-20")?.classList.add("active");
+      clearResults();
+      setStatus("Options reset. Generate a new password when ready.");
+    }
+
+    function updateLengthDisplay() {
+      const length = Number(lengthInput.value);
+      lengthValue.textContent = String(length);
+
+      document.querySelectorAll(".mt-preset").forEach(button => {
+        button.classList.toggle(
+          "active",
+          Number(button.dataset.length) === length
+        );
+      });
+    }
+
+    function clearActivePresets() {
+      document.querySelectorAll(".mt-preset").forEach(button => {
+        button.classList.remove("active");
+      });
+    }
+
+    async function copyText(text, label) {
+      if (!text) {
+        setStatus("Generate a password before copying.", "error");
+        return;
+      }
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const temporary = document.createElement("textarea");
+          temporary.value = text;
+          temporary.setAttribute("readonly", "");
+          temporary.style.position = "fixed";
+          temporary.style.left = "-9999px";
+          temporary.style.top = "0";
+
+          document.body.appendChild(temporary);
+          temporary.select();
+
+          const copied = document.execCommand("copy");
+          temporary.remove();
+
+          if (!copied) {
+            throw new Error("Clipboard access was denied.");
+          }
+        }
+
+        setStatus(label + " copied to the clipboard.", "success");
+      } catch (error) {
+        output.type = "text";
+        output.focus();
+        output.select();
+
+        setStatus(
+          "Automatic copying failed. Select the text and copy it manually.",
+          "error"
+        );
+      }
+    }
+
+    function downloadResults() {
+      if (!generatedPasswords.length) {
+        setStatus("Generate passwords before downloading.", "error");
+        return;
+      }
+
+      const blob = new Blob(
+        [generatedPasswords.join("\n") + "\n"],
+        { type: "text/plain;charset=utf-8" }
+      );
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = "mohaktools-passwords.txt";
+      link.style.display = "none";
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+      setStatus(
+        "Password file download started. Store it securely.",
+        "success"
+      );
+    }
+
+    function toggleVisibility() {
+      const visible = output.type === "text";
+
+      output.type = visible ? "password" : "text";
+      visibilityButton.textContent = visible ? "Show" : "Hide";
+      visibilityButton.title = visible ? "Show password" : "Hide password";
+      visibilityButton.setAttribute(
+        "aria-label",
+        visible ? "Show password" : "Hide password"
+      );
+      visibilityButton.setAttribute("aria-pressed", String(!visible));
+    }
+
+    $("generate").addEventListener("click", generate);
+    $("reset").addEventListener("click", resetOptions);
+    $("copy").addEventListener("click", () =>
+      copyText(output.value, "Password")
+    );
+    $("download").addEventListener("click", downloadResults);
+    visibilityButton.addEventListener("click", toggleVisibility);
+
+    lengthInput.addEventListener("input", updateLengthDisplay);
+
+    document.querySelectorAll(".mt-preset").forEach(button => {
+      button.addEventListener("click", () => {
+        lengthInput.value = button.dataset.length;
+        updateLengthDisplay();
+      });
+    });
+
+    [upperInput, lowerInput, numbersInput, symbolsInput].forEach(input => {
+      input.addEventListener("change", () => {
+        updateStrength();
+      });
+    });
+
+    // Keyboard shortcut: Ctrl/Cmd + Enter generates a new batch.
+    document.addEventListener("keydown", event => {
+      if (
+        event.key === "Enter" &&
+        (event.ctrlKey || event.metaKey)
+      ) {
+        event.preventDefault();
+        generate();
+      }
+    });
+
+    updateLengthDisplay();
+    updateStats();
+    updateStrength();
+  })();
+  </script>
+</body>
+</html>

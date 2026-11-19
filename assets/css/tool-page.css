@@ -1,403 +1,181 @@
-/* =========================================
-   MohakTools — shared tool-page components
-   File: assets/css/tool-page.css
-
-   Drop this next to global.css / themes.css and link it LAST in <head>
-   so it refines the per-page <style> blocks without deleting them.
-   Every colour comes from themes.css, so light and dark both work.
-   ========================================= */
-
-/* ---------- layout ---------- */
-.tool-main,
-.mt-page {
+/* Shared layout for the lightweight standalone tools. */
+.tool-wrap {
+  width: min(760px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 44px 0 72px;
   color: var(--color-text);
 }
 
-.mt-tool-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: 18px;
-  align-items: start;
-}
-
-/* ---------- panels ---------- */
-.mt-panel {
-  min-width: 0;
-  padding: 20px;
-  margin-bottom: 16px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl, 20px);
-  background: var(--color-surface);
-  box-shadow: var(--color-card-shadow, 0 4px 18px rgb(0 0 0 / 6%));
-}
-
-.mt-panel h2 {
-  margin: 0 0 14px;
-  font-size: 19px;
-  line-height: 1.35;
-  color: var(--color-text);
-}
-
-/* ---------- fields ---------- */
-.mt-field {
-  margin-bottom: 13px;
-}
-
-.mt-field label,
-.mt-field legend {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--color-text);
-  font-size: 13px;
-  font-weight: 650;
-  letter-spacing: 0.2px;
-}
-
-.mt-field input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
-.mt-field select,
-.mt-field textarea {
-  display: block;
-  width: 100%;
-  min-height: 42px;
-  padding: 10px 12px;
-  border: 1px solid var(--color-input-border, var(--color-border));
-  border-radius: var(--radius-md, 10px);
-  background: var(--color-input-bg, var(--color-surface));
-  color: var(--color-text);
-  font: inherit;
+.tool-breadcrumbs {
+  margin-bottom: 24px;
+  color: var(--color-text-secondary);
   font-size: 14px;
-  outline: none;
-  box-sizing: border-box;
-  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.mt-field input::placeholder,
-.mt-field textarea::placeholder {
-  color: var(--color-text-secondary);
-  opacity: 0.85;
-}
-
-.mt-field input:focus,
-.mt-field select:focus,
-.mt-field textarea:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 22%, transparent);
-}
-
-.mt-field input[type="color"] {
-  padding: 4px;
-  height: 44px;
-  cursor: pointer;
-}
-
-.mt-field input[type="range"] {
-  padding: 0;
-  accent-color: var(--color-primary);
-}
-
-.mt-field input[type="checkbox"],
-.mt-field input[type="radio"] {
-  accent-color: var(--color-primary);
-}
-
-.mt-field textarea {
-  min-height: 160px;
-  resize: vertical;
-  line-height: 1.55;
-  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-}
-
-/* ---------- options row ---------- */
-.mt-options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 6px;
-}
-
-.mt-option {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 36px;
-  padding: 8px 10px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md, 10px);
-  background: var(--color-surface-secondary);
-  color: var(--color-text);
-  font-size: 12px;
-  cursor: pointer;
-  user-select: none;
-}
-
-.mt-option input {
-  width: 15px;
-  height: 15px;
-  min-height: 15px;
-  margin: 0;
-  accent-color: var(--color-primary);
-}
-
-/* ---------- buttons ---------- */
-.mt-button-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.mt-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  padding: 10px 16px;
-  border: 1px solid transparent;
-  border-radius: var(--radius-md, 10px);
-  font: inherit;
-  font-size: 13px;
-  font-weight: 700;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: opacity 0.2s, transform 0.2s, background-color 0.2s, border-color 0.2s;
-}
-
-.mt-button:hover {
-  opacity: 0.9;
-}
-
-.mt-button:active {
-  transform: translateY(1px);
-}
-
-.mt-button:focus-visible {
-  outline: 3px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-.mt-primary {
-  background: var(--color-primary);
-  color: var(--color-primary-text, #fff);
-}
-
-.mt-secondary {
-  border-color: var(--color-border);
-  background: var(--color-surface-secondary);
-  color: var(--color-text);
-}
-
-.mt-secondary:hover {
-  border-color: var(--color-primary);
-}
-
-/* ---------- output + stats ---------- */
-.mt-output {
-  display: block;
-  width: 100%;
-  min-height: 160px;
-  padding: 12px;
-  border: 1px solid var(--color-input-border, var(--color-border));
-  border-radius: var(--radius-md, 10px);
-  background: var(--color-input-bg, var(--color-surface));
-  color: var(--color-text);
-  font: 13px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace;
-  resize: vertical;
-  box-sizing: border-box;
-}
-
-.mt-stat-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.mt-stat {
-  min-width: 0;
-  padding: 12px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md, 10px);
-  background: var(--color-surface-secondary);
-}
-
-.mt-stat span {
-  display: block;
-  margin-bottom: 5px;
-  color: var(--color-text-secondary);
-  font-size: 12px;
-}
-
-.mt-stat strong {
-  display: block;
+.tool-breadcrumbs a {
   color: var(--color-primary);
-  font-size: clamp(18px, 2.4vw, 24px);
-  line-height: 1.2;
-  font-variant-numeric: tabular-nums;
+  text-underline-offset: 3px;
+}
+
+.tool-heading {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.tool-heading h1 {
+  margin: 0 0 12px;
+  font-size: clamp(30px, 5vw, 44px);
+  line-height: 1.15;
+}
+
+.tool-heading p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.tool-card,
+.tool-info-card {
+  padding: clamp(20px, 5vw, 32px);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-surface);
+  box-shadow: var(--color-card-shadow);
+}
+
+.tool-card h2,
+.tool-info-card h2 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.tool-field label {
+  display: block;
+  margin: 0 0 8px;
+  font-weight: 650;
+}
+
+.tool-field + .tool-field {
+  margin-top: 16px;
+}
+
+.tool-field input,
+.tool-field select {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid var(--color-input-border);
+  border-radius: 10px;
+  background: var(--color-input-bg);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.tool-field input:focus-visible,
+.tool-field select:focus-visible,
+.tool-card button:focus-visible,
+.tool-faq summary:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-primary) 55%, transparent);
+  outline-offset: 3px;
+}
+
+.tool-card button {
+  min-height: 46px;
+  margin-top: 16px;
+  padding: 11px 20px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--color-primary);
+  color: var(--color-primary-text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tool-card button:hover {
+  background: var(--color-primary-hover);
+  color: var(--color-primary-hover-text, var(--color-primary-text));
+}
+
+.tool-answer {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 12px;
+  background: var(--color-input-bg);
+  line-height: 1.7;
   overflow-wrap: anywhere;
 }
 
-/* ---------- status + help ---------- */
-.mt-status {
-  min-height: 18px;
-  margin: 9px 0 0;
-  color: var(--color-text-secondary);
-  font-size: 12px;
-  line-height: 1.5;
+.tool-answer strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 21px;
 }
 
-.mt-status.error {
-  color: var(--color-danger);
-}
-
-.mt-status.success {
-  color: var(--color-success);
-}
-
-.mt-help {
+.tool-hint {
   margin: 8px 0 0;
   color: var(--color-text-secondary);
-  font-size: 12px;
-  line-height: 1.55;
-}
-
-/* ---------- breadcrumbs / hero ---------- */
-.mt-breadcrumbs {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
-  color: var(--color-text-secondary);
-  font-size: 13px;
-}
-
-.mt-breadcrumbs a {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-.mt-breadcrumbs a:hover {
-  text-decoration: underline;
-}
-
-.mt-hero h1 {
-  letter-spacing: -0.02em;
-}
-
-.mt-hero p {
-  color: var(--color-text-secondary);
-}
-
-/* ---------- related tools ---------- */
-.mt-related,
-.mt-related-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.mt-related a,
-.mt-related-chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 12px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md, 10px);
-  background: var(--color-surface);
-  color: var(--color-primary);
-  font-size: 13px;
-  text-decoration: none;
-  transition: border-color 0.2s, background-color 0.2s;
-}
-
-.mt-related a:hover,
-.mt-related-chip:hover {
-  border-color: var(--color-primary);
-  background: var(--color-surface-secondary);
-}
-
-/* ---------- long-form content ---------- */
-.mt-content-section {
-  margin-top: 16px;
-  padding: 22px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl, 20px);
-  background: var(--color-surface);
-}
-
-.mt-content-section h2 {
-  margin: 0 0 12px;
-  font-size: 21px;
-  color: var(--color-text);
-}
-
-.mt-content-section h3 {
-  margin: 18px 0 7px;
-  font-size: 16px;
-  color: var(--color-text);
-}
-
-.mt-content-section p,
-.mt-content-section li {
-  color: var(--color-text-secondary);
   font-size: 14px;
+  line-height: 1.6;
+}
+
+.tool-info-card {
+  margin-top: 24px;
+  padding: 22px;
+  box-shadow: none;
+}
+
+.tool-info-card p {
+  margin: 0;
+  color: var(--color-text-secondary);
   line-height: 1.75;
 }
 
-.mt-faq {
-  padding: 14px 0;
-  border-bottom: 1px solid var(--color-border);
+.tool-faq-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
 }
 
-.mt-faq:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
+.tool-faq {
+  padding: 14px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-input-bg);
 }
 
-/* ---------- misc ---------- */
-[hidden] {
-  display: none !important;
+.tool-faq summary {
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
 }
 
-@media (max-width: 760px) {
-  .mt-tool-grid {
+.tool-faq p {
+  margin: 10px 0 0;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.tool-section-spaced {
+  margin-top: 28px;
+}
+
+@media (max-width: 520px) {
+  .tool-wrap {
+    width: calc(100% - 24px);
+    padding-top: 28px;
+  }
+
+  .tool-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .mt-panel {
-    padding: 16px;
-  }
-
-  .mt-content-section {
-    padding: 17px;
-  }
-}
-
-@media (max-width: 420px) {
-  .mt-button-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .mt-button {
-    width: 100%;
-    padding: 9px 10px;
-  }
-
-  .mt-stat-grid {
-    gap: 7px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mt-button,
-  .mt-related a,
-  .mt-related-chip,
-  .mt-field input,
-  .mt-field select,
-  .mt-field textarea {
-    transition: none;
   }
 }

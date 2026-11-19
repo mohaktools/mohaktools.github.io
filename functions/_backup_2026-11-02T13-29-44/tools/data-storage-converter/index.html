@@ -1,0 +1,3148 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+  <title>Data Storage Converter - Bytes, KB, MB, GB, TB | MohakTools</title>
+
+  <meta name="description" content="Convert data storage units online for free. Convert bits, bytes, KB, MB, GB, TB, PB, KiB, MiB, GiB and more with the MohakTools Data Storage Converter.">
+
+  <meta name="keywords" content="data storage converter, byte converter, KB to MB, MB to GB, GB to TB, bytes to bits, binary converter, data unit converter">
+
+  <meta name="author" content="MohakTools">
+
+  <meta name="robots" content="index, follow">
+
+  <meta name="theme-color" content="#2563eb">
+
+
+
+  <link rel="canonical" href="https://mohaktools.com/tools/data-storage-converter/">
+
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+
+  <link rel="stylesheet" href="/assets/css/themes.css">
+
+
+
+  <meta property="og:title" content="Data Storage Converter - MohakTools">
+
+  <meta property="og:description" content="Convert bits, bytes, decimal storage units and binary storage units instantly.">
+
+  <meta property="og:type" content="website">
+
+  <meta property="og:url" content="https://mohaktools.com/tools/data-storage-converter/">
+
+  <meta property="og:site_name" content="MohakTools">
+
+
+
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/tools-registry.js" defer></script>
+
+  <script src="/assets/js/header.js" defer></script>
+
+  <script src="/assets/js/footer.js" defer></script>
+
+
+
+  <script type="application/ld+json">
+
+  {
+
+    "@context": "https://schema.org",
+
+    "@type": "WebApplication",
+
+    "name": "MohakTools Data Storage Converter",
+
+    "url": "https://mohaktools.com/tools/data-storage-converter/",
+
+    "description": "A free online converter for bits, bytes, decimal storage units and binary storage units.",
+
+    "applicationCategory": "UtilitiesApplication",
+
+    "operatingSystem": "Any",
+
+    "offers": {
+
+      "@type": "Offer",
+
+      "price": "0",
+
+      "priceCurrency": "USD"
+
+    }
+
+  }
+
+  </script>
+
+
+
+  <style>
+
+    /* =========================================
+       MohakTools — Data Storage Converter
+       Theme colors aligned with Time Converter
+    ========================================= */
+    .ds-page {
+      --ds-primary: var(--primary-color, #2563eb);
+      --ds-card: var(--card-bg, #ffffff);
+      --ds-border: var(--border-color, #e5e7eb);
+      --ds-text: var(--text-color, #111827);
+      --ds-muted: var(--muted-text, #6b7280);
+      --ds-soft: rgba(127, 127, 127, 0.07);
+      --ds-soft-border: var(--border-color, #e5e7eb);
+      --ds-shadow: 0 12px 36px rgba(0, 0, 0, 0.055);
+      color: var(--ds-text);
+      color-scheme: light dark;
+    }
+
+    html.dark .ds-page,
+    body.dark .ds-page,
+    [data-theme="dark"] .ds-page {
+      --ds-card: var(--card-bg, #1e1e1e);
+      --ds-border: var(--border-color, #3a3a3a);
+      --ds-text: var(--text-color, #f3f4f6);
+      --ds-muted: var(--muted-text, #b0b0b0);
+      --ds-soft: rgba(255, 255, 255, 0.045);
+      --ds-soft-border: var(--border-color, #3a3a3a);
+      --ds-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
+    }
+
+
+
+    * {
+
+      box-sizing: border-box;
+
+    }
+
+
+
+    html {
+
+      scroll-behavior: smooth;
+
+    }
+
+
+
+    body {
+
+      margin: 0;
+
+      background: var(--ds-card);
+
+      color: var(--ds-text);
+
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+
+        Roboto, Helvetica, Arial, sans-serif;
+
+      line-height: 1.6;
+
+    }
+
+
+
+    button,
+
+    input,
+
+    select {
+
+      font: inherit;
+
+    }
+
+
+
+    button {
+
+      cursor: pointer;
+
+    }
+
+
+
+    button:focus-visible,
+
+    input:focus-visible,
+
+    select:focus-visible,
+
+    a:focus-visible,
+
+    summary:focus-visible {
+
+      outline: 3px solid rgba(37, 99, 235, 0.4);
+
+      outline-offset: 3px;
+
+    }
+
+
+
+    a {
+
+      color: var(--ds-primary);
+
+    }
+
+
+
+    .ds-page {
+
+      width: min(calc(100% - 32px), 1040px);
+
+      margin: 0 auto;
+
+      padding: clamp(28px, 5vw, 54px) 0 64px;
+
+    }
+
+
+
+    .ds-breadcrumbs {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-bottom: 28px;
+
+      color: var(--ds-muted);
+
+      font-size: 13px;
+
+    }
+
+
+
+    .ds-breadcrumbs a {
+
+      text-decoration: none;
+
+    }
+
+
+
+    .ds-breadcrumbs a:hover {
+
+      text-decoration: underline;
+
+    }
+
+
+
+    .ds-hero {
+
+      max-width: 760px;
+
+      margin: 0 auto 30px;
+
+      text-align: center;
+
+    }
+
+
+
+    .ds-eyebrow {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      margin-bottom: 12px;
+
+      padding: 6px 12px;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 999px;
+
+      background: var(--ds-soft);
+
+      color: var(--ds-primary);
+
+      font-size: 12px;
+
+      font-weight: 750;
+
+      letter-spacing: 0.045em;
+
+      text-transform: uppercase;
+
+    }
+
+
+
+    .ds-hero h1 {
+
+      margin: 0 0 12px;
+
+      font-size: clamp(30px, 5vw, 46px);
+
+      font-weight: 800;
+
+      letter-spacing: -0.04em;
+
+      line-height: 1.15;
+
+    }
+
+
+
+    .ds-hero p {
+
+      max-width: 670px;
+
+      margin: 0 auto;
+
+      color: var(--ds-muted);
+
+      font-size: 16px;
+
+    }
+
+
+
+    .ds-converter {
+
+      max-width: 900px;
+
+      margin: 0 auto;
+
+      padding: clamp(20px, 4vw, 34px);
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 24px;
+
+      background: var(--ds-card);
+
+      box-shadow: var(--ds-shadow);
+
+    }
+
+
+
+    .ds-card-heading {
+
+      margin: 0 0 6px;
+
+      font-size: 21px;
+
+      font-weight: 750;
+
+      letter-spacing: -0.025em;
+
+    }
+
+
+
+    .ds-card-description {
+
+      margin: 0 0 24px;
+
+      color: var(--ds-muted);
+
+      font-size: 14px;
+
+    }
+
+
+
+    .ds-field-label {
+
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+    }
+
+
+
+    .ds-input,
+
+    .ds-select {
+
+      width: 100%;
+
+      min-width: 0;
+
+      min-height: 52px;
+
+      padding: 12px 14px;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 12px;
+
+      background: var(--ds-card);
+
+      color: var(--ds-text);
+
+    }
+
+
+
+    .ds-input {
+
+      font-size: 19px;
+
+      font-weight: 650;
+
+      font-variant-numeric: tabular-nums;
+
+    }
+
+
+
+    .ds-select {
+
+      font-size: 14px;
+
+    }
+
+
+
+    .ds-input:focus,
+
+    .ds-select:focus {
+
+      border-color: var(--ds-primary);
+
+      outline: none;
+
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.13);
+
+    }
+
+
+
+    .ds-conversion-grid {
+
+      display: grid;
+
+      grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1fr);
+
+      gap: 14px;
+
+      align-items: end;
+
+    }
+
+
+
+    .ds-field {
+
+      min-width: 0;
+
+    }
+
+
+
+    .ds-field-spacer {
+
+      height: 20px;
+
+    }
+
+
+
+    .ds-swap-wrap {
+
+      display: flex;
+
+      justify-content: center;
+
+      padding-bottom: 5px;
+
+    }
+
+
+
+    .ds-swap {
+
+      display: grid;
+
+      width: 46px;
+
+      height: 46px;
+
+      place-items: center;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 14px;
+
+      background: var(--ds-card);
+
+      color: var(--ds-primary);
+
+      font-size: 23px;
+
+      transition: background 0.2s, transform 0.2s;
+
+    }
+
+
+
+    .ds-swap:hover {
+
+      background: var(--ds-soft);
+
+      transform: rotate(180deg);
+
+    }
+
+
+
+    .ds-mode-panel {
+
+      display: grid;
+
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+      gap: 12px;
+
+      margin-top: 22px;
+
+      padding: 16px;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 14px;
+
+    }
+
+
+
+    .ds-mode-panel p {
+
+      margin: 0 0 8px;
+
+      color: var(--ds-muted);
+
+      font-size: 12px;
+
+    }
+
+
+
+    .ds-mode-button {
+
+      width: 100%;
+
+      min-height: 42px;
+
+      padding: 9px 12px;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 10px;
+
+      background: var(--ds-card);
+
+      color: var(--ds-text);
+
+      font-size: 13px;
+
+      font-weight: 650;
+
+    }
+
+
+
+    .ds-mode-button[aria-pressed="true"] {
+
+      border-color: var(--ds-primary);
+
+      background: var(--ds-soft);
+
+      color: var(--ds-primary);
+
+    }
+
+
+
+    .ds-output {
+
+      margin-top: 24px;
+
+      padding: 22px;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 17px;
+
+      background: var(--ds-soft);
+
+    }
+
+
+
+    .ds-output-top {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 12px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+
+    .ds-output-label {
+
+      color: var(--ds-muted);
+
+      font-size: 13px;
+
+      font-weight: 650;
+
+    }
+
+
+
+    .ds-result {
+
+      overflow-wrap: anywhere;
+
+      margin: 0;
+
+      color: var(--ds-primary);
+
+      font-size: clamp(25px, 4.5vw, 37px);
+
+      font-weight: 800;
+
+      letter-spacing: -0.035em;
+
+      line-height: 1.3;
+
+      font-variant-numeric: tabular-nums;
+
+    }
+
+
+
+    .ds-result-unit {
+
+      margin-top: 5px;
+
+      color: var(--ds-text);
+
+      font-size: 14px;
+
+    }
+
+
+
+    .ds-equation {
+
+      overflow-wrap: anywhere;
+
+      margin-top: 10px;
+
+      color: var(--ds-muted);
+
+      font-size: 12px;
+
+    }
+
+
+
+    .ds-small-button {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 6px;
+
+      min-height: 36px;
+
+      padding: 7px 11px;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 10px;
+
+      background: var(--ds-card);
+
+      color: var(--ds-text);
+
+      font-size: 12px;
+
+      font-weight: 650;
+
+      white-space: nowrap;
+
+    }
+
+
+
+    .ds-small-button:hover {
+
+      border-color: var(--ds-primary);
+
+      color: var(--ds-primary);
+
+    }
+
+
+
+    .ds-actions {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 20px;
+
+    }
+
+
+
+    .ds-primary-button,
+
+    .ds-secondary-button {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      min-height: 46px;
+
+      padding: 11px 18px;
+
+      border: 1px solid transparent;
+
+      border-radius: 12px;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      transition: opacity 0.2s, transform 0.2s;
+
+    }
+
+
+
+    .ds-primary-button {
+
+      flex: 1;
+
+      background: var(--ds-primary);
+
+      color: #ffffff;
+
+    }
+
+
+
+    .ds-secondary-button {
+
+      border-color: var(--ds-border);
+
+      background: var(--ds-card);
+
+      color: var(--ds-text);
+
+    }
+
+
+
+    .ds-primary-button:hover,
+
+    .ds-secondary-button:hover {
+
+      opacity: 0.88;
+
+      transform: translateY(-1px);
+
+    }
+
+
+
+    .ds-settings {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      flex-wrap: wrap;
+
+      gap: 14px;
+
+      margin-top: 20px;
+
+      padding-top: 18px;
+
+      border-top: 1px solid var(--ds-border);
+
+    }
+
+
+
+    .ds-setting-group {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+    }
+
+
+
+    .ds-setting-group label {
+
+      color: var(--ds-muted);
+
+      font-size: 13px;
+
+    }
+
+
+
+    .ds-precision {
+
+      min-height: 38px;
+
+      padding: 6px 10px;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 9px;
+
+      background: var(--ds-card);
+
+      color: var(--ds-text);
+
+      font-size: 13px;
+
+    }
+
+
+
+    .ds-section {
+
+      margin-top: 44px;
+
+    }
+
+
+
+    .ds-section-heading {
+
+      margin: 0 0 8px;
+
+      font-size: clamp(21px, 3vw, 27px);
+
+      font-weight: 800;
+
+      letter-spacing: -0.03em;
+
+    }
+
+
+
+    .ds-section-intro {
+
+      margin: 0 0 20px;
+
+      color: var(--ds-muted);
+
+      font-size: 14px;
+
+    }
+
+
+
+    .ds-presets {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 9px;
+
+    }
+
+
+
+    .ds-preset {
+
+      padding: 9px 14px;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 999px;
+
+      background: var(--ds-card);
+
+      color: var(--ds-text);
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+    }
+
+
+
+    .ds-preset:hover {
+
+      border-color: var(--ds-primary);
+
+      background: var(--ds-soft);
+
+      color: var(--ds-primary);
+
+    }
+
+
+
+    .ds-grid-heading {
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: space-between;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-bottom: 18px;
+
+    }
+
+
+
+    .ds-grid-heading .ds-section-intro {
+
+      margin-bottom: 0;
+
+    }
+
+
+
+    .ds-equivalents {
+
+      display: grid;
+
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+
+      gap: 13px;
+
+    }
+
+
+
+    .ds-equivalent-card {
+
+      min-width: 0;
+
+      padding: 17px;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 15px;
+
+      background: var(--ds-card);
+
+    }
+
+
+
+    .ds-equivalent-top {
+
+      display: flex;
+
+      align-items: flex-start;
+
+      justify-content: space-between;
+
+      gap: 8px;
+
+      margin-bottom: 12px;
+
+    }
+
+
+
+    .ds-equivalent-name {
+
+      margin: 0;
+
+      font-size: 13px;
+
+      font-weight: 750;
+
+    }
+
+
+
+    .ds-equivalent-symbol {
+
+      display: block;
+
+      margin-top: 2px;
+
+      color: var(--ds-muted);
+
+      font-size: 11px;
+
+    }
+
+
+
+    .ds-equivalent-value {
+
+      overflow-wrap: anywhere;
+
+      margin: 0;
+
+      font-size: 17px;
+
+      font-weight: 750;
+
+      font-variant-numeric: tabular-nums;
+
+    }
+
+
+
+    .ds-copy-icon {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 31px;
+
+      height: 31px;
+
+      flex-shrink: 0;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 9px;
+
+      background: var(--ds-card);
+
+      color: var(--ds-muted);
+
+      font-size: 15px;
+
+    }
+
+
+
+    .ds-copy-icon:hover {
+
+      border-color: var(--ds-primary);
+
+      color: var(--ds-primary);
+
+    }
+
+
+
+    .ds-table-wrap {
+
+      overflow-x: auto;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 15px;
+
+    }
+
+
+
+    .ds-table {
+
+      width: 100%;
+
+      border-collapse: collapse;
+
+      font-size: 14px;
+
+      text-align: left;
+
+    }
+
+
+
+    .ds-table th,
+
+    .ds-table td {
+
+      padding: 14px 17px;
+
+      border-bottom: 1px solid var(--ds-border);
+
+    }
+
+
+
+    .ds-table th {
+
+      background: var(--ds-soft);
+
+      font-size: 12px;
+
+      font-weight: 750;
+
+    }
+
+
+
+    .ds-table tr:last-child td {
+
+      border-bottom: 0;
+
+    }
+
+
+
+    .ds-table tbody tr:hover {
+
+      background: var(--ds-soft);
+
+    }
+
+
+
+    .ds-table td:last-child {
+
+      font-variant-numeric: tabular-nums;
+
+    }
+
+
+
+    .ds-info-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 15px;
+
+    }
+
+
+
+    .ds-info-card {
+
+      padding: 21px;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 15px;
+
+      background: var(--ds-card);
+
+    }
+
+
+
+    .ds-info-card h3 {
+
+      margin: 0 0 8px;
+
+      font-size: 16px;
+
+      font-weight: 750;
+
+    }
+
+
+
+    .ds-info-card p {
+
+      margin: 0;
+
+      color: var(--ds-muted);
+
+      font-size: 14px;
+
+    }
+
+
+
+    .ds-formula {
+
+      display: block;
+
+      overflow-wrap: anywhere;
+
+      margin-top: 12px;
+
+      padding: 12px;
+
+      border-radius: 10px;
+
+      background: var(--ds-soft);
+
+      color: var(--ds-primary);
+
+      font-size: 13px;
+
+      font-weight: 650;
+
+    }
+
+
+
+    .ds-faq-list,
+
+    .ds-history-list {
+
+      display: grid;
+
+      gap: 11px;
+
+    }
+
+
+
+    .ds-faq {
+
+      padding: 18px 20px;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 14px;
+
+      background: var(--ds-card);
+
+    }
+
+
+
+    .ds-faq summary {
+
+      cursor: pointer;
+
+      font-size: 14px;
+
+      font-weight: 750;
+
+    }
+
+
+
+    .ds-faq p {
+
+      margin: 12px 0 0;
+
+      color: var(--ds-muted);
+
+      font-size: 14px;
+
+    }
+
+
+
+    .ds-history-item {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 14px;
+
+      padding: 14px 16px;
+
+      border: 1px solid var(--ds-border);
+
+      border-radius: 12px;
+
+    }
+
+
+
+    .ds-history-equation {
+
+      min-width: 0;
+
+      overflow-wrap: anywhere;
+
+      font-size: 13px;
+
+      font-weight: 650;
+
+    }
+
+
+
+    .ds-history-date {
+
+      display: block;
+
+      margin-top: 4px;
+
+      color: var(--ds-muted);
+
+      font-size: 11px;
+
+      font-weight: 400;
+
+    }
+
+
+
+    .ds-empty {
+
+      padding: 22px;
+
+      border: 1px dashed var(--ds-border);
+
+      border-radius: 12px;
+
+      color: var(--ds-muted);
+
+      font-size: 14px;
+
+      text-align: center;
+
+    }
+
+
+
+    .ds-notice {
+
+      min-height: 20px;
+
+      margin-top: 12px;
+
+      color: var(--ds-muted);
+
+      font-size: 12px;
+
+    }
+
+
+
+    .ds-notice[data-type="error"] {
+
+      color: #dc2626;
+
+    }
+
+
+
+    .ds-notice[data-type="success"] {
+
+      color: #15803d;
+
+    }
+
+
+
+    .ds-footer-note {
+
+      margin-top: 40px;
+
+      padding-top: 22px;
+
+      border-top: 1px solid var(--ds-border);
+
+      color: var(--ds-muted);
+
+      font-size: 12px;
+
+      text-align: center;
+
+    }
+
+
+
+    @media (max-width: 760px) {
+
+      .ds-page {
+
+        width: min(calc(100% - 26px), 1040px);
+
+        padding-top: 20px;
+
+      }
+
+
+
+      .ds-equivalents {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      }
+
+
+
+      .ds-section {
+
+        margin-top: 34px;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 540px) {
+
+      .ds-conversion-grid {
+
+        grid-template-columns: minmax(0, 1fr);
+
+        gap: 12px;
+
+      }
+
+
+
+      .ds-swap-wrap {
+
+        padding: 0;
+
+      }
+
+
+
+      .ds-swap {
+
+        width: 42px;
+
+        height: 42px;
+
+        transform: none;
+
+      }
+
+
+
+      .ds-swap:hover {
+
+        transform: rotate(180deg);
+
+      }
+
+
+
+      .ds-converter {
+
+        padding: 18px;
+
+        border-radius: 18px;
+
+      }
+
+
+
+      .ds-mode-panel {
+
+        grid-template-columns: minmax(0, 1fr);
+
+      }
+
+
+
+      .ds-output {
+
+        padding: 17px;
+
+      }
+
+
+
+      .ds-output-top {
+
+        align-items: flex-start;
+
+      }
+
+
+
+      .ds-actions > button {
+
+        flex: 1 1 100%;
+
+      }
+
+
+
+      .ds-equivalents,
+
+      .ds-info-grid {
+
+        grid-template-columns: minmax(0, 1fr);
+
+      }
+
+
+
+      .ds-settings {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+      }
+
+
+
+      .ds-history-item {
+
+        align-items: flex-start;
+
+      }
+
+    }
+
+
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+
+      *::before,
+
+      *::after {
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+  <div id="site-header"></div>
+
+
+
+  <main class="ds-page">
+
+    <nav class="ds-breadcrumbs" aria-label="Breadcrumb">
+
+      <a href="/">Home</a>
+
+      <span aria-hidden="true">/</span>
+
+      <a href="/tools/">Tools</a>
+
+      <span aria-hidden="true">/</span>
+
+      <span aria-current="page">Data Storage Converter</span>
+
+    </nav>
+
+
+
+    <header class="ds-hero">
+
+      <div class="ds-eyebrow">
+
+        <span aria-hidden="true">▤</span>
+
+        Free online calculator
+
+      </div>
+
+      <h1>Data Storage Converter</h1>
+
+      <p>
+
+        Convert bits, bytes, kilobytes, megabytes, gigabytes, terabytes and
+
+        binary storage units with clear, accurate results.
+
+      </p>
+
+    </header>
+
+
+
+    <section class="ds-converter" aria-labelledby="ds-converter-heading">
+
+      <h2 class="ds-card-heading" id="ds-converter-heading">Convert data units</h2>
+
+      <p class="ds-card-description">
+
+        Enter a value, select your units and get the converted result instantly.
+
+      </p>
+
+
+
+      <div class="ds-conversion-grid">
+
+        <div class="ds-field">
+
+          <label class="ds-field-label" for="ds-amount">Amount</label>
+
+          <input
+
+            class="ds-input"
+
+            id="ds-amount"
+
+            type="number"
+
+            min="0"
+
+            step="any"
+
+            value="1"
+
+            inputmode="decimal"
+
+            autocomplete="off"
+
+            aria-describedby="ds-input-help"
+
+          >
+
+          <div class="ds-notice" id="ds-input-help">Enter a non-negative number.</div>
+
+
+
+          <label class="ds-field-label" for="ds-from">From unit</label>
+
+          <select class="ds-select" id="ds-from"></select>
+
+        </div>
+
+
+
+        <div class="ds-swap-wrap">
+
+          <button
+
+            type="button"
+
+            class="ds-swap"
+
+            id="ds-swap"
+
+            aria-label="Swap source and target units"
+
+            title="Swap units"
+
+          >⇄</button>
+
+        </div>
+
+
+
+        <div class="ds-field">
+
+          <label class="ds-field-label" for="ds-to">To unit</label>
+
+          <select class="ds-select" id="ds-to"></select>
+
+          <div class="ds-field-spacer" aria-hidden="true"></div>
+
+
+
+          <label class="ds-field-label" for="ds-precision">Decimal precision</label>
+
+          <select class="ds-precision" id="ds-precision">
+
+            <option value="2">2 decimal places</option>
+
+            <option value="4">4 decimal places</option>
+
+            <option value="6" selected>6 decimal places</option>
+
+            <option value="8">8 decimal places</option>
+
+            <option value="10">10 decimal places</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="ds-mode-panel">
+
+        <div>
+
+          <p>Decimal standard (base 1000)</p>
+
+          <button
+
+            type="button"
+
+            class="ds-mode-button"
+
+            id="ds-decimal"
+
+            aria-pressed="true"
+
+          >KB · MB · GB · TB</button>
+
+        </div>
+
+        <div>
+
+          <p>Binary standard (base 1024)</p>
+
+          <button
+
+            type="button"
+
+            class="ds-mode-button"
+
+            id="ds-binary"
+
+            aria-pressed="false"
+
+          >KiB · MiB · GiB · TiB</button>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="ds-output" aria-live="polite" aria-atomic="true">
+
+        <div class="ds-output-top">
+
+          <span class="ds-output-label">Converted result</span>
+
+          <button type="button" class="ds-small-button" id="ds-copy-result">
+
+            <span aria-hidden="true">▢</span> Copy result
+
+          </button>
+
+        </div>
+
+        <p class="ds-result" id="ds-result">1,000</p>
+
+        <div class="ds-result-unit" id="ds-result-unit">Kilobytes (KB)</div>
+
+        <div class="ds-equation" id="ds-equation">1 byte = 0.001 kilobytes</div>
+
+      </div>
+
+
+
+      <div class="ds-actions">
+
+        <button type="button" class="ds-primary-button" id="ds-convert">
+
+          Convert data
+
+        </button>
+
+        <button type="button" class="ds-secondary-button" id="ds-copy-all">
+
+          Copy all equivalents
+
+        </button>
+
+        <button type="button" class="ds-secondary-button" id="ds-reset">
+
+          Reset
+
+        </button>
+
+      </div>
+
+
+
+      <div class="ds-settings">
+
+        <div class="ds-setting-group">
+
+          <label for="ds-number-format">Number format</label>
+
+          <select class="ds-precision" id="ds-number-format">
+
+            <option value="grouped" selected>1,234.56</option>
+
+            <option value="plain">1234.56</option>
+
+          </select>
+
+        </div>
+
+        <div class="ds-setting-group">
+
+          <label for="ds-notation">Large/small values</label>
+
+          <select class="ds-precision" id="ds-notation">
+
+            <option value="auto" selected>Automatic</option>
+
+            <option value="standard">Standard notation</option>
+
+            <option value="scientific">Scientific notation</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="ds-notice" id="ds-notice" role="status" aria-live="polite"></div>
+
+    </section>
+
+
+
+    <section class="ds-section" aria-labelledby="ds-presets-heading">
+
+      <h2 class="ds-section-heading" id="ds-presets-heading">Quick presets</h2>
+
+      <p class="ds-section-intro">
+
+        Select a common storage size to use it as your starting amount.
+
+      </p>
+
+      <div class="ds-presets">
+
+        <button type="button" class="ds-preset" data-amount="8" data-unit="bit">8 bits</button>
+
+        <button type="button" class="ds-preset" data-amount="1" data-unit="byte">1 byte</button>
+
+        <button type="button" class="ds-preset" data-amount="1" data-unit="KB">1 KB</button>
+
+        <button type="button" class="ds-preset" data-amount="1" data-unit="MB">1 MB</button>
+
+        <button type="button" class="ds-preset" data-amount="1" data-unit="GB">1 GB</button>
+
+        <button type="button" class="ds-preset" data-amount="1" data-unit="TB">1 TB</button>
+
+        <button type="button" class="ds-preset" data-amount="1" data-unit="GiB">1 GiB</button>
+
+        <button type="button" class="ds-preset" data-amount="1" data-unit="TiB">1 TiB</button>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="ds-section" aria-labelledby="ds-equivalents-heading">
+
+      <div class="ds-grid-heading">
+
+        <div>
+
+          <h2 class="ds-section-heading" id="ds-equivalents-heading">All data equivalents</h2>
+
+          <p class="ds-section-intro">
+
+            See the current amount in all supported units.
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="ds-equivalents" id="ds-equivalents"></div>
+
+    </section>
+
+
+
+    <section class="ds-section" aria-labelledby="ds-reference-heading">
+
+      <h2 class="ds-section-heading" id="ds-reference-heading">Data storage reference table</h2>
+
+      <p class="ds-section-intro">
+
+        Common decimal and binary storage units and their byte equivalents.
+
+      </p>
+
+
+
+      <div class="ds-table-wrap">
+
+        <table class="ds-table">
+
+          <thead>
+
+            <tr>
+
+              <th scope="col">Unit</th>
+
+              <th scope="col">Bytes</th>
+
+              <th scope="col">Standard</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr><td>Bit (b)</td><td>1/8 byte</td><td>Basic data unit</td></tr>
+
+            <tr><td>Byte (B)</td><td>1</td><td>Basic storage unit</td></tr>
+
+            <tr><td>Kilobyte (KB)</td><td>1,000</td><td>Decimal</td></tr>
+
+            <tr><td>Megabyte (MB)</td><td>1,000,000</td><td>Decimal</td></tr>
+
+            <tr><td>Gigabyte (GB)</td><td>1,000,000,000</td><td>Decimal</td></tr>
+
+            <tr><td>Terabyte (TB)</td><td>1,000,000,000,000</td><td>Decimal</td></tr>
+
+            <tr><td>Petabyte (PB)</td><td>1,000,000,000,000,000</td><td>Decimal</td></tr>
+
+            <tr><td>Kibibyte (KiB)</td><td>1,024</td><td>Binary</td></tr>
+
+            <tr><td>Mebibyte (MiB)</td><td>1,048,576</td><td>Binary</td></tr>
+
+            <tr><td>Gibibyte (GiB)</td><td>1,073,741,824</td><td>Binary</td></tr>
+
+            <tr><td>Tebibyte (TiB)</td><td>1,099,511,627,776</td><td>Binary</td></tr>
+
+            <tr><td>Pebibyte (PiB)</td><td>1,125,899,906,842,624</td><td>Binary</td></tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="ds-section" aria-labelledby="ds-guide-heading">
+
+      <h2 class="ds-section-heading" id="ds-guide-heading">Understanding data storage units</h2>
+
+      <p class="ds-section-intro">
+
+        Learn the difference between common data units and how conversions work.
+
+      </p>
+
+
+
+      <div class="ds-info-grid">
+
+        <article class="ds-info-card">
+
+          <h3>Bits and bytes</h3>
+
+          <p>
+
+            A bit is the smallest basic unit of digital information. A byte
+
+            consists of 8 bits and is commonly used to measure file sizes.
+
+          </p>
+
+          <span class="ds-formula">1 byte (B) = 8 bits (b)</span>
+
+        </article>
+
+
+
+        <article class="ds-info-card">
+
+          <h3>Decimal units: KB, MB, GB</h3>
+
+          <p>
+
+            Decimal units use powers of 1,000. They are commonly used for
+
+            drive capacity and data transfer specifications.
+
+          </p>
+
+          <span class="ds-formula">1 GB = 1,000 MB</span>
+
+        </article>
+
+
+
+        <article class="ds-info-card">
+
+          <h3>Binary units: KiB, MiB, GiB</h3>
+
+          <p>
+
+            Binary units use powers of 1,024. They are useful when working
+
+            with binary-based memory and computing measurements.
+
+          </p>
+
+          <span class="ds-formula">1 GiB = 1,024 MiB</span>
+
+        </article>
+
+
+
+        <article class="ds-info-card">
+
+          <h3>Bits per second vs. bytes</h3>
+
+          <p>
+
+            Network speeds are commonly measured in bits per second, while
+
+            file sizes are usually measured in bytes. These measure different
+
+            things: transfer rate versus stored data.
+
+          </p>
+
+          <span class="ds-formula">8 megabits = 1 megabyte</span>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="ds-section" aria-labelledby="ds-history-heading">
+
+      <div class="ds-grid-heading">
+
+        <div>
+
+          <h2 class="ds-section-heading" id="ds-history-heading">Recent conversions</h2>
+
+          <p class="ds-section-intro">
+
+            Your latest conversions remain available while this page is open.
+
+          </p>
+
+        </div>
+
+        <button type="button" class="ds-small-button" id="ds-clear-history">
+
+          Clear history
+
+        </button>
+
+      </div>
+
+
+
+      <div class="ds-history-list" id="ds-history">
+
+        <div class="ds-empty">Your conversions will appear here.</div>
+
+      </div>
+
+    </section>
+
+
+
+    <section class="ds-section" aria-labelledby="ds-faq-heading">
+
+      <h2 class="ds-section-heading" id="ds-faq-heading">Frequently asked questions</h2>
+
+
+
+      <div class="ds-faq-list">
+
+        <details class="ds-faq">
+
+          <summary>What is the difference between KB and KiB?</summary>
+
+          <p>
+
+            A kilobyte (KB) uses the decimal standard and equals 1,000 bytes.
+
+            A kibibyte (KiB) uses the binary standard and equals 1,024 bytes.
+
+          </p>
+
+        </details>
+
+
+
+        <details class="ds-faq">
+
+          <summary>How many megabytes are in one gigabyte?</summary>
+
+          <p>
+
+            One decimal gigabyte equals 1,000 megabytes. One gibibyte equals
+
+            1,024 mebibytes. Always check which unit standard is being used.
+
+          </p>
+
+        </details>
+
+
+
+        <details class="ds-faq">
+
+          <summary>How many bits are in a byte?</summary>
+
+          <p>A byte consists of 8 bits.</p>
+
+        </details>
+
+
+
+        <details class="ds-faq">
+
+          <summary>Why does my drive show less capacity than advertised?</summary>
+
+          <p>
+
+            Drive manufacturers commonly use decimal units, where 1 GB is
+
+            1,000,000,000 bytes. Some operating systems display capacity using
+
+            binary-sized values while labelling them with decimal-style names.
+
+            Formatting and system partitions can also affect available space.
+
+          </p>
+
+        </details>
+
+
+
+        <details class="ds-faq">
+
+          <summary>What is the largest unit supported?</summary>
+
+          <p>
+
+            This converter supports decimal exabytes (EB) and binary exbibytes
+
+            (EiB), alongside smaller units.
+
+          </p>
+
+        </details>
+
+
+
+        <details class="ds-faq">
+
+          <summary>Is this converter free to use?</summary>
+
+          <p>
+
+            Yes. The converter runs in your browser and does not require an
+
+            account. Your recent conversion history is kept only for the
+
+            current page session.
+
+          </p>
+
+        </details>
+
+      </div>
+
+    </section>
+
+
+
+    <p class="ds-footer-note">
+
+      MohakTools Data Storage Converter · Free online data unit conversion.
+
+      Values are rounded for display according to your selected precision.
+
+    </p>
+
+  </main>
+
+
+
+  <div id="site-footer"></div>
+
+
+
+  <script>
+
+    (() => {
+
+      "use strict";
+
+
+
+      /*
+
+       * Every factor represents the number of bits in one unit.
+
+       * Decimal units use powers of 1000.
+
+       * Binary units use powers of 1024.
+
+       */
+
+
+
+      const units = [
+
+        { id: "bit", name: "Bit", plural: "Bits", symbol: "b", factor: 1, family: "base" },
+
+        { id: "byte", name: "Byte", plural: "Bytes", symbol: "B", factor: 8, family: "base" },
+
+
+
+        { id: "KB", name: "Kilobyte", plural: "Kilobytes", symbol: "KB", factor: 8e3, family: "decimal" },
+
+        { id: "MB", name: "Megabyte", plural: "Megabytes", symbol: "MB", factor: 8e6, family: "decimal" },
+
+        { id: "GB", name: "Gigabyte", plural: "Gigabytes", symbol: "GB", factor: 8e9, family: "decimal" },
+
+        { id: "TB", name: "Terabyte", plural: "Terabytes", symbol: "TB", factor: 8e12, family: "decimal" },
+
+        { id: "PB", name: "Petabyte", plural: "Petabytes", symbol: "PB", factor: 8e15, family: "decimal" },
+
+        { id: "EB", name: "Exabyte", plural: "Exabytes", symbol: "EB", factor: 8e18, family: "decimal" },
+
+
+
+        { id: "KiB", name: "Kibibyte", plural: "Kibibytes", symbol: "KiB", factor: 8 * 1024, family: "binary" },
+
+        { id: "MiB", name: "Mebibyte", plural: "Mebibytes", symbol: "MiB", factor: 8 * 1024 ** 2, family: "binary" },
+
+        { id: "GiB", name: "Gibibyte", plural: "Gibibytes", symbol: "GiB", factor: 8 * 1024 ** 3, family: "binary" },
+
+        { id: "TiB", name: "Tebibyte", plural: "Tebibytes", symbol: "TiB", factor: 8 * 1024 ** 4, family: "binary" },
+
+        { id: "PiB", name: "Pebibyte", plural: "Pebibytes", symbol: "PiB", factor: 8 * 1024 ** 5, family: "binary" },
+
+        { id: "EiB", name: "Exbibyte", plural: "Exbibytes", symbol: "EiB", factor: 8 * 1024 ** 6, family: "binary" }
+
+      ];
+
+
+
+      const byId = Object.fromEntries(units.map(unit => [unit.id, unit]));
+
+
+
+      const amountInput = document.getElementById("ds-amount");
+
+      const fromSelect = document.getElementById("ds-from");
+
+      const toSelect = document.getElementById("ds-to");
+
+      const precisionSelect = document.getElementById("ds-precision");
+
+      const numberFormatSelect = document.getElementById("ds-number-format");
+
+      const notationSelect = document.getElementById("ds-notation");
+
+
+
+      const resultElement = document.getElementById("ds-result");
+
+      const resultUnitElement = document.getElementById("ds-result-unit");
+
+      const equationElement = document.getElementById("ds-equation");
+
+      const equivalentsElement = document.getElementById("ds-equivalents");
+
+      const noticeElement = document.getElementById("ds-notice");
+
+      const historyElement = document.getElementById("ds-history");
+
+
+
+      let history = [];
+
+      let lastResult = null;
+
+
+
+      function populateUnits() {
+
+        const groups = [
+
+          {
+
+            label: "Basic units",
+
+            units: units.filter(unit => unit.family === "base")
+
+          },
+
+          {
+
+            label: "Decimal units (base 1000)",
+
+            units: units.filter(unit => unit.family === "decimal")
+
+          },
+
+          {
+
+            label: "Binary units (base 1024)",
+
+            units: units.filter(unit => unit.family === "binary")
+
+          }
+
+        ];
+
+
+
+        const options = groups.map(group => {
+
+          const entries = group.units.map(unit =>
+
+            `<option value="${unit.id}">${unit.name} (${unit.symbol})</option>`
+
+          ).join("");
+
+
+
+          return `<optgroup label="${group.label}">${entries}</optgroup>`;
+
+        }).join("");
+
+
+
+        fromSelect.innerHTML = options;
+
+        toSelect.innerHTML = options;
+
+
+
+        fromSelect.value = "byte";
+
+        toSelect.value = "KB";
+
+      }
+
+
+
+      function getPrecision() {
+
+        return Number(precisionSelect.value);
+
+      }
+
+
+
+      function formatNumber(value) {
+
+        if (!Number.isFinite(value)) {
+
+          return "Out of range";
+
+        }
+
+
+
+        if (value === 0) {
+
+          return "0";
+
+        }
+
+
+
+        const precision = getPrecision();
+
+        const notation = notationSelect.value;
+
+        const useScientific =
+
+          notation === "scientific" ||
+
+          (notation === "auto" && (Math.abs(value) >= 1e15 || Math.abs(value) < 1e-7));
+
+
+
+        if (useScientific) {
+
+          return value.toExponential(Math.min(precision, 10));
+
+        }
+
+
+
+        const useGrouping = numberFormatSelect.value === "grouped";
+
+
+
+        return new Intl.NumberFormat("en-US", {
+
+          useGrouping,
+
+          maximumFractionDigits: precision
+
+        }).format(value);
+
+      }
+
+
+
+      function getInputValue() {
+
+        const raw = amountInput.value.trim();
+
+
+
+        if (raw === "") {
+
+          throw new Error("Enter a data value to convert.");
+
+        }
+
+
+
+        const value = Number(raw);
+
+
+
+        if (!Number.isFinite(value)) {
+
+          throw new Error("Enter a valid finite number.");
+
+        }
+
+
+
+        if (value < 0) {
+
+          throw new Error("Data size cannot be negative.");
+
+        }
+
+
+
+        return value;
+
+      }
+
+
+
+      function convert(value, fromUnit, toUnit) {
+
+        const bits = value * fromUnit.factor;
+
+        const converted = bits / toUnit.factor;
+
+
+
+        if (!Number.isFinite(bits) || !Number.isFinite(converted)) {
+
+          throw new Error("This value is too large to convert safely.");
+
+        }
+
+
+
+        return converted;
+
+      }
+
+
+
+      function showNotice(message, type = "") {
+
+        noticeElement.textContent = message;
+
+        noticeElement.dataset.type = type;
+
+      }
+
+
+
+      function createEquivalents(value, sourceUnit) {
+
+        const bits = value * sourceUnit.factor;
+
+
+
+        equivalentsElement.innerHTML = units.map(unit => {
+
+          const converted = bits / unit.factor;
+
+
+
+          return `
+
+            <article class="ds-equivalent-card">
+
+              <div class="ds-equivalent-top">
+
+                <div>
+
+                  <h3 class="ds-equivalent-name">${unit.plural}</h3>
+
+                  <span class="ds-equivalent-symbol">${unit.symbol}</span>
+
+                </div>
+
+                <button
+
+                  type="button"
+
+                  class="ds-copy-icon"
+
+                  data-copy-value="${converted}"
+
+                  data-copy-unit="${unit.id}"
+
+                  aria-label="Copy ${unit.plural} value"
+
+                  title="Copy value"
+
+                >▢</button>
+
+              </div>
+
+              <p class="ds-equivalent-value">${formatNumber(converted)}</p>
+
+            </article>
+
+          `;
+
+        }).join("");
+
+      }
+
+
+
+      function renderResult(options = {}) {
+
+        try {
+
+          const value = getInputValue();
+
+          const fromUnit = byId[fromSelect.value];
+
+          const toUnit = byId[toSelect.value];
+
+          const converted = convert(value, fromUnit, toUnit);
+
+
+
+          resultElement.textContent = formatNumber(converted);
+
+          resultUnitElement.textContent = `${toUnit.plural} (${toUnit.symbol})`;
+
+
+
+          equationElement.textContent =
+
+            `${formatNumber(value)} ${value === 1 ? fromUnit.name.toLowerCase() : fromUnit.plural.toLowerCase()} = ` +
+
+            `${formatNumber(converted)} ${toUnit.plural.toLowerCase()}`;
+
+
+
+          createEquivalents(value, fromUnit);
+
+
+
+          lastResult = {
+
+            input: value,
+
+            from: fromUnit,
+
+            to: toUnit,
+
+            result: converted
+
+          };
+
+
+
+          if (options.addHistory) {
+
+            addHistory(lastResult);
+
+          }
+
+
+
+          showNotice(options.message || "", options.type || "");
+
+        } catch (error) {
+
+          resultElement.textContent = "—";
+
+          resultUnitElement.textContent = "Unable to convert";
+
+          equationElement.textContent = error.message;
+
+
+
+          equivalentsElement.innerHTML =
+
+            '<div class="ds-empty">Enter a valid non-negative number to see equivalent values.</div>';
+
+
+
+          lastResult = null;
+
+          showNotice(error.message, "error");
+
+        }
+
+      }
+
+
+
+      function addHistory(item) {
+
+        history.unshift({
+
+          ...item,
+
+          timestamp: new Date()
+
+        });
+
+
+
+        history = history.slice(0, 8);
+
+        renderHistory();
+
+      }
+
+
+
+      function renderHistory() {
+
+        if (history.length === 0) {
+
+          historyElement.innerHTML =
+
+            '<div class="ds-empty">Your conversions will appear here.</div>';
+
+          return;
+
+        }
+
+
+
+        historyElement.innerHTML = history.map((item, index) => {
+
+          const equation =
+
+            `${formatNumber(item.input)} ${item.from.symbol} = ` +
+
+            `${formatNumber(item.result)} ${item.to.symbol}`;
+
+
+
+          const time = item.timestamp.toLocaleTimeString([], {
+
+            hour: "2-digit",
+
+            minute: "2-digit"
+
+          });
+
+
+
+          return `
+
+            <div class="ds-history-item">
+
+              <div class="ds-history-equation">
+
+                ${equation}
+
+                <span class="ds-history-date">Conversion ${index + 1} · ${time}</span>
+
+              </div>
+
+              <button
+
+                type="button"
+
+                class="ds-small-button"
+
+                data-history-index="${index}"
+
+              >Use again</button>
+
+            </div>
+
+          `;
+
+        }).join("");
+
+      }
+
+
+
+      async function copyText(text, successMessage) {
+
+        try {
+
+          if (navigator.clipboard && window.isSecureContext) {
+
+            await navigator.clipboard.writeText(text);
+
+          } else {
+
+            const temporary = document.createElement("textarea");
+
+            temporary.value = text;
+
+            temporary.setAttribute("readonly", "");
+
+            temporary.style.position = "fixed";
+
+            temporary.style.opacity = "0";
+
+
+
+            document.body.appendChild(temporary);
+
+            temporary.select();
+
+
+
+            const successful = document.execCommand("copy");
+
+            temporary.remove();
+
+
+
+            if (!successful) {
+
+              throw new Error("Copy is not supported by this browser.");
+
+            }
+
+          }
+
+
+
+          showNotice(successMessage, "success");
+
+        } catch (error) {
+
+          showNotice(
+
+            "Could not copy automatically. Please select and copy the value.",
+
+            "error"
+
+          );
+
+        }
+
+      }
+
+
+
+      function copyMainResult() {
+
+        if (!lastResult) {
+
+          showNotice("Enter a valid value before copying.", "error");
+
+          return;
+
+        }
+
+
+
+        copyText(
+
+          `${formatNumber(lastResult.result)} ${lastResult.to.symbol}`,
+
+          "Converted result copied."
+
+        );
+
+      }
+
+
+
+      function copyAllEquivalents() {
+
+        if (!lastResult) {
+
+          showNotice("Enter a valid value before copying.", "error");
+
+          return;
+
+        }
+
+
+
+        const bits = lastResult.input * lastResult.from.factor;
+
+
+
+        const lines = [
+
+          `Data conversion for ${formatNumber(lastResult.input)} ${lastResult.from.symbol}:`,
+
+          ...units.map(unit =>
+
+            `${unit.plural} (${unit.symbol}): ${formatNumber(bits / unit.factor)}`
+
+          )
+
+        ];
+
+
+
+        copyText(lines.join("\n"), "All data equivalents copied.");
+
+      }
+
+
+
+      function setUnitMode(mode) {
+
+        document.getElementById("ds-decimal").setAttribute(
+
+          "aria-pressed",
+
+          String(mode === "decimal")
+
+        );
+
+
+
+        document.getElementById("ds-binary").setAttribute(
+
+          "aria-pressed",
+
+          String(mode === "binary")
+
+        );
+
+
+
+        if (mode === "decimal") {
+
+          fromSelect.value = "byte";
+
+          toSelect.value = "KB";
+
+        } else {
+
+          fromSelect.value = "byte";
+
+          toSelect.value = "KiB";
+
+        }
+
+
+
+        renderResult();
+
+      }
+
+
+
+      document.getElementById("ds-convert").addEventListener("click", () => {
+
+        renderResult({
+
+          addHistory: true,
+
+          message: "Conversion completed.",
+
+          type: "success"
+
+        });
+
+      });
+
+
+
+      amountInput.addEventListener("input", () => renderResult());
+
+      fromSelect.addEventListener("change", () => renderResult());
+
+      toSelect.addEventListener("change", () => renderResult());
+
+      precisionSelect.addEventListener("change", () => renderResult());
+
+      numberFormatSelect.addEventListener("change", () => renderResult());
+
+      notationSelect.addEventListener("change", () => renderResult());
+
+
+
+      document.getElementById("ds-swap").addEventListener("click", () => {
+
+        const previousFrom = fromSelect.value;
+
+        fromSelect.value = toSelect.value;
+
+        toSelect.value = previousFrom;
+
+        renderResult();
+
+      });
+
+
+
+      document.getElementById("ds-decimal").addEventListener("click", () => {
+
+        setUnitMode("decimal");
+
+      });
+
+
+
+      document.getElementById("ds-binary").addEventListener("click", () => {
+
+        setUnitMode("binary");
+
+      });
+
+
+
+      document.getElementById("ds-copy-result").addEventListener("click", copyMainResult);
+
+      document.getElementById("ds-copy-all").addEventListener("click", copyAllEquivalents);
+
+
+
+      document.getElementById("ds-reset").addEventListener("click", () => {
+
+        amountInput.value = "1";
+
+        fromSelect.value = "byte";
+
+        toSelect.value = "KB";
+
+        precisionSelect.value = "6";
+
+        numberFormatSelect.value = "grouped";
+
+        notationSelect.value = "auto";
+
+
+
+        document.getElementById("ds-decimal").setAttribute("aria-pressed", "true");
+
+        document.getElementById("ds-binary").setAttribute("aria-pressed", "false");
+
+
+
+        renderResult({ message: "Converter reset.", type: "success" });
+
+      });
+
+
+
+      document.getElementById("ds-clear-history").addEventListener("click", () => {
+
+        history = [];
+
+        renderHistory();
+
+        showNotice("Conversion history cleared.", "success");
+
+      });
+
+
+
+      document.querySelectorAll(".ds-preset").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+          const amount = button.dataset.amount;
+
+          const unit = button.dataset.unit;
+
+
+
+          amountInput.value = amount;
+
+          fromSelect.value = unit;
+
+
+
+          if (unit === "bit") {
+
+            toSelect.value = "byte";
+
+          } else if (unit === "byte") {
+
+            toSelect.value = "KB";
+
+          } else if (unit === "KiB" || unit === "GiB" || unit === "TiB") {
+
+            toSelect.value = "MiB";
+
+          } else {
+
+            toSelect.value = "MB";
+
+          }
+
+
+
+          renderResult();
+
+          amountInput.focus();
+
+        });
+
+      });
+
+
+
+      equivalentsElement.addEventListener("click", event => {
+
+        const button = event.target.closest("[data-copy-value]");
+
+        if (!button) return;
+
+
+
+        const unit = byId[button.dataset.copyUnit];
+
+        const value = formatNumber(Number(button.dataset.copyValue));
+
+
+
+        copyText(`${value} ${unit.symbol}`, `${unit.plural} value copied.`);
+
+      });
+
+
+
+      historyElement.addEventListener("click", event => {
+
+        const button = event.target.closest("[data-history-index]");
+
+        if (!button) return;
+
+
+
+        const item = history[Number(button.dataset.historyIndex)];
+
+        if (!item) return;
+
+
+
+        amountInput.value = String(item.input);
+
+        fromSelect.value = item.from.id;
+
+        toSelect.value = item.to.id;
+
+
+
+        renderResult({
+
+          message: "Previous conversion loaded.",
+
+          type: "success"
+
+        });
+
+
+
+        document.getElementById("ds-converter-heading").scrollIntoView({
+
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+            ? "auto"
+
+            : "smooth",
+
+          block: "start"
+
+        });
+
+      });
+
+
+
+      populateUnits();
+
+      renderResult();
+
+      renderHistory();
+
+    })();
+
+  </script>
+
+</body>
+
+</html>

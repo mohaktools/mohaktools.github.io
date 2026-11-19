@@ -1,0 +1,1338 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Random Choice Picker Online | MohakTools</title>
+  <meta name="description" content="Pick a random choice from any list with the free MohakTools Random Choice Picker. Customize options, remove winners, shuffle lists and view pick history.">
+  <meta name="keywords" content="random choice picker, random picker online, random name picker, random list picker, decision maker, winner picker">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="MohakTools">
+  <meta name="theme-color" content="#2563eb">
+  <link rel="canonical" href="https://mohaktools.com/tools/random-choice-picker/">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="Random Choice Picker Online | MohakTools">
+  <meta property="og:description" content="Choose a random name, item or option from your own list for free.">
+  <meta property="og:url" content="https://mohaktools.com/tools/random-choice-picker/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Random Choice Picker",
+    "url": "https://mohaktools.com/tools/random-choice-picker/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "description": "Pick a random option from a custom list.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
+
+  <style>
+    .rcp-page {
+      width: min(100% - 32px, 1080px);
+      margin: auto;
+      padding: 24px 0 56px;
+      color: var(--color-text);
+    }
+
+    .rcp-breadcrumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+    }
+
+    .rcp-breadcrumbs a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .rcp-breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+
+    .rcp-hero {
+      margin-bottom: 24px;
+    }
+
+    .rcp-hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+      color: var(--color-text);
+    }
+
+    .rcp-hero p {
+      max-width: 740px;
+      margin: 0;
+      color: var(--color-text-secondary);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .rcp-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .rcp-panel {
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 20px);
+      background: var(--color-surface);
+      box-shadow: var(--color-card-shadow, 0 4px 18px rgba(0,0,0,.04));
+    }
+
+    .rcp-panel h2 {
+      margin: 0 0 14px;
+      font-size: 19px;
+      color: var(--color-text);
+    }
+
+    .rcp-description {
+      margin: -6px 0 16px;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .rcp-label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--color-text);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .rcp-textarea,
+    .rcp-input,
+    .rcp-select {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      min-height: 43px;
+      padding: 10px 12px;
+      border: 1px solid var(--color-input-border, var(--color-border));
+      border-radius: var(--radius-md, 10px);
+      background: var(--color-input-bg, var(--color-surface));
+      color: var(--color-text);
+      font: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .rcp-textarea {
+      min-height: 220px;
+      resize: vertical;
+      line-height: 1.8;
+    }
+
+    .rcp-textarea:focus,
+    .rcp-input:focus,
+    .rcp-select:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-focus, rgba(37,99,235,.14));
+    }
+
+    .rcp-field {
+      margin-bottom: 17px;
+    }
+
+    .rcp-help {
+      margin: 6px 0 0;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .rcp-count-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+    }
+
+    .rcp-button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .rcp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-md, 10px);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .18s, transform .18s;
+    }
+
+    .rcp-button:hover {
+      opacity: .87;
+    }
+
+    .rcp-button:active {
+      transform: translateY(1px);
+    }
+
+    .rcp-button:focus-visible {
+      outline: 3px solid var(--color-primary-focus, rgba(37,99,235,.25));
+      outline-offset: 2px;
+    }
+
+    .rcp-button:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+
+    .rcp-primary {
+      background: var(--color-primary);
+      color: var(--color-primary-text, #fff);
+    }
+
+    .rcp-secondary {
+      border-color: var(--color-border);
+      background: var(--color-surface-secondary);
+      color: var(--color-text);
+    }
+
+    .rcp-pick-button {
+      width: 100%;
+      min-height: 52px;
+      font-size: 15px;
+    }
+
+    .rcp-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+      margin-top: 20px;
+    }
+
+    .rcp-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      color: var(--color-text);
+      font-size: 13px;
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .rcp-option input {
+      flex: 0 0 auto;
+      width: 16px;
+      height: 16px;
+      margin: 2px 0 0;
+      accent-color: var(--color-primary);
+      cursor: pointer;
+    }
+
+    .rcp-divider {
+      height: 1px;
+      margin: 20px 0;
+      background: var(--color-border);
+    }
+
+    .rcp-result-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 290px;
+      padding: 22px 16px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 18px);
+      background: var(--color-surface-secondary);
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .rcp-result-label {
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .rcp-result {
+      margin: 20px 0;
+      color: var(--color-text);
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+    }
+
+    .rcp-result.empty {
+      color: var(--color-text-secondary);
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .rcp-result-note {
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .rcp-result-card.is-picking .rcp-result {
+      animation: rcp-pulse .14s ease-in-out infinite alternate;
+    }
+
+    @keyframes rcp-pulse {
+      from { opacity: .55; transform: scale(.98); }
+      to { opacity: 1; transform: scale(1.015); }
+    }
+
+    .rcp-status {
+      min-height: 20px;
+      margin: 12px 0 0;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .rcp-status.success {
+      color: var(--color-success, #15803d);
+    }
+
+    .rcp-status.error {
+      color: var(--color-danger, #dc2626);
+    }
+
+    .rcp-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 16px;
+    }
+
+    .rcp-stat {
+      padding: 12px 8px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px);
+      text-align: center;
+    }
+
+    .rcp-stat strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--color-text);
+      font-size: 20px;
+    }
+
+    .rcp-stat span {
+      color: var(--color-text-secondary);
+      font-size: 11px;
+    }
+
+    .rcp-history {
+      margin-top: 20px;
+    }
+
+    .rcp-history-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .rcp-history-head h3 {
+      margin: 0;
+      color: var(--color-text);
+      font-size: 15px;
+    }
+
+    .rcp-history-list {
+      display: grid;
+      gap: 8px;
+      max-height: 260px;
+      overflow: auto;
+    }
+
+    .rcp-history-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px);
+      background: var(--color-surface);
+    }
+
+    .rcp-history-number {
+      display: grid;
+      place-items: center;
+      flex: 0 0 28px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--color-surface-secondary);
+      color: var(--color-text-secondary);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .rcp-history-value {
+      flex: 1;
+      min-width: 0;
+      color: var(--color-text);
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .rcp-history-time {
+      color: var(--color-text-secondary);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .rcp-empty-history {
+      padding: 18px 12px;
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius-md, 10px);
+      color: var(--color-text-secondary);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .rcp-content {
+      margin-top: 28px;
+    }
+
+    .rcp-content-section {
+      margin-top: 16px;
+      padding: 22px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 20px);
+      background: var(--color-surface);
+    }
+
+    .rcp-content-section h2 {
+      margin: 0 0 12px;
+      color: var(--color-text);
+      font-size: 21px;
+    }
+
+    .rcp-content-section h3 {
+      margin: 0 0 7px;
+      color: var(--color-text);
+      font-size: 15px;
+    }
+
+    .rcp-content-section p,
+    .rcp-content-section li {
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .rcp-content-section p {
+      margin: 0 0 10px;
+    }
+
+    .rcp-content-section ul {
+      padding-left: 20px;
+    }
+
+    .rcp-faq {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .rcp-faq:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .rcp-faq p {
+      margin: 0;
+    }
+
+    .rcp-related {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .rcp-related a {
+      display: inline-flex;
+      padding: 8px 11px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px);
+      color: var(--color-primary);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .rcp-related a:hover {
+      border-color: var(--color-primary);
+    }
+
+    @media (max-width: 760px) {
+      .rcp-page {
+        width: min(100% - 24px, 620px);
+        padding-top: 18px;
+      }
+
+      .rcp-layout {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .rcp-panel {
+        padding: 16px;
+      }
+
+      .rcp-content-section {
+        padding: 17px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .rcp-page {
+        width: min(100% - 20px, 620px);
+      }
+
+      .rcp-options {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .rcp-stat-grid {
+        gap: 6px;
+      }
+
+      .rcp-stat {
+        padding: 10px 4px;
+      }
+
+      .rcp-button-row .rcp-button {
+        flex: 1;
+      }
+
+      .rcp-history-time {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rcp-button,
+      .rcp-result-card.is-picking .rcp-result {
+        animation: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <div id="site-header"></div>
+
+  <main class="rcp-page">
+    <nav class="rcp-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Random Choice Picker</span>
+    </nav>
+
+    <header class="rcp-hero">
+      <h1>Random Choice Picker</h1>
+      <p>
+        Can't decide what to choose? Enter your list and let MohakTools
+        select a random option. Pick names, activities, winners, meals
+        or anything else with customizable drawing options and pick history.
+      </p>
+    </header>
+
+    <section class="rcp-layout" aria-label="Random choice picker tool">
+      <section class="rcp-panel" aria-labelledby="rcp-input-title">
+        <h2 id="rcp-input-title">Your Choices</h2>
+        <p class="rcp-description">
+          Enter one option per line. Each line is treated as one choice.
+        </p>
+
+        <div class="rcp-field">
+          <label class="rcp-label" for="rcpChoices">List of options</label>
+          <textarea
+            class="rcp-textarea"
+            id="rcpChoices"
+            spellcheck="false"
+            placeholder="Pizza&#10;Burger&#10;Pasta&#10;Sandwich"
+          >Pizza
+Burger
+Pasta
+Sandwich
+Noodles</textarea>
+
+          <div class="rcp-count-row">
+            <span id="rcpOptionCount">5 options</span>
+            <span id="rcpUniqueCount">5 unique</span>
+          </div>
+        </div>
+
+        <div class="rcp-button-row">
+          <button class="rcp-button rcp-secondary" id="rcpExample" type="button">
+            Load Example
+          </button>
+          <button class="rcp-button rcp-secondary" id="rcpShuffle" type="button">
+            Shuffle List
+          </button>
+          <button class="rcp-button rcp-secondary" id="rcpClear" type="button">
+            Clear List
+          </button>
+        </div>
+
+        <div class="rcp-divider"></div>
+
+        <h2>Picker Settings</h2>
+
+        <div class="rcp-field">
+          <label class="rcp-label" for="rcpPickCount">Number of choices to pick</label>
+          <input
+            class="rcp-input"
+            type="number"
+            id="rcpPickCount"
+            min="1"
+            max="100"
+            value="1"
+            inputmode="numeric"
+          >
+          <p class="rcp-help">
+            Pick multiple winners in one draw. The number is limited by the
+            available options when duplicate removal is enabled.
+          </p>
+        </div>
+
+        <div class="rcp-field">
+          <label class="rcp-label" for="rcpOrder">Result display</label>
+          <select class="rcp-select" id="rcpOrder">
+            <option value="draw">Order drawn</option>
+            <option value="alphabetical">Alphabetical order</option>
+          </select>
+        </div>
+
+        <div class="rcp-options">
+          <label class="rcp-option">
+            <input type="checkbox" id="rcpIgnoreEmpty" checked>
+            Ignore empty lines
+          </label>
+
+          <label class="rcp-option">
+            <input type="checkbox" id="rcpTrim" checked>
+            Remove extra spaces around options
+          </label>
+
+          <label class="rcp-option">
+            <input type="checkbox" id="rcpUnique">
+            Remove duplicate choices
+          </label>
+
+          <label class="rcp-option">
+            <input type="checkbox" id="rcpRemoveWinner">
+            Remove picked choices from the list
+          </label>
+
+          <label class="rcp-option">
+            <input type="checkbox" id="rcpNoRepeat" checked>
+            Avoid repeats within a draw
+          </label>
+
+          <label class="rcp-option">
+            <input type="checkbox" id="rcpKeepHistory" checked>
+            Save results in this session's history
+          </label>
+        </div>
+
+        <div class="rcp-button-row">
+          <button class="rcp-button rcp-primary rcp-pick-button" id="rcpPick" type="button">
+            Pick Random Choice
+          </button>
+        </div>
+
+        <p class="rcp-status" id="rcpStatus" role="status" aria-live="polite">
+          Ready to pick. Add your choices and click the button.
+        </p>
+      </section>
+
+      <section class="rcp-panel" aria-labelledby="rcp-result-title">
+        <h2 id="rcp-result-title">Your Result</h2>
+        <p class="rcp-description">
+          Your randomly selected choice or choices will appear below.
+        </p>
+
+        <div class="rcp-result-card" id="rcpResultCard">
+          <span class="rcp-result-label" id="rcpResultLabel">Waiting for a draw</span>
+          <div class="rcp-result empty" id="rcpResult" aria-live="polite">
+            Your choice will appear here
+          </div>
+          <span class="rcp-result-note" id="rcpResultNote">
+            Enter your list and start picking.
+          </span>
+        </div>
+
+        <div class="rcp-button-row">
+          <button class="rcp-button rcp-secondary" id="rcpCopy" type="button" disabled>
+            Copy Result
+          </button>
+          <button class="rcp-button rcp-secondary" id="rcpExport" type="button" disabled>
+            Export Results
+          </button>
+          <button class="rcp-button rcp-secondary" id="rcpReset" type="button">
+            Reset Results
+          </button>
+        </div>
+
+        <div class="rcp-stat-grid">
+          <div class="rcp-stat">
+            <strong id="rcpTotalStat">5</strong>
+            <span>Available choices</span>
+          </div>
+          <div class="rcp-stat">
+            <strong id="rcpDrawStat">0</strong>
+            <span>Total draws</span>
+          </div>
+          <div class="rcp-stat">
+            <strong id="rcpPickedStat">0</strong>
+            <span>Choices picked</span>
+          </div>
+        </div>
+
+        <div class="rcp-history">
+          <div class="rcp-history-head">
+            <h3>Pick History</h3>
+            <button class="rcp-button rcp-secondary" id="rcpClearHistory" type="button">
+              Clear History
+            </button>
+          </div>
+
+          <div class="rcp-history-list" id="rcpHistory">
+            <div class="rcp-empty-history">
+              Your picks will appear here.
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <div class="rcp-content">
+      <section class="rcp-content-section">
+        <h2>How to Use the Random Choice Picker</h2>
+        <ul>
+          <li>Enter your options in the list, with one choice per line.</li>
+          <li>Choose how many options you want to draw.</li>
+          <li>Configure duplicate handling and whether picked choices should be removed.</li>
+          <li>Click Pick Random Choice to run the draw.</li>
+          <li>Copy or export the results and review your pick history.</li>
+        </ul>
+      </section>
+
+      <section class="rcp-content-section">
+        <h2>What Is a Random Choice Picker?</h2>
+        <p>
+          A random choice picker selects one or more entries from a list
+          using a random selection process. It can help you make everyday
+          decisions, choose a team activity, select a name, or organize a
+          simple drawing.
+        </p>
+        <p>
+          Each entry is treated as a separate option. If duplicate removal
+          is disabled, repeated entries can increase that option's chance
+          of being selected. Enable the relevant settings to change how
+          repeated choices are handled.
+        </p>
+      </section>
+
+      <section class="rcp-content-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="rcp-faq">
+          <h3>Is the Random Choice Picker free?</h3>
+          <p>Yes. You can use the picker for free in your browser.</p>
+        </div>
+
+        <div class="rcp-faq">
+          <h3>Can I pick multiple winners?</h3>
+          <p>Yes. Set the number of choices to pick. Enable Avoid repeats within a draw to ensure that the same entry cannot be selected twice in one draw.</p>
+        </div>
+
+        <div class="rcp-faq">
+          <h3>Can I remove a selected choice automatically?</h3>
+          <p>Yes. Enable Remove picked choices from the list to remove the selected entries after a successful draw.</p>
+        </div>
+
+        <div class="rcp-faq">
+          <h3>How are the results randomized?</h3>
+          <p>The picker uses the browser's cryptographically secure random number generator when available, with a standard random-number fallback in unsupported environments. It is intended for everyday choices, not certified prize drawings or regulated lotteries.</p>
+        </div>
+
+        <div class="rcp-faq">
+          <h3>Are my choices saved permanently?</h3>
+          <p>No. The list and history are kept in the current page session. Refreshing or closing the page can reset them. Export your results if you need a separate copy.</p>
+        </div>
+      </section>
+
+      <section class="rcp-content-section">
+        <h2>Related Tools</h2>
+        <div class="rcp-related">
+          <a href="/tools/random-number-generator/">Random Number Generator</a>
+          <a href="/tools/password-generator/">Password Generator</a>
+          <a href="/tools/uuid-generator/">UUID Generator</a>
+          <a href="/tools/word-counter/">Word Counter</a>
+          <a href="/tools/">All Tools</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+
+  <script>
+  (() => {
+    "use strict";
+
+    const $ = id => document.getElementById(id);
+
+    const el = {
+      choices: $("rcpChoices"),
+      optionCount: $("rcpOptionCount"),
+      uniqueCount: $("rcpUniqueCount"),
+      pickCount: $("rcpPickCount"),
+      order: $("rcpOrder"),
+      ignoreEmpty: $("rcpIgnoreEmpty"),
+      trim: $("rcpTrim"),
+      unique: $("rcpUnique"),
+      removeWinner: $("rcpRemoveWinner"),
+      noRepeat: $("rcpNoRepeat"),
+      keepHistory: $("rcpKeepHistory"),
+      pick: $("rcpPick"),
+      resultCard: $("rcpResultCard"),
+      resultLabel: $("rcpResultLabel"),
+      result: $("rcpResult"),
+      resultNote: $("rcpResultNote"),
+      status: $("rcpStatus"),
+      copy: $("rcpCopy"),
+      export: $("rcpExport"),
+      history: $("rcpHistory"),
+      totalStat: $("rcpTotalStat"),
+      drawStat: $("rcpDrawStat"),
+      pickedStat: $("rcpPickedStat")
+    };
+
+    const state = {
+      history: [],
+      latestResults: [],
+      totalDraws: 0,
+      totalPicked: 0,
+      busy: false
+    };
+
+    function randomInt(max) {
+      if (!Number.isSafeInteger(max) || max <= 0) {
+        throw new Error("Invalid random selection range.");
+      }
+
+      if (window.crypto && window.crypto.getRandomValues) {
+        const range = 0x100000000;
+        const limit = range - (range % max);
+        const buffer = new Uint32Array(1);
+        let value;
+
+        do {
+          window.crypto.getRandomValues(buffer);
+          value = buffer[0];
+        } while (value >= limit);
+
+        return value % max;
+      }
+
+      return Math.floor(Math.random() * max);
+    }
+
+    function shuffleArray(items) {
+      const result = [...items];
+
+      for (let i = result.length - 1; i > 0; i--) {
+        const j = randomInt(i + 1);
+        [result[i], result[j]] = [result[j], result[i]];
+      }
+
+      return result;
+    }
+
+    function getChoices() {
+      let choices = el.choices.value.split(/\r?\n/);
+
+      if (el.trim.checked) {
+        choices = choices.map(value => value.trim());
+      }
+
+      if (el.ignoreEmpty.checked) {
+        choices = choices.filter(value => value.length > 0);
+      }
+
+      if (el.unique.checked) {
+        const seen = new Set();
+
+        choices = choices.filter(value => {
+          const key = value.toLocaleLowerCase();
+
+          if (seen.has(key)) return false;
+
+          seen.add(key);
+          return true;
+        });
+      }
+
+      return choices;
+    }
+
+    function setStatus(message, type = "") {
+      el.status.textContent = message;
+      el.status.className = "rcp-status" + (type ? " " + type : "");
+    }
+
+    function updateCounts() {
+      const raw = el.choices.value.split(/\r?\n/);
+      const choices = getChoices();
+      const unique = new Set(
+        choices.map(value => value.toLocaleLowerCase())
+      );
+
+      el.optionCount.textContent =
+        choices.length + (choices.length === 1 ? " option" : " options");
+
+      el.uniqueCount.textContent = unique.size + " unique";
+      el.totalStat.textContent = choices.length;
+      el.drawStat.textContent = state.totalDraws;
+      el.pickedStat.textContent = state.totalPicked;
+
+      el.pick.disabled = state.busy || choices.length === 0;
+    }
+
+    function showResults(results) {
+      el.result.replaceChildren();
+
+      if (!results.length) {
+        el.result.className = "rcp-result empty";
+        el.result.textContent = "Your choice will appear here";
+        el.resultLabel.textContent = "Waiting for a draw";
+        el.resultNote.textContent = "Enter your list and start picking.";
+        el.copy.disabled = true;
+        el.export.disabled = true;
+        return;
+      }
+
+      el.result.className = "rcp-result";
+
+      if (results.length === 1) {
+        el.result.textContent = results[0];
+      } else {
+        const list = document.createElement("ol");
+        list.style.textAlign = "left";
+        list.style.paddingLeft = "24px";
+        list.style.margin = "0";
+        list.style.fontSize = "16px";
+        list.style.lineHeight = "1.9";
+
+        results.forEach(value => {
+          const item = document.createElement("li");
+          item.textContent = value;
+          list.append(item);
+        });
+
+        el.result.append(list);
+      }
+
+      el.resultLabel.textContent =
+        results.length === 1 ? "Selected choice" : "Selected choices";
+
+      el.resultNote.textContent =
+        results.length + (results.length === 1
+          ? " option selected"
+          : " options selected");
+
+      el.copy.disabled = false;
+      el.export.disabled = false;
+    }
+
+    function renderHistory() {
+      el.history.replaceChildren();
+
+      if (!el.keepHistory.checked || state.history.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "rcp-empty-history";
+        empty.textContent = el.keepHistory.checked
+          ? "Your picks will appear here."
+          : "Pick history is disabled.";
+        el.history.append(empty);
+        return;
+      }
+
+      state.history.slice().reverse().forEach(entry => {
+        const row = document.createElement("div");
+        row.className = "rcp-history-item";
+
+        const number = document.createElement("span");
+        number.className = "rcp-history-number";
+        number.textContent = entry.number;
+
+        const value = document.createElement("span");
+        value.className = "rcp-history-value";
+        value.textContent = entry.results.join(", ");
+
+        const time = document.createElement("time");
+        time.className = "rcp-history-time";
+        time.dateTime = entry.isoTime;
+        time.textContent = entry.time;
+
+        row.append(number, value, time);
+        el.history.append(row);
+      });
+    }
+
+    function recordDraw(results) {
+      state.totalDraws++;
+      state.totalPicked += results.length;
+
+      if (el.keepHistory.checked) {
+        const now = new Date();
+
+        state.history.push({
+          number: state.totalDraws,
+          results: [...results],
+          isoTime: now.toISOString(),
+          time: now.toLocaleTimeString()
+        });
+
+        if (state.history.length > 100) {
+          state.history.shift();
+        }
+      }
+
+      renderHistory();
+      updateCounts();
+    }
+
+    function pickChoices() {
+      if (state.busy) return;
+
+      let choices = getChoices();
+
+      if (!choices.length) {
+        setStatus("Add at least one option before picking.", "error");
+        return;
+      }
+
+      let count = Number.parseInt(el.pickCount.value, 10);
+
+      if (!Number.isFinite(count) || count < 1) {
+        setStatus("Enter a pick count of at least 1.", "error");
+        el.pickCount.value = "1";
+        return;
+      }
+
+      count = Math.min(count, 100);
+      el.pickCount.value = String(count);
+
+      if (el.noRepeat.checked || el.removeWinner.checked) {
+        if (count > choices.length) {
+          setStatus(
+            "You requested " + count + " choices, but only " +
+            choices.length + " are available. Reduce the pick count or add more options.",
+            "error"
+          );
+          return;
+        }
+      }
+
+      if (el.removeWinner.checked && count > choices.length) {
+        setStatus("There are not enough choices for this draw.", "error");
+        return;
+      }
+
+      state.busy = true;
+      el.pick.disabled = true;
+      el.resultCard.classList.add("is-picking");
+      el.resultLabel.textContent = "Picking...";
+      el.result.textContent = "Selecting a random choice";
+      el.result.className = "rcp-result";
+      el.resultNote.textContent = "Please wait.";
+      setStatus("Selecting your choice...");
+
+      /*
+       * The short visual animation is independent of the final random draw.
+       * It does not change the random selection algorithm.
+       */
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      const duration = reducedMotion ? 0 : 550;
+
+      window.setTimeout(() => {
+        try {
+          let pool = [...choices];
+          const results = [];
+
+          for (let i = 0; i < count; i++) {
+            if (pool.length === 0) break;
+
+            const index = randomInt(pool.length);
+            results.push(pool[index]);
+
+            if (el.noRepeat.checked || el.removeWinner.checked) {
+              pool.splice(index, 1);
+            }
+          }
+
+          if (el.order.value === "alphabetical") {
+            results.sort((a, b) => a.localeCompare(b));
+          }
+
+          state.latestResults = [...results];
+
+          showResults(results);
+          recordDraw(results);
+
+          if (el.removeWinner.checked) {
+            const remaining = [...getChoices()];
+            const toRemove = new Set();
+
+            results.forEach(result => {
+              const index = remaining.indexOf(result);
+
+              if (index !== -1) {
+                toRemove.add(index);
+              }
+            });
+
+            el.choices.value = remaining
+              .filter((_, index) => !toRemove.has(index))
+              .join("\n");
+          }
+
+          updateCounts();
+
+          setStatus(
+            "Successfully picked " + results.length +
+            (results.length === 1 ? " choice." : " choices."),
+            "success"
+          );
+        } catch (error) {
+          setStatus(
+            error instanceof Error
+              ? error.message
+              : "Something went wrong. Please try again.",
+            "error"
+          );
+        } finally {
+          state.busy = false;
+          el.resultCard.classList.remove("is-picking");
+          updateCounts();
+        }
+      }, duration);
+    }
+
+    async function copyResults() {
+      if (!state.latestResults.length) {
+        setStatus("Pick a choice before copying results.", "error");
+        return;
+      }
+
+      const text = state.latestResults.join("\n");
+
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.append(textarea);
+          textarea.select();
+
+          const copied = document.execCommand("copy");
+          textarea.remove();
+
+          if (!copied) throw new Error("Clipboard copy is unavailable.");
+        }
+
+        setStatus("Results copied to clipboard.", "success");
+      } catch {
+        setStatus("Could not copy results. Select and copy them manually.", "error");
+      }
+    }
+
+    function exportResults() {
+      if (!state.latestResults.length) {
+        setStatus("Pick a choice before exporting results.", "error");
+        return;
+      }
+
+      const lines = [
+        "MohakTools Random Choice Picker",
+        "Exported: " + new Date().toLocaleString(),
+        "",
+        "Latest results:",
+        ...state.latestResults.map((value, index) =>
+          (index + 1) + ". " + value
+        ),
+        "",
+        "Pick history:",
+        ...state.history.map(entry =>
+          "#" + entry.number + " [" + entry.time + "]: " +
+          entry.results.join(", ")
+        )
+      ];
+
+      const blob = new Blob(
+        [lines.join("\n")],
+        { type: "text/plain;charset=utf-8" }
+      );
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = "mohaktools-random-choice-results.txt";
+      document.body.append(link);
+      link.click();
+      link.remove();
+
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      setStatus("Results exported successfully.", "success");
+    }
+
+    function shuffleList() {
+      const choices = el.choices.value.split(/\r?\n/);
+
+      el.choices.value = shuffleArray(choices).join("\n");
+      updateCounts();
+      setStatus("Your list has been shuffled.", "success");
+    }
+
+    function clearList() {
+      el.choices.value = "";
+      updateCounts();
+      setStatus("List cleared. Add options to start picking.");
+    }
+
+    function loadExample() {
+      el.choices.value = [
+        "Pizza",
+        "Burger",
+        "Pasta",
+        "Sandwich",
+        "Noodles",
+        "Tacos",
+        "Salad",
+        "Fried rice"
+      ].join("\n");
+
+      updateCounts();
+      setStatus("Example choices loaded.", "success");
+    }
+
+    function resetResults() {
+      state.history = [];
+      state.latestResults = [];
+      state.totalDraws = 0;
+      state.totalPicked = 0;
+
+      showResults([]);
+      renderHistory();
+      updateCounts();
+      setStatus("Results and pick history reset.");
+    }
+
+    el.choices.addEventListener("input", updateCounts);
+
+    [
+      el.ignoreEmpty,
+      el.trim,
+      el.unique,
+      el.removeWinner,
+      el.noRepeat
+    ].forEach(input => {
+      input.addEventListener("change", () => {
+        updateCounts();
+        setStatus("Picker settings updated.");
+      });
+    });
+
+    el.keepHistory.addEventListener("change", () => {
+      if (!el.keepHistory.checked) {
+        state.history = [];
+      }
+
+      renderHistory();
+      setStatus(
+        el.keepHistory.checked
+          ? "Pick history enabled."
+          : "Pick history disabled and existing history cleared."
+      );
+    });
+
+    el.pick.addEventListener("click", pickChoices);
+    $("rcpExample").addEventListener("click", loadExample);
+    $("rcpShuffle").addEventListener("click", shuffleList);
+    $("rcpClear").addEventListener("click", clearList);
+    $("rcpCopy").addEventListener("click", copyResults);
+    $("rcpExport").addEventListener("click", exportResults);
+    $("rcpReset").addEventListener("click", resetResults);
+    $("rcpClearHistory").addEventListener("click", () => {
+      state.history = [];
+      renderHistory();
+      setStatus("Pick history cleared.");
+    });
+
+    updateCounts();
+    showResults([]);
+    renderHistory();
+  })();
+  </script>
+</body>
+</html>

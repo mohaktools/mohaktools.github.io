@@ -1,0 +1,161 @@
+Calculators
+
+Basic Calculator
+Scientific Calculator
+Percentage Calculator
+Age Calculator
+BMI Calculator
+Discount Calculator
+GST Calculator
+Loan EMI Calculator
+Date Difference Calculator
+Time Duration Calculator
+Average Calculator
+Body Fat Calculator
+Break-Even Calculator
+Calorie & BMR Calculator
+Compound Interest Calculator
+Date Add/Subtract Calculator
+DPI & Screen Resolution Calculator
+Fixed Deposit Maturity Calculator
+Fraction Calculator
+Fuel Cost Calculator
+GPA Calculator
+Gratuity Calculator
+HRA Exemption Calculator
+Income Tax Calculator
+In-Hand Salary Calculator
+Loan Prepayment Calculator
+Overtime Calculator
+Pregnancy Due Date Calculator
+Profit Margin Calculator
+Ratio Calculator
+Simple Interest Calculator
+SIP Calculator
+Tip Calculator
+Water Intake Calculator
+
+Time & Productivity
+35. Alarm Clock
+36. Stopwatch
+37. Countdown Timer
+38. Pomodoro Timer
+39. World Clock
+40. Digital Clock
+41. Calendar
+42. Business Days Calculator
+43. Habit Tracker
+44. Interval Timer
+45. Meeting Planner
+46. Sleep Cycle Calculator
+47. Sunrise & Sunset Calculator
+48. Timezone Converter
+49. To-Do List
+50. Week Number Calculator
+51. Work Hours & Timesheet Calculator
+
+Converters
+52. Unit Converter
+53. Length Converter
+54. Weight Converter
+55. Temperature Converter
+56. Speed Converter
+57. Time Converter
+58. Area Converter
+59. Data Storage Converter
+60. Angle Converter
+61. Cooking Measurement Converter
+62. Currency Converter
+63. Energy Converter
+64. Frequency Converter
+65. Fuel Economy Converter
+66. Land Unit Converter
+67. Power Converter
+68. Pressure Converter
+69. Roman Numeral Converter
+70. Shoe Size Converter
+71. Volume Converter
+
+Text Tools
+72. Word Counter
+73. Case Converter
+74. Remove Extra Spaces
+75. Text Reverser
+76. Character Counter
+77. Line Counter
+78. Text to Slug
+79. Duplicate Line Remover
+80. Text Sorter
+81. Anagram Solver
+82. Diff Checker
+83. Emoji Remover
+84. Find and Replace
+85. Hashtag Generator
+86. Keyword Density Checker
+87. Line Breaks to Commas
+88. Lorem Ipsum Generator
+89. Meta Length Checker
+90. Morse Code Translator
+91. Number to Words
+92. Palindrome Checker
+93. Readability Score
+94. Remove Line Breaks
+95. Text Diff & Compare
+96. Text to Handwriting
+97. Unicode Text Converter
+
+Developer Tools
+98. JSON Formatter
+99. JSON Validator
+100. Base64 Encoder/Decoder
+101. URL Encoder/Decoder
+102. HTML Entity Encoder
+103. UUID Generator
+104. Unix Timestamp Converter
+105. Color Code Converter
+106. Chmod Calculator
+107. Colour Picker
+108. Cron Expression Generator
+109. CSS Gradient & Box Shadow
+110. CSS Minifier & Beautifier
+111. CSV to JSON Converter
+112. Favicon Generator
+113. gitignore Generator
+114. Hash Generator
+115. HTML Formatter
+116. HTTP Status Reference
+117. IP Subnet Calculator
+118. JavaScript Minifier
+119. JWT Decoder
+120. Markdown to HTML
+121. Mock Data Generator
+122. Number Base Converter
+123. Regex Tester
+124. SQL Formatter
+125. XML Formatter
+126. YAML to JSON Converter
+
+Everyday Utilities
+127. Password Generator
+128. QR Code Generator
+129. Random Number Generator
+130. Random Choice Picker
+131. Image Compressor
+132. Image Resizer
+133. Aspect Ratio Calculator
+134. Typing Speed Test
+135. Background Remover
+136. Barcode Generator
+137. Coin Flip
+138. Dice Roller
+139. Image Cropper
+140. Image Format Converter
+141. Image to PDF
+142. Image to Text (OCR)
+143. Internet Speed Test
+144. Name Picker Wheel
+145. Password Strength Checker
+146. PDF Compressor
+147. PDF Merge & Split
+148. QR Code Scanner
+149. What’s My IP

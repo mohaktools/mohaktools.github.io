@@ -1,168 +1,162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#2563eb">
-<title>To-Do List | MohakTools</title>
-<meta name="description" content="Manage your tasks with a clean, persistent to-do list.">
-<meta name="keywords" content="to-do list, task manager, checklist">
-<link rel="canonical" href="https://mohaktools.com/tools/todo-list/">
-<link rel="icon" href="/favicon.webp" type="image/webp">
-<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
-<meta property="og:title" content="To-Do List | MohakTools">
-<meta property="og:description" content="Manage your tasks with a clean, persistent to-do list.">
-<meta property="og:url" content="https://mohaktools.com/tools/todo-list/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="MohakTools">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="To-Do List | MohakTools">
-<meta name="twitter:description" content="Manage your tasks with a clean, persistent to-do list.">
-<script src="/assets/js/tools-registry.js" defer></script>
-<style>
-.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
-.mt-field{margin-bottom:14px}
-.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
-.mt-field input[type="text"],.mt-field input[type="number"],.mt-field input[type="email"],.mt-field input[type="date"],.mt-field input[type="time"],.mt-field input[type="datetime-local"],.mt-field input[type="color"],.mt-field input[type="range"],.mt-field input[type="file"],.mt-field select,.mt-field textarea{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s;box-sizing:border-box}
-.mt-field input:focus,.mt-field select:focus,.mt-field textarea:focus{border-color:var(--color-primary)}
-.mt-field textarea{resize:vertical;min-height:120px;font-family:inherit}
-.mt-output{display:block;width:100%;min-height:160px;padding:12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:13px/1.6 inherit;resize:vertical;box-sizing:border-box}
-.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
-.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
-.mt-button:active{transform:scale(.97)}
-.mt-primary{background:var(--color-primary);color:var(--color-primary-text)}
-.mt-secondary{background:var(--color-surface-secondary);color:var(--color-text)}
-.mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
-.mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
-.mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
-.mt-stat strong{font-size:20px;font-weight:700;color:var(--color-text)}
-.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
-.mt-help{font-size:12px;color:var(--color-text-secondary);margin-top:8px;line-height:1.5}
-.mt-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.mt-option{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--color-text);cursor:pointer;user-select:none}
-.mt-option input{accent-color:var(--color-primary)}
-.mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
-.mt-prose p:last-child{margin-bottom:0}
-.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
-.mt-faq:first-of-type{padding-top:0}
-.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
-.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
-.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
-@media(max-width:600px){
-.mt-panel{padding:16px}
-.mt-stat-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
-.mt-stat strong{font-size:17px}
-.mt-button-row{gap:8px}
-.mt-button{flex:1 1 auto;padding:10px 12px;font-size:13px}
-.mt-prose p,.mt-faq p{font-size:13.5px}
-}
-@media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b6f83">
+  <title>To-Do List | MohakTools</title>
+  <meta name="description" content="Organize tasks with due dates, priorities, notes, categories, search, filters, and browser-based saving. Edit tasks and export a backup anytime.">
+  <meta name="keywords" content="to-do list, task manager, task planner, checklist, priority task list">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mohaktools.com/tools/todo-list/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="To-Do List | MohakTools">
+  <meta property="og:description" content="Plan and manage tasks with priorities, due dates, notes, and filters.">
+  <meta property="og:url" content="https://mohaktools.com/tools/todo-list/">
   <link rel="stylesheet" href="/assets/css/global.css">
   <link rel="stylesheet" href="/assets/css/themes.css">
-  <link rel="stylesheet" href="/assets/css/tool-page.css">
+  <link rel="stylesheet" href="/assets/css/interactive-tools.css">
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
 </head>
 <body>
-<div id="site-header"></div>
+  <div id="site-header"></div>
+  <main class="interactive-page">
+    <nav class="interactive-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span>
+      <a href="/tools/?category=time-tools">Time &amp; Productivity</a><span aria-hidden="true">/</span>
+      <span aria-current="page">To-Do List</span>
+    </nav>
 
-<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
-  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
-    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
-    <span style="margin:0 6px">/</span>
-    <a href="/tools/?category=time-tools" style="color:var(--color-primary);text-decoration:none">Time & Productivity</a>
-    <span style="margin:0 6px">/</span>
-    <span>To-Do List</span>
-  </nav>
+    <header class="interactive-hero">
+      <p class="interactive-eyebrow">Make your next step clear</p>
+      <h1>To-Do List</h1>
+      <p>Capture tasks, set a due date and priority, then focus on what needs doing next. Your list saves in this browser.</p>
+    </header>
 
-  <header style="margin-bottom:24px">
-    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">To-Do List</h1>
-    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Manage your tasks with a clean, persistent to-do list.</p>
-  </header>
+    <section class="habit-dashboard" aria-label="Task overview">
+      <div class="habit-stat"><span>Open tasks</span><strong id="todo-stat-open">0</strong></div>
+      <div class="habit-stat"><span>Due today</span><strong id="todo-stat-today">0</strong></div>
+      <div class="habit-stat"><span>Overdue</span><strong id="todo-stat-overdue">0</strong></div>
+      <div class="habit-stat"><span>Completed</span><strong id="todo-stat-completed">0</strong></div>
+    </section>
 
-  <div class="mt-tool-grid">
-    
-<section class="mt-panel"><h2 id="tool-input-heading">Add Task</h2>
-<div class="mt-field"><label for="ttask">Task</label><input type="text" id="ttask" placeholder="What needs to be done?" maxlength="200"></div>
-<div class="mt-field"><label for="tpri">Priority</label>
-<select id="tpri"><option value="high">🔴 High</option><option value="med" selected>🟡 Medium</option><option value="low">🟢 Low</option></select></div>
-<div class="mt-button-row"><button class="mt-button mt-primary" id="addtask">Add Task</button><button class="mt-button mt-secondary" id="clrdone">Clear Completed</button></div>
-<p class="mt-status" id="mt-status" role="status" aria-live="polite"></p></section>
-<section class="mt-panel"><h2>Tasks</h2>
-<div id="task-list"><p style="color:var(--color-text-secondary);font-size:14px">No tasks yet.</p></div></section>
-  </div>
+    <div class="todo-layout">
+      <section class="interactive-panel" aria-labelledby="todo-form-heading">
+        <div class="interactive-section-heading">
+          <div><h2 id="todo-form-heading">Add a task</h2><p>Keep it specific and easy to act on.</p></div>
+          <button class="interactive-button interactive-button-quiet" id="todo-form-toggle" type="button" aria-expanded="true">Hide</button>
+        </div>
+        <form class="todo-form-wrap" id="todo-form">
+          <input id="todo-edit-id" type="hidden">
+          <div class="todo-form-grid">
+            <div>
+              <label class="interactive-label" for="todo-title">Task</label>
+              <input class="interactive-input" id="todo-title" type="text" maxlength="160" placeholder="e.g. Send the project update" required>
+            </div>
+            <div class="todo-form-row">
+              <div>
+                <label class="interactive-label" for="todo-due">Due date</label>
+                <input class="interactive-input" id="todo-due" type="date">
+              </div>
+              <div>
+                <label class="interactive-label" for="todo-priority">Priority</label>
+                <select class="interactive-select" id="todo-priority">
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="interactive-label" for="todo-category">List</label>
+              <select class="interactive-select" id="todo-category">
+                <option>Personal</option>
+                <option>Work</option>
+                <option>Study</option>
+                <option>Errands</option>
+                <option>Shopping</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="interactive-label" for="todo-notes">Notes <span class="interactive-muted">(optional)</span></label>
+              <textarea class="interactive-textarea" id="todo-notes" maxlength="1000" placeholder="Add details, links, or a reminder…"></textarea>
+            </div>
+            <div class="interactive-actions">
+              <button class="interactive-button interactive-button-primary" id="todo-save" type="submit">Add task</button>
+              <button class="interactive-button" id="todo-cancel-edit" type="button" hidden>Cancel edit</button>
+            </div>
+          </div>
+          <p class="interactive-status" id="todo-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
 
-  <section class="mt-panel" style="margin-top:16px">
-    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the To-Do List</h2>
-    <div class="mt-prose">
-      <p>The To-Do List keeps your tasks in order with a priority attached to each. Add a task, set how urgent it is, tick it off when it is done.</p>
-      <p>A flat list with priorities beats a complicated system you stop using. The point of marking priority is to make the next action obvious: when you open the list, the top item should be the one worth doing first.</p>
-      <p>Tasks are saved in your browser's local storage on this device. There is no account and no sync, so clearing site data or switching devices starts an empty list. For anything you cannot afford to lose, keep a copy elsewhere.</p>
+      <section class="interactive-panel" aria-labelledby="todo-list-heading">
+        <div class="interactive-section-heading">
+          <div><h2 id="todo-list-heading">Your tasks</h2><p id="todo-list-summary">Nothing on your list yet.</p></div>
+          <button class="interactive-button" id="todo-export" type="button">Export backup</button>
+        </div>
+
+        <div class="todo-toolbar">
+          <label class="todo-search">
+            <span class="visually-hidden">Search tasks</span>
+            <input class="interactive-input" id="todo-search" type="search" placeholder="Search tasks or notes…">
+          </label>
+          <label>
+            <span class="visually-hidden">Sort tasks</span>
+            <select class="interactive-select" id="todo-sort">
+              <option value="smart">Smart order</option>
+              <option value="due">Due date</option>
+              <option value="priority">Priority</option>
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="todo-filters" id="todo-filters" role="group" aria-label="Filter tasks">
+          <button class="interactive-chip" data-filter="all" aria-pressed="true" type="button">All <span>0</span></button>
+          <button class="interactive-chip" data-filter="today" aria-pressed="false" type="button">Today <span>0</span></button>
+          <button class="interactive-chip" data-filter="upcoming" aria-pressed="false" type="button">Upcoming <span>0</span></button>
+          <button class="interactive-chip" data-filter="overdue" aria-pressed="false" type="button">Overdue <span>0</span></button>
+          <button class="interactive-chip" data-filter="completed" aria-pressed="false" type="button">Done <span>0</span></button>
+        </div>
+
+        <div class="todo-list" id="todo-list"></div>
+        <div class="interactive-empty" id="todo-empty" hidden>
+          <strong id="todo-empty-title">Nothing to do here</strong>
+          <p id="todo-empty-copy" style="margin:6px 0 0;font-size:13px">Add a task to get started.</p>
+        </div>
+        <div class="todo-footer">
+          <span id="todo-count"></span>
+          <div class="interactive-actions">
+            <label class="interactive-button interactive-button-quiet" for="todo-import-file">Import backup</label>
+            <input class="visually-hidden" id="todo-import-file" type="file" accept="application/json,.json">
+            <button class="interactive-button interactive-button-quiet" id="todo-clear-completed" type="button">Clear completed</button>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
 
-  <section class="mt-panel" style="margin-top:16px">
-    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
-    <div class="mt-faq">
-      <h3>Where are my tasks saved?</h3>
-      <p>In your browser's local storage on this device. Nothing is uploaded.</p>
-    </div>
-    <div class="mt-faq">
-      <h3>Do tasks sync across devices?</h3>
-      <p>No. Local storage is per browser and per device.</p>
-    </div>
-    <div class="mt-faq">
-      <h3>How does priority work?</h3>
-      <p>Each task carries a priority and the list can be sorted by it, so urgent items stay at the top.</p>
-    </div>
-    <div class="mt-faq">
-      <h3>Can I edit a task?</h3>
-      <p>You can remove and re-add it. Editing in place is not supported.</p>
-    </div>
-    <div class="mt-faq">
-      <h3>What if I clear my browser data?</h3>
-      <p>The list is deleted. There is no backup.</p>
-    </div>
-    <div class="mt-faq">
-      <h3>Is there a limit on how many tasks?</h3>
-      <p>No hard limit, but a very long list defeats the purpose. Keep it to what you will actually do.</p>
-    </div>
-  </section>
+    <section class="interactive-panel interactive-section" aria-labelledby="todo-about">
+      <h2 id="todo-about">About this to-do list</h2>
+      <p class="interactive-muted" style="margin:0;font-size:13px;line-height:1.75">Keep each task actionable, add a due date when one matters, and use priority to decide what comes next. Tasks are stored in local browser storage on this device. Export a JSON backup if you want to move your list to another browser or keep a copy.</p>
+    </section>
 
-  <section style="margin-top:32px">
-    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Time & Productivity</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/stopwatch/" class="mt-related-chip">Stopwatch</a><a href="/tools/countdown-timer/" class="mt-related-chip">Countdown Timer</a><a href="/tools/world-clock/" class="mt-related-chip">World Clock</a></div>
-  </section>
-</main>
-
-<div id="site-footer"></div>
-
-  <script src="/assets/js/theme.js" defer></script>
-<script src="/assets/js/header.js" defer></script>
-<script src="/assets/js/footer.js" defer></script>
-<script>
-
-const key="mt-todos";let tasks=JSON.parse(localStorage.getItem(key)||"[]");
-function save(){localStorage.setItem(key,JSON.stringify(tasks));}
-const PRI={high:"🔴",med:"🟡",low:"🟢"};
-function render(){
-  const el=document.getElementById("task-list");
-  if(!tasks.length){el.innerHTML="<p style=\"color:var(--color-text-secondary);font-size:14px\">No tasks yet.</p>";return;}
-  el.innerHTML=tasks.map((t,i)=>`<div style="display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface-secondary);margin-bottom:6px;${t.done?"opacity:.5":""}">
-<input type="checkbox" ${t.done?"checked":""} onchange="toggleT(${i})" style="width:18px;height:18px;accent-color:var(--color-primary)">
-<span style="flex:1;font-size:14px;color:var(--color-text);${t.done?"text-decoration:line-through":""}">${PRI[t.pri]||"🟡"} ${t.text}</span>
-<button onclick="delT(${i})" style="border:none;background:none;color:var(--color-text-secondary);cursor:pointer;font-size:16px">✕</button></div>`).join("");
-}
-window.toggleT=i=>{tasks[i].done=!tasks[i].done;save();render();};
-window.delT=i=>{tasks.splice(i,1);save();render();};
-document.getElementById("addtask").onclick=()=>{
-  const txt=document.getElementById("ttask").value.trim();
-  if(!txt){document.getElementById("mt-status").textContent="Enter a task.";return;}
-  tasks.push({text:txt,pri:document.getElementById("tpri").value,done:false});save();render();
-  document.getElementById("ttask").value="";document.getElementById("mt-status").textContent="";
-};
-document.getElementById("clrdone").onclick=()=>{tasks=tasks.filter(t=>!t.done);save();render();};
-render();
-</script>
+    <section class="interactive-panel interactive-section interactive-faq" aria-labelledby="todo-faq">
+      <h2 id="todo-faq">Frequently asked questions</h2>
+      <details><summary>Can I edit a task after saving it?</summary><p>Yes. Select Edit on the task to update its title, notes, date, priority, or list.</p></details>
+      <details><summary>How do Today, Upcoming, and Overdue work?</summary><p>Today shows unfinished tasks due today. Upcoming shows unfinished tasks due later. Overdue shows unfinished tasks with a date before today.</p></details>
+      <details><summary>Where are my tasks saved?</summary><p>They are saved in this browser’s local storage on this device. They are not sent to MohakTools and do not sync automatically.</p></details>
+      <details><summary>How do I back up or move my list?</summary><p>Choose Export backup to download a JSON file. On another browser, select Import backup and choose that file.</p></details>
+      <details><summary>Can I recover tasks after clearing browser data?</summary><p>Only if you exported a backup first. Keep the downloaded backup somewhere safe if the list matters to you.</p></details>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/assets/js/todo-list.js" defer></script>
 </body>
 </html>

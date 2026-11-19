@@ -61,7 +61,8 @@ mount.dataset.initialized = "true";
         background: var(--color-surface);
         border-bottom: 1px solid var(--color-border);
         color: var(--color-text);
-        box-shadow: 0 2px 12px var(--color-card-shadow);
+        box-shadow: 0 3px 16px var(--color-card-shadow);
+        border-top: 3px solid var(--color-primary);
       }
 
       .mt-header *,
@@ -88,7 +89,7 @@ mount.dataset.initialized = "true";
         color: var(--color-text);
         font-size: 1.3rem;
         font-weight: 800;
-        letter-spacing: -0.045em;
+        letter-spacing: -0.035em;
         text-decoration: none;
         border-radius: var(--radius-md);
       }
@@ -324,7 +325,7 @@ mount.dataset.initialized = "true";
     <header class="mt-header">
       <div class="mt-header-inner">
         <a class="mt-brand" href="/" aria-label="MohakTools home">
-          <img src="/favicon.webp" alt="" width="38" height="38">
+          <img src="/logo.webp" alt="" width="38" height="38">
           <span class="mt-brand-mark" aria-hidden="true">M</span>
           <span>MohakTools</span>
         </a>

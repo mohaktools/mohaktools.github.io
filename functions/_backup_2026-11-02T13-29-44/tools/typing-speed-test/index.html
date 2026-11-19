@@ -1,0 +1,973 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Typing Speed Test Online | MohakTools</title>
+    <meta name="description" content="Test your typing speed online for free. Measure words per minute (WPM), accuracy, errors, and progress with the MohakTools Typing Speed Test.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="MohakTools">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="canonical" href="https://mohaktools.com/tools/typing-speed-test/">
+    <link rel="icon" href="/favicon.webp" type="image/webp">
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/themes.css">
+
+    <style>
+        /* ========================================
+           MohakTools — Typing Speed Test
+           Centralized light/dark theme support
+        ======================================== */
+
+        .typing-page {
+            width: min(1000px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 24px 0 56px;
+            color: var(--color-text);
+            font-family: inherit;
+            line-height: 1.6;
+            box-sizing: border-box;
+        }
+
+        .typing-page *,
+        .typing-page *::before,
+        .typing-page *::after {
+            box-sizing: border-box;
+        }
+
+        .typing-breadcrumb {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 20px;
+            color: var(--color-text-secondary);
+            font-size: 13px;
+        }
+
+        .typing-breadcrumb a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .typing-breadcrumb a:hover {
+            color: var(--color-primary-hover);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .typing-intro {
+            margin-bottom: 24px;
+        }
+
+        .typing-intro h1 {
+            margin: 0 0 9px;
+            color: var(--color-text);
+            font-size: clamp(27px, 4vw, 36px);
+            line-height: 1.25;
+            letter-spacing: -0.7px;
+            overflow-wrap: anywhere;
+        }
+
+        .typing-intro p {
+            max-width: 720px;
+            margin: 0;
+            color: var(--color-text-secondary);
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .typing-card,
+        .typing-info-card {
+            min-width: 0;
+            color: var(--color-text);
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg, 16px);
+            box-shadow: 0 6px 22px var(--color-card-shadow);
+        }
+
+        .typing-card {
+            padding: 22px;
+        }
+
+        .typing-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .typing-control-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .typing-control-label {
+            color: var(--color-text-secondary);
+            font-size: 12px;
+            font-weight: 650;
+        }
+
+        .typing-select {
+            min-height: 38px;
+            padding: 7px 32px 7px 10px;
+            color: var(--color-text);
+            background-color: var(--color-input-bg);
+            border: 1px solid var(--color-input-border);
+            border-radius: var(--radius-sm, 6px);
+            font: inherit;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .typing-select:focus-visible,
+        .typing-btn:focus-visible,
+        .typing-input:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 3px;
+        }
+
+        .typing-stats {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .typing-stat {
+            min-width: 0;
+            padding: 14px 12px;
+            background-color: var(--color-surface-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md, 10px);
+        }
+
+        .typing-stat-label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--color-text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .typing-stat-value {
+            display: block;
+            color: var(--color-text);
+            font-size: clamp(23px, 3vw, 30px);
+            font-weight: 750;
+            line-height: 1.3;
+            font-variant-numeric: tabular-nums;
+            overflow-wrap: anywhere;
+        }
+
+        .typing-stat-value.primary {
+            color: var(--color-primary);
+        }
+
+        .typing-progress-track {
+            height: 6px;
+            margin-bottom: 18px;
+            overflow: hidden;
+            background-color: var(--color-surface-secondary);
+            border-radius: 999px;
+        }
+
+        .typing-progress-bar {
+            width: 0;
+            height: 100%;
+            background-color: var(--color-primary);
+            border-radius: inherit;
+            transition: width 120ms linear;
+        }
+
+        .typing-prompt-heading {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .typing-prompt-heading h2 {
+            margin: 0;
+            color: var(--color-text);
+            font-size: 16px;
+        }
+
+        .typing-prompt-hint {
+            color: var(--color-text-secondary);
+            font-size: 12px;
+        }
+
+        .typing-passage {
+            min-height: 164px;
+            padding: 18px;
+            margin-bottom: 16px;
+            overflow-wrap: anywhere;
+            color: var(--color-text-secondary);
+            background-color: var(--color-input-bg);
+            border: 1px solid var(--color-input-border);
+            border-radius: var(--radius-md, 10px);
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 16px;
+            line-height: 2;
+            letter-spacing: 0.1px;
+            white-space: pre-wrap;
+            word-break: normal;
+        }
+
+        .typing-passage .correct {
+            color: var(--color-success, var(--color-text));
+        }
+
+        .typing-passage .incorrect {
+            color: var(--color-danger);
+            background-color: var(--color-surface-secondary);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+        }
+
+        .typing-passage .current {
+            color: var(--color-text);
+            background-color: var(--color-surface-secondary);
+            outline: 1px solid var(--color-primary);
+            border-radius: 2px;
+        }
+
+        .typing-passage .pending {
+            color: var(--color-text-secondary);
+        }
+
+        .typing-input-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--color-text);
+            font-size: 14px;
+            font-weight: 650;
+        }
+
+        .typing-input {
+            display: block;
+            width: 100%;
+            min-height: 120px;
+            padding: 14px;
+            resize: vertical;
+            color: var(--color-text);
+            background-color: var(--color-input-bg);
+            border: 1px solid var(--color-input-border);
+            border-radius: var(--radius-md, 10px);
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .typing-input:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .typing-input::placeholder {
+            color: var(--color-text-secondary);
+            opacity: 0.8;
+        }
+
+        .typing-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .typing-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            min-height: 42px;
+            padding: 10px 17px;
+            color: var(--color-text);
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm, 6px);
+            font: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            touch-action: manipulation;
+            transition:
+                background-color 150ms ease,
+                color 150ms ease,
+                border-color 150ms ease;
+        }
+
+        .typing-btn:hover {
+            background-color: var(--color-surface-secondary);
+            border-color: var(--color-primary);
+        }
+
+        .typing-btn.primary {
+            color: var(--color-primary-text);
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .typing-btn.primary:hover {
+            background-color: var(--color-primary-hover);
+            border-color: var(--color-primary-hover);
+        }
+
+        .typing-status {
+            min-height: 22px;
+            margin: 12px 0 0;
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .typing-results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: var(--color-surface-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md, 10px);
+        }
+
+        .typing-results h2 {
+            margin: 0 0 14px;
+            color: var(--color-text);
+            font-size: 19px;
+        }
+
+        .typing-results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .typing-result-item {
+            min-width: 0;
+        }
+
+        .typing-result-item span {
+            display: block;
+            color: var(--color-text-secondary);
+            font-size: 12px;
+        }
+
+        .typing-result-item strong {
+            display: block;
+            margin-top: 4px;
+            color: var(--color-text);
+            font-size: 19px;
+            overflow-wrap: anywhere;
+        }
+
+        .typing-info-card {
+            padding: 22px;
+            margin-top: 22px;
+        }
+
+        .typing-info-card h2 {
+            margin: 0 0 12px;
+            color: var(--color-text);
+            font-size: 21px;
+            line-height: 1.4;
+        }
+
+        .typing-info-card h3 {
+            margin: 22px 0 8px;
+            color: var(--color-text);
+            font-size: 16px;
+        }
+
+        .typing-info-card p,
+        .typing-info-card li {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        .typing-info-card p {
+            margin: 0 0 12px;
+        }
+
+        .typing-info-card ul {
+            padding-left: 21px;
+            margin: 8px 0 0;
+        }
+
+        .typing-info-card li + li {
+            margin-top: 6px;
+        }
+
+        .typing-page [hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 600px) {
+            .typing-page {
+                width: calc(100% - 22px);
+                padding-top: 18px;
+                padding-bottom: 38px;
+            }
+
+            .typing-intro {
+                margin-bottom: 18px;
+            }
+
+            .typing-intro h1 {
+                font-size: clamp(25px, 7vw, 31px);
+            }
+
+            .typing-intro p {
+                font-size: 14px;
+            }
+
+            .typing-card {
+                padding: 14px;
+            }
+
+            .typing-toolbar {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 16px;
+            }
+
+            .typing-stats {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 9px;
+            }
+
+            .typing-stat {
+                padding: 12px;
+            }
+
+            .typing-stat-value {
+                font-size: 25px;
+            }
+
+            .typing-passage {
+                min-height: 145px;
+                padding: 13px;
+                font-size: 14px;
+                line-height: 1.9;
+            }
+
+            .typing-input {
+                min-height: 115px;
+                font-size: 14px;
+            }
+
+            .typing-actions .typing-btn {
+                flex: 1 1 auto;
+            }
+
+            .typing-results {
+                padding: 14px;
+            }
+
+            .typing-results-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .typing-info-card {
+                padding: 17px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .typing-page *,
+            .typing-page *::before,
+            .typing-page *::after {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="/assets/js/tools-registry.js" defer></script>
+    <div id="site-header"></div>
+
+    <main class="typing-page">
+        <nav class="typing-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <a href="/#tools">Tools</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Typing Speed Test</span>
+        </nav>
+
+        <header class="typing-intro">
+            <h1>Typing Speed Test</h1>
+            <p>
+                Test how fast and accurately you type. Measure your words per minute
+                (WPM), typing accuracy, and errors with a free online typing test.
+            </p>
+        </header>
+
+        <section class="typing-card" aria-label="Typing speed test">
+            <div class="typing-toolbar">
+                <div class="typing-control-group">
+                    <label class="typing-control-label" for="typing-duration">TEST DURATION</label>
+                    <select class="typing-select" id="typing-duration">
+                        <option value="15">15 seconds</option>
+                        <option value="30" selected>30 seconds</option>
+                        <option value="60">60 seconds</option>
+                        <option value="120">2 minutes</option>
+                    </select>
+                </div>
+
+                <div class="typing-control-group">
+                    <label class="typing-control-label" for="typing-difficulty">PASSAGE</label>
+                    <select class="typing-select" id="typing-difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="hard">Advanced</option>
+                    </select>
+                </div>
+
+                <button type="button" class="typing-btn" id="typing-restart-top">
+                    Restart test
+                </button>
+            </div>
+
+            <div class="typing-stats" aria-label="Live typing statistics">
+                <div class="typing-stat">
+                    <span class="typing-stat-label">Speed (WPM)</span>
+                    <output class="typing-stat-value primary" id="typing-wpm">0</output>
+                </div>
+                <div class="typing-stat">
+                    <span class="typing-stat-label">Accuracy</span>
+                    <output class="typing-stat-value" id="typing-accuracy">100%</output>
+                </div>
+                <div class="typing-stat">
+                    <span class="typing-stat-label">Time left</span>
+                    <output class="typing-stat-value" id="typing-time">30s</output>
+                </div>
+                <div class="typing-stat">
+                    <span class="typing-stat-label">Errors</span>
+                    <output class="typing-stat-value" id="typing-errors">0</output>
+                </div>
+            </div>
+
+            <div
+                class="typing-progress-track"
+                role="progressbar"
+                aria-label="Test progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+                id="typing-progress-track">
+                <div class="typing-progress-bar" id="typing-progress-bar"></div>
+            </div>
+
+            <div class="typing-prompt-heading">
+                <h2>Type the passage below</h2>
+                <span class="typing-prompt-hint">Start typing to begin the timer</span>
+            </div>
+
+            <div class="typing-passage" id="typing-passage" aria-label="Text to type"></div>
+
+            <label class="typing-input-label" for="typing-input">Your typing</label>
+            <textarea
+                class="typing-input"
+                id="typing-input"
+                placeholder="Click here and start typing the passage above..."
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                aria-describedby="typing-status"></textarea>
+
+            <div class="typing-actions">
+                <button type="button" class="typing-btn primary" id="typing-restart">
+                    Start over
+                </button>
+                <button type="button" class="typing-btn" id="typing-new-passage">
+                    New passage
+                </button>
+            </div>
+
+            <p class="typing-status" id="typing-status" role="status" aria-live="polite">
+                Ready when you are. Start typing to begin.
+            </p>
+
+            <section class="typing-results" id="typing-results" aria-labelledby="typing-results-title" hidden>
+                <h2 id="typing-results-title">Test results</h2>
+                <div class="typing-results-grid">
+                    <div class="typing-result-item">
+                        <span>Final typing speed</span>
+                        <strong id="typing-final-wpm">0 WPM</strong>
+                    </div>
+                    <div class="typing-result-item">
+                        <span>Final accuracy</span>
+                        <strong id="typing-final-accuracy">100%</strong>
+                    </div>
+                    <div class="typing-result-item">
+                        <span>Correct characters</span>
+                        <strong id="typing-final-correct">0</strong>
+                    </div>
+                    <div class="typing-result-item">
+                        <span>Incorrect characters</span>
+                        <strong id="typing-final-errors">0</strong>
+                    </div>
+                    <div class="typing-result-item">
+                        <span>Characters typed</span>
+                        <strong id="typing-final-characters">0</strong>
+                    </div>
+                    <div class="typing-result-item">
+                        <span>Time used</span>
+                        <strong id="typing-final-time">0s</strong>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section class="typing-info-card">
+            <h2>About the Typing Speed Test</h2>
+            <p>
+                This free typing speed test measures how quickly and accurately you
+                can reproduce a passage of text. It tracks your typing speed in
+                words per minute, accuracy percentage, and incorrect characters
+                while the test is running.
+            </p>
+
+            <h3>What is WPM?</h3>
+            <p>
+                WPM stands for words per minute. In standard typing tests, one word
+                is conventionally counted as five characters, including spaces.
+                WPM is calculated from the number of characters typed and the time
+                spent typing.
+            </p>
+
+            <h3>How is typing accuracy calculated?</h3>
+            <p>
+                Accuracy is calculated by comparing the characters you typed with
+                the corresponding characters in the passage. Correct characters
+                count toward accuracy, while mismatches count as errors. The
+                displayed accuracy updates as you type.
+            </p>
+
+            <h3>How to use this test</h3>
+            <ul>
+                <li>Choose a test duration and passage difficulty.</li>
+                <li>Read the displayed passage and type it into the text box.</li>
+                <li>The countdown starts automatically with your first keystroke.</li>
+                <li>Watch your WPM, accuracy, and error count as you type.</li>
+                <li>When time runs out or you finish the passage, review your results.</li>
+            </ul>
+
+            <h3>Tips for improving typing speed</h3>
+            <ul>
+                <li>Focus on accuracy before trying to increase speed.</li>
+                <li>Practice regularly with a variety of passages.</li>
+                <li>Use a comfortable posture and keep your hands relaxed.</li>
+                <li>Look at the text you are typing rather than searching for individual keys.</li>
+            </ul>
+
+            <h3>Frequently asked questions</h3>
+
+            <h3>Is this typing test free?</h3>
+            <p>Yes. The typing test runs in your browser and does not require an account.</p>
+
+            <h3>Can I test different typing speeds?</h3>
+            <p>
+                Yes. Choose from 15-second, 30-second, 60-second, or two-minute
+                tests and switch between three passage difficulty levels.
+            </p>
+
+            <h3>What is a good typing speed?</h3>
+            <p>
+                Typing speed varies with experience, language, and task. Comparing
+                your own results across repeated tests can help you track progress.
+            </p>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="/assets/js/theme.js" defer></script>
+    <script src="/assets/js/header.js" defer></script>
+    <script src="/assets/js/footer.js" defer></script>
+
+    <script>
+        (() => {
+            "use strict";
+
+            const $ = (id) => document.getElementById(id);
+
+            const durationSelect = $("typing-duration");
+            const difficultySelect = $("typing-difficulty");
+            const passageElement = $("typing-passage");
+            const inputElement = $("typing-input");
+            const statusElement = $("typing-status");
+            const progressTrack = $("typing-progress-track");
+            const progressBar = $("typing-progress-bar");
+            const resultsPanel = $("typing-results");
+
+            const passages = {
+                easy: [
+                    "Small steps can lead to great results. Practice a little every day and give yourself time to learn. Stay patient, keep going, and celebrate your progress.",
+                    "A good morning begins with a clear plan. Take a deep breath, organize your work, and focus on one task at a time. Consistency makes a difference.",
+                    "Reading and writing help us share ideas. Every new skill takes practice, attention, and effort. Keep learning and enjoy the journey."
+                ],
+                medium: [
+                    "Technology helps people communicate, learn, and solve problems across the world. Simple daily habits can improve concentration, build confidence, and make challenging tasks easier to manage.",
+                    "A productive routine is built through small decisions repeated over time. Set realistic goals, remove distractions, and measure your progress without expecting perfection on every attempt.",
+                    "Clear communication depends on choosing the right words and presenting ideas in a useful order. Careful practice can improve both the speed and accuracy of everyday work."
+                ],
+                hard: [
+                    "Reliable software depends on thoughtful design, consistent testing, and clear documentation. Developers investigate unexpected behavior, evaluate possible solutions, and improve their systems through careful experimentation.",
+                    "Digital information travels through complex networks that connect people, devices, and services. Understanding these systems requires patience, analytical thinking, and a willingness to examine unfamiliar concepts.",
+                    "Effective problem solving involves identifying constraints, comparing alternatives, and verifying assumptions. A measured approach often produces more dependable results than rushing toward the first available solution."
+                ]
+            };
+
+            let passage = "";
+            let startedAt = null;
+            let endAt = null;
+            let duration = Number(durationSelect.value);
+            let timerId = null;
+            let finished = false;
+            let passageIndex = 0;
+
+            function getPassage() {
+                const list = passages[difficultySelect.value] || passages.medium;
+                passageIndex = (passageIndex + 1) % list.length;
+                return list[passageIndex];
+            }
+
+            function setStatus(message) {
+                statusElement.textContent = message;
+            }
+
+            function countMatches(typed, reference) {
+                let correct = 0;
+                const limit = Math.min(typed.length, reference.length);
+
+                for (let i = 0; i < limit; i++) {
+                    if (typed[i] === reference[i]) {
+                        correct++;
+                    }
+                }
+
+                return {
+                    correct,
+                    errors: typed.length - correct,
+                    total: typed.length
+                };
+            }
+
+            function getElapsedSeconds() {
+                if (!startedAt) return 0;
+
+                const endpoint = finished ? endAt : Date.now();
+                return Math.max(0, (endpoint - startedAt) / 1000);
+            }
+
+            function getMetrics() {
+                const typed = inputElement.value;
+                const matches = countMatches(typed, passage);
+                const elapsed = getElapsedSeconds();
+                const minutes = elapsed / 60;
+
+                const wpm = minutes > 0
+                    ? Math.round((typed.length / 5) / minutes)
+                    : 0;
+
+                const accuracy = typed.length > 0
+                    ? Math.round((matches.correct / typed.length) * 100)
+                    : 100;
+
+                return {
+                    ...matches,
+                    elapsed,
+                    wpm,
+                    accuracy
+                };
+            }
+
+            function renderPassage() {
+                const typed = inputElement.value;
+                const fragment = document.createDocumentFragment();
+
+                for (let i = 0; i < passage.length; i++) {
+                    const span = document.createElement("span");
+                    span.textContent = passage[i];
+
+                    if (i < typed.length) {
+                        span.className = typed[i] === passage[i]
+                            ? "correct"
+                            : "incorrect";
+                    } else if (i === typed.length && !finished) {
+                        span.className = "current";
+                    } else {
+                        span.className = "pending";
+                    }
+
+                    fragment.appendChild(span);
+                }
+
+                passageElement.replaceChildren(fragment);
+            }
+
+            function updateStats() {
+                const metrics = getMetrics();
+                const remaining = startedAt && !finished
+                    ? Math.max(0, Math.ceil((endAt - Date.now()) / 1000))
+                    : duration;
+
+                $("typing-wpm").textContent = metrics.wpm;
+                $("typing-accuracy").textContent = metrics.accuracy + "%";
+                $("typing-time").textContent = remaining + "s";
+                $("typing-errors").textContent = metrics.errors;
+
+                const elapsedPercent = startedAt
+                    ? Math.min(100, (metrics.elapsed / duration) * 100)
+                    : 0;
+
+                progressBar.style.width = elapsedPercent + "%";
+                progressTrack.setAttribute("aria-valuenow", String(Math.round(elapsedPercent)));
+
+                renderPassage();
+            }
+
+            function stopTimer() {
+                if (timerId !== null) {
+                    clearInterval(timerId);
+                    timerId = null;
+                }
+            }
+
+            function finishTest(message) {
+                if (finished) return;
+
+                finished = true;
+                endAt = Date.now();
+                stopTimer();
+                inputElement.disabled = true;
+
+                const metrics = getMetrics();
+
+                $("typing-final-wpm").textContent = metrics.wpm + " WPM";
+                $("typing-final-accuracy").textContent = metrics.accuracy + "%";
+                $("typing-final-correct").textContent = metrics.correct;
+                $("typing-final-errors").textContent = metrics.errors;
+                $("typing-final-characters").textContent = metrics.total;
+                $("typing-final-time").textContent =
+                    Math.round(metrics.elapsed) + "s";
+
+                resultsPanel.hidden = false;
+                $("typing-time").textContent =
+                    Math.max(0, Math.ceil(duration - metrics.elapsed)) + "s";
+
+                setStatus(message);
+                updateStats();
+            }
+
+            function tick() {
+                if (!startedAt || finished) return;
+
+                updateStats();
+
+                if (Date.now() >= endAt) {
+                    finishTest("Time is up. Your results are ready.");
+                }
+            }
+
+            function startTest() {
+                if (startedAt || finished) return;
+
+                startedAt = Date.now();
+                endAt = startedAt + duration * 1000;
+
+                setStatus("Test in progress. Keep typing!");
+
+                timerId = setInterval(tick, 100);
+                updateStats();
+            }
+
+            function resetTest(newPassage = false) {
+                stopTimer();
+
+                duration = Number(durationSelect.value);
+                startedAt = null;
+                endAt = null;
+                finished = false;
+
+                if (newPassage || !passage) {
+                    passage = getPassage();
+                }
+
+                inputElement.disabled = false;
+                inputElement.value = "";
+                resultsPanel.hidden = true;
+
+                $("typing-wpm").textContent = "0";
+                $("typing-accuracy").textContent = "100%";
+                $("typing-time").textContent = duration + "s";
+                $("typing-errors").textContent = "0";
+
+                progressBar.style.width = "0%";
+                progressTrack.setAttribute("aria-valuenow", "0");
+
+                setStatus("Ready when you are. Start typing to begin.");
+                renderPassage();
+            }
+
+            inputElement.addEventListener("input", () => {
+                if (finished) return;
+
+                if (!startedAt && inputElement.value.length > 0) {
+                    startTest();
+                }
+
+                if (inputElement.value.length >= passage.length) {
+                    inputElement.value = inputElement.value.slice(0, passage.length);
+                    updateStats();
+                    finishTest("Passage completed. Your results are ready.");
+                    return;
+                }
+
+                updateStats();
+            });
+
+            $("typing-restart").addEventListener("click", () => {
+                resetTest(false);
+                inputElement.focus();
+            });
+
+            $("typing-restart-top").addEventListener("click", () => {
+                resetTest(false);
+                inputElement.focus();
+            });
+
+            $("typing-new-passage").addEventListener("click", () => {
+                resetTest(true);
+                inputElement.focus();
+            });
+
+            durationSelect.addEventListener("change", () => {
+                resetTest(false);
+            });
+
+            difficultySelect.addEventListener("change", () => {
+                resetTest(true);
+            });
+
+            resetTest(true);
+        })();
+    </script>
+</body>
+</html>

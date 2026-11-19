@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20261116" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261116" />
+  <link rel="shortcut icon" href="/favicon.ico?v=20261116" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261116" />
+  <meta name="apple-mobile-web-app-title" content="MohakTools" />
+  <link rel="manifest" href="/site.webmanifest?v=20261116" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+<title>Commission Calculator | MohakTools</title>
+<meta name="description" content="Calculate sales commission from a sale amount and commission rate, with an optional base salary for total pay.">
+<meta name="keywords" content="commission calculator, sales commission, commission rate, total pay">
+<link rel="canonical" href="https://mohaktools.com/tools/commission-calculator/">
+<meta property="og:title" content="Commission Calculator | MohakTools">
+<meta property="og:description" content="Work out sales commission and total pay from a sale amount and rate.">
+<meta property="og:url" content="https://mohaktools.com/tools/commission-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Commission Calculator | MohakTools">
+<meta name="twitter:description" content="Work out sales commission and total pay from a sale amount and rate.">
+<script src="/assets/js/tools-registry.js" defer></script>
+<style>
+.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
+.mt-field{margin-bottom:14px}
+.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
+.mt-field input[type="number"]{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s;box-sizing:border-box}
+.mt-field input:focus{border-color:var(--color-primary)}
+.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
+.mt-button:active{transform:scale(.97)}
+.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
+.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
+.mt-stat strong{font-size:20px;font-weight:700;color:var(--color-text)}
+.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
+.mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
+</style>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+    <span style="margin:0 6px">/</span>
+    <a href="/tools/?category=calculators" style="color:var(--color-primary);text-decoration:none">Calculators</a>
+    <span style="margin:0 6px">/</span>
+    <span>Commission Calculator</span>
+  </nav>
+
+  <header style="margin-bottom:24px">
+    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">Commission Calculator</h1>
+    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Work out sales commission and total pay from a sale amount and commission rate.</p>
+  </header>
+
+  <div class="mt-tool-grid">
+    <section class="mt-panel"><h2>Inputs</h2>
+      <div class="mt-field"><label for="sales">Total sales amount</label><input type="number" id="sales" min="0" step="any" placeholder="50000"></div>
+      <div class="mt-field"><label for="rate">Commission rate (%)</label><input type="number" id="rate" min="0" step="any" placeholder="5"></div>
+      <div class="mt-field"><label for="base">Base salary (optional)</label><input type="number" id="base" min="0" step="any" placeholder="0"></div>
+      <div class="mt-button-row"><button class="mt-button mt-primary" id="calc">Calculate</button><button class="mt-button mt-secondary" id="reset">Reset</button></div>
+      <p class="mt-status" id="mt-status" role="status" aria-live="polite"></p>
+    </section>
+    <section class="mt-panel"><h2>Result</h2>
+      <div class="mt-stat-grid">
+        <div class="mt-stat"><span>Commission</span><strong id="comm">—</strong></div>
+        <div class="mt-stat"><span>Total pay</span><strong id="total">—</strong></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Commission Calculator</h2>
+    <div class="mt-prose">
+      <p>The Commission Calculator multiplies your sales total by your commission rate to give the commission earned. If you also enter a base salary, it adds the two together to show total pay for the period.</p>
+      <p>Commission is usually a percentage of the value you sell, so a 5 percent rate on sales of 50,000 earns 2,500. Enter the rate as a plain number (5 for five percent). Leave the base salary blank or at zero if your pay is commission only. All figures are calculated in your browser and nothing is stored.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Common questions about Commission Calculator</h2>
+    <div class="mt-faq"><h3>How is commission calculated?</h3><p>Commission equals total sales multiplied by the commission rate divided by 100.</p></div>
+    <div class="mt-faq"><h3>Should I enter the rate as 5 or 0.05?</h3><p>Enter it as a percentage, so 5 means five percent.</p></div>
+    <div class="mt-faq"><h3>Is total pay the same as take-home pay?</h3><p>No. Total pay is base salary plus commission before tax and deductions.</p></div>
+  </section>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Calculators</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/profit-margin-calculator/" class="mt-related-chip">Profit Margin Calculator</a><a href="/tools/percentage-calculator/" class="mt-related-chip">Percentage Calculator</a><a href="/tools/discount-calculator/" class="mt-related-chip">Discount Calculator</a></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+const $ = id => document.getElementById(id);
+const fmt = n => n.toLocaleString(undefined, { maximumFractionDigits: 2 });
+
+$("calc").onclick = () => {
+  const sales = parseFloat($("sales").value);
+  const rate = parseFloat($("rate").value);
+  const base = parseFloat($("base").value) || 0;
+
+  if (isNaN(sales) || isNaN(rate)) {
+    $("mt-status").textContent = "Enter a sales amount and a commission rate.";
+    $("comm").textContent = "—"; $("total").textContent = "—";
+    return;
+  }
+  if (sales < 0 || rate < 0 || base < 0) {
+    $("mt-status").textContent = "Values cannot be negative.";
+    return;
+  }
+  const commission = sales * rate / 100;
+  $("comm").textContent = fmt(commission);
+  $("total").textContent = fmt(base + commission);
+  $("mt-status").textContent = "";
+};
+
+$("reset").onclick = () => {
+  ["sales", "rate", "base"].forEach(id => $(id).value = "");
+  $("comm").textContent = "—"; $("total").textContent = "—";
+  $("mt-status").textContent = "";
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20261116" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261116" />
+  <link rel="shortcut icon" href="/favicon.ico?v=20261116" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261116" />
+  <meta name="apple-mobile-web-app-title" content="MohakTools" />
+  <link rel="manifest" href="/site.webmanifest?v=20261116" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+<title>Color Palette Generator | MohakTools</title>
+<meta name="description" content="Generate a colour palette from one base colour: complementary, analogous, triadic and shade options, with HEX codes you can copy.">
+<meta name="keywords" content="color palette generator, colour palette, complementary colors, analogous, triadic, hex palette">
+<link rel="canonical" href="https://mohaktools.com/tools/color-palette-generator/">
+<meta property="og:title" content="Color Palette Generator | MohakTools">
+<meta property="og:description" content="Build a colour palette from one base colour, with copyable HEX codes.">
+<meta property="og:url" content="https://mohaktools.com/tools/color-palette-generator/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Color Palette Generator | MohakTools">
+<meta name="twitter:description" content="Build a colour palette from one base colour, with copyable HEX codes.">
+<script src="/assets/js/tools-registry.js" defer></script>
+<style>
+.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
+.mt-field{margin-bottom:14px}
+.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
+.mt-field select{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;box-sizing:border-box}
+.mt-picker{display:flex;gap:10px;align-items:center}
+.mt-picker input[type="color"]{width:56px;height:44px;padding:0;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:none;cursor:pointer}
+.mt-picker input[type="text"]{flex:1;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;box-sizing:border-box;text-transform:uppercase}
+.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
+.mt-button:active{transform:scale(.97)}
+.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
+.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
+.mt-swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-top:4px}
+.mt-swatch{border:1px solid var(--color-border);border-radius:var(--radius-md,10px);overflow:hidden;background:var(--color-surface);cursor:pointer;padding:0;text-align:left;font:inherit}
+.mt-swatch .chip{height:72px}
+.mt-swatch .code{display:block;padding:8px 10px;font-size:13px;font-weight:600;color:var(--color-text)}
+.mt-swatch .lbl{display:block;padding:0 10px 8px;font-size:11px;color:var(--color-text-secondary)}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){.mt-button{padding:10px 14px;font-size:13px}}
+</style>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+    <span style="margin:0 6px">/</span>
+    <a href="/tools/?category=everyday-utilities" style="color:var(--color-primary);text-decoration:none">Everyday Utilities</a>
+    <span style="margin:0 6px">/</span>
+    <span>Color Palette Generator</span>
+  </nav>
+
+  <header style="margin-bottom:24px">
+    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">Color Palette Generator</h1>
+    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Pick one base colour and build a matching palette. Click any swatch to copy its HEX code.</p>
+  </header>
+
+  <section class="mt-panel"><h2>Base colour</h2>
+    <div class="mt-field"><label for="hex">Colour</label>
+      <div class="mt-picker">
+        <input type="color" id="picker" value="#2563eb" aria-label="Pick a base colour">
+        <input type="text" id="hex" value="#2563EB" maxlength="7" aria-label="HEX code">
+      </div></div>
+    <div class="mt-field"><label for="type">Palette type</label>
+      <select id="type">
+        <option value="shades">Shades (light to dark)</option>
+        <option value="complementary">Complementary</option>
+        <option value="analogous">Analogous</option>
+        <option value="triadic">Triadic</option>
+      </select></div>
+    <div class="mt-button-row"><button class="mt-button mt-primary" id="gen">Generate palette</button><button class="mt-button mt-secondary" id="reset">Reset</button></div>
+    <p class="mt-status" id="mt-status" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px"><h2>Palette</h2>
+    <div class="mt-swatches" id="swatches"></div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the Color Palette Generator</h2>
+    <div class="mt-prose">
+      <p>A palette is a small set of colours that work together. This generator starts from one base colour and derives the rest using the colour wheel. Complementary palettes use the colour opposite the base for strong contrast. Analogous palettes use neighbouring hues for a calm, unified look. Triadic palettes use three colours spaced evenly around the wheel for a vivid balance. Shades vary the lightness of one colour from pale to deep, which is useful for backgrounds and UI states.</p>
+      <p>Every swatch shows its HEX code, and clicking it copies the code to your clipboard. All calculations run in your browser.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Common questions about Color Palette Generator</h2>
+    <div class="mt-faq"><h3>What is a complementary colour?</h3><p>The colour directly opposite the base on the colour wheel, 180 degrees away in hue.</p></div>
+    <div class="mt-faq"><h3>Can I use the palette in my website?</h3><p>Yes. Copy the HEX codes into your CSS. Check text contrast before you use them for body text.</p></div>
+    <div class="mt-faq"><h3>Why does my palette look different from the base colour?</h3><p>Palettes include derived hues and lightness steps, so the base is one of several colours rather than an exact match for every swatch.</p></div>
+  </section>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/colour-picker/" class="mt-related-chip">Colour Picker</a><a href="/tools/color-code-converter/" class="mt-related-chip">Color Code Converter</a><a href="/tools/css-gradient-boxshadow/" class="mt-related-chip">CSS Gradient &amp; Box Shadow</a></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+const $ = id => document.getElementById(id);
+
+const hexToRgb = h => [1, 3, 5].map(i => parseInt(h.substr(i, 2), 16));
+const rgbToHex = (r, g, b) => [r, g, b].map(v => Math.round(v).toString(16).padStart(2, "0")).join("").toUpperCase();
+const hexToHsl = hex => {
+  let [r, g, b] = hexToRgb(hex).map(v => v / 255);
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h = 0, s = 0; const l = (max + min) / 2;
+  if (max !== min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    if (max === r) h = (g - b) / d + (g < b ? 6 : 0);
+    else if (max === g) h = (b - r) / d + 2;
+    else h = (r - g) / d + 4;
+    h *= 60;
+  }
+  return [h, s * 100, l * 100];
+};
+const hslToHex = (h, s, l) => {
+  h = ((h % 360) + 360) % 360; s = Math.max(0, Math.min(100, s)) / 100; l = Math.max(0, Math.min(100, l)) / 100;
+  const k = n => (n + h / 30) % 12;
+  const a = s * Math.min(l, 1 - l);
+  const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+  return rgbToHex(f(0) * 255, f(8) * 255, f(4) * 255);
+};
+
+const PALETTES = {
+  shades: (h, s, l) => [l + 30, l + 15, l, l - 15, l - 30].map(x => hslToHex(h, s, x)),
+  complementary: (h, s, l) => [hslToHex(h, s, l), hslToHex(h, s, l - 15), hslToHex(h + 180, s, l), hslToHex(h + 180, s, l + 15)],
+  analogous: (h, s, l) => [hslToHex(h - 30, s, l), hslToHex(h, s, l), hslToHex(h + 30, s, l), hslToHex(h + 60, s, l)],
+  triadic: (h, s, l) => [hslToHex(h, s, l), hslToHex(h + 120, s, l), hslToHex(h + 240, s, l)]
+};
+
+const LABELS = ["Light", "Tint", "Base", "Shade", "Deep"];
+
+const render = (hex, type) => {
+  const [h, s, l] = hexToHsl(hex);
+  const colours = PALETTES[type](h, s, l);
+  $("swatches").innerHTML = colours.map((c, i) => {
+    const label = type === "shades" ? LABELS[i] : (i === 0 ? "Base" : type === "triadic" ? "Accent " + i : type === "complementary" ? (i === 2 ? "Complement" : "Variant") : "Hue " + (i + 1));
+    return `<button class="mt-swatch" data-hex="#${c}" type="button" title="Copy #${c}">
+      <span class="chip" style="display:block;background:#${c}"></span>
+      <span class="code">#${c}</span><span class="lbl">${label}</span></button>`;
+  }).join("");
+};
+
+const setBase = hex => {
+  $("picker").value = hex.toLowerCase();
+  $("hex").value = hex.toUpperCase();
+};
+
+$("picker").oninput = e => { setBase(e.target.value); };
+
+$("gen").onclick = () => {
+  let v = $("hex").value.trim().toUpperCase();
+  if (!v.startsWith("#")) v = "#" + v;
+  if (!/^#[0-9A-F]{6}$/.test(v)) {
+    $("mt-status").textContent = "Enter a six-digit HEX code, such as #2563EB.";
+    return;
+  }
+  $("mt-status").textContent = "";
+  setBase(v);
+  render(v.slice(1), $("type").value);
+};
+
+$("swatches").onclick = async e => {
+  const btn = e.target.closest(".mt-swatch");
+  if (!btn) return;
+  const code = btn.dataset.hex;
+  try {
+    await navigator.clipboard.writeText(code);
+    $("mt-status").textContent = "Copied " + code + ".";
+  } catch {
+    $("mt-status").textContent = "Copy failed. Select the code manually: " + code;
+  }
+};
+
+$("reset").onclick = () => {
+  setBase("#2563EB");
+  $("type").value = "shades";
+  $("swatches").innerHTML = "";
+  $("mt-status").textContent = "";
+};
+
+$("gen").click();
+</script>
+</body>
+</html>

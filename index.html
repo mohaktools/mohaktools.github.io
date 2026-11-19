@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="MohakTools" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>MohakTools – Free Online Tools, Calculators & Converters</title>
+  <title>Free Online Calculators, Converters &amp; Tools | MohakTools</title>
 
-  <meta name="description" content="Explore free online tools at MohakTools. Use calculators, unit converters, text utilities, developer tools, clocks, timers, and more. Fast, simple, and easy to use.">
+  <meta name="description" content="Calculate percentages, dates and more; convert units; and use free text and developer tools. Get quick results with MohakTools, right in your browser.">
   <meta name="keywords" content="MohakTools, free online tools, online calculators, unit converters, text tools, developer tools, word counter, UUID generator, time converter">
   <meta name="author" content="MohakTools">
   <meta name="robots" content="index, follow">
@@ -16,21 +21,17 @@
   <link rel="canonical" href="https://mohaktools.com/">
 
   <!-- Favicons -->
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
-  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
-
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MohakTools">
-  <meta property="og:title" content="MohakTools – Free Online Tools">
-  <meta property="og:description" content="Discover free online calculators, converters, text tools, developer utilities, and more.">
+  <meta property="og:title" content="Free Online Calculators, Converters &amp; Tools | MohakTools">
+  <meta property="og:description" content="Calculate percentages, dates and more; convert units; and use free text and developer tools. Get quick results with MohakTools, right in your browser.">
   <meta property="og:url" content="https://mohaktools.com/">
 
   <!-- Twitter / social sharing -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="MohakTools – Free Online Tools">
-  <meta name="twitter:description" content="Simple and useful online tools for everyday tasks, calculations, conversions, and development.">
+  <meta name="twitter:title" content="Free Online Calculators, Converters &amp; Tools | MohakTools">
+  <meta name="twitter:description" content="Calculate percentages, dates and more; convert units; and use free text and developer tools. Get quick results with MohakTools, right in your browser.">
 
   <!-- Shared website assets -->
   <link rel="stylesheet" href="/assets/css/themes.css">
@@ -916,6 +917,29 @@
         transform: none;
       }
     }
+
+    /* MohakTools brand layout */
+    .home-hero { min-height: 560px; text-align: left; }
+    .hero-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, .95fr); align-items: center; gap: clamp(24px, 5vw, 68px); }
+    .hero-content { width: 100%; max-width: 620px; margin: 0; }
+    .hero-content h1 { margin-left: 0; font-size: clamp(42px, 6.2vw, 66px); letter-spacing: -2.8px; }
+    .hero-description { margin-left: 0; }
+    .hero-actions { justify-content: flex-start; }
+    .hero-mini-note { letter-spacing: .015em; }
+    .hero-art { width: 100%; max-width: 560px; justify-self: end; filter: drop-shadow(0 22px 30px rgb(28 56 43 / 9%)); }
+    .hero-badge { color: var(--color-text); background: var(--color-surface-secondary); border-color: var(--color-border); }
+    @media (max-width: 820px) {
+      .home-hero { min-height: auto; padding: 62px 0 72px; }
+      .hero-layout { grid-template-columns: 1fr; gap: 34px; }
+      .hero-content { max-width: 690px; margin-inline: auto; text-align: center; }
+      .hero-content h1, .hero-description { margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-art { max-width: min(560px, 100%); justify-self: center; }
+    }
+    @media (max-width: 560px) {
+      .hero-content h1 { font-size: clamp(38px, 10vw, 52px); letter-spacing: -1.8px; }
+      .hero-art { width: calc(100% + 12px); margin-inline: -6px; }
+    }
   </style>
 </head>
 
@@ -930,36 +954,38 @@
       <div class="hero-decoration hero-decoration-two" aria-hidden="true"></div>
 
       <div class="home-container">
+        <div class="hero-layout">
         <div class="hero-content">
           <div class="hero-badge">
             <span class="hero-badge-dot" aria-hidden="true"></span>
-            Useful tools, all in one place
+            The quick fix for everyday tasks
           </div>
 
           <h1 id="hero-title">
-            Everyday tasks.<br>
-            <span class="hero-highlight">Made simpler.</span>
+            Get the small stuff<br>
+            <span class="hero-highlight">out of your way.</span>
           </h1>
 
           <p class="hero-description">
-            Welcome to MohakTools — a collection of practical online tools
-            designed to help you calculate, convert, organise, and get things
-            done without unnecessary complexity.
+            Need to split a bill, fix a block of text, or check a quick conversion?
+            Pick a tool, get the answer, and get on with your day.
           </p>
 
           <div class="hero-actions">
             <a class="home-button home-button-primary" href="/tools/">
-              Explore All Tools <span aria-hidden="true">→</span>
+              Find a tool <span aria-hidden="true">→</span>
             </a>
 
             <a class="home-button home-button-secondary" href="#featured-tools">
-              Discover Popular Tools
+              A few popular picks
             </a>
           </div>
 
           <p class="hero-mini-note">
-            Calculators · Converters · Text Utilities · Developer Tools
+            Free to use · No account needed for most tools
           </p>
+        </div>
+        <img class="hero-art" src="/assets/images/mohak-workbench.svg" alt="A set of practical MohakTools cards for calculations, writing, and everyday tasks" width="620" height="470" fetchpriority="high">
         </div>
       </div>
     </section>

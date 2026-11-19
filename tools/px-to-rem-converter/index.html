@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20261116" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261116" />
+  <link rel="shortcut icon" href="/favicon.ico?v=20261116" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261116" />
+  <meta name="apple-mobile-web-app-title" content="MohakTools" />
+  <link rel="manifest" href="/site.webmanifest?v=20261116" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2563eb">
+<title>PX to REM Converter | MohakTools</title>
+<meta name="description" content="Convert pixels to rem and rem to pixels for CSS, using your chosen base font size. Results update instantly.">
+<meta name="keywords" content="px to rem converter, px to rem, rem to px, css units, font size">
+<link rel="canonical" href="https://mohaktools.com/tools/px-to-rem-converter/">
+<meta property="og:title" content="PX to REM Converter | MohakTools">
+<meta property="og:description" content="Convert CSS pixels to rem and back using your base font size.">
+<meta property="og:url" content="https://mohaktools.com/tools/px-to-rem-converter/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MohakTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PX to REM Converter | MohakTools">
+<meta name="twitter:description" content="Convert CSS pixels to rem and back using your base font size.">
+<script src="/assets/js/tools-registry.js" defer></script>
+<style>
+.mt-panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg,16px);padding:20px;margin-bottom:16px}
+.mt-field{margin-bottom:14px}
+.mt-field label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin-bottom:6px;letter-spacing:.3px}
+.mt-field input[type="number"],.mt-field select{display:block;width:100%;padding:10px 12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface);color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s;box-sizing:border-box}
+.mt-field input:focus,.mt-field select:focus{border-color:var(--color-primary)}
+.mt-button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.mt-button{padding:10px 20px;border-radius:var(--radius-md,10px);font:600 14px/1 inherit;cursor:pointer;border:none;transition:opacity .2s,transform .1s;white-space:nowrap}
+.mt-button:active{transform:scale(.97)}
+.mt-primary{background:var(--color-primary,#4a86e8);color:#fff}
+.mt-secondary{background:var(--color-surface-secondary,#f0f0f0);color:var(--color-text)}
+.mt-status{font-size:13px;color:var(--color-text-secondary);min-height:20px;margin-top:8px}
+.mt-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.mt-stat{background:var(--color-surface-secondary);border:1px solid var(--color-border);border-radius:var(--radius-md,10px);padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.mt-stat span{font-size:12px;color:var(--color-text-secondary);font-weight:500}
+.mt-stat strong{font-size:26px;font-weight:700;color:var(--color-text)}
+.mt-prose p{font-size:14px;color:var(--color-text-secondary);line-height:1.75;margin:0 0 12px}
+.mt-prose p:last-child{margin-bottom:0}
+.mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}
+.mt-faq:first-of-type{padding-top:0}
+.mt-faq:last-of-type{padding-bottom:0;border-bottom:none}
+.mt-faq h3{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--color-text);line-height:1.5}
+.mt-faq p{margin:0;font-size:14px;color:var(--color-text-secondary);line-height:1.75}
+@media(max-width:600px){.mt-tool-grid{grid-template-columns:1fr}.mt-button{padding:10px 14px;font-size:13px}}
+</style>
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+  <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
+    <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
+    <span style="margin:0 6px">/</span>
+    <a href="/tools/?category=converters" style="color:var(--color-primary);text-decoration:none">Converters</a>
+    <span style="margin:0 6px">/</span>
+    <span>PX to REM Converter</span>
+  </nav>
+
+  <header style="margin-bottom:24px">
+    <h1 style="font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--color-text);margin:0 0 8px">PX to REM Converter</h1>
+    <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Convert CSS pixels to rem units and back, using your base font size.</p>
+  </header>
+
+  <div class="mt-tool-grid">
+    <section class="mt-panel"><h2>Inputs</h2>
+      <div class="mt-field"><label for="value">Value</label><input type="number" id="value" step="any" placeholder="24"></div>
+      <div class="mt-field"><label for="dir">Direction</label>
+        <select id="dir"><option value="px2rem">PX to REM</option><option value="rem2px">REM to PX</option></select></div>
+      <div class="mt-field"><label for="base">Base font size (px)</label><input type="number" id="base" min="1" step="any" value="16"></div>
+      <div class="mt-button-row"><button class="mt-button mt-primary" id="calc">Convert</button><button class="mt-button mt-secondary" id="reset">Reset</button></div>
+      <p class="mt-status" id="mt-status" role="status" aria-live="polite"></p>
+    </section>
+    <section class="mt-panel"><h2>Result</h2>
+      <div class="mt-stat"><span id="label">Result</span><strong id="result">—</strong></div>
+    </section>
+  </div>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">About the PX to REM Converter</h2>
+    <div class="mt-prose">
+      <p>A rem is relative to the font size of the root element, which is the html element in a web page. With the browser default of 16px, 1rem equals 16px, so 24px equals 1.5rem. Changing the base font size changes the conversion, which is why this tool asks for it.</p>
+      <p>Rem units scale with user preferences. If a visitor increases their default text size in the browser, rem-based layouts grow with it, while fixed pixel values stay the same. That makes rem a common choice for font sizes, spacing and component dimensions in accessible design.</p>
+    </div>
+  </section>
+
+  <section class="mt-panel" style="margin-top:16px">
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Common questions about PX to REM Converter</h2>
+    <div class="mt-faq"><h3>How do I convert px to rem?</h3><p>Divide the pixel value by the base font size. For example, 24 divided by 16 gives 1.5rem.</p></div>
+    <div class="mt-faq"><h3>What base font size should I use?</h3><p>Most sites use the browser default of 16px. If your stylesheet sets a different size on the html element, enter that value instead.</p></div>
+    <div class="mt-faq"><h3>What is the difference between rem and em?</h3><p>Rem is based on the root font size, so it is the same everywhere. Em is based on the font size of the parent element, so it compounds when nested.</p></div>
+  </section>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:14px;font-weight:700;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px">Related Tools in Converters</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a href="/tools/color-code-converter/" class="mt-related-chip">Color Code Converter</a><a href="/tools/length-converter/" class="mt-related-chip">Length Converter</a><a href="/tools/unit-converter/" class="mt-related-chip">Unit Converter</a></div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+<script>
+const $ = id => document.getElementById(id);
+const fmt = n => Number(n.toFixed(6)).toString();
+
+$("calc").onclick = () => {
+  const v = parseFloat($("value").value);
+  const base = parseFloat($("base").value);
+  if (isNaN(v)) {
+    $("result").textContent = "—";
+    $("mt-status").textContent = "Enter a value to convert.";
+    return;
+  }
+  if (!(base > 0)) {
+    $("result").textContent = "—";
+    $("mt-status").textContent = "The base font size must be greater than zero.";
+    return;
+  }
+  if ($("dir").value === "px2rem") {
+    $("label").textContent = "Result in rem";
+    $("result").textContent = fmt(v / base) + " rem";
+  } else {
+    $("label").textContent = "Result in px";
+    $("result").textContent = fmt(v * base) + " px";
+  }
+  $("mt-status").textContent = "";
+};
+
+$("reset").onclick = () => {
+  $("value").value = "";
+  $("base").value = "16";
+  $("dir").value = "px2rem";
+  $("label").textContent = "Result";
+  $("result").textContent = "—";
+  $("mt-status").textContent = "";
+};
+</script>
+</body>
+</html>

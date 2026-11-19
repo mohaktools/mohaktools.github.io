@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Text Reverser Online | MohakTools</title>
+  <meta name="description" content="Reverse text, characters, words or line order online with the free MohakTools Text Reverser.">
+  <meta name="keywords" content="text reverser, reverse text, reverse words, reverse lines, reverse characters online">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="MohakTools">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="application-name" content="MohakTools">
+  <link rel="canonical" href="https://mohaktools.com/tools/text-reverser/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="Text Reverser Online | MohakTools">
+  <meta property="og:description" content="Reverse characters, words, or the order of lines in text.">
+  <meta property="og:url" content="https://mohaktools.com/tools/text-reverser/">
+  <meta property="og:image" content="https://mohaktools.com/assets/images/text-reverser-og.png">
+  <meta property="og:image:alt" content="MohakTools Text Reverser">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Text Reverser Online | MohakTools">
+  <meta name="twitter:description" content="Reverse characters, words, or the order of lines in text.">
+  <meta name="twitter:image" content="https://mohaktools.com/assets/images/text-reverser-og.png">
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Text Reverser","url":"https://mohaktools.com/tools/text-reverser/","description":"Reverse text, characters, words or line order online with the free MohakTools Text Reverser.","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"publisher":{"@type":"Organization","name":"MohakTools","url":"https://mohaktools.com/"}}</script>
+  <style>
+
+    .mt-page{width:min(100% - 32px,1080px);margin:0 auto;padding:24px 0 56px;color:var(--color-text)}
+    .mt-breadcrumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:16px;color:var(--color-text-secondary);font-size:13px}
+    .mt-breadcrumbs a{color:var(--color-primary);text-decoration:none}.mt-breadcrumbs a:hover{text-decoration:underline}
+    .mt-hero{margin-bottom:18px}.mt-hero h1{margin:0 0 8px;font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacing:-.03em;color:var(--color-text)}
+    .mt-hero p{max-width:760px;margin:0;color:var(--color-text-secondary);font-size:15px;line-height:1.6}
+    .mt-tool-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:18px;align-items:start}
+    .mt-panel{min-width:0;padding:20px;border:1px solid var(--color-border);border-radius:var(--radius-xl,20px);background:var(--color-surface);box-shadow:var(--color-card-shadow,0 4px 18px rgba(0,0,0,.04))}
+    .mt-panel h2{margin:0 0 14px;font-size:19px;line-height:1.35;color:var(--color-text)}
+    .mt-field{margin-bottom:13px}.mt-field label,.mt-field legend{display:block;margin-bottom:6px;color:var(--color-text);font-size:13px;font-weight:650}
+    .mt-field textarea,.mt-field input,.mt-field select{display:block;width:100%;min-height:42px;padding:10px 12px;border:1px solid var(--color-input-border,var(--color-border));border-radius:var(--radius-md,10px);background:var(--color-input-bg,var(--color-surface));color:var(--color-text);font:inherit;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s}
+    .mt-field textarea{min-height:210px;resize:vertical;line-height:1.55;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+    .mt-field textarea:focus,.mt-field input:focus,.mt-field select:focus{border-color:var(--color-primary);box-shadow:0 0 0 3px var(--color-primary-focus,rgba(37,99,235,.14))}
+    .mt-field fieldset{border:0;padding:0;margin:0;min-width:0}.mt-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .mt-option{display:flex;align-items:center;gap:8px;min-height:36px;padding:8px 10px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface-secondary);color:var(--color-text);font-size:12px;cursor:pointer}
+    .mt-option input{width:15px;height:15px;min-height:15px;margin:0;accent-color:var(--color-primary)}
+    .mt-help{margin:5px 0 0;color:var(--color-text-secondary);font-size:12px;line-height:1.5}
+    .mt-button-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .mt-button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:10px 15px;border:1px solid transparent;border-radius:var(--radius-md,10px);font:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s,transform .2s}
+    .mt-button:hover{opacity:.9}.mt-button:active{transform:translateY(1px)}.mt-button:focus-visible{outline:3px solid var(--color-primary);outline-offset:2px}
+    .mt-primary{flex:1;background:var(--color-primary);color:var(--color-primary-text,#fff)}.mt-secondary{border-color:var(--color-border);background:var(--color-surface-secondary);color:var(--color-text)}
+    .mt-output{min-height:210px}.mt-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-bottom:14px}
+    .mt-stat{padding:12px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);background:var(--color-surface-secondary);min-width:0}
+    .mt-stat span{display:block;color:var(--color-text-secondary);font-size:12px;margin-bottom:5px}.mt-stat strong{display:block;color:var(--color-primary);font-size:clamp(20px,2.5vw,26px);line-height:1.2;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+    .mt-status{min-height:18px;margin:9px 0 0;color:var(--color-text-secondary);font-size:12px;line-height:1.5}.mt-status.error{color:var(--color-danger)}.mt-status.success{color:var(--color-success)}
+    .mt-content{margin-top:26px}.mt-content-section{margin-top:16px;padding:22px;border:1px solid var(--color-border);border-radius:var(--radius-xl,20px);background:var(--color-surface)}
+    .mt-content-section h2{margin:0 0 12px;font-size:21px;color:var(--color-text)}.mt-content-section h3{margin:18px 0 7px;font-size:16px;color:var(--color-text)}
+    .mt-content-section p,.mt-content-section li{color:var(--color-text-secondary);font-size:14px;line-height:1.75}.mt-content-section p{margin:0 0 10px}.mt-content-section ul{padding-left:20px;margin:8px 0 0}
+    .mt-faq{padding:14px 0;border-bottom:1px solid var(--color-border)}.mt-faq:last-child{border-bottom:0;padding-bottom:0}.mt-faq h3{margin:0 0 6px;font-size:15px}.mt-faq p{margin:0}
+    .mt-related{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.mt-related a{display:inline-flex;padding:8px 11px;border:1px solid var(--color-border);border-radius:var(--radius-md,10px);color:var(--color-primary);text-decoration:none;font-size:13px}.mt-related a:hover{border-color:var(--color-primary)}
+    .mt-char-count{display:flex;justify-content:space-between;gap:12px;margin-top:6px;color:var(--color-text-secondary);font-size:12px}
+    [hidden]{display:none!important}
+    @media(max-width:760px){.mt-page{width:min(100% - 24px,620px);padding-top:18px}.mt-tool-grid{grid-template-columns:1fr;gap:12px}.mt-panel{padding:16px}.mt-field textarea{min-height:150px}.mt-output{min-height:150px}.mt-content-section{padding:17px}}
+    @media(max-width:420px){.mt-page{width:min(100% - 20px,620px)}.mt-options{grid-template-columns:1fr}.mt-button-row{display:grid;grid-template-columns:1fr 1fr}.mt-button{width:100%;padding:9px 10px}.mt-stat-grid{gap:7px}.mt-stat{padding:10px}}
+    @media(prefers-reduced-motion:reduce){.mt-button,.mt-field textarea,.mt-field input,.mt-field select{transition:none}}
+
+  </style>
+</head>
+<body>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <div id="site-header"></div>
+  <main class="mt-page">
+    <nav class="mt-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span><a href="/tools/">Tools</a><span aria-hidden="true">/</span><span aria-current="page">Text Reverser</span>
+    </nav>
+    <header class="mt-hero">
+      <h1>Text Reverser</h1>
+      <p>Reverse text in different ways: flip character order, reverse word order, reverse line order or reverse the characters in every line.</p>
+    </header>
+    <section class="mt-tool-grid" aria-label="Text Reverser tool">
+      <section class="mt-panel" aria-labelledby="tool-input-heading">
+        <h2 id="tool-input-heading">Text and options</h2>
+        <div class="mt-field"><label for="mt-input">Text to reverse</label><textarea id="mt-input"  placeholder="Type or paste text here…"></textarea></div><div class="mt-field"><label for="reverse-mode">Reverse method</label><select id="reverse-mode"><option value="characters">Reverse all characters</option><option value="words">Reverse word order</option><option value="lines">Reverse line order</option><option value="each-line">Reverse characters in each line</option></select></div>
+        <div class="mt-button-row"><button class="mt-button mt-secondary" type="button" id="copy">Copy Result</button><button class="mt-button mt-secondary" type="button" id="clear">Clear</button><button class="mt-button mt-secondary" type="button" id="download">Download .txt</button></div>
+        <p class="mt-status" id="mt-status" role="status" aria-live="polite">Ready. Results update as you type.</p>
+      </section>
+      <section class="mt-panel" aria-labelledby="tool-output-heading">
+        <h2 id="tool-output-heading">Result</h2>
+        <div class="mt-field"><label for="mt-output">Reversed result</label><textarea id="mt-output" readonly placeholder="Reversed text appears here…"></textarea></div>
+      </section>
+    </section>
+    <div class="mt-content">
+      <section class="mt-content-section">
+        <h2>How to Use the Text Reverser</h2>
+        <ul>
+          <li>Enter or paste your text in the input area.</li>
+          <li>Choose any options available for the transformation.</li>
+          <li>Review the live result or statistics in the result panel.</li>
+          <li>Use the copy or download option when you want to keep the result.</li>
+        </ul>
+      </section>
+      <section class="mt-content-section">
+        <h2>About the Text Reverser</h2>
+        <p>The Text Reverser provides several ways to reverse text while keeping the transformation predictable. It works with multi-line text and supports Unicode characters.</p>
+        <p>This free tool is designed to work on desktop, tablet and mobile screens. The page uses the MohakTools centralized theme styles and shared site header and footer scripts.</p>
+      </section>
+      <section class="mt-content-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="mt-faq"><h3>What can this tool reverse?</h3><p>You can reverse all characters, reverse word order, reverse line order, or reverse characters within each line.</p></div><div class="mt-faq"><h3>Will line breaks be preserved?</h3><p>The character and per-line modes preserve line breaks. Reverse-lines changes the order of lines.</p></div><div class="mt-faq"><h3>Does it support emojis?</h3><p>The tool uses Unicode-aware character handling for common emoji and combined characters.</p></div><div class="mt-faq"><h3>Is my text stored?</h3><p>No. Reversal is processed locally in your browser.</p></div>
+      </section>
+      <section class="mt-content-section">
+        <h2>Explore Related Tools</h2>
+        <p>Continue with these related MohakTools text utilities.</p>
+        <div class="mt-related"><a href="/tools/case-converter/">Case Converter</a><a href="/tools/remove-extra-spaces/">Remove Extra Spaces</a><a href="/tools/duplicate-line-remover/">Duplicate Line Remover</a></div>
+      </section>
+      <p class="mt-help">Privacy note: text processing is performed in your browser by this page. Do not enter confidential information on a shared or untrusted device.</p>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+  <script>
+
+(() => {
+"use strict";
+const status=document.getElementById("mt-status");
+function copyText(text){if(!text){status.textContent="There is no output to copy.";return;}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(()=>{status.textContent="Copied to clipboard."}).catch(()=>fallbackCopy(text));}else fallbackCopy(text);}
+function fallbackCopy(text){const temp=document.createElement("textarea");temp.value=text;temp.setAttribute("readonly","");temp.style.position="fixed";temp.style.opacity="0";document.body.appendChild(temp);temp.select();try{document.execCommand("copy");status.textContent="Copied to clipboard."}catch(e){status.textContent="Copy was unavailable. Select the output and copy it manually."}temp.remove();}
+function downloadText(text,filename){const blob=new Blob([text],{type:"text/plain;charset=utf-8"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);status.textContent="Text file prepared for download.";}
+window.mtCopyText=copyText;window.mtDownloadText=downloadText;
+const input=document.getElementById("mt-input"),output=document.getElementById("mt-output"),mode=document.getElementById("reverse-mode");
+function reverse(){const s=input.value,lines=s.split(/\r\n|\r|\n/);let r=s;switch(mode.value){case"characters":r=Array.from(s).reverse().join("");break;case"words":r=s.trim()?s.trim().split(/\s+/u).reverse().join(" "):"";break;case"lines":r=lines.reverse().join("\n");break;case"each-line":r=lines.map(line=>Array.from(line).reverse().join("")).join("\n");break;}output.value=r;document.getElementById("mt-status").textContent=s?"Text reversed.":"Enter text to reverse."}
+input.addEventListener("input",reverse);mode.addEventListener("change",reverse);
+document.getElementById("copy").addEventListener("click",()=>copyText(output.value));document.getElementById("clear").addEventListener("click",()=>{input.value="";reverse();input.focus()});document.getElementById("download").addEventListener("click",()=>downloadText(output.value,"reversed-text.txt"));
+})();
+  </script>
+</body>
+</html>

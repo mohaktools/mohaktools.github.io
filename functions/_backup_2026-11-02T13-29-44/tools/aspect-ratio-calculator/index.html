@@ -1,0 +1,1137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Aspect Ratio Calculator Online | MohakTools</title>
+  <meta name="description" content="Calculate aspect ratios for images, videos, and screens. Find simplified ratios, resize dimensions proportionally, and use common aspect ratio presets.">
+  <meta name="keywords" content="aspect ratio calculator, image ratio calculator, screen ratio, video aspect ratio, resize image proportionally">
+  <meta name="author" content="MohakTools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mohaktools.com/tools/aspect-ratio-calculator/">
+
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+
+  <style>
+    /* =========================================================
+       MOHAKTOOLS ASPECT RATIO CALCULATOR
+       All colors inherit from the centralized theme system.
+       ========================================================= */
+
+   
+.ar-tool {
+    --ar-radius: var(--radius-lg, 16px);
+    --ar-small-radius: var(--radius-sm, 6px);
+
+    --ar-border: var(--color-border);
+    --ar-surface: var(--color-surface);
+    --ar-page: var(--color-surface-secondary);
+    --ar-text: var(--color-text);
+    --ar-muted: var(--color-text-secondary);
+    --ar-primary: var(--color-primary);
+    --ar-primary-hover: var(--color-primary-hover);
+    --ar-input-bg: var(--color-input-bg);
+    --ar-input-border: var(--color-input-border);
+    --ar-soft: var(--color-surface-secondary);
+    --ar-success: var(--color-success, var(--color-primary));
+    --ar-danger: var(--color-danger);
+
+    width: min(1000px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 24px 0 56px;
+    color: var(--color-text);
+    font-family: inherit;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+
+    .ar-tool *,
+    .ar-tool *::before,
+    .ar-tool *::after {
+      box-sizing: border-box;
+    }
+
+    .ar-hero {
+      margin-bottom: 28px;
+    }
+
+    .ar-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      color: var(--ar-primary);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .ar-eyebrow::before {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
+      content: "";
+    }
+
+    .ar-hero h1 {
+      margin: 0 0 12px;
+      color: var(--ar-text);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.18;
+    }
+
+    .ar-hero p {
+      max-width: 720px;
+      margin: 0;
+      color: var(--ar-muted);
+      font-size: 1.05rem;
+    }
+
+    .ar-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.85fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .ar-panel {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--ar-border);
+      border-radius: var(--ar-radius);
+      background: var(--ar-surface);
+      box-shadow: 0 5px 22px rgb(15 23 42 / 4%);
+    }
+
+    .ar-panel-heading {
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--ar-border);
+    }
+
+    .ar-panel-heading h2 {
+      margin: 0 0 4px;
+      color: var(--ar-text);
+      font-size: 1.16rem;
+      font-weight: 750;
+    }
+
+    .ar-panel-heading p {
+      margin: 0;
+      color: var(--ar-muted);
+      font-size: 0.9rem;
+    }
+
+    .ar-panel-body {
+      padding: 22px;
+    }
+
+    .ar-field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .ar-field {
+      min-width: 0;
+    }
+
+    .ar-field label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--ar-text);
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    .ar-input-wrap {
+      position: relative;
+    }
+
+    .ar-field input,
+    .ar-field select {
+      display: block;
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--ar-border);
+      border-radius: var(--ar-small-radius);
+      outline: none;
+      background: var(--ar-input-bg);
+      color: var(--ar-text);
+      font: inherit;
+      font-size: 0.98rem;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .ar-field input:focus,
+    .ar-field select:focus {
+      border-color: var(--ar-primary);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--ar-primary) 16%, transparent);
+    }
+
+    .ar-field input::placeholder {
+      color: var(--ar-muted);
+      opacity: 0.8;
+    }
+
+    .ar-dimension-symbol {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: end;
+      min-height: 46px;
+      color: var(--ar-muted);
+      font-size: 1.2rem;
+    }
+
+    .ar-dimensions {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr);
+      gap: 10px;
+      align-items: end;
+    }
+
+    .ar-section-label {
+      margin: 23px 0 12px;
+      color: var(--ar-text);
+      font-size: 0.96rem;
+      font-weight: 750;
+    }
+
+    .ar-lock-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 18px;
+      padding: 13px 14px;
+      border: 1px solid var(--ar-border);
+      border-radius: var(--ar-small-radius);
+      background: var(--ar-soft);
+    }
+
+    .ar-lock-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .ar-lock-copy strong {
+      color: var(--ar-text);
+      font-size: 0.9rem;
+    }
+
+    .ar-lock-copy span {
+      color: var(--ar-muted);
+      font-size: 0.8rem;
+    }
+
+    .ar-switch {
+      position: relative;
+      flex: 0 0 auto;
+      width: 44px;
+      height: 25px;
+    }
+
+    .ar-switch input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    .ar-switch-track {
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--ar-border);
+      border-radius: 999px;
+      background: var(--ar-border);
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .ar-switch-track::before {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #ffffff;
+      content: "";
+      transition: transform 0.2s ease;
+    }
+
+    .ar-switch input:checked + .ar-switch-track {
+      border-color: var(--ar-primary);
+      background: var(--ar-primary);
+    }
+
+    .ar-switch input:checked + .ar-switch-track::before {
+      transform: translateX(19px);
+    }
+
+    .ar-switch input:focus-visible + .ar-switch-track {
+      outline: 3px solid var(--ar-primary);
+      outline-offset: 3px;
+    }
+
+    .ar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .ar-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 43px;
+      padding: 10px 17px;
+      border: 1px solid transparent;
+      border-radius: var(--ar-small-radius);
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-align: center;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+    }
+
+    .ar-btn:active {
+      transform: translateY(1px);
+    }
+
+    .ar-btn-primary {
+      background: var(--ar-primary);
+      color: #ffffff;
+    }
+
+    .ar-btn-primary:hover {
+      background: var(--ar-primary-hover);
+    }
+
+    .ar-btn-secondary {
+      border-color: var(--ar-border);
+      background: var(--ar-surface);
+      color: var(--ar-text);
+    }
+
+    .ar-btn-secondary:hover {
+      background: var(--ar-soft);
+    }
+
+    .ar-btn:focus-visible {
+      outline: 3px solid var(--ar-primary);
+      outline-offset: 3px;
+    }
+
+    .ar-result-card {
+      padding: 20px;
+      border: 1px solid var(--ar-border);
+      border-radius: 12px;
+      background: var(--ar-page);
+    }
+
+    .ar-result-label {
+      margin-bottom: 6px;
+      color: var(--ar-muted);
+      font-size: 0.82rem;
+      font-weight: 650;
+    }
+
+    .ar-ratio-value {
+      overflow-wrap: anywhere;
+      color: var(--ar-primary);
+      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      font-weight: 850;
+      letter-spacing: -0.045em;
+      line-height: 1.2;
+    }
+
+    .ar-result-description {
+      margin-top: 8px;
+      color: var(--ar-muted);
+      font-size: 0.9rem;
+    }
+
+    .ar-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 190px;
+      margin-top: 17px;
+      padding: 18px;
+      overflow: hidden;
+      border: 1px dashed var(--ar-border);
+      border-radius: 12px;
+      background-color: var(--ar-surface);
+      background-image: radial-gradient(var(--ar-border) 1px, transparent 1px);
+      background-size: 14px 14px;
+    }
+
+    .ar-preview-shape {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: min(100%, 310px);
+      aspect-ratio: 16 / 9;
+      max-height: 220px;
+      border: 2px solid var(--ar-primary);
+      border-radius: 5px;
+      background: color-mix(in srgb, var(--ar-primary) 12%, transparent);
+      color: var(--ar-primary);
+      font-size: 0.9rem;
+      font-weight: 750;
+      text-align: center;
+      transition: aspect-ratio 0.2s ease;
+    }
+
+    .ar-result-details {
+      display: grid;
+      gap: 0;
+      margin-top: 18px;
+    }
+
+    .ar-detail-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--ar-border);
+      font-size: 0.9rem;
+    }
+
+    .ar-detail-row:last-child {
+      border-bottom: 0;
+    }
+
+    .ar-detail-row span:first-child {
+      color: var(--ar-muted);
+    }
+
+    .ar-detail-row strong {
+      color: var(--ar-text);
+      overflow-wrap: anywhere;
+      text-align: right;
+    }
+
+    .ar-target-panel {
+      margin-top: 22px;
+    }
+
+    .ar-target-result {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid var(--ar-border);
+      border-radius: 10px;
+      background: var(--ar-soft);
+    }
+
+    .ar-target-result p {
+      margin: 0;
+      color: var(--ar-muted);
+      font-size: 0.83rem;
+    }
+
+    .ar-target-result strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--ar-text);
+      font-size: 1.25rem;
+    }
+
+    .ar-presets {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .ar-preset {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid var(--ar-border);
+      border-radius: 10px;
+      background: var(--ar-surface);
+      color: var(--ar-text);
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .ar-preset:hover,
+    .ar-preset:focus-visible {
+      border-color: var(--ar-primary);
+      background: var(--ar-soft);
+      outline: none;
+    }
+
+    .ar-preset strong {
+      color: var(--ar-primary);
+      font-size: 0.98rem;
+    }
+
+    .ar-preset span {
+      color: var(--ar-muted);
+      font-size: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .ar-info-section {
+      margin-top: 28px;
+      padding: 24px;
+      border: 1px solid var(--ar-border);
+      border-radius: var(--ar-radius);
+      background: var(--ar-surface);
+    }
+
+    .ar-info-section h2 {
+      margin: 0 0 12px;
+      color: var(--ar-text);
+      font-size: 1.25rem;
+    }
+
+    .ar-info-section h3 {
+      margin: 20px 0 7px;
+      color: var(--ar-text);
+      font-size: 1rem;
+    }
+
+    .ar-info-section p,
+    .ar-info-section li {
+      color: var(--ar-muted);
+      font-size: 0.94rem;
+    }
+
+    .ar-info-section p {
+      margin: 0 0 12px;
+    }
+
+    .ar-info-section ul {
+      margin: 8px 0 0;
+      padding-left: 22px;
+    }
+
+    .ar-info-section li + li {
+      margin-top: 7px;
+    }
+
+    .ar-status {
+      min-height: 22px;
+      margin-top: 12px;
+      color: var(--ar-success);
+      font-size: 0.86rem;
+    }
+
+    .ar-status.is-error {
+      color: var(--ar-danger);
+    }
+
+    .ar-tool [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 760px) {
+      .ar-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .ar-result-column {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .ar-presets {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ar-tool {
+        width: min(100% - 22px, 1080px);
+        margin-top: 24px;
+      }
+
+      .ar-panel-heading,
+      .ar-panel-body {
+        padding: 17px;
+      }
+
+      .ar-field-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .ar-presets {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .ar-actions .ar-btn {
+        flex: 1 1 auto;
+      }
+
+      .ar-info-section {
+        padding: 18px;
+      }
+    }
+
+    /* Centralized theme compatibility:
+       Prefer the site's existing theme variables and theme attributes.
+       No separate hardcoded dark palette is required here. */
+    :is(html, body)[data-theme="dark"] .ar-tool,
+    :is(html, body).dark .ar-tool,
+    :is(html, body)[data-bs-theme="dark"] .ar-tool {
+      color-scheme: dark;
+    }
+
+    :is(html, body)[data-theme="light"] .ar-tool,
+    :is(html, body).light .ar-tool,
+    :is(html, body)[data-bs-theme="light"] .ar-tool {
+      color-scheme: light;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ar-tool *,
+      .ar-tool *::before,
+      .ar-tool *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <div id="site-header"></div>
+
+  <main class="ar-tool">
+    <header class="ar-hero">
+      <div class="ar-eyebrow">Image &amp; Display Tools</div>
+      <h1>Aspect Ratio Calculator</h1>
+      <p>Calculate simplified aspect ratios, resize dimensions proportionally, and find the right proportions for images, videos, and screens.</p>
+    </header>
+
+    <div class="ar-layout">
+      <section class="ar-panel" aria-labelledby="ar-input-title">
+        <div class="ar-panel-heading">
+          <h2 id="ar-input-title">Enter dimensions</h2>
+          <p>Enter a width and height to calculate their aspect ratio.</p>
+        </div>
+
+        <div class="ar-panel-body">
+          <div class="ar-dimensions">
+            <div class="ar-field">
+              <label for="ar-width">Width (px)</label>
+              <input id="ar-width" type="number" min="0.000001" step="any" value="1920" inputmode="decimal" placeholder="e.g. 1920">
+            </div>
+
+            <div class="ar-dimension-symbol" aria-hidden="true">×</div>
+
+            <div class="ar-field">
+              <label for="ar-height">Height (px)</label>
+              <input id="ar-height" type="number" min="0.000001" step="any" value="1080" inputmode="decimal" placeholder="e.g. 1080">
+            </div>
+          </div>
+
+          <div class="ar-lock-row">
+            <div class="ar-lock-copy">
+              <strong>Lock aspect ratio</strong>
+              <span>Keep proportions when changing dimensions.</span>
+            </div>
+
+            <label class="ar-switch" aria-label="Lock aspect ratio">
+              <input id="ar-lock" type="checkbox" checked>
+              <span class="ar-switch-track"></span>
+            </label>
+          </div>
+
+          <h3 class="ar-section-label">Resize proportionally</h3>
+
+          <div class="ar-field-grid">
+            <div class="ar-field">
+              <label for="ar-target-width">New width (px)</label>
+              <input id="ar-target-width" type="number" min="0.000001" step="any" placeholder="Enter new width">
+            </div>
+
+            <div class="ar-field">
+              <label for="ar-target-height">New height (px)</label>
+              <input id="ar-target-height" type="number" min="0.000001" step="any" placeholder="Enter new height">
+            </div>
+          </div>
+
+          <div class="ar-actions">
+            <button class="ar-btn ar-btn-primary" id="ar-calculate" type="button">Calculate ratio</button>
+            <button class="ar-btn ar-btn-secondary" id="ar-reset" type="button">Reset</button>
+          </div>
+
+          <p class="ar-status" id="ar-status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <aside class="ar-panel ar-result-column" aria-labelledby="ar-result-title">
+        <div class="ar-panel-heading">
+          <h2 id="ar-result-title">Your aspect ratio</h2>
+          <p>The simplified ratio for your dimensions.</p>
+        </div>
+
+        <div class="ar-panel-body">
+          <div class="ar-result-card">
+            <div class="ar-result-label">Simplified ratio</div>
+            <div class="ar-ratio-value" id="ar-ratio">16:9</div>
+            <div class="ar-result-description" id="ar-ratio-description">Widescreen format</div>
+          </div>
+
+          <div class="ar-preview" aria-label="Proportional shape preview">
+            <div class="ar-preview-shape" id="ar-preview-shape">
+              <span id="ar-preview-label">16:9</span>
+            </div>
+          </div>
+
+          <div class="ar-result-details">
+            <div class="ar-detail-row">
+              <span>Original dimensions</span>
+              <strong id="ar-original">1920 × 1080 px</strong>
+            </div>
+            <div class="ar-detail-row">
+              <span>Decimal ratio</span>
+              <strong id="ar-decimal">1.7778</strong>
+            </div>
+            <div class="ar-detail-row">
+              <span>Orientation</span>
+              <strong id="ar-orientation">Landscape</strong>
+            </div>
+            <div class="ar-detail-row">
+              <span>Pixel count</span>
+              <strong id="ar-pixels">2,073,600</strong>
+            </div>
+          </div>
+
+          <div class="ar-actions">
+            <button class="ar-btn ar-btn-secondary" id="ar-copy-ratio" type="button">Copy ratio</button>
+            <button class="ar-btn ar-btn-secondary" id="ar-copy-dimensions" type="button">Copy dimensions</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="ar-panel ar-target-panel" aria-labelledby="ar-target-title">
+      <div class="ar-panel-heading">
+        <h2 id="ar-target-title">Proportional resize result</h2>
+        <p>Enter either a new width or a new height to calculate the matching dimension.</p>
+      </div>
+      <div class="ar-panel-body">
+        <div class="ar-field-grid">
+          <div class="ar-field">
+            <label for="ar-resize-width">Desired width (px)</label>
+            <input id="ar-resize-width" type="number" min="0.000001" step="any" placeholder="e.g. 1280">
+          </div>
+          <div class="ar-field">
+            <label for="ar-resize-height">Desired height (px)</label>
+            <input id="ar-resize-height" type="number" min="0.000001" step="any" placeholder="e.g. 720">
+          </div>
+        </div>
+
+        <div class="ar-target-result" aria-live="polite">
+          <p>Matching dimensions</p>
+          <strong id="ar-resize-result">1280 × 720 px</strong>
+          <p id="ar-resize-note">Enter a desired width or height to calculate the other dimension.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ar-panel ar-target-panel" aria-labelledby="ar-presets-title">
+      <div class="ar-panel-heading">
+        <h2 id="ar-presets-title">Common aspect ratio presets</h2>
+        <p>Select a preset to load sample dimensions into the calculator.</p>
+      </div>
+
+      <div class="ar-panel-body">
+        <div class="ar-presets">
+          <button class="ar-preset" type="button" data-width="1920" data-height="1080">
+            <strong>16:9</strong><span>Widescreen video</span>
+          </button>
+          <button class="ar-preset" type="button" data-width="1080" data-height="1080">
+            <strong>1:1</strong><span>Square image</span>
+          </button>
+          <button class="ar-preset" type="button" data-width="1080" data-height="1350">
+            <strong>4:5</strong><span>Portrait post</span>
+          </button>
+          <button class="ar-preset" type="button" data-width="1080" data-height="1920">
+            <strong>9:16</strong><span>Vertical video</span>
+          </button>
+          <button class="ar-preset" type="button" data-width="1440" data-height="1080">
+            <strong>4:3</strong><span>Classic display</span>
+          </button>
+          <button class="ar-preset" type="button" data-width="1500" data-height="1000">
+            <strong>3:2</strong><span>Photography</span>
+          </button>
+          <button class="ar-preset" type="button" data-width="2560" data-height="1080">
+            <strong>64:27</strong><span>Ultrawide display</span>
+          </button>
+          <button class="ar-preset" type="button" data-width="1200" data-height="630">
+            <strong>40:21</strong><span>Social sharing image</span>
+          </button>
+          <button class="ar-preset" type="button" data-width="1000" data-height="1000">
+            <strong>1:1</strong><span>Profile picture</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="ar-info-section">
+      <h2>What is an aspect ratio?</h2>
+      <p>An aspect ratio describes the proportional relationship between the width and height of an image, video, screen, or other rectangular area. It is usually written as two numbers separated by a colon, such as 16:9 or 4:3.</p>
+
+      <h3>How to calculate an aspect ratio</h3>
+      <p>Divide both the width and height by their greatest common divisor (GCD). For example, a 1920 × 1080 image simplifies to 16:9. The calculator performs this reduction automatically.</p>
+
+      <h3>Popular aspect ratios</h3>
+      <ul>
+        <li><strong>16:9:</strong> Common for modern video, monitors, and television displays.</li>
+        <li><strong>1:1:</strong> Square images and profile pictures.</li>
+        <li><strong>4:3:</strong> Classic displays and some photography formats.</li>
+        <li><strong>3:2:</strong> Common in digital photography.</li>
+        <li><strong>9:16:</strong> Vertical video formats used for mobile-first content.</li>
+        <li><strong>4:5:</strong> Portrait-oriented social media images.</li>
+      </ul>
+
+      <h3>How to resize without changing proportions</h3>
+      <p>Keep the original aspect ratio locked and enter a new width or height. The matching dimension is calculated using the same proportions, helping prevent unwanted stretching or distortion.</p>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/header.js"></script>
+  <script src="/assets/js/footer.js"></script>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const $ = (id) => document.getElementById(id);
+
+      const widthInput = $("ar-width");
+      const heightInput = $("ar-height");
+      const lockInput = $("ar-lock");
+      const targetWidthInput = $("ar-target-width");
+      const targetHeightInput = $("ar-target-height");
+      const resizeWidthInput = $("ar-resize-width");
+      const resizeHeightInput = $("ar-resize-height");
+
+      let lastEditedDimension = "width";
+      let isUpdating = false;
+
+      function gcd(a, b) {
+        a = Math.abs(Math.round(a));
+        b = Math.abs(Math.round(b));
+
+        while (b) {
+          const remainder = a % b;
+          a = b;
+          b = remainder;
+        }
+
+        return a || 1;
+      }
+
+      function cleanNumber(value) {
+        if (!Number.isFinite(value)) return "—";
+
+        return value.toLocaleString("en-US", {
+          maximumFractionDigits: 4
+        });
+      }
+
+      function validDimension(value) {
+        return Number.isFinite(value) && value > 0;
+      }
+
+      function getRatio(width, height) {
+        /*
+          For integer dimensions, use an exact GCD.
+          For fractional dimensions, normalize the decimal values first.
+        */
+        if (Number.isInteger(width) && Number.isInteger(height)) {
+          const divisor = gcd(width, height);
+          return {
+            width: width / divisor,
+            height: height / divisor
+          };
+        }
+
+        const precision = 10000;
+        const roundedWidth = Math.round(width * precision);
+        const roundedHeight = Math.round(height * precision);
+        const divisor = gcd(roundedWidth, roundedHeight);
+
+        return {
+          width: roundedWidth / divisor,
+          height: roundedHeight / divisor
+        };
+      }
+
+      function ratioLabel(width, height) {
+        const ratio = getRatio(width, height);
+        return `${cleanNumber(ratio.width)}:${cleanNumber(ratio.height)}`;
+      }
+
+      function getDescription(width, height) {
+        const ratio = width / height;
+
+        if (Math.abs(ratio - 16 / 9) < 0.015) return "Widescreen format";
+        if (Math.abs(ratio - 1) < 0.015) return "Square format";
+        if (Math.abs(ratio - 4 / 3) < 0.015) return "Classic display format";
+        if (Math.abs(ratio - 3 / 2) < 0.015) return "Photography format";
+        if (Math.abs(ratio - 9 / 16) < 0.015) return "Vertical video format";
+        if (ratio > 1) return "Landscape format";
+        if (ratio < 1) return "Portrait format";
+
+        return "Square format";
+      }
+
+      function setStatus(message, isError = false) {
+        const status = $("ar-status");
+        status.textContent = message;
+        status.classList.toggle("is-error", isError);
+      }
+
+      function updateTargetDimensions(width, height) {
+        const targetWidth = Number(targetWidthInput.value);
+        const targetHeight = Number(targetHeightInput.value);
+
+        if (validDimension(targetWidth) && !validDimension(targetHeight)) {
+          targetHeightInput.value = cleanNumber(targetWidth * height / width);
+        } else if (validDimension(targetHeight) && !validDimension(targetWidth)) {
+          targetWidthInput.value = cleanNumber(targetHeight * width / height);
+        } else if (validDimension(targetWidth) && validDimension(targetHeight)) {
+          if (lastEditedDimension === "width") {
+            targetHeightInput.value = cleanNumber(targetWidth * height / width);
+          } else {
+            targetWidthInput.value = cleanNumber(targetHeight * width / height);
+          }
+        }
+      }
+
+      function updateResizeResult(width, height) {
+        const desiredWidth = Number(resizeWidthInput.value);
+        const desiredHeight = Number(resizeHeightInput.value);
+        const result = $("ar-resize-result");
+        const note = $("ar-resize-note");
+
+        if (!validDimension(desiredWidth) && !validDimension(desiredHeight)) {
+          result.textContent = `${cleanNumber(width)} × ${cleanNumber(height)} px`;
+          note.textContent = "Enter a desired width or height to calculate the other dimension.";
+          return;
+        }
+
+        if (validDimension(desiredWidth) && !validDimension(desiredHeight)) {
+          const calculatedHeight = desiredWidth * height / width;
+          result.textContent = `${cleanNumber(desiredWidth)} × ${cleanNumber(calculatedHeight)} px`;
+          note.textContent = "Height calculated from the desired width.";
+          return;
+        }
+
+        if (validDimension(desiredHeight) && !validDimension(desiredWidth)) {
+          const calculatedWidth = desiredHeight * width / height;
+          result.textContent = `${cleanNumber(calculatedWidth)} × ${cleanNumber(desiredHeight)} px`;
+          note.textContent = "Width calculated from the desired height.";
+          return;
+        }
+
+        const calculatedHeight = desiredWidth * height / width;
+        result.textContent = `${cleanNumber(desiredWidth)} × ${cleanNumber(calculatedHeight)} px`;
+        note.textContent = "The entered width is used to preserve the original aspect ratio.";
+      }
+
+      function calculate() {
+        const width = Number(widthInput.value);
+        const height = Number(heightInput.value);
+
+        if (!validDimension(width) || !validDimension(height)) {
+          setStatus("Enter a width and height greater than zero.", true);
+          return false;
+        }
+
+        const ratio = ratioLabel(width, height);
+        const decimal = width / height;
+
+        $("ar-ratio").textContent = ratio;
+        $("ar-ratio-description").textContent = getDescription(width, height);
+        $("ar-original").textContent = `${cleanNumber(width)} × ${cleanNumber(height)} px`;
+        $("ar-decimal").textContent = decimal.toFixed(4);
+        $("ar-orientation").textContent =
+          width > height ? "Landscape" :
+          width < height ? "Portrait" : "Square";
+
+        $("ar-pixels").textContent = (width * height).toLocaleString("en-US", {
+          maximumFractionDigits: 4
+        });
+
+        $("ar-preview-label").textContent = ratio;
+
+        const shape = $("ar-preview-shape");
+        const ratioValue = width / height;
+        const boundedRatio = Math.min(4, Math.max(0.25, ratioValue));
+
+        shape.style.aspectRatio = `${boundedRatio}`;
+        shape.style.width = ratioValue >= 1
+          ? "min(100%, 310px)"
+          : `${Math.max(75, Math.min(100, ratioValue * 100))}%`;
+
+        updateTargetDimensions(width, height);
+        updateResizeResult(width, height);
+
+        setStatus("Aspect ratio calculated.");
+        return true;
+      }
+
+      function handleDimensionInput(changedDimension) {
+        if (isUpdating) return;
+
+        isUpdating = true;
+        lastEditedDimension = changedDimension;
+
+        const width = Number(widthInput.value);
+        const height = Number(heightInput.value);
+
+        if (lockInput.checked && validDimension(width) && validDimension(height)) {
+          if (changedDimension === "width") {
+            targetHeightInput.value = "";
+            targetWidthInput.value = "";
+          } else {
+            targetHeightInput.value = "";
+            targetWidthInput.value = "";
+          }
+        }
+
+        isUpdating = false;
+        calculate();
+      }
+
+      function handleTargetInput(changedDimension) {
+        lastEditedDimension = changedDimension;
+
+        const width = Number(widthInput.value);
+        const height = Number(heightInput.value);
+
+        if (!validDimension(width) || !validDimension(height)) {
+          setStatus("Enter valid original dimensions first.", true);
+          return;
+        }
+
+        const targetWidth = Number(targetWidthInput.value);
+        const targetHeight = Number(targetHeightInput.value);
+
+        if (changedDimension === "width" && validDimension(targetWidth)) {
+          targetHeightInput.value = cleanNumber(targetWidth * height / width);
+        } else if (changedDimension === "height" && validDimension(targetHeight)) {
+          targetWidthInput.value = cleanNumber(targetHeight * width / height);
+        }
+
+        setStatus("Matching dimension updated.");
+      }
+
+      async function copyText(text, label) {
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            const temporary = document.createElement("textarea");
+            temporary.value = text;
+            temporary.style.position = "fixed";
+            temporary.style.opacity = "0";
+            document.body.appendChild(temporary);
+            temporary.select();
+
+            const copied = document.execCommand("copy");
+            temporary.remove();
+
+            if (!copied) throw new Error("Copy unavailable");
+          }
+
+          setStatus(`${label} copied to clipboard.`);
+        } catch {
+          setStatus("Unable to copy automatically. Please select and copy the result.", true);
+        }
+      }
+
+      widthInput.addEventListener("input", () => handleDimensionInput("width"));
+      heightInput.addEventListener("input", () => handleDimensionInput("height"));
+
+      targetWidthInput.addEventListener("input", () => handleTargetInput("width"));
+      targetHeightInput.addEventListener("input", () => handleTargetInput("height"));
+
+      resizeWidthInput.addEventListener("input", () => {
+        resizeHeightInput.value = "";
+        calculate();
+      });
+
+      resizeHeightInput.addEventListener("input", () => {
+        resizeWidthInput.value = "";
+        calculate();
+      });
+
+      $("ar-calculate").addEventListener("click", calculate);
+
+      $("ar-reset").addEventListener("click", () => {
+        widthInput.value = "1920";
+        heightInput.value = "1080";
+        lockInput.checked = true;
+        targetWidthInput.value = "";
+        targetHeightInput.value = "";
+        resizeWidthInput.value = "";
+        resizeHeightInput.value = "";
+        lastEditedDimension = "width";
+        calculate();
+        setStatus("Calculator reset to 1920 × 1080.");
+      });
+
+      $("ar-copy-ratio").addEventListener("click", () => {
+        copyText($("ar-ratio").textContent, "Aspect ratio");
+      });
+
+      $("ar-copy-dimensions").addEventListener("click", () => {
+        copyText(`${widthInput.value} × ${heightInput.value} px`, "Dimensions");
+      });
+
+      document.querySelectorAll(".ar-preset").forEach((preset) => {
+        preset.addEventListener("click", () => {
+          widthInput.value = preset.dataset.width;
+          heightInput.value = preset.dataset.height;
+          targetWidthInput.value = "";
+          targetHeightInput.value = "";
+          resizeWidthInput.value = "";
+          resizeHeightInput.value = "";
+          calculate();
+          setStatus(`Preset ${ratioLabel(Number(preset.dataset.width), Number(preset.dataset.height))} applied.`);
+        });
+      });
+
+      lockInput.addEventListener("change", () => {
+        setStatus(lockInput.checked
+          ? "Aspect ratio lock enabled."
+          : "Aspect ratio lock disabled.");
+      });
+
+      calculate();
+    })();
+  </script>
+</body>
+</html>

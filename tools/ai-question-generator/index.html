@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20261116" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261116" />
+  <link rel="shortcut icon" href="/favicon.ico?v=20261116" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261116" />
+  <meta name="apple-mobile-web-app-title" content="MohakTools" />
+  <link rel="manifest" href="/site.webmanifest?v=20261116" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
   <title>AI Question Generator | MohakTools</title>
-  <meta name="description" content="Upload or paste a paragraph and generate 1–15 AI comprehension questions. Choose difficulty, question format, and download a named text file.">
+  <meta name="description" content="Turn a passage into practice questions. Choose a difficulty and format, answer them on the page, and check the explanations.">
   <meta name="keywords" content="AI question generator, paragraph to questions, comprehension questions, quiz maker, study questions">
   <meta name="author" content="MohakTools">
   <meta name="robots" content="index, follow">
@@ -15,7 +21,6 @@
   <meta property="og:description" content="Generate useful comprehension questions from a paragraph, with answers you can reveal when ready.">
   <meta property="og:url" content="https://mohaktools.com/tools/ai-question-generator/">
   <meta name="twitter:card" content="summary">
-  <link rel="icon" href="/favicon.webp" type="image/webp">
   <link rel="stylesheet" href="/assets/css/global.css">
   <link rel="stylesheet" href="/assets/css/themes.css">
   <link rel="stylesheet" href="/assets/css/tool-page.css">
@@ -23,6 +28,7 @@
   <script src="/assets/js/tools-registry.js" defer></script>
   <script src="/assets/js/header.js" defer></script>
   <script src="/assets/js/footer.js" defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <style>
     .qg-page { max-width: 1040px; margin: 0 auto; padding: 28px 18px 64px; color: var(--color-text); }
     .qg-breadcrumb { margin-bottom: 20px; color: var(--color-text-secondary); font-size: 13px; }
@@ -89,10 +95,6 @@
     .qg-progress-track { height: 7px; overflow: hidden; border-radius: 99px; background: var(--color-border); }
     .qg-progress-fill { width: 0; height: 100%; border-radius: inherit; background: var(--color-primary); transition: width .22s ease; }
     .qg-toolbar-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-    .qg-turnstile { margin-top: 16px; }
-    .qg-turnstile-status { min-height: 18px; margin: 7px 0 0; color: var(--color-text-secondary); font-size: 11px; line-height: 1.5; }
-    .qg-turnstile-status[data-kind="error"] { color: #c43e42; }
-    .qg-turnstile-status[data-kind="success"] { color: #16804a; }
     .qg-workspace.is-showing-results .qg-stepper, .qg-workspace.is-showing-results #question-form { display: none !important; }
     .qg-workspace.is-showing-results .qg-results { max-width: none; margin: 0; padding: 0; border-top: 0; }
     .qg-answer { margin: 12px 0 0 37px; padding-top: 11px; border-top: 1px solid var(--color-border); color: var(--color-text-secondary); font-size: 12px; line-height: 1.65; }
@@ -107,9 +109,9 @@
     .qg-faq:last-child { padding-bottom: 0; border-bottom: 0; }
     .qg-faq h3 { margin: 0 0 5px; font-size: 14px; }
     .qg-faq p { margin: 0; font-size: 13px; }
-    .qg-related { margin: 25px 0 0; }
+    .qg-related { display: flex; flex-wrap: wrap; gap: 10px; margin: 25px 0 0; }
     .qg-related h2 { margin-bottom: 10px; color: var(--color-text-secondary); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
-    .qg-related a { display: inline-flex; margin: 0 7px 7px 0; padding: 8px 12px; color: var(--color-text); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 999px; font-size: 12px; text-decoration: none; }
+    .qg-related a { display: block; flex: 1 1 190px; margin: 0; padding: 14px 16px; color: var(--color-text); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 14px; font-size: 13px; font-weight: 650; text-decoration: none; }
     .qg-related a:hover { border-color: var(--color-primary); }
     .qg-workspace { display: block; overflow: visible; padding: 24px; }
     .qg-stepper { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 0 0 24px; padding: 0; list-style: none; }
@@ -155,6 +157,7 @@
       <span class="qg-kicker"><span aria-hidden="true">✦</span> AI study assistant</span>
       <h1>Turn a paragraph into questions.</h1>
       <p>Paste a passage and create focused comprehension questions with answers. Use them for revision, reading practice, or a quick knowledge check.</p>
+      <p class="qg-help" id="turnstile-status" role="status" aria-live="polite">Checking this browser…</p>
     </header>
 
     <section class="qg-workspace" id="question-workspace" aria-label="AI Question Generator">
@@ -203,7 +206,7 @@
           <div class="qg-heading"><span class="qg-icon" aria-hidden="true">✦</span><div><h2 id="step-three-title">Step 3: Generate</h2><p>Check your settings, then create the questions</p></div></div>
           <p class="qg-step-complete">Steps 1 and 2 of 3 completed.</p>
           <div class="qg-summary" id="generation-summary"></div>
-          <div class="qg-turnstile"><div id="question-turnstile" aria-label="Security verification"></div><p class="qg-turnstile-status" id="question-turnstile-status" role="status" aria-live="polite">Security verification is required before generating questions.</p></div>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAGB-vNFSSZmm2a_I" data-appearance="interaction-only" data-callback="onTurnstileSuccess" data-expired-callback="onTurnstileExpired" data-error-callback="onTurnstileError"></div>
           <div class="qg-step-actions"><button class="qg-button" id="back-step-three" type="button">Back</button><button class="qg-button qg-button-primary" id="generate-questions" type="submit">Generate question</button></div>
           <p class="qg-status" id="question-status" role="status" aria-live="polite"></p>
         </section>
@@ -229,27 +232,27 @@
     </section>
 
     <section class="qg-info" aria-labelledby="about-title"><h2 id="about-title">About the AI Question Generator</h2><p>This tool creates questions from the ideas and details in your paragraph. Choose a mix of question styles, multiple choice, or short answer, then reveal answers and explanations when you’re ready. Generated questions are a study aid; check them against the original passage for accuracy.</p><p>Your paragraph is sent to the configured MohakTools Cloudflare Worker for processing with Groq’s <code>openai/gpt-oss-120b</code> model. The Groq API key stays on the Worker and is never included in this page.</p></section>
-    <section class="qg-info" aria-labelledby="faq-title"><h2 id="faq-title">Frequently Asked Questions</h2>
+    <section class="qg-info" aria-labelledby="faq-title"><h2 id="faq-title">Common questions about AI Question Generator</h2>
       <div class="qg-faq"><h3>What kind of text can I use?</h3><p>Paste a paragraph or upload a .txt file up to 5,000 characters. The tool uses only the information in that passage to create questions.</p></div>
       <div class="qg-faq"><h3>Can I answer multiple-choice questions on the page?</h3><p>Yes. Select an option for instant feedback, then track your progress as you work through the set. Short-answer questions include a revealable answer.</p></div>
       <div class="qg-faq"><h3>Can I save the questions as a text file?</h3><p>Yes. Enter a file name and choose Download as .txt, or copy the full question set to your clipboard.</p></div>
       <div class="qg-faq"><h3>Are the questions guaranteed to be correct?</h3><p>No. AI can misunderstand a passage. Review the questions and answers against the source text before using them.</p></div>
     </section>
-    <nav class="qg-related" aria-label="Related tools"><h2>Explore more tools</h2><a href="/tools/ai-email-writer/">AI Email Writer</a><a href="/tools/#text-tools">Text Tools</a><a href="/tools/">All Tools</a></nav>
+    <nav class="qg-related" aria-label="Suggested tools"><h2>Try another AI tool</h2><a href="/tools/ai-email-writer/">AI Email Writer</a><a href="/tools/ai-invitation-writer/">Invitation Writer</a><a href="/tools/make-a-paragraph-small/">Make a Paragraph Small</a></nav>
   </main>
   <div id="site-footer"></div>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
   <script>
     (() => {
       "use strict";
-      const CONFIG = {
-        workerUrl: "https://email-writer.mohakchoubey.workers.dev/",
-        turnstileSiteKey: "0x4AAAAAAGB-vNFSSZmm2a_I"
-      };
+      const CONFIG = { workerUrl: "https://email-writer.mohakchoubey.workers.dev/", turnstileSiteKey: "0x4AAAAAAGB-vNFSSZmm2a_I" };
       const el = id => document.getElementById(id);
       const form = el("question-form");
       const paragraph = el("source-paragraph");
       const status = el("question-status");
+      const turnstileStatus = el("turnstile-status");
+      window.onTurnstileSuccess = token => { window.mohakTurnstileToken = token; turnstileStatus.textContent = "Verified. Ready to generate."; turnstileStatus.dataset.kind = "success"; };
+      window.onTurnstileExpired = () => { window.mohakTurnstileToken = ""; turnstileStatus.textContent = "Verification expired. Checking again…"; turnstileStatus.dataset.kind = ""; };
+      window.onTurnstileError = () => { window.mohakTurnstileToken = ""; turnstileStatus.textContent = "Verification could not load. Check your connection and try again."; turnstileStatus.dataset.kind = "error"; };
       const resultsStatus = el("results-status");
       const list = el("question-list");
       const generateButton = el("generate-questions");
@@ -263,8 +266,6 @@
       const quizScore = el("quiz-score");
       const quizProgressFill = el("quiz-progress-fill");
       const quizProgressTrack = document.querySelector(".qg-progress-track");
-      const turnstileContainer = el("question-turnstile");
-      const turnstileStatus = el("question-turnstile-status");
       let selectedCount = 5;
       let customCountSelected = false;
       let selectedDifficulty = "medium";
@@ -272,8 +273,6 @@
       let currentQuestions = [];
       let reviewedAnswers = [];
       let correctAnswers = 0;
-      let turnstileToken = "";
-      let turnstileWidgetId = null;
 
       function setStatus(message, kind = "") {
         status.textContent = message;
@@ -282,46 +281,6 @@
       function setResultsStatus(message, kind = "") {
         resultsStatus.textContent = message;
         resultsStatus.dataset.kind = kind;
-      }
-      function turnstileConfigured() {
-        return CONFIG.turnstileSiteKey && !CONFIG.turnstileSiteKey.includes("YOUR_");
-      }
-      function setTurnstileStatus(message, kind = "") {
-        turnstileStatus.textContent = message;
-        turnstileStatus.dataset.kind = kind;
-      }
-      function mountTurnstile() {
-        if (turnstileWidgetId !== null || !turnstileContainer) return;
-        if (!turnstileConfigured()) {
-          setTurnstileStatus("Add your Cloudflare Turnstile site key before enabling question generation.", "error");
-          return;
-        }
-        if (!window.turnstile) {
-          setTurnstileStatus("Security verification could not load. Refresh the page and try again.", "error");
-          return;
-        }
-        turnstileWidgetId = window.turnstile.render(turnstileContainer, {
-          sitekey: CONFIG.turnstileSiteKey,
-          action: "ai_questions",
-          theme: document.documentElement.dataset.theme === "dark" ? "dark" : "light",
-          callback: token => {
-            turnstileToken = token;
-            setTurnstileStatus("Security check complete.", "success");
-          },
-          "expired-callback": () => {
-            turnstileToken = "";
-            setTurnstileStatus("Security check expired. Complete it again to continue.", "error");
-          },
-          "error-callback": () => {
-            turnstileToken = "";
-            setTurnstileStatus("Security verification failed to load. Please refresh and try again.", "error");
-          }
-        });
-      }
-      function resetTurnstile() {
-        turnstileToken = "";
-        if (turnstileWidgetId !== null && window.turnstile) window.turnstile.reset(turnstileWidgetId);
-        setTurnstileStatus("Complete the security check before your next request.");
       }
       function setBusy(busy) {
         generateButton.disabled = busy;
@@ -562,7 +521,6 @@
           makeText("span", "", format)
         );
         showStep(3);
-        mountTurnstile();
       });
       el("back-step-three").addEventListener("click", () => showStep(2));
 
@@ -571,15 +529,14 @@
         if (activeStep !== 3) return;
         const source = paragraph.value.trim();
         if (!validSource() || !validOptions()) return;
-        if (!turnstileConfigured()) {
-          setStatus("Security verification is not configured yet. Add the Turnstile site key and try again.", "error");
+        if (!CONFIG.turnstileSiteKey || CONFIG.turnstileSiteKey.includes("YOUR_")) {
+          setStatus("The Turnstile site key is not configured on this page.", "error");
           return;
         }
-        if (!turnstileToken) {
-          setTurnstileStatus("Complete the security check before generating questions.", "error");
+        if (!window.mohakTurnstileToken) {
+          setStatus("Browser verification is still running. Please wait and try again.", "error");
           return;
         }
-        const securityToken = turnstileToken;
         setBusy(true);
         resultsPanel.hidden = true;
         setStatus("Reading the passage and writing questions…");
@@ -587,7 +544,7 @@
           const response = await fetch(CONFIG.workerUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ task: "questions", paragraph: source, count: questionCount(), difficulty: selectedDifficulty, type: el("question-type").value, turnstileToken: securityToken })
+            body: JSON.stringify({ task: "questions", paragraph: source, count: questionCount(), difficulty: selectedDifficulty, type: el("question-type").value, turnstileToken: window.mohakTurnstileToken })
           });
           const data = await response.json().catch(() => ({}));
           if (!response.ok) throw new Error(data.error || `The question service returned ${response.status}.`);
@@ -605,8 +562,9 @@
         } catch (error) {
           setStatus(error.message || "Couldn’t create questions. Please try again.", "error");
         } finally {
+          window.mohakTurnstileToken = "";
+          if (window.turnstile) window.turnstile.reset();
           setBusy(false);
-          resetTurnstile();
         }
       });
 
@@ -619,7 +577,6 @@
       el("start-over").addEventListener("click", () => {
         questionWorkspace.classList.remove("is-showing-results");
         resultsPanel.hidden = true;
-        resetTurnstile();
         form.reset();
         paragraph.value = "";
         sourceFile.value = "";

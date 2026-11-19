@@ -16,23 +16,11 @@
    - Automatically creates missing footer mount
    ========================================= */
 
-/* Umami analytics */
-(() => {
-  if (document.querySelector('script[src="https://cloud.umami.is/script.js"]')) return;
-
-  const umami = document.createElement("script");
-  umami.defer = true;
-  umami.src = "https://cloud.umami.is/script.js";
-  umami.dataset.websiteId = "c34f77a2-973c-4e58-82ac-e96fca33443e";
-  document.head.append(umami);
-})();
-
 (() => {
   "use strict";
 
   let mount = document.getElementById("site-footer");
 
-   
   if (!mount) {
     mount = document.createElement("div");
     mount.id = "site-footer";
@@ -78,7 +66,7 @@
         display: grid;
         grid-template-columns:
           minmax(220px, 1.5fr)
-          repeat(3, minmax(140px, 1fr));
+          repeat(4, minmax(140px, 1fr));
         gap: 36px;
         padding-bottom: 40px;
       }
@@ -184,6 +172,19 @@
         color: var(--color-primary);
         text-decoration: underline;
         text-underline-offset: 3px;
+      }
+
+      .mt-footer-product-hunt {
+        display: inline-flex;
+        max-width: 100%;
+        margin-top: 18px;
+        border-radius: 8px;
+      }
+
+      .mt-footer-product-hunt img {
+        display: block;
+        width: min(250px, 100%);
+        height: auto;
       }
 
       .mt-footer a:focus-visible {
@@ -305,7 +306,7 @@
                aria-label="MohakTools home">
               <span class="mt-footer-logo" aria-hidden="true">
                 <img
-                  src="/favicon.webp"
+                  src="/logo.webp"
                   alt=""
                   width="36"
                   height="36"
@@ -357,9 +358,29 @@
               <a href="/privacy-policy/">Privacy Policy</a>
               <a href="/terms/">Terms of Use</a>
               <a href="/articles/"> Articles </a>
-              <a href="/sitemap/"> Sitemap </a>
+                <a href="/sitemap/"> Sitemap </a>
             </nav>
           </section> 
+
+          <section class="mt-footer-social" aria-label="Social links and profiles">
+            <h2 class="mt-footer-heading">Follow and support</h2>
+            <nav class="mt-footer-links" aria-label="MohakTools social links">
+              <a href="https://instagram.com/mohaktools" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://www.threads.com/@mohaktools" target="_blank" rel="noopener noreferrer">Threads</a>
+              <a href="https://mohakchoubey.github.io" target="_blank" rel="noopener noreferrer">Mohak Choubey</a>
+            </nav>
+            <a class="mt-footer-product-hunt"
+               href="https://www.producthunt.com/products/mohaktools?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-mohaktools"
+               target="_blank"
+               rel="noopener noreferrer">
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1316709&amp;theme=neutral&amp;t=1794823813925"
+                alt="MohakTools - Free Online Tools, Calculators &amp; Converters | Product Hunt"
+                width="250"
+                height="54"
+                loading="lazy">
+            </a>
+          </section>
 
         </div>
 
@@ -514,7 +535,13 @@
   );
 
   initializeFooter();
+
+  if (!document.querySelector("script[data-mohak-settings]")) {
+    const settingsScript = document.createElement("script");
+    settingsScript.src = "/assets/js/settings.js";
+    settingsScript.dataset.mohakSettings = "true";
+    settingsScript.defer = true;
+    document.head.appendChild(settingsScript);
+  }
+
 })();
-
-
-

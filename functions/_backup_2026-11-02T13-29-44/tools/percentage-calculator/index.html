@@ -1,0 +1,1394 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> Percentage Calculator Online | MohakTools</title>
+
+    <meta
+        name="description"
+        content="Calculate percentages, find what percent one number is of another, and work out percentage increases or decreases."
+    >
+    <meta
+        name="keywords"
+        content="percentage calculator, percent calculator, percentage increase calculator, percentage decrease calculator, calculate percentage online"
+    >
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="MohakTools">
+    <meta name="theme-color" content="#2563eb">
+
+    <link
+        rel="canonical"
+        href="https://mohaktools.com/tools/percentage-calculator/"
+    >
+    <link rel="icon" href="/favicon.webp" type="image/webp">
+
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/themes.css">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MohakTools">
+    <meta
+        property="og:title"
+        content="Percentage Calculator - MohakTools"
+    >
+    <meta
+        property="og:description"
+        content="Calculate percentages, percentage changes, increases, and decreases with this free online calculator."
+    >
+    <meta
+        property="og:url"
+        content="https://mohaktools.com/tools/percentage-calculator/"
+    >
+
+    <meta name="twitter:card" content="summary">
+    <meta
+        name="twitter:title"
+        content="Percentage Calculator - MohakTools"
+    >
+    <meta
+        name="twitter:description"
+        content="Calculate percentages and percentage changes quickly with MohakTools."
+    >
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Percentage Calculator",
+        "url": "https://mohaktools.com/tools/percentage-calculator/",
+        "description": "A free online percentage calculator for calculating percentages, percentage changes, increases, and decreases.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "isAccessibleForFree": true,
+        "publisher": {
+            "@type": "Organization",
+            "name": "MohakTools",
+            "url": "https://mohaktools.com/"
+        }
+    }
+    </script>
+
+    <style>
+        /* ========================================
+           MohakTools — Percentage Calculator
+           File: /tools/percentage-calculator/index.html
+           Responsive layout and global theme support
+        ======================================== */
+
+        .percentage-page {
+            width: min(1000px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 24px 0 56px;
+            color: var(--color-text);
+            box-sizing: border-box;
+        }
+
+        .percentage-page *,
+        .percentage-page *::before,
+        .percentage-page *::after {
+            box-sizing: border-box;
+        }
+
+        .percentage-breadcrumb {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 20px;
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .percentage-breadcrumb a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .percentage-breadcrumb a:hover {
+            color: var(--color-primary-hover);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .percentage-intro {
+            margin-bottom: 24px;
+        }
+
+        .percentage-intro h1 {
+            margin: 0 0 10px;
+            color: var(--color-text);
+            font-size: clamp(27px, 4vw, 36px);
+            line-height: 1.25;
+            letter-spacing: -0.6px;
+            overflow-wrap: anywhere;
+        }
+
+        .percentage-intro p {
+            max-width: 760px;
+            margin: 0;
+            color: var(--color-text-secondary);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .percentage-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.75fr);
+            align-items: start;
+            gap: 18px;
+        }
+
+        .percentage-main,
+        .percentage-info-card,
+        .percentage-calculator-card {
+            min-width: 0;
+            color: var(--color-text);
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg, 16px);
+            box-shadow: 0 6px 22px var(--color-card-shadow);
+        }
+
+        .percentage-main {
+            padding: 18px;
+        }
+
+        .percentage-section-heading {
+            margin: 0 0 7px;
+            color: var(--color-text);
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        .percentage-section-description {
+            margin: 0 0 18px;
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .percentage-calculators {
+            display: grid;
+            gap: 14px;
+        }
+
+        .percentage-calculator-card {
+            padding: 16px;
+            box-shadow: none;
+            border-radius: var(--radius-md, 12px);
+        }
+
+        .percentage-card-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .percentage-card-number {
+            display: flex;
+            flex: 0 0 30px;
+            width: 30px;
+            height: 30px;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary-text);
+            background-color: var(--color-primary);
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .percentage-card-heading h3 {
+            margin: 0 0 4px;
+            color: var(--color-text);
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .percentage-card-heading p {
+            margin: 0;
+            color: var(--color-text-secondary);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .percentage-form {
+            display: grid;
+            gap: 12px;
+        }
+
+        .percentage-field-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .percentage-field {
+            display: flex;
+            min-width: 0;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .percentage-field label {
+            color: var(--color-text);
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .percentage-input-wrap {
+            display: flex;
+            min-width: 0;
+            align-items: center;
+            overflow: hidden;
+            background-color: var(--color-input-bg);
+            border: 1px solid var(--color-input-border);
+            border-radius: var(--radius-sm, 7px);
+            transition: border-color 160ms ease;
+        }
+
+        .percentage-input-wrap:focus-within {
+            border-color: var(--color-primary);
+            outline: 2px solid var(--color-primary);
+            outline-offset: 1px;
+        }
+
+        .percentage-input {
+            display: block;
+            width: 100%;
+            min-width: 0;
+            min-height: 42px;
+            padding: 10px 11px;
+            color: var(--color-text);
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            outline: none;
+            font: inherit;
+            font-size: 14px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .percentage-input::placeholder {
+            color: var(--color-text-secondary);
+            opacity: 0.75;
+        }
+
+        .percentage-input-suffix {
+            flex: 0 0 auto;
+            padding: 0 11px;
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .percentage-input:focus-visible {
+            outline: none;
+        }
+
+        .percentage-field-hint {
+            color: var(--color-text-secondary);
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .percentage-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-top: 2px;
+        }
+
+        .percentage-button {
+            display: inline-flex;
+            min-height: 40px;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 15px;
+            color: var(--color-primary-text);
+            background-color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+            border-radius: var(--radius-sm, 7px);
+            font: inherit;
+            font-size: 13px;
+            font-weight: 650;
+            text-align: center;
+            cursor: pointer;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            transition:
+                background-color 160ms ease,
+                border-color 160ms ease,
+                transform 120ms ease;
+        }
+
+        .percentage-button:hover {
+            background-color: var(--color-primary-hover);
+            border-color: var(--color-primary-hover);
+        }
+
+        .percentage-button:active {
+            transform: scale(0.98);
+        }
+
+        .percentage-button:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 3px;
+        }
+
+        .percentage-button.secondary {
+            color: var(--color-text);
+            background-color: var(--color-surface-secondary);
+            border-color: var(--color-border);
+        }
+
+        .percentage-button.secondary:hover {
+            background-color: var(--color-surface);
+            border-color: var(--color-primary);
+        }
+
+        .percentage-result {
+            display: none;
+            min-width: 0;
+            margin-top: 13px;
+            padding: 13px;
+            background-color: var(--color-surface-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm, 8px);
+            overflow-wrap: anywhere;
+        }
+
+        .percentage-result.visible {
+            display: block;
+        }
+
+        .percentage-result-label {
+            margin: 0 0 5px;
+            color: var(--color-text-secondary);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .percentage-result-value {
+            margin: 0;
+            color: var(--color-primary);
+            font-size: clamp(21px, 3vw, 28px);
+            font-weight: 700;
+            line-height: 1.35;
+            font-variant-numeric: tabular-nums;
+            overflow-wrap: anywhere;
+        }
+
+        .percentage-result-detail {
+            margin: 6px 0 0;
+            color: var(--color-text-secondary);
+            font-size: 12px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .percentage-result.error {
+            border-color: var(--color-danger);
+        }
+
+        .percentage-result.error .percentage-result-value {
+            color: var(--color-danger);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .percentage-info-card {
+            padding: 18px;
+        }
+
+        .percentage-info-card h2 {
+            margin: 0 0 12px;
+            color: var(--color-text);
+            font-size: 19px;
+            line-height: 1.4;
+        }
+
+        .percentage-info-card h3 {
+            margin: 20px 0 8px;
+            color: var(--color-text);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .percentage-info-card p,
+        .percentage-info-card li {
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        .percentage-info-card p {
+            margin: 0 0 12px;
+        }
+
+        .percentage-info-card ul {
+            padding-left: 19px;
+            margin: 8px 0 0;
+        }
+
+        .percentage-info-card li + li {
+            margin-top: 7px;
+        }
+
+        .percentage-formula {
+            display: block;
+            margin: 8px 0;
+            padding: 10px;
+            color: var(--color-text);
+            background-color: var(--color-surface-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm, 7px);
+            font-size: 12px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .percentage-seo {
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .percentage-seo h2 {
+            margin: 0 0 12px;
+            color: var(--color-text);
+            font-size: 22px;
+            line-height: 1.4;
+        }
+
+        .percentage-seo h3 {
+            margin: 22px 0 8px;
+            color: var(--color-text);
+            font-size: 17px;
+            line-height: 1.5;
+        }
+
+        .percentage-seo p {
+            max-width: 850px;
+            margin: 0 0 12px;
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            line-height: 1.85;
+            overflow-wrap: anywhere;
+        }
+
+        .percentage-faq {
+            padding: 13px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .percentage-faq:last-child {
+            border-bottom: 0;
+        }
+
+        .percentage-faq h3 {
+            margin: 0 0 7px;
+            font-size: 15px;
+        }
+
+        .percentage-faq p {
+            margin: 0;
+        }
+
+        /* Tablet */
+        @media (max-width: 800px) {
+            .percentage-page {
+                width: min(640px, calc(100% - 28px));
+                padding-top: 22px;
+                padding-bottom: 44px;
+            }
+
+            .percentage-layout {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 16px;
+            }
+
+            .percentage-main,
+            .percentage-info-card {
+                padding: 16px;
+            }
+
+            .percentage-intro {
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 520px) {
+            .percentage-page {
+                width: calc(100% - 22px);
+                padding-top: 18px;
+                padding-bottom: 36px;
+            }
+
+            .percentage-breadcrumb {
+                gap: 6px;
+                margin-bottom: 16px;
+                font-size: 12px;
+            }
+
+            .percentage-intro {
+                margin-bottom: 17px;
+            }
+
+            .percentage-intro h1 {
+                font-size: clamp(25px, 7vw, 31px);
+                letter-spacing: -0.4px;
+            }
+
+            .percentage-intro p {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            .percentage-layout {
+                gap: 14px;
+            }
+
+            .percentage-main,
+            .percentage-info-card {
+                padding: 12px;
+                border-radius: 12px;
+            }
+
+            .percentage-section-heading {
+                font-size: 18px;
+            }
+
+            .percentage-section-description {
+                margin-bottom: 14px;
+                font-size: 12px;
+            }
+
+            .percentage-calculators {
+                gap: 11px;
+            }
+
+            .percentage-calculator-card {
+                padding: 12px;
+                border-radius: 9px;
+            }
+
+            .percentage-card-heading {
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+
+            .percentage-card-number {
+                flex-basis: 27px;
+                width: 27px;
+                height: 27px;
+                border-radius: 7px;
+                font-size: 12px;
+            }
+
+            .percentage-card-heading h3 {
+                font-size: 15px;
+            }
+
+            .percentage-card-heading p {
+                font-size: 11px;
+            }
+
+            .percentage-field-row {
+                gap: 9px;
+            }
+
+            .percentage-form {
+                gap: 10px;
+            }
+
+            .percentage-field label {
+                font-size: 11px;
+            }
+
+            .percentage-input {
+                min-height: 40px;
+                padding: 9px 8px;
+                font-size: 14px;
+            }
+
+            .percentage-input-suffix {
+                padding: 0 8px;
+                font-size: 12px;
+            }
+
+            .percentage-actions {
+                gap: 7px;
+            }
+
+            .percentage-button {
+                min-height: 38px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .percentage-result {
+                padding: 11px;
+                margin-top: 10px;
+            }
+
+            .percentage-result-value {
+                font-size: 23px;
+            }
+
+            .percentage-info-card h2 {
+                font-size: 18px;
+            }
+
+            .percentage-seo {
+                margin-top: 28px;
+                padding-top: 20px;
+            }
+
+            .percentage-seo h2 {
+                font-size: 20px;
+            }
+
+            .percentage-seo h3 {
+                font-size: 16px;
+            }
+
+            .percentage-seo p {
+                font-size: 13px;
+            }
+        }
+
+        /* Very small phones */
+        @media (max-width: 360px) {
+            .percentage-page {
+                width: calc(100% - 16px);
+            }
+
+            .percentage-main,
+            .percentage-info-card {
+                padding: 9px;
+            }
+
+            .percentage-calculator-card {
+                padding: 9px;
+            }
+
+            .percentage-field-row {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 10px;
+            }
+
+            .percentage-button {
+                padding: 8px 10px;
+            }
+
+            .percentage-result-value {
+                font-size: 21px;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .percentage-button,
+            .percentage-input-wrap {
+                transition: none;
+            }
+
+            .percentage-button:active {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Shared site header -->
+     <script src="/assets/js/tools-registry.js" defer></script>
+    <div id="site-header"></div>
+
+    <main class="percentage-page">
+        <nav class="percentage-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <a href="/tools/">Tools</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Percentage Calculator</span>
+        </nav>
+
+        <header class="percentage-intro">
+            <h1>Percentage Calculator</h1>
+            <p>
+                Calculate percentages, find what percentage one number is
+                of another, and work out percentage increases or decreases.
+                Enter your numbers below to get instant results.
+            </p>
+        </header>
+
+        <div class="percentage-layout">
+            <section class="percentage-main" aria-labelledby="percentage-tools-title">
+                <h2 class="percentage-section-heading" id="percentage-tools-title">
+                    Calculate a Percentage
+                </h2>
+
+                <p class="percentage-section-description">
+                    Choose the calculation that matches your question.
+                </p>
+
+                <div class="percentage-calculators">
+
+                    <!-- Calculator 1: Find a percentage of a number -->
+                    <article class="percentage-calculator-card">
+                        <div class="percentage-card-heading">
+                            <span class="percentage-card-number" aria-hidden="true">1</span>
+                            <div>
+                                <h3>What is X% of Y?</h3>
+                                <p>Find a percentage of any number.</p>
+                            </div>
+                        </div>
+
+                        <form class="percentage-form" id="percentage-of-form">
+                            <div class="percentage-field-row">
+                                <div class="percentage-field">
+                                    <label for="percentage-of-rate">
+                                        Percentage (X)
+                                    </label>
+                                    <div class="percentage-input-wrap">
+                                        <input
+                                            class="percentage-input"
+                                            id="percentage-of-rate"
+                                            name="percentage"
+                                            type="number"
+                                            step="any"
+                                            inputmode="decimal"
+                                            placeholder="e.g. 20"
+                                            required
+                                        >
+                                        <span class="percentage-input-suffix" aria-hidden="true">%</span>
+                                    </div>
+                                </div>
+
+                                <div class="percentage-field">
+                                    <label for="percentage-of-number">
+                                        Number (Y)
+                                    </label>
+                                    <div class="percentage-input-wrap">
+                                        <input
+                                            class="percentage-input"
+                                            id="percentage-of-number"
+                                            name="number"
+                                            type="number"
+                                            step="any"
+                                            inputmode="decimal"
+                                            placeholder="e.g. 500"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="percentage-actions">
+                                <button class="percentage-button" type="submit">
+                                    Calculate
+                                </button>
+                                <button
+                                    class="percentage-button secondary"
+                                    type="reset"
+                                >
+                                    Clear
+                                </button>
+                            </div>
+                        </form>
+
+                        <div
+                            class="percentage-result"
+                            id="percentage-of-result"
+                            role="status"
+                            aria-live="polite"
+                            aria-atomic="true"
+                        >
+                            <p class="percentage-result-label">Result</p>
+                            <p class="percentage-result-value" id="percentage-of-value"></p>
+                            <p class="percentage-result-detail" id="percentage-of-detail"></p>
+                        </div>
+                    </article>
+
+                    <!-- Calculator 2: Find what percentage one number is -->
+                    <article class="percentage-calculator-card">
+                        <div class="percentage-card-heading">
+                            <span class="percentage-card-number" aria-hidden="true">2</span>
+                            <div>
+                                <h3>X is what percent of Y?</h3>
+                                <p>Find the percentage represented by one number.</p>
+                            </div>
+                        </div>
+
+                        <form class="percentage-form" id="percentage-what-form">
+                            <div class="percentage-field-row">
+                                <div class="percentage-field">
+                                    <label for="percentage-what-part">
+                                        Part (X)
+                                    </label>
+                                    <div class="percentage-input-wrap">
+                                        <input
+                                            class="percentage-input"
+                                            id="percentage-what-part"
+                                            name="part"
+                                            type="number"
+                                            step="any"
+                                            inputmode="decimal"
+                                            placeholder="e.g. 25"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+
+                                <div class="percentage-field">
+                                    <label for="percentage-what-total">
+                                        Total (Y)
+                                    </label>
+                                    <div class="percentage-input-wrap">
+                                        <input
+                                            class="percentage-input"
+                                            id="percentage-what-total"
+                                            name="total"
+                                            type="number"
+                                            step="any"
+                                            inputmode="decimal"
+                                            placeholder="e.g. 200"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="percentage-actions">
+                                <button class="percentage-button" type="submit">
+                                    Calculate
+                                </button>
+                                <button
+                                    class="percentage-button secondary"
+                                    type="reset"
+                                >
+                                    Clear
+                                </button>
+                            </div>
+                        </form>
+
+                        <div
+                            class="percentage-result"
+                            id="percentage-what-result"
+                            role="status"
+                            aria-live="polite"
+                            aria-atomic="true"
+                        >
+                            <p class="percentage-result-label">Result</p>
+                            <p class="percentage-result-value" id="percentage-what-value"></p>
+                            <p class="percentage-result-detail" id="percentage-what-detail"></p>
+                        </div>
+                    </article>
+
+                    <!-- Calculator 3: Percentage increase or decrease -->
+                    <article class="percentage-calculator-card">
+                        <div class="percentage-card-heading">
+                            <span class="percentage-card-number" aria-hidden="true">3</span>
+                            <div>
+                                <h3>Percentage Increase or Decrease</h3>
+                                <p>Compare an original value with a new value.</p>
+                            </div>
+                        </div>
+
+                        <form class="percentage-form" id="percentage-change-form">
+                            <div class="percentage-field-row">
+                                <div class="percentage-field">
+                                    <label for="percentage-change-old">
+                                        Original Value
+                                    </label>
+                                    <div class="percentage-input-wrap">
+                                        <input
+                                            class="percentage-input"
+                                            id="percentage-change-old"
+                                            name="original"
+                                            type="number"
+                                            step="any"
+                                            inputmode="decimal"
+                                            placeholder="e.g. 100"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+
+                                <div class="percentage-field">
+                                    <label for="percentage-change-new">
+                                        New Value
+                                    </label>
+                                    <div class="percentage-input-wrap">
+                                        <input
+                                            class="percentage-input"
+                                            id="percentage-change-new"
+                                            name="newValue"
+                                            type="number"
+                                            step="any"
+                                            inputmode="decimal"
+                                            placeholder="e.g. 125"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="percentage-actions">
+                                <button class="percentage-button" type="submit">
+                                    Calculate Change
+                                </button>
+                                <button
+                                    class="percentage-button secondary"
+                                    type="reset"
+                                >
+                                    Clear
+                                </button>
+                            </div>
+                        </form>
+
+                        <div
+                            class="percentage-result"
+                            id="percentage-change-result"
+                            role="status"
+                            aria-live="polite"
+                            aria-atomic="true"
+                        >
+                            <p class="percentage-result-label">Percentage Change</p>
+                            <p class="percentage-result-value" id="percentage-change-value"></p>
+                            <p class="percentage-result-detail" id="percentage-change-detail"></p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- Information panel -->
+            <aside class="percentage-info-card" aria-labelledby="percentage-guide-title">
+                <h2 id="percentage-guide-title">Percentage Guide</h2>
+
+                <p>
+                    A percentage expresses a number as a fraction of 100.
+                    The symbol for percentage is %.
+                </p>
+
+                <h3>1. Find a percentage</h3>
+                <div class="percentage-formula">
+                    (Percentage ÷ 100) × Number
+                </div>
+                <p>
+                    Example: 20% of 500 = 100.
+                </p>
+
+                <h3>2. Find what percent</h3>
+                <div class="percentage-formula">
+                    (Part ÷ Total) × 100
+                </div>
+                <p>
+                    Example: 25 out of 200 = 12.5%.
+                </p>
+
+                <h3>3. Find percentage change</h3>
+                <div class="percentage-formula">
+                    ((New − Original) ÷ Original) × 100
+                </div>
+                <p>
+                    A positive result means an increase; a negative result
+                    means a decrease. Percentage change is undefined when
+                    the original value is zero.
+                </p>
+
+                <h3>Where can you use it?</h3>
+                <ul>
+                    <li>Schoolwork and exam calculations</li>
+                    <li>Shopping discounts and price comparisons</li>
+                    <li>Marks, scores, and completion rates</li>
+                    <li>Comparing changes in values over time</li>
+                </ul>
+            </aside>
+        </div>
+
+        <!-- SEO content -->
+        <section class="percentage-seo" aria-labelledby="percentage-about-title">
+            <h2 id="percentage-about-title">How to Calculate Percentages</h2>
+
+            <p>
+                A percentage tells you how much a value represents out of
+                100. The MohakTools Percentage Calculator helps you solve
+                common percentage problems without calculating each step
+                manually. Enter your values in the appropriate calculator
+                to see the result immediately.
+            </p>
+
+            <h3>How do you calculate X% of a number?</h3>
+            <p>
+                Divide the percentage by 100 and multiply it by the number.
+                For example, 15% of 200 is 30 because 0.15 multiplied by
+                200 equals 30.
+            </p>
+
+            <h3>How do you calculate percentage increase or decrease?</h3>
+            <p>
+                Subtract the original value from the new value, divide the
+                difference by the original value, and multiply by 100.
+                The sign of the result indicates whether the value increased
+                or decreased. The calculation requires a non-zero original
+                value.
+            </p>
+
+            <h3>Frequently Asked Questions</h3>
+
+            <div class="percentage-faq">
+                <h3>What is a percentage?</h3>
+                <p>
+                    A percentage is a way to express a value as a fraction
+                    of 100. For example, 25% is equivalent to 25 out of 100
+                    or 0.25.
+                </p>
+            </div>
+
+            <div class="percentage-faq">
+                <h3>How do I find 10% of a number?</h3>
+                <p>
+                    Divide the number by 10. For example, 10% of 450 is 45.
+                </p>
+            </div>
+
+            <div class="percentage-faq">
+                <h3>Can a percentage be greater than 100%?</h3>
+                <p>
+                    Yes. A percentage can exceed 100% when the value being
+                    measured is greater than the reference value.
+                </p>
+            </div>
+
+            <div class="percentage-faq">
+                <h3>Can I calculate a percentage decrease?</h3>
+                <p>
+                    Yes. Enter the original value and the new, lower value
+                    in the Percentage Increase or Decrease calculator.
+                    The result will show the percentage decrease.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shared site footer -->
+    <div id="site-footer"></div>
+
+    <script src="/assets/js/theme.js" defer></script>
+    <script src="/assets/js/header.js" defer></script>
+    <script src="/assets/js/footer.js" defer></script>
+
+    <script>
+        /* ========================================
+           MohakTools — Percentage Calculator Logic
+           All functions and IDs are page-specific
+        ======================================== */
+
+        (() => {
+            "use strict";
+
+            const percentageOfForm = document.getElementById("percentage-of-form");
+            const percentageWhatForm = document.getElementById("percentage-what-form");
+            const percentageChangeForm = document.getElementById("percentage-change-form");
+
+            if (
+                !percentageOfForm ||
+                !percentageWhatForm ||
+                !percentageChangeForm
+            ) {
+                return;
+            }
+
+            const numberFormatter = new Intl.NumberFormat("en-US", {
+                maximumFractionDigits: 10,
+                useGrouping: true
+            });
+
+            function formatPercentageNumber(value) {
+                if (!Number.isFinite(value)) {
+                    return "Invalid result";
+                }
+
+                if (Object.is(value, -0) || value === 0) {
+                    return "0";
+                }
+
+                return numberFormatter.format(value);
+            }
+
+            function getInputValue(inputId) {
+                const input = document.getElementById(inputId);
+
+                if (!input || input.value.trim() === "") {
+                    return null;
+                }
+
+                const value = Number(input.value);
+
+                if (!Number.isFinite(value)) {
+                    return null;
+                }
+
+                return value;
+            }
+
+            function showPercentageResult(
+                resultId,
+                valueId,
+                detailId,
+                label,
+                value,
+                detail = "",
+                isError = false
+            ) {
+                const result = document.getElementById(resultId);
+                const resultValue = document.getElementById(valueId);
+                const resultDetail = document.getElementById(detailId);
+                const resultLabel = result
+                    ? result.querySelector(".percentage-result-label")
+                    : null;
+
+                if (!result || !resultValue || !resultDetail || !resultLabel) {
+                    return;
+                }
+
+                resultLabel.textContent = label;
+                resultValue.textContent = value;
+                resultDetail.textContent = detail;
+
+                result.classList.add("visible");
+                result.classList.toggle("error", isError);
+            }
+
+            function hidePercentageResult(resultId) {
+                const result = document.getElementById(resultId);
+
+                if (!result) {
+                    return;
+                }
+
+                result.classList.remove("visible", "error");
+            }
+
+            function showPercentageError(resultId, valueId, detailId, message) {
+                showPercentageResult(
+                    resultId,
+                    valueId,
+                    detailId,
+                    "Unable to calculate",
+                    message,
+                    "Check your input values and try again.",
+                    true
+                );
+            }
+
+            function calculatePercentageOf(event) {
+                event.preventDefault();
+
+                if (!percentageOfForm.reportValidity()) {
+                    return;
+                }
+
+                const percentage = getInputValue("percentage-of-rate");
+                const number = getInputValue("percentage-of-number");
+
+                if (percentage === null || number === null) {
+                    showPercentageError(
+                        "percentage-of-result",
+                        "percentage-of-value",
+                        "percentage-of-detail",
+                        "Enter valid numbers in both fields."
+                    );
+                    return;
+                }
+
+                const result = (percentage / 100) * number;
+
+                if (!Number.isFinite(result)) {
+                    showPercentageError(
+                        "percentage-of-result",
+                        "percentage-of-value",
+                        "percentage-of-detail",
+                        "The result is outside the supported numeric range."
+                    );
+                    return;
+                }
+
+                showPercentageResult(
+                    "percentage-of-result",
+                    "percentage-of-value",
+                    "percentage-of-detail",
+                    "Result",
+                    formatPercentageNumber(result),
+                    `${formatPercentageNumber(percentage)}% of ${formatPercentageNumber(number)} = ${formatPercentageNumber(result)}`
+                );
+            }
+
+            function calculateWhatPercentage(event) {
+                event.preventDefault();
+
+                if (!percentageWhatForm.reportValidity()) {
+                    return;
+                }
+
+                const part = getInputValue("percentage-what-part");
+                const total = getInputValue("percentage-what-total");
+
+                if (part === null || total === null) {
+                    showPercentageError(
+                        "percentage-what-result",
+                        "percentage-what-value",
+                        "percentage-what-detail",
+                        "Enter valid numbers in both fields."
+                    );
+                    return;
+                }
+
+                if (total === 0) {
+                    showPercentageError(
+                        "percentage-what-result",
+                        "percentage-what-value",
+                        "percentage-what-detail",
+                        "The total cannot be zero."
+                    );
+                    return;
+                }
+
+                const result = (part / total) * 100;
+
+                if (!Number.isFinite(result)) {
+                    showPercentageError(
+                        "percentage-what-result",
+                        "percentage-what-value",
+                        "percentage-what-detail",
+                        "The result is outside the supported numeric range."
+                    );
+                    return;
+                }
+
+                showPercentageResult(
+                    "percentage-what-result",
+                    "percentage-what-value",
+                    "percentage-what-detail",
+                    "Percentage",
+                    `${formatPercentageNumber(result)}%`,
+                    `${formatPercentageNumber(part)} is ${formatPercentageNumber(result)}% of ${formatPercentageNumber(total)}.`
+                );
+            }
+
+            function calculatePercentageChange(event) {
+                event.preventDefault();
+
+                if (!percentageChangeForm.reportValidity()) {
+                    return;
+                }
+
+                const original = getInputValue("percentage-change-old");
+                const newValue = getInputValue("percentage-change-new");
+
+                if (original === null || newValue === null) {
+                    showPercentageError(
+                        "percentage-change-result",
+                        "percentage-change-value",
+                        "percentage-change-detail",
+                        "Enter valid numbers in both fields."
+                    );
+                    return;
+                }
+
+                if (original === 0) {
+                    showPercentageError(
+                        "percentage-change-result",
+                        "percentage-change-value",
+                        "percentage-change-detail",
+                        "Percentage change is undefined when the original value is zero."
+                    );
+                    return;
+                }
+
+                const difference = newValue - original;
+                const change = (difference / Math.abs(original)) * 100;
+
+                if (!Number.isFinite(change)) {
+                    showPercentageError(
+                        "percentage-change-result",
+                        "percentage-change-value",
+                        "percentage-change-detail",
+                        "The result is outside the supported numeric range."
+                    );
+                    return;
+                }
+
+                let label;
+                let formattedChange;
+                let detail;
+
+                if (difference > 0) {
+                    label = "Percentage Increase";
+                    formattedChange = `+${formatPercentageNumber(change)}%`;
+                    detail = `The value increased by ${formatPercentageNumber(difference)}.`;
+                } else if (difference < 0) {
+                    label = "Percentage Decrease";
+                    formattedChange = `${formatPercentageNumber(change)}%`;
+                    detail = `The value decreased by ${formatPercentageNumber(Math.abs(difference))}.`;
+                } else {
+                    label = "No Change";
+                    formattedChange = "0%";
+                    detail = "The original value and new value are equal.";
+                }
+
+                showPercentageResult(
+                    "percentage-change-result",
+                    "percentage-change-value",
+                    "percentage-change-detail",
+                    label,
+                    formattedChange,
+                    `${detail} Original: ${formatPercentageNumber(original)}. New: ${formatPercentageNumber(newValue)}.`
+                );
+            }
+
+            function resetPercentageCalculator(form, resultId) {
+                form.addEventListener("reset", () => {
+                    window.requestAnimationFrame(() => {
+                        hidePercentageResult(resultId);
+                    });
+                });
+            }
+
+            percentageOfForm.addEventListener("submit", calculatePercentageOf);
+            percentageWhatForm.addEventListener("submit", calculateWhatPercentage);
+            percentageChangeForm.addEventListener("submit", calculatePercentageChange);
+
+            resetPercentageCalculator(
+                percentageOfForm,
+                "percentage-of-result"
+            );
+
+            resetPercentageCalculator(
+                percentageWhatForm,
+                "percentage-what-result"
+            );
+
+            resetPercentageCalculator(
+                percentageChangeForm,
+                "percentage-change-result"
+            );
+        })();
+    </script>
+</body>
+</html>

@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20261116" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261116" />
+  <link rel="shortcut icon" href="/favicon.ico?v=20261116" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261116" />
+  <meta name="apple-mobile-web-app-title" content="MohakTools" />
+  <link rel="manifest" href="/site.webmanifest?v=20261116" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#2563eb">
 <title>Image to PDF | MohakTools</title>
-<meta name="description" content="Convert one or more images into a single PDF file.">
+<meta name="description" content="Combine images into a single PDF file. Add a few details and get a clear result.">
 <meta name="keywords" content="image to PDF, JPG to PDF, PNG to PDF">
 <link rel="canonical" href="https://mohaktools.com/tools/image-to-pdf/">
-<link rel="icon" href="/favicon.webp" type="image/webp">
-<link rel="shortcut icon" href="/favicon.webp" type="image/webp">
 <meta property="og:title" content="Image to PDF | MohakTools">
 <meta property="og:description" content="Convert one or more images into a single PDF file.">
 <meta property="og:url" content="https://mohaktools.com/tools/image-to-pdf/">
@@ -62,11 +66,12 @@
   <link rel="stylesheet" href="/assets/css/global.css">
   <link rel="stylesheet" href="/assets/css/themes.css">
   <link rel="stylesheet" href="/assets/css/tool-page.css">
+  <link rel="stylesheet" href="/assets/css/interactive-tools.css">
 </head>
 <body>
 <div id="site-header"></div>
 
-<main class="tool-main" style="max-width:860px;margin:0 auto;padding:20px 16px 48px">
+<main class="tool-main" style="max-width:1120px;margin:0 auto;padding:24px 18px 56px">
   <nav aria-label="Breadcrumb" style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px">
     <a href="/" style="color:var(--color-primary);text-decoration:none">Home</a>
     <span style="margin:0 6px">/</span>
@@ -80,17 +85,14 @@
     <p style="font-size:15px;color:var(--color-text-secondary);line-height:1.6;max-width:640px;margin:0">Convert one or more images into a single PDF file.</p>
   </header>
 
-  <div class="mt-tool-grid">
-    
-<section class="mt-panel"><h2 id="tool-input-heading">Images</h2>
-<div class="mt-field"><label for="f0">Select Images (PNG, JPG, WebP)</label><input type="file" id="f0" accept="image/*" multiple></div>
-<div class="mt-field"><label for="f1">Page Size</label>
-<select id="f1"><option value="a4">A4</option><option value="letter">Letter</option><option value="fit">Fit to image</option></select></div>
-<div class="mt-button-row"><button class="mt-button mt-primary" id="calc">Create PDF</button></div>
-<p class="mt-status" id="mt-status" role="status" aria-live="polite"></p></section>
-<section class="mt-panel"><h2>Preview</h2>
-<div id="img-list" style="display:flex;gap:10px;flex-wrap:wrap;min-height:80px"></div>
-<div id="pdf-out" style="margin-top:12px"></div></section>
+  <div class="file-tool-layout">
+    <section class="interactive-panel"><h2>Add images</h2><p class="interactive-hint">Arrange the page order before creating your PDF.</p>
+      <label class="file-dropzone" id="image-pdf-drop" for="image-pdf-files" style="margin-top:12px"><span><span class="ocr-drop-icon">⇧</span><strong>Drop images here or browse</strong><span>PNG, JPG, WebP · up to 25 MB each</span></span></label><input class="visually-hidden" id="image-pdf-files" type="file" accept="image/png,image/jpeg,image/webp" multiple>
+      <div id="image-pdf-list" class="file-list"></div>
+      <div class="file-option-grid" style="margin-top:16px"><div class="mt-field"><label for="image-pdf-size">Page size</label><select class="interactive-select" id="image-pdf-size"><option value="a4">A4</option><option value="letter">US Letter</option><option value="fit">Fit each image</option></select></div><div class="mt-field"><label for="image-pdf-orientation">Orientation</label><select class="interactive-select" id="image-pdf-orientation"><option value="auto">Auto per image</option><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div><div class="mt-field"><label for="image-pdf-margin">Margins</label><select class="interactive-select" id="image-pdf-margin"><option value="0">None</option><option value="8">Small · 8 mm</option><option value="18">Medium · 18 mm</option></select></div><div class="mt-field"><label for="image-pdf-fit">Image placement</label><select class="interactive-select" id="image-pdf-fit"><option value="contain">Fit inside page</option><option value="cover">Fill page (crop edges)</option></select></div></div>
+      <div class="mt-field"><label for="image-pdf-quality">Image quality <output id="image-pdf-quality-value">88%</output></label><input id="image-pdf-quality" type="range" min="55" max="100" value="88"></div>
+      <div class="interactive-actions"><button class="interactive-button interactive-button-primary" id="image-pdf-create" type="button" disabled>Create PDF preview</button></div><p class="interactive-status" id="image-pdf-status" role="status" aria-live="polite">Add at least one image to begin.</p>
+    </section><section class="interactive-panel"><h2>PDF preview</h2><p class="interactive-hint">Review the finished pages before saving.</p><div class="file-preview-box" style="margin-top:12px"><div id="image-pdf-empty" class="file-preview-placeholder">Your PDF preview will appear here.</div><iframe id="image-pdf-frame" title="Created PDF preview" hidden></iframe></div><div class="interactive-actions" style="margin-top:12px"><button class="interactive-button interactive-button-primary" id="image-pdf-download" type="button" disabled>Download PDF</button></div></section>
   </div>
 
   <section class="mt-panel" style="margin-top:16px">
@@ -103,7 +105,7 @@
   </section>
 
   <section class="mt-panel" style="margin-top:16px">
-    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Frequently Asked Questions</h2>
+    <h2 style="font-size:18px;font-weight:700;color:var(--color-text);margin:0 0 12px">Common questions about Image to PDF</h2>
     <div class="mt-faq">
       <h3>Can I combine several images into one PDF?</h3>
       <p>Yes, select multiple files and they are placed in the order chosen.</p>
@@ -141,43 +143,7 @@
   <script src="/assets/js/theme.js" defer></script>
 <script src="/assets/js/header.js" defer></script>
 <script src="/assets/js/footer.js" defer></script>
-<script>
 
-const JSPDF_SRC="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
-function loadLib(src){return new Promise((res,rej)=>{if(window.jspdf)return res();const s=document.createElement("script");s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
-document.getElementById("f0").onchange=()=>{
-  const list=document.getElementById("img-list");list.innerHTML="";
-  [...document.getElementById("f0").files].forEach(f=>{
-    const img=document.createElement("img");img.style.cssText="width:80px;height:80px;object-fit:cover;border-radius:8px;border:1px solid var(--color-border)";
-    img.src=URL.createObjectURL(f);list.appendChild(img);
-  });
-};
-document.getElementById("calc").onclick=async()=>{
-  const files=[...document.getElementById("f0").files];
-  if(!files.length){document.getElementById("mt-status").textContent="Select at least one image.";return;}
-  document.getElementById("mt-status").textContent="Loading PDF library…";
-  await loadLib(JSPDF_SRC);
-  document.getElementById("mt-status").textContent="Building PDF…";
-  const {jsPDF}=window.jspdf;
-  const pageSize=document.getElementById("f1").value;
-  let pdf=null;
-  for(let i=0;i<files.length;i++){
-    const url=URL.createObjectURL(files[i]);
-    await new Promise(res=>{
-      const img=new Image();img.onload=()=>{
-        const W=img.width,H=img.height;
-        if(!pdf){if(pageSize==="fit")pdf=new jsPDF({orientation:W>H?"l":"p",unit:"px",format:[W,H]});else pdf=new jsPDF({orientation:"p",unit:"mm",format:pageSize});}
-        else pdf.addPage(pageSize==="fit"?[W,H]:pageSize,W>H?"l":"p");
-        const pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
-        const ratio=Math.min(pw/W,ph/H);
-        pdf.addImage(img,files[i].type.includes("png")?"PNG":"JPEG",(pw-W*ratio)/2,(ph-H*ratio)/2,W*ratio,H*ratio);
-        res();
-      };img.src=url;
-    });
-  }
-  pdf.save("images.pdf");
-  document.getElementById("mt-status").textContent="PDF downloaded!";
-};
-</script>
+<script src="/assets/js/image-to-pdf.js" defer></script>
 </body>
 </html>

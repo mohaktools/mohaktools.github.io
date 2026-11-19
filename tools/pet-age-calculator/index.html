@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b6f83">
+  <title>Pet Age Calculator | MohakTools</title>
+  <meta name="description" content="Estimate your cat or dog's human-equivalent age using a simple pet age calculator. See the estimate and how it is calculated.">
+  <link rel="canonical" href="https://mohaktools.com/tools/pet-age-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="Pet Age Calculator | MohakTools">
+  <meta property="og:description" content="Estimate your cat or dog’s human-age equivalent with a clear, simple guide.">
+  <meta property="og:url" content="https://mohaktools.com/tools/pet-age-calculator/">
+  <link rel="stylesheet" href="/assets/css/themes.css"><link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+  <script src="/assets/js/theme.js" defer></script><script src="/assets/js/header.js" defer></script><script src="/assets/js/footer.js" defer></script>
+</head>
+<body>
+  <main class="tool-wrap">
+    <nav class="tool-breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/tools/">Tools</a> / Pet Age Calculator</nav>
+    <header class="tool-heading"><h1>Pet Age Calculator</h1><p>Get a rough human-age equivalent for your cat or dog. Estimates are a fun guide; pets age at different rates based on breed, size, and health.</p></header>
+    <form class="tool-card" id="pet-age-form">
+      <div class="tool-field"><label for="species">Pet</label><select id="species"><option value="dog">Dog</option><option value="cat">Cat</option></select></div>
+      <div class="tool-field"><label for="pet-age">Age in years</label><input id="pet-age" type="number" min="0" max="40" step="0.1" inputmode="decimal" value="3" aria-describedby="age-hint"><p class="tool-hint" id="age-hint">You can enter partial years, such as 1.5 for a year and a half.</p></div>
+      <button type="submit">Calculate pet age</button>
+      <div class="tool-answer" id="answer" role="status" aria-live="polite"><strong id="answer-title">About 29 human years</strong><span id="answer-details">Using a simplified estimate for a dog.</span></div>
+    </form>
+    <section class="tool-info-card" aria-labelledby="about-tool"><h2 id="about-tool">About this tool</h2><p>This calculator offers a quick human-age comparison using a simple rule of thumb. A pet’s actual aging depends on factors such as species, breed, body size, and health, so treat the result as an estimate rather than a medical measure.</p></section>
+    <section class="tool-info-card" aria-labelledby="faq-title"><h2 id="faq-title">Frequently asked questions</h2><div class="tool-faq-list">
+      <details class="tool-faq"><summary>Is one pet year always equal to seven human years?</summary><p>No. Pets mature more quickly early in life, and aging rates differ between cats and dogs and among individual animals. The seven-year rule is a rough simplification.</p></details>
+      <details class="tool-faq"><summary>How does this calculator estimate a dog’s age?</summary><p>It assigns 15 human years to the first year, 9 to the second, and about 5 for each later year. This simplified approach does not account for breed or size.</p></details>
+      <details class="tool-faq"><summary>How does this calculator estimate a cat’s age?</summary><p>It assigns 15 human years to the first year, 9 to the second, and about 4 for each later year. The result is only a general comparison.</p></details>
+      <details class="tool-faq"><summary>Can I use this result to assess my pet’s health?</summary><p>No. This estimate is for general interest. Ask a veterinarian for advice about your pet’s age, health, or care.</p></details>
+    </div></section>
+  </main>
+  <script>
+    (() => {
+      const speciesInput = document.querySelector('#species');
+      const ageInput = document.querySelector('#pet-age');
+      const form = document.querySelector('#pet-age-form');
+      const answerTitle = document.querySelector('#answer-title');
+      const answerDetails = document.querySelector('#answer-details');
+
+      function calculatePetAge() {
+        const age = Number(ageInput.value);
+        const species = speciesInput.value;
+
+        if (ageInput.value === '' || !Number.isFinite(age) || age < 0 || age > 40) {
+          answerTitle.textContent = 'Enter a valid pet age.';
+          answerDetails.textContent = 'Use an age from 0 to 40 years.';
+          return;
+        }
+
+        const yearsPerExtraYear = species === 'dog' ? 5 : 4;
+        const humanAge = age <= 1
+          ? age * 15
+          : age <= 2
+            ? 15 + (age - 1) * 9
+            : 24 + (age - 2) * yearsPerExtraYear;
+
+        answerTitle.textContent = `About ${Math.round(humanAge)} human years`;
+        answerDetails.textContent = `Using a simplified estimate for a ${species}.`;
+      }
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        calculatePetAge();
+      });
+      speciesInput.addEventListener('change', calculatePetAge);
+      ageInput.addEventListener('input', calculatePetAge);
+    })();
+  </script>
+</body>
+</html>

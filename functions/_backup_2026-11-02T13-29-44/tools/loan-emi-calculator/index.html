@@ -1,0 +1,1446 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title> Loan EMI Calculator Online | MohakTools </title>
+  <meta name="description" content="Calculate monthly loan EMI, total interest, and repayment using your loan amount, interest rate, and tenure.">
+  <meta name="keywords" content="loan EMI calculator, EMI calculator, home loan EMI calculator, personal loan EMI calculator, car loan EMI calculator, monthly loan payment, loan interest calculator">
+  <meta name="author" content="MohakTools">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="application-name" content="MohakTools">
+
+  <link rel="canonical" href="https://mohaktools.com/tools/loan-emi-calculator/">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="Loan EMI Calculator – MohakTools">
+  <meta property="og:description" content="Calculate your monthly EMI, total interest and total repayment for a loan using this free online calculator.">
+  <meta property="og:url" content="https://mohaktools.com/tools/loan-emi-calculator/">
+  <meta property="og:image" content="https://mohaktools.com/assets/images/loan-emi-calculator-og.png">
+  <meta property="og:image:alt" content="MohakTools Loan EMI Calculator">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Loan EMI Calculator – MohakTools">
+  <meta name="twitter:description" content="Calculate monthly loan payments, total interest and repayment amount online.">
+  <meta name="twitter:image" content="https://mohaktools.com/assets/images/loan-emi-calculator-og.png">
+
+  <!-- Shared Stylesheets -->
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Loan EMI Calculator",
+    "url": "https://mohaktools.com/tools/loan-emi-calculator/",
+    "description": "A free online loan EMI calculator to estimate monthly payments, total interest and total loan repayment.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "MohakTools",
+      "url": "https://mohaktools.com/"
+    }
+  }
+  </script>
+
+  <style>
+    /* =========================================
+       MohakTools — Loan EMI Calculator
+       Page-specific styles
+    ========================================= */
+
+    .emi-page {
+      width: min(100% - 32px, 1080px);
+      margin: 0 auto;
+      padding: 32px 0 64px;
+      color: var(--color-text);
+    }
+
+    .emi-breadcrumbs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      color: var(--color-text-secondary);
+      font-size: 14px;
+    }
+
+    .emi-breadcrumbs a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .emi-breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+
+    .emi-hero {
+      margin-bottom: 28px;
+    }
+
+    .emi-hero h1 {
+      margin: 0 0 12px;
+      color: var(--color-text);
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+    }
+
+    .emi-hero p {
+      max-width: 760px;
+      margin: 0;
+      color: var(--color-text-secondary);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .emi-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .emi-panel {
+      min-width: 0;
+      padding: 24px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 20px);
+      background: var(--color-surface);
+      box-shadow: var(--color-card-shadow, 0 4px 18px rgba(0, 0, 0, 0.04));
+    }
+
+    .emi-panel h2 {
+      margin: 0 0 22px;
+      color: var(--color-text);
+      font-size: 21px;
+      line-height: 1.4;
+    }
+
+    .emi-field {
+      margin-bottom: 22px;
+    }
+
+    .emi-field label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--color-text);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .emi-field input {
+      display: block;
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      border: 1px solid var(--color-input-border, var(--color-border));
+      border-radius: var(--radius-md, 10px);
+      background: var(--color-input-bg, var(--color-surface));
+      color: var(--color-text);
+      font: inherit;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .emi-field input:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-focus, rgba(37, 99, 235, 0.14));
+    }
+
+    .emi-field input[aria-invalid="true"] {
+      border-color: var(--color-danger);
+    }
+
+    .emi-field input::placeholder {
+      color: var(--color-text-secondary);
+      opacity: 0.75;
+    }
+
+    .emi-field input[type="range"] {
+      min-height: auto;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      accent-color: var(--color-primary);
+      cursor: pointer;
+    }
+
+    .emi-range-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .emi-range-header label {
+      margin-bottom: 0;
+    }
+
+    .emi-range-value {
+      color: var(--color-primary);
+      font-size: 14px;
+      font-weight: 800;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .emi-range-limits {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 7px;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+    }
+
+    .emi-field-help {
+      margin: 7px 0 0;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .emi-button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .emi-button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-md, 10px);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .emi-button:hover {
+      opacity: 0.9;
+    }
+
+    .emi-button:active {
+      transform: translateY(1px);
+    }
+
+    .emi-button:focus-visible {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 3px;
+    }
+
+    .emi-button-primary {
+      flex: 1;
+      background: var(--color-primary);
+      color: var(--color-primary-text, #ffffff);
+    }
+
+    .emi-button-secondary {
+      border-color: var(--color-border);
+      background: var(--color-surface-secondary);
+      color: var(--color-text);
+    }
+
+    .emi-results-panel {
+      overflow: hidden;
+    }
+
+    .emi-primary-result {
+      margin-bottom: 20px;
+      padding: 22px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg, 14px);
+      background: var(--color-surface-secondary);
+    }
+
+    .emi-primary-result span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--color-text-secondary);
+      font-size: 14px;
+    }
+
+    .emi-primary-result strong {
+      display: block;
+      overflow-wrap: anywhere;
+      color: var(--color-primary);
+      font-size: clamp(28px, 4vw, 36px);
+      line-height: 1.2;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .emi-result-list {
+      display: grid;
+      margin: 0;
+    }
+
+    .emi-result-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .emi-result-row:last-child {
+      border-bottom: 0;
+    }
+
+    .emi-result-row dt {
+      color: var(--color-text-secondary);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .emi-result-row dd {
+      margin: 0;
+      color: var(--color-text);
+      font-size: 14px;
+      font-weight: 700;
+      text-align: right;
+      overflow-wrap: anywhere;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .emi-result-row-total dt,
+    .emi-result-row-total dd {
+      color: var(--color-text);
+      font-weight: 800;
+    }
+
+    .emi-result-status {
+      min-height: 20px;
+      margin: 16px 0 0;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .emi-result-status.error {
+      color: var(--color-danger);
+    }
+
+    .emi-result-status.success {
+      color: var(--color-success);
+    }
+
+    .emi-breakdown {
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .emi-breakdown h3 {
+      margin: 0 0 16px;
+      color: var(--color-text);
+      font-size: 17px;
+    }
+
+    .emi-bar {
+      display: flex;
+      width: 100%;
+      height: 14px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--color-surface-secondary);
+    }
+
+    .emi-bar-principal {
+      width: 75%;
+      background: var(--color-primary);
+      transition: width 0.25s ease;
+    }
+
+    .emi-bar-interest {
+      width: 25%;
+      background: var(--color-warning);
+      transition: width 0.25s ease;
+    }
+
+    .emi-legend {
+      display: grid;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .emi-legend-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--color-text-secondary);
+      font-size: 13px;
+    }
+
+    .emi-legend-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .emi-legend-dot {
+      width: 10px;
+      height: 10px;
+      flex: 0 0 10px;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+
+    .emi-legend-dot-interest {
+      background: var(--color-warning);
+    }
+
+    .emi-legend-item strong {
+      color: var(--color-text);
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+    }
+
+    .emi-content {
+      margin-top: 36px;
+    }
+
+    .emi-content-section {
+      margin-top: 24px;
+      padding: 24px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 20px);
+      background: var(--color-surface);
+    }
+
+    .emi-content-section h2 {
+      margin: 0 0 14px;
+      color: var(--color-text);
+      font-size: 23px;
+      line-height: 1.4;
+    }
+
+    .emi-content-section h3 {
+      margin: 22px 0 8px;
+      color: var(--color-text);
+      font-size: 17px;
+      line-height: 1.45;
+    }
+
+    .emi-content-section p,
+    .emi-content-section li {
+      color: var(--color-text-secondary);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .emi-content-section p {
+      margin: 0 0 14px;
+    }
+
+    .emi-content-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .emi-content-section ul,
+    .emi-content-section ol {
+      padding-left: 22px;
+      margin: 10px 0 0;
+    }
+
+    .emi-formula {
+      margin: 14px 0;
+      padding: 16px;
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius-md, 10px) var(--radius-md, 10px) 0;
+      background: var(--color-surface-secondary);
+      color: var(--color-text);
+      font-size: 14px;
+      line-height: 1.9;
+      overflow-wrap: anywhere;
+    }
+
+    .emi-related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .emi-related-links a {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 12px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px);
+      color: var(--color-primary);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .emi-related-links a:hover {
+      border-color: var(--color-primary);
+    }
+
+    .emi-faq-item {
+      padding: 17px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .emi-faq-item:first-of-type {
+      padding-top: 0;
+    }
+
+    .emi-faq-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .emi-faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .emi-faq-item p {
+      margin: 0;
+    }
+
+    .emi-disclaimer {
+      margin-top: 18px;
+      color: var(--color-text-secondary);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 760px) {
+      .emi-page {
+        width: min(100% - 24px, 600px);
+        padding-top: 24px;
+      }
+
+      .emi-layout {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .emi-panel,
+      .emi-content-section {
+        padding: 20px;
+      }
+
+      .emi-hero h1 {
+        letter-spacing: -0.025em;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .emi-page {
+        width: min(100% - 20px, 600px);
+      }
+
+      .emi-panel,
+      .emi-content-section {
+        padding: 16px;
+        border-radius: var(--radius-lg, 14px);
+      }
+
+      .emi-button-row {
+        flex-direction: column;
+      }
+
+      .emi-button {
+        width: 100%;
+      }
+
+      .emi-result-row {
+        gap: 10px;
+      }
+
+      .emi-range-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .emi-range-value {
+        text-align: left;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .emi-button,
+      .emi-field input,
+      .emi-bar-principal,
+      .emi-bar-interest {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Shared Header -->
+   <script src="/assets/js/tools-registry.js" defer></script>
+  <div id="site-header"></div>
+
+  <main class="emi-page">
+    <nav class="emi-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/tools/">Tools</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Loan EMI Calculator</span>
+    </nav>
+
+    <header class="emi-hero">
+      <h1>Loan EMI Calculator</h1>
+      <p>
+        Estimate your monthly loan payment, total interest and total repayment.
+        Enter your loan amount, annual interest rate and loan tenure to
+        calculate your Equated Monthly Instalment (EMI).
+      </p>
+    </header>
+
+    <section class="emi-layout" aria-label="Loan EMI calculator">
+      <div class="emi-panel">
+        <h2>Loan Details</h2>
+
+        <form id="emi-calculator-form" novalidate>
+          <div class="emi-field">
+            <div class="emi-range-header">
+              <label for="emi-principal">Loan Amount (₹)</label>
+              <span class="emi-range-value" id="emi-principal-display">₹10,00,000</span>
+            </div>
+
+            <input
+              id="emi-principal"
+              name="principal"
+              type="number"
+              inputmode="decimal"
+              min="1"
+              max="1000000000000"
+              step="any"
+              value="1000000"
+              required
+              aria-describedby="emi-principal-help"
+            >
+
+            <input
+              id="emi-principal-range"
+              type="range"
+              min="10000"
+              max="10000000"
+              step="10000"
+              value="1000000"
+              aria-label="Adjust loan amount"
+            >
+
+            <div class="emi-range-limits">
+              <span>₹10,000</span>
+              <span>₹1,00,00,000</span>
+            </div>
+
+            <p class="emi-field-help" id="emi-principal-help">
+              Enter the amount you plan to borrow.
+            </p>
+          </div>
+
+          <div class="emi-field">
+            <div class="emi-range-header">
+              <label for="emi-interest">Annual Interest Rate (%)</label>
+              <span class="emi-range-value" id="emi-interest-display">8.5%</span>
+            </div>
+
+            <input
+              id="emi-interest"
+              name="interest"
+              type="number"
+              inputmode="decimal"
+              min="0"
+              max="100"
+              step="any"
+              value="8.5"
+              required
+              aria-describedby="emi-interest-help"
+            >
+
+            <input
+              id="emi-interest-range"
+              type="range"
+              min="0"
+              max="30"
+              step="0.1"
+              value="8.5"
+              aria-label="Adjust annual interest rate"
+            >
+
+            <div class="emi-range-limits">
+              <span>0%</span>
+              <span>30%</span>
+            </div>
+
+            <p class="emi-field-help" id="emi-interest-help">
+              Enter the annual interest rate offered by the lender.
+            </p>
+          </div>
+
+          <div class="emi-field">
+            <div class="emi-range-header">
+              <label for="emi-tenure">Loan Tenure</label>
+              <span class="emi-range-value" id="emi-tenure-display">20 years</span>
+            </div>
+
+            <input
+              id="emi-tenure"
+              name="tenure"
+              type="number"
+              inputmode="numeric"
+              min="1"
+              max="600"
+              step="1"
+              value="20"
+              required
+              aria-describedby="emi-tenure-help"
+            >
+
+            <input
+              id="emi-tenure-range"
+              type="range"
+              min="1"
+              max="30"
+              step="1"
+              value="20"
+              aria-label="Adjust loan tenure in years"
+            >
+
+            <div class="emi-range-limits">
+              <span>1 year</span>
+              <span>30 years</span>
+            </div>
+
+            <p class="emi-field-help" id="emi-tenure-help">
+              Enter the repayment period in years. For example, 20 means 240 monthly instalments.
+            </p>
+          </div>
+
+          <div class="emi-button-row">
+            <button class="emi-button emi-button-primary" type="submit">
+              Calculate EMI
+            </button>
+
+            <button
+              class="emi-button emi-button-secondary"
+              id="emi-reset"
+              type="reset"
+            >
+              Reset
+            </button>
+          </div>
+
+          <p
+            class="emi-result-status"
+            id="emi-error"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </form>
+      </div>
+
+      <section class="emi-panel emi-results-panel" aria-labelledby="emi-results-heading">
+        <h2 id="emi-results-heading">Your EMI Summary</h2>
+
+        <div class="emi-primary-result">
+          <span>Monthly EMI</span>
+          <strong id="emi-monthly">₹8,678.89</strong>
+        </div>
+
+        <dl class="emi-result-list" aria-live="polite" aria-atomic="true">
+          <div class="emi-result-row">
+            <dt>Loan Principal</dt>
+            <dd id="emi-result-principal">₹10,00,000.00</dd>
+          </div>
+
+          <div class="emi-result-row">
+            <dt>Total Interest Payable</dt>
+            <dd id="emi-result-interest">₹10,82,933.60</dd>
+          </div>
+
+          <div class="emi-result-row emi-result-row-total">
+            <dt>Total Repayment</dt>
+            <dd id="emi-result-total">₹20,82,933.60</dd>
+          </div>
+
+          <div class="emi-result-row">
+            <dt>Number of Monthly Instalments</dt>
+            <dd id="emi-result-months">240</dd>
+          </div>
+        </dl>
+
+        <div class="emi-breakdown">
+          <h3>Principal vs Interest</h3>
+
+          <div
+            class="emi-bar"
+            id="emi-breakdown-bar"
+            role="img"
+            aria-label="Repayment breakdown"
+          >
+            <div class="emi-bar-principal" id="emi-principal-bar"></div>
+            <div class="emi-bar-interest" id="emi-interest-bar"></div>
+          </div>
+
+          <div class="emi-legend">
+            <div class="emi-legend-item">
+              <span class="emi-legend-label">
+                <span class="emi-legend-dot"></span>
+                Principal
+              </span>
+              <strong id="emi-principal-share">48.0%</strong>
+            </div>
+
+            <div class="emi-legend-item">
+              <span class="emi-legend-label">
+                <span class="emi-legend-dot emi-legend-dot-interest"></span>
+                Interest
+              </span>
+              <strong id="emi-interest-share">52.0%</strong>
+            </div>
+          </div>
+        </div>
+
+        <p class="emi-result-status" id="emi-result-status" aria-live="polite">
+          Change the loan details to estimate your monthly EMI.
+        </p>
+      </section>
+    </section>
+
+    <div class="emi-content">
+      <section class="emi-content-section">
+        <h2>How to Use the Loan EMI Calculator</h2>
+        <ol>
+          <li>Enter the loan principal you intend to borrow.</li>
+          <li>Enter the annual interest rate as a percentage.</li>
+          <li>Enter the repayment tenure in years.</li>
+          <li>Click <strong>Calculate EMI</strong> to see your estimated monthly instalment.</li>
+          <li>Review the total interest, total repayment and principal-versus-interest breakdown.</li>
+        </ol>
+        <p>
+          You can also use the sliders to adjust the inputs and compare different
+          loan scenarios.
+        </p>
+      </section>
+
+      <section class="emi-content-section">
+        <h2>Loan EMI Formula</h2>
+        <p>
+          For a standard loan with a fixed interest rate and equal monthly
+          instalments, EMI is calculated using the following formula:
+        </p>
+
+        <div class="emi-formula">
+          EMI = P × r × (1 + r)<sup>n</sup> ÷ [(1 + r)<sup>n</sup> − 1]
+          <br><br>
+          <strong>Where:</strong>
+          <br>
+          P = Principal loan amount
+          <br>
+          r = Monthly interest rate, calculated as annual rate ÷ 12 ÷ 100
+          <br>
+          n = Total number of monthly instalments
+        </div>
+
+        <p>
+          When the interest rate is 0%, the EMI is the principal divided by the
+          number of instalments. The calculator handles this case separately.
+        </p>
+      </section>
+
+      <section class="emi-content-section">
+        <h2>Loan EMI Calculation Example</h2>
+        <p>
+          Consider a loan of ₹10,00,000 at an annual interest rate of 8.5%
+          over 20 years, with monthly repayments and no additional fees.
+        </p>
+
+        <div class="emi-formula">
+          Loan Principal = ₹10,00,000
+          <br>
+          Annual Interest Rate = 8.5%
+          <br>
+          Tenure = 20 years (240 months)
+          <br>
+          Estimated Monthly EMI ≈ ₹8,678.89
+          <br>
+          Estimated Total Repayment ≈ ₹20,82,933.60
+          <br>
+          Estimated Total Interest ≈ ₹10,82,933.60
+        </div>
+
+        <p>
+          These are illustrative estimates using the standard fixed-rate EMI
+          formula. Your lender's payment schedule, rounding, fees and loan terms
+          may result in different figures.
+        </p>
+      </section>
+
+      <section class="emi-content-section">
+        <h2>What Affects Your Monthly EMI?</h2>
+
+        <h3>Loan Amount</h3>
+        <p>
+          A larger principal generally results in a higher EMI when the rate
+          and tenure remain unchanged.
+        </p>
+
+        <h3>Interest Rate</h3>
+        <p>
+          A higher interest rate generally increases the EMI and total interest
+          for the same principal and tenure.
+        </p>
+
+        <h3>Loan Tenure</h3>
+        <p>
+          A longer tenure usually reduces the monthly instalment but can
+          increase the total interest paid over the life of the loan.
+        </p>
+      </section>
+
+      <section class="emi-content-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="emi-faq-item">
+          <h3>What does EMI stand for?</h3>
+          <p>
+            EMI stands for Equated Monthly Instalment. It is the regular
+            monthly payment made toward a loan, usually covering both principal
+            and interest.
+          </p>
+        </div>
+
+        <div class="emi-faq-item">
+          <h3>Does the EMI calculator include processing fees?</h3>
+          <p>
+            No. This calculator estimates principal and interest repayments.
+            Processing fees, insurance, taxes, late charges and other lender
+            costs are not included.
+          </p>
+        </div>
+
+        <div class="emi-faq-item">
+          <h3>Can I use this for a home, car or personal loan?</h3>
+          <p>
+            Yes. You can use it to estimate repayments for different loan types
+            by entering the relevant principal, annual interest rate and tenure.
+            Actual terms vary by lender and product.
+          </p>
+        </div>
+
+        <div class="emi-faq-item">
+          <h3>Does a longer tenure always mean a lower total cost?</h3>
+          <p>
+            No. A longer tenure may reduce the monthly EMI but often increases
+            the total interest paid. Compare both the monthly payment and total
+            repayment before choosing a loan.
+          </p>
+        </div>
+
+        <div class="emi-faq-item">
+          <h3>Is this Loan EMI Calculator free?</h3>
+          <p>
+            Yes. The calculator works in your browser and does not require an
+            account.
+          </p>
+        </div>
+      </section>
+
+      <section class="emi-content-section">
+        <h2>Explore More Calculators</h2>
+        <p>Explore other free calculators on MohakTools:</p>
+
+        <div class="emi-related-links">
+          <a href="/tools/calculator/">Basic Calculator</a>
+          <a href="/tools/percentage-calculator/">Percentage Calculator</a>
+          <a href="/tools/discount-calculator/">Discount Calculator</a>
+          <a href="/tools/gst-calculator/">GST Calculator</a>
+          <a href="/tools/age-calculator/">Age Calculator</a>
+          <a href="/tools/date-difference-calculator/">Date Difference Calculator</a>
+        </div>
+      </section>
+
+      <p class="emi-disclaimer">
+        Disclaimer: This calculator provides estimates for general informational
+        purposes and is not a loan offer or financial advice. Actual payments
+        depend on the lender's terms, interest calculation method, rate changes,
+        fees, payment dates and other conditions. Confirm the repayment schedule
+        with your lender before making financial decisions.
+      </p>
+    </div>
+  </main>
+
+  <!-- Shared Footer -->
+  <div id="site-footer"></div>
+
+  <!-- Shared Scripts -->
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+
+  <!-- Loan EMI Calculator Logic -->
+  <script>
+    (() => {
+      "use strict";
+
+      const form = document.getElementById("emi-calculator-form");
+
+      if (!form || form.dataset.initialized === "true") {
+        return;
+      }
+
+      form.dataset.initialized = "true";
+
+      const principalInput = document.getElementById("emi-principal");
+      const principalRange = document.getElementById("emi-principal-range");
+      const interestInput = document.getElementById("emi-interest");
+      const interestRange = document.getElementById("emi-interest-range");
+      const tenureInput = document.getElementById("emi-tenure");
+      const tenureRange = document.getElementById("emi-tenure-range");
+
+      const principalDisplay = document.getElementById("emi-principal-display");
+      const interestDisplay = document.getElementById("emi-interest-display");
+      const tenureDisplay = document.getElementById("emi-tenure-display");
+
+      const monthlyOutput = document.getElementById("emi-monthly");
+      const principalOutput = document.getElementById("emi-result-principal");
+      const interestOutput = document.getElementById("emi-result-interest");
+      const totalOutput = document.getElementById("emi-result-total");
+      const monthsOutput = document.getElementById("emi-result-months");
+
+      const principalBar = document.getElementById("emi-principal-bar");
+      const interestBar = document.getElementById("emi-interest-bar");
+      const principalShare = document.getElementById("emi-principal-share");
+      const interestShare = document.getElementById("emi-interest-share");
+
+      const errorElement = document.getElementById("emi-error");
+      const resultStatus = document.getElementById("emi-result-status");
+      const resetButton = document.getElementById("emi-reset");
+
+      const MAX_PRINCIPAL = 1000000000000;
+      const MAX_ANNUAL_RATE = 100;
+      const MAX_MONTHS = 600;
+
+      const DEFAULTS = {
+        principal: "1000000",
+        interest: "8.5",
+        tenure: "20"
+      };
+
+      function formatCurrency(value) {
+        return new Intl.NumberFormat("en-IN", {
+          style: "currency",
+          currency: "INR",
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(value);
+      }
+
+      function formatNumber(value, maximumFractionDigits = 2) {
+        return Number(value).toLocaleString("en-IN", {
+          maximumFractionDigits
+        });
+      }
+
+      function setMessage(element, message, type) {
+        element.textContent = message;
+        element.classList.remove("error", "success");
+
+        if (type) {
+          element.classList.add(type);
+        }
+      }
+
+      function getNumericInput(input, label, min, max) {
+        const rawValue = input.value.trim();
+
+        if (rawValue === "") {
+          throw new Error("Enter a value for " + label + ".");
+        }
+
+        const value = Number(rawValue);
+
+        if (!Number.isFinite(value) || value < min || value > max) {
+          throw new Error(
+            label + " must be between " +
+            formatNumber(min) + " and " + formatNumber(max) + "."
+          );
+        }
+
+        return value;
+      }
+
+      function calculateEMI(principal, annualRate, months) {
+        if (months <= 0) {
+          throw new Error("Loan tenure must be at least one month.");
+        }
+
+        const monthlyRate = annualRate / 12 / 100;
+
+        if (monthlyRate === 0) {
+          const emi = principal / months;
+
+          return {
+            emi,
+            totalPayment: principal,
+            totalInterest: 0
+          };
+        }
+
+        const ratePower = Math.pow(1 + monthlyRate, months);
+
+        const denominator = ratePower - 1;
+
+        if (
+          !Number.isFinite(ratePower) ||
+          !Number.isFinite(denominator) ||
+          denominator === 0
+        ) {
+          throw new Error("Unable to calculate EMI for these values.");
+        }
+
+        const emi =
+          principal * monthlyRate * ratePower / denominator;
+
+        const totalPayment = emi * months;
+        const totalInterest = totalPayment - principal;
+
+        if (
+          !Number.isFinite(emi) ||
+          !Number.isFinite(totalPayment) ||
+          !Number.isFinite(totalInterest)
+        ) {
+          throw new Error("The result is outside the supported calculation range.");
+        }
+
+        return {
+          emi,
+          totalPayment,
+          totalInterest: Math.max(0, totalInterest)
+        };
+      }
+
+      function updatePrincipalDisplay() {
+        const value = Number(principalInput.value);
+
+        if (principalInput.value.trim() !== "" && Number.isFinite(value) && value >= 0) {
+          principalDisplay.textContent = formatCurrency(value).replace(".00", "");
+        } else {
+          principalDisplay.textContent = "Enter loan amount";
+        }
+      }
+
+      function updateInterestDisplay() {
+        const value = Number(interestInput.value);
+
+        if (interestInput.value.trim() !== "" && Number.isFinite(value) && value >= 0) {
+          interestDisplay.textContent = formatNumber(value, 4) + "%";
+        } else {
+          interestDisplay.textContent = "Enter rate";
+        }
+      }
+
+      function updateTenureDisplay() {
+        const value = Number(tenureInput.value);
+
+        if (
+          tenureInput.value.trim() !== "" &&
+          Number.isFinite(value) &&
+          Number.isInteger(value) &&
+          value > 0
+        ) {
+          tenureDisplay.textContent =
+            value === 1 ? "1 year" : value + " years";
+        } else {
+          tenureDisplay.textContent = "Enter tenure";
+        }
+      }
+
+      function syncRangeFromInput(input, range, min, max) {
+        const value = Number(input.value);
+
+        if (
+          input.value.trim() !== "" &&
+          Number.isFinite(value) &&
+          value >= min &&
+          value <= max
+        ) {
+          range.value = String(value);
+        }
+      }
+
+      function syncInputFromRange(range, input) {
+        input.value = range.value;
+        input.removeAttribute("aria-invalid");
+      }
+
+      function updateBreakdown(principal, interest, totalPayment) {
+        let principalPercent = 100;
+        let interestPercent = 0;
+
+        if (totalPayment > 0) {
+          principalPercent = principal / totalPayment * 100;
+          interestPercent = interest / totalPayment * 100;
+        }
+
+        principalPercent = Math.max(0, Math.min(100, principalPercent));
+        interestPercent = Math.max(0, Math.min(100, interestPercent));
+
+        principalBar.style.width = principalPercent + "%";
+        interestBar.style.width = interestPercent + "%";
+
+        principalShare.textContent = formatNumber(principalPercent) + "%";
+        interestShare.textContent = formatNumber(interestPercent) + "%";
+
+        document.getElementById("emi-breakdown-bar").setAttribute(
+          "aria-label",
+          "Principal is " + formatNumber(principalPercent) +
+          " percent and interest is " + formatNumber(interestPercent) +
+          " percent of the total repayment."
+        );
+      }
+
+      function calculateAndRender(event) {
+        if (event) {
+          event.preventDefault();
+        }
+
+        [principalInput, interestInput, tenureInput].forEach(input => {
+          input.removeAttribute("aria-invalid");
+        });
+
+        setMessage(errorElement, "");
+        setMessage(resultStatus, "");
+
+        let principal;
+        let annualRate;
+        let years;
+
+        try {
+          principal = getNumericInput(
+            principalInput,
+            "loan amount",
+            1,
+            MAX_PRINCIPAL
+          );
+
+          annualRate = getNumericInput(
+            interestInput,
+            "annual interest rate",
+            0,
+            MAX_ANNUAL_RATE
+          );
+
+          years = getNumericInput(
+            tenureInput,
+            "loan tenure in years",
+            1 / 12,
+            MAX_MONTHS / 12
+          );
+
+          if (!Number.isInteger(years)) {
+            throw new Error("Enter the loan tenure as a whole number of years.");
+          }
+        } catch (error) {
+          const message = error instanceof Error
+            ? error.message
+            : "Check your loan details and try again.";
+
+          if (principalInput.value.trim() === "" ||
+              !Number.isFinite(Number(principalInput.value)) ||
+              Number(principalInput.value) < 1 ||
+              Number(principalInput.value) > MAX_PRINCIPAL) {
+            principalInput.setAttribute("aria-invalid", "true");
+          } else if (interestInput.value.trim() === "" ||
+              !Number.isFinite(Number(interestInput.value)) ||
+              Number(interestInput.value) < 0 ||
+              Number(interestInput.value) > MAX_ANNUAL_RATE) {
+            interestInput.setAttribute("aria-invalid", "true");
+          } else {
+            tenureInput.setAttribute("aria-invalid", "true");
+          }
+
+          setMessage(errorElement, message, "error");
+          setMessage(resultStatus, "Correct the highlighted details and calculate again.", "error");
+          return;
+        }
+
+        const months = years * 12;
+
+        if (!Number.isInteger(months) || months < 1 || months > MAX_MONTHS) {
+          tenureInput.setAttribute("aria-invalid", "true");
+          setMessage(errorElement, "The loan tenure must be between 1 month and 600 months.", "error");
+          return;
+        }
+
+        let result;
+
+        try {
+          result = calculateEMI(principal, annualRate, months);
+        } catch (error) {
+          setMessage(
+            errorElement,
+            error instanceof Error ? error.message : "Unable to calculate EMI.",
+            "error"
+          );
+          return;
+        }
+
+        monthlyOutput.textContent = formatCurrency(result.emi);
+        principalOutput.textContent = formatCurrency(principal);
+        interestOutput.textContent = formatCurrency(result.totalInterest);
+        totalOutput.textContent = formatCurrency(result.totalPayment);
+        monthsOutput.textContent = formatNumber(months, 0);
+
+        updateBreakdown(
+          principal,
+          result.totalInterest,
+          result.totalPayment
+        );
+
+        setMessage(
+          resultStatus,
+          "Estimate calculated using " + formatNumber(months, 0) +
+          " monthly instalments at " + formatNumber(annualRate, 4) +
+          "% annual interest.",
+          "success"
+        );
+      }
+
+      function refreshDisplays() {
+        updatePrincipalDisplay();
+        updateInterestDisplay();
+        updateTenureDisplay();
+      }
+
+      function resetCalculator() {
+        window.requestAnimationFrame(() => {
+          principalInput.value = DEFAULTS.principal;
+          interestInput.value = DEFAULTS.interest;
+          tenureInput.value = DEFAULTS.tenure;
+
+          principalRange.value = "1000000";
+          interestRange.value = "8.5";
+          tenureRange.value = "20";
+
+          [principalInput, interestInput, tenureInput].forEach(input => {
+            input.removeAttribute("aria-invalid");
+          });
+
+          refreshDisplays();
+          setMessage(errorElement, "");
+
+          setMessage(
+            resultStatus,
+            "Change the loan details to estimate your monthly EMI."
+          );
+
+          calculateAndRender();
+        });
+      }
+
+      principalInput.addEventListener("input", () => {
+        syncRangeFromInput(
+          principalInput,
+          principalRange,
+          Number(principalRange.min),
+          Number(principalRange.max)
+        );
+
+        principalInput.removeAttribute("aria-invalid");
+        refreshDisplays();
+        setMessage(errorElement, "");
+      });
+
+      interestInput.addEventListener("input", () => {
+        syncRangeFromInput(
+          interestInput,
+          interestRange,
+          Number(interestRange.min),
+          Number(interestRange.max)
+        );
+
+        interestInput.removeAttribute("aria-invalid");
+        refreshDisplays();
+        setMessage(errorElement, "");
+      });
+
+      tenureInput.addEventListener("input", () => {
+        syncRangeFromInput(
+          tenureInput,
+          tenureRange,
+          Number(tenureRange.min),
+          Number(tenureRange.max)
+        );
+
+        tenureInput.removeAttribute("aria-invalid");
+        refreshDisplays();
+        setMessage(errorElement, "");
+      });
+
+      principalRange.addEventListener("input", () => {
+        syncInputFromRange(principalRange, principalInput);
+        refreshDisplays();
+        calculateAndRender();
+      });
+
+      interestRange.addEventListener("input", () => {
+        syncInputFromRange(interestRange, interestInput);
+        refreshDisplays();
+        calculateAndRender();
+      });
+
+      tenureRange.addEventListener("input", () => {
+        syncInputFromRange(tenureRange, tenureInput);
+        refreshDisplays();
+        calculateAndRender();
+      });
+
+      form.addEventListener("submit", calculateAndRender);
+      form.addEventListener("reset", resetCalculator);
+
+      resetButton.addEventListener("click", () => {
+        setMessage(errorElement, "");
+      });
+
+      refreshDisplays();
+      calculateAndRender();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b6f83">
+  <title>Hours to Decimal Converter | MohakTools</title>
+  <meta name="description" content="Convert hours and minutes to decimal hours for timesheets, or convert decimal hours back to hours and minutes.">
+  <link rel="canonical" href="https://mohaktools.com/tools/hours-to-decimal/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="Hours to Decimal Converter | MohakTools">
+  <meta property="og:description" content="Convert hours and minutes to decimal hours, or convert decimal hours back to time.">
+  <meta property="og:url" content="https://mohaktools.com/tools/hours-to-decimal/">
+  <link rel="stylesheet" href="/assets/css/themes.css"><link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+  <script src="/assets/js/theme.js" defer></script><script src="/assets/js/header.js" defer></script><script src="/assets/js/footer.js" defer></script>
+</head>
+<body>
+  <main class="tool-wrap">
+    <nav class="tool-breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/tools/">Tools</a> / Hours to Decimal</nav>
+    <header class="tool-heading"><h1>Hours to Decimal Converter</h1><p>Turn time into decimal hours for timesheets and payroll, or convert a decimal value back into hours and minutes.</p></header>
+    <div class="tool-card">
+      <section><h2>Hours and minutes to decimal</h2><div class="tool-grid"><div class="tool-field"><label for="hours">Hours</label><input id="hours" type="number" min="0" max="1000000" step="1" inputmode="numeric" value="7"></div><div class="tool-field"><label for="minutes">Minutes</label><input id="minutes" type="number" min="0" max="59" step="1" inputmode="numeric" value="30"></div></div><div class="tool-answer" role="status" aria-live="polite">Decimal hours: <strong id="decimal-result">7.50</strong></div></section>
+      <section class="tool-section-spaced"><h2>Decimal hours to time</h2><div class="tool-field"><label for="decimal">Decimal hours</label><input id="decimal" type="number" min="0" max="1000000" step="any" inputmode="decimal" value="7.5"></div><div class="tool-answer" role="status" aria-live="polite">Time: <strong id="time-result">7 hours 30 minutes</strong></div></section>
+    </div>
+    <section class="tool-info-card" aria-labelledby="about-tool"><h2 id="about-tool">About this tool</h2><p>Use this two-way converter to prepare timesheet entries or understand decimal-hour values. It calculates in your browser, and decimal-hour results are rounded to two places.</p></section>
+    <section class="tool-info-card" aria-labelledby="faq-title"><h2 id="faq-title">Frequently asked questions</h2><div class="tool-faq-list">
+      <details class="tool-faq"><summary>How do I convert minutes to decimal hours?</summary><p>Divide the minutes by 60 and add the result to the whole hours. For example, 7 hours 30 minutes is 7 + 30 ÷ 60 = 7.5 hours.</p></details>
+      <details class="tool-faq"><summary>What is 45 minutes as a decimal?</summary><p>45 minutes is 0.75 decimal hours because 45 ÷ 60 = 0.75.</p></details>
+      <details class="tool-faq"><summary>How are decimal hours converted back to minutes?</summary><p>The converter multiplies decimal hours by 60, then shows the total as whole hours and remaining minutes.</p></details>
+    </div></section>
+  </main>
+  <script>
+    (() => {
+      const hoursInput = document.querySelector('#hours');
+      const minutesInput = document.querySelector('#minutes');
+      const decimalInput = document.querySelector('#decimal');
+      const decimalResult = document.querySelector('#decimal-result');
+      const timeResult = document.querySelector('#time-result');
+
+      function updateDecimalHours() {
+        const hours = Number(hoursInput.value);
+        const minutes = Number(minutesInput.value);
+        const valid = hoursInput.value !== ''
+          && minutesInput.value !== ''
+          && Number.isInteger(hours)
+          && Number.isInteger(minutes)
+          && hours >= 0
+          && hours <= 1000000
+          && minutes >= 0
+          && minutes <= 59;
+
+        decimalResult.textContent = valid
+          ? (hours + minutes / 60).toFixed(2)
+          : 'Enter whole hours and 0–59 minutes';
+      }
+
+      function updateTime() {
+        const decimalHours = Number(decimalInput.value);
+        if (decimalInput.value === '' || !Number.isFinite(decimalHours) || decimalHours < 0 || decimalHours > 1000000) {
+          timeResult.textContent = 'Enter a value from 0 to 1,000,000';
+          return;
+        }
+
+        const totalMinutes = Math.round(decimalHours * 60);
+        const hours = Math.floor(totalMinutes / 60);
+        const minutes = totalMinutes % 60;
+        timeResult.textContent = `${hours} hour${hours === 1 ? '' : 's'} ${minutes} minute${minutes === 1 ? '' : 's'}`;
+      }
+
+      hoursInput.addEventListener('input', updateDecimalHours);
+      minutesInput.addEventListener('input', updateDecimalHours);
+      decimalInput.addEventListener('input', updateTime);
+    })();
+  </script>
+</body>
+</html>

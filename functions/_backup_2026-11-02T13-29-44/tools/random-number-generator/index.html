@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Random Number Generator Online | MohakTools</title>
+  <meta name="description" content="Generate random numbers online with custom ranges, quantity, unique numbers, decimals, sorting, exclusions, presets, and easy copy or download options.">
+  <meta name="keywords" content="random number generator, random number picker, unique random numbers, number generator online, random integers, random decimals">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="MohakTools">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="application-name" content="MohakTools">
+  <link rel="canonical" href="https://mohaktools.com/tools/random-number-generator/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/webp" href="/favicon.webp">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="Random Number Generator Online | MohakTools">
+  <meta property="og:description" content="Generate random integers or decimals with custom ranges, unique values, and export options.">
+  <meta property="og:url" content="https://mohaktools.com/tools/random-number-generator/">
+  <meta property="og:image" content="https://mohaktools.com/assets/images/random-number-generator-og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Random Number Generator Online | MohakTools">
+  <meta name="twitter:description" content="Generate random numbers with custom ranges and flexible options.">
+  <meta name="twitter:image" content="https://mohaktools.com/assets/images/random-number-generator-og.png">
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Random Number Generator",
+    "url":"https://mohaktools.com/tools/random-number-generator/",
+    "description":"Generate random numbers with customizable ranges, quantity, uniqueness, and export options.",
+    "applicationCategory":"UtilitiesApplication",
+    "operatingSystem":"Any",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},
+    "publisher":{"@type":"Organization","name":"MohakTools","url":"https://mohaktools.com/"}
+  }
+  </script>
+  <style>
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    .mt-page {
+      width: min(100% - 32px, 1080px);
+      margin: 0 auto;
+      padding: 24px 0 56px;
+      color: var(--color-text);
+    }
+    .mt-breadcrumbs {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+      color: var(--color-text-secondary); font-size: 13px;
+    }
+    .mt-breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+    .mt-breadcrumbs a:hover { text-decoration: underline; }
+    .mt-hero { margin-bottom: 22px; }
+    .mt-hero h1 {
+      margin: 0 0 8px; font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15; letter-spacing: -.03em; color: var(--color-text);
+    }
+    .mt-hero p {
+      max-width: 760px; margin: 0; color: var(--color-text-secondary);
+      font-size: 15px; line-height: 1.7;
+    }
+    .mt-layout {
+      display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      gap: 18px; align-items: start;
+    }
+    .mt-panel {
+      min-width: 0; padding: 20px; border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 20px); background: var(--color-surface);
+      box-shadow: var(--color-card-shadow, 0 4px 18px rgba(0,0,0,.04));
+    }
+    .mt-panel h2 { margin: 0 0 16px; font-size: 19px; color: var(--color-text); }
+    .mt-field { min-width: 0; margin-bottom: 15px; }
+    .mt-field label {
+      display: block; margin-bottom: 7px; color: var(--color-text);
+      font-size: 13px; font-weight: 650;
+    }
+    .mt-field input:not([type="checkbox"]):not([type="radio"]),
+    .mt-field select, .mt-field textarea {
+      display: block; width: 100%; min-height: 43px; padding: 10px 12px;
+      border: 1px solid var(--color-input-border, var(--color-border));
+      border-radius: var(--radius-md, 10px);
+      background: var(--color-input-bg, var(--color-surface));
+      color: var(--color-text); font: inherit; font-size: 14px; outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .mt-field textarea { min-height: 88px; resize: vertical; line-height: 1.6; }
+    .mt-field input:focus, .mt-field select:focus, .mt-field textarea:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-focus, rgba(37,99,235,.14));
+    }
+    .mt-help { margin: 6px 0 0; color: var(--color-text-secondary); font-size: 12px; line-height: 1.6; }
+    .mt-two-col { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 12px; }
+    .mt-options {
+      padding: 15px; margin: 4px 0 17px; border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg, 14px); background: var(--color-surface-secondary);
+    }
+    .mt-options h3 { margin: 0 0 12px; color: var(--color-text); font-size: 14px; }
+    .mt-check {
+      display: flex; align-items: flex-start; gap: 9px; margin: 10px 0;
+      color: var(--color-text); font-size: 13px; line-height: 1.5; cursor: pointer;
+    }
+    .mt-check input { flex: 0 0 auto; width: 17px; height: 17px; margin: 1px 0 0; accent-color: var(--color-primary); }
+    .mt-button-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .mt-button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+      min-height: 42px; padding: 10px 14px; border: 1px solid transparent;
+      border-radius: var(--radius-md, 10px); font: inherit; font-size: 13px;
+      font-weight: 700; cursor: pointer; transition: opacity .2s, transform .2s;
+    }
+    .mt-button:hover { opacity: .88; }
+    .mt-button:active { transform: translateY(1px); }
+    .mt-button:disabled { opacity: .5; cursor: not-allowed; }
+    .mt-primary { background: var(--color-primary); color: var(--color-primary-text, #fff); }
+    .mt-secondary { border-color: var(--color-border); background: var(--color-surface-secondary); color: var(--color-text); }
+    .mt-button-main { flex: 1; }
+    .mt-status { min-height: 20px; margin: 12px 0 0; color: var(--color-text-secondary); font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+    .mt-status.success { color: var(--color-success, #15803d); }
+    .mt-status.error { color: var(--color-danger, #dc2626); }
+    .mt-presets { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 17px; }
+    .mt-preset {
+      padding: 7px 10px; border: 1px solid var(--color-border); border-radius: 99px;
+      background: var(--color-surface-secondary); color: var(--color-text);
+      font: inherit; font-size: 12px; cursor: pointer;
+    }
+    .mt-preset:hover { border-color: var(--color-primary); }
+    .mt-result-top {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; margin-bottom: 12px;
+    }
+    .mt-result-top h2 { margin: 0; }
+    .mt-badge {
+      padding: 5px 9px; border-radius: 99px; background: var(--color-surface-secondary);
+      color: var(--color-text-secondary); font-size: 11px; white-space: nowrap;
+    }
+    .mt-featured {
+      display: grid; place-items: center; min-height: 132px; margin-bottom: 12px;
+      padding: 18px; border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 16px); background: var(--color-surface-secondary);
+      text-align: center; overflow-wrap: anywhere;
+    }
+    .mt-featured-value {
+      color: var(--color-text); font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.15; font-weight: 800; letter-spacing: -.04em;
+      font-variant-numeric: tabular-nums;
+    }
+    .mt-featured-label { margin-top: 8px; color: var(--color-text-secondary); font-size: 12px; }
+    .mt-results {
+      display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 8px;
+      max-height: 360px; overflow: auto; padding: 2px;
+    }
+    .mt-number-chip {
+      display: flex; align-items: center; justify-content: center; min-height: 42px;
+      padding: 8px 5px; border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px); background: var(--color-surface);
+      color: var(--color-text); font-size: 14px; font-weight: 700;
+      font-variant-numeric: tabular-nums; overflow-wrap: anywhere;
+    }
+    .mt-empty {
+      grid-column: 1 / -1; padding: 26px 12px; color: var(--color-text-secondary);
+      text-align: center; font-size: 13px;
+    }
+    .mt-stats {
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; margin-top: 15px;
+    }
+    .mt-stat {
+      padding: 12px; border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px); background: var(--color-surface);
+      min-width: 0;
+    }
+    .mt-stat span { display: block; margin-bottom: 5px; color: var(--color-text-secondary); font-size: 11px; }
+    .mt-stat strong { display: block; color: var(--color-text); font-size: 15px; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+    .mt-result-actions { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin-top: 14px; }
+    .mt-history { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--color-border); }
+    .mt-history-heading { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .mt-history-heading h3 { margin: 0; color: var(--color-text); font-size: 15px; }
+    .mt-history-list { display: grid; gap: 8px; max-height: 230px; overflow: auto; }
+    .mt-history-item {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 10px; border: 1px solid var(--color-border); border-radius: var(--radius-md, 10px);
+      color: var(--color-text-secondary); font-size: 12px;
+    }
+    .mt-history-item strong { display: block; margin-bottom: 3px; color: var(--color-text); font-size: 13px; }
+    .mt-content { margin-top: 28px; }
+    .mt-content-section {
+      margin-top: 16px; padding: 22px; border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl, 20px); background: var(--color-surface);
+    }
+    .mt-content-section h2 { margin: 0 0 12px; font-size: 21px; color: var(--color-text); }
+    .mt-content-section h3 { margin: 0 0 7px; font-size: 15px; color: var(--color-text); }
+    .mt-content-section p, .mt-content-section li {
+      color: var(--color-text-secondary); font-size: 14px; line-height: 1.75;
+    }
+    .mt-content-section p { margin: 0 0 10px; }
+    .mt-content-section ul { padding-left: 20px; }
+    .mt-faq { padding: 15px 0; border-bottom: 1px solid var(--color-border); }
+    .mt-faq:last-child { padding-bottom: 0; border-bottom: 0; }
+    .mt-faq p { margin: 0; }
+    .mt-related { display: flex; flex-wrap: wrap; gap: 8px; }
+    .mt-related a {
+      display: inline-flex; padding: 8px 11px; border: 1px solid var(--color-border);
+      border-radius: var(--radius-md, 10px); color: var(--color-primary);
+      text-decoration: none; font-size: 13px;
+    }
+    .mt-related a:hover { border-color: var(--color-primary); }
+    .mt-hidden { display: none !important; }
+    @media (max-width: 760px) {
+      .mt-page { width: min(100% - 24px, 620px); padding-top: 18px; }
+      .mt-layout { grid-template-columns: 1fr; gap: 12px; }
+      .mt-panel { padding: 16px; }
+      .mt-content-section { padding: 17px; }
+      .mt-results { grid-template-columns: repeat(3,minmax(0,1fr)); }
+    }
+    @media (max-width: 420px) {
+      .mt-page { width: min(100% - 20px, 620px); }
+      .mt-two-col { gap: 0 8px; }
+      .mt-result-actions { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .mt-stats { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; }
+      .mt-stat { padding: 9px; }
+      .mt-stat strong { font-size: 13px; }
+      .mt-results { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .mt-button, .mt-field input, .mt-field select, .mt-field textarea { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <div id="site-header"></div>
+
+  <main class="mt-page">
+    <nav class="mt-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">/</span>
+      <a href="/tools/">Tools</a><span aria-hidden="true">/</span>
+      <span aria-current="page">Random Number Generator</span>
+    </nav>
+
+    <header class="mt-hero">
+      <h1>Random Number Generator</h1>
+      <p>Generate random numbers in seconds. Set a custom range, choose how many numbers you need, avoid duplicates, sort results, exclude specific values, and copy or download your list.</p>
+    </header>
+
+    <section class="mt-layout" aria-label="Random Number Generator">
+      <section class="mt-panel" aria-labelledby="settings-title">
+        <h2 id="settings-title">Generator Settings</h2>
+
+        <div class="mt-presets" aria-label="Quick presets">
+          <button class="mt-preset" type="button" data-preset="dice">Dice (1–6)</button>
+          <button class="mt-preset" type="button" data-preset="coin">Coin (1–2)</button>
+          <button class="mt-preset" type="button" data-preset="lottery">Lottery (1–49)</button>
+          <button class="mt-preset" type="button" data-preset="percent">Percent (0–100)</button>
+          <button class="mt-preset" type="button" data-preset="year">Years (1900–2026)</button>
+        </div>
+
+        <div class="mt-two-col">
+          <div class="mt-field">
+            <label for="minValue">Minimum value</label>
+            <input id="minValue" type="number" value="1" step="any" inputmode="decimal">
+          </div>
+          <div class="mt-field">
+            <label for="maxValue">Maximum value</label>
+            <input id="maxValue" type="number" value="100" step="any" inputmode="decimal">
+          </div>
+          <div class="mt-field">
+            <label for="quantity">How many numbers?</label>
+            <input id="quantity" type="number" value="1" min="1" max="1000" step="1">
+            <p class="mt-help">Generate between 1 and 1,000 numbers per batch.</p>
+          </div>
+          <div class="mt-field">
+            <label for="numberType">Number type</label>
+            <select id="numberType">
+              <option value="integer" selected>Whole numbers (integers)</option>
+              <option value="decimal">Decimal numbers</option>
+            </select>
+          </div>
+          <div class="mt-field mt-hidden" id="precisionField">
+            <label for="precision">Decimal places</label>
+            <select id="precision">
+              <option value="1">1 decimal place</option>
+              <option value="2" selected>2 decimal places</option>
+              <option value="3">3 decimal places</option>
+              <option value="4">4 decimal places</option>
+              <option value="5">5 decimal places</option>
+              <option value="6">6 decimal places</option>
+            </select>
+          </div>
+          <div class="mt-field">
+            <label for="sortOrder">Sort results</label>
+            <select id="sortOrder">
+              <option value="none" selected>Keep random order</option>
+              <option value="asc">Ascending (low to high)</option>
+              <option value="desc">Descending (high to low)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-options">
+          <h3>Advanced options</h3>
+          <label class="mt-check">
+            <input type="checkbox" id="uniqueOnly">
+            <span><strong>Unique numbers only</strong><br>Prevent duplicate values in the same result.</span>
+          </label>
+          <label class="mt-check">
+            <input type="checkbox" id="allowNegative" checked>
+            <span><strong>Allow negative values</strong><br>When disabled, the minimum value cannot be below zero.</span>
+          </label>
+          <label class="mt-check">
+            <input type="checkbox" id="includeBounds" checked>
+            <span><strong>Include both range endpoints</strong><br>When enabled, the minimum and maximum can be generated.</span>
+          </label>
+          <div class="mt-field" style="margin:14px 0 0">
+            <label for="excludeValues">Exclude specific values (optional)</label>
+            <textarea id="excludeValues" rows="2" placeholder="Example: 4, 13, 25"></textarea>
+            <p class="mt-help">Separate values with commas or new lines. Exclusions are applied to integer results and exact decimal values.</p>
+          </div>
+        </div>
+
+        <div class="mt-field">
+          <label for="seedValue">Seed (optional)</label>
+          <input id="seedValue" type="text" maxlength="120" placeholder="Leave blank for fresh randomness">
+          <p class="mt-help">A seed enables repeatable results for testing. Seeded results are deterministic and are not cryptographically secure.</p>
+        </div>
+
+        <div class="mt-button-row">
+          <button class="mt-button mt-secondary" id="resetButton" type="button">Reset</button>
+          <button class="mt-button mt-primary mt-button-main" id="generateButton" type="button">Generate Numbers</button>
+        </div>
+        <p class="mt-status" id="statusMessage" role="status" aria-live="polite">Ready. Set your range and generate random numbers.</p>
+      </section>
+
+      <section class="mt-panel" aria-labelledby="results-title">
+        <div class="mt-result-top">
+          <h2 id="results-title">Your Results</h2>
+          <span class="mt-badge" id="resultBadge">Waiting</span>
+        </div>
+
+        <div class="mt-featured">
+          <div>
+            <div class="mt-featured-value" id="featuredNumber">—</div>
+            <div class="mt-featured-label" id="featuredLabel">Your latest result will appear here</div>
+          </div>
+        </div>
+
+        <div class="mt-results" id="resultsGrid" aria-label="Generated numbers">
+          <div class="mt-empty">No numbers generated yet.</div>
+        </div>
+
+        <div class="mt-stats" aria-label="Result statistics">
+          <div class="mt-stat"><span>Count</span><strong id="statCount">0</strong></div>
+          <div class="mt-stat"><span>Smallest</span><strong id="statMin">—</strong></div>
+          <div class="mt-stat"><span>Largest</span><strong id="statMax">—</strong></div>
+          <div class="mt-stat"><span>Total</span><strong id="statSum">—</strong></div>
+          <div class="mt-stat"><span>Average</span><strong id="statAverage">—</strong></div>
+          <div class="mt-stat"><span>Duplicates</span><strong id="statDuplicates">—</strong></div>
+        </div>
+
+        <div class="mt-result-actions">
+          <button class="mt-button mt-primary" id="copyButton" type="button">Copy Results</button>
+          <button class="mt-button mt-secondary" id="downloadTxtButton" type="button">Download TXT</button>
+          <button class="mt-button mt-secondary" id="downloadCsvButton" type="button">Download CSV</button>
+          <button class="mt-button mt-secondary" id="generateAgainButton" type="button">Generate Again</button>
+          <button class="mt-button mt-secondary" id="shareButton" type="button">Share Results</button>
+          <button class="mt-button mt-secondary" id="clearResultsButton" type="button">Clear Results</button>
+        </div>
+
+        <div class="mt-history">
+          <div class="mt-history-heading">
+            <h3>Recent Generations</h3>
+            <button class="mt-button mt-secondary" id="clearHistoryButton" type="button" style="min-height:32px;padding:6px 10px">Clear history</button>
+          </div>
+          <div class="mt-history-list" id="historyList">
+            <div class="mt-empty">Your recent generations will appear here.</div>
+          </div>
+          <p class="mt-help">History stays in this page session and is not uploaded to MohakTools.</p>
+        </div>
+      </section>
+    </section>
+
+    <div class="mt-content">
+      <section class="mt-content-section">
+        <h2>How to Use the Random Number Generator</h2>
+        <ul>
+          <li>Enter the minimum and maximum values for your range.</li>
+          <li>Choose how many numbers to generate and select integer or decimal mode.</li>
+          <li>Enable unique values if you do not want duplicates in one batch.</li>
+          <li>Optionally sort the results or enter values to exclude.</li>
+          <li>Select Generate Numbers, then copy or download the results.</li>
+        </ul>
+      </section>
+
+      <section class="mt-content-section">
+        <h2>What Is a Random Number Generator?</h2>
+        <p>A random number generator produces values selected from a defined range. It can be useful for classroom exercises, simulations, sample data, casual games, randomized lists, and other everyday tasks.</p>
+        <p>This tool uses the browser's cryptographic random-number facility when available for unseeded generation. Seeded mode is intended for reproducible testing and should not be used for security-sensitive purposes.</p>
+      </section>
+
+      <section class="mt-content-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="mt-faq">
+          <h3>Can I generate multiple random numbers at once?</h3>
+          <p>Yes. Choose a quantity from 1 to 1,000 to create a batch of numbers.</p>
+        </div>
+        <div class="mt-faq">
+          <h3>How do I prevent duplicate numbers?</h3>
+          <p>Enable Unique numbers only. The tool will check that the requested quantity is possible within the range after exclusions.</p>
+        </div>
+        <div class="mt-faq">
+          <h3>Can I generate decimal numbers?</h3>
+          <p>Yes. Switch Number type to Decimal numbers and choose the number of decimal places.</p>
+        </div>
+        <div class="mt-faq">
+          <h3>Can I exclude particular numbers?</h3>
+          <p>Yes. Enter a comma-separated or line-separated list in the exclusion field. For integer mode, excluded values are compared as integers.</p>
+        </div>
+        <div class="mt-faq">
+          <h3>Can I repeat a previous set of results?</h3>
+          <p>Enter the same seed and keep the other settings unchanged to reproduce seeded results. Seeded mode is deterministic and not suitable for security-sensitive use.</p>
+        </div>
+        <div class="mt-faq">
+          <h3>Are the generated numbers truly random?</h3>
+          <p>Unseeded mode uses the browser's cryptographic random source when supported. No software generator can promise every practical interpretation of randomness; use specialized, audited systems for high-stakes or regulated draws.</p>
+        </div>
+      </section>
+
+      <section class="mt-content-section">
+        <h2>Related Tools</h2>
+        <div class="mt-related">
+          <a href="/tools/password-generator/">Password Generator</a>
+          <a href="/tools/uuid-generator/">UUID Generator</a>
+          <a href="/tools/percentage-calculator/">Percentage Calculator</a>
+          <a href="/tools/coin-flip/">Coin Flip</a>
+          <a href="/tools/">All Tools</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+
+  <script>
+  (() => {
+    "use strict";
+
+    const $ = id => document.getElementById(id);
+    const MAX_QUANTITY = 1000;
+    const HISTORY_LIMIT = 8;
+    const defaults = {
+      minValue: "1",
+      maxValue: "100",
+      quantity: "1",
+      numberType: "integer",
+      precision: "2",
+      sortOrder: "none",
+      uniqueOnly: false,
+      allowNegative: true,
+      includeBounds: true,
+      excludeValues: "",
+      seedValue: ""
+    };
+
+    let results = [];
+    let history = [];
+    let seededState = null;
+    let generationCounter = 0;
+
+    function setStatus(message, type = "") {
+      $("statusMessage").textContent = message;
+      $("statusMessage").className = "mt-status" + (type ? " " + type : "");
+    }
+
+    function showTypeOptions() {
+      $("precisionField").classList.toggle(
+        "mt-hidden",
+        $("numberType").value !== "decimal"
+      );
+    }
+
+    function parseFiniteNumber(id, label) {
+      const raw = $(id).value.trim();
+      if (raw === "") throw new Error("Enter a " + label + ".");
+      const value = Number(raw);
+      if (!Number.isFinite(value)) throw new Error("Enter a valid " + label + ".");
+      return value;
+    }
+
+    function parseExcludedValues(type, precision) {
+      const raw = $("excludeValues").value.trim();
+      if (!raw) return new Set();
+
+      const parts = raw.split(/[,\n\r\t ]+/).filter(Boolean);
+      const values = new Set();
+
+      for (const part of parts) {
+        const number = Number(part);
+        if (!Number.isFinite(number)) {
+          throw new Error('Invalid excluded value: "' + part + '".');
+        }
+        values.add(type === "integer" ? Math.trunc(number) : roundTo(number, precision));
+      }
+      return values;
+    }
+
+    function roundTo(value, places) {
+      const factor = 10 ** places;
+      return Math.round((value + Number.EPSILON) * factor) / factor;
+    }
+
+    function getSettings() {
+      const min = parseFiniteNumber("minValue", "minimum value");
+      const max = parseFiniteNumber("maxValue", "maximum value");
+      const quantityRaw = parseFiniteNumber("quantity", "quantity");
+      const quantity = Math.trunc(quantityRaw);
+      const type = $("numberType").value;
+      const precision = Number($("precision").value);
+      const unique = $("uniqueOnly").checked;
+      const allowNegative = $("allowNegative").checked;
+      const includeBounds = $("includeBounds").checked;
+
+      if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > MAX_QUANTITY) {
+        throw new Error("Quantity must be a whole number between 1 and " + MAX_QUANTITY + ".");
+      }
+      if (min > max) throw new Error("Minimum value must not be greater than maximum value.");
+      if (!allowNegative && min < 0) throw new Error("Negative values are disabled. Set the minimum to zero or above.");
+      if (type === "integer" && (!Number.isSafeInteger(min) || !Number.isSafeInteger(max))) {
+        throw new Error("Integer mode requires whole-number minimum and maximum values.");
+      }
+      if (type === "integer" && (Math.abs(min) > Number.MAX_SAFE_INTEGER || Math.abs(max) > Number.MAX_SAFE_INTEGER)) {
+        throw new Error("Integer bounds must be within JavaScript's safe integer range.");
+      }
+
+      const excluded = parseExcludedValues(type, precision);
+      const seed = $("seedValue").value.trim();
+
+      if (type === "integer") {
+        let available = max - min + (includeBounds ? 1 : -1);
+        if (!includeBounds && min === max) available = 0;
+        if (unique) {
+          let excludedInRange = 0;
+          excluded.forEach(value => {
+            if (Number.isInteger(value) && value >= min && value <= max) excludedInRange++;
+          });
+          const availableCount = Math.max(0, available - excludedInRange);
+          if (availableCount < quantity) {
+            throw new Error("Not enough available integers for this quantity after exclusions. Expand the range or reduce the quantity.");
+          }
+        }
+      } else if (unique) {
+        const factor = 10 ** precision;
+        const first = Math.ceil(min * factor + (includeBounds ? 0 : 1));
+        const last = Math.floor(max * factor - (includeBounds ? 0 : 1));
+        if (last < first) throw new Error("This range contains no values at the selected decimal precision.");
+        const possible = last - first + 1;
+        let excludedCount = 0;
+        excluded.forEach(value => {
+          const scaled = Math.round(value * factor);
+          if (scaled >= first && scaled <= last) excludedCount++;
+        });
+        if (possible - excludedCount < quantity) {
+          throw new Error("Not enough unique decimal values at this precision. Increase the range or decimal places.");
+        }
+      }
+
+      return {
+        min, max, quantity, type, precision, unique, allowNegative,
+        includeBounds, excluded, seed
+      };
+    }
+
+    function seedHash(text) {
+      let hash = 2166136261;
+      for (let i = 0; i < text.length; i++) {
+        hash ^= text.charCodeAt(i);
+        hash = Math.imul(hash, 16777619);
+      }
+      return hash >>> 0 || 1;
+    }
+
+    function seededRandom() {
+      // Mulberry32: reproducible pseudo-random sequence for testing, not security.
+      let t = seededState += 0x6D2B79F5;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    }
+
+    function randomFloat() {
+      const seed = $("seedValue").value.trim();
+      if (seed) return seededRandom();
+
+      if (window.crypto && typeof window.crypto.getRandomValues === "function") {
+        const array = new Uint32Array(1);
+        window.crypto.getRandomValues(array);
+        return array[0] / 4294967296;
+      }
+      return Math.random();
+    }
+
+    function randomIntInclusive(min, max) {
+      const span = max - min + 1;
+      if (!Number.isSafeInteger(span) || span < 1) {
+        throw new Error("The selected integer range is too large.");
+      }
+
+      if ($("seedValue").value.trim()) {
+        return min + Math.floor(randomFloat() * span);
+      }
+
+      if (window.crypto && typeof window.crypto.getRandomValues === "function") {
+        const range = 0x100000000;
+        const limit = Math.floor(range / span) * span;
+        const array = new Uint32Array(1);
+        let value;
+        do {
+          window.crypto.getRandomValues(array);
+          value = array[0];
+        } while (value >= limit);
+        return min + (value % span);
+      }
+
+      return min + Math.floor(Math.random() * span);
+    }
+
+    function makeOne(settings) {
+      const { min, max, type, precision, includeBounds } = settings;
+
+      if (type === "integer") {
+        let low = min;
+        let high = max;
+        if (!includeBounds) {
+          low = min + 1;
+          high = max - 1;
+        }
+        if (low > high) throw new Error("No integers remain when endpoints are excluded.");
+        return randomIntInclusive(low, high);
+      }
+
+      const factor = 10 ** precision;
+      const minStep = Math.ceil(min * factor);
+      const maxStep = Math.floor(max * factor);
+      let lowStep = minStep;
+      let highStep = maxStep;
+
+      if (!includeBounds) {
+        lowStep = Math.floor(min * factor) + 1;
+        highStep = Math.ceil(max * factor) - 1;
+      }
+      if (lowStep > highStep) {
+        throw new Error("No decimal values fit the selected range and precision.");
+      }
+
+      return roundTo((lowStep + randomIntInclusive(0, highStep - lowStep)) / factor, precision);
+    }
+
+    function generateBatch() {
+      let settings;
+      try {
+        settings = getSettings();
+      } catch (error) {
+        setStatus(error.message || "Check your settings and try again.", "error");
+        return;
+      }
+
+      seededState = settings.seed ? seedHash(settings.seed) : null;
+      const batch = [];
+      const seen = new Set();
+      const maximumAttempts = Math.max(10000, settings.quantity * 1000);
+      let attempts = 0;
+
+      try {
+        while (batch.length < settings.quantity && attempts < maximumAttempts) {
+          attempts++;
+          const value = makeOne(settings);
+          if (settings.excluded.has(value)) continue;
+          if (settings.unique && seen.has(value)) continue;
+
+          seen.add(value);
+          batch.push(value);
+        }
+
+        if (batch.length !== settings.quantity) {
+          throw new Error("Could not generate the requested quantity. Check your range, exclusions, and uniqueness setting.");
+        }
+
+        if (settings.sortOrder === "asc") batch.sort((a, b) => a - b);
+        if (settings.sortOrder === "desc") batch.sort((a, b) => b - a);
+
+        results = batch;
+        generationCounter++;
+        renderResults();
+        addHistory(settings);
+        setStatus(
+          "Generated " + results.length + " number" + (results.length === 1 ? "" : "s") +
+          (settings.seed ? " using the provided seed." : "."),
+          "success"
+        );
+        $("resultBadge").textContent = "Generated";
+      } catch (error) {
+        setStatus(error.message || "Generation failed. Review the settings.", "error");
+      }
+    }
+
+    function formatNumber(value) {
+      if (!Number.isFinite(value)) return String(value);
+      if ($("numberType").value === "decimal") {
+        return value.toFixed(Number($("precision").value));
+      }
+      return String(value);
+    }
+
+    function compactNumber(value) {
+      if (value === null || value === undefined || !Number.isFinite(value)) return "—";
+      return Number.isInteger(value) ? String(value) : String(Number(value.toPrecision(10)));
+    }
+
+    function renderResults() {
+      const grid = $("resultsGrid");
+      grid.replaceChildren();
+
+      if (!results.length) {
+        const empty = document.createElement("div");
+        empty.className = "mt-empty";
+        empty.textContent = "No numbers generated yet.";
+        grid.append(empty);
+        $("featuredNumber").textContent = "—";
+        $("featuredLabel").textContent = "Your latest result will appear here";
+        $("statCount").textContent = "0";
+        $("statMin").textContent = "—";
+        $("statMax").textContent = "—";
+        $("statSum").textContent = "—";
+        $("statAverage").textContent = "—";
+        $("statDuplicates").textContent = "—";
+        $("resultBadge").textContent = "Waiting";
+        return;
+      }
+
+      $("featuredNumber").textContent = formatNumber(results[0]);
+      $("featuredLabel").textContent = results.length === 1
+        ? "Generated number"
+        : "First number in this batch · " + results.length + " total";
+
+      const fragment = document.createDocumentFragment();
+      results.forEach((value, index) => {
+        const chip = document.createElement("div");
+        chip.className = "mt-number-chip";
+        chip.title = "Number " + (index + 1);
+        chip.textContent = formatNumber(value);
+        fragment.append(chip);
+      });
+      grid.append(fragment);
+
+      const min = Math.min(...results);
+      const max = Math.max(...results);
+      const sum = results.reduce((total, value) => total + value, 0);
+      const average = sum / results.length;
+      const duplicates = results.length - new Set(results).size;
+
+      $("statCount").textContent = String(results.length);
+      $("statMin").textContent = compactNumber(min);
+      $("statMax").textContent = compactNumber(max);
+      $("statSum").textContent = compactNumber(sum);
+      $("statAverage").textContent = compactNumber(average);
+      $("statDuplicates").textContent = String(duplicates);
+    }
+
+    function addHistory(settings) {
+      const record = {
+        id: Date.now() + "-" + generationCounter,
+        time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        range: formatNumber(settings.min) + " to " + formatNumber(settings.max),
+        count: results.length,
+        first: results[0],
+        values: results.slice(0, 12)
+      };
+      history.unshift(record);
+      history = history.slice(0, HISTORY_LIMIT);
+      renderHistory();
+    }
+
+    function renderHistory() {
+      const list = $("historyList");
+      list.replaceChildren();
+
+      if (!history.length) {
+        const empty = document.createElement("div");
+        empty.className = "mt-empty";
+        empty.textContent = "Your recent generations will appear here.";
+        list.append(empty);
+        return;
+      }
+
+      history.forEach(record => {
+        const item = document.createElement("div");
+        item.className = "mt-history-item";
+
+        const details = document.createElement("div");
+        const heading = document.createElement("strong");
+        heading.textContent = record.count + " number" + (record.count === 1 ? "" : "s") + " · " + record.range;
+        const sub = document.createElement("span");
+        sub.textContent = record.time + " · Starts with " + formatNumber(record.first);
+        details.append(heading, sub);
+
+        const button = document.createElement("button");
+        button.className = "mt-button mt-secondary";
+        button.type = "button";
+        button.style.minHeight = "32px";
+        button.style.padding = "6px 10px";
+        button.textContent = "Restore";
+        button.addEventListener("click", () => {
+          results = record.values.slice();
+          renderResults();
+          setStatus("Restored the saved preview values. History stores only the first 12 values per batch.", "success");
+        });
+
+        item.append(details, button);
+        list.append(item);
+      });
+    }
+
+    function getResultsText() {
+      return results.map(formatNumber).join("\n");
+    }
+
+    async function copyResults() {
+      if (!results.length) {
+        setStatus("Generate numbers before copying.", "error");
+        return;
+      }
+
+      const text = getResultsText();
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const area = document.createElement("textarea");
+          area.value = text;
+          area.style.position = "fixed";
+          area.style.opacity = "0";
+          document.body.append(area);
+          area.select();
+          const success = document.execCommand("copy");
+          area.remove();
+          if (!success) throw new Error("Clipboard access is unavailable.");
+        }
+        setStatus("Results copied to clipboard.", "success");
+      } catch {
+        setStatus("Could not access the clipboard. Select and copy the results manually.", "error");
+      }
+    }
+
+    function downloadFile(content, mime, filename) {
+      const blob = new Blob([content], { type: mime });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = filename;
+      anchor.style.display = "none";
+      document.body.append(anchor);
+      anchor.click();
+      anchor.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    function downloadTxt() {
+      if (!results.length) {
+        setStatus("Generate numbers before downloading.", "error");
+        return;
+      }
+      downloadFile(getResultsText() + "\n", "text/plain;charset=utf-8", "mohaktools-random-numbers.txt");
+      setStatus("TXT download started.", "success");
+    }
+
+    function downloadCsv() {
+      if (!results.length) {
+        setStatus("Generate numbers before downloading.", "error");
+        return;
+      }
+      const rows = ["index,number", ...results.map((value, index) => (index + 1) + "," + formatNumber(value))];
+      downloadFile(rows.join("\r\n") + "\r\n", "text/csv;charset=utf-8", "mohaktools-random-numbers.csv");
+      setStatus("CSV download started.", "success");
+    }
+
+    async function shareResults() {
+      if (!results.length) {
+        setStatus("Generate numbers before sharing.", "error");
+        return;
+      }
+      const text = "Random numbers from MohakTools:\n" + getResultsText();
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: "MohakTools Random Numbers", text });
+          setStatus("Share dialog opened.", "success");
+        } else {
+          await copyResults();
+          setStatus("Sharing is unavailable here; results were copied instead.", "success");
+        }
+      } catch (error) {
+        if (error && error.name === "AbortError") {
+          setStatus("Sharing cancelled.");
+        } else {
+          setStatus("Could not share these results.", "error");
+        }
+      }
+    }
+
+    function clearResults() {
+      results = [];
+      renderResults();
+      setStatus("Results cleared.");
+    }
+
+    function resetSettings() {
+      Object.entries(defaults).forEach(([key, value]) => {
+        const element = $(key);
+        if (!element) return;
+        if (element.type === "checkbox") element.checked = value;
+        else element.value = value;
+      });
+      showTypeOptions();
+      clearResults();
+      setStatus("Settings reset to their defaults.");
+    }
+
+    function applyPreset(preset) {
+      const presets = {
+        dice: { minValue: "1", maxValue: "6", quantity: "1", numberType: "integer", uniqueOnly: false },
+        coin: { minValue: "1", maxValue: "2", quantity: "1", numberType: "integer", uniqueOnly: false },
+        lottery: { minValue: "1", maxValue: "49", quantity: "6", numberType: "integer", uniqueOnly: true },
+        percent: { minValue: "0", maxValue: "100", quantity: "1", numberType: "integer", uniqueOnly: false },
+        year: { minValue: "1900", maxValue: "2026", quantity: "1", numberType: "integer", uniqueOnly: false }
+      };
+      const selected = presets[preset];
+      if (!selected) return;
+      Object.entries(selected).forEach(([key, value]) => {
+        const element = $(key);
+        if (!element) return;
+        if (element.type === "checkbox") element.checked = value;
+        else element.value = value;
+      });
+      $("excludeValues").value = "";
+      $("seedValue").value = "";
+      showTypeOptions();
+      setStatus("Preset applied. Generate numbers when ready.");
+    }
+
+    $("numberType").addEventListener("change", showTypeOptions);
+    $("generateButton").addEventListener("click", generateBatch);
+    $("generateAgainButton").addEventListener("click", generateBatch);
+    $("copyButton").addEventListener("click", copyResults);
+    $("downloadTxtButton").addEventListener("click", downloadTxt);
+    $("downloadCsvButton").addEventListener("click", downloadCsv);
+    $("shareButton").addEventListener("click", shareResults);
+    $("clearResultsButton").addEventListener("click", clearResults);
+    $("resetButton").addEventListener("click", resetSettings);
+    $("clearHistoryButton").addEventListener("click", () => {
+      history = [];
+      renderHistory();
+      setStatus("Generation history cleared.");
+    });
+
+    document.querySelectorAll("[data-preset]").forEach(button => {
+      button.addEventListener("click", () => applyPreset(button.dataset.preset));
+    });
+
+    $("minValue").addEventListener("keydown", event => {
+      if (event.key === "Enter") generateBatch();
+    });
+    $("maxValue").addEventListener("keydown", event => {
+      if (event.key === "Enter") generateBatch();
+    });
+    $("quantity").addEventListener("keydown", event => {
+      if (event.key === "Enter") generateBatch();
+    });
+
+    showTypeOptions();
+    renderResults();
+    renderHistory();
+  })();
+  </script>
+</body>
+</html>

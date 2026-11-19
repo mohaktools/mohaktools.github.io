@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b6f83">
+  <title>Leap Year Checker | MohakTools</title>
+  <meta name="description" content="Check whether any year is a leap year and find the next and previous leap years. A free, instant leap year checker.">
+  <meta name="keywords" content="leap year checker, leap year calculator, is this a leap year, February 29, calendar year">
+  <link rel="canonical" href="https://mohaktools.com/tools/leap-year-checker/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="Leap Year Checker | MohakTools">
+  <meta property="og:description" content="Check any year and find its closest leap years with this free leap year checker.">
+  <meta property="og:url" content="https://mohaktools.com/tools/leap-year-checker/">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+</head>
+<body>
+  <main class="tool-wrap">
+    <nav class="tool-breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/tools/">Tools</a> / Leap Year Checker</nav>
+    <header class="tool-heading"><h1>Leap Year Checker</h1><p>Enter a year to find out whether it has 365 or 366 days. You’ll also see the closest leap years around it.</p></header>
+    <section class="tool-card" aria-labelledby="checker-title">
+      <h2 id="checker-title">Check a year</h2>
+      <form id="leap-form"><div class="tool-field"><label for="year">Year</label><input id="year" type="number" min="1" max="999999" step="1" inputmode="numeric" placeholder="For example, 2028" aria-describedby="year-hint" required><p id="year-hint" class="tool-hint">Use a whole number from 1 to 999,999.</p></div><button type="submit">Check year</button></form>
+      <div class="tool-answer" id="answer" role="status" aria-live="polite"><strong id="answer-title">Enter a year to see the result.</strong><span id="answer-details"></span></div>
+    </section>
+    <section class="tool-info-card" aria-labelledby="about-tool"><h2 id="about-tool">About this tool</h2><p>This checker applies the Gregorian calendar rule and reports whether February has 28 or 29 days. It also finds the previous and next leap year, with no sign-up or data upload.</p></section>
+    <section class="tool-info-card" aria-labelledby="faq-title"><h2 id="faq-title">Frequently asked questions</h2><div class="tool-faq-list">
+      <details class="tool-faq"><summary>How do I know if a year is a leap year?</summary><p>A year divisible by 4 is usually a leap year. Century years are an exception unless they are divisible by 400. That makes 2000 a leap year and 1900 a common year.</p></details>
+      <details class="tool-faq"><summary>How many days are in a leap year?</summary><p>A leap year has 366 days. February has 29 days instead of 28.</p></details>
+      <details class="tool-faq"><summary>Why do century years have a special rule?</summary><p>The extra day keeps the calendar aligned with the time Earth takes to orbit the Sun. Skipping most century leap days makes the calendar more accurate over long periods.</p></details>
+    </div></section>
+  </main>
+  <script>
+    (() => {
+      const form = document.querySelector('#leap-form');
+      const yearInput = document.querySelector('#year');
+      const answerTitle = document.querySelector('#answer-title');
+      const answerDetails = document.querySelector('#answer-details');
+
+      function isLeapYear(year) {
+        return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+      }
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const year = Number(yearInput.value);
+
+        if (!Number.isInteger(year) || year < 1 || year > 999999) {
+          answerTitle.textContent = 'Enter a valid year.';
+          answerDetails.textContent = 'Use a whole number from 1 to 999,999.';
+          return;
+        }
+
+        let previousLeapYear = year - 1;
+        let nextLeapYear = year + 1;
+        while (previousLeapYear > 0 && !isLeapYear(previousLeapYear)) previousLeapYear -= 1;
+        while (!isLeapYear(nextLeapYear)) nextLeapYear += 1;
+
+        const leapYear = isLeapYear(year);
+        answerTitle.textContent = `${year} ${leapYear ? 'is' : 'is not'} a leap year.`;
+        answerDetails.textContent = `${leapYear ? 'It has 366 days, including February 29.' : 'It has 365 days.'} ${previousLeapYear ? `Previous leap year: ${previousLeapYear}. ` : ''}Next leap year: ${nextLeapYear}.`;
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -53,6 +53,28 @@
       "popularity": 90
     },
     {
+      "id": "make-a-paragraph-small",
+      "name": "Make a Paragraph Small",
+      "category": "ai-tools",
+      "url": "/tools/make-a-paragraph-small/",
+      "description": "Shorten a long paragraph while preserving its main meaning and key details.",
+      "keywords": ["AI paragraph shortener", "shorten paragraph", "make paragraph shorter", "summarize text", "concise writing"],
+      "icon": "¶",
+      "featured": true,
+      "popularity": 88
+    },
+    {
+      "id": "ai-invitation-writer",
+      "name": "Invitation Writer",
+      "category": "ai-tools",
+      "url": "/tools/ai-invitation-writer/",
+      "description": "Write a warm, formal, playful, or casual invitation from your event details.",
+      "keywords": ["AI invitation writer", "invitation generator", "event invitation", "party invitation", "write invitation"],
+      "icon": "✉",
+      "featured": true,
+      "popularity": 86
+    },
+    {
       "id": "calculator",
       "name": "Basic Calculator",
       "category": "calculators",
@@ -111,6 +133,39 @@
       "icon": "▦",
       "featured": true,
       "popularity": 88
+    },
+    {
+      "id": "leap-year-checker",
+      "name": "Leap Year Checker",
+      "category": "calculators",
+      "url": "/tools/leap-year-checker/",
+      "description": "Check whether a year is a leap year and find the nearby leap years.",
+      "keywords": ["leap year calculator", "leap year test", "366 days", "February 29", "calendar"],
+      "icon": "📅",
+      "featured": false,
+      "popularity": 56
+    },
+    {
+      "id": "hours-to-decimal",
+      "name": "Hours to Decimal Converter",
+      "category": "converters",
+      "url": "/tools/hours-to-decimal/",
+      "description": "Convert hours and minutes to decimal hours, or convert decimal hours back to hours and minutes.",
+      "keywords": ["time card calculator", "timesheet converter", "decimal time", "minutes to decimal hours", "payroll hours"],
+      "icon": "⏱",
+      "featured": false,
+      "popularity": 58
+    },
+    {
+      "id": "pet-age-calculator",
+      "name": "Pet Age Calculator",
+      "category": "calculators",
+      "url": "/tools/pet-age-calculator/",
+      "description": "Estimate a dog's or cat's human-equivalent age with a simple, clearly labeled guide.",
+      "keywords": ["dog age calculator", "cat age calculator", "pet years to human years", "dog years", "cat years"],
+      "icon": "🐾",
+      "featured": false,
+      "popularity": 55
     },
     {
       "id": "bmi-calculator",
@@ -815,13 +870,15 @@
     },
     {
       "id": "background-remover",
-      "name": "Background Remover",
+      "name": "Color Background Remover",
       "category": "everyday-utilities",
       "url": "/tools/background-remover/",
-      "description": "Remove the background from images in your browser.",
+      "description": "Remove a solid-color background from an image and preview its transparent PNG.",
       "keywords": [
         "photo",
         "transparent background",
+        "solid color background remover",
+        "chroma key",
         "png",
         "cutout"
       ],
@@ -2249,6 +2306,7 @@
       "name": "Track My Activity",
       "category": "everyday-utilities",
       "url": "https://track.mohaktools.com",
+      "external": true,
       "description": "Track and analyze your daily activities.",
       "keywords": [
         "activity",
@@ -2287,6 +2345,88 @@
       ],
       "icon": "{ }",
       "popularity": 71
-    }
+    }, 
+    
+  {
+    "id": "commission-calculator",
+    "name": "Commission Calculator",
+    "category": "calculators",
+    "url": "/tools/commission-calculator/",
+    "description": "Work out sales commission and total pay from a sale amount and rate.",
+    "keywords": [
+      "commission",
+      "sales",
+      "salary",
+      "pay",
+      "percentage"
+    ],
+    "icon": "₹",
+    "popularity": 70
+  },
+  {
+    "id": "meeting-cost-calculator",
+    "name": "Meeting Cost Calculator",
+    "category": "calculators",
+    "url": "/tools/meeting-cost-calculator/",
+    "description": "Estimate what a meeting costs from attendees, hourly rates and length.",
+    "keywords": [
+      "meeting cost",
+      "hourly rate",
+      "productivity",
+      "business",
+      "time"
+    ],
+    "icon": "◷",
+    "popularity": 62
+  },
+  {
+    "id": "px-to-rem-converter",
+    "name": "PX to REM Converter",
+    "category": "converters",
+    "url": "/tools/px-to-rem-converter/",
+    "description": "Convert CSS pixels to rem and back using your base font size.",
+    "keywords": [
+      "px to rem",
+      "rem to px",
+      "css",
+      "font size",
+      "units"
+    ],
+    "icon": "↔",
+    "popularity": 65
+  },
+  {
+    "id": "pace-converter",
+    "name": "Pace Converter",
+    "category": "converters",
+    "url": "/tools/pace-converter/",
+    "description": "Convert running pace to km/h, mph and minutes per mile.",
+    "keywords": [
+      "running pace",
+      "min per km",
+      "min per mile",
+      "speed",
+      "running"
+    ],
+    "icon": "↔",
+    "popularity": 60
+  },
+  {
+    "id": "color-palette-generator",
+    "name": "Color Palette Generator",
+    "category": "everyday-utilities",
+    "url": "/tools/color-palette-generator/",
+    "description": "Build a colour palette from one base colour, with copyable HEX codes.",
+    "keywords": [
+      "color palette",
+      "colour scheme",
+      "complementary",
+      "triadic",
+      "hex"
+    ],
+    "icon": "◉",
+    "popularity": 72
+     }
   ]
 }
+

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 470" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">A little workbench of useful online tools</title>
+  <desc id="desc">Illustrated cards for calculations, writing, and everyday tasks arranged around a friendly workbench.</desc>
+  <rect x="14" y="15" width="592" height="440" rx="42" fill="#e9eee5"/>
+  <circle cx="498" cy="103" r="54" fill="#f1cf84"/>
+  <path d="M68 356c52-32 109-48 169-48 68 0 106 22 165 22 48 0 94-14 151-47v126H68V356Z" fill="#d3e2d7"/>
+  <path d="M91 113c20-23 46-36 78-38" stroke="#0b6f83" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 11"/>
+  <g transform="rotate(-7 185 190)">
+    <rect x="88" y="112" width="198" height="245" rx="22" fill="#fffefa" stroke="#cfdbd1" stroke-width="2"/>
+    <rect x="110" y="135" width="43" height="43" rx="13" fill="#e5f1e9"/>
+    <path d="M121 165v-18h5l5 8 5-8h5v18h-5v-9l-5 7-5-7v9h-5Z" fill="#0b6f83"/>
+    <rect x="165" y="143" width="86" height="9" rx="4.5" fill="#20312a"/>
+    <rect x="165" y="160" width="64" height="7" rx="3.5" fill="#aab9ad"/>
+    <rect x="110" y="198" width="154" height="1.5" fill="#e2e8df"/>
+    <rect x="110" y="219" width="119" height="8" rx="4" fill="#d9e1d9"/>
+    <rect x="110" y="237" width="151" height="8" rx="4" fill="#d9e1d9"/>
+    <rect x="110" y="255" width="97" height="8" rx="4" fill="#d9e1d9"/>
+    <rect x="110" y="284" width="154" height="47" rx="12" fill="#0b6f83"/>
+    <path d="M145 307h83" stroke="#fffefa" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g transform="rotate(6 400 194)">
+    <rect x="330" y="119" width="201" height="168" rx="22" fill="#fffefa" stroke="#cfdbd1" stroke-width="2"/>
+    <rect x="352" y="142" width="45" height="45" rx="14" fill="#f9edcf"/>
+    <path d="m365 164 8 8 13-17" stroke="#8b651b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="411" y="150" width="91" height="9" rx="4.5" fill="#20312a"/>
+    <rect x="411" y="168" width="71" height="7" rx="3.5" fill="#aab9ad"/>
+    <rect x="352" y="207" width="157" height="1.5" fill="#e2e8df"/>
+    <circle cx="365" cy="232" r="6" fill="#74ad8c"/>
+    <rect x="381" y="228" width="115" height="8" rx="4" fill="#d9e1d9"/>
+    <circle cx="365" cy="254" r="6" fill="#e2b64e"/>
+    <rect x="381" y="250" width="91" height="8" rx="4" fill="#d9e1d9"/>
+  </g>
+  <g transform="rotate(4 420 350)">
+    <rect x="344" y="316" width="191" height="94" rx="20" fill="#203c4b"/>
+    <circle cx="377" cy="350" r="13" fill="#f1cf84"/>
+    <path d="M372 350h10m-5-5v10" stroke="#5c4a20" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="402" y="342" width="104" height="8" rx="4" fill="#fffefa" opacity=".9"/>
+    <rect x="402" y="359" width="73" height="7" rx="3.5" fill="#b5cabe"/>
+    <rect x="370" y="386" width="137" height="5" rx="2.5" fill="#87b99f" opacity=".8"/>
+  </g>
+  <path d="M74 401h111" stroke="#0b6f83" stroke-width="3" stroke-linecap="round" opacity=".45"/>
+  <path d="m525 304 8 8 15-18" stroke="#0b6f83" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

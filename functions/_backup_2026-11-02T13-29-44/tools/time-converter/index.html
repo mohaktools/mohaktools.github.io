@@ -1,0 +1,1938 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Time Converter – Convert Seconds, Minutes, Hours & More | MohakTools</title>
+  <meta name="description" content="Convert time units instantly with the free MohakTools Time Converter. Convert nanoseconds, milliseconds, seconds, minutes, hours, days, weeks, and years with precision controls, quick presets, and conversion history.">
+  <meta name="keywords" content="time converter, seconds to minutes, minutes to hours, hours to days, days to weeks, time unit converter, milliseconds converter, time calculator">
+  <meta name="author" content="MohakTools">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://mohaktools.com/tools/time-converter/">
+  <link rel="icon" href="/favicon.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="/favicon.webp">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Time Converter | MohakTools">
+  <meta property="og:description" content="Convert time units quickly and accurately with precision controls, instant results, and helpful time conversion references.">
+  <meta property="og:url" content="https://mohaktools.com/tools/time-converter/">
+  <meta property="og:site_name" content="MohakTools">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Time Converter | MohakTools">
+  <meta name="twitter:description" content="Convert seconds, minutes, hours, days, weeks, and more with MohakTools.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Time Converter",
+    "url": "https://mohaktools.com/tools/time-converter/",
+    "description": "A free online time unit converter with precision controls and conversion history.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
+
+  <style>
+    /* =========================================
+       MohakTools — Time Converter
+       File: tools/time-converter/index.html
+       Responsive, theme-aware, and accessible
+    ========================================= */
+
+    .time-tool {
+      --time-primary: var(--primary-color, #2563eb);
+      --time-border: var(--border-color, #e5e7eb);
+      --time-card: var(--card-bg, #ffffff);
+      --time-text: var(--text-color, #111827);
+      --time-muted: var(--muted-text, #6b7280);
+      --time-soft: rgba(127, 127, 127, 0.07);
+      --time-success: #15803d;
+      --time-danger: #dc2626;
+
+      box-sizing: border-box;
+      width: min(calc(100% - 32px), 1040px);
+      margin-inline: auto;
+      padding-block: clamp(28px, 5vw, 54px);
+      color: var(--time-text);
+      color-scheme: light dark;
+    }
+
+    html.dark .time-tool,
+    body.dark .time-tool,
+    [data-theme="dark"] .time-tool {
+      --time-card: var(--card-bg, #1e1e1e);
+      --time-border: var(--border-color, #3a3a3a);
+      --time-text: var(--text-color, #f3f4f6);
+      --time-muted: var(--muted-text, #b0b0b0);
+      --time-soft: rgba(255, 255, 255, 0.045);
+    }
+
+    .time-tool *,
+    .time-tool *::before,
+    .time-tool *::after {
+      box-sizing: border-box;
+    }
+
+    .time-tool button,
+    .time-tool input,
+    .time-tool select {
+      font: inherit;
+    }
+
+    .time-tool button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .time-tool button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .time-tool button:focus-visible,
+    .time-tool input:focus-visible,
+    .time-tool select:focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.4);
+      outline-offset: 3px;
+    }
+
+    /* Hero */
+
+    .time-hero {
+      max-width: 790px;
+      margin: 0 auto clamp(26px, 4vw, 38px);
+      text-align: center;
+    }
+
+    .time-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      color: var(--time-primary);
+      background: var(--time-soft);
+      border: 1px solid var(--time-border);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 750;
+      letter-spacing: 0.035em;
+    }
+
+    .time-hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 5.4vw, 3.15rem);
+      line-height: 1.13;
+      font-weight: 850;
+      letter-spacing: -0.045em;
+      text-wrap: balance;
+    }
+
+    .time-hero p {
+      max-width: 690px;
+      margin: 0 auto;
+      color: var(--time-muted);
+      font-size: clamp(0.97rem, 1.7vw, 1.08rem);
+      line-height: 1.8;
+      text-wrap: pretty;
+    }
+
+    /* Shared surfaces */
+
+    .time-panel,
+    .time-section {
+      width: 100%;
+      min-width: 0;
+      background: var(--time-card);
+      border: 1px solid var(--time-border);
+      border-radius: 21px;
+    }
+
+    .time-panel {
+      padding: clamp(19px, 4vw, 35px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.055);
+    }
+
+    .time-section {
+      margin-top: clamp(22px, 3.5vw, 34px);
+      padding: clamp(20px, 3.8vw, 31px);
+    }
+
+    .time-section h2 {
+      margin: 0 0 13px;
+      font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+      line-height: 1.4;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+
+    .time-section > p {
+      margin: 0 0 18px;
+      color: var(--time-muted);
+      font-size: 0.97rem;
+      line-height: 1.8;
+    }
+
+    .time-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Form fields */
+
+    .time-field-label {
+      display: block;
+      margin-bottom: 9px;
+      font-size: 0.93rem;
+      font-weight: 750;
+      line-height: 1.5;
+    }
+
+    .time-field-help {
+      display: block;
+      margin-top: 7px;
+      color: var(--time-muted);
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .time-input-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 14px;
+    }
+
+    .time-field {
+      min-width: 0;
+    }
+
+    .time-control {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      min-height: 54px;
+      padding: 13px 14px;
+      color: var(--time-text);
+      background: var(--time-card);
+      border: 1px solid var(--time-border);
+      border-radius: 12px;
+      font-size: 1rem;
+      line-height: 1.5;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .time-control:focus {
+      border-color: var(--time-primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.13);
+    }
+
+    .time-control option {
+      color: var(--time-text);
+      background: var(--time-card);
+    }
+
+    .time-options-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 19px;
+    }
+
+    /* Buttons */
+
+    .time-button {
+      display: inline-flex;
+      min-width: 0;
+      min-height: 43px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 15px;
+      color: var(--time-text);
+      background: transparent;
+      border: 1px solid var(--time-border);
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.4;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .time-button:hover:not(:disabled) {
+      background: var(--time-soft);
+      border-color: var(--time-primary);
+    }
+
+    .time-button:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+
+    .time-button-primary {
+      color: #ffffff;
+      background: var(--time-primary);
+      border-color: var(--time-primary);
+    }
+
+    .time-button-primary:hover:not(:disabled) {
+      color: #ffffff;
+      background: var(--time-primary);
+      filter: brightness(0.94);
+    }
+
+    .time-button-small {
+      min-height: 36px;
+      padding: 7px 11px;
+      font-size: 0.82rem;
+    }
+
+    .time-actions {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .time-actions .time-button {
+      min-height: 52px;
+    }
+
+    /* Quick presets */
+
+    .time-presets {
+      margin-top: 24px;
+      padding-top: 21px;
+      border-top: 1px solid var(--time-border);
+    }
+
+    .time-presets-heading {
+      margin: 0 0 12px;
+      font-size: 0.9rem;
+      font-weight: 750;
+    }
+
+    .time-preset-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .time-preset {
+      min-height: 37px;
+      padding: 8px 12px;
+      color: var(--time-text);
+      background: var(--time-soft);
+      border: 1px solid var(--time-border);
+      border-radius: 9px;
+      font-size: 0.84rem;
+      font-weight: 650;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .time-preset:hover {
+      border-color: var(--time-primary);
+    }
+
+    /* Main result */
+
+    .time-main-result {
+      margin-top: 27px;
+      padding: clamp(20px, 4vw, 29px);
+      background: var(--time-soft);
+      border: 1px solid var(--time-border);
+      border-radius: 17px;
+    }
+
+    .time-main-result-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 17px;
+    }
+
+    .time-result-caption {
+      color: var(--time-muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .time-result-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 9px;
+      color: var(--time-primary);
+      border: 1px solid var(--time-border);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 750;
+    }
+
+    .time-main-value {
+      overflow-wrap: anywhere;
+      font-size: clamp(1.8rem, 5.5vw, 3rem);
+      font-weight: 850;
+      line-height: 1.25;
+      letter-spacing: -0.035em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .time-main-equation {
+      margin-top: 11px;
+      color: var(--time-muted);
+      font-size: 0.92rem;
+      line-height: 1.75;
+      overflow-wrap: anywhere;
+    }
+
+    .time-main-result-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 20px;
+    }
+
+    /* All-unit result cards */
+
+    .time-results-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 30px 0 14px;
+    }
+
+    .time-results-heading h2 {
+      margin: 0;
+      font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+      line-height: 1.4;
+    }
+
+    .time-results-heading p {
+      margin: 0;
+      color: var(--time-muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .time-results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+      gap: 13px;
+    }
+
+    .time-result-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 145px;
+      padding: 17px;
+      background: var(--time-card);
+      border: 1px solid var(--time-border);
+      border-radius: 14px;
+    }
+
+    .time-result-card-label {
+      margin-bottom: 10px;
+      color: var(--time-muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .time-result-card-value {
+      margin-bottom: 17px;
+      overflow-wrap: anywhere;
+      font-size: clamp(1.1rem, 2.3vw, 1.5rem);
+      font-weight: 800;
+      line-height: 1.4;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .time-result-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .time-result-symbol {
+      color: var(--time-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Status */
+
+    .time-status {
+      min-height: 25px;
+      margin: 17px 0 0;
+      color: var(--time-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      text-align: center;
+      overflow-wrap: anywhere;
+    }
+
+    .time-status[data-state="error"] {
+      color: var(--time-danger);
+    }
+
+    .time-status[data-state="success"] {
+      color: var(--time-success);
+    }
+
+    /* History */
+
+    .time-history-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .time-history-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      background: var(--time-soft);
+      border: 1px solid var(--time-border);
+      border-radius: 12px;
+    }
+
+    .time-history-equation {
+      min-width: 0;
+      overflow-wrap: anywhere;
+      font-size: 0.93rem;
+      font-weight: 750;
+      line-height: 1.65;
+    }
+
+    .time-history-meta {
+      margin-top: 4px;
+      color: var(--time-muted);
+      font-size: 0.79rem;
+      line-height: 1.5;
+    }
+
+    .time-history-empty {
+      padding: 19px;
+      color: var(--time-muted);
+      background: var(--time-soft);
+      border: 1px dashed var(--time-border);
+      border-radius: 12px;
+      font-size: 0.91rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .time-section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .time-section-header h2 {
+      margin-bottom: 0;
+    }
+
+    /* Formula cards */
+
+    .time-formula-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .time-formula-card {
+      min-width: 0;
+      padding: 17px;
+      border: 1px solid var(--time-border);
+      border-radius: 12px;
+    }
+
+    .time-formula-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .time-formula-card code {
+      display: block;
+      color: var(--time-text);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      overflow-wrap: anywhere;
+    }
+
+    /* Reference table */
+
+    .time-table-wrap {
+      width: 100%;
+      margin-top: 18px;
+      overflow-x: auto;
+      border: 1px solid var(--time-border);
+      border-radius: 12px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .time-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .time-table th,
+    .time-table td {
+      padding: 13px 15px;
+      border-bottom: 1px solid var(--time-border);
+      white-space: nowrap;
+    }
+
+    .time-table th {
+      font-size: 0.87rem;
+      font-weight: 750;
+    }
+
+    .time-table td {
+      color: var(--time-muted);
+      font-size: 0.91rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .time-table tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    /* Content and FAQs */
+
+    .time-section ul {
+      padding-left: 23px;
+    }
+
+    .time-section li {
+      margin-bottom: 7px;
+      color: var(--time-muted);
+      font-size: 0.96rem;
+      line-height: 1.8;
+    }
+
+    .time-faq-item {
+      padding: 19px 0;
+      border-bottom: 1px solid var(--time-border);
+    }
+
+    .time-faq-item:first-of-type {
+      padding-top: 5px;
+    }
+
+    .time-faq-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .time-faq-item h3 {
+      margin: 0 0 8px;
+      font-size: 1.02rem;
+      line-height: 1.55;
+    }
+
+    .time-faq-item p {
+      margin: 0;
+      color: var(--time-muted);
+      font-size: 0.96rem;
+      line-height: 1.8;
+    }
+
+    /* Tablet */
+
+    @media (max-width: 760px) {
+      .time-tool {
+        width: min(calc(100% - 26px), 1040px);
+      }
+
+      .time-results-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .time-actions {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+
+      .time-actions .time-button-primary {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+
+      .time-actions #time-swap {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .time-actions #time-reset {
+        grid-column: 2;
+        grid-row: 2;
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 560px) {
+      .time-tool {
+        width: calc(100% - 22px);
+        padding-top: 26px;
+        padding-bottom: 32px;
+      }
+
+      .time-hero {
+        margin-bottom: 23px;
+      }
+
+      .time-hero h1 {
+        font-size: clamp(1.9rem, 8vw, 2.4rem);
+      }
+
+      .time-hero p {
+        font-size: 0.96rem;
+        line-height: 1.75;
+      }
+
+      .time-panel {
+        padding: 18px;
+        border-radius: 16px;
+      }
+
+      .time-section {
+        margin-top: 22px;
+        padding: 20px;
+        border-radius: 16px;
+      }
+
+      .time-input-row,
+      .time-options-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .time-control {
+        min-height: 52px;
+      }
+
+      .time-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+      }
+
+      .time-actions .time-button-primary {
+        grid-column: 1 / -1;
+      }
+
+      .time-actions #time-swap {
+        grid-column: 1;
+      }
+
+      .time-actions #time-reset {
+        grid-column: 2;
+      }
+
+      .time-main-result {
+        margin-top: 22px;
+        padding: 19px;
+        border-radius: 14px;
+      }
+
+      .time-main-value {
+        font-size: clamp(1.7rem, 7vw, 2.35rem);
+      }
+
+      .time-results-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .time-result-card {
+        min-height: 130px;
+        padding: 13px;
+      }
+
+      .time-result-card-value {
+        font-size: clamp(1rem, 4.2vw, 1.3rem);
+      }
+
+      .time-formula-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .time-history-item {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .time-history-item .time-button {
+        justify-self: start;
+      }
+
+      .time-table th,
+      .time-table td {
+        padding: 12px;
+      }
+    }
+
+    /* Very small phones */
+
+    @media (max-width: 360px) {
+      .time-tool {
+        width: calc(100% - 16px);
+      }
+
+      .time-panel,
+      .time-section {
+        padding: 15px;
+      }
+
+      .time-results-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .time-result-card {
+        min-height: 112px;
+        padding: 15px;
+      }
+
+      .time-result-card-value {
+        font-size: 1.3rem;
+      }
+
+      .time-main-result {
+        padding: 15px;
+      }
+
+      .time-preset-list {
+        gap: 7px;
+      }
+
+      .time-preset {
+        padding-inline: 9px;
+      }
+    }
+
+    /* Reduced motion */
+
+    @media (prefers-reduced-motion: reduce) {
+      .time-tool *,
+      .time-tool *::before,
+      .time-tool *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <div id="site-header"></div>
+
+  <main class="time-tool">
+    <header class="time-hero">
+      <span class="time-eyebrow">FREE ONLINE CALCULATOR</span>
+      <h1>Time Converter</h1>
+      <p>
+        Convert time units instantly, from nanoseconds and milliseconds
+        to seconds, minutes, hours, days, weeks, and years. Adjust decimal
+        precision, copy results, and review your recent conversions.
+      </p>
+    </header>
+
+    <section class="time-panel" aria-label="Time conversion calculator">
+      <div class="time-input-row">
+        <div class="time-field">
+          <label class="time-field-label" for="time-input">
+            Enter time value
+          </label>
+          <input
+            class="time-control"
+            type="number"
+            id="time-input"
+            value="60"
+            min="0"
+            step="any"
+            inputmode="decimal"
+            placeholder="Enter a time value"
+            autocomplete="off"
+          >
+          <span class="time-field-help">
+            Enter a positive, zero, or negative duration.
+          </span>
+        </div>
+
+        <div class="time-field">
+          <label class="time-field-label" for="time-from">
+            Convert from
+          </label>
+          <select class="time-control" id="time-from">
+            <option value="nanoseconds">Nanoseconds (ns)</option>
+            <option value="microseconds">Microseconds (µs)</option>
+            <option value="milliseconds">Milliseconds (ms)</option>
+            <option value="seconds">Seconds (s)</option>
+            <option value="minutes" selected>Minutes (min)</option>
+            <option value="hours">Hours (h)</option>
+            <option value="days">Days (d)</option>
+            <option value="weeks">Weeks (wk)</option>
+            <option value="months">Months (30 days)</option>
+            <option value="years">Years (365 days)</option>
+          </select>
+          <span class="time-field-help">
+            Select the unit of your original value.
+          </span>
+        </div>
+      </div>
+
+      <div class="time-options-row">
+        <div class="time-field">
+          <label class="time-field-label" for="time-to">
+            Convert to
+          </label>
+          <select class="time-control" id="time-to">
+            <option value="nanoseconds">Nanoseconds (ns)</option>
+            <option value="microseconds">Microseconds (µs)</option>
+            <option value="milliseconds">Milliseconds (ms)</option>
+            <option value="seconds">Seconds (s)</option>
+            <option value="minutes">Minutes (min)</option>
+            <option value="hours" selected>Hours (h)</option>
+            <option value="days">Days (d)</option>
+            <option value="weeks">Weeks (wk)</option>
+            <option value="months">Months (30 days)</option>
+            <option value="years">Years (365 days)</option>
+          </select>
+        </div>
+
+        <div class="time-field">
+          <label class="time-field-label" for="time-precision">
+            Decimal precision
+          </label>
+          <select class="time-control" id="time-precision">
+            <option value="2">2 decimal places</option>
+            <option value="4">4 decimal places</option>
+            <option value="6" selected>6 decimal places</option>
+            <option value="8">8 decimal places</option>
+            <option value="10">10 decimal places</option>
+            <option value="12">12 decimal places</option>
+            <option value="15">Maximum available precision</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="time-actions">
+        <button
+          class="time-button time-button-primary"
+          type="button"
+          id="time-convert"
+        >
+          Convert Time
+        </button>
+
+        <button class="time-button" type="button" id="time-swap">
+          Swap Units
+        </button>
+
+        <button class="time-button" type="button" id="time-reset">
+          Reset
+        </button>
+      </div>
+
+      <div class="time-presets">
+        <p class="time-presets-heading">Quick presets</p>
+        <div class="time-preset-list">
+          <button class="time-preset" type="button" data-value="1" data-unit="seconds">1 second</button>
+          <button class="time-preset" type="button" data-value="60" data-unit="seconds">60 seconds</button>
+          <button class="time-preset" type="button" data-value="15" data-unit="minutes">15 minutes</button>
+          <button class="time-preset" type="button" data-value="30" data-unit="minutes">30 minutes</button>
+          <button class="time-preset" type="button" data-value="1" data-unit="hours">1 hour</button>
+          <button class="time-preset" type="button" data-value="24" data-unit="hours">24 hours</button>
+          <button class="time-preset" type="button" data-value="7" data-unit="days">7 days</button>
+          <button class="time-preset" type="button" data-value="365" data-unit="days">365 days</button>
+        </div>
+      </div>
+
+      <div class="time-main-result" aria-live="polite" aria-atomic="true">
+        <div class="time-main-result-top">
+          <span class="time-result-caption">Converted result</span>
+          <span class="time-result-badge" id="time-result-badge">Ready</span>
+        </div>
+
+        <div class="time-main-value" id="time-main-value">1</div>
+
+        <div class="time-main-equation" id="time-main-equation">
+          60 minutes = 1 hour
+        </div>
+
+        <div class="time-main-result-actions">
+          <button class="time-button time-button-small" type="button" id="time-copy-result">
+            Copy result
+          </button>
+          <button class="time-button time-button-small" type="button" id="time-copy-equation">
+            Copy equation
+          </button>
+          <button class="time-button time-button-small" type="button" id="time-copy-all">
+            Copy all units
+          </button>
+        </div>
+      </div>
+
+      <div class="time-results-heading">
+        <h2>All time-unit conversions</h2>
+        <p>Every result uses your selected precision.</p>
+      </div>
+
+      <div class="time-results-grid" id="time-results-grid">
+        <article class="time-result-card">
+          <div class="time-result-card-label">Seconds</div>
+          <div class="time-result-card-value" data-result="seconds">3600</div>
+          <div class="time-result-card-footer">
+            <span class="time-result-symbol">s</span>
+            <button class="time-button time-button-small" type="button" data-copy-unit="seconds">Copy</button>
+          </div>
+        </article>
+
+        <article class="time-result-card">
+          <div class="time-result-card-label">Minutes</div>
+          <div class="time-result-card-value" data-result="minutes">60</div>
+          <div class="time-result-card-footer">
+            <span class="time-result-symbol">min</span>
+            <button class="time-button time-button-small" type="button" data-copy-unit="minutes">Copy</button>
+          </div>
+        </article>
+
+        <article class="time-result-card">
+          <div class="time-result-card-label">Hours</div>
+          <div class="time-result-card-value" data-result="hours">1</div>
+          <div class="time-result-card-footer">
+            <span class="time-result-symbol">h</span>
+            <button class="time-button time-button-small" type="button" data-copy-unit="hours">Copy</button>
+          </div>
+        </article>
+      </div>
+
+      <p class="time-status" id="time-status" role="status" aria-live="polite">
+        Enter a value to convert between time units.
+      </p>
+    </section>
+
+    <section class="time-section" aria-labelledby="time-history-title">
+      <div class="time-section-header">
+        <h2 id="time-history-title">Recent conversions</h2>
+        <button class="time-button time-button-small" type="button" id="time-clear-history">
+          Clear history
+        </button>
+      </div>
+
+      <p style="margin-top: 12px;">
+        Your recent conversions are kept in this page while it remains open.
+        No account is required.
+      </p>
+
+      <div class="time-history-list" id="time-history-list">
+        <div class="time-history-empty">
+          Your conversion history will appear here after you convert a value.
+        </div>
+      </div>
+    </section>
+
+    <section class="time-section">
+      <h2>How to Use the Time Converter</h2>
+      <ul>
+        <li>Enter the duration you want to convert.</li>
+        <li>Choose the original unit in the Convert from dropdown.</li>
+        <li>Select the destination unit in the Convert to dropdown.</li>
+        <li>Choose how many decimal places you want in your results.</li>
+        <li>Select Convert Time to update the main result and all unit cards.</li>
+        <li>Use Swap Units to reverse the source and destination units.</li>
+        <li>Use the copy buttons to copy individual results, equations, or all conversions.</li>
+        <li>Choose a quick preset to populate a common time value.</li>
+      </ul>
+    </section>
+
+    <section class="time-section">
+      <h2>Time Conversion Formulas</h2>
+      <p>
+        Time conversion is based on the number of seconds in each unit.
+        To convert between two units, multiply the original value by the
+        source unit's number of seconds and divide by the destination unit's
+        number of seconds.
+      </p>
+
+      <div class="time-formula-grid">
+        <div class="time-formula-card">
+          <strong>Minutes to seconds</strong>
+          <code>Seconds = Minutes × 60</code>
+        </div>
+        <div class="time-formula-card">
+          <strong>Seconds to minutes</strong>
+          <code>Minutes = Seconds ÷ 60</code>
+        </div>
+        <div class="time-formula-card">
+          <strong>Hours to minutes</strong>
+          <code>Minutes = Hours × 60</code>
+        </div>
+        <div class="time-formula-card">
+          <strong>Hours to seconds</strong>
+          <code>Seconds = Hours × 3,600</code>
+        </div>
+        <div class="time-formula-card">
+          <strong>Days to hours</strong>
+          <code>Hours = Days × 24</code>
+        </div>
+        <div class="time-formula-card">
+          <strong>Weeks to days</strong>
+          <code>Days = Weeks × 7</code>
+        </div>
+        <div class="time-formula-card">
+          <strong>Milliseconds to seconds</strong>
+          <code>Seconds = Milliseconds ÷ 1,000</code>
+        </div>
+        <div class="time-formula-card">
+          <strong>General conversion formula</strong>
+          <code>Result = Value × Source seconds ÷ Destination seconds</code>
+        </div>
+      </div>
+    </section>
+
+    <section class="time-section">
+      <h2>Common Time Conversion Reference</h2>
+      <p>
+        Use this table to check common relationships between time units.
+      </p>
+
+      <div class="time-table-wrap">
+        <table class="time-table">
+          <thead>
+            <tr>
+              <th scope="col">Time unit</th>
+              <th scope="col">Equivalent duration</th>
+              <th scope="col">Seconds</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 millisecond</td>
+              <td>0.001 seconds</td>
+              <td>0.001</td>
+            </tr>
+            <tr>
+              <td>1 second</td>
+              <td>1 second</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>1 minute</td>
+              <td>60 seconds</td>
+              <td>60</td>
+            </tr>
+            <tr>
+              <td>1 hour</td>
+              <td>60 minutes</td>
+              <td>3,600</td>
+            </tr>
+            <tr>
+              <td>1 day</td>
+              <td>24 hours</td>
+              <td>86,400</td>
+            </tr>
+            <tr>
+              <td>1 week</td>
+              <td>7 days</td>
+              <td>604,800</td>
+            </tr>
+            <tr>
+              <td>1 average month*</td>
+              <td>30 days</td>
+              <td>2,592,000</td>
+            </tr>
+            <tr>
+              <td>1 non-leap year*</td>
+              <td>365 days</td>
+              <td>31,536,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="margin-top: 13px;">
+        *For this calculator, a month is treated as exactly 30 days and a year
+        as exactly 365 days. Actual calendar months vary in length, and leap
+        years contain 366 days.
+      </p>
+    </section>
+
+    <section class="time-section">
+      <h2>Understanding Time Units</h2>
+
+      <h3>Small units: nanoseconds, microseconds, and milliseconds</h3>
+      <p>
+        Very small time units are useful in computing, electronics, scientific
+        measurements, and performance testing. One millisecond equals one
+        thousand microseconds, and one microsecond equals one thousand
+        nanoseconds.
+      </p>
+
+      <h3>Seconds, minutes, and hours</h3>
+      <p>
+        Seconds, minutes, and hours are commonly used to measure activities,
+        durations, travel time, work sessions, and everyday events. One minute
+        contains 60 seconds, and one hour contains 60 minutes.
+      </p>
+
+      <h3>Days and weeks</h3>
+      <p>
+        Days and weeks are useful for planning schedules, projects, holidays,
+        and longer activities. One standard day contains 24 hours, and one
+        week contains seven days.
+      </p>
+
+      <h3>Months and years</h3>
+      <p>
+        Calendar months do not all have the same duration. This converter
+        therefore uses fixed durations of 30 days per month and 365 days per
+        year for consistent mathematical conversions.
+      </p>
+    </section>
+
+    <section class="time-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="time-faq-item">
+        <h3>How many seconds are in one minute?</h3>
+        <p>One minute equals exactly 60 seconds.</p>
+      </div>
+
+      <div class="time-faq-item">
+        <h3>How many minutes are in one hour?</h3>
+        <p>One hour equals 60 minutes, or 3,600 seconds.</p>
+      </div>
+
+      <div class="time-faq-item">
+        <h3>How many hours are in one day?</h3>
+        <p>A standard day contains 24 hours, which equals 1,440 minutes or 86,400 seconds.</p>
+      </div>
+
+      <div class="time-faq-item">
+        <h3>How many milliseconds are in one second?</h3>
+        <p>One second contains 1,000 milliseconds. One millisecond is one-thousandth of a second.</p>
+      </div>
+
+      <div class="time-faq-item">
+        <h3>How many days are in a week?</h3>
+        <p>One week contains seven days, equivalent to 168 hours.</p>
+      </div>
+
+      <div class="time-faq-item">
+        <h3>Are months and years exact in this calculator?</h3>
+        <p>
+          The calculator uses fixed durations of 30 days per month and
+          365 days per year. These are mathematical approximations rather
+          than calendar-aware calculations.
+        </p>
+      </div>
+
+      <div class="time-faq-item">
+        <h3>Can I change the number of decimal places?</h3>
+        <p>
+          Yes. Use the Decimal precision dropdown to control how many decimal
+          places are displayed in the main result and all conversion cards.
+        </p>
+      </div>
+
+      <div class="time-faq-item">
+        <h3>Does this converter work on mobile devices?</h3>
+        <p>
+          Yes. The page uses a responsive layout designed for mobile phones,
+          tablets, laptops, and desktop browsers.
+        </p>
+      </div>
+
+      <div class="time-faq-item">
+        <h3>Does the converter require an internet connection?</h3>
+        <p>
+          The conversion calculations run in your browser and do not require
+          an external conversion API. The website itself must be loaded first.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    /* =========================================
+       MohakTools — Time Converter Logic
+       Local calculations, no external API
+    ========================================= */
+
+    (() => {
+      "use strict";
+
+      const input = document.getElementById("time-input");
+      const fromSelect = document.getElementById("time-from");
+      const toSelect = document.getElementById("time-to");
+      const precisionSelect = document.getElementById("time-precision");
+
+      const convertButton = document.getElementById("time-convert");
+      const swapButton = document.getElementById("time-swap");
+      const resetButton = document.getElementById("time-reset");
+
+      const mainValue = document.getElementById("time-main-value");
+      const mainEquation = document.getElementById("time-main-equation");
+      const resultBadge = document.getElementById("time-result-badge");
+      const status = document.getElementById("time-status");
+      const resultsGrid = document.getElementById("time-results-grid");
+
+      const copyResultButton = document.getElementById("time-copy-result");
+      const copyEquationButton = document.getElementById("time-copy-equation");
+      const copyAllButton = document.getElementById("time-copy-all");
+
+      const historyList = document.getElementById("time-history-list");
+      const clearHistoryButton = document.getElementById("time-clear-history");
+
+      const unitData = {
+        nanoseconds: {
+          name: "Nanoseconds",
+          singular: "nanosecond",
+          symbol: "ns",
+          seconds: 1e-9
+        },
+        microseconds: {
+          name: "Microseconds",
+          singular: "microsecond",
+          symbol: "µs",
+          seconds: 1e-6
+        },
+        milliseconds: {
+          name: "Milliseconds",
+          singular: "millisecond",
+          symbol: "ms",
+          seconds: 1e-3
+        },
+        seconds: {
+          name: "Seconds",
+          singular: "second",
+          symbol: "s",
+          seconds: 1
+        },
+        minutes: {
+          name: "Minutes",
+          singular: "minute",
+          symbol: "min",
+          seconds: 60
+        },
+        hours: {
+          name: "Hours",
+          singular: "hour",
+          symbol: "h",
+          seconds: 3600
+        },
+        days: {
+          name: "Days",
+          singular: "day",
+          symbol: "d",
+          seconds: 86400
+        },
+        weeks: {
+          name: "Weeks",
+          singular: "week",
+          symbol: "wk",
+          seconds: 604800
+        },
+        months: {
+          name: "Months (30 days)",
+          singular: "30-day month",
+          symbol: "mo",
+          seconds: 2592000
+        },
+        years: {
+          name: "Years (365 days)",
+          singular: "365-day year",
+          symbol: "yr",
+          seconds: 31536000
+        }
+      };
+
+      const unitKeys = Object.keys(unitData);
+
+      let latestResults = null;
+      let conversionHistory = [];
+      let currentEquation = "";
+      let hasValidResult = false;
+
+      function getPrecision() {
+        const selected = Number(precisionSelect.value);
+
+        if (selected === 15) {
+          return 15;
+        }
+
+        return Number.isInteger(selected)
+          ? Math.min(15, Math.max(0, selected))
+          : 6;
+      }
+
+      function formatNumber(value, precision = getPrecision()) {
+        if (!Number.isFinite(value)) {
+          return "Not available";
+        }
+
+        if (Object.is(value, -0) || value === 0) {
+          return "0";
+        }
+
+        const absoluteValue = Math.abs(value);
+
+        /*
+          Use scientific notation for extremely large or small
+          values so the display remains readable and finite.
+        */
+        if (absoluteValue >= 1e21 || absoluteValue < 1e-9) {
+          return value.toExponential(Math.min(precision, 12));
+        }
+
+        return Number(value.toFixed(precision)).toString();
+      }
+
+      function formatInputValue(value) {
+        if (!Number.isFinite(value)) {
+          return String(value);
+        }
+
+        return String(value);
+      }
+
+      function getUnitName(unit, value) {
+        const absoluteValue = Math.abs(value);
+
+        if (absoluteValue === 1) {
+          return unitData[unit].singular;
+        }
+
+        return unitData[unit].name;
+      }
+
+      function getUnitLabel(unit) {
+        return unitData[unit].name;
+      }
+
+      function convertTime(value, fromUnit, toUnit) {
+        if (!Number.isFinite(value)) {
+          return NaN;
+        }
+
+        if (!unitData[fromUnit] || !unitData[toUnit]) {
+          return NaN;
+        }
+
+        /*
+          Convert through seconds using fixed unit factors.
+          Months and years intentionally use fixed durations.
+        */
+        const seconds = value * unitData[fromUnit].seconds;
+        const result = seconds / unitData[toUnit].seconds;
+
+        return Number.isFinite(result) ? result : NaN;
+      }
+
+      function setStatus(message, state = "normal") {
+        status.textContent = message;
+        status.dataset.state = state;
+      }
+
+      function setButtonsEnabled(enabled) {
+        copyResultButton.disabled = !enabled;
+        copyEquationButton.disabled = !enabled;
+        copyAllButton.disabled = !enabled;
+
+        resultsGrid.querySelectorAll("[data-copy-unit]").forEach((button) => {
+          button.disabled = !enabled;
+        });
+      }
+
+      function setResultBadge(message) {
+        resultBadge.textContent = message;
+      }
+
+      function renderEmptyResults() {
+        mainValue.textContent = "—";
+        mainEquation.textContent = "Enter a valid value to see the conversion.";
+        setResultBadge("Waiting");
+
+        resultsGrid.innerHTML = "";
+
+        unitKeys.forEach((unit) => {
+          const card = document.createElement("article");
+          card.className = "time-result-card";
+
+          const label = document.createElement("div");
+          label.className = "time-result-card-label";
+          label.textContent = getUnitLabel(unit);
+
+          const value = document.createElement("div");
+          value.className = "time-result-card-value";
+          value.dataset.result = unit;
+          value.textContent = "—";
+
+          const footer = document.createElement("div");
+          footer.className = "time-result-card-footer";
+
+          const symbol = document.createElement("span");
+          symbol.className = "time-result-symbol";
+          symbol.textContent = unitData[unit].symbol;
+
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "time-button time-button-small";
+          button.dataset.copyUnit = unit;
+          button.textContent = "Copy";
+          button.disabled = true;
+
+          footer.append(symbol, button);
+          card.append(label, value, footer);
+          resultsGrid.appendChild(card);
+        });
+
+        latestResults = null;
+        currentEquation = "";
+        hasValidResult = false;
+        setButtonsEnabled(false);
+      }
+
+      function renderAllResults(results) {
+        resultsGrid.innerHTML = "";
+
+        unitKeys.forEach((unit) => {
+          const value = results[unit];
+          const card = document.createElement("article");
+          card.className = "time-result-card";
+
+          if (unit === toSelect.value) {
+            card.style.borderColor = "var(--time-primary)";
+          }
+
+          const label = document.createElement("div");
+          label.className = "time-result-card-label";
+          label.textContent = getUnitLabel(unit);
+
+          const resultValue = document.createElement("div");
+          resultValue.className = "time-result-card-value";
+          resultValue.dataset.result = unit;
+          resultValue.textContent = formatNumber(value);
+
+          const footer = document.createElement("div");
+          footer.className = "time-result-card-footer";
+
+          const symbol = document.createElement("span");
+          symbol.className = "time-result-symbol";
+          symbol.textContent = unitData[unit].symbol;
+
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "time-button time-button-small";
+          button.dataset.copyUnit = unit;
+          button.textContent = "Copy";
+
+          footer.append(symbol, button);
+          card.append(label, resultValue, footer);
+          resultsGrid.appendChild(card);
+        });
+      }
+
+      function buildEquation(value, fromUnit, result, toUnit) {
+        const sourceName = getUnitName(fromUnit, value);
+        const targetName = getUnitName(toUnit, result);
+
+        return (
+          formatInputValue(value) + " " + sourceName +
+          " = " + formatNumber(result) + " " + targetName
+        );
+      }
+
+      function updateResults(options = {}) {
+        const rawValue = input.value.trim();
+        const fromUnit = fromSelect.value;
+        const toUnit = toSelect.value;
+
+        if (rawValue === "") {
+          renderEmptyResults();
+          setStatus("Enter a time value to see the results.");
+          return false;
+        }
+
+        const value = Number(rawValue);
+
+        if (!Number.isFinite(value)) {
+          renderEmptyResults();
+          setStatus("Enter a valid finite number.", "error");
+          return false;
+        }
+
+        if (!unitData[fromUnit] || !unitData[toUnit]) {
+          renderEmptyResults();
+          setStatus("Choose valid source and destination units.", "error");
+          return false;
+        }
+
+        const results = {};
+
+        unitKeys.forEach((unit) => {
+          results[unit] = convertTime(value, fromUnit, unit);
+        });
+
+        const primaryResult = results[toUnit];
+
+        if (
+          !Number.isFinite(primaryResult) ||
+          unitKeys.some((unit) => !Number.isFinite(results[unit]))
+        ) {
+          renderEmptyResults();
+          setStatus(
+            "This value is outside the calculator's supported numeric range. Try a smaller value.",
+            "error"
+          );
+          return false;
+        }
+
+        latestResults = {
+          inputValue: value,
+          fromUnit,
+          toUnit,
+          results
+        };
+
+        currentEquation = buildEquation(
+          value,
+          fromUnit,
+          primaryResult,
+          toUnit
+        );
+
+        hasValidResult = true;
+
+        mainValue.textContent = formatNumber(primaryResult);
+        mainEquation.textContent = currentEquation;
+        setResultBadge("Converted");
+
+        renderAllResults(results);
+        setButtonsEnabled(true);
+
+        if (!options.silent) {
+          setStatus(
+            "Converted " + formatInputValue(value) + " " +
+            getUnitName(fromUnit, value) + " to " +
+            formatNumber(primaryResult) + " " +
+            getUnitName(toUnit, primaryResult) + ".",
+            "success"
+          );
+        }
+
+        if (options.addHistory) {
+          addHistory({
+            inputValue: value,
+            fromUnit,
+            toUnit,
+            result: primaryResult,
+            equation: currentEquation,
+            timestamp: new Date()
+          });
+        }
+
+        return true;
+      }
+
+      function addHistory(entry) {
+        /*
+          Avoid duplicate consecutive entries when Convert is
+          clicked repeatedly without changing the conversion.
+        */
+        const previous = conversionHistory[0];
+
+        if (
+          previous &&
+          previous.inputValue === entry.inputValue &&
+          previous.fromUnit === entry.fromUnit &&
+          previous.toUnit === entry.toUnit &&
+          previous.result === entry.result
+        ) {
+          return;
+        }
+
+        conversionHistory.unshift(entry);
+        conversionHistory = conversionHistory.slice(0, 8);
+
+        renderHistory();
+      }
+
+      function renderHistory() {
+        historyList.innerHTML = "";
+
+        if (conversionHistory.length === 0) {
+          const empty = document.createElement("div");
+          empty.className = "time-history-empty";
+          empty.textContent =
+            "Your conversion history will appear here after you convert a value.";
+
+          historyList.appendChild(empty);
+          return;
+        }
+
+        conversionHistory.forEach((entry, index) => {
+          const item = document.createElement("article");
+          item.className = "time-history-item";
+
+          const details = document.createElement("div");
+
+          const equation = document.createElement("div");
+          equation.className = "time-history-equation";
+          equation.textContent = entry.equation;
+
+          const meta = document.createElement("div");
+          meta.className = "time-history-meta";
+          meta.textContent =
+            "Conversion " + (index + 1) + " · " +
+            entry.timestamp.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit"
+            });
+
+          details.append(equation, meta);
+
+          const reuseButton = document.createElement("button");
+          reuseButton.type = "button";
+          reuseButton.className = "time-button time-button-small";
+          reuseButton.textContent = "Use again";
+
+          reuseButton.addEventListener("click", () => {
+            input.value = String(entry.inputValue);
+            fromSelect.value = entry.fromUnit;
+            toSelect.value = entry.toUnit;
+
+            updateResults();
+            setStatus("Previous conversion restored.", "success");
+
+            input.focus();
+          });
+
+          item.append(details, reuseButton);
+          historyList.appendChild(item);
+        });
+      }
+
+      async function copyText(text) {
+        if (!text) {
+          setStatus("There is no valid result to copy.", "error");
+          return false;
+        }
+
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            const temporaryInput = document.createElement("textarea");
+
+            temporaryInput.value = text;
+            temporaryInput.setAttribute("readonly", "");
+            temporaryInput.style.position = "fixed";
+            temporaryInput.style.left = "-9999px";
+            temporaryInput.style.top = "0";
+
+            document.body.appendChild(temporaryInput);
+            temporaryInput.select();
+
+            const copied = document.execCommand("copy");
+            temporaryInput.remove();
+
+            if (!copied) {
+              throw new Error("Clipboard copy was unsuccessful.");
+            }
+          }
+
+          setStatus("Copied to clipboard.", "success");
+          return true;
+        } catch (error) {
+          setStatus(
+            "Automatic copying failed. Select and copy the result manually.",
+            "error"
+          );
+          return false;
+        }
+      }
+
+      function getAllResultsText() {
+        if (!latestResults) {
+          return "";
+        }
+
+        const lines = [
+          "MohakTools Time Converter",
+          currentEquation,
+          "",
+          "All time-unit conversions:"
+        ];
+
+        unitKeys.forEach((unit) => {
+          lines.push(
+            getUnitLabel(unit) + ": " +
+            formatNumber(latestResults.results[unit]) + " " +
+            unitData[unit].symbol
+          );
+        });
+
+        return lines.join("\n");
+      }
+
+      function swapUnits() {
+        const oldFrom = fromSelect.value;
+        fromSelect.value = toSelect.value;
+        toSelect.value = oldFrom;
+
+        updateResults({ addHistory: true });
+      }
+
+      function resetConverter() {
+        input.value = "60";
+        fromSelect.value = "minutes";
+        toSelect.value = "hours";
+        precisionSelect.value = "6";
+
+        updateResults();
+        setStatus("Converter reset to 60 minutes in hours.", "success");
+      }
+
+      function applyPreset(value, unit) {
+        input.value = value;
+        fromSelect.value = unit;
+
+        /*
+          Keep the current destination unit so presets can be
+          used with any chosen conversion target.
+        */
+        updateResults({ addHistory: true });
+      }
+
+      input.addEventListener("input", () => {
+        updateResults();
+      });
+
+      fromSelect.addEventListener("change", () => {
+        updateResults();
+      });
+
+      toSelect.addEventListener("change", () => {
+        updateResults();
+      });
+
+      precisionSelect.addEventListener("change", () => {
+        updateResults({ silent: true });
+        setStatus(
+          "Displayed precision updated to " +
+          getPrecision() + " decimal places.",
+          "success"
+        );
+      });
+
+      convertButton.addEventListener("click", () => {
+        updateResults({ addHistory: true });
+      });
+
+      swapButton.addEventListener("click", swapUnits);
+      resetButton.addEventListener("click", resetConverter);
+
+      document.querySelectorAll(".time-tool [data-value][data-unit]").forEach((button) => {
+        button.addEventListener("click", () => {
+          applyPreset(button.dataset.value, button.dataset.unit);
+        });
+      });
+
+      copyResultButton.addEventListener("click", () => {
+        if (!hasValidResult || !latestResults) {
+          setStatus("Convert a valid value before copying.", "error");
+          return;
+        }
+
+        copyText(
+          formatNumber(latestResults.results[latestResults.toUnit]) +
+          " " + unitData[latestResults.toUnit].symbol
+        );
+      });
+
+      copyEquationButton.addEventListener("click", () => {
+        if (!hasValidResult) {
+          setStatus("Convert a valid value before copying.", "error");
+          return;
+        }
+
+        copyText(currentEquation);
+      });
+
+      copyAllButton.addEventListener("click", () => {
+        copyText(getAllResultsText());
+      });
+
+      resultsGrid.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-copy-unit]");
+
+        if (!button || !hasValidResult || !latestResults) {
+          return;
+        }
+
+        const unit = button.dataset.copyUnit;
+        const value = latestResults.results[unit];
+
+        if (!unitData[unit] || !Number.isFinite(value)) {
+          setStatus("That result is not available to copy.", "error");
+          return;
+        }
+
+        copyText(
+          formatNumber(value) + " " + unitData[unit].symbol
+        );
+      });
+
+      clearHistoryButton.addEventListener("click", () => {
+        conversionHistory = [];
+        renderHistory();
+        setStatus("Conversion history cleared.", "success");
+      });
+
+      /*
+        Initial page setup.
+      */
+      renderEmptyResults();
+      updateResults();
+    })();
+  </script>
+</body>
+</html>

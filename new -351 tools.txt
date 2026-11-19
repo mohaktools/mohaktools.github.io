@@ -1,0 +1,368 @@
+Calculators (59)
+
+Car Loan EMI Calculator
+Home Loan EMI Calculator
+Personal Loan Calculator
+Mortgage Calculator
+EPF Calculator
+PPF Calculator
+NPS Calculator
+Retirement Corpus Calculator
+Lumpsum Investment Calculator
+Rule of 72 Calculator
+Inflation Calculator
+Credit Card Interest Calculator
+Credit Card Payoff Calculator
+Electricity Bill Calculator
+Appliance Power Cost Calculator
+Mobile Data Usage Calculator
+Ideal Weight Calculator
+Heart Rate Zone Calculator
+Maximum Heart Rate Calculator
+Running Pace Calculator
+Marathon Time Predictor
+Ovulation Calculator
+Conception Date Calculator
+Cooking Time Calculator
+Recipe Scaling Calculator
+Mortgage Affordability Calculator
+Probability Calculator
+Standard Deviation Calculator
+Percentage Change Calculator
+Exam Percentage Calculator
+CGPA to Percentage Calculator
+Percentage to GPA Calculator
+Fuel Efficiency Calculator
+Trip Budget Calculator
+Bill Split Calculator
+Sales Tax Calculator
+VAT Calculator
+TDS Calculator
+Salary Hike Calculator
+Hourly to Salary Calculator
+CTC Breakup Calculator
+Freelance Rate Calculator
+Net Worth Calculator
+Savings Goal Calculator
+Emergency Fund Calculator
+Recurring Deposit Calculator
+Post Office Savings Calculator
+Sukanya Samriddhi Calculator
+Gold Value Calculator
+Depreciation Calculator
+ROI Calculator
+CAGR Calculator
+Markup Calculator
+Reorder Point Calculator
+Hours to Decimal Calculator
+Leap Year Checker
+Pet Age Calculator
+Paint Calculator
+Concrete Volume Calculator
+
+Time & Productivity (59)
+
+Kanban Board
+Eisenhower Matrix
+Goal Tracker
+Daily Planner
+Note Taking Pad
+Sticky Notes
+Reading Time Estimator
+Reading Speed Test
+Flashcard Maker
+Exam Countdown
+Birthday Reminder
+Anniversary Calculator
+Days Since Calculator
+Time Until Weekend
+Bedtime Reminder
+Water Reminder
+Break Reminder
+Ambient Noise Generator
+White Noise Generator
+Metronome
+Practice Session Timer
+Study Timer
+Exercise Timer
+Tabata Timer
+Workout Log
+Gratitude Journal
+Mood Tracker
+Expense Tracker
+Budget Planner
+Shift Scheduler
+Leave Balance Tracker
+Attendance Tracker
+Project Timeline Planner
+Gantt Chart Maker
+Weekly Schedule Maker
+Class Timetable Maker
+Exam Timetable Maker
+Daily Routine Builder
+Time Blocking Planner
+Stand-up Meeting Timer
+Presentation Timer
+Speech Timer
+Lap Counter
+Multi-Timer
+Egg Timer
+Tea Timer
+Cooking Timer
+Hourglass Timer
+Event Planner
+Wedding Countdown
+Vacation Planner
+Travel Itinerary Planner
+Packing Checklist
+Grocery List
+Shopping List
+Chore Chart
+Priority Ranker
+Brain Dump Organizer
+Focus Session Logger
+
+Converters (59)
+
+Force Converter
+Torque Converter
+Density Converter
+Flow Rate Converter
+Electric Current Converter
+Voltage Converter
+Resistance Converter
+Capacitance Converter
+Inductance Converter
+Electric Charge Converter
+Magnetic Field Converter
+Illuminance Converter
+Luminous Intensity Converter
+Decibel Converter
+Acceleration Converter
+Paper Size Converter
+Paper Weight (GSM) Converter
+Pixels to Inches Converter
+CSS Units Converter
+Font Size Converter
+Screen Size Converter
+Bitrate Converter
+Bandwidth Converter
+Transfer Speed Converter
+Date Format Converter
+Lakh to Crore Converter
+Troy Ounce Converter
+Gold Karat Converter
+Carat to Gram Converter
+Nautical Miles Converter
+Knots Converter
+Wind Speed Converter
+Rainfall Converter
+Snowfall to Water Converter
+Pace to Speed Converter
+12 and 24 Hour Converter
+Fuel Price per Unit Converter
+Battery Capacity Converter
+Heat Transfer Converter
+Surface Tension Converter
+Viscosity Converter
+Radiation Dose Converter
+Calorie to Kilojoule Converter
+Ounce to Gram Converter
+Mole Converter
+Concentration Converter
+Mass to Weight Converter
+Mass Flow Converter
+Angle to Mil Converter
+Slope Converter
+Bits and Bytes Converter
+Century and Decade Converter
+Map Scale Converter
+Stone to Kilogram Converter
+Hand and Foot Units Converter
+Barrel Converter
+Board Feet Converter
+Firewood Cord Converter
+Short Ton Converter
+
+Text Tools (58)
+
+Sentence Counter
+Paragraph Counter
+Syllable Counter
+Fancy Font Generator
+Italic Text Generator
+Strikethrough Text Generator
+Upside Down Text Generator
+Small Caps Text Generator
+Bionic Reading Converter
+Acronym Generator
+Initials Generator
+Random Word Generator
+Random Sentence Generator
+Random Name Generator
+Username Generator
+Business Name Generator
+Text Justifier
+Add Line Numbers
+Add Prefix and Suffix Tool
+Word Wrap Tool
+Text Truncator
+Character Limit Trimmer
+Tweet Character Counter
+Caption Length Checker
+YouTube Title Length Checker
+YouTube Tag Generator
+Keyword Extractor
+Word Frequency Counter
+Letter Frequency Counter
+Vowel and Consonant Counter
+Duplicate Word Finder
+Stop Words Remover
+Whitespace Visualizer
+Invisible Character Remover
+Tab to Space Converter
+Non-breaking Space Remover
+Smart Quotes Converter
+HTML Tag Stripper
+Markdown Stripper
+Text to Speech Reader
+Speech to Text Converter
+Caesar Cipher Tool
+ROT13 Encoder
+Pig Latin Translator
+Leetspeak Converter
+Synonym Finder
+Antonym Finder
+Dictionary Lookup
+Ordinal Number Converter
+Text Repeater
+Text Shuffler
+Text Scrambler
+Email Subject Line Checker
+Line Sorter by Length
+Rhyme Finder
+Word Rarity Checker
+Paragraph Splitter
+Sentence Splitter
+
+Developer Tools (58)
+
+Binary to Text Converter
+Text to Binary Converter
+Hex to Text Converter
+ASCII Table
+Character Code Lookup
+JSON to CSV Converter
+JSON to XML Converter
+XML to JSON Converter
+JSON Diff Tool
+JSON Path Tester
+JSON to TypeScript Converter
+JSON Schema Generator
+SQL Minifier
+Bcrypt Hash Generator
+HMAC Generator
+CRC32 Calculator
+Random String Generator
+API Key Generator
+Secret Key Generator
+Fake Address Generator
+User Agent Parser
+Viewport Size Checker
+Meta Tag Generator
+Open Graph Tag Generator
+robots.txt Generator
+sitemap.xml Generator
+.htaccess Generator
+Nginx Config Generator
+Dockerfile Generator
+Docker Compose Generator
+Git Command Reference
+Regex Cheat Sheet
+CSS Specificity Calculator
+CSS Flexbox Generator
+CSS Grid Generator
+Cubic Bezier Generator
+CSS Animation Generator
+Border Radius Generator
+Text Shadow Generator
+Glassmorphism CSS Generator
+SVG Optimizer
+SVG to PNG Converter
+Data URI Generator
+Unicode Character Lookup
+Semantic Version Bump Calculator
+Commit Message Generator
+.env to JSON Converter
+.env File Validator
+Line Ending Converter
+Indentation Converter
+PHP Code Formatter
+Code Comment Remover
+HTML Minifier
+ISO 8601 Date Formatter
+Email Regex Generator
+Cookie Parser
+Query String Parser
+Gzip Size Estimator
+
+Everyday Utilities (58)
+
+Text to PDF Converter
+PDF to Image Converter
+PDF to Text Extractor
+PDF Page Remover
+PDF Rotator
+PDF Password Protector
+PDF Unlocker
+Image to Base64 Converter
+Image Metadata Viewer
+EXIF Data Remover
+Image Rotator
+Image Flipper
+Photo Filter Tool
+Image Color Picker
+Color Palette Generator
+Image Watermark Adder
+Meme Generator
+GIF Maker
+GIF Compressor
+Video Compressor
+Video to GIF Converter
+Audio Converter
+Audio Trimmer
+Voice Recorder
+Audio Speed Changer
+Video Trimmer
+Screen Recorder
+Webcam Test
+Microphone Test
+Flashlight
+Magnifier
+Screen Ruler
+Protractor Tool
+Compass Tool
+Bubble Level Tool
+Sound Level Meter
+Guitar Tuner
+Virtual Piano
+Virtual Drum Pad
+Chord Finder
+Random Emoji Picker
+Emoji Keyboard
+Special Characters Copy Tool
+Clipboard History
+Blood Donation Eligibility Checker
+Cash Denomination Counter
+Lottery Number Generator
+Lucky Draw Tool
+Random Team Generator
+Seating Chart Maker
+Magic 8 Ball
+Rock Paper Scissors
+Playing Card Dealer
+Sudoku Generator
+Tic Tac Toe
+Bingo Card Generator
+Audio Metadata Viewer
+Image Resolution Checker

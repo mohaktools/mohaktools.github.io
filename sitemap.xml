@@ -1,10 +1,6 @@
-sitemap.xml
-
-
-
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://mohaktools.com/</loc></url>
+  <url><loc>https://mohaktools.com/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://mohaktools.com/tools/</loc></url>
 <url>
 <loc>https://mohaktools.com/articles/gst-calculation-guide</loc>
@@ -25,8 +21,16 @@ sitemap.xml
   <url><loc>https://mohaktools.com/tools/scientific-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/percentage-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/age-calculator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/leap-year-checker/</loc></url>
+  <url><loc>https://mohaktools.com/tools/hours-to-decimal/</loc></url>
+  <url><loc>https://mohaktools.com/tools/pet-age-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/ai-email-writer/</loc></url>
   <url><loc>https://mohaktools.com/tools/ai-question-generator/</loc></url>
+  <url><loc>https://mohaktools.com/tools/make-a-paragraph-small/</loc></url>
+  <url><loc>https://mohaktools.com/tools/ai-invitation-writer/</loc></url>
+  <url><loc>https://mohaktools.com/articles/ai-paragraph-shortener-guide</loc></url>
+  <url><loc>https://mohaktools.com/articles/ai-invitation-writing-guide</loc></url>
+  <url><loc>https://mohaktools.com/articles/organize-digital-files-guide</loc></url>
   <url><loc>https://mohaktools.com/tools/bmi-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/discount-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/gst-calculator/</loc></url>
@@ -66,13 +70,13 @@ sitemap.xml
   <url><loc>https://mohaktools.com/tools/digital-clock/</loc></url>
   <url><loc>https://mohaktools.com/tools/calendar/</loc></url>
   <url><loc>https://mohaktools.com/tools/business-days-calculator/</loc></url>
-  <url><loc>https://mohaktools.com/tools/habit-tracker/</loc></url>
+  <url><loc>https://mohaktools.com/tools/habit-tracker/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://mohaktools.com/tools/interval-timer/</loc></url>
   <url><loc>https://mohaktools.com/tools/meeting-planner/</loc></url>
   <url><loc>https://mohaktools.com/tools/sleep-cycle-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/sunrise-sunset-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/timezone-converter/</loc></url>
-  <url><loc>https://mohaktools.com/tools/todo-list/</loc></url>
+  <url><loc>https://mohaktools.com/tools/todo-list/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://mohaktools.com/tools/week-number-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/work-hours-timesheet-calculator/</loc></url>
 
@@ -135,9 +139,9 @@ sitemap.xml
   <url><loc>https://mohaktools.com/tools/chmod-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/colour-picker/</loc></url>
   <url><loc>https://mohaktools.com/tools/cron-expression-generator/</loc></url>
-  <url><loc>https://mohaktools.com/tools/css-gradient-boxshadow/</loc></url>
+  <url><loc>https://mohaktools.com/tools/css-gradient-boxshadow/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://mohaktools.com/tools/css-minifier-beautifier/</loc></url>
-  <url><loc>https://mohaktools.com/tools/csv-to-json-converter/</loc></url>
+  <url><loc>https://mohaktools.com/tools/csv-to-json-converter/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://mohaktools.com/tools/favicon-generator/</loc></url>
   <url><loc>https://mohaktools.com/tools/gitignore-generator/</loc></url>
   <url><loc>https://mohaktools.com/tools/hash-generator/</loc></url>
@@ -162,19 +166,19 @@ sitemap.xml
   <url><loc>https://mohaktools.com/tools/image-resizer/</loc></url>
   <url><loc>https://mohaktools.com/tools/aspect-ratio-calculator/</loc></url>
   <url><loc>https://mohaktools.com/tools/typing-speed-test/</loc></url>
-  <url><loc>https://mohaktools.com/tools/background-remover/</loc></url>
+  <url><loc>https://mohaktools.com/tools/background-remover/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://mohaktools.com/tools/barcode-generator/</loc></url>
   <url><loc>https://mohaktools.com/tools/coin-flip/</loc></url>
   <url><loc>https://mohaktools.com/tools/dice-roller/</loc></url>
   <url><loc>https://mohaktools.com/tools/image-cropper/</loc></url>
-  <url><loc>https://mohaktools.com/tools/image-format-converter/</loc></url>
-  <url><loc>https://mohaktools.com/tools/image-to-pdf/</loc></url>
-  <url><loc>https://mohaktools.com/tools/image-to-text-ocr/</loc></url>
+  <url><loc>https://mohaktools.com/tools/image-format-converter/</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://mohaktools.com/tools/image-to-pdf/</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://mohaktools.com/tools/image-to-text-ocr/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://mohaktools.com/tools/internet-speed-test/</loc></url>
   <url><loc>https://mohaktools.com/tools/name-picker-wheel/</loc></url>
   <url><loc>https://mohaktools.com/tools/password-strength-checker/</loc></url>
-  <url><loc>https://mohaktools.com/tools/pdf-compressor/</loc></url>
-  <url><loc>https://mohaktools.com/tools/pdf-merge-split/</loc></url>
+  <url><loc>https://mohaktools.com/tools/pdf-compressor/</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://mohaktools.com/tools/pdf-merge-split/</loc><lastmod>2026-11-18</lastmod></url>
   <url><loc>https://mohaktools.com/tools/qr-code-scanner/</loc></url>
   <url><loc>https://mohaktools.com/tools/whats-my-ip/</loc></url>
   <url><loc>https://mohaktools.com/articles/emi-calculate-guide</loc></url>
@@ -182,7 +186,11 @@ sitemap.xml
   <url><loc>https://mohaktools.com/articles/top-10-free-tools-students</loc></url>
   <url><loc>https://mohaktools.com/articles/simple-vs-compound-interest</loc></url>
   <url><loc>https://mohaktools.com/tools/youtube-search-bar/</loc></url>
-
+<url><loc>https://mohaktools.com/tools/commission-calculator/</loc></url>
+<url><loc>https://mohaktools.com/tools/meeting-cost-calculator/</loc></url>
+<url><loc>https://mohaktools.com/tools/px-to-rem-converter/</loc></url>
+<url><loc>https://mohaktools.com/tools/pace-converter/</loc></url>
+<url><loc>https://mohaktools.com/tools/color-palette-generator/</loc></url>
   <url><loc>https://mohaktools.com/about/</loc></url>
   <url><loc>https://mohaktools.com/contact/</loc></url>
   <url><loc>https://mohaktools.com/feedback/</loc></url>
