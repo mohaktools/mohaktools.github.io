@@ -357,7 +357,7 @@
               <a href="/feedback/">Give Feedback</a>
               <a href="/privacy-policy/">Privacy Policy</a>
               <a href="/terms/">Terms of Use</a>
-              <a href="/articles/"> Articles </a>
+             <a href="https://mohaktools.blogspot.com"> Blog <a>
                 <a href="/sitemap/"> Sitemap </a>
             </nav>
           </section> 
