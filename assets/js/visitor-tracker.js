@@ -10,7 +10,8 @@
 (() => {
   "use strict";
 
-  const ENDPOINT = "YOUR_FIREBASE_INGESTION_ENDPOINT";
+const ENDPOINT =
+  "https://mohaktools.mohakchoubey.workers.dev/";
 
   // Avoid duplicate initialization.
   if (window.__mohakAnalyticsInitialized) return;
