@@ -1,10 +1,3 @@
-/*
- * MohakTools Visitor Analytics
- * File: visitor-tracker.js
- *
- * Requires a Firebase HTTPS ingestion endpoint.
- * Does not collect raw IP addresses or GPS coordinates.
- */
 
 (() => {
   "use strict";
