@@ -2346,7 +2346,42 @@
       "icon": "{ }",
       "popularity": 71
     }, 
-    
+    {
+  "id": "track-your-mood",
+  "name": "Mood Tracker",
+  "category": "time-tools",
+  "url": "/tools/track-your-mood/",
+  "description": "Track your daily mood, energy and productivity, and review your mood history over time.",
+  "keywords": [
+    "mood tracker",
+    "daily mood journal",
+    "mood history",
+    "emotional wellness",
+    "energy tracker",
+    "productivity tracker"
+  ],
+  "icon": "😊",
+  "featured": false,
+  "popularity": 65
+},
+{
+  "id": "reading-time-calculator",
+  "name": "Reading Time Calculator",
+  "category": "text-tools",
+  "url": "/tools/reading-time-calculator/",
+  "description": "Estimate how long it takes to read text based on its word count and reading speed.",
+  "keywords": [
+    "reading time calculator",
+    "reading speed",
+    "word count",
+    "estimated reading time",
+    "minutes to read",
+    "WPM"
+  ],
+  "icon": "📖",
+  "featured": false,
+  "popularity": 70
+}, 
   {
     "id": "commission-calculator",
     "name": "Commission Calculator",
