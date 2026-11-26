@@ -1,0 +1,1043 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- FAVICONS & PWA -->
+  <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20261116" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261116">
+  <link rel="shortcut icon" href="/favicon.ico?v=20261116">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261116">
+  <meta name="apple-mobile-web-app-title" content="MohakTools">
+  <link rel="manifest" href="/site.webmanifest?v=20261116">
+
+  <!-- BASIC SEO -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free Mood Tracker Online – Daily Mood & Productivity Journal | MohakTools</title>
+  <meta name="description" content="Track your daily mood, energy and productivity with the free MohakTools Mood Tracker. Save daily reflections, review your history and export your mood journal privately.">
+  <meta name="keywords" content="free mood tracker, online mood tracker, daily mood journal, mood tracking tool, productivity tracker, energy tracker, mood diary">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="MohakTools">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="application-name" content="MohakTools">
+  <link rel="canonical" href="https://mohaktools.com/tools/mood-tracker/">
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="Free Online Mood Tracker | MohakTools">
+  <meta property="og:description" content="Record your daily mood, energy and productivity. Review your personal check-in history with this free mood tracker.">
+  <meta property="og:url" content="https://mohaktools.com/tools/mood-tracker/">
+  <meta property="og:image" content="https://mohaktools.com/assets/images/mood-tracker-og.png">
+  <meta property="og:image:alt" content="MohakTools free online Mood Tracker">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Online Mood Tracker | MohakTools">
+  <meta name="twitter:description" content="Track daily mood, energy and productivity with a simple private journal.">
+  <meta name="twitter:image" content="https://mohaktools.com/assets/images/mood-tracker-og.png">
+
+  <!-- GLOBAL STYLES -->
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+
+  <!-- STRUCTURED DATA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mood Tracker",
+    "url": "https://mohaktools.com/tools/mood-tracker/",
+    "description": "A free online mood tracker for recording daily mood, energy and productivity.",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    },
+    "featureList": [
+      "Daily mood tracking",
+      "Energy tracking",
+      "Productivity tracking",
+      "Mood history",
+      "CSV export",
+      "Local browser storage"
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "MohakTools",
+      "url": "https://mohaktools.com/"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://mohaktools.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Time & Productivity",
+        "item": "https://mohaktools.com/tools/?category=time-productivity"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Mood Tracker",
+        "item": "https://mohaktools.com/tools/mood-tracker/"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .mt-page {
+      width:min(100% - 32px,1080px);
+      margin:auto;
+      padding:24px 0 56px;
+      color:var(--color-text);
+    }
+
+    .mt-breadcrumbs {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:18px;
+      font-size:13px;
+      color:var(--color-text-secondary);
+    }
+
+    .mt-breadcrumbs a {
+      color:var(--color-primary);
+      text-decoration:none;
+    }
+
+    .mt-hero { margin-bottom:22px; }
+
+    .mt-hero h1 {
+      font-size:clamp(28px,4vw,40px);
+      line-height:1.2;
+      margin:0 0 10px;
+      letter-spacing:-.03em;
+    }
+
+    .mt-hero p {
+      max-width:760px;
+      color:var(--color-text-secondary);
+      font-size:15px;
+      line-height:1.7;
+      margin:0;
+    }
+
+    .mt-tool-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .mt-panel,.mt-content-section {
+      background:var(--color-surface);
+      border:1px solid var(--color-border);
+      border-radius:var(--radius-xl,20px);
+      padding:21px;
+      box-shadow:var(--color-card-shadow,0 4px 18px rgba(0,0,0,.04));
+      min-width:0;
+    }
+
+    .mt-panel h2 {
+      font-size:19px;
+      margin:0 0 17px;
+      color:var(--color-text);
+    }
+
+    .mt-field { margin-bottom:16px; }
+
+    .mt-field label {
+      display:block;
+      margin-bottom:8px;
+      font-size:13px;
+      font-weight:650;
+      color:var(--color-text);
+    }
+
+    .mt-field textarea,
+    .mt-field input,
+    .mt-field select {
+      width:100%;
+      min-height:43px;
+      padding:11px 12px;
+      border:1px solid var(--color-input-border,var(--color-border));
+      border-radius:var(--radius-md,10px);
+      background:var(--color-input-bg,var(--color-surface));
+      color:var(--color-text);
+      font:inherit;
+      font-size:14px;
+      outline:none;
+    }
+
+    .mt-field textarea {
+      min-height:125px;
+      resize:vertical;
+      line-height:1.6;
+    }
+
+    .mt-field input:focus,
+    .mt-field select:focus,
+    .mt-field textarea:focus {
+      border-color:var(--color-primary);
+      box-shadow:0 0 0 3px var(--color-primary-focus,rgba(37,99,235,.14));
+    }
+
+    .mt-moods {
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:7px;
+    }
+
+    .mt-mood {
+      padding:11px 3px;
+      border:1px solid var(--color-border);
+      border-radius:12px;
+      background:var(--color-surface-secondary);
+      color:var(--color-text);
+      cursor:pointer;
+      font:inherit;
+      font-size:12px;
+      text-align:center;
+    }
+
+    .mt-mood span {
+      display:block;
+      font-size:23px;
+      margin-bottom:5px;
+    }
+
+    .mt-mood[aria-pressed="true"] {
+      background:var(--color-primary);
+      border-color:var(--color-primary);
+      color:var(--color-primary-text,#fff);
+    }
+
+    .mt-button-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-top:15px;
+    }
+
+    .mt-button {
+      min-height:41px;
+      padding:10px 15px;
+      border-radius:var(--radius-md,10px);
+      border:1px solid transparent;
+      font:inherit;
+      font-size:13px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .mt-primary {
+      flex:1;
+      background:var(--color-primary);
+      color:var(--color-primary-text,#fff);
+    }
+
+    .mt-secondary {
+      background:var(--color-surface-secondary);
+      border-color:var(--color-border);
+      color:var(--color-text);
+    }
+
+    .mt-button:focus-visible,.mt-mood:focus-visible {
+      outline:3px solid var(--color-primary);
+      outline-offset:3px;
+    }
+
+    .mt-stats {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .mt-stat {
+      padding:14px;
+      border:1px solid var(--color-border);
+      border-radius:12px;
+      background:var(--color-surface-secondary);
+    }
+
+    .mt-stat span {
+      display:block;
+      color:var(--color-text-secondary);
+      font-size:12px;
+      margin-bottom:6px;
+    }
+
+    .mt-stat strong {
+      display:block;
+      font-size:24px;
+      color:var(--color-primary);
+      overflow-wrap:anywhere;
+    }
+
+    .mt-status {
+      min-height:20px;
+      font-size:12px;
+      color:var(--color-text-secondary);
+      margin-top:10px;
+    }
+
+    .mt-history-item {
+      padding:13px 0;
+      border-bottom:1px solid var(--color-border);
+    }
+
+    .mt-history-item:last-child { border:0; }
+
+    .mt-history-item strong {
+      font-size:14px;
+      color:var(--color-text);
+    }
+
+    .mt-history-item p {
+      margin:5px 0 0;
+      font-size:13px;
+      line-height:1.6;
+      color:var(--color-text-secondary);
+      overflow-wrap:anywhere;
+    }
+
+    .mt-content { margin-top:26px; }
+
+    .mt-content-section {
+      margin-top:16px;
+      box-shadow:none;
+    }
+
+    .mt-content-section h2 {
+      font-size:21px;
+      margin:0 0 13px;
+    }
+
+    .mt-content-section h3 {
+      font-size:15px;
+      margin:17px 0 7px;
+    }
+
+    .mt-content-section p,
+    .mt-content-section li {
+      color:var(--color-text-secondary);
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .mt-content-section p { margin:0 0 11px; }
+
+    .mt-content-section ul {
+      padding-left:21px;
+      margin:8px 0;
+    }
+
+    .mt-faq {
+      padding:15px 0;
+      border-bottom:1px solid var(--color-border);
+    }
+
+    .mt-faq:last-child { border:0; }
+
+    .mt-faq h3 { margin:0 0 7px; }
+
+    .mt-faq p { margin:0; }
+
+    .mt-related-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+      margin-top:15px;
+    }
+
+    .mt-related-card {
+      display:block;
+      padding:16px;
+      border:1px solid var(--color-border);
+      border-radius:13px;
+      background:var(--color-surface-secondary);
+      text-decoration:none;
+      transition:border-color .2s,transform .2s;
+      min-width:0;
+    }
+
+    .mt-related-card:hover {
+      border-color:var(--color-primary);
+      transform:translateY(-2px);
+    }
+
+    .mt-related-icon {
+      font-size:23px;
+      display:block;
+      margin-bottom:9px;
+    }
+
+    .mt-related-card strong {
+      display:block;
+      color:var(--color-text);
+      font-size:14px;
+      margin-bottom:5px;
+    }
+
+    .mt-related-card small {
+      color:var(--color-text-secondary);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    .mt-privacy {
+      font-size:12px!important;
+      padding:12px;
+      background:var(--color-surface-secondary);
+      border-radius:10px;
+    }
+
+    [hidden] { display:none!important; }
+
+    @media(max-width:760px) {
+      .mt-tool-grid { grid-template-columns:1fr; }
+      .mt-panel { padding:17px; }
+      .mt-related-grid { grid-template-columns:1fr 1fr; }
+    }
+
+    @media(max-width:420px) {
+      .mt-page { width:min(100% - 20px,620px); }
+      .mt-moods { gap:4px; }
+      .mt-mood { font-size:10px; padding:9px 2px; }
+      .mt-mood span { font-size:20px; }
+      .mt-related-grid { grid-template-columns:1fr; }
+      .mt-button-row { display:grid; grid-template-columns:1fr 1fr; }
+      .mt-primary { grid-column:1/-1; }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .mt-related-card { transition:none; }
+    }
+  </style>
+</head>
+
+<body>
+<script src="/assets/js/tools-registry.js" defer></script>
+<div id="site-header"></div>
+
+<main class="mt-page">
+
+  <nav class="mt-breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span>/</span>
+    <a href="/tools/?category=time-productivity">Time & Productivity</a>
+    <span>/</span>
+    <span aria-current="page">Mood Tracker</span>
+  </nav>
+
+  <header class="mt-hero">
+    <h1>Free Online Mood Tracker</h1>
+    <p>
+      Take a moment to reflect on your day. Track your mood, energy
+      and productivity, save daily check-ins and review your personal
+      patterns with this simple mood tracking tool.
+    </p>
+  </header>
+
+  <!-- MAIN TOOL -->
+  <section class="mt-tool-grid" aria-label="Mood Tracker Tool">
+
+    <section class="mt-panel">
+      <h2>Today's Mood Check-in</h2>
+
+      <div class="mt-field">
+        <label>How are you feeling today?</label>
+
+        <div class="mt-moods" id="mood-options">
+          <button class="mt-mood" type="button" data-mood="1" aria-pressed="false">
+            <span>😞</span>Low
+          </button>
+          <button class="mt-mood" type="button" data-mood="2" aria-pressed="false">
+            <span>😕</span>Off
+          </button>
+          <button class="mt-mood" type="button" data-mood="3" aria-pressed="false">
+            <span>😐</span>Okay
+          </button>
+          <button class="mt-mood" type="button" data-mood="4" aria-pressed="false">
+            <span>🙂</span>Good
+          </button>
+          <button class="mt-mood" type="button" data-mood="5" aria-pressed="false">
+            <span>😁</span>Great
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-field">
+        <label for="energy">
+          Energy Level: <output id="energy-value">3 / 5</output>
+        </label>
+        <input type="range" id="energy" min="1" max="5" value="3">
+      </div>
+
+      <div class="mt-field">
+        <label for="productivity">How productive were you?</label>
+        <select id="productivity">
+          <option value="1">1 - Very little</option>
+          <option value="2">2 - A little</option>
+          <option value="3" selected>3 - Moderate</option>
+          <option value="4">4 - Productive</option>
+          <option value="5">5 - Very productive</option>
+        </select>
+      </div>
+
+      <div class="mt-field">
+        <label for="note">Daily reflection (optional)</label>
+        <textarea id="note" maxlength="500"
+          placeholder="Write a short reflection about your day..."></textarea>
+        <p class="mt-help">Maximum 500 characters. Your note is saved locally.</p>
+      </div>
+
+      <div class="mt-button-row">
+        <button class="mt-button mt-primary" id="save-entry" type="button">
+          Save Today's Check-in
+        </button>
+        <button class="mt-button mt-secondary" id="reset-form" type="button">
+          Reset
+        </button>
+      </div>
+
+      <p class="mt-status" id="mood-status" role="status" aria-live="polite">
+        Select your mood to begin.
+      </p>
+    </section>
+
+    <section class="mt-panel">
+      <h2>Your Mood Overview</h2>
+
+      <div class="mt-stats">
+        <div class="mt-stat">
+          <span>Total Check-ins</span>
+          <strong id="entry-count">0</strong>
+        </div>
+        <div class="mt-stat">
+          <span>Average Mood</span>
+          <strong id="avg-mood">—</strong>
+        </div>
+        <div class="mt-stat">
+          <span>Average Energy</span>
+          <strong id="avg-energy">—</strong>
+        </div>
+        <div class="mt-stat">
+          <span>Average Productivity</span>
+          <strong id="avg-productivity">—</strong>
+        </div>
+      </div>
+
+      <h2 style="margin-top:23px">Recent Check-ins</h2>
+
+      <div id="history" aria-live="polite">
+        <p class="mt-help">Your saved check-ins will appear here.</p>
+      </div>
+
+      <div class="mt-button-row">
+        <button class="mt-button mt-secondary" id="export-data" type="button">
+          Export CSV
+        </button>
+        <button class="mt-button mt-secondary" id="clear-history" type="button">
+          Clear History
+        </button>
+      </div>
+
+      <p class="mt-help">
+        Your check-ins are stored in this browser on this device.
+      </p>
+    </section>
+
+  </section>
+
+  <!-- INFORMATIONAL CONTENT -->
+  <div class="mt-content">
+
+    <section class="mt-content-section">
+      <h2>How to Use the Mood Tracker</h2>
+      <p>
+        Using the MohakTools Mood Tracker is simple. You can record
+        your daily feelings and review your check-ins whenever you want.
+      </p>
+      <ul>
+        <li>Select the mood that best describes your day.</li>
+        <li>Adjust your energy level using the slider.</li>
+        <li>Choose a productivity rating from 1 to 5.</li>
+        <li>Write an optional note about your day.</li>
+        <li>Click Save Today's Check-in.</li>
+        <li>Review your averages and recent check-in history.</li>
+        <li>Export your records as a CSV file if required.</li>
+      </ul>
+    </section>
+
+    <section class="mt-content-section">
+      <h2>About MohakTools Mood Tracker</h2>
+
+      <p>
+        The Mood Tracker is a free online reflection and productivity
+        tool designed to help you record how you feel throughout your
+        daily routine. Instead of relying on memory, you can create
+        simple daily records of your mood, energy and perceived
+        productivity.
+      </p>
+
+      <h3>Understand your daily patterns</h3>
+      <p>
+        Regular check-ins can help you reflect on how different days
+        feel. You can compare your mood, energy and productivity
+        averages and look back at previous notes to identify patterns
+        that may be worth reflecting on.
+      </p>
+
+      <h3>A simple and private journaling experience</h3>
+      <p>
+        Your entries are stored locally in your browser using
+        localStorage. This page does not send your journal entries
+        to MohakTools servers. Your records are not automatically
+        synchronized between devices.
+      </p>
+
+      <h3>Designed for everyday use</h3>
+      <p>
+        The tool works on desktop, tablet and mobile screens.
+        It provides a straightforward check-in experience without
+        requiring an account or registration.
+      </p>
+
+      <p>
+        <strong>Important:</strong> This tool is intended for personal
+        reflection and general productivity tracking. It is not a
+        medical diagnostic tool and does not provide mental-health
+        assessments or treatment.
+      </p>
+    </section>
+
+    <section class="mt-content-section">
+      <h2>Benefits of Daily Mood Tracking</h2>
+      <ul>
+        <li>Build a consistent habit of personal reflection.</li>
+        <li>Keep a record of how your days feel over time.</li>
+        <li>Compare your self-reported energy and productivity.</li>
+        <li>Remember daily experiences through optional notes.</li>
+        <li>Review historical check-ins in one place.</li>
+        <li>Export your records for your own reference.</li>
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mt-content-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="mt-faq">
+        <h3>1. What is an online Mood Tracker?</h3>
+        <p>
+          A Mood Tracker is a tool that allows you to record how
+          you feel over time. This tool lets you select a daily mood,
+          rate your energy and productivity, and add personal notes.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>2. Is the MohakTools Mood Tracker free?</h3>
+        <p>
+          Yes. The Mood Tracker is free to use. You do not need
+          to create an account or purchase a subscription.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>3. How are my mood records saved?</h3>
+        <p>
+          Your entries are saved in your browser's localStorage.
+          They remain available in the same browser unless its
+          stored website data is cleared or the records are deleted.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>4. Can I track my energy and productivity too?</h3>
+        <p>
+          Yes. Along with mood, you can rate your energy and
+          perceived productivity on a scale from 1 to 5.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>5. Can I save more than one check-in per day?</h3>
+        <p>
+          The tool keeps one entry per calendar date. Saving
+          another check-in on the same date updates that day's
+          existing record.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>6. Can I download my mood history?</h3>
+        <p>
+          Yes. Select Export CSV to download your saved check-ins
+          in a spreadsheet-compatible CSV file.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>7. Does this tool work on mobile devices?</h3>
+        <p>
+          Yes. The interface is responsive and works on modern
+          mobile phones, tablets and desktop browsers.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>8. Is this a mental-health diagnostic tool?</h3>
+        <p>
+          No. It is a personal reflection journal and productivity
+          tracker. Its ratings are subjective and should not be
+          interpreted as a clinical assessment or diagnosis.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>9. Will my entries synchronize between devices?</h3>
+        <p>
+          No. Entries are saved in the browser on the device you
+          use. You can export a CSV copy to keep a separate backup.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>10. What happens if I clear my browser data?</h3>
+        <p>
+          Clearing the browser's website storage may permanently
+          remove your saved entries. Export your records before
+          clearing browser data if you want to keep a copy.
+        </p>
+      </div>
+    </section>
+
+    <!-- SUGGESTED TOOLS -->
+    <section class="mt-content-section">
+      <h2>Explore More Productivity Tools</h2>
+      <p>
+        Make your everyday routine easier with these free
+        MohakTools utilities.
+      </p>
+
+      <div class="mt-related-grid">
+
+        <a class="mt-related-card" href="/tools/pomodoro-timer/">
+          <span class="mt-related-icon">⏱️</span>
+          <strong>Pomodoro Timer</strong>
+          <small>
+            Organize focused work sessions with timed breaks.
+          </small>
+        </a>
+
+        <a class="mt-related-card" href="/tools/time-duration-calculator/">
+          <span class="mt-related-icon">🕒</span>
+          <strong>Time Duration Calculator</strong>
+          <small>
+            Calculate the time difference between two dates or times.
+          </small>
+        </a>
+
+        <a class="mt-related-card" href="/tools/reading-time-calculator/">
+          <span class="mt-related-icon">📖</span>
+          <strong>Reading Time Calculator</strong>
+          <small>
+            Estimate how long your article or text takes to read.
+          </small>
+        </a>
+
+      </div>
+    </section>
+
+    <p class="mt-privacy">
+      Privacy note: Mood entries are processed and stored locally
+      in your browser. Do not use this tool to store sensitive
+      personal or confidential information.
+    </p>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<!-- MOHAKTOOLS SCRIPTS -->
+<script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+
+<!-- MOOD TRACKER JAVASCRIPT -->
+<script>
+(() => {
+  "use strict";
+
+  const $ = id => document.getElementById(id);
+  const KEY = "mohaktools_mood_tracker_v1";
+
+  const labels = {
+    1: "Low",
+    2: "Off",
+    3: "Okay",
+    4: "Good",
+    5: "Great"
+  };
+
+  let selectedMood = 0;
+  let entries = [];
+
+  try {
+    const stored = JSON.parse(localStorage.getItem(KEY) || "[]");
+    entries = Array.isArray(stored) ? stored.filter(e =>
+      e && /^\d{4}-\d{2}-\d{2}$/.test(e.date) &&
+      [1,2,3,4,5].includes(Number(e.mood)) &&
+      [1,2,3,4,5].includes(Number(e.energy)) &&
+      [1,2,3,4,5].includes(Number(e.productivity))
+    ) : [];
+  } catch (error) {
+    entries = [];
+  }
+
+  function todayKey() {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  }
+
+  function setStatus(message, type = "") {
+    $("mood-status").textContent = message;
+    $("mood-status").className = "mt-status " + type;
+  }
+
+  function selectMood(value) {
+    selectedMood = Number(value);
+
+    document.querySelectorAll("[data-mood]").forEach(button => {
+      button.setAttribute(
+        "aria-pressed",
+        String(Number(button.dataset.mood) === selectedMood)
+      );
+    });
+  }
+
+  document.querySelectorAll("[data-mood]").forEach(button => {
+    button.addEventListener("click", () => {
+      selectMood(button.dataset.mood);
+    });
+  });
+
+  $("energy").addEventListener("input", () => {
+    $("energy-value").textContent = $("energy").value + " / 5";
+  });
+
+  function saveStorage() {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(entries));
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function renderHistory() {
+    const history = $("history");
+    history.replaceChildren();
+
+    if (!entries.length) {
+      const p = document.createElement("p");
+      p.className = "mt-help";
+      p.textContent = "Your saved check-ins will appear here.";
+      history.appendChild(p);
+      return;
+    }
+
+    entries.slice(0, 7).forEach(entry => {
+      const item = document.createElement("div");
+      item.className = "mt-history-item";
+
+      const title = document.createElement("strong");
+      title.textContent = entry.date + " · " + labels[entry.mood];
+
+      const details = document.createElement("p");
+      details.textContent =
+        "Energy: " + entry.energy + "/5 · " +
+        "Productivity: " + entry.productivity + "/5";
+
+      item.append(title, details);
+
+      if (entry.note) {
+        const note = document.createElement("p");
+        note.textContent = entry.note;
+        item.appendChild(note);
+      }
+
+      history.appendChild(item);
+    });
+  }
+
+  function renderStats() {
+    const count = entries.length;
+
+    $("entry-count").textContent = count.toLocaleString();
+
+    const average = key => count
+      ? (entries.reduce((sum, item) => sum + Number(item[key]), 0) / count).toFixed(1) + "/5"
+      : "—";
+
+    $("avg-mood").textContent = average("mood");
+    $("avg-energy").textContent = average("energy");
+    $("avg-productivity").textContent = average("productivity");
+
+    renderHistory();
+  }
+
+  $("save-entry").addEventListener("click", () => {
+    if (!selectedMood) {
+      setStatus("Please select a mood before saving.", "error");
+      return;
+    }
+
+    const entry = {
+      date: todayKey(),
+      mood: selectedMood,
+      energy: Number($("energy").value),
+      productivity: Number($("productivity").value),
+      note: $("note").value.trim()
+    };
+
+    const index = entries.findIndex(item => item.date === entry.date);
+
+    if (index >= 0) {
+      entries[index] = entry;
+    } else {
+      entries.unshift(entry);
+    }
+
+    if (!saveStorage()) {
+      setStatus("Browser storage is unavailable. Your entry could not be saved.", "error");
+      return;
+    }
+
+    renderStats();
+
+    setStatus(
+      index >= 0
+        ? "Today's check-in has been updated."
+        : "Your check-in has been saved successfully.",
+      "success"
+    );
+  });
+
+  $("reset-form").addEventListener("click", () => {
+    selectMood(0);
+    $("energy").value = 3;
+    $("energy-value").textContent = "3 / 5";
+    $("productivity").value = "3";
+    $("note").value = "";
+    setStatus("Form reset.");
+  });
+
+  $("clear-history").addEventListener("click", () => {
+    if (!entries.length) {
+      setStatus("There is no history to clear.");
+      return;
+    }
+
+    if (!confirm("Are you sure you want to delete all saved mood entries?")) {
+      return;
+    }
+
+    const previous = entries;
+    entries = [];
+
+    if (!saveStorage()) {
+      entries = previous;
+      setStatus("Unable to clear browser storage.", "error");
+      return;
+    }
+
+    renderStats();
+    setStatus("All saved entries have been cleared.", "success");
+  });
+
+  $("export-data").addEventListener("click", () => {
+    if (!entries.length) {
+      setStatus("There are no entries to export.", "error");
+      return;
+    }
+
+    const quote = value =>
+      '"' + String(value ?? "").replace(/"/g, '""') + '"';
+
+    const rows = [
+      ["Date", "Mood", "Energy", "Productivity", "Note"],
+      ...entries.map(entry => [
+        entry.date,
+        labels[entry.mood],
+        entry.energy,
+        entry.productivity,
+        entry.note
+      ])
+    ];
+
+    const csv = rows.map(row => row.map(quote).join(",")).join("\r\n");
+    const blob = new Blob(["\uFEFF" + csv], {
+      type: "text/csv;charset=utf-8"
+    });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "mohaktools-mood-tracker.csv";
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+    setStatus("Your CSV file has been exported.", "success");
+  });
+
+  renderStats();
+
+  // Load today's saved check-in into the form when available.
+  const todayEntry = entries.find(entry => entry.date === todayKey());
+
+  if (todayEntry) {
+    selectMood(todayEntry.mood);
+    $("energy").value = todayEntry.energy;
+    $("energy-value").textContent = todayEntry.energy + " / 5";
+    $("productivity").value = String(todayEntry.productivity);
+    $("note").value = todayEntry.note || "";
+    setStatus("Today's saved check-in has been loaded.");
+  }
+
+})();
+</script>
+
+</body>
+</html>
