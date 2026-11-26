@@ -1,16 +1,14 @@
-
 (() => {
   "use strict";
 
-const ENDPOINT =
-  "https://mohaktools.mohakchoubey.workers.dev/";
+  const ENDPOINT = "https://mohaktools.mohakchoubey.workers.dev/";
+
+  // Respect browser Do Not Track.
+  if (navigator.doNotTrack === "1") return;
 
   // Avoid duplicate initialization.
   if (window.__mohakAnalyticsInitialized) return;
   window.__mohakAnalyticsInitialized = true;
-
-  // Respect browser Do Not Track.
-  if (navigator.doNotTrack === "1") return;
 
   function getDevice() {
     const ua = navigator.userAgent;
@@ -55,8 +53,7 @@ const ENDPOINT =
         ? new URL(document.referrer).hostname
         : "Direct",
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-      eventType: "page_view",
-      consentVersion: "1"
+      eventType: "page_view"
     };
 
     try {
@@ -73,22 +70,5 @@ const ENDPOINT =
     }
   }
 
-  // Only track after the visitor has consented.
-  function startTracking() {
-    if (localStorage.getItem("mohak_analytics_consent") === "yes") {
-      trackVisit();
-    }
-  }
-
-  window.MohakAnalytics = {
-    consent() {
-      localStorage.setItem("mohak_analytics_consent", "yes");
-      trackVisit();
-    },
-    decline() {
-      localStorage.setItem("mohak_analytics_consent", "no");
-    }
-  };
-
-  startTracking();
+  trackVisit();
 })();
