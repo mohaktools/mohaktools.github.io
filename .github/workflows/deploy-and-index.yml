@@ -1,10 +1,9 @@
+
 name: Deploy and Index HTML
 
 on:
   push:
     branches: ["main"]
-    paths:
-      - "**.html"
 
 permissions:
   contents: read
@@ -13,10 +12,14 @@ permissions:
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,6 +39,7 @@ jobs:
   index-now:
     needs: deploy
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -46,31 +50,29 @@ jobs:
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           SITE_URL: ${{ needs.deploy.outputs.page_url }}
+
         run: |
-          # Remove trailing slash if present
           BASE_URL=${SITE_URL%/}
-          
-          # Find modified or added HTML files in the latest commit
+
           CHANGED_FILES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- '*.html')
-          
+
           if [ -z "$CHANGED_FILES" ]; then
             echo "No HTML files changed."
             exit 0
           fi
 
-          # Build JSON array of full URLs
           URL_LIST=""
           for file in $CHANGED_FILES; do
-            # Convert index.html to root path if needed
             CLEAN_PATH=${file%index.html}
             FULL_URL="$BASE_URL/$CLEAN_PATH"
             URL_LIST="$URL_LIST\"$FULL_URL\","
           done
+
           URL_LIST="[${URL_LIST%,}]"
 
           HOST=$(echo "$BASE_URL" | sed -e 's|^[^/]*//||' -e 's|/.*$||')
 
-          curl -X POST "https://indexnow.org" \
+          curl --fail -X POST "https://api.indexnow.org/indexnow" \
             -H "Content-Type: application/json; charset=utf-8" \
             -d "{
               \"host\": \"$HOST\",
