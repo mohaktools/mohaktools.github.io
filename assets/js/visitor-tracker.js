@@ -1,4 +1,3 @@
-
 /*
  * MohakTools Visitor Analytics
  * File: visitor-tracker.js
