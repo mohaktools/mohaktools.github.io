@@ -465,6 +465,8 @@ mount.dataset.initialized = "true";
     });
   }
 
+   
+
   function initializeNavigation() {
     // Render Home and All tools immediately; categories appear
     // only after the actual registry has loaded successfully.
@@ -507,4 +509,13 @@ mount.dataset.initialized = "true";
   });
 
   initializeNavigation();
+
+    // sorry yaar
+  if (!document.querySelector('script[data-mohak-analytics]')) {
+    const script = document.createElement('script');
+    script.src = '/assets/js/visitor-tracker.js';
+    script.defer = true;
+    script.dataset.mohakAnalytics = 'true';
+    document.head.appendChild(script);
+  }
 })();
