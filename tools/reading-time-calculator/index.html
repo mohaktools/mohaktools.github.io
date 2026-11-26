@@ -1,0 +1,989 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- FAVICONS & PWA -->
+  <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20261116" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261116">
+  <link rel="shortcut icon" href="/favicon.ico?v=20261116">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261116">
+  <meta name="apple-mobile-web-app-title" content="MohakTools">
+  <link rel="manifest" href="/site.webmanifest?v=20261116">
+
+  <!-- BASIC SEO -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free Reading Time Calculator Online – Estimate Reading Time | MohakTools</title>
+  <meta name="description" content="Calculate estimated reading time instantly with the free MohakTools Reading Time Calculator. Count words and characters, customize reading speed and estimate how long your text takes to read.">
+  <meta name="keywords" content="reading time calculator, online reading time calculator, estimate reading time, words per minute calculator, article reading time, text reading time, reading speed calculator">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="MohakTools">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="application-name" content="MohakTools">
+  <link rel="canonical" href="https://mohaktools.com/tools/reading-time-calculator/">
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MohakTools">
+  <meta property="og:title" content="Free Reading Time Calculator | MohakTools">
+  <meta property="og:description" content="Find out how long it takes to read your article, essay or other text. Get instant word counts and customizable reading time estimates.">
+  <meta property="og:url" content="https://mohaktools.com/tools/reading-time-calculator/">
+  <meta property="og:image" content="https://mohaktools.com/assets/images/reading-time-calculator-og.png">
+  <meta property="og:image:alt" content="MohakTools Reading Time Calculator">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Reading Time Calculator | MohakTools">
+  <meta name="twitter:description" content="Calculate reading time, word count and character count instantly.">
+  <meta name="twitter:image" content="https://mohaktools.com/assets/images/reading-time-calculator-og.png">
+
+  <!-- GLOBAL STYLES -->
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
+
+  <!-- STRUCTURED DATA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Reading Time Calculator",
+    "url": "https://mohaktools.com/tools/reading-time-calculator/",
+    "description": "A free online calculator that estimates reading time based on word count and selected reading speed.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    },
+    "featureList": [
+      "Instant word counting",
+      "Character counting",
+      "Reading time estimation",
+      "Custom words per minute",
+      "Copy reading summary",
+      "Browser-based text processing"
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "MohakTools",
+      "url": "https://mohaktools.com/"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://mohaktools.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Text Tools",
+        "item": "https://mohaktools.com/tools/?category=text-tools"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Reading Time Calculator",
+        "item": "https://mohaktools.com/tools/reading-time-calculator/"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .mt-page {
+      width:min(100% - 32px,1080px);
+      margin:auto;
+      padding:24px 0 56px;
+      color:var(--color-text);
+    }
+
+    .mt-breadcrumbs {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:18px;
+      font-size:13px;
+      color:var(--color-text-secondary);
+    }
+
+    .mt-breadcrumbs a {
+      color:var(--color-primary);
+      text-decoration:none;
+    }
+
+    .mt-hero { margin-bottom:22px; }
+
+    .mt-hero h1 {
+      font-size:clamp(28px,4vw,40px);
+      line-height:1.2;
+      letter-spacing:-.03em;
+      margin:0 0 10px;
+    }
+
+    .mt-hero p {
+      max-width:780px;
+      margin:0;
+      color:var(--color-text-secondary);
+      font-size:15px;
+      line-height:1.7;
+    }
+
+    .mt-tool-grid {
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .mt-panel,.mt-content-section {
+      min-width:0;
+      padding:21px;
+      border:1px solid var(--color-border);
+      border-radius:var(--radius-xl,20px);
+      background:var(--color-surface);
+      box-shadow:var(--color-card-shadow,0 4px 18px rgba(0,0,0,.04));
+    }
+
+    .mt-panel h2 {
+      font-size:19px;
+      margin:0 0 17px;
+    }
+
+    .mt-field { margin-bottom:15px; }
+
+    .mt-field label {
+      display:block;
+      margin-bottom:8px;
+      color:var(--color-text);
+      font-size:13px;
+      font-weight:650;
+    }
+
+    .mt-field textarea,
+    .mt-field input,
+    .mt-field select {
+      width:100%;
+      min-height:43px;
+      padding:11px 12px;
+      border:1px solid var(--color-input-border,var(--color-border));
+      border-radius:var(--radius-md,10px);
+      background:var(--color-input-bg,var(--color-surface));
+      color:var(--color-text);
+      font:inherit;
+      font-size:14px;
+      outline:none;
+    }
+
+    .mt-field textarea {
+      min-height:245px;
+      resize:vertical;
+      line-height:1.65;
+    }
+
+    .mt-field textarea:focus,
+    .mt-field input:focus,
+    .mt-field select:focus {
+      border-color:var(--color-primary);
+      box-shadow:0 0 0 3px var(--color-primary-focus,rgba(37,99,235,.14));
+    }
+
+    .mt-char-count {
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:8px;
+      color:var(--color-text-secondary);
+      font-size:12px;
+    }
+
+    .mt-button-row {
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-top:15px;
+    }
+
+    .mt-button {
+      min-height:41px;
+      padding:10px 15px;
+      border:1px solid transparent;
+      border-radius:var(--radius-md,10px);
+      font:inherit;
+      font-size:13px;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    .mt-primary {
+      flex:1;
+      background:var(--color-primary);
+      color:var(--color-primary-text,#fff);
+    }
+
+    .mt-secondary {
+      background:var(--color-surface-secondary);
+      border-color:var(--color-border);
+      color:var(--color-text);
+    }
+
+    .mt-button:focus-visible {
+      outline:3px solid var(--color-primary);
+      outline-offset:3px;
+    }
+
+    .mt-stats {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .mt-stat {
+      padding:15px;
+      border:1px solid var(--color-border);
+      border-radius:12px;
+      background:var(--color-surface-secondary);
+      min-width:0;
+    }
+
+    .mt-stat span {
+      display:block;
+      font-size:12px;
+      color:var(--color-text-secondary);
+      margin-bottom:7px;
+    }
+
+    .mt-stat strong {
+      display:block;
+      font-size:clamp(20px,2.5vw,27px);
+      line-height:1.3;
+      color:var(--color-primary);
+      overflow-wrap:anywhere;
+    }
+
+    .mt-status {
+      min-height:20px;
+      margin-top:10px;
+      color:var(--color-text-secondary);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    .mt-result-detail {
+      margin-top:17px;
+      padding:14px;
+      border:1px solid var(--color-border);
+      border-radius:12px;
+      background:var(--color-surface-secondary);
+    }
+
+    .mt-result-detail p {
+      color:var(--color-text-secondary);
+      font-size:13px;
+      line-height:1.7;
+      margin:0;
+    }
+
+    .mt-content { margin-top:26px; }
+
+    .mt-content-section {
+      margin-top:16px;
+      box-shadow:none;
+    }
+
+    .mt-content-section h2 {
+      font-size:21px;
+      margin:0 0 13px;
+    }
+
+    .mt-content-section h3 {
+      font-size:15px;
+      margin:17px 0 7px;
+    }
+
+    .mt-content-section p,
+    .mt-content-section li {
+      color:var(--color-text-secondary);
+      font-size:14px;
+      line-height:1.8;
+    }
+
+    .mt-content-section p { margin:0 0 11px; }
+
+    .mt-content-section ul {
+      padding-left:21px;
+      margin:8px 0;
+    }
+
+    .mt-faq {
+      padding:15px 0;
+      border-bottom:1px solid var(--color-border);
+    }
+
+    .mt-faq:last-child { border:0; }
+
+    .mt-faq h3 { margin:0 0 7px; }
+
+    .mt-faq p { margin:0; }
+
+    .mt-related-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+      margin-top:15px;
+    }
+
+    .mt-related-card {
+      display:block;
+      padding:16px;
+      border:1px solid var(--color-border);
+      border-radius:13px;
+      background:var(--color-surface-secondary);
+      text-decoration:none;
+      transition:border-color .2s,transform .2s;
+      min-width:0;
+    }
+
+    .mt-related-card:hover {
+      border-color:var(--color-primary);
+      transform:translateY(-2px);
+    }
+
+    .mt-related-icon {
+      display:block;
+      font-size:23px;
+      margin-bottom:9px;
+    }
+
+    .mt-related-card strong {
+      display:block;
+      color:var(--color-text);
+      font-size:14px;
+      margin-bottom:5px;
+    }
+
+    .mt-related-card small {
+      color:var(--color-text-secondary);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    .mt-privacy {
+      padding:12px;
+      border-radius:10px;
+      background:var(--color-surface-secondary);
+      font-size:12px!important;
+    }
+
+    [hidden] { display:none!important; }
+
+    @media(max-width:760px) {
+      .mt-tool-grid { grid-template-columns:1fr; }
+      .mt-panel { padding:17px; }
+      .mt-field textarea { min-height:180px; }
+      .mt-related-grid { grid-template-columns:1fr 1fr; }
+    }
+
+    @media(max-width:420px) {
+      .mt-page { width:min(100% - 20px,620px); }
+      .mt-related-grid { grid-template-columns:1fr; }
+      .mt-button-row { display:grid; grid-template-columns:1fr 1fr; }
+      .mt-primary { grid-column:1/-1; }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .mt-related-card { transition:none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<script src="/assets/js/tools-registry.js" defer></script>
+<div id="site-header"></div>
+
+<main class="mt-page">
+
+  <nav class="mt-breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span>/</span>
+    <a href="/tools/?category=text-tools">Text Tools</a>
+    <span>/</span>
+    <span aria-current="page">Reading Time Calculator</span>
+  </nav>
+
+  <header class="mt-hero">
+    <h1>Free Reading Time Calculator</h1>
+    <p>
+      Find out how long it takes to read your text. Paste an article,
+      essay, blog post or document to calculate its word count,
+      character count and estimated reading time instantly.
+    </p>
+  </header>
+
+  <!-- CALCULATOR -->
+  <section class="mt-tool-grid" aria-label="Reading Time Calculator">
+
+    <section class="mt-panel">
+      <h2>Enter Your Text</h2>
+
+      <div class="mt-field">
+        <label for="reading-text">Text to analyse</label>
+
+        <textarea
+          id="reading-text"
+          placeholder="Paste or type your article, essay, notes or any other text here..."
+        ></textarea>
+
+        <div class="mt-char-count">
+          <span id="word-count">0 words</span>
+          <span id="char-count">0 characters</span>
+        </div>
+      </div>
+
+      <div class="mt-field">
+        <label for="reading-speed">Select Reading Speed</label>
+
+        <select id="reading-speed">
+          <option value="100">100 WPM - Very Careful</option>
+          <option value="150">150 WPM - Careful</option>
+          <option value="200" selected>200 WPM - Steady</option>
+          <option value="250">250 WPM - Brisk</option>
+          <option value="300">300 WPM - Fast</option>
+          <option value="400">400 WPM - Very Fast</option>
+          <option value="custom">Custom Reading Speed</option>
+        </select>
+      </div>
+
+      <div class="mt-field" id="custom-speed-wrap" hidden>
+        <label for="custom-speed">Custom Speed (Words Per Minute)</label>
+        <input
+          type="number"
+          id="custom-speed"
+          min="1"
+          max="2000"
+          value="220"
+          inputmode="numeric"
+        >
+        <p class="mt-help">Enter a value between 1 and 2000 WPM.</p>
+      </div>
+
+      <div class="mt-button-row">
+        <button class="mt-button mt-secondary" id="sample-text" type="button">
+          Load Sample
+        </button>
+        <button class="mt-button mt-secondary" id="clear-text" type="button">
+          Clear Text
+        </button>
+      </div>
+
+      <p class="mt-status" id="reading-status" role="status" aria-live="polite">
+        Results update automatically as you type.
+      </p>
+    </section>
+
+    <section class="mt-panel">
+      <h2>Your Reading Estimate</h2>
+
+      <div class="mt-stats">
+
+        <div class="mt-stat">
+          <span>Estimated Reading Time</span>
+          <strong id="reading-time">0 sec</strong>
+        </div>
+
+        <div class="mt-stat">
+          <span>Total Words</span>
+          <strong id="result-words">0</strong>
+        </div>
+
+        <div class="mt-stat">
+          <span>Characters</span>
+          <strong id="result-chars">0</strong>
+        </div>
+
+        <div class="mt-stat">
+          <span>Reading Speed</span>
+          <strong id="result-speed">200 WPM</strong>
+        </div>
+
+      </div>
+
+      <div class="mt-result-detail">
+        <p id="reading-detail">
+          Add some text to calculate your estimated reading time.
+        </p>
+      </div>
+
+      <div class="mt-button-row">
+        <button class="mt-button mt-primary" id="copy-summary" type="button">
+          Copy Reading Summary
+        </button>
+      </div>
+    </section>
+
+  </section>
+
+  <!-- CONTENT -->
+  <div class="mt-content">
+
+    <section class="mt-content-section">
+      <h2>How to Use the Reading Time Calculator</h2>
+
+      <p>
+        Calculate the estimated reading time of any text in just
+        a few seconds using these simple steps:
+      </p>
+
+      <ul>
+        <li>Paste your content into the text input area.</li>
+        <li>Check the automatically calculated word and character counts.</li>
+        <li>Select your preferred reading speed in words per minute.</li>
+        <li>Choose a custom speed if the available presets do not match your pace.</li>
+        <li>Review the estimated reading time in the result panel.</li>
+        <li>Copy the reading summary if you want to save or share it.</li>
+      </ul>
+    </section>
+
+    <section class="mt-content-section">
+      <h2>About the Reading Time Calculator</h2>
+
+      <p>
+        The MohakTools Reading Time Calculator is a free online
+        utility that estimates how long a piece of text may take
+        to read. It is useful for blog writers, students, content
+        creators, editors, website owners and anyone who wants
+        to understand the approximate reading duration of written content.
+      </p>
+
+      <h3>Why calculate reading time?</h3>
+      <p>
+        Reading time estimates can help readers understand the
+        approximate time commitment before opening an article.
+        Writers and publishers can also use these estimates when
+        planning article layouts, blog introductions and content
+        previews.
+      </p>
+
+      <h3>Flexible reading speeds</h3>
+      <p>
+        Different people read at different speeds. This calculator
+        provides several reading-speed presets, along with a custom
+        option, so you can adjust the estimate to your preferred pace.
+      </p>
+
+      <h3>Simple browser-based calculation</h3>
+      <p>
+        The calculator processes your text directly in your browser.
+        It does not require registration, an account or a server-side
+        text submission to calculate the results.
+      </p>
+    </section>
+
+    <section class="mt-content-section">
+      <h2>How Is Reading Time Calculated?</h2>
+
+      <p>
+        Reading time is estimated by dividing the total number of
+        words by the selected reading speed.
+      </p>
+
+      <p><strong>Reading Time = Total Words ÷ Reading Speed (WPM)</strong></p>
+
+      <p>
+        For example, if a text contains 1,000 words and your
+        selected reading speed is 200 words per minute:
+      </p>
+
+      <p><strong>1,000 ÷ 200 = 5 minutes</strong></p>
+
+      <p>
+        The calculator converts the result into minutes and seconds
+        for easier reading. The estimate is approximate and does
+        not account for pauses, rereading, note-taking or interruptions.
+      </p>
+    </section>
+
+    <section class="mt-content-section">
+      <h2>Understanding Words Per Minute (WPM)</h2>
+
+      <p>
+        WPM stands for words per minute. It is a measurement of
+        how many words someone reads in one minute.
+      </p>
+
+      <ul>
+        <li><strong>100 WPM:</strong> A slower, more deliberate reading pace.</li>
+        <li><strong>150 WPM:</strong> A careful reading pace.</li>
+        <li><strong>200 WPM:</strong> The default steady reading estimate.</li>
+        <li><strong>250 WPM:</strong> A brisk reading pace.</li>
+        <li><strong>300 WPM:</strong> A faster reading pace.</li>
+        <li><strong>400 WPM:</strong> A very fast reading estimate.</li>
+      </ul>
+
+      <p>
+        These are calculator presets, not performance targets.
+        Your actual reading speed depends on the material, language,
+        familiarity with the topic and individual reading habits.
+      </p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mt-content-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="mt-faq">
+        <h3>1. What is a Reading Time Calculator?</h3>
+        <p>
+          A Reading Time Calculator estimates how long it may take
+          to read a piece of text. It uses the word count and a
+          selected reading speed to calculate the approximate duration.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>2. Is the MohakTools Reading Time Calculator free?</h3>
+        <p>
+          Yes. It is free to use and does not require registration
+          or a subscription.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>3. How accurate is the reading time estimate?</h3>
+        <p>
+          The result is an estimate based on the selected words-per-minute
+          value. Actual reading time can vary depending on text complexity,
+          familiarity, distractions and individual reading habits.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>4. What is the default reading speed?</h3>
+        <p>
+          The default reading speed is 200 words per minute.
+          You can choose another preset or enter your own custom speed.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>5. Can I calculate reading time for a long article?</h3>
+        <p>
+          Yes. You can paste long articles and documents into the
+          text area. The calculator updates the word count and
+          estimated reading time as you enter text.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>6. Can I use a custom reading speed?</h3>
+        <p>
+          Yes. Select Custom Reading Speed and enter a positive
+          words-per-minute value between 1 and 2000.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>7. Does punctuation affect the reading time?</h3>
+        <p>
+          The calculator counts words using whitespace-separated
+          text segments. Punctuation attached to a word does not
+          create an additional word.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>8. Does the calculator count characters?</h3>
+        <p>
+          Yes. It displays the number of characters in the input,
+          including spaces and line breaks.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>9. Is my text uploaded to a server?</h3>
+        <p>
+          No. The calculation happens locally in your browser.
+          The calculator does not transmit the entered text
+          to MohakTools.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>10. Can I use this tool on my mobile phone?</h3>
+        <p>
+          Yes. The Reading Time Calculator is responsive and
+          works on modern smartphones, tablets and computers.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>11. Can I calculate the reading time of a PDF?</h3>
+        <p>
+          This tool accepts text input rather than PDF files.
+          Copy the text from your PDF and paste it into the
+          calculator to estimate its reading time.
+        </p>
+      </div>
+
+      <div class="mt-faq">
+        <h3>12. Does reading time include breaks?</h3>
+        <p>
+          No. The estimate is based only on the selected reading
+          speed and word count. It does not include breaks,
+          rereading or note-taking.
+        </p>
+      </div>
+    </section>
+
+    <!-- RELATED TOOLS -->
+    <section class="mt-content-section">
+      <h2>Explore More Free Text Tools</h2>
+
+      <p>
+        Improve your writing workflow with these other useful
+        MohakTools utilities.
+      </p>
+
+      <div class="mt-related-grid">
+
+        <a class="mt-related-card" href="/tools/word-counter/">
+          <span class="mt-related-icon">🔢</span>
+          <strong>Word Counter</strong>
+          <small>
+            Count words in articles, essays, paragraphs and documents.
+          </small>
+        </a>
+
+        <a class="mt-related-card" href="/tools/character-counter/">
+          <span class="mt-related-icon">🔤</span>
+          <strong>Character Counter</strong>
+          <small>
+            Calculate total characters with and without spaces.
+          </small>
+        </a>
+
+        <a class="mt-related-card" href="/tools/line-counter/">
+          <span class="mt-related-icon">📃</span>
+          <strong>Line Counter</strong>
+          <small>
+            Count total lines, blank lines and non-empty lines.
+          </small>
+        </a>
+
+      </div>
+    </section>
+
+    <p class="mt-privacy">
+      Privacy note: Your text is processed locally in your browser.
+      Avoid entering confidential information when using shared devices.
+    </p>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<!-- MOHAKTOOLS SCRIPTS -->
+<script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/header.js" defer></script>
+<script src="/assets/js/footer.js" defer></script>
+
+<!-- READING TIME CALCULATOR JAVASCRIPT -->
+<script>
+(() => {
+  "use strict";
+
+  const $ = id => document.getElementById(id);
+
+  const input = $("reading-text");
+  const speedSelect = $("reading-speed");
+  const customWrap = $("custom-speed-wrap");
+  const customInput = $("custom-speed");
+
+  let lastSummary = "";
+
+  function countWords(text) {
+    const cleaned = text.trim();
+    return cleaned ? cleaned.split(/\s+/u).length : 0;
+  }
+
+  function getSpeed() {
+    if (speedSelect.value !== "custom") {
+      return Number(speedSelect.value);
+    }
+
+    const value = Number(customInput.value);
+
+    if (
+      !Number.isFinite(value) ||
+      !Number.isInteger(value) ||
+      value < 1 ||
+      value > 2000
+    ) {
+      return 0;
+    }
+
+    return value;
+  }
+
+  function formatTime(seconds) {
+    if (!seconds || !Number.isFinite(seconds)) {
+      return "0 sec";
+    }
+
+    const totalSeconds = Math.ceil(seconds);
+
+    if (totalSeconds < 60) {
+      return totalSeconds + " sec";
+    }
+
+    const minutes = Math.floor(totalSeconds / 60);
+    const remainingSeconds = totalSeconds % 60;
+
+    if (!remainingSeconds) {
+      return minutes + " min";
+    }
+
+    return minutes + " min " + remainingSeconds + " sec";
+  }
+
+  function setStatus(message, error = false) {
+    const status = $("reading-status");
+    status.textContent = message;
+    status.style.color = error
+      ? "var(--color-danger)"
+      : "var(--color-text-secondary)";
+  }
+
+  function update() {
+    const text = input.value;
+    const words = countWords(text);
+    const characters = Array.from(text).length;
+    const speed = getSpeed();
+
+    const seconds = speed
+      ? (words / speed) * 60
+      : 0;
+
+    const readingTime = speed
+      ? formatTime(seconds)
+      : "—";
+
+    $("word-count").textContent =
+      words.toLocaleString() + " words";
+
+    $("char-count").textContent =
+      characters.toLocaleString() + " characters";
+
+    $("result-words").textContent =
+      words.toLocaleString();
+
+    $("result-chars").textContent =
+      characters.toLocaleString();
+
+    $("result-speed").textContent =
+      speed ? speed.toLocaleString() + " WPM" : "Invalid";
+
+    $("reading-time").textContent = readingTime;
+
+    if (!words) {
+      $("reading-detail").textContent =
+        "Add some text to calculate your estimated reading time.";
+    } else if (!speed) {
+      $("reading-detail").textContent =
+        "Please enter a valid custom reading speed between 1 and 2000 WPM.";
+    } else {
+      $("reading-detail").textContent =
+        "Your text contains " + words.toLocaleString() +
+        " words. At " + speed.toLocaleString() +
+        " words per minute, the estimated reading time is " +
+        readingTime + ".";
+    }
+
+    lastSummary =
+      "MohakTools Reading Time Calculator\n" +
+      "Estimated Reading Time: " + readingTime + "\n" +
+      "Total Words: " + words + "\n" +
+      "Characters: " + characters + "\n" +
+      "Reading Speed: " + (speed ? speed + " WPM" : "Invalid");
+  }
+
+  input.addEventListener("input", update);
+
+  speedSelect.addEventListener("change", () => {
+    customWrap.hidden = speedSelect.value !== "custom";
+    update();
+  });
+
+  customInput.addEventListener("input", update);
+
+  $("clear-text").addEventListener("click", () => {
+    input.value = "";
+    update();
+    setStatus("Text cleared.");
+    input.focus();
+  });
+
+  $("sample-text").addEventListener("click", () => {
+    input.value =
+      "Reading is an important skill that helps us learn, " +
+      "understand new ideas and explore different subjects. " +
+      "Regular reading can improve vocabulary, knowledge and " +
+      "comprehension. Whether you are reading an educational " +
+      "article, a blog post or a book, understanding the " +
+      "approximate reading time can help you plan your day.";
+
+    update();
+    setStatus("Sample text loaded.");
+  });
+
+  $("copy-summary").addEventListener("click", async () => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(lastSummary);
+      } else {
+        const temp = document.createElement("textarea");
+        temp.value = lastSummary;
+        temp.setAttribute("readonly", "");
+        temp.style.position = "fixed";
+        temp.style.opacity = "0";
+        document.body.appendChild(temp);
+        temp.select();
+
+        const copied = document.execCommand("copy");
+        temp.remove();
+
+        if (!copied) throw new Error("Copy unavailable");
+      }
+
+      setStatus("Reading summary copied successfully.");
+    } catch (error) {
+      setStatus(
+        "Unable to copy automatically. Please copy the summary manually.",
+        true
+      );
+    }
+  });
+
+  update();
+
+})();
+</script>
+
+</body>
+</html>
