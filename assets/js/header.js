@@ -510,7 +510,7 @@ mount.dataset.initialized = "true";
 
   initializeNavigation();
 
-    // sorry yaar
+ // add this 
   if (!document.querySelector('script[data-mohak-analytics]')) {
     const script = document.createElement('script');
     script.src = '/assets/js/visitor-tracker.js';
