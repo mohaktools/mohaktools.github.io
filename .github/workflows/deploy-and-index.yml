@@ -1,5 +1,5 @@
-
-name: Deploy and Index HTML
+- name: Generate sitemap
+  run: node generate-sitemap.js
 
 on:
   push:
