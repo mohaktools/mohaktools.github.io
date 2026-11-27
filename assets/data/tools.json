@@ -105,6 +105,26 @@
       "icon": "π",
       "popularity": 85
     },
+ {
+      "id": "Plan-my-day",
+      "name": "Plan My Day",
+      "category": "time-tools",
+      "url": "/tools/Plan-my-day/",
+      "description": "Plan Your Day, Make it productive.",
+      "keywords": [
+        "day",
+        "Plan my day",
+        "Plan",
+        "manage", 
+        "man", 
+        "customize", 
+        "customise", 
+        "customise"
+      ],
+      "icon": "📝",
+      "featured": true,
+      "popularity": 89
+    },
     {
       "id": "percentage-calculator",
       "name": "Percentage Calculator",
@@ -133,26 +153,6 @@
       "icon": "▦",
       "featured": true,
       "popularity": 88
-    },
-     {
-      "id": "Plan-my-day",
-      "name": "Plan My Day",
-      "category": "everyday-utilities",
-      "url": "/tools/Plan-my-day/",
-      "description": "Plan Your Day, Make it productive.",
-      "keywords": [
-        "day",
-        "Plan my day",
-        "Plan",
-        "manage", 
-        "man", 
-        "customize", 
-        "customise", 
-        "customise"
-      ],
-      "icon": "📝",
-      "featured": true,
-      "popularity": 89
     },
     {
       "id": "leap-year-checker",
@@ -2366,42 +2366,7 @@
       "icon": "{ }",
       "popularity": 71
     }, 
-    {
-  "id": "track-your-mood",
-  "name": "Mood Tracker",
-  "category": "time-tools",
-  "url": "/tools/track-your-mood/",
-  "description": "Track your daily mood, energy and productivity, and review your mood history over time.",
-  "keywords": [
-    "mood tracker",
-    "daily mood journal",
-    "mood history",
-    "emotional wellness",
-    "energy tracker",
-    "productivity tracker"
-  ],
-  "icon": "😊",
-  "featured": false,
-  "popularity": 65
-},
-{
-  "id": "reading-time-calculator",
-  "name": "Reading Time Calculator",
-  "category": "text-tools",
-  "url": "/tools/reading-time-calculator/",
-  "description": "Estimate how long it takes to read text based on its word count and reading speed.",
-  "keywords": [
-    "reading time calculator",
-    "reading speed",
-    "word count",
-    "estimated reading time",
-    "minutes to read",
-    "WPM"
-  ],
-  "icon": "📖",
-  "featured": false,
-  "popularity": 70
-}, 
+    
   {
     "id": "commission-calculator",
     "name": "Commission Calculator",
@@ -2466,6 +2431,42 @@
     "icon": "↔",
     "popularity": 60
   },
+{
+  "id": "track-your-mood",
+  "name": "Mood Tracker",
+  "category": "time-tools",
+  "url": "/tools/track-your-mood/",
+  "description": "Track your daily mood, energy and productivity, and review your mood history over time.",
+  "keywords": [
+    "mood tracker",
+    "daily mood journal",
+    "mood history",
+    "emotional wellness",
+    "energy tracker",
+    "productivity tracker"
+  ],
+  "icon": "😊",
+  "featured": false,
+  "popularity": 65
+},
+{
+  "id": "reading-time-calculator",
+  "name": "Reading Time Calculator",
+  "category": "text-tools",
+  "url": "/tools/reading-time-calculator/",
+  "description": "Estimate how long it takes to read text based on its word count and reading speed.",
+  "keywords": [
+    "reading time calculator",
+    "reading speed",
+    "word count",
+    "estimated reading time",
+    "minutes to read",
+    "WPM"
+  ],
+  "icon": "📖",
+  "featured": false,
+  "popularity": 70
+}, 
   {
     "id": "color-palette-generator",
     "name": "Color Palette Generator",
@@ -2484,4 +2485,3 @@
      }
   ]
 }
-
