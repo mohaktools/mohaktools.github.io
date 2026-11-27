@@ -134,6 +134,26 @@
       "featured": true,
       "popularity": 88
     },
+     {
+      "id": "Plan-my-day",
+      "name": "Plan My Day",
+      "category": "everyday-utilities",
+      "url": "/tools/Plan-my-day/",
+      "description": "Plan Your Day, Make it productive.",
+      "keywords": [
+        "day",
+        "Plan my day",
+        "Plan",
+        "manage", 
+        "man", 
+        "customize", 
+        "customise", 
+        "customise"
+      ],
+      "icon": "📝",
+      "featured": true,
+      "popularity": 89
+    },
     {
       "id": "leap-year-checker",
       "name": "Leap Year Checker",
