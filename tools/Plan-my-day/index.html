@@ -1,494 +1,394 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20261116" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261116" />
+  <link rel="shortcut icon" href="/favicon.ico?v=20261116" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261116" />
+  <link rel="manifest" href="/site.webmanifest?v=20261116" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Plan My Day | MohakTools</title>
-  <meta name="description" content="Plan your day hour by hour. Type your tasks, add times, customize colors, text size and theme, and export your plan as SVG, CSV, PDF, TXT or JSON.">
+  <title>Plan My Day | Create a list | Free Tool </title>
+  <meta name="description" content="Plan your day, Add tasks and Complete them. Free Plan managing tool.">
+  <meta name="keywords" content="daily planner, plan my day, day planner online, schedule maker, daily schedule, time blocking tool">
+  <meta name="author" content="MohakTools">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://mohaktools.com/tools/plan-my-day/">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="application-name" content="MohakTools">
+  <link rel="canonical" href="https://mohaktools.com/tools/Plan-my-day">
+
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MohakTools">
   <meta property="og:title" content="Plan My Day – MohakTools">
   <meta property="og:description" content="Plan your day with timed tasks and export it in five formats.">
   <meta property="og:url" content="https://mohaktools.com/tools/plan-my-day/">
+  <meta property="og:image" content="https://mohaktools.com/assets/images/plan-my-day-og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Plan My Day – MohakTools">
+  <meta name="twitter:description" content="Plan your day with timed tasks and export it in five formats.">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Plan My Day",
-    "url": "https://mohaktools.com/tools/plan-my-day/",
+    "url": "https://mohaktools.com/tools/Plan-my-day/",
     "description": "A free online daily planner to write timed tasks and export them as SVG, CSV, PDF, TXT or JSON.",
     "applicationCategory": "ProductivityApplication",
     "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
     "publisher": { "@type": "Organization", "name": "MohakTools", "url": "https://mohaktools.com/" }
   }
   </script>
+
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/themes.css">
+  <link rel="stylesheet" href="/assets/css/tool-page.css">
   <style>
-    :root {
-      --accent: #2563eb;
-      --accent-text: #ffffff;
-      --color-text: #111827;
-      --color-text-secondary: #6b7280;
-      --color-surface: #ffffff;
-      --color-surface-secondary: #f3f4f6;
-      --color-border: #e5e7eb;
-      --color-danger: #dc2626;
-      --color-success: #16a34a;
-      --radius: 14px;
-      --font-scale: 1;
-    }
-    :root[data-theme="dark"] {
-      --color-text: #f3f4f6;
-      --color-text-secondary: #9ca3af;
-      --color-surface: #111827;
-      --color-surface-secondary: #1f2937;
-      --color-border: #374151;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root[data-theme="system"] {
-        --color-text: #f3f4f6;
-        --color-text-secondary: #9ca3af;
-        --color-surface: #111827;
-        --color-surface-secondary: #1f2937;
-        --color-border: #374151;
-      }
-    }
-    * { box-sizing: border-box; }
-    html { color-scheme: light; }
-    :root[data-theme="dark"] { color-scheme: dark; }
-    body {
-      margin: 0;
-      background: var(--color-surface-secondary);
+    .pmd-page {
+      width: min(100% - 32px, 1080px);
+      margin: 0 auto;
+      padding: 32px 0 64px;
       color: var(--color-text);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      font-size: calc(16px * var(--font-scale));
-      line-height: 1.6;
     }
-    .wrap { width: min(100% - 32px, 1080px); margin: 0 auto; padding: 32px 0 64px; }
-    a { color: var(--accent); }
-    h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.03em; }
-    h2 { font-size: 22px; margin: 0 0 16px; }
-    h3 { font-size: 17px; margin: 0 0 8px; }
-    p { margin: 0 0 12px; color: var(--color-text-secondary); }
-    .card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius);
+    .pmd-breadcrumbs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; color: var(--color-text-secondary); font-size: 14px; }
+    .pmd-breadcrumbs a { color: var(--color-primary); text-decoration: none; }
+    .pmd-breadcrumbs a:hover { text-decoration: underline; }
+    .pmd-hero { margin-bottom: 28px; }
+    .pmd-hero h1 { margin: 0 0 12px; color: var(--color-text); font-size: clamp(30px, 5vw, 44px); line-height: 1.15; letter-spacing: -0.035em; }
+    .pmd-hero p { max-width: 760px; margin: 0; color: var(--color-text-secondary); font-size: 16px; line-height: 1.75; }
+
+    .pmd-panel {
+      min-width: 0;
       padding: 24px;
       margin-bottom: 24px;
-    }
-    .grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 24px; align-items: start; }
-    label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 8px; }
-    input[type="text"], input[type="time"], select {
-      width: 100%;
-      min-height: 46px;
-      padding: 10px 14px;
       border: 1px solid var(--color-border);
-      border-radius: 10px;
+      border-radius: var(--radius-xl, 20px);
       background: var(--color-surface);
-      color: var(--color-text);
-      font: inherit;
+      box-shadow: var(--color-card-shadow, 0 4px 18px rgba(0, 0, 0, 0.04));
     }
-    input:focus, select:focus, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-    .row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
-    .row > * { flex: 1; min-width: 140px; }
-    .btn {
-      min-height: 44px;
-      padding: 10px 16px;
-      border: 1px solid transparent;
-      border-radius: 10px;
-      font: inherit;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      background: var(--accent);
-      color: var(--accent-text);
+    .pmd-panel h2 { margin: 0 0 16px; color: var(--color-text); font-size: 21px; line-height: 1.4; }
+    .pmd-panel p { color: var(--color-text-secondary); line-height: 1.7; margin: 0 0 12px; }
+    .pmd-layout { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 24px; align-items: start; }
+
+    .pmd-field { margin-bottom: 18px; }
+    .pmd-field label { display: block; margin-bottom: 8px; color: var(--color-text); font-size: 14px; font-weight: 600; }
+    .pmd-field input {
+      display: block; width: 100%; min-height: 48px; padding: 12px 14px;
+      border: 1px solid var(--color-input-border, var(--color-border));
+      border-radius: var(--radius-md, 10px);
+      background: var(--color-input-bg, var(--color-surface));
+      color: var(--color-text); font: inherit; font-size: 16px; outline: none;
     }
-    .btn-ghost {
-      background: var(--color-surface-secondary);
-      color: var(--color-text);
-      border-color: var(--color-border);
+    .pmd-field input:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-focus, rgba(37, 99, 235, 0.14)); }
+
+    .pmd-button {
+      display: inline-flex; min-height: 46px; align-items: center; justify-content: center;
+      padding: 12px 18px; border: 1px solid transparent; border-radius: var(--radius-md, 10px);
+      font: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
     }
-    .btn-danger { background: transparent; color: var(--color-danger); border-color: var(--color-border); min-height: 36px; padding: 6px 12px; }
-    .btn:hover { opacity: 0.9; }
-    .seg { display: inline-flex; border: 1px solid var(--color-border); border-radius: 10px; overflow: hidden; }
-    .seg button {
-      border: 0;
-      background: var(--color-surface);
-      color: var(--color-text);
-      padding: 10px 14px;
-      font: inherit;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    .seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-text); }
-    .swatches { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 10px; }
-    .swatch {
-      width: 32px; height: 32px; border-radius: 50%;
-      border: 2px solid var(--color-border);
-      cursor: pointer; padding: 0;
-    }
-    .swatch[aria-pressed="true"] { outline: 2px solid var(--color-text); outline-offset: 2px; }
-    input[type="color"] { width: 44px; height: 36px; border: 0; background: none; padding: 0; cursor: pointer; }
-    .field { margin-bottom: 20px; }
-    .task {
-      display: grid;
-      grid-template-columns: auto 90px 1fr auto;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 14px;
-      border: 1px solid var(--color-border);
-      border-radius: 10px;
-      margin-bottom: 10px;
+    .pmd-button:hover { opacity: 0.9; }
+    .pmd-button:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 3px; }
+    .pmd-button-primary { width: 100%; background: var(--color-primary); color: var(--color-primary-text, #ffffff); }
+    .pmd-button-secondary { background: var(--color-surface-secondary); color: var(--color-text); border-color: var(--color-border); }
+    .pmd-button-danger { min-height: 36px; padding: 6px 12px; background: transparent; color: var(--color-danger, #dc2626); border-color: var(--color-border); }
+
+    .pmd-status { min-height: 22px; margin: 12px 0 0; font-size: 14px; color: var(--color-text-secondary); }
+    .pmd-status.error { color: var(--color-danger, #dc2626); }
+    .pmd-status.success { color: var(--color-success, #16a34a); }
+
+    .pmd-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .pmd-head h2 { margin: 0; }
+    .pmd-task {
+      display: grid; grid-template-columns: auto 84px minmax(0, 1fr) auto; align-items: center; gap: 12px;
+      padding: 12px 14px; margin-bottom: 10px;
+      border: 1px solid var(--color-border); border-radius: var(--radius-md, 10px);
       background: var(--color-surface);
     }
-    .task-time { font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
-    .task-name { word-break: break-word; }
-    .task.done .task-name { text-decoration: line-through; color: var(--color-text-secondary); }
-    .empty { color: var(--color-text-secondary); padding: 18px 0; text-align: center; }
-    .status { min-height: 22px; font-size: 14px; margin-top: 12px; }
-    .status.error { color: var(--color-danger); }
-    .status.ok { color: var(--color-success); }
-    .export-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .tools { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .tool-link {
+    .pmd-task-time { color: var(--color-primary); font-weight: 700; font-variant-numeric: tabular-nums; }
+    .pmd-task-name { color: var(--color-text); overflow-wrap: anywhere; }
+    .pmd-task.done .pmd-task-name { text-decoration: line-through; color: var(--color-text-secondary); }
+    .pmd-empty { padding: 18px 0; text-align: center; color: var(--color-text-secondary); }
+
+    .pmd-export { display: flex; flex-wrap: wrap; gap: 10px; }
+    .pmd-export .pmd-button { flex: 1 1 110px; }
+
+    .pmd-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .pmd-tool-link {
       display: block; padding: 18px; border: 1px solid var(--color-border);
-      border-radius: 12px; text-decoration: none; color: var(--color-text);
-      background: var(--color-surface);
+      border-radius: var(--radius-lg, 14px); background: var(--color-surface-secondary);
+      color: var(--color-text); text-decoration: none;
     }
-    .tool-link:hover { border-color: var(--accent); }
-    .tool-link span { display: block; color: var(--color-text-secondary); font-size: 14px; margin-top: 4px; }
-    ol, ul { padding-left: 22px; color: var(--color-text-secondary); }
-    li { margin-bottom: 8px; }
-    details { border-bottom: 1px solid var(--color-border); padding: 14px 0; }
-    details:last-child { border-bottom: 0; }
-    summary { font-weight: 700; cursor: pointer; color: var(--color-text); }
-    details p { margin: 10px 0 0; }
-    .preview-title { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 8px; }
+    .pmd-tool-link:hover { border-color: var(--color-primary); }
+    .pmd-tool-link strong { display: block; color: var(--color-primary); margin-bottom: 4px; }
+    .pmd-tool-link span { color: var(--color-text-secondary); font-size: 14px; }
+
+    .pmd-steps { margin: 0; padding-left: 22px; color: var(--color-text-secondary); line-height: 1.8; }
+    .pmd-faq details { padding: 16px 0; border-bottom: 1px solid var(--color-border); }
+    .pmd-faq details:first-of-type { padding-top: 0; }
+    .pmd-faq details:last-child { border-bottom: 0; padding-bottom: 0; }
+    .pmd-faq summary { cursor: pointer; color: var(--color-text); font-weight: 700; }
+    .pmd-faq details p { margin: 10px 0 0; }
+
     @media (max-width: 800px) {
-      .grid { grid-template-columns: 1fr; }
-      .tools { grid-template-columns: 1fr; }
-      .task { grid-template-columns: auto 80px 1fr; }
-      .task .btn-danger { grid-column: 2 / 4; justify-self: start; }
+      .pmd-layout, .pmd-tools { grid-template-columns: 1fr; }
     }
-    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+    @media (max-width: 420px) {
+      .pmd-page { width: min(100% - 20px, 600px); }
+      .pmd-panel { padding: 16px; }
+      .pmd-task { grid-template-columns: auto 70px minmax(0, 1fr); }
+      .pmd-task .pmd-button-danger { grid-column: 2 / 4; justify-self: start; }
+    }
+    @media (prefers-reduced-motion: reduce) { .pmd-button { transition: none; } }
   </style>
 </head>
 <body>
-<main class="wrap">
-  <nav aria-label="Breadcrumb" style="font-size:14px;margin-bottom:20px;color:var(--color-text-secondary)">
-    <a href="/">Home</a> / <a href="/tools/?category=time-tools">Time &amp; Productivity</a> / <span aria-current="page">Plan My Day</span>
-  </nav>
+  <!-- Shared Header -->
+  <script src="/assets/js/tools-registry.js" defer></script>
+  <div id="site-header"></div>
 
-  <header style="margin-bottom:28px">
-    <h1>Plan My Day</h1>
-    <p style="max-width:760px">Write your tasks, give each one a time, and see your day laid out in order. Customize how it looks, then export your plan as SVG, CSV, PDF, TXT or JSON.</p>
-  </header>
+  <main class="pmd-page">
+    <nav class="pmd-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/tools/?category=time-tools">Time &amp; Productivity</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Plan My Day</span>
+    </nav>
 
-  <section class="grid">
-    <div>
-      <!-- Builder -->
-      <div class="card">
-        <h2>Build your day</h2>
-        <form id="task-form" novalidate>
-          <div class="field">
-            <label for="task-name">Type a task</label>
-            <input id="task-name" type="text" maxlength="120" placeholder="Type here, e.g. Maths" autocomplete="off">
+    <header class="pmd-hero">
+      <h1>Plan My Day</h1>
+      <p>Type your tasks, give each one a time, and see your day laid out in order. Export the plan as SVG, CSV, PDF, TXT or JSON when you're done.</p>
+    </header>
+
+    <section class="pmd-layout">
+      <div>
+        <section class="pmd-panel" aria-labelledby="add-heading">
+          <h2 id="add-heading">Add a task</h2>
+          <form id="pmd-form" novalidate>
+            <div class="pmd-field">
+              <label for="pmd-task-name">Type a task</label>
+              <input id="pmd-task-name" type="text" maxlength="120" placeholder="e.g. Maths" autocomplete="off">
+            </div>
+            <div class="pmd-field">
+              <label for="pmd-task-time">Time</label>
+              <input id="pmd-task-time" type="time" value="09:00">
+            </div>
+            <button class="pmd-button pmd-button-primary" type="submit">Add to my day</button>
+            <p class="pmd-status" id="pmd-form-status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="pmd-panel" aria-labelledby="export-heading">
+          <h2 id="export-heading">Export your plan</h2>
+          <div class="pmd-export">
+            <button class="pmd-button pmd-button-secondary" type="button" data-export="svg">SVG</button>
+            <button class="pmd-button pmd-button-secondary" type="button" data-export="csv">CSV</button>
+            <button class="pmd-button pmd-button-secondary" type="button" data-export="pdf">PDF</button>
+            <button class="pmd-button pmd-button-secondary" type="button" data-export="txt">TXT</button>
+            <button class="pmd-button pmd-button-secondary" type="button" data-export="json">JSON</button>
           </div>
-          <div class="field">
-            <label for="task-time">Time</label>
-            <input id="task-time" type="time" value="09:00">
-          </div>
-          <button class="btn" type="submit" style="width:100%">Add to my day</button>
-          <p class="status" id="form-status" role="status" aria-live="polite"></p>
-        </form>
+          <p class="pmd-status" id="pmd-export-status" role="status" aria-live="polite"></p>
+        </section>
       </div>
 
-      <!-- Task list -->
-      <div class="card">
-        <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:12px">
-          <h2 style="margin:0">Your plan</h2>
-          <button class="btn btn-ghost" id="clear-all" type="button" style="min-width:auto">Clear all</button>
+      <section class="pmd-panel" aria-labelledby="plan-heading">
+        <div class="pmd-head">
+          <h2 id="plan-heading">Your plan</h2>
+          <button class="pmd-button pmd-button-secondary" id="pmd-clear" type="button">Clear all</button>
         </div>
-        <div id="task-list" aria-live="polite"></div>
+        <div id="pmd-list" aria-live="polite"></div>
+      </section>
+    </section>
+
+    <section class="pmd-panel" aria-labelledby="tools-heading">
+      <h2 id="tools-heading">Suggested tools</h2>
+      <p>Pair your plan with these tools on MohakTools.</p>
+      <div class="pmd-tools">
+        <a class="pmd-tool-link" href="https://mohaktools.com/tools/todo-list/">
+          <strong>To-Do List</strong>
+          <span>Keep a simple list of tasks and tick them off as you finish.</span>
+        </a>
+        <a class="pmd-tool-link" href="https://mohaktools.com/tools/habit-tracker/">
+          <strong>Habit Tracker</strong>
+          <span>Track the daily habits that keep your plan on track.</span>
+        </a>
       </div>
+    </section>
 
-      <!-- Export -->
-      <div class="card">
-        <h2>Export your plan</h2>
-        <p>Download the plan in the format you need.</p>
-        <div class="export-row">
-          <button class="btn btn-ghost" type="button" data-export="svg">SVG</button>
-          <button class="btn btn-ghost" type="button" data-export="csv">CSV</button>
-          <button class="btn btn-ghost" type="button" data-export="pdf">PDF</button>
-          <button class="btn btn-ghost" type="button" data-export="txt">TXT</button>
-          <button class="btn btn-ghost" type="button" data-export="json">JSON</button>
-        </div>
-        <p class="status" id="export-status" role="status" aria-live="polite"></p>
-      </div>
-    </div>
+    <section class="pmd-panel" aria-labelledby="how-heading">
+      <h2 id="how-heading">How it works</h2>
+      <ol class="pmd-steps">
+        <li>Click the "Type a task" box and write a task, such as "Maths".</li>
+        <li>Pick a time for it.</li>
+        <li>Click "Add to my day". Tasks are sorted by time automatically.</li>
+        <li>Tick a task when it's done, or delete it.</li>
+        <li>Export the plan as SVG, CSV, PDF, TXT or JSON.</li>
+      </ol>
+    </section>
 
-    <aside>
-      <!-- Customize -->
-      <div class="card">
-        <h2>Customize</h2>
+    <section class="pmd-panel pmd-faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">FAQ</h2>
+      <details>
+        <summary>Is Plan My Day free?</summary>
+        <p>Yes. It runs in your browser and does not need an account.</p>
+      </details>
+      <details>
+        <summary>Is my plan saved?</summary>
+        <p>Your tasks are saved in this browser, so they're still there when you come back. Clearing your browser data removes them.</p>
+      </details>
+      <details>
+        <summary>Can I edit a task after adding it?</summary>
+        <p>Delete it and add it again with the new details.</p>
+      </details>
+      <details>
+        <summary>Which export should I use?</summary>
+        <p>PDF for printing, SVG for an image, CSV for Excel or Google Sheets, TXT for a plain note, and JSON for developers.</p>
+      </details>
+      <details>
+        <summary>Does it work on my phone?</summary>
+        <p>Yes. The layout adjusts to small screens.</p>
+      </details>
+    </section>
+  </main>
 
-        <div class="field">
-          <label>Accent color</label>
-          <div class="swatches" id="swatches">
-            <button class="swatch" type="button" data-color="#2563eb" style="background:#2563eb" aria-label="Blue" aria-pressed="true"></button>
-            <button class="swatch" type="button" data-color="#16a34a" style="background:#16a34a" aria-label="Green" aria-pressed="false"></button>
-            <button class="swatch" type="button" data-color="#dc2626" style="background:#dc2626" aria-label="Red" aria-pressed="false"></button>
-            <button class="swatch" type="button" data-color="#9333ea" style="background:#9333ea" aria-label="Purple" aria-pressed="false"></button>
-            <button class="swatch" type="button" data-color="#ea580c" style="background:#ea580c" aria-label="Orange" aria-pressed="false"></button>
-            <input type="color" id="accent-picker" value="#2563eb" aria-label="Custom accent color">
-          </div>
-        </div>
+  <!-- Shared Footer -->
+  <div id="site-footer"></div>
 
-        <div class="field">
-          <label for="text-size">Text size</label>
-          <select id="text-size">
-            <option value="0.9">Small</option>
-            <option value="1" selected>Medium</option>
-            <option value="1.15">Large</option>
-          </select>
-        </div>
+  <!-- Shared Scripts -->
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/header.js" defer></script>
+  <script src="/assets/js/footer.js" defer></script>
 
-        <div class="field">
-          <label>Theme</label>
-          <div class="seg" role="group" aria-label="Theme">
-            <button type="button" data-theme="light" aria-pressed="true">Light</button>
-            <button type="button" data-theme="dark" aria-pressed="false">Dark</button>
-            <button type="button" data-theme="system" aria-pressed="false">System</button>
-          </div>
-        </div>
+  <script>
+    (() => {
+      "use strict";
+      const STORAGE_KEY = "mohaktools-plan-my-day";
+      let tasks = [];
 
-        <p class="preview-title">Preview</p>
-        <div class="task" style="grid-template-columns:auto 80px 1fr">
-          <input type="checkbox" disabled>
-          <span class="task-time">09:00</span>
-          <span class="task-name">Maths</span>
-        </div>
-      </div>
-    </aside>
-  </section>
+      const form = document.getElementById("pmd-form");
+      const nameInput = document.getElementById("pmd-task-name");
+      const timeInput = document.getElementById("pmd-task-time");
+      const list = document.getElementById("pmd-list");
+      const formStatus = document.getElementById("pmd-form-status");
+      const exportStatus = document.getElementById("pmd-export-status");
 
-  <!-- Suggested tools -->
-  <section class="card">
-    <h2>Suggested tools</h2>
-    <p>Pair your plan with these tools on MohakTools.</p>
-    <div class="tools">
-      <a class="tool-link" href="https://mohaktools.com/tools/todo-list/">To-Do List<span>Keep a simple list of tasks and tick them off as you finish.</span></a>
-      <a class="tool-link" href="https://mohaktools.com/tools/habit-tracker/">Habit Tracker<span>Track the daily habits that make your plan stick.</span></a>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section class="card">
-    <h2>How it works</h2>
-    <ol>
-      <li>Your plan appears in the colors and text size you selected.</li>
-      <li>Click the "Type a task" box and write a task, such as "Maths".</li>
-      <li>Pick a time for it.</li>
-      <li>Click "Add to my day". Tasks are sorted by time automatically.</li>
-      <li>Tick a task when it's done, or delete it.</li>
-      <li>Export the plan as SVG, CSV, PDF, TXT or JSON.</li>
-    </ol>
-  </section>
-
-  <!-- Features -->
-  <section class="card">
-    <h2>Features</h2>
-    <ul>
-      <li><strong>Timed tasks:</strong> Add any task with a start time and keep your day in order.</li>
-      <li><strong>Accent color:</strong> Choose a preset or any color to match your style.</li>
-      <li><strong>Text size:</strong> Pick small, medium or large text.</li>
-      <li><strong>Dark and light mode:</strong> Use light, dark, or follow your device setting.</li>
-      <li><strong>Five export formats:</strong> SVG for images, CSV for spreadsheets, PDF for printing, TXT for plain notes, and JSON for developers.</li>
-      <li><strong>Private:</strong> Your plan is saved only in your browser. Nothing is uploaded.</li>
-    </ul>
-  </section>
-
-  <!-- FAQ -->
-  <section class="card">
-    <h2>FAQ</h2>
-    <details>
-      <summary>Is Plan My Day free?</summary>
-      <p>Yes. It runs in your browser and does not need an account.</p>
-    </details>
-    <details>
-      <summary>Is my plan saved?</summary>
-      <p>Your tasks and settings are saved in this browser so they're still there when you return. Clearing your browser data will remove them.</p>
-    </details>
-    <details>
-      <summary>Can I edit a task after adding it?</summary>
-      <p>You can tick it off, delete it, or add a new one. To change a task, delete it and add it again with the new details.</p>
-    </details>
-    <details>
-      <summary>Which export should I use?</summary>
-      <p>Use PDF to print, SVG for an image, CSV for Excel or Google Sheets, TXT for a plain note, and JSON if you want to use the data in code.</p>
-    </details>
-    <details>
-      <summary>Does it work on my phone?</summary>
-      <p>Yes. The layout adjusts to small screens.</p>
-    </details>
-  </section>
-</main>
-
-<script>
-(() => {
-  "use strict";
-  const STORAGE_KEY = "mohaktools-plan-my-day";
-  const root = document.documentElement;
-  let tasks = [];
-  let settings = { accent: "#2563eb", size: "1", theme: "light" };
-
-  const $ = (id) => document.getElementById(id);
-  const form = $("task-form"), nameInput = $("task-name"), timeInput = $("task-time");
-  const list = $("task-list"), formStatus = $("form-status"), exportStatus = $("export-status");
-
-  function load() {
-    try {
-      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
-      if (saved) {
-        tasks = Array.isArray(saved.tasks) ? saved.tasks : [];
-        settings = Object.assign(settings, saved.settings || {});
+      function load() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+          if (saved && Array.isArray(saved.tasks)) tasks = saved.tasks;
+        } catch (e) { /* storage unavailable */ }
       }
-    } catch (e) { /* storage unavailable: start fresh */ }
-  }
-  function save() {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ tasks, settings })); } catch (e) {}
-  }
+      function save() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ tasks })); } catch (e) {}
+      }
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+      }
+      function sortTasks() { tasks.sort((a, b) => a.time.localeCompare(b.time)); }
+      function setStatus(el, msg, type) {
+        el.textContent = msg;
+        el.className = "pmd-status" + (type ? " " + type : "");
+      }
 
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  }
+      function render() {
+        if (!tasks.length) {
+          list.innerHTML = '<p class="pmd-empty">No tasks yet. Add your first task on the left.</p>';
+          return;
+        }
+        list.innerHTML = tasks.map(t => `
+          <div class="pmd-task${t.done ? " done" : ""}" data-id="${t.id}">
+            <input type="checkbox" aria-label="Mark ${esc(t.name)} as done" ${t.done ? "checked" : ""}>
+            <span class="pmd-task-time">${esc(t.time)}</span>
+            <span class="pmd-task-name">${esc(t.name)}</span>
+            <button class="pmd-button pmd-button-danger" type="button" aria-label="Delete ${esc(t.name)}">Delete</button>
+          </div>`).join("");
+      }
 
-  function sortTasks() { tasks.sort((a, b) => a.time.localeCompare(b.time)); }
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        const name = nameInput.value.trim();
+        const time = timeInput.value;
+        if (!name) { setStatus(formStatus, "Type a task first.", "error"); nameInput.focus(); return; }
+        if (!time) { setStatus(formStatus, "Pick a time for this task.", "error"); timeInput.focus(); return; }
+        tasks.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name, time, done: false });
+        sortTasks(); save(); render();
+        nameInput.value = "";
+        setStatus(formStatus, "Added " + name + " at " + time + ".", "success");
+        nameInput.focus();
+      });
 
-  function render() {
-    if (!tasks.length) {
-      list.innerHTML = '<p class="empty">No tasks yet. Type your first task above.</p>';
-      return;
-    }
-    list.innerHTML = tasks.map(t => `
-      <div class="task ${t.done ? "done" : ""}" data-id="${t.id}">
-        <input type="checkbox" aria-label="Mark ${escapeHtml(t.name)} as done" ${t.done ? "checked" : ""}>
-        <span class="task-time">${escapeHtml(t.time)}</span>
-        <span class="task-name">${escapeHtml(t.name)}</span>
-        <button class="btn btn-danger" type="button" aria-label="Delete ${escapeHtml(t.name)}">Delete</button>
-      </div>`).join("");
-  }
+      list.addEventListener("change", e => {
+        if (e.target.type !== "checkbox") return;
+        const t = tasks.find(x => x.id === e.target.closest(".pmd-task").dataset.id);
+        if (t) { t.done = e.target.checked; save(); render(); }
+      });
 
-  function applySettings() {
-    root.style.setProperty("--accent", settings.accent);
-    root.style.setProperty("--font-scale", settings.size);
-    root.setAttribute("data-theme", settings.theme);
-    $("accent-picker").value = settings.accent;
-    $("text-size").value = settings.size;
-    document.querySelectorAll(".swatch").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.color === settings.accent)));
-    document.querySelectorAll("[data-theme]").forEach(b => {
-      if (b.tagName === "BUTTON") b.setAttribute("aria-pressed", String(b.dataset.theme === settings.theme));
-    });
-  }
+      list.addEventListener("click", e => {
+        if (!e.target.classList.contains("pmd-button-danger")) return;
+        const id = e.target.closest(".pmd-task").dataset.id;
+        tasks = tasks.filter(x => x.id !== id);
+        save(); render();
+      });
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = nameInput.value.trim();
-    const time = timeInput.value;
-    if (!name) { formStatus.textContent = "Type a task first."; formStatus.className = "status error"; nameInput.focus(); return; }
-    if (!time) { formStatus.textContent = "Pick a time for this task."; formStatus.className = "status error"; timeInput.focus(); return; }
-    tasks.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name, time, done: false });
-    sortTasks(); save(); render();
-    nameInput.value = "";
-    formStatus.textContent = "Added " + name + " at " + time + ".";
-    formStatus.className = "status ok";
-    nameInput.focus();
-  });
+      document.getElementById("pmd-clear").addEventListener("click", () => {
+        if (!tasks.length) return;
+        if (confirm("Clear all tasks from your plan?")) { tasks = []; save(); render(); }
+      });
 
-  list.addEventListener("change", (e) => {
-    if (e.target.type !== "checkbox") return;
-    const id = e.target.closest(".task").dataset.id;
-    const t = tasks.find(x => x.id === id);
-    if (t) { t.done = e.target.checked; save(); render(); }
-  });
+      function download(filename, content, type) {
+        const url = URL.createObjectURL(new Blob([content], { type }));
+        const a = document.createElement("a");
+        a.href = url; a.download = filename;
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+      function csvCell(v) { return '"' + String(v).replace(/"/g, '""') + '"'; }
 
-  list.addEventListener("click", (e) => {
-    if (!e.target.classList.contains("btn-danger")) return;
-    const id = e.target.closest(".task").dataset.id;
-    tasks = tasks.filter(x => x.id !== id);
-    save(); render();
-  });
-
-  $("clear-all").addEventListener("click", () => {
-    if (!tasks.length) return;
-    if (confirm("Clear all tasks from your plan?")) { tasks = []; save(); render(); }
-  });
-
-  document.querySelectorAll(".swatch").forEach(b => b.addEventListener("click", () => {
-    settings.accent = b.dataset.color; save(); applySettings();
-  }));
-  $("accent-picker").addEventListener("input", (e) => { settings.accent = e.target.value; save(); applySettings(); });
-  $("text-size").addEventListener("change", (e) => { settings.size = e.target.value; save(); applySettings(); });
-  document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
-    settings.theme = b.dataset.theme; save(); applySettings();
-  }));
-
-  // Exports
-  function download(filename, content, type) {
-    const blob = new Blob([content], { type });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url; a.download = filename;
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }
-  function csvCell(v) { return '"' + String(v).replace(/"/g, '""') + '"'; }
-
-  function toSVG() {
-    const rowH = 44, pad = 24, width = 640;
-    const height = pad * 2 + 60 + Math.max(tasks.length, 1) * rowH;
-    const rows = tasks.length ? tasks.map((t, i) => {
-      const y = pad + 60 + i * rowH;
-      return `<text x="${pad}" y="${y + 26}" font-size="16" font-weight="700" fill="${settings.accent}">${escapeHtml(t.time)}</text>` +
-        `<text x="${pad + 90}" y="${y + 26}" font-size="16" fill="#111827" ${t.done ? 'text-decoration="line-through" opacity="0.5"' : ""}>${t.done ? "✓ " : ""}${escapeHtml(t.name)}</text>` +
-        `<line x1="${pad}" x2="${width - pad}" y1="${y + rowH - 4}" y2="${y + rowH - 4}" stroke="#e5e7eb"/>`;
-    }).join("") : `<text x="${pad}" y="${pad + 80}" font-size="16" fill="#6b7280">No tasks yet</text>`;
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" font-family="Arial, sans-serif">
+      function toSVG() {
+        const width = 640, rowH = 44, pad = 24;
+        const height = pad * 2 + 60 + Math.max(tasks.length, 1) * rowH;
+        const rows = tasks.length ? tasks.map((t, i) => {
+          const y = pad + 60 + i * rowH;
+          const style = t.done ? ' opacity="0.5"' : "";
+          return `<text x="${pad}" y="${y + 26}" font-size="16" font-weight="700" fill="#2563eb">${esc(t.time)}</text>` +
+            `<text x="${pad + 90}" y="${y + 26}" font-size="16" fill="#111827"${style}>${t.done ? "✓ " : ""}${esc(t.name)}</text>` +
+            `<line x1="${pad}" x2="${width - pad}" y1="${y + rowH - 4}" y2="${y + rowH - 4}" stroke="#e5e7eb"/>`;
+        }).join("") : `<text x="${pad}" y="${pad + 80}" font-size="16" fill="#6b7280">No tasks yet</text>`;
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" font-family="Arial, sans-serif">
 <rect width="100%" height="100%" fill="#ffffff"/>
 <text x="${pad}" y="${pad + 20}" font-size="24" font-weight="700" fill="#111827">My Day Plan</text>
-<rect x="${pad}" y="${pad + 34}" width="60" height="4" rx="2" fill="${settings.accent}"/>
+<rect x="${pad}" y="${pad + 34}" width="60" height="4" rx="2" fill="#2563eb"/>
 ${rows}
 </svg>`;
-  }
+      }
 
-  function toPrintHTML() {
-    const items = tasks.map(t => `<tr><td>${escapeHtml(t.time)}</td><td>${t.done ? "Done" : "To do"}</td><td>${escapeHtml(t.name)}</td></tr>`).join("");
-    return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>My Day Plan</title>
-<style>body{font-family:Arial,sans-serif;padding:32px;color:#111}h1{color:${settings.accent}}table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid #ddd;padding:10px;text-align:left}</style>
-</head><body><h1>My Day Plan</h1><table><tr><th>Time</th><th>Status</th><th>Task</th></tr>${items || '<tr><td colspan="3">No tasks yet</td></tr>'}</table></body></html>`;
-  }
+      function toPrintHTML() {
+        const rows = tasks.map(t => `<tr><td>${esc(t.time)}</td><td>${t.done ? "Done" : "To do"}</td><td>${esc(t.name)}</td></tr>`).join("");
+        return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>My Day Plan</title>
+<style>body{font-family:Arial,sans-serif;padding:32px;color:#111}h1{color:#2563eb}table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid #ddd;padding:10px;text-align:left}</style>
+</head><body><h1>My Day Plan</h1><table><tr><th>Time</th><th>Status</th><th>Task</th></tr>${rows || '<tr><td colspan="3">No tasks yet</td></tr>'}</table></body></html>`;
+      }
 
-  document.querySelectorAll("[data-export]").forEach(btn => btn.addEventListener("click", () => {
-    const type = btn.dataset.export;
-    if (type === "pdf") {
-      const w = window.open("", "_blank");
-      if (!w) { exportStatus.textContent = "Allow pop-ups to save as PDF, then try again."; exportStatus.className = "status error"; return; }
-      w.document.write(toPrintHTML()); w.document.close(); w.focus(); w.print();
-      exportStatus.textContent = "Choose \"Save as PDF\" in the print dialog."; exportStatus.className = "status ok";
-      return;
-    }
-    if (type === "svg") download("my-day-plan.svg", toSVG(), "image/svg+xml");
-    if (type === "csv") download("my-day-plan.csv", "Time,Status,Task\n" + tasks.map(t => [csvCell(t.time), csvCell(t.done ? "Done" : "To do"), csvCell(t.name)].join(",")).join("\n"), "text/csv");
-    if (type === "txt") download("my-day-plan.txt", "My Day Plan\n\n" + tasks.map(t => `${t.time}  [${t.done ? "x" : " "}] ${t.name}`).join("\n") + "\n", "text/plain");
-    if (type === "json") download("my-day-plan.json", JSON.stringify({ plan: tasks.map(({ time, name, done }) => ({ time, name, done })) }, null, 2), "application/json");
-    exportStatus.textContent = "Exported as " + type.toUpperCase() + "."; exportStatus.className = "status ok";
-  }));
+      document.querySelectorAll("[data-export]").forEach(btn => btn.addEventListener("click", () => {
+        const type = btn.dataset.export;
+        if (type === "pdf") {
+          const w = window.open("", "_blank");
+          if (!w) { setStatus(exportStatus, "Allow pop-ups to save as PDF, then try again.", "error"); return; }
+          w.document.write(toPrintHTML()); w.document.close(); w.focus(); w.print();
+          setStatus(exportStatus, 'Choose "Save as PDF" in the print dialog.', "success");
+          return;
+        }
+        if (type === "svg") download("my-day-plan.svg", toSVG(), "image/svg+xml");
+        if (type === "csv") download("my-day-plan.csv", "Time,Status,Task\n" + tasks.map(t => [csvCell(t.time), csvCell(t.done ? "Done" : "To do"), csvCell(t.name)].join(",")).join("\n"), "text/csv");
+        if (type === "txt") download("my-day-plan.txt", "My Day Plan\n\n" + tasks.map(t => `${t.time}  [${t.done ? "x" : " "}] ${t.name}`).join("\n") + "\n", "text/plain");
+        if (type === "json") download("my-day-plan.json", JSON.stringify({ plan: tasks.map(({ time, name, done }) => ({ time, name, done })) }, null, 2), "application/json");
+        setStatus(exportStatus, "Exported as " + type.toUpperCase() + ".", "success");
+      }));
 
-  load(); sortTasks(); applySettings(); render();
-})();
-</script>
+      load(); sortTasks(); render();
+    })();
+  </script>
 </body>
 </html>
